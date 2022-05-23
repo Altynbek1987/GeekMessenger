@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authorization_graph"
+    app:startDestination="@id/authWithPhoneNumberFragment">
+
+    <fragment
+        android:id="@+id/authWithPhoneNumberFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.AuthWithPhoneNumberFragment"
+        android:label="fragment_auth_with_phone_number"
+        tools:layout="@layout/fragment_auth_with_phone_number">
+        <action
+            android:id="@+id/action_authWithPhoneNumberFragment_to_mainFlowFragment"
+            app:destination="@id/mainFlowFragment"
+            app:popUpTo="@id/authorization_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFlowFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.MainFlowFragment"
+        android:label="MainFlowFragment" />
+</navigation>
