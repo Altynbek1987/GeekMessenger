@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.home.HomeFragment">
+    tools:context=".presentation.ui.fragments.calls.CallsFragment">
 
     <androidx.appcompat.widget.Toolbar
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+
         android:background="#4A7CE0"
         app:popupTheme="@style/Theme.NavDraw.PopupOverlay" >
 
@@ -26,23 +27,25 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="347dp"
-                android:src="@drawable/ic_baseline_format_list_bulleted_24" />
+                android:src="@drawable/ic_back" />
 
         </RelativeLayout>
+
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:id="@+id/text_home"
+        android:id="@+id/text_gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:text="@string/menu_calls"
         android:textAlignment="center"
-        android:text="home"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
