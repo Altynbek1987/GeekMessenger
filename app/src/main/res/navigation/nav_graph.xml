@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    tools:ignore="InvalidNavigation">
+    tools:ignore="InvalidNavigation"
+    app:startDestination="@id/connectionCheckFragment2">
 
     <fragment
         android:id="@+id/authorizationFlowFragment"
@@ -12,4 +14,11 @@
         android:id="@+id/mainFlowFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.MainFlowFragment"
         android:label="MainFlowFragment" />
+    <fragment
+        android:id="@+id/connectionCheckFragment2"
+        android:name="com.geektechkb.geekmessenger.presentation.ui.fragments.ConnectionCheckFragment"
+        android:label="fragment_connection_check"
+        tools:layout="@layout/fragment_connection_check" />
+
+
 </navigation>
