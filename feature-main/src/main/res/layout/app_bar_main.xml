@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.NavDraw.AppBarOverlay">
 
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
@@ -18,15 +17,12 @@
         android:layout_height="60dp"
         android:translationZ="10dp">
 
-
         <ImageButton
             android:id="@+id/toolbar_button"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="347dp"
-            />
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

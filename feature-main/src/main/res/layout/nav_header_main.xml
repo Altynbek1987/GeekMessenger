@@ -14,10 +14,8 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="440dp"
+        android:layout_height="30dp"
         android:background="#4A7CE0"
         android:src="@drawable/ic_sun" />
 

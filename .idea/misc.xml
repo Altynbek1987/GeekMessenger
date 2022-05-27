@@ -16,14 +16,18 @@
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_back.xml" value="0.138" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.1425" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_group.xml" value="0.146" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_launcher_background.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_menu_camera.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_menu_gallery.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1425" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_phone.xml" value="0.146" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_search.xml" value="0.146" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_settings.xml" value="0.138" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_sun.xml" value="0.138" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_vector.xml" value="0.138" />
-        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/app_bar_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/side_nav_bar.xml" value="0.146" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/app_bar_main.xml" value="0.3802163833075734" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/content_main.xml" value="0.21296296296296297" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_calls.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_group.xml" value="0.25416666666666665" />
