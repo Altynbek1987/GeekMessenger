@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="223dp"
     android:background="#323232"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -12,6 +12,14 @@
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageButton
+        android:layout_marginStart="220dp"
+        android:layout_width="40dp"
+        android:layout_marginTop="25dp"
+        android:background="#323232"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_sun" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
@@ -36,6 +44,8 @@
         android:paddingTop="8dp"
         android:text="Алымбек"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
 
     <TextView
         android:id="@+id/textView"
