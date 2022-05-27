@@ -14,11 +14,14 @@
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable-v24/ic_baseline_person_24.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1425" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_back.xml" value="0.138" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_launcher_background.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_menu_camera.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_menu_gallery.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1425" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_settings.xml" value="0.138" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_vector.xml" value="0.138" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/app_bar_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/content_main.xml" value="0.21296296296296297" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_calls.xml" value="0.25416666666666665" />
@@ -29,6 +32,7 @@
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/nav_header_main.xml" value="0.2" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/toolbar_burger.xml" value="0.253125" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/menu/activity_main_drawer.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/menu/main_drawer.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
