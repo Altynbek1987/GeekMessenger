@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/open"
     android:layout_width="match_parent"
     android:layout_height="223dp"
-    android:background="#323232"
+    android:background="#4A7CE0"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="16dp"
-    android:id="@+id/open"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageButton
-        android:layout_marginStart="220dp"
         android:layout_width="40dp"
-        android:layout_marginTop="25dp"
-        android:background="#323232"
         android:layout_height="40dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="25dp"
+        android:background="#4A7CE0"
         android:src="@drawable/ic_sun" />
 
     <androidx.cardview.widget.CardView
@@ -32,9 +32,10 @@
             android:id="@+id/imageView"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:background="@drawable/ic_baseline_person_24"
+            android:clickable="true"
             android:contentDescription="@string/nav_header_desc"
-            android:scaleType="centerCrop"
-            android:background="@drawable/ic_baseline_person_24"/>
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 
@@ -42,15 +43,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Алымбек"
+        android:text="Which user"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+996500998896" />
+        android:text="+996 999880704" />
 
 </LinearLayout>

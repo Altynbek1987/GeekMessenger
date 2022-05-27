@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainFlowFragment : BaseFlowFragment(
     R.layout.fragment_main_flow,
-    R.id.nav_host_fragment_content_main
+    R.id.nav_host_fragment_content_main,
 ) {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
