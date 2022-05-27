@@ -6,29 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.home.HomeFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        app:titleMarginStart="60dp"
+        app:title="GeekMessenger"
+        app:titleTextColor="@color/white"
         android:background="#4A7CE0"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/Theme.NavDraw.PopupOverlay">
+        app:popupTheme="@style/Theme.NavDraw.PopupOverlay"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/toolbar_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="35dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_baseline_format_list_bulleted_24" />
 
             <ImageButton
-                android:id="@+id/toolbar_button"
+                android:id="@+id/toolbar_search"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_baseline_format_list_bulleted_24" />
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_search" />
 
         </RelativeLayout>
 
-    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/text_home"

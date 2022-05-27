@@ -10,6 +10,7 @@ import javax.inject.Inject
 class GroupViewModel @Inject constructor() : BaseViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
+
         value = "This is group Fragment"
     }
     val text: LiveData<String> = _text

@@ -6,32 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.calls.CallsFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="match_parent">
 
-        android:background="#4A7CE0"
-        app:popupTheme="@style/Theme.NavDraw.PopupOverlay" >
-
-        <RelativeLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="60dp"
+            android:background="#4A7CE0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/Theme.NavDraw.PopupOverlay"
+            app:title="Звонки"
+            app:titleMarginStart="50dp"
+            app:titleTextColor="@color/white" />
 
 
-            <ImageButton
-                android:id="@+id/toolbar_button"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
+        <ImageButton
+            android:id="@+id/toolbar_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="3dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_back" />
 
-                android:src="@drawable/ic_back" />
-
-        </RelativeLayout>
-
-    </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/text_gallery"

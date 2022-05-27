@@ -13,5 +13,6 @@ class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(
 ) {
     override val binding by viewBinding(FragmentGroupBinding::bind)
     override val viewModel by viewModels<GroupViewModel>()
-
+    override fun assembleViews() {
+    }
 }
