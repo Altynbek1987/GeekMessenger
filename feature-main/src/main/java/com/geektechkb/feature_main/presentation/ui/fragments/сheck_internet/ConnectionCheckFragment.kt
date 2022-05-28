@@ -1,20 +1,20 @@
-package com.geektechkb.geekmessenger.presentation.ui.fragments
+package com.geektechkb.feature_main.presentation.ui.fragments.сheck_internet
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.geektechkb.core.utils.CheckInternet
-import com.geektechkb.feature_auth.databinding.FragmentAuthorizationFlowBinding.inflate
-import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding.inflate
-import com.geektechkb.geekmessenger.databinding.FragmentConnectionCheckBinding
+import com.geektechkb.feature_main.databinding.FragmentConnectionCheckBinding
+import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 
 
 class ConnectionCheckFragment : Fragment() {
-    private lateinit var cld : CheckInternet
-    private lateinit var binding: FragmentConnectionCheckBinding
+     private lateinit var binding: FragmentConnectionCheckBinding
+     private lateinit var cld: CheckInternet
+     private lateinit var clt: FragmentMainFlowBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,8 +24,8 @@ class ConnectionCheckFragment : Fragment() {
         checkInternet()
         return binding.root
 
-
     }
+
 
     private fun checkInternet() {
         activity?.application?.let {
@@ -33,12 +33,13 @@ class ConnectionCheckFragment : Fragment() {
         }
         cld.observe(viewLifecycleOwner) {
             if (it) {
-                binding.internet.visibility = View.GONE
-                binding.internet2.visibility = View.VISIBLE
+                binding.connectionImage.visibility = View.GONE
+                binding.connectionText.visibility = View.GONE
             } else {
-                binding.internet.visibility = View.VISIBLE
-                binding.internet2.visibility = View.GONE
+                binding.connectionImage.visibility = View.VISIBLE
+                binding.connectionText.visibility = View.VISIBLE
             }
         }
     }
 }
+
