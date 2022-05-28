@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.home.HomeFragment">
+     tools:context=".presentation.ui.fragments.home.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -13,5 +13,9 @@
         android:text="HOME FRAGMENT"
         android:textColor="@color/black"
         android:textSize="50dp" />
+
+
+
+
 
 </FrameLayout>
