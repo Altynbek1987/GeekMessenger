@@ -1,4 +1,14 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="app_name">NavDraw</string>
+
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="menu_group">Создать группу</string>
+    <string name="menu_calls">Звонки</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_profile">Профиль</string>
+
+
 </resources>
