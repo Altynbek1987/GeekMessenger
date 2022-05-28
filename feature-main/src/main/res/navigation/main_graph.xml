@@ -3,11 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/connectionCheckFragment">
+
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_connection_check" >
+        <action
+            android:id="@+id/action_homeFragment_to_connectionCheckFragment"
+            app:destination="@id/connectionCheckFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/connectionCheckFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.сheck_internet.ConnectionCheckFragment"
+        android:label="fragment_connection_check"
+        tools:layout="@layout/fragment_connection_check" />
+
 </navigation>
