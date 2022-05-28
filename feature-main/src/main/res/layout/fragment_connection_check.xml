@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.ui.fragments.ConnectionCheckFragment">
+    tools:context="com.geektechkb.feature_main.presentation.ui.fragments.сheck_internet.ConnectionCheckFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/internet"
@@ -35,13 +35,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/internet2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
