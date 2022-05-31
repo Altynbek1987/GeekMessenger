@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/connectionCheckFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.сheck_internet.ConnectionCheckFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.checknetworkconnection.ConnectionCheckFragment"
         android:label="fragment_connection_check"
         tools:layout="@layout/fragment_connection_check" >
 
