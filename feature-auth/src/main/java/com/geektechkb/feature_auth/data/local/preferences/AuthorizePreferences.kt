@@ -2,6 +2,7 @@ package com.geektechkb.feature_auth.data.local.preferences
 
 import android.content.SharedPreferences
 import com.geektechkb.common.constants.Constants.IS_AUTHORIZED_KEY
+import com.geektechkb.common.constants.Constants.SMS_CODE_KEY
 import com.geektechkb.common.constants.Constants.VERIFICATION_ID_KEY
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,4 +16,7 @@ class AuthorizePreferences @Inject constructor(private val preferences: SharedPr
     var verificationId: String?
         get() = preferences.getString(VERIFICATION_ID_KEY, "")
         set(value) = preferences.edit().putString(IS_AUTHORIZED_KEY, value).apply()
+    var smsCode: String?
+        get() = preferences.getString(SMS_CODE_KEY, "")
+        set(value) = preferences.edit().putString(SMS_CODE_KEY, value).apply()
 }
