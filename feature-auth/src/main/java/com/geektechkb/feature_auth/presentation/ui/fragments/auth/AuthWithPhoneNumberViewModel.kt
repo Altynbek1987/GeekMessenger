@@ -11,6 +11,6 @@ class AuthWithPhoneNumberViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     fun isAuthorizeTrue() {
-        userPreferences.isAuthorize = true
+        userPreferences.isAuthorized = true
     }
 }

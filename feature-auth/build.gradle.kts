@@ -1,6 +1,6 @@
 plugins {
     // Application
-    id ("com.android.library")
+    id("com.android.library")
 
     // Kotlin
     id("kotlin-android")
@@ -13,6 +13,9 @@ plugins {
 
     // Hilt
     id(libs.plugins.hilt.android.get().pluginId)
+
+    // Google Services
+    id(libs.plugins.google.services.get().pluginId)
 
 }
 
@@ -29,8 +32,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -65,8 +70,13 @@ dependencies {
     implementation(libs.bundles.navigation)
 
     // Hilt
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
+
+    // Firebase
+    implementation(platform(libs.firebase.platform))
+
+    implementation(libs.bundles.firebaseNoCrashlytics)
 
     //Paging 3
     implementation(libs.paging.paging)

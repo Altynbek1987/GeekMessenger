@@ -1,4 +1,4 @@
-package com.geektechkb.geekmessenger.di
+package com.geektechkb.geekmessenger.di.di
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object SharedPreferencesModule {
+object LocalModule {
 
     @Singleton
     @Provides
