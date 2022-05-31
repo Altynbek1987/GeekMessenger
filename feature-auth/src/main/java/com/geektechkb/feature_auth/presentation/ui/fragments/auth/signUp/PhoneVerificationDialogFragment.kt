@@ -19,7 +19,6 @@ class PhoneVerificationDialogFragment :
     BaseDialogFragment<FragmentPhoneVerificationDialogBinding, SignUpViewModel>(R.layout.fragment_phone_verification_dialog) {
     override val binding by viewBinding(FragmentPhoneVerificationDialogBinding::bind)
     override val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
-    private var smsCode: String? = null
     private val args: PhoneVerificationDialogFragmentArgs by navArgs()
     override fun assembleViews() {
         binding.tvEnteredNumber.text = args.inputPhoneNumber
