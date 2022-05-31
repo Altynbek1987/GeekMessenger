@@ -72,4 +72,7 @@ dependencies {
 
     //FireBase
     api(libs.bundles.firebase)
+
+    //Glide
+    implementation(libs.glide.glide)
 }
