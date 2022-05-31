@@ -14,8 +14,7 @@ import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 class ConnectionCheckFragment : Fragment() {
      private lateinit var binding: FragmentConnectionCheckBinding
      private lateinit var cld: CheckInternet
-     private lateinit var clt: FragmentMainFlowBinding
-    override fun onCreateView(
+     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
