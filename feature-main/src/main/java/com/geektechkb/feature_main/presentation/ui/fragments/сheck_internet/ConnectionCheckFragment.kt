@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.geektechkb.core.utils.CheckInternet
+import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentConnectionCheckBinding
-import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 
 
 class ConnectionCheckFragment : Fragment() {
+
      private lateinit var binding: FragmentConnectionCheckBinding
      private lateinit var cld: CheckInternet
+
      override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,6 +24,7 @@ class ConnectionCheckFragment : Fragment() {
         binding = FragmentConnectionCheckBinding.inflate(LayoutInflater.from(context), container, false)
         checkInternet()
         return binding.root
+
 
     }
 
@@ -32,6 +35,7 @@ class ConnectionCheckFragment : Fragment() {
         }
         cld.observe(viewLifecycleOwner) {
             if (it) {
+                findNavController().navigate(R.id.action_connectionCheckFragment_to_homeFragment)
                 binding.connectionImage.visibility = View.GONE
                 binding.connectionText.visibility = View.GONE
             } else {
