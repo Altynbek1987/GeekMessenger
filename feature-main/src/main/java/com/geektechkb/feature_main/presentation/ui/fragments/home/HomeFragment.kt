@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         }
         cld.observe(viewLifecycleOwner) {
             if (it) {
-                Log.e("fuck you",it.toString())
+                Log.e("connection",it.toString())
             } else {
                 findNavController().navigate(R.id.action_homeFragment_to_connectionCheckFragment)
             }
