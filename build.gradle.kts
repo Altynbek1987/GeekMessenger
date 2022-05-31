@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.gradle) apply false
     alias(libs.plugins.navigation.safeArgs) apply false
     alias(libs.plugins.hilt.android) apply false
+
 }
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)

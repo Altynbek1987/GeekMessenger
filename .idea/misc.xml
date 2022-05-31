@@ -41,6 +41,20 @@
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/menu/activity_main_drawer.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/menu/main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/menu/main_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable/ic_launcher_background.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable/ic_splash_screen.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/layout/activity_main.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/drawable/ic_android_teacher1.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/drawable/ic_group_1.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/drawable/ic_illustrtionsof404.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/drawable/ic_rectangle_1__1_.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/drawable/ic_rectangle_1__2_.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/drawable/ic_unsplash_niukimzcsp8.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_auth_with_phone_number.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_on_board.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/item_board.xml" value="0.12360688956433637" />
       </map>
     </option>
   </component>
