@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.сheck_internet
+package com.geektechkb.feature_main.presentation.ui.fragments.checknetworkconnection
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -35,7 +35,7 @@ class ConnectionCheckFragment : Fragment() {
         }
         cld.observe(viewLifecycleOwner) {
             if (it) {
-                findNavController().navigate(R.id.action_connectionCheckFragment_to_homeFragment)
+                findNavController().navigateUp()
                 binding.connectionImage.visibility = View.GONE
                 binding.connectionText.visibility = View.GONE
             } else {
