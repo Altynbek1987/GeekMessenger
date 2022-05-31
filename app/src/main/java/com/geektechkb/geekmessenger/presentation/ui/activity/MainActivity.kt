@@ -17,10 +17,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var navController: NavController
     private val binding by viewBinding(ActivityMainBinding::bind)
 
+
     @Inject
     lateinit var userPreferences: AuthorizePreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_GeekMessenger)
         super.onCreate(savedInstanceState)
         setUpNavigation()
     }
