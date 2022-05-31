@@ -28,7 +28,6 @@ class ConnectionCheckFragment : Fragment() {
 
     }
 
-
     private fun checkInternet() {
         activity?.application?.let {
             cld = CheckInternet(it)
