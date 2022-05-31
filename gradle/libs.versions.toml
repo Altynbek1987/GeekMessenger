@@ -43,6 +43,8 @@ room = "2.4.2"
 datastore = "1.0.0"
 #Paging
 paging = "3.1.1"
+#DotsIndicator
+dotsIndicator = "4.3"
 #Firebase
 firebaseFirestore = "24.1.2"
 googleServices = "4.3.10"
@@ -66,6 +68,7 @@ coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-androi
 android-core = { module = "androidx.core:core-ktx", version.ref = "core" }
 
 #UI Components
+
 ui-activity = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
 ui-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
 ui-material = { module = "com.google.android.material:material", version.ref = "material" }
@@ -73,6 +76,7 @@ ui-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appComp
 ui-constraint = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraint" }
 ui-viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version.ref = "viewBindingPropertyDelegate" }
 ui-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
+ui-dotsIndicatior = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsIndicator" }
 glide-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 
 #Legacy Support
@@ -127,7 +131,7 @@ koin-koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
 [bundles]
 #UI Components
-uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen"]
+uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-dotsIndicatior"]
 
 #Room
 room = ["room-runtime", "room-kotlinExtensionsAndCoroutinesSupport"]

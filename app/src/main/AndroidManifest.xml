@@ -15,7 +15,9 @@
         android:theme="@style/Theme.GeekMessenger">
         <activity
             android:name=".presentation.ui.activity.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/splashScreenTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
