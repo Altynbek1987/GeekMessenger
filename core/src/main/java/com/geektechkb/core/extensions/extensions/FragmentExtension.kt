@@ -1,4 +1,4 @@
-package com.timplifier.firebaseauthenticationtest.presentation.extensions
+package com.geektechkb.core.extensions.extensions
 
 import android.app.Activity
 import android.content.Context
