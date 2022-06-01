@@ -10,7 +10,8 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentProfileBinding
 import com.geektechkb.feature_auth.presentation.ui.extensions.mainNavController
-import com.timplifier.firebaseauthenticationtest.presentation.extensions.hasPermissionCheckAndRequest
+import com.geektechkb.feature_auth.presentation.ui.extensions.setImage
+import com.geektechkb.core.extensions.extensions.hasPermissionCheckAndRequest
 import com.timplifier.firebaseauthenticationtest.presentation.extensions.navigateSafely
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,8 +57,7 @@ class ProfileFragment :
         binding.imProfile.setOnClickListener {
             if (hasPermissionCheckAndRequest(
                     requestPermissionLauncher,
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-                )
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE))
             ) {
                 fileChooserContract.launch("image/*")
             }
@@ -79,7 +79,7 @@ class ProfileFragment :
     private val fileChooserContract =
         registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
             if (imageUri != null) {
-                binding.imProfile.setImageURI(imageUri)
+                binding.imProfile.setImage(imageUri.toString())
                 uri = imageUri
             }
         }
