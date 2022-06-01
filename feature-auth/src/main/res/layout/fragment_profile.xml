@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.timplifier.firebaseauthenticationtest.presentation.ui.authentication.fragments.profile.ProfileFragment">
+    tools:context=".presentation.ui.fragments.auth.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
