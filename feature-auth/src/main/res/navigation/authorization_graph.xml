@@ -100,6 +100,9 @@
             app:destination="@id/authWithPhoneNumberFragment"
             app:popUpTo="@id/authorization_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_onBoardFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
 
 </navigation>
