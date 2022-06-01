@@ -23,7 +23,6 @@ class OnBoardFragment :
     @Inject
     lateinit var preferences: OnBoardPreferencesHelper
 
-
     override fun setupListeners() {
         binding.pager.setOnClickListener {
             binding.pager.setCurrentItem(binding.pager.currentItem + 1, true)
@@ -79,7 +78,7 @@ class OnBoardFragment :
             }
             2 -> {
                 preferences.hasOnBoardBeenShown = true
-                findNavController().navigate(R.id.action_onBoardFragment_authWithPhoneNumber)
+                findNavController().navigate(R.id.action_onBoardFragment_to_signUpFragment)
 
             }
         }
