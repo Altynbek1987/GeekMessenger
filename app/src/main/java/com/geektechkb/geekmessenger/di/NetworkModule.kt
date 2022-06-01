@@ -1,4 +1,4 @@
-package com.geektechkb.geekmessenger.di.di
+package com.geektechkb.geekmessenger.di
 
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase

@@ -1,4 +1,4 @@
-package com.geektechkb.geekmessenger.di.di
+package com.geektechkb.geekmessenger.di
 
 import android.content.Context
 import android.content.SharedPreferences

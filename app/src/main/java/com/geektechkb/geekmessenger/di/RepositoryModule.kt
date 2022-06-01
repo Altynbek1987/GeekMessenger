@@ -1,4 +1,4 @@
-package com.geektechkb.geekmessenger.di.di
+package com.geektechkb.geekmessenger.di
 
 import com.geektechkb.feature_auth.data.repositories.authentication.AuthRepositoryImpl
 import com.geektechkb.feature_auth.domain.repositories.AuthRepository
