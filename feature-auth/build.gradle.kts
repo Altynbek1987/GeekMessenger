@@ -59,6 +59,7 @@ dependencies {
 
 
     // Core
+
     implementation(libs.android.core)
 
     // Coroutines
@@ -69,10 +70,12 @@ dependencies {
 
     // Navigation
     implementation(libs.bundles.navigation)
+    implementation("com.tbuonomo:dotsindicator:4.3")
 
     // Hilt
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
+
 
     // Firebase
     implementation(platform(libs.firebase.platform))
