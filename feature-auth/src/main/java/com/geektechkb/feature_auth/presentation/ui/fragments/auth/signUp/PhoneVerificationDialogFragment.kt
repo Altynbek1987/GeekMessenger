@@ -42,8 +42,7 @@ class PhoneVerificationDialogFragment :
             startPhoneNumberVerification()
             findNavController().directionsSafeNavigation(
                 PhoneVerificationDialogFragmentDirections.actionPhoneVerificationDialogFragmentToVerifyAuthenticationFragment(
-                    args.inputPhoneNumber
-                )
+                    args.inputPhoneNumber)
             )
         }
     }

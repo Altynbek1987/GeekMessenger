@@ -2,6 +2,8 @@ package com.geektechkb.core.extensions.extensions
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.ImageView
+import com.geektechkb.core.R
 import com.google.android.material.textfield.TextInputEditText
 
 fun TextInputEditText.deleteASingleCharacterInEditText() {
@@ -24,6 +26,7 @@ fun TextInputEditText.requestFocusOnTheNextDigit(editTextToRequestUserFocusOn: T
         }
     })
 }
+
 
 fun TextInputEditText.retrieveInputVerificationCode(
     secondDigit: TextInputEditText,
