@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.timplifier.firebaseauthenticationtest.presentation.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
@@ -27,7 +26,7 @@ class VerifyAuthenticationFragment :
     private val args: VerifyAuthenticationFragmentArgs by navArgs()
     private var inputVerificationCode: String = ""
     private var timeInSeconds = 0L
-    private var attemptsToVerifyPhoneNumber = 3
+    private var attemptsToVerifyPhoneNumber = 1
     private lateinit var countDownTimer: CountDownTimer
     override fun assembleViews() {
         setPhoneNumberCodeWasSentTo()
@@ -347,24 +346,27 @@ class VerifyAuthenticationFragment :
                 when (task.exception) {
                     is FirebaseAuthInvalidCredentialsException -> {
                         when (attemptsToVerifyPhoneNumber) {
-                            0 ->
+                            1 -> {
                                 showSnackbar(
                                     view,
-                                    "Too many unsuccessful attempts! Wait for 2 minutes to try again!"
+                                    "try again!"
                                 )
+                                attemptsToVerifyPhoneNumber++
+                            }
+                            2 -> {
 
-
-                            else -> {
-                                attemptsToVerifyPhoneNumber--
                                 showSnackbar(
                                     view,
                                     "The verification code entered is invalid! You have $attemptsToVerifyPhoneNumber left!"
                                 )
+                                attemptsToVerifyPhoneNumber++
+                            }
+                            3 -> {
+                                findNavController().navigate(VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToVerificationDialogFragment3())
                             }
                         }
-
-
                     }
+
                 }
             }
     }
