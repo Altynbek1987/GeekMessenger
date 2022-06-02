@@ -19,7 +19,7 @@ class VerifyAuthenticationViewModel @Inject constructor(
     private var smsCode: String? = null
     fun verifyPhoneNumberWithCode(
         verificationId: String?,
-        code: String,
+        code: String ,
     ): PhoneAuthCredential {
         val credential =
             codeVerificationRepositoryImpl.verifyPhoneNumberWithCode(

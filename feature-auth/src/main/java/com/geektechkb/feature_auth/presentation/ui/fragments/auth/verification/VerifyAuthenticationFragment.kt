@@ -3,13 +3,17 @@ package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.extensions.*
+import com.geektechkb.core.extensions.extensions.disableKeyListeners
+import com.geektechkb.core.extensions.extensions.retrieveInputVerificationCode
+import com.geektechkb.core.extensions.extensions.showSnackbar
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentVerifyAuthenticationBinding
 import com.google.android.material.textfield.TextInputEditText
@@ -227,7 +231,6 @@ class VerifyAuthenticationFragment :
 
     private fun setupClickingOnSix() {
         binding.apply {
-
             tvSix.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -291,6 +294,9 @@ class VerifyAuthenticationFragment :
     private fun setupClickingOnZero() {
         binding.apply {
 
+            tvZero.setOnClickListener {
+
+            }
             tvZero.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -308,8 +314,8 @@ class VerifyAuthenticationFragment :
     private fun addBackspaceListener() {
         binding.apply {
             ibBackspace.setOnClickListener {
-                view?.deleteACharacterDependingOnFocus(
-                    etFirstDigit,
+                focusOnAnotherEditTextWhileClearingTheEditText(
+                    requireView(), etFirstDigit,
                     etSecondDigit,
                     etThirdDigit,
                     etFourthDigit,
@@ -329,7 +335,6 @@ class VerifyAuthenticationFragment :
             requestFocusOnTheNextDigit(etThirdDigit, etFourthDigit)
             requestFocusOnTheNextDigit(etFourthDigit, etFifthDigit)
             requestFocusOnTheNextDigit(etFifthDigit, etSixthDigit)
-
         }
     }
 
@@ -408,7 +413,64 @@ class VerifyAuthenticationFragment :
         PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
     }
 
-    private fun focusOnAnotherEditTextWhileClearingTheEditText() {
+    private fun focusOnAnotherEditTextWhileClearingTheEditText(
+        view: View,
+        firstEditText: TextInputEditText,
+        secondEditText: TextInputEditText,
+        thirdEditText: TextInputEditText,
+        fourthEditText: TextInputEditText,
+        fifthEditText: TextInputEditText,
+        sixthEditText: TextInputEditText,
+
+        ) {
+        when (view.findFocus()) {
+            firstEditText -> {
+                firstEditText.text?.clear()
+            }
+            secondEditText -> {
+
+                secondEditText.text?.clear()
+                firstEditText.requestFocus()
+            }
+            thirdEditText -> {
+                thirdEditText.text?.clear()
+                secondEditText.requestFocus()
+            }
+            fourthEditText -> {
+                fourthEditText.text?.clear()
+                thirdEditText.requestFocus()
+            }
+            fifthEditText -> {
+                fifthEditText.text?.clear()
+                fourthEditText.requestFocus()
+            }
+            sixthEditText -> {
+                sixthEditText.text?.clear()
+                fifthEditText.requestFocus()
+            }
+        }
+
+    }
+
+    private fun setOnNumericClickListener(
+        view: View,
+        firstEditText: TextInputEditText,
+        secondEditText: TextInputEditText,
+        thirdEditText: TextInputEditText,
+        fourthEditText: TextInputEditText,
+        fifthEditText: TextInputEditText,
+        sixthEditText: TextInputEditText,
+        text: CharSequence
+    ) {
+        when (view.findFocus()) {
+            firstEditText -> firstEditText.text?.append(text)
+            secondEditText -> secondEditText.text?.append(text)
+            thirdEditText -> thirdEditText.text?.append(text)
+            fourthEditText -> fourthEditText.text?.append(text)
+            fifthEditText -> fifthEditText.text?.append(text)
+            sixthEditText -> sixthEditText.text?.append(text)
+        }
+
 
     }
 
@@ -416,7 +478,8 @@ class VerifyAuthenticationFragment :
         editTextUserIsFocusedOn: TextInputEditText,
         editTextToRequestAFocusOn: TextInputEditText
     ) {
-        editTextUserIsFocusedOn.addTextChangedListener(object : TextWatcher {
+        editTextUserIsFocusedOn.editTextUserIsFocusedOn.addTextChangedListener(object :
+            TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
@@ -432,4 +495,49 @@ class VerifyAuthenticationFragment :
         })
     }
 
+    private fun TextView.setOnNumericClickListener(
+        view: View?,
+        vararg allDigits: TextInputEditText,
+
+        ) {
+        setOnClickListener {
+            view?.appendTextDependingOnTheFocus(
+                allDigits = allDigits,
+                text.toString()
+
+            )
+        }
+    }
+
+
+    private fun View.appendTextDependingOnTheFocus(
+        vararg allDigits: TextInputEditText,
+        textToAppend: CharSequence
+    ) {
+        when (rootView.findFocus()) {
+            allDigits[0] -> allDigits[0].text?.append(textToAppend)
+            allDigits[1] -> allDigits[1].text?.append(textToAppend)
+            allDigits[2] -> allDigits[2].text?.append(textToAppend)
+            allDigits[3] -> allDigits[3].text?.append(textToAppend)
+            allDigits[4] -> allDigits[4].text?.append(textToAppend)
+            allDigits[5] -> allDigits[5].text?.append(textToAppend)
+        }
+    }
+
+    private fun TextInputEditText.addTextChangedListenerAnonymously(
+        doSomething: ((() -> Unit))? = null
+    ) {
+        addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                doSomething?.invoke()
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
+    }
 }
