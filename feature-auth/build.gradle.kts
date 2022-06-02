@@ -70,7 +70,6 @@ dependencies {
 
     // Navigation
     implementation(libs.bundles.navigation)
-    implementation("com.tbuonomo:dotsindicator:4.3")
 
     // Hilt
     implementation(libs.bundles.hilt)

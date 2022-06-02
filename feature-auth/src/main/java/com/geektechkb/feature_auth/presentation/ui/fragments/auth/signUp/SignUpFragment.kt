@@ -1,13 +1,14 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp
 
+import android.widget.TextView
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.extensions.deleteASingleCharacterInEditText
-import com.geektechkb.core.extensions.extensions.setOnNumericClickListener
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentSignUpBinding
+import com.github.pinball83.maskededittext.MaskedEditText
+import com.google.android.material.textfield.TextInputEditText
 import com.timplifier.firebaseauthenticationtest.presentation.extensions.directionsSafeNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,7 +49,8 @@ class SignUpFragment :
 
     private fun addBackspaceListener() {
         binding.ibBackspace.setOnClickListener {
-            binding.etPhone.deleteASingleCharacterInEditText()
+            deleteASingleCharacterInEditTextPressingBackspace(binding.etPhone)
+//            binding.etPhone.deleteASingleCharacterInEditText()
         }
     }
 
@@ -66,4 +68,23 @@ class SignUpFragment :
             tvZero.setOnNumericClickListener(etPhone)
         }
     }
+
+    private fun deleteASingleCharacterInEditTextPressingBackspace(editText: TextInputEditText) {
+        val cursorPosition = editText.selectionStart
+        if (cursorPosition > 0)
+            editText.text?.delete(cursorPosition - 1, cursorPosition)
+
+    }
+
+    private fun deleteASingleCharacterInEditTextPressingBackspace(editText: MaskedEditText) {
+        val cursorPosition = editText.selectionStart
+        if (cursorPosition > 0)
+            editText.text?.delete(cursorPosition - 1, cursorPosition)
+
+
+    }
+}
+
+fun TextView.setOnNumericClickListener(editText: MaskedEditText) {
+    editText.text?.append(text)
 }
