@@ -30,7 +30,7 @@ class SignUpFragment :
 
     private fun clearPhoneNumberInputField() {
         binding.ibClearPhoneNumber.setOnClickListener {
-            binding.etPhone.text?.clear()
+            clearTextField(binding.etPhone)
             binding.etPhone.text?.append("+996")
         }
     }
@@ -55,34 +55,34 @@ class SignUpFragment :
     private fun setupNumericKeyboardListener() {
         binding.apply {
             tvOne.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvOne.text)
+                setOnNumericClickListener(binding.etPhone, tvOne.text)
             }
             tvTwo.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvTwo.text)
+                setOnNumericClickListener(binding.etPhone, tvTwo.text)
             }
             tvThree.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvThree.text)
+                setOnNumericClickListener(binding.etPhone, tvThree.text)
             }
             tvFour.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvFour.text)
+                setOnNumericClickListener(binding.etPhone, tvFour.text)
             }
             tvFive.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvFive.text)
+                setOnNumericClickListener(binding.etPhone, tvFive.text)
             }
             tvSix.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvSix.text)
+                setOnNumericClickListener(binding.etPhone, tvSix.text)
             }
             tvSeven.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvSeven.text)
+                setOnNumericClickListener(binding.etPhone, tvSeven.text)
             }
             tvEight.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvEight.text)
+                setOnNumericClickListener(binding.etPhone, tvEight.text)
             }
             tvNine.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvNine.text)
+                setOnNumericClickListener(binding.etPhone, tvNine.text)
             }
             tvZero.setOnClickListener {
-                setOnNumericClickListener(binding.etPhone,tvZero.text)
+                setOnNumericClickListener(binding.etPhone, tvZero.text)
             }
 //            tvOne.setOnNumericClickListener(etPhone)
 //            tvTwo.setOnNumericClickListener(etPhone)
@@ -106,6 +106,10 @@ class SignUpFragment :
 
     private fun setOnNumericClickListener(editText: TextInputEditText, text: CharSequence) {
         editText.text?.append(text)
+    }
+
+    private fun clearTextField(editText: TextInputEditText) {
+        editText.text?.clear()
     }
 
 

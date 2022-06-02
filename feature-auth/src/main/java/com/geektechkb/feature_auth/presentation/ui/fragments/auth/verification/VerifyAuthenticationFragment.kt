@@ -1,6 +1,8 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
 import android.os.CountDownTimer
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -10,6 +12,7 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.extensions.*
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentVerifyAuthenticationBinding
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
@@ -321,11 +324,11 @@ class VerifyAuthenticationFragment :
 
     private fun moveToTheNextDigit() {
         binding.apply {
-            etFirstDigit.requestFocusOnTheNextDigit(etSecondDigit)
-            etSecondDigit.requestFocusOnTheNextDigit(etThirdDigit)
-            etThirdDigit.requestFocusOnTheNextDigit(etFourthDigit)
-            etFourthDigit.requestFocusOnTheNextDigit(etFifthDigit)
-            etFifthDigit.requestFocusOnTheNextDigit(etSixthDigit)
+            requestFocusOnTheNextDigit(etFirstDigit, etSecondDigit)
+            requestFocusOnTheNextDigit(etSecondDigit, etThirdDigit)
+            requestFocusOnTheNextDigit(etThirdDigit, etFourthDigit)
+            requestFocusOnTheNextDigit(etFourthDigit, etFifthDigit)
+            requestFocusOnTheNextDigit(etFifthDigit, etSixthDigit)
 
         }
     }
@@ -403,6 +406,30 @@ class VerifyAuthenticationFragment :
             optionsBuilder.setForceResendingToken(token)
         }
         PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
+    }
+
+    private fun focusOnAnotherEditTextWhileClearingTheEditText() {
+
+    }
+
+    private fun requestFocusOnTheNextDigit(
+        editTextUserIsFocusedOn: TextInputEditText,
+        editTextToRequestAFocusOn: TextInputEditText
+    ) {
+        editTextUserIsFocusedOn.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                editTextUserIsFocusedOn.text?.length?.let {
+                    editTextToRequestAFocusOn.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
     }
 
 }
