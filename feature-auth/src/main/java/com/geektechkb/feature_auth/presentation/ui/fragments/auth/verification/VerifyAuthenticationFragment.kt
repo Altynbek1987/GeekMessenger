@@ -11,8 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.extensions.disableKeyListeners
-import com.geektechkb.core.extensions.extensions.retrieveInputVerificationCode
 import com.geektechkb.core.extensions.extensions.showSnackbar
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentVerifyAuthenticationBinding
@@ -31,15 +29,24 @@ class VerifyAuthenticationFragment :
     override val binding by viewBinding(FragmentVerifyAuthenticationBinding::bind)
     override val viewModel: VerifyAuthenticationViewModel by viewModels()
     private val args: VerifyAuthenticationFragmentArgs by navArgs()
-    private var inputVerificationCode: String = ""
     private var timeInSeconds = 0L
     private var attemptsToVerifyPhoneNumber = 1
     private lateinit var countDownTimer: CountDownTimer
+
     override fun assembleViews() {
         setPhoneNumberCodeWasSentTo()
         updateCountDownTimer()
         setupCountDownTimer()
 
+    }
+
+    private fun setPhoneNumberCodeWasSentTo() {
+        val phoneNumberVerificationCodeWasSentTo =
+            String.format(
+                getString(R.string.verification_code_was_sent_on_the_input_number),
+                args.phoneNumber
+            )
+        binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
     }
 
     private fun updateCountDownTimer() {
@@ -59,13 +66,23 @@ class VerifyAuthenticationFragment :
         }
     }
 
-    private fun setPhoneNumberCodeWasSentTo() {
-        val phoneNumberVerificationCodeWasSentTo =
-            String.format(
-                getString(R.string.verification_code_was_sent_on_the_input_number),
-                args.phoneNumber
-            )
-        binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
+
+    private fun setupCountDownTimer() {
+        countDownTimer = object : CountDownTimer(120000, 1000) {
+            override fun onTick(p0: Long) {
+                timeInSeconds = p0
+                updateCountDownTimer()
+            }
+
+            override fun onFinish() {
+                countDownTimer.cancel()
+                if (view != null)
+                    binding.tvCountDownTimer.isVisible = false
+                if (view != null)
+                    binding.tvGetVerificationCode.isVisible = true
+            }
+        }
+        countDownTimer.start()
     }
 
 
@@ -92,17 +109,18 @@ class VerifyAuthenticationFragment :
     private fun verifyPhoneNumberUsingCode() {
         binding.apply {
             btnContinue.setOnClickListener {
-                inputVerificationCode = etFirstDigit.retrieveInputVerificationCode(
-                    etSecondDigit,
-                    etThirdDigit,
-                    etFourthDigit,
-                    etFifthDigit,
-                    etSixthDigit
-                )
                 signInWithPhoneAuthCredential(
                     viewModel.verifyPhoneNumberWithCode(
                         viewModel.getVerificationId(),
-                        inputVerificationCode
+                        etFirstDigit.retrieveVerificationCode(
+                            etSecondDigit,
+                            etThirdDigit,
+                            etFourthDigit,
+                            etFifthDigit,
+                            etSixthDigit
+                        )
+
+
                     )
                 )
             }
@@ -293,10 +311,6 @@ class VerifyAuthenticationFragment :
 
     private fun setupClickingOnZero() {
         binding.apply {
-
-            tvZero.setOnClickListener {
-
-            }
             tvZero.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -314,8 +328,7 @@ class VerifyAuthenticationFragment :
     private fun addBackspaceListener() {
         binding.apply {
             ibBackspace.setOnClickListener {
-                focusOnAnotherEditTextWhileClearingTheEditText(
-                    requireView(), etFirstDigit,
+                etFirstDigit.deleteACharacterThenFocusOnThePreviousDigit(
                     etSecondDigit,
                     etThirdDigit,
                     etFourthDigit,
@@ -330,11 +343,13 @@ class VerifyAuthenticationFragment :
 
     private fun moveToTheNextDigit() {
         binding.apply {
-            requestFocusOnTheNextDigit(etFirstDigit, etSecondDigit)
-            requestFocusOnTheNextDigit(etSecondDigit, etThirdDigit)
-            requestFocusOnTheNextDigit(etThirdDigit, etFourthDigit)
-            requestFocusOnTheNextDigit(etFourthDigit, etFifthDigit)
-            requestFocusOnTheNextDigit(etFifthDigit, etSixthDigit)
+
+            etFirstDigit.requestFocusOnTheNextDigit(binding.etSecondDigit)
+            etSecondDigit.requestFocusOnTheNextDigit(binding.etThirdDigit)
+            etThirdDigit.requestFocusOnTheNextDigit(etFourthDigit)
+            etFourthDigit.requestFocusOnTheNextDigit(etFifthDigit)
+            etFifthDigit.requestFocusOnTheNextDigit(etSixthDigit)
+
         }
     }
 
@@ -379,25 +394,6 @@ class VerifyAuthenticationFragment :
             }
     }
 
-
-    private fun setupCountDownTimer() {
-        countDownTimer = object : CountDownTimer(120000, 1000) {
-            override fun onTick(p0: Long) {
-                timeInSeconds = p0
-                updateCountDownTimer()
-            }
-
-            override fun onFinish() {
-                countDownTimer.cancel()
-                if (view != null)
-                    binding.tvCountDownTimer.isVisible = false
-                if (view != null)
-                    binding.tvGetVerificationCode.isVisible = true
-            }
-        }
-        countDownTimer.start()
-    }
-
     private fun resendVerificationCode(
         phoneNumber: String,
         token: PhoneAuthProvider.ForceResendingToken?
@@ -413,86 +409,44 @@ class VerifyAuthenticationFragment :
         PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
     }
 
-    private fun focusOnAnotherEditTextWhileClearingTheEditText(
-        view: View,
-        firstEditText: TextInputEditText,
-        secondEditText: TextInputEditText,
-        thirdEditText: TextInputEditText,
-        fourthEditText: TextInputEditText,
-        fifthEditText: TextInputEditText,
-        sixthEditText: TextInputEditText,
-
-        ) {
-        when (view.findFocus()) {
-            firstEditText -> {
-                firstEditText.text?.clear()
-            }
-            secondEditText -> {
-
-                secondEditText.text?.clear()
-                firstEditText.requestFocus()
-            }
-            thirdEditText -> {
-                thirdEditText.text?.clear()
-                secondEditText.requestFocus()
-            }
-            fourthEditText -> {
-                fourthEditText.text?.clear()
-                thirdEditText.requestFocus()
-            }
-            fifthEditText -> {
-                fifthEditText.text?.clear()
-                fourthEditText.requestFocus()
-            }
-            sixthEditText -> {
-                sixthEditText.text?.clear()
-                fifthEditText.requestFocus()
-            }
-        }
-
-    }
-
-    private fun setOnNumericClickListener(
-        view: View,
-        firstEditText: TextInputEditText,
-        secondEditText: TextInputEditText,
-        thirdEditText: TextInputEditText,
-        fourthEditText: TextInputEditText,
-        fifthEditText: TextInputEditText,
-        sixthEditText: TextInputEditText,
-        text: CharSequence
+    private fun TextInputEditText.deleteACharacterThenFocusOnThePreviousDigit(
+        vararg digits: TextInputEditText
     ) {
-        when (view.findFocus()) {
-            firstEditText -> firstEditText.text?.append(text)
-            secondEditText -> secondEditText.text?.append(text)
-            thirdEditText -> thirdEditText.text?.append(text)
-            fourthEditText -> fourthEditText.text?.append(text)
-            fifthEditText -> fifthEditText.text?.append(text)
-            sixthEditText -> sixthEditText.text?.append(text)
+        when (requireView().findFocus()) {
+            this -> this.text?.clear()
+            digits[0] -> {
+                digits[0].text?.clear()
+                this.requestFocus()
+            }
+            digits[1] -> {
+                digits[1].text?.clear()
+                digits[0].requestFocus()
+            }
+            digits[2] -> {
+                digits[2].text?.clear()
+                digits[1].requestFocus()
+            }
+            digits[3] -> {
+                digits[3].text?.clear()
+                digits[2].requestFocus()
+            }
+            digits[4] -> {
+                digits[4].text?.clear()
+                digits[3].requestFocus()
+            }
         }
-
-
     }
 
-    private fun requestFocusOnTheNextDigit(
-        editTextUserIsFocusedOn: TextInputEditText,
+
+    private fun TextInputEditText.requestFocusOnTheNextDigit(
         editTextToRequestAFocusOn: TextInputEditText
     ) {
-        editTextUserIsFocusedOn.editTextUserIsFocusedOn.addTextChangedListener(object :
-            TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                editTextUserIsFocusedOn.text?.length?.let {
-                    editTextToRequestAFocusOn.requestFocus()
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-
+        addTextChangedListenerAnonymously(doSomething = {
+            if (text?.length == 1)
+                editTextToRequestAFocusOn.requestFocus()
         })
+
+
     }
 
     private fun TextView.setOnNumericClickListener(
@@ -539,5 +493,21 @@ class VerifyAuthenticationFragment :
             }
 
         })
+    }
+
+    private fun TextInputEditText.retrieveVerificationCode(
+        vararg digits: TextInputEditText,
+    ) =
+        text.toString() + digits[0].text + digits[1].text + digits[2].text + digits[3].text + digits[4].text
+
+    private fun TextInputEditText.disableKeyListeners(
+        vararg digits: TextInputEditText
+    ) {
+        keyListener = null
+        digits[0].keyListener = null
+        digits[1].keyListener = null
+        digits[2].keyListener = null
+        digits[3].keyListener = null
+        digits[4].keyListener = null
     }
 }

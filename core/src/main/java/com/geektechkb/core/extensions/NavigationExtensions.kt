@@ -1,4 +1,4 @@
-package com.geektechkb.core.extensions
+package com.geektechkb.core.extensions.extensions
 
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
@@ -11,7 +11,7 @@ fun NavController.navigateSafely(@IdRes actionId: Int) {
     currentDestination?.getAction(actionId)?.let { navigate(actionId) }
 }
 
-fun NavController.navigateSafely(directions: NavDirections) {
+fun NavController.directionsSafeNavigation(directions: NavDirections) {
     currentDestination?.getAction(directions.actionId)?.let { navigate(directions) }
 }
 

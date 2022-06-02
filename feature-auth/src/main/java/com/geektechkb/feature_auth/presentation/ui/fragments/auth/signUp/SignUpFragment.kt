@@ -7,7 +7,7 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentSignUpBinding
 import com.google.android.material.textfield.TextInputEditText
-import com.timplifier.firebaseauthenticationtest.presentation.extensions.directionsSafeNavigation
+import com.geektechkb.core.extensions.extensions.directionsSafeNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -47,8 +47,7 @@ class SignUpFragment :
 
     private fun addBackspaceListener() {
         binding.ibBackspace.setOnClickListener {
-            deleteASingleCharacterInEditTextPressingBackspace(binding.etPhone)
-//            binding.etPhone.deleteASingleCharacterInEditText()
+            binding.etPhone.deleteASingleCharacterInEditTextPressingBackspace()
         }
     }
 
@@ -97,10 +96,10 @@ class SignUpFragment :
         }
     }
 
-    private fun deleteASingleCharacterInEditTextPressingBackspace(editText: TextInputEditText) {
-        val cursorPosition = editText.selectionStart
+    private fun TextInputEditText.deleteASingleCharacterInEditTextPressingBackspace() {
+        val cursorPosition = selectionStart
         if (cursorPosition > 0)
-            editText.text?.delete(cursorPosition - 1, cursorPosition)
+            text?.delete(cursorPosition - 1, cursorPosition)
 
     }
 
