@@ -30,7 +30,7 @@ class VerifyAuthenticationFragment :
     override val viewModel: VerifyAuthenticationViewModel by viewModels()
     private val args: VerifyAuthenticationFragmentArgs by navArgs()
     private var timeInSeconds = 0L
-    private var attemptsToVerifyPhoneNumber = 1
+    private var attemptsToVerifyPhoneNumber = 3
     private lateinit var countDownTimer: CountDownTimer
 
     override fun assembleViews() {
@@ -343,49 +343,48 @@ class VerifyAuthenticationFragment :
 
     private fun moveToTheNextDigit() {
         binding.apply {
+            establishProperFocusingOnTheNextDigit()
 
-            etFirstDigit.requestFocusOnTheNextDigit(binding.etSecondDigit)
-            etSecondDigit.requestFocusOnTheNextDigit(binding.etThirdDigit)
+
+        }
+    }
+
+    private fun establishProperFocusingOnTheNextDigit() {
+        binding.apply {
+            etFirstDigit.requestFocusOnTheNextDigit(etSecondDigit)
+            etSecondDigit.requestFocusOnTheNextDigit(etThirdDigit)
             etThirdDigit.requestFocusOnTheNextDigit(etFourthDigit)
             etFourthDigit.requestFocusOnTheNextDigit(etFifthDigit)
             etFifthDigit.requestFocusOnTheNextDigit(etSixthDigit)
-
         }
+
+
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         viewModel.firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
-                when (task.isSuccessful) {
-                    true -> {
-                        viewModel.isUserAuthenticated()
-                        findNavController().navigate(R.id.profileFragment)
-                        showSnackbar(view, "You have successfully authenticated!")
-                        task.result.user
-                    }
-                    else ->
-                        showSnackbar(view, "Authentication process failed. Try again!")
+                if (task.isSuccessful) {
+
+                    viewModel.isUserAuthenticated()
+                    findNavController().navigate(R.id.profileFragment)
+                    showSnackbar(view, "You have successfully authenticated!")
+                    task.result.user
+
                 }
                 when (task.exception) {
                     is FirebaseAuthInvalidCredentialsException -> {
                         when (attemptsToVerifyPhoneNumber) {
-                            1 -> {
-                                showSnackbar(
-                                    view,
-                                    "try again!"
-                                )
-                                attemptsToVerifyPhoneNumber++
-                            }
-                            2 -> {
+                            0 ->
+                                findNavController().navigate(
+                                    VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToVerificationDialogFragment3())
 
+                            else -> {
+                                attemptsToVerifyPhoneNumber--
                                 showSnackbar(
                                     view,
                                     "The verification code entered is invalid! You have $attemptsToVerifyPhoneNumber left!"
                                 )
-                                attemptsToVerifyPhoneNumber++
-                            }
-                            3 -> {
-                                findNavController().navigate(VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToVerificationDialogFragment3())
                             }
                         }
                     }

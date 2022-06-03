@@ -29,6 +29,7 @@ class OnBoardFragment :
         }
     }
 
+
     override fun assembleViews() {
         setupAdapter()
     }

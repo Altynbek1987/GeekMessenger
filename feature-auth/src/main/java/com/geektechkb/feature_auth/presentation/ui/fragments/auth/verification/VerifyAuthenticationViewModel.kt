@@ -4,9 +4,8 @@ import android.content.Context
 import android.widget.Toast
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_auth.data.repositories.authentication.AuthRepositoryImpl
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
 import com.geektechkb.feature_auth.data.repositories.authentication.CodeVerificationRepositoryImpl
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -16,20 +15,11 @@ class VerifyAuthenticationViewModel @Inject constructor(
     private val codeVerificationRepositoryImpl: CodeVerificationRepositoryImpl,
     private val authRepositoryImpl: AuthRepositoryImpl
 ) : BaseViewModel() {
-    private var smsCode: String? = null
     fun verifyPhoneNumberWithCode(
         verificationId: String?,
-        code: String ,
-    ): PhoneAuthCredential {
-        val credential =
-            codeVerificationRepositoryImpl.verifyPhoneNumberWithCode(
-                verificationId,
-                code
-            )
-        smsCode = credential.smsCode
-        return credential
-
-    }
+        code: String,
+    ) =
+        codeVerificationRepositoryImpl.verifyPhoneNumberWithCode(verificationId, code)
 
     fun provideCallback(context: Context) = authRepositoryImpl.provideAuthCallback(
         {
@@ -43,6 +33,5 @@ class VerifyAuthenticationViewModel @Inject constructor(
 
     fun getVerificationId() = codeVerificationRepositoryImpl.getVerificationId()
     fun getForceResendingToken() = authRepositoryImpl.provideResendingToken()
-    fun getSmsCode() = smsCode
     fun isUserAuthenticated() = authRepositoryImpl.isUserAuthenticated()
 }

@@ -9,7 +9,7 @@ import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentPhoneVerificationDialogBinding
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.geektechkb.core.extensions.extensions.directionsSafeNavigation
+import com.geektechkb.core.extensions.directionsSafeNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
