@@ -53,17 +53,20 @@ class SignUpFragment :
 
     private fun setupNumericKeyboardListener() {
         binding.apply {
+            etPhone.setOnDigitsClickListener(
+                tvOne,
+                tvTwo,
+                tvThree,
+                tvFour,
+                tvFive,
+                tvSix,
+                tvSeven,
+                tvEight,
+                tvNine,
+                tvZero
+            )
 
-            tvOne.setOnNumericClickListener(etPhone)
-            tvTwo.setOnNumericClickListener(etPhone)
-            tvThree.setOnNumericClickListener(etPhone)
-            tvFour.setOnNumericClickListener(etPhone)
-            tvFive.setOnNumericClickListener(etPhone)
-            tvSix.setOnNumericClickListener(etPhone)
-            tvSeven.setOnNumericClickListener(etPhone)
-            tvEight.setOnNumericClickListener(etPhone)
-            tvNine.setOnNumericClickListener(etPhone)
-            tvZero.setOnNumericClickListener(etPhone)
+
         }
     }
 
@@ -72,6 +75,19 @@ class SignUpFragment :
         if (cursorPosition > 0)
             text?.delete(cursorPosition - 1, cursorPosition)
 
+    }
+
+    private fun TextInputEditText.setOnDigitsClickListener(vararg digits: TextView) {
+        digits[0].setOnNumericClickListener(this)
+        digits[1].setOnNumericClickListener(this)
+        digits[2].setOnNumericClickListener(this)
+        digits[3].setOnNumericClickListener(this)
+        digits[4].setOnNumericClickListener(this)
+        digits[5].setOnNumericClickListener(this)
+        digits[6].setOnNumericClickListener(this)
+        digits[7].setOnNumericClickListener(this)
+        digits[8].setOnNumericClickListener(this)
+        digits[9].setOnNumericClickListener(this)
     }
 
     private fun TextView.setOnNumericClickListener(editText: TextInputEditText) {
