@@ -3,16 +3,17 @@ package com.geektechkb.feature_auth.presentation.ui.fragments.auth.profile
 import android.Manifest
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.feature_auth.R
-import com.geektechkb.feature_auth.databinding.FragmentProfileBinding
-import com.geektechkb.feature_auth.presentation.ui.extensions.mainNavController
-import com.geektechkb.feature_auth.presentation.ui.extensions.setImage
 import com.geektechkb.core.extensions.hasPermissionCheckAndRequest
 import com.geektechkb.core.extensions.navigateSafely
+import com.geektechkb.core.extensions.setImage
+import com.geektechkb.feature_auth.R
+import com.geektechkb.feature_auth.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,7 +58,8 @@ class ProfileFragment :
         binding.imProfile.setOnClickListener {
             if (hasPermissionCheckAndRequest(
                     requestPermissionLauncher,
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE))
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+                )
             ) {
                 fileChooserContract.launch("image/*")
             }
@@ -83,6 +85,9 @@ class ProfileFragment :
                 uri = imageUri
             }
         }
+
+    private fun Fragment.mainNavController() =
+        requireActivity().findNavController(R.id.nav_host_fragment_container_auth)
 }
 
 
