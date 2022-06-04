@@ -31,7 +31,7 @@ class SignUpFragment :
 
     private fun clearPhoneNumberInputField() {
         binding.ibClearPhoneNumber.setOnClickListener {
-            binding.etPhone.clearTextFieldAndAppendTheText()
+            binding.etPhone.text?.clear()
         }
     }
 
@@ -39,7 +39,7 @@ class SignUpFragment :
         binding.btnContinue.setOnClickListener {
             findNavController().directionsSafeNavigation(
                 SignUpFragmentDirections.actionSignUpFragmentToPhoneVerificationDialogFragment(
-                    binding.etPhone.text.toString()
+                    "${binding.tlPhone.prefixText}${binding.etPhone.text.toString()}"
                 )
             )
         }
@@ -65,8 +65,6 @@ class SignUpFragment :
                 tvNine,
                 tvZero
             )
-
-
         }
     }
 
@@ -97,10 +95,4 @@ class SignUpFragment :
     }
 
 
-    private fun TextInputEditText.clearTextFieldAndAppendTheText() {
-
-        text?.clear()
-        text?.append("+996")
-
-    }
 }
