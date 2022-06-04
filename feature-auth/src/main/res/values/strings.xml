@@ -15,4 +15,5 @@
     <string name="two">2</string>
     <string name="one">1</string>
     <string name="proceed">Continue</string>
+    <string name="your_phone_number_must_contain_15_digits">Your phone number must contain 15 digits</string>
 </resources>

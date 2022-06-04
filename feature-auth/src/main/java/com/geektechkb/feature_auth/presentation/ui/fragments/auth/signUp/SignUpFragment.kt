@@ -9,6 +9,7 @@ import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentSignUpBinding
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -37,11 +38,16 @@ class SignUpFragment :
 
     private fun openPhoneNumberVerificationDialog() {
         binding.btnContinue.setOnClickListener {
-            findNavController().directionsSafeNavigation(
-                SignUpFragmentDirections.actionSignUpFragmentToPhoneVerificationDialogFragment(
-                    "${binding.tlPhone.prefixText}${binding.etPhone.text.toString()}"
+            if (binding.etPhone.text?.length != 15) {
+                binding.tlPhone.setFixedError(getString(R.string.your_phone_number_must_contain_15_digits))
+            } else {
+                findNavController().directionsSafeNavigation(
+                    SignUpFragmentDirections.actionSignUpFragmentToPhoneVerificationDialogFragment(
+                        "${binding.tlPhone.prefixText}${binding.etPhone.text.toString()}"
+                    )
                 )
-            )
+            }
+
         }
     }
 
@@ -94,5 +100,9 @@ class SignUpFragment :
         }
     }
 
-
+    fun TextInputLayout.setFixedError(errorTxt: CharSequence?) {
+        if (error != errorTxt) {
+            error = errorTxt
+        }
+    }
 }

@@ -98,6 +98,8 @@
         app:boxCornerRadiusTopStart="10dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@id/tl_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/gl_text_input_layout"
@@ -110,7 +112,7 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="false"
-            android:maxLength="15"
+            android:maxLength="12"
             android:padding="12dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
