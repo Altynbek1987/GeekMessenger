@@ -11,7 +11,7 @@ import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentProfileBinding
 import com.geektechkb.feature_auth.presentation.ui.extensions.mainNavController
 import com.geektechkb.feature_auth.presentation.ui.extensions.setImage
-import com.geektechkb.core.extensions.extensions.hasPermissionCheckAndRequest
+import com.geektechkb.core.extensions.hasPermissionCheckAndRequest
 import com.geektechkb.core.extensions.navigateSafely
 import dagger.hilt.android.AndroidEntryPoint
 

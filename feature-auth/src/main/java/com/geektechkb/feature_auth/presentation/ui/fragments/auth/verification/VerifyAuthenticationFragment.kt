@@ -11,7 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.extensions.showSnackbar
+import com.geektechkb.core.extensions.showLongDurationSnackbar
+import com.geektechkb.core.extensions.showShortDurationSnackbar
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentVerifyAuthenticationBinding
 import com.google.android.material.textfield.TextInputEditText
@@ -368,7 +369,9 @@ class VerifyAuthenticationFragment :
 
                     viewModel.isUserAuthenticated()
                     findNavController().navigate(R.id.profileFragment)
-                    showSnackbar(view, "You have successfully authenticated!")
+                    showShortDurationSnackbar(
+                        "You have successfully authenticated!"
+                    )
                     task.result.user
 
                 }
@@ -377,12 +380,13 @@ class VerifyAuthenticationFragment :
                         when (attemptsToVerifyPhoneNumber) {
                             0 ->
                                 findNavController().navigate(
-                                    VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToVerificationDialogFragment3())
+                                    VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToVerificationDialogFragment3()
+                                )
 
                             else -> {
                                 attemptsToVerifyPhoneNumber--
-                                showSnackbar(
-                                    view,
+                                showLongDurationSnackbar(
+
                                     "The verification code entered is invalid! You have $attemptsToVerifyPhoneNumber left!"
                                 )
                             }
