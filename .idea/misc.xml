@@ -18,6 +18,7 @@
         <entry key="feature-auth/src/main/res/drawable/oval_background.xml" value="0.139" />
         <entry key="feature-auth/src/main/res/layout/fragment_auth_with_phone_number.xml" value="0.15520833333333334" />
         <entry key="feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.17798913043478262" />
+        <entry key="feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.2947916666666667" />
         <entry key="feature-auth/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.2947916666666667" />
         <entry key="feature-auth/src/main/res/layout/fragment_dialog.xml" value="0.15520833333333334" />
         <entry key="feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.15520833333333334" />

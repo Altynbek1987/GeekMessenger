@@ -16,4 +16,5 @@
     <string name="one">1</string>
     <string name="proceed">Continue</string>
     <string name="your_phone_number_must_contain_15_digits">Your phone number must contain 12 digits</string>
+    <string name="choose_your_name_and_load_an_photo">Введите свое имя и загрузите фотографию</string>
 </resources>

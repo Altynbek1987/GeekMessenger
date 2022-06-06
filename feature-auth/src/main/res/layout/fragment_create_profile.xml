@@ -37,8 +37,8 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Профиль"
-        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:src="@drawable/icon_profile"
+        android:src="@drawable/icon_profile_image"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_guid_bottom"
         app:layout_constraintDimensionRatio="0:0"
         app:layout_constraintEnd_toEndOf="@+id/guidLine2"
@@ -64,8 +64,8 @@
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Введите свое имя и загрузите фотографию "
-        android:textAlignment="center"
+        android:gravity="center"
+        android:text="@string/choose_your_name_and_load_an_photo"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/textInputTextLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,9 +79,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:hint="Input your name"
         android:textColorHint="#727375"
         app:boxBackgroundMode="filled"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:counterTextColor="@color/black"
@@ -98,10 +101,9 @@
             android:layout_marginTop="36dp"
             android:imeOptions="actionDone"
             android:inputType="textCapSentences"
-            android:maxLength="21"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,10 +130,9 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textCapSentences"
-            android:maxLength="21"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
