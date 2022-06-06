@@ -80,7 +80,7 @@
 
     <fragment
         android:id="@+id/onBoardFragment"
-        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.onboard.OnBoardFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.onboard.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board">
 
