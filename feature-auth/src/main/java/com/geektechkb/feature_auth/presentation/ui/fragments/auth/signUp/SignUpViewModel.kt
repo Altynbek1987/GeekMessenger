@@ -5,7 +5,6 @@ import android.widget.Toast
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_auth.data.repositories.authentication.AuthRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
-import com.timplifier.firebaseauthenticationtest.domain.useCases.IsUserAuthenticatedUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
