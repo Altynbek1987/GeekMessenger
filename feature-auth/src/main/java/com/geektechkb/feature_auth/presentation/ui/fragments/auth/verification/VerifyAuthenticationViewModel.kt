@@ -1,37 +1,91 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
-import android.content.Context
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.geektechkb.core.base.BaseViewModel
-import com.geektechkb.feature_auth.data.repositories.authentication.AuthRepositoryImpl
-import com.geektechkb.feature_auth.data.repositories.authentication.CodeVerificationRepositoryImpl
+import com.geektechkb.feature_auth.domain.typealiases.*
+import com.geektechkb.feature_auth.domain.useCases.authentication.IsUserAuthenticatedUseCase
+import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideAuthenticationCallbacksUseCase
+import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideForceResendingTokenUseCase
+import com.geektechkb.feature_auth.domain.useCases.authentication.verification.GetVerificationIdUseCase
+import com.geektechkb.feature_auth.domain.useCases.verification.ResendVerificationCodeUseCase
+import com.geektechkb.feature_auth.domain.useCases.verification.SignInWithPhoneAuthCredentialUseCase
+import com.geektechkb.feature_auth.domain.useCases.verification.VerifyPhoneNumberWithCodeUseCase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class VerifyAuthenticationViewModel @Inject constructor(
     val firebaseAuth: FirebaseAuth,
-    private val codeVerificationRepositoryImpl: CodeVerificationRepositoryImpl,
-    private val authRepositoryImpl: AuthRepositoryImpl
+    private val verifyPhoneNumberWithCodeUseCase: VerifyPhoneNumberWithCodeUseCase,
+    private val resendVerificationCodeUseCase: ResendVerificationCodeUseCase,
+    private val provideAuthenticationCallbacksUseCase: ProvideAuthenticationCallbacksUseCase,
+    private val signInWithPhoneAuthCredentialUseCase: SignInWithPhoneAuthCredentialUseCase,
+    private val getVerificationIdUseCase: GetVerificationIdUseCase,
+    private val provideForceResendingTokenUseCase: ProvideForceResendingTokenUseCase,
+    private val isUserAuthenticatedUseCase: IsUserAuthenticatedUseCase,
 ) : BaseViewModel() {
     fun verifyPhoneNumberWithCode(
-        verificationId: String?,
+        verificationId: String,
         code: String,
-    ) =
-        codeVerificationRepositoryImpl.verifyPhoneNumberWithCode(verificationId, code)
+    ) = verifyPhoneNumberWithCodeUseCase(
+        verificationId,
+        code
+    ) as PhoneAuthCredential
 
-    fun provideCallback(context: Context) = authRepositoryImpl.provideAuthCallback(
-        {
-            Toast.makeText(
-                context,
-                "You entered the wrong number", Toast.LENGTH_SHORT
-            ).show()
-        },
-        { Toast.makeText(context, "You exceeded the request limit", Toast.LENGTH_SHORT).show() }, {}
+
+    fun provideCallbacks(
+        authenticationSucceeded: ((() -> Unit))?,
+        authInvalidCredentialsError: ((() -> Unit))?,
+        tooManyRequestsError: ((() -> Unit))?
+    ) = provideAuthenticationCallbacksUseCase(authenticationSucceeded = {
+        authenticationSucceeded?.invoke()
+    }, authInvalidCredentialsError = {
+        authInvalidCredentialsError?.invoke()
+    }, tooManyRequestsError = {
+        tooManyRequestsError?.invoke()
+    }
+
     )
 
-    fun getVerificationId() = codeVerificationRepositoryImpl.getVerificationId()
-    fun getForceResendingToken() = authRepositoryImpl.provideResendingToken()
-    fun isUserAuthenticated() = authRepositoryImpl.isUserAuthenticated()
+    fun resendVerificationCode(
+        notAnActualFirebaseAuth: NotAnActualFirebaseAuth,
+        phoneNumber: String,
+        notAnActualActivity: NotAnActualActivity,
+        notAnActualCallbacks: NotAnActualCallbacks,
+        notAnActualForceResendingToken: NotAnActualForceResendingToken?
+    ) = resendVerificationCodeUseCase(
+        notAnActualFirebaseAuth as FirebaseAuth,
+        phoneNumber,
+        notAnActualActivity as AppCompatActivity,
+        notAnActualCallbacks as PhoneAuthProvider.OnVerificationStateChangedCallbacks,
+        notAnActualForceResendingToken as PhoneAuthProvider.ForceResendingToken
+    )
+
+    fun signInWithPhoneAuthCredential(
+        notAnActualFirebaseAuth: NotAnActualFirebaseAuth,
+        credential: NotAnActualPhoneAuthCredential,
+        notAnActualActivity: NotAnActualActivity,
+        userSuccessfullyVerifiedTheirPhoneNumber: ((() -> Unit))?,
+        authenticationProcessFailed: ((() -> Unit))?,
+        ifUserHasEnteredInvalidCredentials: ((() -> Unit))?
+    ) = signInWithPhoneAuthCredentialUseCase(
+        notAnActualFirebaseAuth as FirebaseAuth,
+        credential as PhoneAuthCredential, notAnActualActivity as AppCompatActivity,
+        userSuccessfullyVerifiedTheirPhoneNumber = {
+            userSuccessfullyVerifiedTheirPhoneNumber?.invoke()
+        }, authenticationProcessFailed = {
+            authenticationProcessFailed?.invoke()
+        }, ifUserHasEnteredInvalidCredentials = {
+            ifUserHasEnteredInvalidCredentials?.invoke()
+        }
+    )
+
+    fun getVerificationId() = getVerificationIdUseCase()
+    fun getForceResendingToken() =
+        provideForceResendingTokenUseCase() as PhoneAuthProvider.ForceResendingToken
+
+    fun isUserAuthenticated() = isUserAuthenticatedUseCase()
 }
