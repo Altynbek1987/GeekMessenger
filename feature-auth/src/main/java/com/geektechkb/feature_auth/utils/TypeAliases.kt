@@ -7,4 +7,3 @@ import com.google.firebase.auth.PhoneAuthProvider
 typealias NotAnActualActivity = AppCompatActivity
 typealias NotAnActualFirebaseAuth = FirebaseAuth
 typealias NotAnActualPhoneAuthProviderCallbacks = PhoneAuthProvider.OnVerificationStateChangedCallbacks
-

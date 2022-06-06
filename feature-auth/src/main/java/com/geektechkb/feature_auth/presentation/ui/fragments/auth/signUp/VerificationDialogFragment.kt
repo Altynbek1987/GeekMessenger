@@ -43,5 +43,4 @@ class VerificationDialogFragment :
             Toast.makeText(requireContext(), "Повторите попытку еше раз", Toast.LENGTH_SHORT).show()
         }
     }
-
 }
