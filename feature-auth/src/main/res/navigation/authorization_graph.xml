@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/authorization_graph"
-    app:startDestination="@id/signUpFragment">
+    app:startDestination="@id/createProfileFragment">
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp.SignUpFragment"
@@ -37,13 +37,13 @@
             app:argType="string" />
 
         <action
-            android:id="@+id/action_verifyAuthenticationFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_verifyAuthenticationFragment_to_createProfileFragment"
+            app:destination="@id/createProfileFragment" />
 
 
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/createProfileFragment"
         android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile.CreateProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_create_profile">
