@@ -1,4 +1,4 @@
-package com.geektechkb.feature_auth.presentation.ui.fragments.auth.profile
+package com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile
 
 import android.content.Intent
 import android.net.Uri

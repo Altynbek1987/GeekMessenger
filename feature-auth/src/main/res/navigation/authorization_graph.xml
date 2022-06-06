@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.profile.ProfileFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <action
@@ -63,7 +63,7 @@
         android:label="MainFlowFragment" />
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
-        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.profile.DeniedPermissionsDialogFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile.DeniedPermissionsDialogFragment"
         android:label="fragment_denied_permissions_dialog"
         tools:layout="@layout/fragment_denied_permissions_dialog">
         <argument

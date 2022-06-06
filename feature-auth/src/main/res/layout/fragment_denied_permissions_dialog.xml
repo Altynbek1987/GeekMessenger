@@ -6,7 +6,7 @@
 
     android:layout_height="match_parent"
 
-    tools:context=".presentation.ui.fragments.auth.profile.DeniedPermissionsDialogFragment">
+    tools:context=".presentation.ui.fragments.auth.createProfile.DeniedPermissionsDialogFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
