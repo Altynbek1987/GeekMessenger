@@ -5,13 +5,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseDialogFragment
+import com.geektechkb.core.extensions.directionsSafeNavigation
+import com.geektechkb.core.extensions.showShortDurationSnackbar
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentPhoneVerificationDialogBinding
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
-import com.geektechkb.core.extensions.directionsSafeNavigation
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.concurrent.TimeUnit
 
 
 @AndroidEntryPoint
@@ -39,24 +37,32 @@ class PhoneVerificationDialogFragment :
 
     private fun proceedToPhoneVerification() {
         binding.tvContinue.setOnClickListener {
-            startPhoneNumberVerification()
+            viewModel.startPhoneNumberVerification(
+                viewModel.firebaseAuth,
+                args.inputPhoneNumber,
+                requireActivity(),
+                viewModel.provideCallbacks(
+                    authenticationSucceeded =
+                    {
+                        showShortDurationSnackbar("You have successfully authenticated")
+                    },
+                    authInvalidCredentialsError = {
+                        showShortDurationSnackbar("The phone number you entered was wrong")
+                    },
+                    tooManyRequestsError = {
+                        showShortDurationSnackbar(
+                            "Looks like you have used all of the requests available"
+                        )
+                    })
+            )
+
             findNavController().directionsSafeNavigation(
                 PhoneVerificationDialogFragmentDirections.actionPhoneVerificationDialogFragmentToVerifyAuthenticationFragment(
-                    args.inputPhoneNumber)
+                    args.inputPhoneNumber
+                )
             )
         }
     }
 
-    private fun startPhoneNumberVerification() {
-        viewModel.setRussianLanguageCode()
-        val options = PhoneAuthOptions.newBuilder(viewModel.firebaseAuth)
-            .setPhoneNumber(args.inputPhoneNumber)
-            .setTimeout(60L, TimeUnit.SECONDS)
-            .setActivity(requireActivity())
-            .setCallbacks(viewModel.provideCallback(requireContext()))
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
-
-    }
 
 }
