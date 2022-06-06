@@ -16,12 +16,8 @@ import com.geektechkb.core.extensions.showShortDurationSnackbar
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentVerifyAuthenticationBinding
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.concurrent.TimeUnit
 
 
 @AndroidEntryPoint
@@ -31,7 +27,7 @@ class VerifyAuthenticationFragment :
     override val viewModel: VerifyAuthenticationViewModel by viewModels()
     private val args: VerifyAuthenticationFragmentArgs by navArgs()
     private var timeInSeconds = 0L
-    private var attemptsToVerifyPhoneNumber = 3
+    private var attemptsToVerifyPhoneNumberAvailable = 3
     private lateinit var countDownTimer: CountDownTimer
 
     override fun assembleViews() {
@@ -103,7 +99,7 @@ class VerifyAuthenticationFragment :
             binding.tvCountDownTimer.isVisible = true
             binding.tvGetVerificationCode.isVisible = false
             setupCountDownTimer()
-            resendVerificationCode(args.phoneNumber, viewModel.getForceResendingToken())
+            resendVerificationCode(args.phoneNumber)
         }
     }
 
@@ -363,54 +359,60 @@ class VerifyAuthenticationFragment :
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-        viewModel.firebaseAuth.signInWithCredential(credential)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
 
-                    viewModel.isUserAuthenticated()
-                    findNavController().navigate(R.id.profileFragment)
-                    showShortDurationSnackbar(
-                        "You have successfully authenticated!"
+        viewModel.signInWithPhoneAuthCredential(
+            viewModel.firebaseAuth,
+            credential,
+            requireActivity(),
+            userSuccessfullyVerifiedTheirPhoneNumber = {
+                viewModel.isUserAuthenticated()
+                findNavController().navigate(R.id.profileFragment)
+                showShortDurationSnackbar("You have successfully authenticated!")
+            }, authenticationProcessFailed = {
+
+                showShortDurationSnackbar("Authentication process failed. Try again!")
+            }, ifUserHasEnteredInvalidCredentials = {
+                when (attemptsToVerifyPhoneNumberAvailable) {
+                    0 -> showShortDurationSnackbar(
+
+                        "You have exceeded attempts limit. Try again in 2 minutes"
                     )
-                    task.result.user
-
-                }
-                when (task.exception) {
-                    is FirebaseAuthInvalidCredentialsException -> {
-                        when (attemptsToVerifyPhoneNumber) {
-                            0 ->
-                                findNavController().navigate(
-                                    VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToVerificationDialogFragment3()
-                                )
-
-                            else -> {
-                                attemptsToVerifyPhoneNumber--
-                                showLongDurationSnackbar(
-
-                                    "The verification code entered is invalid! You have $attemptsToVerifyPhoneNumber left!"
-                                )
-                            }
-                        }
+                    else -> {
+                        attemptsToVerifyPhoneNumberAvailable--
+                        showLongDurationSnackbar(
+                            "Verification code entered was invalid. You have $attemptsToVerifyPhoneNumberAvailable attempts left!"
+                        )
                     }
-
                 }
             }
+
+        )
     }
 
     private fun resendVerificationCode(
         phoneNumber: String,
-        token: PhoneAuthProvider.ForceResendingToken?
     ) {
-        val optionsBuilder = PhoneAuthOptions.newBuilder(viewModel.firebaseAuth)
-            .setPhoneNumber(phoneNumber)
-            .setTimeout(60L, TimeUnit.SECONDS)
-            .setActivity(requireActivity())
-            .setCallbacks(viewModel.provideCallback(requireContext()))
-        if (token != null) {
-            optionsBuilder.setForceResendingToken(token)
-        }
-        PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
+        viewModel.resendVerificationCode(
+            viewModel.firebaseAuth,
+            phoneNumber,
+            requireActivity(),
+            viewModel.provideCallbacks(
+                authenticationSucceeded =
+                {
+                    showShortDurationSnackbar("You have successfully authenticated")
+                },
+                authInvalidCredentialsError = {
+                    showShortDurationSnackbar("The phone number you entered was wrong")
+                },
+                tooManyRequestsError = {
+                    showShortDurationSnackbar(
+
+                        "Looks like you have used all of the requests available"
+                    )
+                }), viewModel.getForceResendingToken()
+        )
     }
+
 
     private fun TextInputEditText.deleteACharacterThenFocusOnThePreviousDigit(
         vararg digits: TextInputEditText
