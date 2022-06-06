@@ -373,9 +373,8 @@ class VerifyAuthenticationFragment :
                 showShortDurationSnackbar("Authentication process failed. Try again!")
             }, ifUserHasEnteredInvalidCredentials = {
                 when (attemptsToVerifyPhoneNumberAvailable) {
-                    0 -> showShortDurationSnackbar(
-
-                        "You have exceeded attempts limit. Try again in 2 minutes"
+                    0 -> findNavController().navigate(
+                        R.id.attemptsToVerifyPhoneNumberExceededDialogFragment
                     )
                     else -> {
                         attemptsToVerifyPhoneNumberAvailable--

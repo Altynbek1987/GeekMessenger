@@ -38,7 +38,7 @@ class SignUpFragment :
 
     private fun openPhoneNumberVerificationDialog() {
         binding.btnContinue.setOnClickListener {
-            if (binding.etPhone.text?.length != 12) {
+            if (binding.etPhone.text?.length != 9) {
                 binding.tlPhone.setFixedError(getString(R.string.your_phone_number_must_contain_15_digits))
             } else {
                 findNavController().directionsSafeNavigation(

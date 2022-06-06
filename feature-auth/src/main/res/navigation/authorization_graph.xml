@@ -39,9 +39,8 @@
         <action
             android:id="@+id/action_verifyAuthenticationFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_verifyAuthenticationFragment_to_verificationDialogFragment3"
-            app:destination="@id/verificationDialogFragment3" />
+
+
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -72,13 +71,11 @@
             app:argType="string" />
     </dialog>
     <dialog
-        android:id="@+id/verificationDialogFragment3"
-        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp.VerificationDialogFragment"
+        android:id="@+id/attemptsToVerifyPhoneNumberExceededDialogFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification.AttemptsToVerifyPhoneNumberExceededDialogFragment"
         android:label="fragment_verification_dialog"
         tools:layout="@layout/fragment_verification_dialog">
-        <action
-            android:id="@+id/action_verificationDialogFragment3_to_verifyAuthenticationFragment"
-            app:destination="@id/verifyAuthenticationFragment" />
+
     </dialog>
 
     <fragment

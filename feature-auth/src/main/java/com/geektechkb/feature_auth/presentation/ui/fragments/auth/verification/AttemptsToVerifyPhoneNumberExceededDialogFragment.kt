@@ -1,4 +1,4 @@
-package com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp
+package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -9,19 +9,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import by.kirich1409.viewbindingdelegate.viewBinding
-import com.geektechkb.core.base.BaseDialogFragment
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentVerificationDialogBinding
+import com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class VerificationDialogFragment :
+class AttemptsToVerifyPhoneNumberExceededDialogFragment :
     DialogFragment() {
     private lateinit var binding: FragmentVerificationDialogBinding
      val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
