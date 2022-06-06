@@ -1,9 +1,9 @@
 package com.geektechkb.feature_auth.domain.repositories
 
-import com.geektechkb.feature_auth.utils.NotAnActualActivity
-import com.geektechkb.feature_auth.utils.NotAnActualCallbacks
-import com.geektechkb.feature_auth.utils.NotAnActualFirebaseAuth
-import com.geektechkb.feature_auth.utils.NotAnActualForceResendingToken
+import com.geektechkb.feature_auth.domain.typealiases.NotAnActualActivity
+import com.geektechkb.feature_auth.domain.typealiases.NotAnActualCallbacks
+import com.geektechkb.feature_auth.domain.typealiases.NotAnActualFirebaseAuth
+import com.geektechkb.feature_auth.domain.typealiases.NotAnActualForceResendingToken
 
 interface AuthRepository {
 
