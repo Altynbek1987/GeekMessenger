@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.domain.repositories.AuthRepository
+import com.geektechkb.feature_auth.domain.typealiases.NotAnActualActivity
+import com.geektechkb.feature_auth.domain.typealiases.NotAnActualCallbacks
+import com.geektechkb.feature_auth.domain.typealiases.NotAnActualFirebaseAuth
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
@@ -20,22 +23,23 @@ class AuthRepositoryImpl @Inject constructor(
         return authorizationPreferences.isAuthorized
     }
 
-    fun provideAuthCallback(
-        authenticationSucceed: () -> Unit,
-        authInvalidCredentialsError: () -> Unit,
-        tooManyRequestsError: () -> Unit
+    override fun provideAuthenticationCallbacks(
+        authenticationSucceeded: ((() -> Unit))?,
+        authInvalidCredentialsError: ((() -> Unit))?,
+        tooManyRequestsError: ((() -> Unit))?
     ): PhoneAuthProvider.OnVerificationStateChangedCallbacks {
         val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                authenticationSucceed()
+                authenticationSucceeded?.invoke()
+
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
-                    authInvalidCredentialsError()
+                    authInvalidCredentialsError?.invoke()
                 } else if (e is FirebaseTooManyRequestsException) {
-                    tooManyRequestsError()
+                    tooManyRequestsError?.invoke()
                 }
             }
 
@@ -52,22 +56,23 @@ class AuthRepositoryImpl @Inject constructor(
         return callbacks
     }
 
-    fun provideResendingToken() = forceResendingToken
     override fun startPhoneNumberVerification(
-        firebaseAuth: FirebaseAuth,
+        notAnActualFirebaseAuth: NotAnActualFirebaseAuth,
         phoneNumber: String,
-        activity: AppCompatActivity,
-        callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
-
+        notAnActualActivity: NotAnActualActivity,
+        notAnActualCallbacks: NotAnActualCallbacks
     ) {
-        firebaseAuth.setLanguageCode("ru")
-        val options = PhoneAuthOptions.newBuilder(firebaseAuth)
+        notAnActualFirebaseAuth as FirebaseAuth
+        notAnActualFirebaseAuth.setLanguageCode("ru")
+        val options = PhoneAuthOptions.newBuilder(notAnActualFirebaseAuth)
             .setPhoneNumber(phoneNumber)
             .setTimeout(60L, TimeUnit.SECONDS)
-            .setActivity(activity)
-            .setCallbacks(callbacks)
+            .setActivity(notAnActualActivity as AppCompatActivity)
+            .setCallbacks(
+                notAnActualCallbacks as PhoneAuthProvider.OnVerificationStateChangedCallbacks
+            )
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
-
     }
+    override fun provideResendingToken() = forceResendingToken
 }
