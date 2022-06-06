@@ -1,4 +1,4 @@
-package com.geektechkb.feature_auth.utils
+package com.geektechkb.feature_auth.domain
 
 typealias NotAnActualActivity = Any
 typealias NotAnActualCallbacks = Any
