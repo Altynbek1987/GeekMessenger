@@ -26,5 +26,4 @@ interface CodeVerificationRepository {
         authenticationProcessFailed: ((() -> Unit))?,
         ifUserHasEnteredInvalidCredentials: ((() -> Unit))?
     )
-
 }

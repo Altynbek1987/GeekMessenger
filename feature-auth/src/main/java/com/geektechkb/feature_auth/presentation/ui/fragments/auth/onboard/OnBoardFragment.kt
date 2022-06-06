@@ -7,8 +7,8 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
 import com.geektechkb.feature_auth.databinding.FragmentOnBoardBinding
-import com.geektechkb.feature_auth.presentation.ui.adapter.ViewPagerAdapter
 import com.geektechkb.feature_auth.presentation.model.BoardModel
+import com.geektechkb.feature_auth.presentation.ui.adapter.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,7 +17,6 @@ class OnBoardFragment :
     BaseFragment<FragmentOnBoardBinding, OnBoarViewModel>(R.layout.fragment_on_board) {
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
     override val viewModel: OnBoarViewModel by viewModels()
-
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
 
     @Inject
@@ -28,7 +27,6 @@ class OnBoardFragment :
             binding.pager.setCurrentItem(binding.pager.currentItem + 1, true)
         }
     }
-
 
     override fun assembleViews() {
         setupAdapter()
@@ -86,6 +84,4 @@ class OnBoardFragment :
 
 
     }
-
-
 }

@@ -12,8 +12,7 @@ interface AuthRepository {
         authenticationSucceeded: ((() -> Unit))? = null,
         authInvalidCredentialsError: ((() -> Unit))? = null,
         tooManyRequestsError: ((() -> Unit))? = null,
-
-        ): NotAnActualCallbacks
+    ): NotAnActualCallbacks
 
     fun startPhoneNumberVerification(
         notAnActualFirebaseAuth: NotAnActualFirebaseAuth,
@@ -21,7 +20,6 @@ interface AuthRepository {
         notAnActualActivity: NotAnActualActivity,
         notAnActualCallbacks: NotAnActualCallbacks,
     )
-
 
     fun provideResendingToken(): NotAnActualForceResendingToken?
 }

@@ -23,10 +23,7 @@ class CreateProfileFragment :
     override val viewModel: ProfileViewModel by viewModels()
     private lateinit var uri: Uri
 
-
     override fun setupListeners() {
-
-
         val requestPermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) { isGranted ->
@@ -53,8 +50,6 @@ class CreateProfileFragment :
             }
         }
 
-
-
         binding.imProfile.setOnClickListener {
             if (hasPermissionCheckAndRequest(
                     requestPermissionLauncher,
@@ -77,7 +72,6 @@ class CreateProfileFragment :
         }
     }
 
-
     private val fileChooserContract =
         registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
             if (imageUri != null) {
@@ -89,5 +83,3 @@ class CreateProfileFragment :
     private fun Fragment.mainNavController() =
         requireActivity().findNavController(R.id.nav_host_fragment_container_auth)
 }
-
-

@@ -6,7 +6,7 @@ import com.geektechkb.feature_auth.domain.typealiases.*
 import com.geektechkb.feature_auth.domain.useCases.authentication.IsUserAuthenticatedUseCase
 import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideAuthenticationCallbacksUseCase
 import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideForceResendingTokenUseCase
-import com.geektechkb.feature_auth.domain.useCases.authentication.verification.GetVerificationIdUseCase
+import com.geektechkb.feature_auth.domain.useCases.verification.GetVerificationIdUseCase
 import com.geektechkb.feature_auth.domain.useCases.verification.ResendVerificationCodeUseCase
 import com.geektechkb.feature_auth.domain.useCases.verification.SignInWithPhoneAuthCredentialUseCase
 import com.geektechkb.feature_auth.domain.useCases.verification.VerifyPhoneNumberWithCodeUseCase

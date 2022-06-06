@@ -6,6 +6,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-
 ) : BaseViewModel() {
 }

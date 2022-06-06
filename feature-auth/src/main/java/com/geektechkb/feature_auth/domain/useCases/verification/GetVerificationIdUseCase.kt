@@ -1,4 +1,4 @@
-package com.geektechkb.feature_auth.domain.useCases.authentication.verification
+package com.geektechkb.feature_auth.domain.useCases.verification
 
 import com.geektechkb.feature_auth.domain.repositories.CodeVerificationRepository
 import javax.inject.Inject

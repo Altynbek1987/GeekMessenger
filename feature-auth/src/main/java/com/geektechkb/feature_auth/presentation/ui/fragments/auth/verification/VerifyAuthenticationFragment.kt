@@ -1,8 +1,6 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
 import android.os.CountDownTimer
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -11,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
 import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.core.extensions.showLongDurationSnackbar
 import com.geektechkb.core.extensions.showShortDurationSnackbar
@@ -450,8 +449,6 @@ class VerifyAuthenticationFragment :
             if (text?.length == 1)
                 editTextToRequestAFocusOn.requestFocus()
         })
-
-
     }
 
     private fun TextView.setOnNumericClickListener(
@@ -483,22 +480,6 @@ class VerifyAuthenticationFragment :
         }
     }
 
-    private fun TextInputEditText.addTextChangedListenerAnonymously(
-        doSomething: ((() -> Unit))? = null
-    ) {
-        addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                doSomething?.invoke()
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-        })
-    }
 
     private fun TextInputEditText.retrieveVerificationCode(
         vararg digits: TextInputEditText,
