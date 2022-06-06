@@ -44,9 +44,9 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile.ProfileFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile.CreateProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
+        tools:layout="@layout/fragment_create_profile">
         <action
             android:id="@+id/action_profileFragment_to_mainFlowFragment"
             app:destination="@id/mainFlowFragment"

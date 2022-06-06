@@ -13,13 +13,13 @@ import com.geektechkb.core.extensions.hasPermissionCheckAndRequest
 import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.core.extensions.setImage
 import com.geektechkb.feature_auth.R
-import com.geektechkb.feature_auth.databinding.FragmentProfileBinding
+import com.geektechkb.feature_auth.databinding.FragmentCreateProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment :
-    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
-    override val binding by viewBinding(FragmentProfileBinding::bind)
+class CreateProfileFragment :
+    BaseFragment<FragmentCreateProfileBinding, ProfileViewModel>(R.layout.fragment_create_profile) {
+    override val binding by viewBinding(FragmentCreateProfileBinding::bind)
     override val viewModel: ProfileViewModel by viewModels()
     private lateinit var uri: Uri
 
@@ -70,7 +70,7 @@ class ProfileFragment :
     private fun permissionMessage() {
         if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment) {
             findNavController().navigate(
-                ProfileFragmentDirections.actionProfileFragmentToDeniedPermissionsDialogFragment(
+                CreateProfileFragmentDirections.actionProfileFragmentToDeniedPermissionsDialogFragment(
                     "Приложение GeekMessenger не может функционировать без разрешение на галерею устройства. Вы можете включить их в разределе Настройки"
                 )
             )
