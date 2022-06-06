@@ -14,9 +14,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class OnBoardFragment :
-    BaseFragment<FragmentOnBoardBinding, OnBoarViewModel>(R.layout.fragment_on_board) {
+    BaseFragment<FragmentOnBoardBinding, OnBoardViewModel>(R.layout.fragment_on_board) {
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
-    override val viewModel: OnBoarViewModel by viewModels()
+    override val viewModel: OnBoardViewModel by viewModels()
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
 
     @Inject
