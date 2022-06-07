@@ -20,19 +20,21 @@
 
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="48dp" />
+        app:layout_constraintGuide_percent="0.12" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_country_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="100dp" />
+        app:layout_constraintGuide_percent="0.24" />
 
 
     <ImageView
@@ -52,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="70dp" />
+        app:layout_constraintGuide_percent="0.83" />
 
     <ImageButton
         android:id="@+id/ib_clear_phone_number"
@@ -64,12 +66,13 @@
         app:layout_constraintEnd_toEndOf="@id/gl_clear"
         app:layout_constraintTop_toTopOf="@id/gl_text_input_layout" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_text_input_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="280dp" />
+        app:layout_constraintGuide_percent="0.385" />
 
     <!--    <com.github.pinball83.maskededittext.MaskedEditText-->
     <!--        android:id="@+id/et_phone"-->
@@ -116,12 +119,13 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="396dp" />
+        app:layout_constraintGuide_percent="0.54" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
@@ -134,12 +138,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gl_button_top" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_first_three_digits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="240dp" />
+        app:layout_constraintGuide_percent="0.67" />
 
 
     <GridLayout
