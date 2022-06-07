@@ -13,7 +13,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="67dp"
-        android:text="Введите ваш номер телефона"
+        android:text="@string/enter_your_phone_number_russian"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +43,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/image_view_to_show_that_the_developers_of_geekmessenger_are_patriots"
         android:src="@drawable/flag"
         app:layout_constraintEnd_toStartOf="@id/tl_phone"
         app:layout_constraintStart_toStartOf="@id/gl_country"
@@ -61,6 +62,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginTop="12dp"
+        android:contentDescription="@string/button_to_clear_edittext_field"
         android:src="@drawable/ic_cancel"
         android:translationZ="10dp"
         app:layout_constraintEnd_toEndOf="@id/gl_clear"
@@ -114,7 +116,7 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="false"
-            android:maxLength="12"
+            android:maxLength="9"
             android:padding="12dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -132,7 +134,7 @@
         android:layout_width="156dp"
         android:layout_height="50dp"
         android:backgroundTint="#323232"
-        android:text="Продолжить"
+        android:text="@string/proceed_russian"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +161,7 @@
             android:id="@+id/tv_one"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="1"
+            android:text="@string/one"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -167,7 +169,7 @@
             android:id="@+id/tv_two"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="2"
+            android:text="@string/two"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -175,7 +177,7 @@
             android:id="@+id/tv_three"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="3"
+            android:text="@string/three"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -194,7 +196,7 @@
             android:id="@+id/tv_four"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="4"
+            android:text="@string/four"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -202,7 +204,7 @@
             android:id="@+id/tv_five"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="5"
+            android:text="@string/five"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -210,7 +212,7 @@
             android:id="@+id/tv_six"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="6"
+            android:text="@string/six"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -229,7 +231,7 @@
             android:id="@+id/tv_seven"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="7"
+            android:text="@string/seven"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -237,7 +239,7 @@
             android:id="@+id/tv_eight"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="8"
+            android:text="@string/eight"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -245,7 +247,7 @@
             android:id="@+id/tv_nine"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="9"
+            android:text="@string/nine"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -255,7 +257,7 @@
         android:id="@+id/tv_zero"
         android:layout_width="120dp"
         android:layout_height="58dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textAlignment="center"
         android:textSize="29sp"
         app:layout_constraintEnd_toEndOf="@id/grid_layout_third_three_digits"
@@ -268,6 +270,7 @@
         android:layout_height="58dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
+        android:contentDescription="@string/button_to_delete_digits_from_edittexts"
         android:src="@drawable/ic_backspace"
         app:layout_constraintStart_toEndOf="@id/tv_zero"
         app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />

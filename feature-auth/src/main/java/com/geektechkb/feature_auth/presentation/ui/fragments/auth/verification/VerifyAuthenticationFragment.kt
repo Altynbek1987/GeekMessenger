@@ -9,10 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
-import com.geektechkb.core.extensions.directionsSafeNavigation
-import com.geektechkb.core.extensions.showLongDurationSnackbar
-import com.geektechkb.core.extensions.showShortDurationSnackbar
+import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentVerifyAuthenticationBinding
 import com.google.android.material.textfield.TextInputEditText
@@ -143,7 +140,7 @@ class VerifyAuthenticationFragment :
 
     private fun returnBackToTheNumberInput() {
         binding.ibBack.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigateSafely(R.id.signUpFragment)
         }
     }
 

@@ -53,10 +53,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment"
+        android:focusable="true"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="@id/gl_start_back"
-        app:layout_constraintTop_toTopOf="@id/gl_back"
-        android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment" />
+        app:layout_constraintTop_toTopOf="@id/gl_back" />
 
     <TextView
         android:id="@+id/tv_verification_code_was_sent"
@@ -430,8 +432,8 @@
         android:layout_height="58dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
+        android:contentDescription="@string/button_to_delete_digits_from_edittexts"
         android:src="@drawable/ic_backspace"
         app:layout_constraintStart_toEndOf="@id/tv_zero"
-        app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits"
-        android:contentDescription="@string/button_to_delete_digits_from_edittexts" />
+        app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />
 </androidx.constraintlayout.widget.ConstraintLayout>
