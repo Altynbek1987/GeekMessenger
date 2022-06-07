@@ -6,40 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.auth.verification.VerifyAuthenticationFragment">
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="50dp" />
+
+        app:layout_constraintGuide_percent="0.07" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_start_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="30dp" />
+        app:layout_constraintGuide_percent="0.07" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_verification_code_was_sent_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="148dp" />
+        app:layout_constraintGuide_percent="0.202" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_verification_code_was_sent_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="36dp" />
+        app:layout_constraintGuide_percent="0.09" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_verification_code_was_sent_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="37dp" />
+        app:layout_constraintGuide_percent="0.91" />
 
 
     <ImageButton
@@ -61,26 +67,29 @@
         app:layout_constraintStart_toStartOf="@id/gl_verification_code_was_sent_start"
         app:layout_constraintTop_toTopOf="@id/gl_verification_code_was_sent_top" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_et_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="204dp" />
+        app:layout_constraintGuide_percent="0.28" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_et_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="12dp" />
+        app:layout_constraintGuide_percent="0.03" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_et_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="30dp" />
+        app:layout_constraintGuide_percent="0.93" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_digit"
@@ -224,12 +233,13 @@
             android:textSize="22sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_resend_verification_code_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="440dp" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <TextView
         android:id="@+id/tv_get_verification_code"
@@ -255,26 +265,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_get_verification_code" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="344dp" />
+        app:layout_constraintGuide_percent="0.47" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="102dp" />
+        app:layout_constraintGuide_percent="0.245" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="102dp" />
+        app:layout_constraintGuide_percent="0.756" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
@@ -413,6 +427,7 @@
         android:id="@+id/ib_backspace"
         android:layout_width="120dp"
         android:layout_height="58dp"
+        android:background="@color/white"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_backspace"
         app:layout_constraintStart_toEndOf="@id/tv_zero"
