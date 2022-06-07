@@ -1,6 +1,5 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.onboard
 
-import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -8,6 +7,7 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
 import com.geektechkb.feature_auth.databinding.FragmentOnBoardBinding
+import com.geektechkb.feature_auth.presentation.model.BoardModel
 import com.geektechkb.feature_auth.presentation.ui.adapter.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

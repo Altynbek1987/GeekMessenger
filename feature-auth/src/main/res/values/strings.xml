@@ -19,4 +19,5 @@
     <string name="choose_your_name_and_load_an_photo">Введите свое имя и загрузите фотографию</string>
     <string name="surname_unnecessary">Фамилия (необязательно)</string>
     <string name="name_necessary">Имя(необязательно)</string>
+    <string name="verification_code_was_sent_to_the_entered_phone">Код был отправлен на номер %1$s</string>
 </resources>

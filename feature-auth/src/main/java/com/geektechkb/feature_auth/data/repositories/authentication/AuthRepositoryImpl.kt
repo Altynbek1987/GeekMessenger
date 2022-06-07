@@ -10,12 +10,14 @@ import com.geektechkb.feature_auth.domain.typealiases.NotAnActualFirebaseAuth
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import com.google.firebase.firestore.CollectionReference
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val authorizationPreferences: AuthorizePreferences,
+    private val userRef: CollectionReference
 ) : BaseRepository(), AuthRepository {
     private var forceResendingToken: PhoneAuthProvider.ForceResendingToken? = null
     override fun isUserAuthenticated(): Boolean {
@@ -74,5 +76,35 @@ class AuthRepositoryImpl @Inject constructor(
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
+
     override fun provideResendingToken() = forceResendingToken
+    override suspend fun authenticateUser(
+        phoneNumber: String,
+        name: String,
+        surname: String,
+        profileImage: String
+    ) {
+        when (profileImage) {
+            profileImage -> addDocument(
+                userRef,
+                hashMapOf(
+                    "phoneNumber" to phoneNumber,
+                    "name" to name,
+                    "surname" to surname,
+                    "profileImage" to profileImage
+                ),
+                phoneNumber
+            )
+            else -> addDocument(
+                userRef,
+                hashMapOf(
+                    "phoneNumber" to phoneNumber,
+                    "name" to name,
+                    "surname" to surname,
+                    "" to profileImage
+                ),
+                phoneNumber
+            )
+        }
+    }
 }

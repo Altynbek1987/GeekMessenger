@@ -22,4 +22,10 @@ interface AuthRepository {
     )
 
     fun provideResendingToken(): NotAnActualForceResendingToken?
+    suspend fun authenticateUser(
+        phoneNumber: String,
+        name: String,
+        surname: String,
+        profileImage: String
+    )
 }

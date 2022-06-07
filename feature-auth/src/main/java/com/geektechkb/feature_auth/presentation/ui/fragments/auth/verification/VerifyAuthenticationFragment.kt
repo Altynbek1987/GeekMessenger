@@ -40,7 +40,7 @@ class VerifyAuthenticationFragment :
     private fun setPhoneNumberCodeWasSentTo() {
         val phoneNumberVerificationCodeWasSentTo =
             String.format(
-                getString(R.string.verification_code_was_sent_on_the_input_number),
+                getString(R.string.verification_code_was_sent_to_the_entered_phone),
                 args.phoneNumber
             )
         binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
@@ -366,11 +366,15 @@ class VerifyAuthenticationFragment :
             requireActivity(),
             userSuccessfullyVerifiedTheirPhoneNumber = {
                 viewModel.isUserAuthenticated()
-                findNavController().directionsSafeNavigation(VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment())
-                showShortDurationSnackbar("You have successfully authenticated!")
+                findNavController().directionsSafeNavigation(
+                    VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment(
+                        args.phoneNumber
+                    )
+                )
+                showShortDurationSnackbar("Вы успешно авторизировались!")
             }, authenticationProcessFailed = {
 
-                showShortDurationSnackbar("Authentication process failed. Try again!")
+                showShortDurationSnackbar("Процесс аутентификации провалился. Повторите еще раз!")
             }, ifUserHasEnteredInvalidCredentials = {
                 when (attemptsToVerifyPhoneNumberAvailable) {
                     0 -> findNavController().navigate(
@@ -379,7 +383,7 @@ class VerifyAuthenticationFragment :
                     else -> {
                         attemptsToVerifyPhoneNumberAvailable--
                         showLongDurationSnackbar(
-                            "Verification code entered was invalid. You have $attemptsToVerifyPhoneNumberAvailable attempts left!"
+                            "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
                         )
                     }
                 }

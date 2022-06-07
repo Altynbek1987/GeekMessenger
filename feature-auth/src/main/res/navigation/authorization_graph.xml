@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_profileFragment_to_deniedPermissionsDialogFragment"
             app:destination="@id/deniedPermissionsDialogFragment" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
     </fragment>
 
 

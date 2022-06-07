@@ -12,9 +12,9 @@ import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentDeniedPermissionsDialogBinding
 
 class DeniedPermissionsDialogFragment :
-    BaseDialogFragment<FragmentDeniedPermissionsDialogBinding, ProfileViewModel>(R.layout.fragment_denied_permissions_dialog) {
+    BaseDialogFragment<FragmentDeniedPermissionsDialogBinding, CreateProfileViewModel>(R.layout.fragment_denied_permissions_dialog) {
     override val binding by viewBinding(FragmentDeniedPermissionsDialogBinding::bind)
-    override val viewModel: ProfileViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
+    override val viewModel: CreateProfileViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
     private val args: DeniedPermissionsDialogFragmentArgs by navArgs()
     override fun assembleViews() {
         binding.txtDialogPermissionTitle.text = args.text
