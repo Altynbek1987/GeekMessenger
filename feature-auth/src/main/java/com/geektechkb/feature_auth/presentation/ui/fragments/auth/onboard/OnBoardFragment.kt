@@ -1,6 +1,5 @@
-package com.geektechkb.feature_auth.presentation.ui.fragments.onboard
+package com.geektechkb.feature_auth.presentation.ui.fragments.auth.onboard
 
-import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -8,23 +7,23 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
 import com.geektechkb.feature_auth.databinding.FragmentOnBoardBinding
+import com.geektechkb.feature_auth.presentation.model.BoardModel
 import com.geektechkb.feature_auth.presentation.ui.adapter.ViewPagerAdapter
-import com.geektechkb.feature_auth.presentation.ui.model.BoardModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class OnBoardFragment :
-    BaseFragment<FragmentOnBoardBinding, OnBoarViewModel>(R.layout.fragment_on_board) {
+    BaseFragment<FragmentOnBoardBinding, OnBoardViewModel>(R.layout.fragment_on_board) {
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
-    override val viewModel: OnBoarViewModel by viewModels()
+    override val viewModel: OnBoardViewModel by viewModels()
     private var currentPagerItemState: Int? = null
 
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
 
-
     @Inject
     lateinit var preferences: OnBoardPreferencesHelper
+
 
     override fun setupListeners() {
         binding.pager.setOnClickListener {
@@ -61,7 +60,7 @@ class OnBoardFragment :
         )
         list.add(
             BoardModel(
-                R.drawable.ideapng ,
+                R.drawable.ideapng,
                 " Погнали",
                 "Скорее нажимай на кнопку",
                 "START"
@@ -83,8 +82,9 @@ class OnBoardFragment :
             }
             2 -> {
                 preferences.hasOnBoardBeenShown = true
-                findNavController().navigate(R.id.action_onBoardFragment_authWithPhoneNumber)
+                findNavController().navigate(R.id.action_onBoardFragment_to_signUpFragment)
                 currentPagerItemState = 3
+
             }
 
         }

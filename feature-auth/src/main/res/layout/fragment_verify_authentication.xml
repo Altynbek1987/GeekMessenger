@@ -1,0 +1,420 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_verification"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.auth.verification.VerifyAuthenticationFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="50dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_start_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_verification_code_was_sent_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="148dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_verification_code_was_sent_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="36dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_verification_code_was_sent_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="37dp" />
+
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="@id/gl_start_back"
+        app:layout_constraintTop_toTopOf="@id/gl_back" />
+
+    <TextView
+        android:id="@+id/tv_verification_code_was_sent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/verification_code_was_sent_to_the_entered_phone"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@id/gl_verification_code_was_sent_end"
+        app:layout_constraintStart_toStartOf="@id/gl_verification_code_was_sent_start"
+        app:layout_constraintTop_toTopOf="@id/gl_verification_code_was_sent_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_et_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="204dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_et_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="12dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_et_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="30dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_first_digit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintStart_toStartOf="@id/gl_et_start"
+        app:layout_constraintTop_toTopOf="@id/gl_et_top">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_first_digit"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:background="@drawable/oval_background"
+            android:focusable="true"
+            android:gravity="center"
+            android:maxLength="1"
+            android:textSize="22sp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_second_digit"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintStart_toEndOf="@id/til_first_digit"
+        app:layout_constraintTop_toTopOf="@id/gl_et_top">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_second_digit"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:background="@drawable/oval_background"
+            android:focusable="true"
+            android:gravity="center"
+            android:maxLength="1"
+            android:textSize="22sp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_third_digit"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintStart_toEndOf="@id/til_second_digit"
+        app:layout_constraintTop_toTopOf="@id/gl_et_top">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_third_digit"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:background="@drawable/oval_background"
+            android:focusable="true"
+            android:gravity="center"
+            android:maxLength="1"
+
+            android:textSize="22sp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_fourth_digit"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintStart_toEndOf="@id/til_third_digit"
+        app:layout_constraintTop_toTopOf="@id/gl_et_top">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_fourth_digit"
+            android:layout_width="wrap_content"
+
+            android:layout_height="56dp"
+            android:background="@drawable/oval_background"
+            android:focusable="true"
+            android:gravity="center"
+            android:maxLength="1"
+            android:textSize="22sp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_fifth_digit"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintStart_toEndOf="@id/til_fourth_digit"
+        app:layout_constraintTop_toTopOf="@id/gl_et_top">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_fifth_digit"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:background="@drawable/oval_background"
+            android:focusable="true"
+            android:gravity="center"
+            android:maxLength="1"
+            android:textSize="22sp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_sixth_digit"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintStart_toEndOf="@id/til_fifth_digit"
+        app:layout_constraintTop_toTopOf="@id/gl_et_top">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_sixth_digit"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:background="@drawable/oval_background"
+            android:focusable="true"
+            android:gravity="center"
+            android:maxLength="1"
+            android:textSize="22sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_resend_verification_code_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="440dp" />
+
+    <TextView
+        android:id="@+id/tv_get_verification_code"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Get verification code "
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gl_resend_verification_code_top" />
+
+
+    <TextView
+        android:id="@+id/tv_count_down_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_get_verification_code" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_button_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="344dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="102dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_button_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="102dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
+        android:layout_width="156dp"
+        android:layout_height="52dp"
+        android:backgroundTint="#323232"
+        android:text="Продолжить"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="@id/gl_button_end"
+        app:layout_constraintStart_toStartOf="@id/gl_button_start"
+        app:layout_constraintTop_toBottomOf="@id/gl_button_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_first_three_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <GridLayout
+        android:id="@+id/gridLayout_first_three_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_first_three_digits">
+
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_two"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="2"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_three"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="3"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout_second_three_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gridLayout_first_three_digits">
+
+        <TextView
+            android:id="@+id/tv_four"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="4"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_five"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="5"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_six"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="6"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/grid_layout_third_three_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gridLayout_second_three_digits">
+
+        <TextView
+            android:id="@+id/tv_seven"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="7"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_eight"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="8"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_nine"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:text="9"
+            android:textAlignment="center"
+            android:textSize="29sp" />
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/tv_zero"
+        android:layout_width="120dp"
+        android:layout_height="58dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="29sp"
+        app:layout_constraintEnd_toEndOf="@id/grid_layout_third_three_digits"
+        app:layout_constraintStart_toStartOf="@id/grid_layout_third_three_digits"
+        app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />
+
+    <ImageButton
+        android:id="@+id/ib_backspace"
+        android:layout_width="120dp"
+        android:layout_height="58dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_backspace"
+        app:layout_constraintStart_toEndOf="@id/tv_zero"
+        app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />
+</androidx.constraintlayout.widget.ConstraintLayout>

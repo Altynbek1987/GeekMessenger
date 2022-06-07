@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
-        when (userPreferences.isAuthorize) {
+        when (userPreferences.isAuthorized) {
             false -> {
                 navGraph.setStartDestination(R.id.authorizationFlowFragment)
             }

@@ -3,30 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/authorization_graph"
-    app:startDestination="@id/authWithPhoneNumberFragment">
-
+    app:startDestination="@id/onBoardFragment">
     <fragment
-        android:id="@+id/authWithPhoneNumberFragment"
-        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.AuthWithPhoneNumberFragment"
-        android:label="fragment_auth_with_phone_number"
-        tools:layout="@layout/fragment_auth_with_phone_number">
+        android:id="@+id/signUpFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up">
         <action
-            android:id="@+id/action_authWithPhoneNumberFragment_to_mainFlowFragment"
+            android:id="@+id/action_signUpFragment_to_phoneVerificationDialogFragment"
+            app:destination="@id/phoneVerificationDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/phoneVerificationDialogFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp.PhoneVerificationDialogFragment"
+        android:label="fragment_phone_verification_dialog"
+        tools:layout="@layout/fragment_phone_verification_dialog">
+        <action
+            android:id="@+id/action_phoneVerificationDialogFragment_to_verifyAuthenticationFragment"
+            app:destination="@id/verifyAuthenticationFragment"
+            app:popUpTo="@id/authorization_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="inputPhoneNumber"
+            app:argType="string" />
+    </dialog>
+    <fragment
+        android:id="@+id/verifyAuthenticationFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification.VerifyAuthenticationFragment"
+        android:label="fragment_verify_authentication"
+        tools:layout="@layout/fragment_verify_authentication">
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_verifyAuthenticationFragment_to_createProfileFragment"
+            app:destination="@id/createProfileFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/createProfileFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile.CreateProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_create_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_mainFlowFragment"
             app:destination="@id/mainFlowFragment"
             app:popUpTo="@id/authorization_graph" />
+        <action
+            android:id="@+id/action_profileFragment_to_deniedPermissionsDialogFragment"
+            app:destination="@id/deniedPermissionsDialogFragment" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
     </fragment>
+
+
     <fragment
         android:id="@+id/mainFlowFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.MainFlowFragment"
         android:label="MainFlowFragment" />
+    <dialog
+        android:id="@+id/deniedPermissionsDialogFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile.DeniedPermissionsDialogFragment"
+        android:label="fragment_denied_permissions_dialog"
+        tools:layout="@layout/fragment_denied_permissions_dialog">
+        <argument
+            android:name="text"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/attemptsToVerifyPhoneNumberExceededDialogFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification.AttemptsToVerifyPhoneNumberExceededDialogFragment"
+        android:label="fragment_verification_dialog"
+        tools:layout="@layout/fragment_verification_dialog">
+
+    </dialog>
+
     <fragment
         android:id="@+id/onBoardFragment"
-        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.onboard.OnBoardFragment"
+        android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.onboard.OnBoardFragment"
         android:label="fragment_on_board"
-        tools:layout="@layout/fragment_on_board" >
+        tools:layout="@layout/fragment_on_board">
+
         <action
-            android:id="@+id/action_onBoardFragment_authWithPhoneNumber"
-            app:destination="@id/authWithPhoneNumberFragment"
+            android:id="@+id/action_onBoardFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
             app:popUpTo="@id/authorization_graph"
             app:popUpToInclusive="true" />
     </fragment>
