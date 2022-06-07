@@ -61,7 +61,7 @@
         android:id="@+id/ib_clear_phone_number"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="@string/button_to_clear_edittext_field"
         android:src="@drawable/ic_cancel"
         android:translationZ="10dp"
@@ -75,18 +75,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.385" />
-
-    <!--    <com.github.pinball83.maskededittext.MaskedEditText-->
-    <!--        android:id="@+id/et_phone"-->
-    <!--        android:layout_width="270dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:focusable="true"-->
-    <!--        android:focusableInTouchMode="false"-->
-    <!--        android:maxLength="15"-->
-    <!--        app:mask="+996 ***-***-***"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="@id/gl_text_input_layout" />-->
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -103,6 +91,7 @@
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:errorEnabled="true"
+        app:errorIconDrawable="@null"
         app:errorTextAppearance="@id/tl_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -269,7 +258,6 @@
         android:layout_width="120dp"
         android:layout_height="58dp"
         android:background="@color/white"
-        android:backgroundTint="@color/white"
         android:contentDescription="@string/button_to_delete_digits_from_edittexts"
         android:src="@drawable/ic_backspace"
         app:layout_constraintStart_toEndOf="@id/tv_zero"
