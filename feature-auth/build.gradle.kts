@@ -75,18 +75,10 @@ dependencies {
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
 
-
     // Firebase
     implementation(platform(libs.firebase.platform))
-
-    implementation(libs.bundles.firebaseNoCrashlytics)
+    implementation(libs.bundles.firebaseNoAdMobAndCrashlytics)
 
     //Paging 3
     implementation(libs.paging.paging)
-
-
-
-
-
-
 }

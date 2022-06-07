@@ -79,5 +79,5 @@ dependencies {
 
     // Firebase
     implementation(platform(libs.firebase.platform))
-    implementation(libs.bundles.firebaseNoCrashlytics)
+    implementation(libs.bundles.firebaseNoAdMobAndCrashlytics)
 }
