@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
-import com.geektechkb.core.extensions.navigateSafely
+import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.core.extensions.showLongDurationSnackbar
 import com.geektechkb.core.extensions.showShortDurationSnackbar
 import com.geektechkb.feature_auth.R
@@ -366,7 +366,7 @@ class VerifyAuthenticationFragment :
             requireActivity(),
             userSuccessfullyVerifiedTheirPhoneNumber = {
                 viewModel.isUserAuthenticated()
-                findNavController().navigateSafely(R.id.createProfileFragment)
+                findNavController().directionsSafeNavigation(VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment())
                 showShortDurationSnackbar("You have successfully authenticated!")
             }, authenticationProcessFailed = {
 

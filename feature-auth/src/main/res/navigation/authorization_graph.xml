@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/authorization_graph"
-    app:startDestination="@id/createProfileFragment">
+    app:startDestination="@id/onBoardFragment">
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp.SignUpFragment"

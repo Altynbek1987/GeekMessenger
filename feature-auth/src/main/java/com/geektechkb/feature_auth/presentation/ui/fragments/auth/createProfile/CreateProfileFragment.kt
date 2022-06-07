@@ -39,11 +39,8 @@ class CreateProfileFragment :
         }
         binding.apply {
             binding.btnSignIn.setOnClickListener {
-                if (etName.text.isNullOrEmpty() || etSurname.text.isNullOrEmpty()) {
+                if (etName.text.isNullOrEmpty()) {
                     etName.error = "This field mustn't be empty"
-                    etSurname.error = "This field mustn't be empty"
-
-
                 } else {
                     mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
                 }
