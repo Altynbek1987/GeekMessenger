@@ -20,4 +20,8 @@
     <string name="surname_unnecessary">Фамилия (необязательно)</string>
     <string name="name_necessary">Имя(необязательно)</string>
     <string name="verification_code_was_sent_to_the_entered_phone">Код был отправлен на номер %1$s</string>
+    <string name="proceed_russian">Продолжить</string>
+    <string name="button_to_delete_digits_from_edittexts">button to delete digits from edittexts</string>
+    <string name="send_verification_code_again">Отправить код заново</string>
+    <string name="button_to_get_back_to_edit_phone_number_fragment">button to get back to edit phone number framgent</string>
 </resources>
