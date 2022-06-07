@@ -12,11 +12,11 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 
 fun Fragment.showShortDurationSnackbar(text: CharSequence) {
-    Snackbar.make(requireView(), text, Snackbar.LENGTH_SHORT).show()
+    view?.let { Snackbar.make(it, text, Snackbar.LENGTH_SHORT).show() }
 }
 
 fun Fragment.showLongDurationSnackbar(text: CharSequence) {
-    Snackbar.make(requireView(), text, Snackbar.LENGTH_LONG).show()
+    view?.let { Snackbar.make(it, text, Snackbar.LENGTH_LONG).show() }
 }
 
 

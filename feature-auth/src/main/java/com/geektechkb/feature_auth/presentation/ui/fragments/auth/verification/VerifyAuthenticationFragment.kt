@@ -65,7 +65,7 @@ class VerifyAuthenticationFragment :
 
 
     private fun setupCountDownTimer() {
-        countDownTimer = object : CountDownTimer(120000, 1000) {
+        countDownTimer = object : CountDownTimer(30000, 1000) {
             override fun onTick(p0: Long) {
                 timeInSeconds = p0
                 updateCountDownTimer()

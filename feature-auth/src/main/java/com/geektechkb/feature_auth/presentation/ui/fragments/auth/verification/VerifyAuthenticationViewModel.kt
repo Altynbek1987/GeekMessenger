@@ -61,7 +61,7 @@ class VerifyAuthenticationViewModel @Inject constructor(
         phoneNumber,
         notAnActualActivity as AppCompatActivity,
         notAnActualCallbacks as PhoneAuthProvider.OnVerificationStateChangedCallbacks,
-        notAnActualForceResendingToken as PhoneAuthProvider.ForceResendingToken
+        notAnActualForceResendingToken as PhoneAuthProvider.ForceResendingToken?
     )
 
     fun signInWithPhoneAuthCredential(
@@ -85,7 +85,7 @@ class VerifyAuthenticationViewModel @Inject constructor(
 
     fun getVerificationId() = getVerificationIdUseCase()
     fun getForceResendingToken() =
-        provideForceResendingTokenUseCase() as PhoneAuthProvider.ForceResendingToken
+        provideForceResendingTokenUseCase() as PhoneAuthProvider.ForceResendingToken?
 
     fun isUserAuthenticated() = isUserAuthenticatedUseCase()
 }
