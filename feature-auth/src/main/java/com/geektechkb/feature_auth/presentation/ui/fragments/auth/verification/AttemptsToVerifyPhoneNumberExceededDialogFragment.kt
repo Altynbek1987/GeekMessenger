@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
@@ -21,11 +20,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class AttemptsToVerifyPhoneNumberExceededDialogFragment :
     DialogFragment() {
     private lateinit var binding: FragmentVerificationDialogBinding
-     val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
+    val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
 
     @SuppressLint("UseGetLayoutInflater")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-       binding = FragmentVerificationDialogBinding.inflate(LayoutInflater.from(context))
+        binding = FragmentVerificationDialogBinding.inflate(LayoutInflater.from(context))
         val builder = AlertDialog.Builder(activity)
             .setView(binding.root)
             .create()
@@ -37,7 +36,6 @@ class AttemptsToVerifyPhoneNumberExceededDialogFragment :
     private fun onClickListener() {
         binding.applyBtn.setOnClickListener {
             findNavController().navigateUp()
-            Toast.makeText(requireContext(), "Повторите попытку еше раз", Toast.LENGTH_SHORT).show()
         }
     }
 }
