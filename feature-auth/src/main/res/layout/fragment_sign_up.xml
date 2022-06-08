@@ -105,7 +105,7 @@
         app:boxStrokeWidth="0.4dp"
         app:errorEnabled="true"
         app:errorIconDrawable="@null"
-        app:errorTextAppearance="@id/tl_phone"
+        app:errorTextAppearance="@id/et_phone"
         app:layout_constraintBottom_toBottomOf="@id/gl_til_bottom"
         app:layout_constraintEnd_toEndOf="@id/gl_til_end"
         app:layout_constraintStart_toStartOf="@id/gl_til_start"
