@@ -103,20 +103,22 @@ class VerifyAuthenticationFragment :
     private fun verifyPhoneNumberUsingCode() {
         binding.apply {
             btnContinue.setOnClickListener {
-                signInWithPhoneAuthCredential(
-                    viewModel.verifyPhoneNumberWithCode(
-                        viewModel.getVerificationId(),
-                        etFirstDigit.retrieveVerificationCode(
-                            etSecondDigit,
-                            etThirdDigit,
-                            etFourthDigit,
-                            etFifthDigit,
-                            etSixthDigit
+                if (viewModel.getVerificationId() != null)
+                    signInWithPhoneAuthCredential(
+                        viewModel.verifyPhoneNumberWithCode(
+                            viewModel.getVerificationId(),
+                            etFirstDigit.retrieveVerificationCode(
+                                etSecondDigit,
+                                etThirdDigit,
+                                etFourthDigit,
+                                etFifthDigit,
+                                etSixthDigit
+                            )
+
+
                         )
-
-
                     )
-                )
+
             }
         }
 

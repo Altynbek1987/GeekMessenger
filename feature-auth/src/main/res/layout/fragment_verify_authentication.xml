@@ -48,10 +48,10 @@
         app:layout_constraintGuide_percent="0.91" />
 
 
-    <ImageButton
+    <ImageView
         android:id="@+id/ib_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="16dp"
+        android:layout_height="14dp"
         android:background="@color/white"
         android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment"
         android:src="@drawable/ic_back"
@@ -78,27 +78,28 @@
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_et_start"
+        android:id="@+id/gl_first_digit_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.03" />
-
+        app:layout_constraintGuide_percent="0.323" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_et_end"
+        android:id="@+id/gl_digits_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.93" />
+        app:layout_constraintGuide_percent="0.11" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_digit"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toStartOf="@id/gl_et_start"
+        app:layout_constraintEnd_toEndOf="@id/gl_first_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_digits_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -112,20 +113,36 @@
             android:padding="3dp"
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
-            android:textSize="32sp" />
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_second_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.22" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_second_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.434" />
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_second_digit"
 
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_first_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_second_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_second_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -139,20 +156,35 @@
             android:padding="3dp"
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
-            android:textSize="32sp" />
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_third_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.333" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_third_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_third_digit"
 
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_second_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_third_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_third_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -167,20 +199,36 @@
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
 
-            android:textSize="32sp" />
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_fourth_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_fourth_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_fourth_digit"
 
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_third_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_fourth_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_fourth_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -194,20 +242,34 @@
             android:padding="3dp"
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
-            android:textSize="32sp" />
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_fifth_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.56" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_fifth_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.78" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_fifth_digit"
 
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_fourth_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_fifth_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_fifth_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -221,21 +283,36 @@
             android:padding="3dp"
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
-            android:textSize="32sp" />
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_sixth_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.678" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_sixth_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.894" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_sixth_digit"
-
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_fifth_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_sixth_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_sixth_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_sixth_digit"
@@ -248,7 +325,7 @@
             android:padding="3dp"
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
-            android:textSize="32sp" />
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
