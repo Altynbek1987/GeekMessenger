@@ -41,6 +41,7 @@
         android:id="@+id/im_country"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginTop="4dp"
         android:contentDescription="@string/image_view_to_show_that_the_developers_of_geekmessenger_are_patriots"
         android:src="@drawable/flag"
         app:layout_constraintStart_toStartOf="@id/gl_country"
@@ -58,7 +59,7 @@
         android:id="@+id/ib_clear_phone_number"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:contentDescription="@string/button_to_clear_edittext_field"
         android:src="@drawable/ic_cancel"
         android:translationZ="1dp"
@@ -92,8 +93,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -113,11 +115,16 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_phone"
-            android:layout_width="240dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:focusable="true"
             android:focusableInTouchMode="false"
-            android:maxLength="9" />
+            android:maxLength="9"
+            android:padding="12dp"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
