@@ -80,7 +80,7 @@
         android:id="@+id/attemptsToVerifyPhoneNumberExceededDialogFragment"
         android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification.AttemptsToVerifyPhoneNumberExceededDialogFragment"
         android:label="fragment_verification_dialog"
-        tools:layout="@layout/fragment_verification_dialog">
+        tools:layout="@layout/fragment_attempts_to_verify_phone_number_exceeded_dialog">
 
     </dialog>
 
