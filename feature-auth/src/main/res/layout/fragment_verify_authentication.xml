@@ -94,8 +94,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_digit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintStart_toStartOf="@id/gl_et_start"
@@ -103,13 +103,16 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_first_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="32sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -117,8 +120,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_second_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_marginStart="12dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
@@ -127,13 +130,16 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_second_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="32sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -141,8 +147,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_third_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_marginStart="12dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
@@ -151,14 +157,17 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_third_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
 
-            android:textSize="22sp" />
+            android:textSize="32sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -166,8 +175,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_fourth_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_marginStart="12dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
@@ -176,14 +185,16 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_fourth_digit"
-            android:layout_width="wrap_content"
-
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="32sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -191,8 +202,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_fifth_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_marginStart="12dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
@@ -201,13 +212,16 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_fifth_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="32sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -215,8 +229,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_sixth_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_marginStart="12dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
@@ -225,13 +239,16 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_sixth_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="32sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
