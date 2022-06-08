@@ -498,4 +498,15 @@ class VerifyAuthenticationFragment :
         digits[3].keyListener = null
         digits[4].keyListener = null
     }
+
+//    private fun TextInputEditText.checkWhetherEditTextsAreNullOrEmpty(
+//        vararg digits: TextInputEditText
+//    ): Boolean {
+//        if (this.text.isNullOrEmpty() || digits[0].text.isNullOrEmpty() || digits[1].text.isNullOrEmpty() || digits[2].text.isNullOrEmpty() || digits[3].text.isNullOrEmpty() || digits[4].text.isNullOrEmpty() || digits[5].text.isNullOrEmpty())
+//            return true
+//        else
+//            showShortDurationSnackbar("Код верификации состоит из 6 чисел, и все они должны быть заполнены")
+//
+//
+//    }
 }
