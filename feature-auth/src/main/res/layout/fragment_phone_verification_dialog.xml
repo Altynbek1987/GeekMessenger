@@ -19,6 +19,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="150dp" />
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_is_number_correct_top"
                 android:layout_width="wrap_content"
@@ -56,9 +63,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Номер указан верно?"
+                android:textColor="#323232"
                 android:textSize="16sp"
 
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@id/gl_is_number_correct_end"
                 app:layout_constraintStart_toStartOf="@id/gl_is_number_correct_start"
                 app:layout_constraintTop_toTopOf="@id/gl_is_number_correct_top" />
