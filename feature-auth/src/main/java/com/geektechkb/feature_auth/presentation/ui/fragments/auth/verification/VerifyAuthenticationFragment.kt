@@ -103,21 +103,20 @@ class VerifyAuthenticationFragment :
     private fun verifyPhoneNumberUsingCode() {
         binding.apply {
             btnContinue.setOnClickListener {
-                if (viewModel.getVerificationId() != null)
-                    signInWithPhoneAuthCredential(
-                        viewModel.verifyPhoneNumberWithCode(
-                            viewModel.getVerificationId(),
-                            etFirstDigit.retrieveVerificationCode(
-                                etSecondDigit,
-                                etThirdDigit,
-                                etFourthDigit,
-                                etFifthDigit,
-                                etSixthDigit
-                            )
-
-
+                signInWithPhoneAuthCredential(
+                    viewModel.verifyPhoneNumberWithCode(
+                        viewModel.getVerificationId(),
+                        etFirstDigit.retrieveVerificationCode(
+                            etSecondDigit,
+                            etThirdDigit,
+                            etFourthDigit,
+                            etFifthDigit,
+                            etSixthDigit
                         )
+
+
                     )
+                )
 
             }
         }
@@ -142,7 +141,7 @@ class VerifyAuthenticationFragment :
 
     private fun returnBackToTheNumberInput() {
         binding.ibBack.setOnClickListener {
-            findNavController().navigateSafely(R.id.signUpFragment)
+            findNavController().navigateSafely(R.id.action_verifyAuthenticationFragment_to_signUpFragment)
         }
     }
 

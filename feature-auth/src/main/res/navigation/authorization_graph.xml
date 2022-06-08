@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_verifyAuthenticationFragment_to_createProfileFragment"
             app:destination="@id/createProfileFragment" />
+        <action
+            android:id="@+id/action_verifyAuthenticationFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
 
 
     </fragment>

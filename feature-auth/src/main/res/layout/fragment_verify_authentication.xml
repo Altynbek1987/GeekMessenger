@@ -48,7 +48,7 @@
         app:layout_constraintGuide_percent="0.91" />
 
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ib_back"
         android:layout_width="16dp"
         android:layout_height="14dp"
