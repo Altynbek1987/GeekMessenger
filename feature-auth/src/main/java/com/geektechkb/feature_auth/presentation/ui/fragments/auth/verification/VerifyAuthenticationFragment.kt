@@ -103,13 +103,6 @@ class VerifyAuthenticationFragment :
     private fun verifyPhoneNumberUsingCode() {
         binding.apply {
             btnContinue.setOnClickListener {
-                etFirstDigit.checkWhetherEditTextsAreNullOrEmpty(
-                    etSecondDigit,
-                    etThirdDigit,
-                    etFourthDigit,
-                    etFifthDigit,
-                    etSixthDigit
-                )
 
                 signInWithPhoneAuthCredential(
                     viewModel.verifyPhoneNumberWithCode(
@@ -365,37 +358,46 @@ class VerifyAuthenticationFragment :
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        binding.apply {
 
-        viewModel.signInWithPhoneAuthCredential(
-            viewModel.firebaseAuth,
-            credential,
-            requireActivity(),
-            userSuccessfullyVerifiedTheirPhoneNumber = {
-                viewModel.isUserAuthenticated()
-                findNavController().directionsSafeNavigation(
-                    VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment(
-                        args.phoneNumber
-                    )
-                )
-                showShortDurationSnackbar("Вы успешно авторизировались!")
-            }, authenticationProcessFailed = {
 
-                showShortDurationSnackbar("Процесс аутентификации провалился. Повторите еще раз!")
-            }, ifUserHasEnteredInvalidCredentials = {
-                when (attemptsToVerifyPhoneNumberAvailable) {
-                    0 -> findNavController().navigate(
-                        R.id.attemptsToVerifyPhoneNumberExceededDialogFragment
-                    )
-                    else -> {
-                        attemptsToVerifyPhoneNumberAvailable--
-                        showLongDurationSnackbar(
-                            "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
+            if (etFirstDigit.text?.length != 1 || etSecondDigit.text?.length == 1 || etThirdDigit.text?.length == 1 || etFourthDigit.text?.length == 1 || etFifthDigit.text?.length == 1 || etSixthDigit.text?.length == 1)
+                showLongDurationSnackbar("Код подтверждения состоит из 6 цифр. Вы должны заполнить все 6 полей чтобы ввести код подтверждения")
+            else {
+                viewModel.signInWithPhoneAuthCredential(
+                    viewModel.firebaseAuth,
+                    credential,
+                    requireActivity(),
+                    userSuccessfullyVerifiedTheirPhoneNumber = {
+                        viewModel.isUserAuthenticated()
+                        findNavController().directionsSafeNavigation(
+                            VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment(
+                                args.phoneNumber
+                            )
                         )
-                    }
-                }
-            }
+                        showShortDurationSnackbar("Вы успешно авторизировались!")
+                    }, authenticationProcessFailed = {
 
-        )
+                        showShortDurationSnackbar("Процесс аутентификации провалился. Повторите еще раз!")
+                    }, ifUserHasEnteredInvalidCredentials = {
+                        when (attemptsToVerifyPhoneNumberAvailable) {
+                            0 -> findNavController().navigate(
+                                R.id.attemptsToVerifyPhoneNumberExceededDialogFragment
+                            )
+                            else -> {
+                                attemptsToVerifyPhoneNumberAvailable--
+                                showLongDurationSnackbar(
+                                    "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
+                                )
+                            }
+                        }
+                    }
+
+                )
+
+            }
+        }
+
     }
 
     private fun resendVerificationCode(
@@ -507,17 +509,5 @@ class VerifyAuthenticationFragment :
         digits[4].keyListener = null
     }
 
-    private fun TextInputEditText.checkWhetherEditTextsAreNullOrEmpty(
-        vararg digits: TextInputEditText
-    ): Boolean {
-        return if (this.text.isNullOrEmpty() || digits[0].text.isNullOrEmpty() || digits[1].text.isNullOrEmpty()
-            || digits[2].text.isNullOrEmpty() || digits[3].text.isNullOrEmpty() ||
-            digits[4].text.isNullOrEmpty() || digits[5].text.isNullOrEmpty()
-        ) {
-            true
-        } else {
-            showShortDurationSnackbar("Код верификации состоит из 6 чисел, и все они должны быть заполнены")
-            false
-        }
-    }
+
 }
