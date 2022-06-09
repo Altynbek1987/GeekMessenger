@@ -10,6 +10,9 @@ import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentSignUpBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.santalu.maskara.Mask
+import com.santalu.maskara.MaskChangedListener
+import com.santalu.maskara.MaskStyle
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -18,6 +21,17 @@ class SignUpFragment :
     BaseFragment<FragmentSignUpBinding, SignUpViewModel>(R.layout.fragment_sign_up) {
     override val binding by viewBinding(FragmentSignUpBinding::bind)
     override val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
+
+
+    override fun assembleViews() {
+        addMaskForEditText()
+
+    }
+
+    private fun addMaskForEditText() {
+        binding.etPhone.addMaskChangeListener()
+    }
+
     override fun setupListeners() {
         addBackspaceListener()
         setupNumericKeyboardListener()
@@ -100,9 +114,24 @@ class SignUpFragment :
         }
     }
 
-    fun TextInputLayout.setFixedError(errorTxt: CharSequence?) {
+    private fun TextInputLayout.setFixedError(errorTxt: CharSequence?) {
         if (error != errorTxt) {
             error = errorTxt
         }
     }
+
+    private fun TextInputEditText.addMaskChangeListener() {
+        addTextChangedListener(
+            MaskChangedListener(
+                Mask(
+                    value = "___ ___ ___",
+                    character = '_',
+                    style = MaskStyle.PERSISTENT
+                )
+            )
+        )
+
+    }
+
+
 }
