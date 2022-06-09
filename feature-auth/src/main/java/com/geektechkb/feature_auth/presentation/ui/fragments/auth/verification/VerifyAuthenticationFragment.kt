@@ -25,6 +25,7 @@ class VerifyAuthenticationFragment :
     private val args: VerifyAuthenticationFragmentArgs by navArgs()
     private var timeInSeconds = 0L
     private var attemptsToVerifyPhoneNumberAvailable = 3
+    private var retrievedVerificationCode = ""
     private lateinit var countDownTimer: CountDownTimer
 
     override fun assembleViews() {
@@ -103,22 +104,24 @@ class VerifyAuthenticationFragment :
     private fun verifyPhoneNumberUsingCode() {
         binding.apply {
             btnContinue.setOnClickListener {
-
-                signInWithPhoneAuthCredential(
-                    viewModel.verifyPhoneNumberWithCode(
-                        viewModel.getVerificationId(),
-                        etFirstDigit.retrieveVerificationCode(
-                            etSecondDigit,
-                            etThirdDigit,
-                            etFourthDigit,
-                            etFifthDigit,
-                            etSixthDigit
-                        )
-
-
-                    )
+                retrievedVerificationCode = etFirstDigit.retrieveVerificationCode(
+                    etSecondDigit,
+                    etThirdDigit,
+                    etFourthDigit,
+                    etFifthDigit,
+                    etSixthDigit
                 )
+                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty()) {
+                    signInWithPhoneAuthCredential(
+                        viewModel.verifyPhoneNumberWithCode(
+                            viewModel.getVerificationId(),
+                            retrievedVerificationCode.trim()
+                        )
+                    )
+                } else {
 
+                    showLongDurationSnackbar("Код подтверждения состоит из 6 цифр. Вы должны заполнить все 6 полей чтобы ввести код подтверждения")
+                }
             }
         }
 
@@ -361,41 +364,37 @@ class VerifyAuthenticationFragment :
         binding.apply {
 
 
-            if (etFirstDigit.text?.length != 1 || etSecondDigit.text?.length == 1 || etThirdDigit.text?.length == 1 || etFourthDigit.text?.length == 1 || etFifthDigit.text?.length == 1 || etSixthDigit.text?.length == 1)
-                showLongDurationSnackbar("Код подтверждения состоит из 6 цифр. Вы должны заполнить все 6 полей чтобы ввести код подтверждения")
-            else {
-                viewModel.signInWithPhoneAuthCredential(
-                    viewModel.firebaseAuth,
-                    credential,
-                    requireActivity(),
-                    userSuccessfullyVerifiedTheirPhoneNumber = {
-                        viewModel.isUserAuthenticated()
-                        findNavController().directionsSafeNavigation(
-                            VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment(
-                                args.phoneNumber
-                            )
+            viewModel.signInWithPhoneAuthCredential(
+                viewModel.firebaseAuth,
+                credential,
+                requireActivity(),
+                userSuccessfullyVerifiedTheirPhoneNumber = {
+                    viewModel.isUserAuthenticated()
+                    findNavController().directionsSafeNavigation(
+                        VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment(
+                            args.phoneNumber
                         )
-                        showShortDurationSnackbar("Вы успешно авторизировались!")
-                    }, authenticationProcessFailed = {
+                    )
+                    showShortDurationSnackbar("Вы успешно авторизировались!")
+                }, authenticationProcessFailed = {
 
-                        showShortDurationSnackbar("Процесс аутентификации провалился. Повторите еще раз!")
-                    }, ifUserHasEnteredInvalidCredentials = {
-                        when (attemptsToVerifyPhoneNumberAvailable) {
-                            0 -> findNavController().navigate(
-                                R.id.attemptsToVerifyPhoneNumberExceededDialogFragment
+                    showShortDurationSnackbar("Процесс аутентификации провалился. Повторите еще раз!")
+                }, ifUserHasEnteredInvalidCredentials = {
+                    when (attemptsToVerifyPhoneNumberAvailable) {
+                        0 -> findNavController().navigate(
+                            R.id.attemptsToVerifyPhoneNumberExceededDialogFragment
+                        )
+                        else -> {
+                            attemptsToVerifyPhoneNumberAvailable--
+                            showLongDurationSnackbar(
+                                "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
                             )
-                            else -> {
-                                attemptsToVerifyPhoneNumberAvailable--
-                                showLongDurationSnackbar(
-                                    "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
-                                )
-                            }
                         }
                     }
+                }
 
-                )
+            )
 
-            }
         }
 
     }
