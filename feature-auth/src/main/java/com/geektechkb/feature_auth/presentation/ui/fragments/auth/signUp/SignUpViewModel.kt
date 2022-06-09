@@ -5,7 +5,6 @@ import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_auth.domain.typealiases.NotAnActualActivity
 import com.geektechkb.feature_auth.domain.typealiases.NotAnActualCallbacks
 import com.geektechkb.feature_auth.domain.typealiases.NotAnActualFirebaseAuth
-import com.geektechkb.feature_auth.domain.useCases.authentication.IsUserAuthenticatedUseCase
 import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideAuthenticationCallbacksUseCase
 import com.geektechkb.feature_auth.domain.useCases.authentication.StartPhoneNumberVerificationUseCase
 import com.google.firebase.auth.FirebaseAuth
@@ -16,13 +15,11 @@ import javax.inject.Inject
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
     val firebaseAuth: FirebaseAuth,
-    private val isUserAuthenticatedUseCase: IsUserAuthenticatedUseCase,
     private val provideAuthenticationCallbacksUseCase: ProvideAuthenticationCallbacksUseCase,
     private val startPhoneNumberVerificationUseCase: StartPhoneNumberVerificationUseCase
 ) : BaseViewModel() {
 
 
-    fun signUp() = isUserAuthenticatedUseCase()
     fun provideCallbacks(
         authenticationSucceeded: ((() -> Unit))?,
         authInvalidCredentialsError: ((() -> Unit))?,

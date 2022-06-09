@@ -18,7 +18,7 @@
     <string name="your_phone_number_must_contain_15_digits">Your phone number must contain 12 digits</string>
     <string name="choose_your_name_and_load_an_photo">Введите свое имя и загрузите фотографию</string>
     <string name="surname_unnecessary">Фамилия (необязательно)</string>
-    <string name="name_necessary">Имя(необязательно)</string>
+    <string name="name_necessary">Имя(обязательно)</string>
     <string name="verification_code_was_sent_to_the_entered_phone">Код был отправлен на номер %1$s</string>
     <string name="proceed_russian">Продолжить</string>
     <string name="continue_russian">Далее</string>

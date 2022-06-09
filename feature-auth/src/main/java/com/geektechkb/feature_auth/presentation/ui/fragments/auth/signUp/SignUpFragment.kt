@@ -5,6 +5,7 @@ import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
 import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentSignUpBinding
@@ -90,7 +91,8 @@ class SignUpFragment :
                 tvSeven,
                 tvEight,
                 tvNine,
-                tvZero
+                tvZero,
+                textInputLayout = tlPhone
             )
         }
     }
@@ -112,7 +114,11 @@ class SignUpFragment :
 
     }
 
-    private fun TextInputEditText.setOnDigitsClickListener(vararg digits: TextView) {
+    private fun TextInputEditText.setOnDigitsClickListener(
+        vararg digits: TextView,
+        textInputLayout: TextInputLayout
+    ) {
+
         digits[0].setOnNumericClickListener(this)
         digits[1].setOnNumericClickListener(this)
         digits[2].setOnNumericClickListener(this)
@@ -123,6 +129,9 @@ class SignUpFragment :
         digits[7].setOnNumericClickListener(this)
         digits[8].setOnNumericClickListener(this)
         digits[9].setOnNumericClickListener(this)
+        addTextChangedListenerAnonymously(doSomethingAfterTextChanged = {
+            textInputLayout.error = null
+        })
     }
 
     private fun TextView.setOnNumericClickListener(editText: TextInputEditText) {
@@ -148,6 +157,4 @@ class SignUpFragment :
         )
         addTextChangedListener(maskChangedListener)
     }
-
-
 }

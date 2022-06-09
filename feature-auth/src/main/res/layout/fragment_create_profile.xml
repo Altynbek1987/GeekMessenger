@@ -89,13 +89,16 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/name_necessary"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@id/et_name"
         app:expandedHintEnabled="false"
         app:layout_constraintTop_toBottomOf="@id/gl_til_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="36dp"
             android:gravity="top"
             android:imeOptions="actionDone"

@@ -48,12 +48,12 @@ class VerifyAuthenticationFragment :
         val minute = (timeInSeconds / 1000) / 60
         val seconds = (timeInSeconds / 1000) % 60
         if (seconds <= 9) {
-            "Request the verification code again in 0 $minute:0$seconds".also {
+            "Отправить код заново $minute:0$seconds".also {
                 if (view != null)
                     binding.tvCountDownTimer.text = it
             }
         } else {
-            "Request the verification code again in 0$minute:$seconds".also {
+            "Отправить код заново $minute:$seconds".also {
                 if (view != null) {
                     binding.tvCountDownTimer.text = it
                 }
@@ -369,7 +369,6 @@ class VerifyAuthenticationFragment :
                 credential,
                 requireActivity(),
                 userSuccessfullyVerifiedTheirPhoneNumber = {
-                    viewModel.isUserAuthenticated()
                     findNavController().directionsSafeNavigation(
                         VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment(
                             args.phoneNumber

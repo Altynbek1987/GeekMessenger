@@ -96,6 +96,7 @@
         android:id="@+id/til_first_digit"
         android:layout_width="37dp"
         android:layout_height="37dp"
+        android:focusableInTouchMode="false"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="@id/gl_first_digit_end"

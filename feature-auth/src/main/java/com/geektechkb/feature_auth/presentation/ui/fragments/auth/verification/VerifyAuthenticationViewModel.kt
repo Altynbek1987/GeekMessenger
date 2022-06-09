@@ -3,7 +3,6 @@ package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 import androidx.appcompat.app.AppCompatActivity
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_auth.domain.typealiases.*
-import com.geektechkb.feature_auth.domain.useCases.authentication.IsUserAuthenticatedUseCase
 import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideAuthenticationCallbacksUseCase
 import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideForceResendingTokenUseCase
 import com.geektechkb.feature_auth.domain.useCases.verification.GetVerificationIdUseCase
@@ -25,7 +24,6 @@ class VerifyAuthenticationViewModel @Inject constructor(
     private val signInWithPhoneAuthCredentialUseCase: SignInWithPhoneAuthCredentialUseCase,
     private val getVerificationIdUseCase: GetVerificationIdUseCase,
     private val provideForceResendingTokenUseCase: ProvideForceResendingTokenUseCase,
-    private val isUserAuthenticatedUseCase: IsUserAuthenticatedUseCase,
 ) : BaseViewModel() {
     fun verifyPhoneNumberWithCode(
         verificationId: String,
@@ -87,5 +85,4 @@ class VerifyAuthenticationViewModel @Inject constructor(
     fun getForceResendingToken() =
         provideForceResendingTokenUseCase() as PhoneAuthProvider.ForceResendingToken?
 
-    fun isUserAuthenticated() = isUserAuthenticatedUseCase()
 }
