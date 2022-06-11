@@ -33,19 +33,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp" />
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/start_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#696969"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:cornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gl_button_bottom" />
+
 
 
 </LinearLayout>
