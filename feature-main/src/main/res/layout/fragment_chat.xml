@@ -14,12 +14,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:menu=""
-
-            android:backgroundTint="#4A7CE0" />
-
-
+            android:backgroundTint="#4A7CE0"
+            app:menu="@menu/chat_toolbar_menu" />
     </com.google.android.material.appbar.AppBarLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

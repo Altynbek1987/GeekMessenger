@@ -6,23 +6,27 @@
         android:enabled="true"
         android:icon="@drawable/ic_back"
         android:title="@string/back_russian"
+        android:visible="true"
         app:showAsAction="never" />
     <item
         android:enabled="true"
         android:icon="@drawable/ic_video_call"
         android:title="@string/video_call_russian"
-        app:showAsAction="never"
+        app:showAsAction="collapseActionView"
+        android:visible="true"
 
         />
     <item
         android:enabled="true"
         android:icon="@drawable/ic_clear_chat"
         android:title="@string/clear_chat_russian"
+        android:visible="true"
         app:showAsAction="never" />
     <item
         android:enabled="true"
         android:icon="@drawable/ic_mute"
         android:title="@string/mute_russian"
+        android:visible="true"
         app:showAsAction="never" />
 
 </menu>
