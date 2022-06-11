@@ -376,8 +376,8 @@ class VerifyAuthenticationFragment :
                     )
                     showShortDurationSnackbar("Вы успешно авторизировались!")
                 }, authenticationProcessFailed = {
-
-                    showShortDurationSnackbar("Процесс аутентификации провалился. Повторите еще раз!")
+                    if (attemptsToVerifyPhoneNumberAvailable >= 3)
+                        showShortDurationSnackbar("Процесс аутентификации провалился. Повторите еще раз!")
                 }, ifUserHasEnteredInvalidCredentials = {
                     when (attemptsToVerifyPhoneNumberAvailable) {
                         0 -> findNavController().navigate(
