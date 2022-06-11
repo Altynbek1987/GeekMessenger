@@ -6,47 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.auth.verification.VerifyAuthenticationFragment">
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="50dp" />
+
+        app:layout_constraintGuide_percent="0.07" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_start_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="30dp" />
+        app:layout_constraintGuide_percent="0.07" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_verification_code_was_sent_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="148dp" />
+        app:layout_constraintGuide_percent="0.202" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_verification_code_was_sent_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="36dp" />
+        app:layout_constraintGuide_percent="0.09" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_verification_code_was_sent_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="37dp" />
+        app:layout_constraintGuide_percent="0.91" />
 
 
     <ImageButton
         android:id="@+id/ib_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:background="@color/white"
+        android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="@id/gl_start_back"
         app:layout_constraintTop_toTopOf="@id/gl_back" />
@@ -61,181 +68,280 @@
         app:layout_constraintStart_toStartOf="@id/gl_verification_code_was_sent_start"
         app:layout_constraintTop_toTopOf="@id/gl_verification_code_was_sent_top" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_et_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="204dp" />
+        app:layout_constraintGuide_percent="0.28" />
+
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_et_start"
+        android:id="@+id/gl_first_digit_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="12dp" />
+        app:layout_constraintGuide_percent="0.323" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_et_end"
+        android:id="@+id/gl_digits_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="30dp" />
+        app:layout_constraintGuide_percent="0.11" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_digit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:focusableInTouchMode="false"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toStartOf="@id/gl_et_start"
+        app:layout_constraintEnd_toEndOf="@id/gl_first_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_digits_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_first_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_second_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.22" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_second_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.434" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_second_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_first_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_second_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_second_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_second_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_third_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.333" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_third_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_third_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_second_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_third_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_third_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_third_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
 
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_fourth_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_fourth_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_fourth_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_third_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_fourth_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_fourth_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_fourth_digit"
-            android:layout_width="wrap_content"
-
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_fifth_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.56" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_fifth_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.78" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_fifth_digit"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_fourth_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_fifth_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_fifth_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_fifth_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="20sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_sixth_digit_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.678" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_sixth_digit_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.894" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_sixth_digit"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:layout_constraintStart_toEndOf="@id/til_fifth_digit"
+        app:layout_constraintEnd_toEndOf="@id/gl_sixth_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_sixth_digit_start"
         app:layout_constraintTop_toTopOf="@id/gl_et_top">
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_sixth_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/oval_background"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"
-            android:textSize="22sp" />
+            android:padding="3dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_resend_verification_code_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="440dp" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <TextView
         android:id="@+id/tv_get_verification_code"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Get verification code "
+        android:text="@string/send_verification_code_again"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -255,34 +361,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_get_verification_code" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="344dp" />
+        app:layout_constraintGuide_percent="0.47" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="102dp" />
+        app:layout_constraintGuide_percent="0.245" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_button_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="102dp" />
+        app:layout_constraintGuide_percent="0.756" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
         android:layout_width="156dp"
         android:layout_height="52dp"
         android:backgroundTint="#323232"
-        android:text="Продолжить"
-        app:cornerRadius="20dp"
+        android:text="@string/proceed_russian"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="@id/gl_button_end"
         app:layout_constraintStart_toStartOf="@id/gl_button_start"
         app:layout_constraintTop_toBottomOf="@id/gl_button_top" />
@@ -306,7 +416,7 @@
             android:id="@+id/tv_one"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="1"
+            android:text="@string/one"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -314,7 +424,7 @@
             android:id="@+id/tv_two"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="2"
+            android:text="@string/two"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -322,7 +432,7 @@
             android:id="@+id/tv_three"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="3"
+            android:text="@string/three"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -341,7 +451,7 @@
             android:id="@+id/tv_four"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="4"
+            android:text="@string/four"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -349,7 +459,7 @@
             android:id="@+id/tv_five"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="5"
+            android:text="@string/five"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -357,7 +467,7 @@
             android:id="@+id/tv_six"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="6"
+            android:text="@string/six"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -376,7 +486,7 @@
             android:id="@+id/tv_seven"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="7"
+            android:text="@string/seven"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -384,7 +494,7 @@
             android:id="@+id/tv_eight"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="8"
+            android:text="@string/eight"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -392,7 +502,7 @@
             android:id="@+id/tv_nine"
             android:layout_width="120dp"
             android:layout_height="58dp"
-            android:text="9"
+            android:text="@string/nine"
             android:textAlignment="center"
             android:textSize="29sp" />
 
@@ -402,7 +512,7 @@
         android:id="@+id/tv_zero"
         android:layout_width="120dp"
         android:layout_height="58dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textAlignment="center"
         android:textSize="29sp"
         app:layout_constraintEnd_toEndOf="@id/grid_layout_third_three_digits"
@@ -413,7 +523,8 @@
         android:id="@+id/ib_backspace"
         android:layout_width="120dp"
         android:layout_height="58dp"
-        android:backgroundTint="@color/white"
+        android:background="@color/white"
+        android:contentDescription="@string/button_to_delete_digits_from_edittexts"
         android:src="@drawable/ic_backspace"
         app:layout_constraintStart_toEndOf="@id/tv_zero"
         app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />

@@ -19,7 +19,7 @@ constraint = "2.1.4"
 viewBindingPropertyDelegate = "1.5.6"
 appCompat = "1.4.1"
 splashScreen = "1.0.0-beta01"
-maskedEditText = "1.0.4"
+maskedEditText = "1.0.0"
 #Core
 core = "1.8.0"
 #Activity
@@ -81,8 +81,8 @@ ui-material = { module = "com.google.android.material:material", version.ref = "
 ui-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 ui-constraint = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraint" }
 ui-viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version.ref = "viewBindingPropertyDelegate" }
+ui-maskedEditText = { module = "com.github.santalu:maskara", version.ref = "maskedEditText" }
 ui-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
-ui-maskedEditText = { module = "com.github.pinball83:masked-edittext", version.ref = "maskedEditText" }
 ui-dotsIndicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsIndicator" }
 glide-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 
