@@ -94,7 +94,7 @@ class OnBoardFragment :
             2 -> {
 
                 preferences.hasOnBoardBeenShown = true
-                findNavController().navigate(R.id.action_onBoardFragment_authWithPhoneNumber)
+                findNavController().navigate(R.id.signUpFragment)
             }
 
         }
