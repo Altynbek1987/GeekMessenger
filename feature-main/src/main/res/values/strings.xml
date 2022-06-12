@@ -13,6 +13,7 @@
     <string name="mute_russian">Выключить звук</string>
     <string name="clear_chat_russian">Очистить чат</string>
     <string name="video_call_russian">Видеозвонок</string>
+    <string name="make_call">Make call</string>
 
 
 </resources>

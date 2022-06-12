@@ -30,7 +30,9 @@
         <entry key="feature-auth/src/main/res/layout/fragment_verification_dialog.xml" value="0.19932432432432431" />
         <entry key="feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.24831288655598954" />
         <entry key="feature-auth/src/main/res/layout/item_board.xml" value="0.3088768115942029" />
-        <entry key="feature-main/src/main/res/layout/fragment_chat.xml" value="0.3098958333333333" />
+        <entry key="feature-main/src/main/res/drawable/chat_box_stroke_color_selector.xml" value="0.141" />
+        <entry key="feature-main/src/main/res/layout/app_bar_main.xml" value="0.3098958333333333" />
+        <entry key="feature-main/src/main/res/layout/fragment_chat.xml" value="0.26864258290582166" />
         <entry key="feature-main/src/main/res/menu/chat_toolbar_menu.xml" value="0.30885416666666665" />
         <entry key="feature-main/src/main/res/menu/main_drawer.xml" value="0.3098958333333333" />
       </map>
