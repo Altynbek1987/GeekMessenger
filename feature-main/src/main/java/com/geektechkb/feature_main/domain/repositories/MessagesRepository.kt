@@ -1,8 +1,8 @@
 package com.geektechkb.feature_main.domain.repositories
 
-import com.geektechkb.feature_main.domain.models.SentMessage
+import com.geektechkb.feature_main.domain.models.Message
 
 interface MessagesRepository {
-    fun sendMessage(message: SentMessage)
-    fun getMessages(messages: List<SentMessage>)
+    suspend fun sendMessage(id: String, message: String, timeMessageWasSent: Long)
+    suspend fun fetchMessages(): List<Message>
 }

@@ -456,7 +456,7 @@ class VerifyAuthenticationFragment :
     private fun TextInputEditText.requestFocusOnTheNextDigit(
         editTextToRequestAFocusOn: TextInputEditText
     ) {
-        addTextChangedListenerAnonymously(doSomething = {
+        addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             if (text?.length == 1)
                 editTextToRequestAFocusOn.requestFocus()
         })
