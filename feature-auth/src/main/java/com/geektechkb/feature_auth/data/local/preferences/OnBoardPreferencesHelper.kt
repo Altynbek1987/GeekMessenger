@@ -11,6 +11,4 @@ class OnBoardPreferencesHelper @Inject constructor(private val preferences: Shar
     var hasOnBoardBeenShown: Boolean
         get() = preferences.getBoolean(HAS_ONBOARD_BEEN_SHOWN_KEY, false)
         set(value) = preferences.edit().putBoolean(HAS_ONBOARD_BEEN_SHOWN_KEY, value).apply()
-
-
 }

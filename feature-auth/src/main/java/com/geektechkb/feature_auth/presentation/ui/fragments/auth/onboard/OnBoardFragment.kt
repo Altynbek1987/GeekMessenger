@@ -9,21 +9,22 @@ import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
 import com.geektechkb.feature_auth.databinding.FragmentOnBoardBinding
 import com.geektechkb.feature_auth.presentation.ui.adapter.ViewPagerAdapter
-import com.geektechkb.feature_auth.presentation.ui.model.BoardModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class OnBoardFragment :
-    BaseFragment<FragmentOnBoardBinding, OnBoarViewModel>(R.layout.fragment_on_board) {
+    BaseFragment<FragmentOnBoardBinding, OnBoardViewModel>(R.layout.fragment_on_board) {
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
     override val viewModel: OnBoarViewModel by viewModels()
+    override val viewModel: OnBoardViewModel by viewModels()
+    private var currentPagerItemState: Int? = null
 
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
 
-
     @Inject
     lateinit var preferences: OnBoardPreferencesHelper
+
 
     override fun setupListeners() {
         binding.pager.setOnClickListener {

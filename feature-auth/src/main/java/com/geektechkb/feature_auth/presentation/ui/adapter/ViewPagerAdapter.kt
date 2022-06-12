@@ -7,7 +7,7 @@ import com.geektechkb.core.extensions.gone
 import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.core.extensions.visible
 import com.geektechkb.feature_auth.databinding.ItemBoardBinding
-import com.geektechkb.feature_auth.presentation.ui.model.BoardModel
+import com.geektechkb.feature_auth.presentation.model.BoardModel
 
 class ViewPagerAdapter(val onItemClick: (position: Int) -> Unit) :
     RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {

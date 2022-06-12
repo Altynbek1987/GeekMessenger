@@ -2,7 +2,6 @@ package com.geektechkb.geekmessenger.presentation.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
-        when (userPreferences.isAuthorize) {
+        when (userPreferences.isAuthorized) {
             false -> {
                 navGraph.setStartDestination(R.id.authorizationFlowFragment)
             }

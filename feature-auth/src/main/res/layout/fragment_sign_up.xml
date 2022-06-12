@@ -1,0 +1,320 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.auth.signUp.SignUpFragment">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_enter_phone_number_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_enter_phone_number_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.074" />
+
+    <TextView
+        android:id="@+id/tv_enter_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:text="@string/input_your_phone_number_russian"
+        android:textColor="#323232"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@id/gl_enter_phone_number_bottom"
+        app:layout_constraintStart_toStartOf="@id/gl_enter_phone_number_start"
+        app:layout_constraintTop_toTopOf="@id/gl_enter_phone_number_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_enter_phone_number_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.21" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_country_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.24" />
+
+
+    <ImageView
+        android:id="@+id/im_country"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/image_view_to_show_that_the_developers_of_geekmessenger_are_patriots"
+        android:src="@drawable/flag"
+        app:layout_constraintStart_toStartOf="@id/gl_country"
+        app:layout_constraintTop_toTopOf="@id/gl_text_input_layout" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.83" />
+
+    <ImageButton
+        android:id="@+id/ib_clear_phone_number"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="12dp"
+        android:background="@null"
+        android:contentDescription="@string/button_to_clear_edittext_field"
+        android:src="@drawable/ic_clear"
+        android:translationZ="10dp"
+        app:layout_constraintEnd_toEndOf="@id/gl_clear"
+        app:layout_constraintTop_toTopOf="@id/gl_text_input_layout" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_text_input_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.385" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_til_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.88" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_til_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.24" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_phone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textAlignment="inherit"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="#000000"
+        app:boxStrokeWidth="0.4dp"
+        app:boxStrokeWidthFocused="0.4dp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@id/et_phone"
+        app:expandedHintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="@id/gl_til_bottom"
+        app:layout_constraintEnd_toEndOf="@id/gl_til_end"
+        app:layout_constraintStart_toStartOf="@id/gl_til_start"
+        app:layout_constraintTop_toTopOf="@id/gl_text_input_layout"
+        app:placeholderText=" ___ ___ ___"
+        app:placeholderTextColor="#000000"
+        app:prefixText="+996"
+        app:prefixTextColor="#000000">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:gravity="top"
+            android:maxLength="14"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_til_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_button_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.54" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
+        android:layout_width="156dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#323232"
+        android:text="@string/proceed_russian"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_button_top" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_first_three_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
+
+
+    <GridLayout
+        android:id="@+id/gridLayout_first_three_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_first_three_digits">
+
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/one"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_two"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/two"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_three"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/three"
+            android:textSize="29sp" />
+
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout_second_three_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gridLayout_first_three_digits">
+
+        <TextView
+            android:id="@+id/tv_four"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/four"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_five"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/five"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_six"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/six"
+            android:textSize="29sp" />
+
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/grid_layout_third_three_digits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gridLayout_second_three_digits">
+
+        <TextView
+            android:id="@+id/tv_seven"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/seven"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_eight"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/eight"
+            android:textSize="29sp" />
+
+        <TextView
+            android:id="@+id/tv_nine"
+            android:layout_width="120dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="@string/nine"
+            android:textSize="29sp" />
+
+    </GridLayout>
+
+
+    <TextView
+        android:id="@+id/tv_zero"
+        android:layout_width="120dp"
+        android:layout_height="58dp"
+        android:gravity="center"
+        android:text="@string/zero"
+        android:textSize="29sp"
+        app:layout_constraintEnd_toEndOf="@id/grid_layout_third_three_digits"
+        app:layout_constraintStart_toStartOf="@id/grid_layout_third_three_digits"
+        app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />
+
+    <ImageButton
+        android:id="@+id/ib_backspace"
+        android:layout_width="120dp"
+        android:layout_height="58dp"
+        android:background="@color/white"
+        android:contentDescription="@string/button_to_delete_digits_from_edittexts"
+        android:longClickable="true"
+        android:src="@drawable/ic_backspace"
+        app:layout_constraintStart_toEndOf="@id/tv_zero"
+        app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />
+</androidx.constraintlayout.widget.ConstraintLayout>
