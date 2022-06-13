@@ -1,4 +1,4 @@
-package com.geektechkb.feature_auth.presentation.ui.model
+package com.geektechkb.feature_auth.presentation.model
 
 data class BoardModel(
     val image: Int,
