@@ -9,32 +9,10 @@
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.1703125" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_on_board.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/item_board.xml" value="0.12360688956433637" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17798913043478262" />
-        <entry key="feature-auth/src/main/res/drawable/box_stroke_color_selector.xml" value="0.1" />
-        <entry key="feature-auth/src/main/res/drawable/ic_back.xml" value="0.139" />
-        <entry key="feature-auth/src/main/res/drawable/ic_backspace.xml" value="0.139" />
-        <entry key="feature-auth/src/main/res/drawable/ic_cancel.xml" value="0.139" />
-        <entry key="feature-auth/src/main/res/drawable/icon_profile.xml" value="0.139" />
-        <entry key="feature-auth/src/main/res/drawable/oval.xml" value="0.139" />
-        <entry key="feature-auth/src/main/res/drawable/oval_background.xml" value="0.139" />
-        <entry key="feature-auth/src/main/res/drawable/rounded_custom_dialog_background.xml" value="0.1395" />
-        <entry key="feature-auth/src/main/res/layout/fragment_attempts_to_verify_phone_number_exceeded_dialog.xml" value="0.4671968190854871" />
-        <entry key="feature-auth/src/main/res/layout/fragment_auth_with_phone_number.xml" value="0.15520833333333334" />
-        <entry key="feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.17798913043478262" />
-        <entry key="feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.20669200003811863" />
-        <entry key="feature-auth/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.2947916666666667" />
-        <entry key="feature-auth/src/main/res/layout/fragment_dialog.xml" value="0.15520833333333334" />
-        <entry key="feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.3530659993489585" />
-        <entry key="feature-auth/src/main/res/layout/fragment_profile.xml" value="0.2947916666666667" />
-        <entry key="feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.24335185846176072" />
-        <entry key="feature-auth/src/main/res/layout/fragment_verification_dialog.xml" value="0.19932432432432431" />
-        <entry key="feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.24831288655598954" />
-        <entry key="feature-auth/src/main/res/layout/item_board.xml" value="0.3088768115942029" />
-        <entry key="feature-main/src/main/res/layout/fragment_chat.xml" value="0.3098958333333333" />
-        <entry key="feature-main/src/main/res/menu/chat_toolbar_menu.xml" value="0.30885416666666665" />
-        <entry key="feature-main/src/main/res/menu/main_drawer.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17798913043478262" />
         <entry key="feature-auth/src/main/res/drawable/box_stroke_color_selector.xml" value="0.1" />
         <entry key="feature-auth/src/main/res/drawable/ic_back.xml" value="0.139" />
