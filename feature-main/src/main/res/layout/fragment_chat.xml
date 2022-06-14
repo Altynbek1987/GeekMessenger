@@ -5,10 +5,18 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:background="#D8E4F4"
+    android:background="@drawable/ic_chat_wallpaper"
     tools:context=".presentation.ui.fragments.chat.ChatFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_toolbar_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:backgroundTint="@color/white"
@@ -94,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/amir_ex_loved_one"
+                android:text="Илюха 1love"
                 android:textColor="#2C2C2C"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
@@ -116,6 +124,17 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@id/gl_wallpaper_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom"
+        tools:listitem="@layout/item_sent_message" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_mcv_no_messages_top"
@@ -148,6 +167,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_there_are_no_messages"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:cardBackgroundColor="#8aacd0"
@@ -252,8 +272,18 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.14" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_message"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
@@ -321,7 +351,6 @@
         android:layout_width="0dp"
         android:layout_height="20dp"
         android:layout_marginEnd="18dp"
-        android:clickable="true"
         android:contentDescription="@string/image_view_for_recording_voice_messages"
         android:src="@drawable/ic_microphone"
         app:layout_constraintBottom_toBottomOf="parent"

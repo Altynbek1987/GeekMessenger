@@ -6,6 +6,11 @@ import javax.inject.Inject
 class SendMessageUseCase @Inject constructor(
     private val messagesRepository: MessagesRepository
 ) {
-    suspend operator fun invoke(id: String, message: String, timeMessageWasSent: Long) =
-        messagesRepository.sendMessage(id, message, timeMessageWasSent)
+    suspend operator fun invoke(
+        id: String,
+        receiverPhoneNumber: String,
+        message: String,
+        timeMessageWasSent: String
+    ) =
+        messagesRepository.sendMessage(id, receiverPhoneNumber, message, timeMessageWasSent)
 }

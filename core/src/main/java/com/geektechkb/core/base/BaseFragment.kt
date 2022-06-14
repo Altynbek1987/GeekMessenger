@@ -1,9 +1,7 @@
 package com.geektechkb.core.base
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
@@ -57,7 +55,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
     protected fun <T : Any> Flow<PagingData<T>>.spectatePaging(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
         success: suspend (data: PagingData<T>) -> Unit,
-        error: ((error: String) -> Unit)? = null,
     ) {
         safeFlowGather(lifecycleState) {
             collectLatest {
@@ -66,6 +63,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
             }
         }
     }
+
 
     protected fun <T : Any> StateFlow<UIState<PagingData<T>>>.spectatePagingData(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
