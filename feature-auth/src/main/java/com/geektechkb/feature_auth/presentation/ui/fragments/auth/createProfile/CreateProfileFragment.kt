@@ -46,6 +46,7 @@ class CreateProfileFragment :
                 if (etName.text.isNullOrEmpty() || etName.text.isNullOrBlank()) {
                     etName.error = "Это поле обязательно для заполнения"
                 } else {
+                    viewModel.isUserAuthenticated()
                     lifecycleScope.launch {
 
                         viewModel.authenticateUser(
