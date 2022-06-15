@@ -4,10 +4,10 @@ import android.util.Log
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
-import com.geektechkb.core.extensions.showShortDurationSnackbar
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
@@ -61,6 +61,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override fun setupListeners() {
         sendMessage()
         openEmojiSoftKeyboard()
+        backToHomeFragment()
         binding.btnMessage.setOnClickListener {
             viewModel.sendMessage(
                 "+99655109876",
@@ -69,6 +70,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 Calendar.getInstance().timeInMillis.toString()
             )
         }
+    }
+
+    private fun backToHomeFragment() {
+        binding.imBack.setOnClickListener {
+
+            findNavController().navigate(R.id.homeFragment)
+        }
+
     }
 
 
@@ -85,22 +94,30 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     etMessage.text?.clear()
                 }
             }
+            else -> null
         }
     }
 
     private fun openEmojiSoftKeyboard() {
-        binding.imEmoji.setOnClickListener {
-            val emojiPopUp = EmojiPopup(
-                binding.root,
-                binding.etMessage,
-                keyboardAnimationStyle = com.vanniktech.emoji.google.R.style.emoji_fade_animation_style,
-                onEmojiPopupShownListener = { showShortDurationSnackbar("emoji pop up has been shown") },
-                onEmojiPopupDismissListener = { showShortDurationSnackbar("emoji pop up has been dismissed") },
-            )
-            emojiPopUp.toggle()
-            if (emojiPopUp.isShowing)
-                binding.imEmoji.setImageResource(R.drawable.ic_keyboard)
+        binding.apply {
+            binding.imEmoji.setOnClickListener {
+                val emojiPopUp = EmojiPopup(
+                    root,
+                    etMessage,
+                    popupWindowHeight = 500,
+                    onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
+                    onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
+                )
+                if (!emojiPopUp.isShowing) {
+                    emojiPopUp.toggle()
+                    Log.e("tag", emojiPopUp.isShowing.toString())
+                } else
+                    emojiPopUp.dismiss()
+
+
+            }
         }
+
     }
 
     override fun launchObservers() {
@@ -116,6 +133,4 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             Log.e("TAG", it.toString())
         })
     }
-
-
 }
