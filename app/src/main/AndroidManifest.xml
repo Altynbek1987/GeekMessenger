@@ -14,9 +14,9 @@
         android:theme="@style/Theme.GeekMessenger">
         <activity
             android:name=".presentation.ui.activity.MainActivity"
-            android:configChanges="uiMode"
             android:exported="true"
-            android:theme="@style/splashScreenTheme">
+            android:theme="@style/splashScreenTheme"
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--        <meta-data-->
-        <!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-        <!--            android:value="ca-app-pub-3940256099942544~3347511713" />-->
+
     </application>
 
 </manifest>

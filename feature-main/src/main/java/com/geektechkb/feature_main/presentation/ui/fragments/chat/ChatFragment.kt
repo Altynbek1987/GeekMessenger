@@ -7,9 +7,11 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
+import com.geektechkb.core.extensions.showShortDurationSnackbar
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
+import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -58,6 +60,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun setupListeners() {
         sendMessage()
+        openEmojiSoftKeyboard()
         binding.btnMessage.setOnClickListener {
             viewModel.sendMessage(
                 "+99655109876",
@@ -67,6 +70,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             )
         }
     }
+
 
     private fun sendMessage() = with(binding) {
         when (imMicrophone.drawable) {
@@ -81,6 +85,21 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     etMessage.text?.clear()
                 }
             }
+        }
+    }
+
+    private fun openEmojiSoftKeyboard() {
+        binding.imEmoji.setOnClickListener {
+            val emojiPopUp = EmojiPopup(
+                binding.root,
+                binding.etMessage,
+                keyboardAnimationStyle = com.vanniktech.emoji.google.R.style.emoji_fade_animation_style,
+                onEmojiPopupShownListener = { showShortDurationSnackbar("emoji pop up has been shown") },
+                onEmojiPopupDismissListener = { showShortDurationSnackbar("emoji pop up has been dismissed") },
+            )
+            emojiPopUp.toggle()
+            if (emojiPopUp.isShowing)
+                binding.imEmoji.setImageResource(R.drawable.ic_keyboard)
         }
     }
 
