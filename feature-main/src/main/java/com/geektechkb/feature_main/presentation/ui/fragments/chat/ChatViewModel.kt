@@ -28,9 +28,16 @@ class ChatViewModel @Inject constructor(
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
+    fun fetchPagedMessages(): Flow<PagingData<Message>> {
 
-    fun fetchPagedMessages() =
-        fetchPagedMessagesUseCase().checkPagingDataOf<Message>()
+        fetchPagedMessagesUseCase().apply {
+            this as Flow<PagingData<Message>>
+            this.gatherPagingRequest { }
+            return this
+        }
+    }
+//        fetchPagedMessagesUseCase().checkPagingDataOf<Message>()
 }
 
 @Suppress("UNCHECKED_CAST")

@@ -28,7 +28,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun hideNotificationThatThereAreNoMessages() {
-        if (viewModel.fetchPagedMessages() != null) {
+        if (messagesAdapter.itemCount != null) {
 
             binding.mcvThereAreNoMessages.isVisible = false
         }
@@ -60,35 +60,42 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         sendMessage()
         binding.btnMessage.setOnClickListener {
             viewModel.sendMessage(
-                "+996552109876",
-                "+996552109876",
+                "+99655109876",
+                "+996704190504",
                 binding.etMessage.text.toString(),
                 Calendar.getInstance().timeInMillis.toString()
             )
         }
     }
 
-    private fun sendMessage() {
-        when (binding.imMicrophone.drawable) {
+    private fun sendMessage() = with(binding) {
+        when (imMicrophone.drawable) {
             R.drawable.ic_send_message.toDrawable() -> {
-                binding.imMicrophone.setOnClickListener {
-
-
+                imMicrophone.setOnClickListener {
+                    viewModel.sendMessage(
+                        "+996704190504",
+                        "+996704190504",
+                        etMessage.text.toString(),
+                        Calendar.getInstance().timeInMillis.toString()
+                    )
+                    etMessage.text?.clear()
                 }
             }
         }
     }
 
     override fun launchObservers() {
-        viewModel.fetchPagedMessages()?.spectatePaging(success = {
+        viewModel.fetchPagedMessages().spectatePaging(success = {
             messagesAdapter.submitData(it)
             Log.e("TAG", it.toString())
         })
     }
 
     override fun establishRequest() {
-        viewModel.fetchPagedMessages()
-        Log.e("tag", "fuck")
+        viewModel.fetchPagedMessages().spectatePaging(success = {
+            messagesAdapter.submitData(it)
+            Log.e("TAG", it.toString())
+        })
     }
 
 

@@ -127,12 +127,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/gl_wallpaper_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom"
         tools:listitem="@layout/item_sent_message" />
 
@@ -282,81 +280,135 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_message"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:boxStrokeColor="@drawable/chat_box_stroke_color_selector"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:hintEnabled="false"
+        android:background="@drawable/edit_text_cornered_background"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/gl_wallpaper_bottom">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_emoji_end_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.14" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_message"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:hint="@string/message_russian"
-            android:includeFontPadding="false"
-            android:padding="3dp"
-            android:textColor="@color/black"
-            android:textColorHint="#9F9F9F"
-            android:textDirection="inherit"
-            android:textSize="14sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_message"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@drawable/chat_box_stroke_color_selector"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/gl_emoji_end_edit_text"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:hint="@string/message_russian"
+                android:includeFontPadding="false"
+                android:maxLines="10"
+                android:padding="3dp"
+                android:textColor="@color/black"
+                android:textColorHint="#9F9F9F"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/im_emoji"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/button_for_emoji"
         android:src="@drawable/ic_emoji"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="@id/gl_emoji_end"
         app:layout_constraintStart_toStartOf="@id/gl_emoji_start"
-        app:layout_constraintTop_toTopOf="@id/gl_wallpaper_bottom" />
+        app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_mic_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.91" />
+        app:layout_constraintGuide_percent="0.92" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_camera_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.872" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_camera_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.827" />
+
 
     <ImageView
         android:id="@+id/im_camera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/image_view_to_launch_camera"
         android:src="@drawable/ic_camera"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/gl_mic_start"
-        app:layout_constraintTop_toTopOf="@id/gl_wallpaper_bottom" />
+        app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
+        app:layout_constraintEnd_toEndOf="@id/gl_camera_end"
+        app:layout_constraintStart_toStartOf="@id/gl_camera_start"
+        app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_chat_actions_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.954" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_chat_actions_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.982" />
 
     <ImageView
         android:id="@+id/im_microphone"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="18dp"
+        android:clickable="true"
         android:contentDescription="@string/image_view_for_recording_voice_messages"
+        android:focusable="true"
         android:src="@drawable/ic_microphone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gl_mic_start"
-        app:layout_constraintTop_toTopOf="@id/gl_wallpaper_bottom" />
+        app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
