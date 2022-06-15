@@ -8,6 +8,8 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
+import com.geektechkb.core.extensions.overrideOnBackPressed
+import com.geektechkb.core.extensions.showShortDurationSnackbar
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
@@ -20,6 +22,8 @@ import java.util.*
 class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat) {
     override val binding by viewBinding(FragmentChatBinding::bind)
     private val messagesAdapter = MessagesAdapter()
+    private var isEmojiKeyboardShown = false
+
     override val viewModel: ChatViewModel by viewModels()
 
 
@@ -62,6 +66,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         sendMessage()
         openEmojiSoftKeyboard()
         backToHomeFragment()
+        onBackPressed()
         binding.btnMessage.setOnClickListener {
             viewModel.sendMessage(
                 "+99655109876",
@@ -70,6 +75,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 Calendar.getInstance().timeInMillis.toString()
             )
         }
+    }
+
+    private fun onBackPressed() {
+        overrideOnBackPressed(actionWhenBackButtonPressed = { showShortDurationSnackbar("youve just pressed back button") })
     }
 
     private fun backToHomeFragment() {
@@ -100,22 +109,21 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun openEmojiSoftKeyboard() {
         binding.apply {
+
             binding.imEmoji.setOnClickListener {
                 val emojiPopUp = EmojiPopup(
-                    root,
-                    etMessage,
+                    binding.root,
+                    binding.etMessage,
                     popupWindowHeight = 500,
-                    onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
-                    onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
+                    onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
+
+                    onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
                 )
-                if (!emojiPopUp.isShowing) {
-                    emojiPopUp.toggle()
-                    Log.e("tag", emojiPopUp.isShowing.toString())
-                } else
-                    emojiPopUp.dismiss()
 
-
+                emojiPopUp.toggle()
             }
+
+
         }
 
     }
