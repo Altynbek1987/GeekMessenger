@@ -7,9 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
-import com.geektechkb.core.extensions.overrideOnBackPressed
-import com.geektechkb.core.extensions.showShortDurationSnackbar
+import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
@@ -78,7 +76,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun onBackPressed() {
-        overrideOnBackPressed(actionWhenBackButtonPressed = { showShortDurationSnackbar("youve just pressed back button") })
+        overrideOnBackPressed(actionWhenBackButtonPressed = {
+            if (checkWhetherSoftKeyboardIsOpenedOrNot())
+                hideSoftKeyboard()
+            else {
+                findNavController().navigate(R.id.homeFragment)
+            }
+
+        })
     }
 
     private fun backToHomeFragment() {
