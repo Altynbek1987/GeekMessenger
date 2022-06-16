@@ -53,7 +53,6 @@ class CreateProfileFragment :
                             args.phoneNumber,
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
-                            binding.imProfile.toString()
                         )
                     }
 

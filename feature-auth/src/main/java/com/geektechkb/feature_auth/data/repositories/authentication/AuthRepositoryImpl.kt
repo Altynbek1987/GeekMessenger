@@ -87,42 +87,25 @@ class AuthRepositoryImpl @Inject constructor(
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: String
+        profileImage: NotAnActualUri?,
+        imageFileName: String
     ) {
-        when (profileImage) {
-            profileImage -> addDocument(
-                userRef,
-                hashMapOf(
-                    "phoneNumber" to phoneNumber,
-                    "name" to name,
-                    "surname" to surname,
-                    "profileImage" to profileImage
-                ),
-                phoneNumber
+        addDocument(
+            userRef, hashMapOf(
+                "phoneNumber" to phoneNumber,
+                "name" to name,
+                "surname" to surname,
+                "profileImage" to uploadUncompressedImageOrVoiceMessageToCloudStorage(
+                    cloudStorageRef,
+                    imageFileName as Uri?,
+                    "profileImages",
+                    imageFileName
+                )
             )
-            else -> addDocument(
-                userRef,
-                hashMapOf(
-                    "phoneNumber" to phoneNumber,
-                    "name" to name,
-                    "surname" to surname,
-                    "" to profileImage
-                ),
-                phoneNumber
-            )
-        }
-    }
-
-    override suspend fun uploadImageToCloudStorage(
-        notAnActualUri: NotAnActualUri,
-        id: String?
-    ): String? {
-        return uploadImageToCloudStorage(
-            cloudStorageRef,
-            notAnActualUri as Uri,
-            "profileImages",
-            id
         )
 
+
     }
+
+
 }

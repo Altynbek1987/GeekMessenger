@@ -62,6 +62,4 @@ dependencies {
     // Hilt
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
-
-
 }

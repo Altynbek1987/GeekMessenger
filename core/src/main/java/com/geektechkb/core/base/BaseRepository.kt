@@ -57,7 +57,7 @@ abstract class BaseRepository {
 
     suspend fun addDocument(
         collection: CollectionReference,
-        hashMap: HashMap<String, Any>,
+        hashMap: HashMap<String, Any?>,
         title: String? = null,
     ): Boolean {
         return try {
@@ -84,15 +84,34 @@ abstract class BaseRepository {
             .get()
             .await()
 
-    suspend fun uploadImageToCloudStorage(
+    suspend fun uploadCompressedImageToCloudStorage(
         storageRef: StorageReference,
-        uri: Uri?,
+        file: ByteArray?,
         folderPath: String,
-        id: String?
+        id: String
     ) =
-        uri?.let {
+        file?.let {
             storageRef
                 .child("$folderPath/$id")
+                .putBytes(it)
+                .await()
+                .storage
+                .downloadUrl
+                .await()
+                .toString()
+
+        }
+
+    suspend fun uploadUncompressedImageOrVoiceMessageToCloudStorage(
+        storageRef: StorageReference,
+        file: Uri?,
+        folderPath: String,
+        id: String
+    ) =
+        file?.let {
+            storageRef
+                .child("$folderPath/$id")
+                .child(id)
                 .putFile(it)
                 .await()
                 .storage

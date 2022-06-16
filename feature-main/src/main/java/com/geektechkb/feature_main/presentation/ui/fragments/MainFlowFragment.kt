@@ -47,6 +47,4 @@ class MainFlowFragment : BaseFlowFragment(
             drawerLayout.openDrawer(GravityCompat.START)
         }
     }
-
-
 }

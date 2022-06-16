@@ -23,9 +23,9 @@ interface AuthRepository {
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: String
+        profileImage: NotAnActualUri?,
+        imageFileName: String
     )
 
-    suspend fun uploadImageToCloudStorage(notAnActualUri: NotAnActualUri, id: String?): String?
 
 }

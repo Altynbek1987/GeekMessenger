@@ -13,7 +13,6 @@ plugins {
 
     // Hilt
     id(libs.plugins.hilt.android.get().pluginId)
-
 }
 
 android {
