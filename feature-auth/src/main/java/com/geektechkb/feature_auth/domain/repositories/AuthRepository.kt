@@ -1,9 +1,6 @@
 package com.geektechkb.feature_auth.domain.repositories
 
-import com.geektechkb.core.typealiases.NotAnActualActivity
-import com.geektechkb.core.typealiases.NotAnActualCallbacks
-import com.geektechkb.core.typealiases.NotAnActualFirebaseAuth
-import com.geektechkb.core.typealiases.NotAnActualForceResendingToken
+import com.geektechkb.core.typealiases.*
 
 interface AuthRepository {
 
@@ -29,6 +26,6 @@ interface AuthRepository {
         profileImage: String
     )
 
-    fun uploadImageToCloudStorage()
+    suspend fun uploadImageToCloudStorage(notAnActualUri: NotAnActualUri, id: String?): String?
 
 }

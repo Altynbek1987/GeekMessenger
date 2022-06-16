@@ -53,28 +53,28 @@ dependencies {
     implementation(libs.ui.viewBindingPropertyDelegate)
 
     // Core
-    implementation(libs.android.core)
+    api(libs.android.core)
 
     // Coroutines
-    implementation(libs.coroutines.android)
-    implementation(libs.coroutines.core)
+    api(libs.coroutines.android)
+    api(libs.coroutines.core)
 
     // Lifecycle
-    implementation(libs.bundles.lifecycle)
+    api(libs.bundles.lifecycle)
 
     // Navigation
-    implementation(libs.bundles.navigation)
+    api(libs.bundles.navigation)
 
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
     // Paging 3
-    implementation(libs.paging.paging)
+    api(libs.paging.paging)
 
     //FireBase
-    api(libs.bundles.firebase)
+    api(libs.bundles.firebaseNoAdMobAndCrashlytics)
 
     //Glide
-    implementation(libs.glide.glide)
+    api(libs.glide.glide)
 }

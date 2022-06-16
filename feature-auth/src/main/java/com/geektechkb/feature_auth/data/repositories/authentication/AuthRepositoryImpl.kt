@@ -1,12 +1,14 @@
 package com.geektechkb.feature_auth.data.repositories.authentication
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import com.geektechkb.core.base.BaseRepository
+import com.geektechkb.core.typealiases.NotAnActualActivity
+import com.geektechkb.core.typealiases.NotAnActualCallbacks
+import com.geektechkb.core.typealiases.NotAnActualFirebaseAuth
+import com.geektechkb.core.typealiases.NotAnActualUri
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.domain.repositories.AuthRepository
-import com.geektechkb.feature_auth.domain.typealiases.NotAnActualActivity
-import com.geektechkb.feature_auth.domain.typealiases.NotAnActualCallbacks
-import com.geektechkb.feature_auth.domain.typealiases.NotAnActualFirebaseAuth
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
@@ -109,5 +111,18 @@ class AuthRepositoryImpl @Inject constructor(
                 phoneNumber
             )
         }
+    }
+
+    override suspend fun uploadImageToCloudStorage(
+        notAnActualUri: NotAnActualUri,
+        id: String?
+    ): String? {
+        return uploadImageToCloudStorage(
+            cloudStorageRef,
+            notAnActualUri as Uri,
+            "profileImages",
+            id
+        )
+
     }
 }

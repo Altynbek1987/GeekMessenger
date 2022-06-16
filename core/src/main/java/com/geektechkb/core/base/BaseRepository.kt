@@ -1,5 +1,6 @@
 package com.geektechkb.core.base
 
+import android.net.Uri
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -8,6 +9,7 @@ import com.geektechkb.common.either.Either
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -81,4 +83,24 @@ abstract class BaseRepository {
             .document(id)
             .get()
             .await()
+
+    suspend fun uploadImageToCloudStorage(
+        storageRef: StorageReference,
+        uri: Uri?,
+        folderPath: String,
+        id: String?
+    ) =
+        uri?.let {
+            storageRef
+                .child("$folderPath/$id")
+                .putFile(it)
+                .await()
+                .storage
+                .downloadUrl
+                .await()
+                .toString()
+
+        }
+
+
 }

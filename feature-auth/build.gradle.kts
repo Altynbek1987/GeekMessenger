@@ -57,19 +57,6 @@ dependencies {
     implementation(libs.bundles.uiComponents)
 
 
-    // Core
-
-    implementation(libs.android.core)
-
-    // Coroutines
-    implementation(libs.coroutines.android)
-
-    // Lifecycle
-    implementation(libs.bundles.lifecycle)
-
-    // Navigation
-    implementation(libs.bundles.navigation)
-
     // Hilt
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
@@ -78,6 +65,4 @@ dependencies {
     implementation(platform(libs.firebase.platform))
     implementation(libs.bundles.firebaseNoAdMobAndCrashlytics)
 
-    //Paging 3
-    implementation(libs.paging.paging)
 }
