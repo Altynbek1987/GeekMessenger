@@ -11,14 +11,18 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.storage.FirebaseStorage
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val authorizationPreferences: AuthorizePreferences,
+    private val cloudStorage: FirebaseStorage,
     private val userRef: CollectionReference
 ) : BaseRepository(), AuthRepository {
+    private val cloudStorageRef = cloudStorage.reference
+
     private var forceResendingToken: PhoneAuthProvider.ForceResendingToken? = null
     override fun isUserAuthenticated(): Boolean {
         authorizationPreferences.isAuthorized = firebaseAuth.currentUser != null

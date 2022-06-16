@@ -35,17 +35,5 @@ class MessagesRepositoryImpl @Inject constructor(
     override fun fetchPagedMessages() =
 
         doPagingRequest(MessagePagingSource(messagesRef))
-//        Pager(
-//            config = PagingConfig(
-//                pageSize = 1,
-//                prefetchDistance = 1,
-//                enablePlaceholders = true,
-//                initialLoadSize = 2,
-//                maxSize = Int.MAX_VALUE,
-//                jumpThreshold = Int.MIN_VALUE
-//            ),
-//            pagingSourceFactory = { MessagePagingSource(messagesRef) }
-//        ).flow
-
 
 }

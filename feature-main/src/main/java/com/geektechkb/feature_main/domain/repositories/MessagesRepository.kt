@@ -1,6 +1,6 @@
 package com.geektechkb.feature_main.domain.repositories
 
-import com.geektechkb.feature_main.domain.typeAliases.NotAnActualPagingData
+import com.geektechkb.core.typealiases.NotAnActualPagingData
 
 interface MessagesRepository {
     suspend fun sendMessage(
