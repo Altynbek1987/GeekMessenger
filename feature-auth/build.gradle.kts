@@ -54,9 +54,6 @@ dependencies {
     api(project(":core"))
     implementation(project(":feature-main"))
 
-    // UI Components
-    implementation(libs.bundles.uiComponents)
-
 
     // Hilt
     implementation(libs.bundles.hilt)

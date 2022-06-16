@@ -49,26 +49,10 @@ android {
 dependencies {
     api(project(":common"))
     api(project(":core"))
-    // UI Components
-    implementation(libs.bundles.uiComponents)
-
-    // Core
-    implementation(libs.android.core)
-
-    // Coroutines
-    implementation(libs.coroutines.android)
-
-    // Lifecycle
-    implementation(libs.bundles.lifecycle)
-
-    // Navigation
-    implementation(libs.bundles.navigation)
 
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    //Paging 3
-    implementation(libs.paging.paging)
-    
+
 }

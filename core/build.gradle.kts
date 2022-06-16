@@ -50,7 +50,7 @@ android {
 dependencies {
 
     api(project(":common"))
-    implementation(libs.ui.viewBindingPropertyDelegate)
+    api(libs.bundles.uiComponents)
 
     // Core
     api(libs.android.core)
