@@ -56,4 +56,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
 
+    override fun recreate() {
+        super.recreate()
+        setTheme(R.style.Theme_GeekMessenger)
+
+
+    }
+
+    override fun onRestart() {
+        setTheme(R.style.Theme_GeekMessenger)
+
+        super.onRestart()
+
+    }
+
+
 }

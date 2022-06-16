@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.provider.MediaStore
+import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -53,4 +55,28 @@ fun Fragment.hasPermissionCheckAndRequest(
         }
     }
     return true
+}
+
+fun Fragment.hideSoftKeyboard() {
+    val inputMethodManager =
+        context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
+}
+
+fun Fragment.checkWhetherSoftKeyboardIsOpenedOrNot(): Boolean {
+    val inputMethodManager =
+        context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    return inputMethodManager.isAcceptingText
+
+}
+
+fun Fragment.overrideOnBackPressed(actionWhenBackButtonPressed: () -> Unit) {
+    activity?.onBackPressedDispatcher?.addCallback(
+        requireActivity(),
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                actionWhenBackButtonPressed.invoke()
+            }
+
+        })
 }

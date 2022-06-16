@@ -111,7 +111,8 @@ class VerifyAuthenticationFragment :
                     etFifthDigit,
                     etSixthDigit
                 )
-                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty()) {
+                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty() && viewModel.getVerificationId() != null) {
+
                     signInWithPhoneAuthCredential(
                         viewModel.verifyPhoneNumberWithCode(
                             viewModel.getVerificationId(),
@@ -455,7 +456,7 @@ class VerifyAuthenticationFragment :
     private fun TextInputEditText.requestFocusOnTheNextDigit(
         editTextToRequestAFocusOn: TextInputEditText
     ) {
-        addTextChangedListenerAnonymously(doSomething = {
+        addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             if (text?.length == 1)
                 editTextToRequestAFocusOn.requestFocus()
         })

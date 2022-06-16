@@ -14,13 +14,18 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="#4A7CE0"
+            android:background="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/Theme.NavDraw.PopupOverlay"
-            app:title="GeekMessenger"
             app:titleMarginStart="60dp"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/black" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="120dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/gekmes" />
 
         <ImageButton
             android:id="@+id/toolbar_button"
@@ -29,7 +34,7 @@
             android:layout_height="60dp"
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
-            android:src="@drawable/ic_baseline_format_list_bulleted_24" />
+            android:src="@drawable/burger" />
 
         <ImageButton
             android:id="@+id/toolbar_search"
@@ -38,24 +43,15 @@
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_search" />
+            android:src="@drawable/search" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/all_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            tools:listitem="@layout/item_home" />
 
     </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="home"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

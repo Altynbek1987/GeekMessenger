@@ -21,7 +21,6 @@
             app:titleMarginStart="50dp"
             app:titleTextColor="@color/white" />
 
-
         <ImageButton
             android:id="@+id/toolbar_button"
             style="@style/Widget.AppCompat.Button.Borderless"
