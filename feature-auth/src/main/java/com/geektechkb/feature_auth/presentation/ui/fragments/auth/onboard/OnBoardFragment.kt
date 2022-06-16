@@ -1,6 +1,4 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.onboard
-
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -20,11 +18,8 @@ class OnBoardFragment :
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
     override val viewModel: OnBoardViewModel by viewModels()
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
-
     @Inject
     lateinit var preferences: OnBoardPreferencesHelper
-
-
     override fun setupListeners() {
         binding.pager.setOnClickListener {
             binding.pager.setCurrentItem(binding.pager.currentItem + 1, true)
@@ -33,14 +28,12 @@ class OnBoardFragment :
             if (binding.pager.currentItem == 2) {
                 findNavController().navigate(R.id.action_onBoardFragment_to_signUpFragment)
                 preferences.hasOnBoardBeenShown = true
-                Log.e("tag", preferences.hasOnBoardBeenShown.toString() )
             } else
 
                 binding.pager.setCurrentItem(binding.pager.currentItem + 1, true)
         }
 
     }
-
     override fun assembleViews() {
         if(preferences.hasOnBoardBeenShown) {
             findNavController().navigate(R.id.signUpFragment)
@@ -49,7 +42,6 @@ class OnBoardFragment :
         changeButtonTextDependingOnPagerCurrentItem()
 
     }
-
     private fun changeButtonTextDependingOnPagerCurrentItem() {
         binding.pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -65,7 +57,6 @@ class OnBoardFragment :
         binding.pager.adapter = viewPagerAdapter
         viewPagerAdapter.setData(getBoardList())
         binding.dotsIndicator.attachTo(binding.pager)
-
     }
 
     private fun getBoardList(): ArrayList<BoardModel> {
@@ -73,8 +64,7 @@ class OnBoardFragment :
         list.add(
             BoardModel(
                 R.drawable.ic_group_24,
-                "GeekMessage",
-                "Добро пожаловать в GeekMessenger",
+                "GeekMessage", "Добро пожаловать в GeekMessenger",
             )
         )
         list.add(
@@ -89,7 +79,6 @@ class OnBoardFragment :
                 "Скорее нажимай на кнопку",
             )
         )
-
         return list
     }
 
@@ -103,13 +92,7 @@ class OnBoardFragment :
             }
             2 -> {
                 findNavController().navigate(R.id.action_onBoardFragment_to_signUpFragment)
-
             }
-
         }
-
-
     }
-
-
 }
