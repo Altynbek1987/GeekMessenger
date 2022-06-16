@@ -46,11 +46,12 @@
             android:src="@drawable/search" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/all_message"
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
-            tools:listitem="@layout/item_home" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_user" />
 
     </RelativeLayout>
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@+id/homeFragment">
+    app:startDestination="@+id/chatFragment">
 
     <fragment
         android:id="@+id/nav_groups"
@@ -26,10 +26,19 @@
         android:id="@+id/homeFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.chat.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat">
+        <argument
+            android:name="phoneNumber"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

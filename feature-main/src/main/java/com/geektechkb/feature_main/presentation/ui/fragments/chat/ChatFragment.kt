@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.*
@@ -13,6 +15,7 @@ import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.util.*
 
 
@@ -20,9 +23,8 @@ import java.util.*
 class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat) {
     override val binding by viewBinding(FragmentChatBinding::bind)
     private val messagesAdapter = MessagesAdapter()
-    private var isEmojiKeyboardShown = false
-
     override val viewModel: ChatViewModel by viewModels()
+    private val args: ChatFragmentArgs by navArgs()
 
 
     override fun assembleViews() {
@@ -133,17 +135,38 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     }
 
+    override fun establishRequest() {
+        fetchUser()
+
+    }
+
+    private fun fetchUser() {
+        lifecycleScope.launch {
+            viewModel.fetchUser("+996552109876")
+        }
+    }
+
+
     override fun launchObservers() {
+        subscribeToMessages()
+        subscribeToUser()
+
+
+    }
+
+    private fun subscribeToUser() {
+        viewModel.userState.spectateUiState(success = {
+            binding.imProfile.loadImageWithGlide(it.profileImage)
+            binding.tvUsername.text = it.name
+        })
+    }
+
+    private fun subscribeToMessages() {
         viewModel.fetchPagedMessages().spectatePaging(success = {
             messagesAdapter.submitData(it)
             Log.e("TAG", it.toString())
         })
     }
 
-    override fun establishRequest() {
-        viewModel.fetchPagedMessages().spectatePaging(success = {
-            messagesAdapter.submitData(it)
-            Log.e("TAG", it.toString())
-        })
-    }
+
 }
