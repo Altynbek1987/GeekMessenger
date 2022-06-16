@@ -53,6 +53,7 @@ dependencies {
     api(project(":common"))
     api(project(":core"))
     implementation(project(":feature-main"))
+
     // UI Components
     implementation(libs.bundles.uiComponents)
 
@@ -61,8 +62,5 @@ dependencies {
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
 
-    // Firebase
-    implementation(platform(libs.firebase.platform))
-    implementation(libs.bundles.firebaseNoAdMobAndCrashlytics)
 
 }

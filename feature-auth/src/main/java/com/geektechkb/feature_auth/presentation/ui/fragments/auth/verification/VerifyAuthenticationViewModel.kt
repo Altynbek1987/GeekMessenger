@@ -2,7 +2,7 @@ package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
 import androidx.appcompat.app.AppCompatActivity
 import com.geektechkb.core.base.BaseViewModel
-import com.geektechkb.feature_auth.domain.typealiases.*
+import com.geektechkb.core.typealiases.*
 import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideAuthenticationCallbacksUseCase
 import com.geektechkb.feature_auth.domain.useCases.authentication.ProvideForceResendingTokenUseCase
 import com.geektechkb.feature_auth.domain.useCases.verification.GetVerificationIdUseCase

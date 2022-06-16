@@ -2,9 +2,9 @@ package com.geektechkb.feature_auth.data.repositories.authentication
 
 import androidx.appcompat.app.AppCompatActivity
 import com.geektechkb.core.base.BaseRepository
+import com.geektechkb.core.typealiases.*
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.domain.repositories.CodeVerificationRepository
-import com.geektechkb.feature_auth.domain.typealiases.*
 import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject

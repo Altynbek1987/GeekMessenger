@@ -74,6 +74,7 @@ dependencies {
 
     //FireBase
     api(libs.bundles.firebaseNoAdMobAndCrashlytics)
+    api(platform(libs.firebase.platform))
 
     //Glide
     api(libs.glide.glide)

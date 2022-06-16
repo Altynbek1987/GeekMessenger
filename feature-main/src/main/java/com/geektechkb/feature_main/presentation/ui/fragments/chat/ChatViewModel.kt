@@ -3,9 +3,9 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.geektechkb.core.base.BaseViewModel
+import com.geektechkb.core.typealiases.NotAnActualPagingData
 import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.domain.models.User
-import com.geektechkb.feature_main.domain.typeAliases.NotAnActualPagingData
 import com.geektechkb.feature_main.domain.useCases.FetchPagedMessagesUseCase
 import com.geektechkb.feature_main.domain.useCases.FetchUserUseCase
 import com.geektechkb.feature_main.domain.useCases.SendMessageUseCase
