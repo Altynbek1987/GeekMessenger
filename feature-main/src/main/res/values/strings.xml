@@ -9,6 +9,10 @@
     <string name="menu_calls">Звонки</string>
     <string name="menu_settings">Настройки</string>
     <string name="menu_profile">Профиль</string>
+    <string name="back_russian">Назад</string>
+    <string name="mute_russian">Выключить звук</string>
+    <string name="clear_chat_russian">Очистить чат</string>
+    <string name="video_call_russian">Видеозвонок</string>
 
 
 </resources>

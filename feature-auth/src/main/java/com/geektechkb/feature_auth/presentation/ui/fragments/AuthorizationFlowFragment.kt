@@ -1,7 +1,9 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments
 
 import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.geektechkb.core.base.BaseFlowFragment
+import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,10 +21,10 @@ class AuthorizationFlowFragment : BaseFlowFragment(
 
         when (onBoardPreferencesHelper.hasOnBoardBeenShown) {
             false -> {
-                navController.navigate(R.id.onBoardFragment)
+                navController.navigateSafely(R.id.onBoardFragment)
             }
             else -> {
-                navController.navigateUp()
+                findNavController().navigateUp()
             }
         }
     }

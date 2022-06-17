@@ -21,6 +21,7 @@
             app:titleMarginStart="60dp"
             app:titleTextColor="@color/white" />
 
+
         <ImageButton
             android:id="@+id/toolbar_button"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -30,16 +31,17 @@
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_baseline_format_list_bulleted_24" />
 
-        <ImageButton
-            android:id="@+id/toolbar_search"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="35dp"
-            android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_search" />
+            <ImageButton
+                android:id="@+id/toolbar_search"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="35dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_search" />
 
     </RelativeLayout>
+
 
     <TextView
         android:id="@+id/text_home"

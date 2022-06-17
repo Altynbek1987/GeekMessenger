@@ -5,7 +5,6 @@
     android:id="@+id/main_graph"
     app:startDestination="@+id/homeFragment">
 
-
     <fragment
         android:id="@+id/nav_groups"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.group.GroupFragment"
@@ -27,8 +26,13 @@
         android:id="@+id/homeFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_connection_check" >
-        <action
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+    <action
             android:id="@+id/action_homeFragment_to_connectionCheckFragment"
             app:destination="@id/connectionCheckFragment" />
     </fragment>
