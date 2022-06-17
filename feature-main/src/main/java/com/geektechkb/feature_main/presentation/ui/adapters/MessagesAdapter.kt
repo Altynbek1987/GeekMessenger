@@ -55,7 +55,7 @@ class MessagesAdapter :
 
     override fun getItemViewType(position: Int): Int {
         return when {
-            getItem(position)?.id.equals(getItem(position)?.id) -> {
+            getItem(position)?.phoneNumber.equals(getItem(position)?.phoneNumber) -> {
                 R.layout.item_sent_message
             }
             else -> {

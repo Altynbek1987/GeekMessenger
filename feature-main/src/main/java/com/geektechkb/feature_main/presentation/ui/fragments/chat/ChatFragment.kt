@@ -24,7 +24,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override val binding by viewBinding(FragmentChatBinding::bind)
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
-    private var isEmojiKeyboardShown = false
     private val args: ChatFragmentArgs by navArgs()
 
 
@@ -80,9 +79,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun onBackPressed() {
         overrideOnBackPressed(actionWhenBackButtonPressed = {
-            if (checkWhetherSoftKeyboardIsOpenedOrNot())
+            if (checkWhetherSoftKeyboardIsOpenedOrNot()) {
                 hideSoftKeyboard()
-            else {
+            } else {
                 findNavController().navigate(R.id.homeFragment)
             }
 
@@ -126,12 +125,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
             )
             binding.imEmoji.setOnSingleClickListener {
-
                 emojiPopUp.toggle()
-
             }
-
-
         }
 
     }
@@ -143,7 +138,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun fetchUser() {
         lifecycleScope.launch {
-            viewModel.fetchUser("+996552109876")
+            viewModel.fetchUser("1289")
         }
     }
 
@@ -168,6 +163,4 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             Log.e("TAG", it.toString())
         })
     }
-
-
 }

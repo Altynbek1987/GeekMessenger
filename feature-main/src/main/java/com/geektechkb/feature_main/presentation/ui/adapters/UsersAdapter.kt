@@ -33,7 +33,7 @@ class UsersAdapter(private val onItemClick: ((phoneNumber: String?) -> Unit)? = 
             binding.tvUsername.text = user.name
             binding.imProfile.loadImageWithGlide(user.profileImage)
             binding.root.setOnClickListener {
-                onItemClick?.let { it1 -> it1(user.id) }
+                onItemClick?.let { it1 -> it1(user.phoneNumber) }
             }
 
         }
