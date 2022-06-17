@@ -1,6 +1,5 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
-import android.util.Log
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -12,11 +11,13 @@ import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SE
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
+import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -25,6 +26,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var usersPreferencesHelper: UserPreferencesHelper
 
 
     override fun assembleViews() {
@@ -89,7 +93,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun sendMessage() = with(binding) {
         imSendMessage.setOnSingleClickListener {
             viewModel.sendMessage(
-                "+996704190504",
+                usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
                 formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT)
@@ -125,7 +129,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun fetchUser() {
         lifecycleScope.launch {
             args.phoneNumber?.let { viewModel.fetchUser(it) }
-            Log.e("gayPop", args.phoneNumber.toString())
         }
     }
 

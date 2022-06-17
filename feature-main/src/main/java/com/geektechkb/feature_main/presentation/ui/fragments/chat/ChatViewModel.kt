@@ -19,7 +19,7 @@ import javax.inject.Inject
 class ChatViewModel @Inject constructor(
     private val sendMessageUseCase: SendMessageUseCase,
     private val fetchPagedMessagesUseCase: FetchPagedMessagesUseCase,
-    private val fetchUserUseCase: FetchUserUseCase
+    private val fetchUserUseCase: FetchUserUseCase,
 ) : BaseViewModel() {
     private val _userState = mutableUiStateFlow<User>()
     val userState = _userState.asStateFlow()

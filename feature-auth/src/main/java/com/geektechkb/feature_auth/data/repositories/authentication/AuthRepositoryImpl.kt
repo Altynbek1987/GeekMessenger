@@ -15,6 +15,7 @@ import com.geektechkb.core.typealiases.NotAnActualFirebaseAuth
 import com.geektechkb.core.typealiases.NotAnActualUri
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.domain.repositories.AuthRepository
+import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
@@ -26,6 +27,7 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val authorizationPreferences: AuthorizePreferences,
+    private val userPreferencesHelper: UserPreferencesHelper,
     firebaseFirestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
 
@@ -98,6 +100,7 @@ class AuthRepositoryImpl @Inject constructor(
         profileImage: NotAnActualUri?,
         imageFileName: String
     ) {
+        userPreferencesHelper.currentUserPhoneNumber = phoneNumber.trim()
         addDocument(
             usersRef, hashMapOf(
                 FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
