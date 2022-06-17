@@ -1,29 +1,31 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.home
 
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.data.repositories.UsersRepositoryImpl
 import com.geektechkb.feature_main.domain.models.User
-import com.geektechkb.feature_main.domain.useCases.FetchPagedUseCase
+import com.geektechkb.feature_main.domain.useCases.FetchPagedUsersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val fetchUsersUseCase: FetchPagedUseCase,
+    private val fetchPagedUsersUseCase: FetchPagedUsersUseCase,
     private val usersRepositoryImpl: UsersRepositoryImpl
 ) : BaseViewModel() {
-    private val _fetch  = mutableUiStateFlow<List<User>>()
-    val fetch=  _fetch.asStateFlow()
-    fun fetchPagedUsers() = usersRepositoryImpl.fetchPagedUsersr().cachedIn(viewModelScope)
+    fun fetchPagedUsers(): Flow<PagingData<User>> {
+        val pagedUsers = fetchPagedUsersUseCase() as Flow<PagingData<User>>
+        return pagedUsers.cachedIn(viewModelScope)
+
+    }
 
     init {
-        fetch()
+        fetchPagedUsers()
+
     }
-    fun fetch() {
-        usersRepositoryImpl.fetchIng().gatherRequest(_fetch)
-    }
+
+
 }

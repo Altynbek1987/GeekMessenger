@@ -3,12 +3,10 @@ package com.geektechkb.core.base
 import android.net.Uri
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import com.geektechkb.common.either.Either
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -32,22 +30,23 @@ abstract class BaseRepository {
     }
 
 
-    protected fun <T : Any> doPagingRequest(
-        pagingSource: PagingSource<QuerySnapshot, T>,
-
-        ) = flow<PagingData<T>> {
+    protected fun <Key : Any, Model : Any> doPagingRequest(
+        pagingSource: PagingSource<Key, Model>,
+    ) =
         Pager(
             PagingConfig(
-                pageSize = 1, initialLoadSize = 1, prefetchDistance = 1,
+                pageSize = 1,
+                prefetchDistance = 1,
                 enablePlaceholders = true,
+                initialLoadSize = 2,
                 maxSize = Int.MAX_VALUE,
                 jumpThreshold = Int.MIN_VALUE
+
             ),
             pagingSourceFactory = {
                 pagingSource
             }
         ).flow
-    }
 
 
     suspend inline fun <reified T> fetchList(collection: CollectionReference) =
