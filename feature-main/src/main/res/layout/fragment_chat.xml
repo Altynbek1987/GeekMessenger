@@ -271,15 +271,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.12" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -413,10 +404,23 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="18dp"
-        android:clickable="true"
+        android:background="@null"
         android:contentDescription="@string/image_view_for_recording_voice_messages"
-        android:focusable="true"
         android:src="@drawable/ic_microphone"
+        app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gl_mic_start"
+        app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
+
+    <ImageView
+        android:id="@+id/im_send_message"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="18dp"
+        android:background="@null"
+        android:contentDescription="@string/button_to_send_message"
+        android:src="@drawable/ic_send_message"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gl_mic_start"

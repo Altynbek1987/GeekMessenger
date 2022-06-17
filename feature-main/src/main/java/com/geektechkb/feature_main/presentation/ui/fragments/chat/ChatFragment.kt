@@ -1,7 +1,7 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.util.Log
-import androidx.core.graphics.drawable.toDrawable
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -34,7 +34,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun hideNotificationThatThereAreNoMessages() {
-        if (messagesAdapter.itemCount != null) {
+        if (messagesAdapter.itemCount == 0) {
 
             binding.mcvThereAreNoMessages.isVisible = false
         }
@@ -45,21 +45,21 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         binding.recyclerview.adapter = messagesAdapter
     }
 
-    private fun hideCameraIconAndChangeMicrophoneToSendWhenUserInputMessage() {
-        binding.etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
-            when (binding.etMessage.text?.length) {
+    private fun hideCameraIconAndChangeMicrophoneToSendWhenUserInputMessage() = with(binding) {
+        etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
+            when (etMessage.text?.length) {
                 0 -> {
-                    binding.imMicrophone.setImageResource(R.drawable.ic_microphone)
-                    binding.imCamera.isVisible = true
+                    imMicrophone.isGone = false
+                    imSendMessage.isGone = true
+                    imCamera.isVisible = true
                 }
                 else -> {
-                    binding.imMicrophone.setImageResource(R.drawable.ic_send_message)
-                    binding.imCamera.isVisible = false
+                    imMicrophone.isGone = true
+                    imSendMessage.isGone = false
+                    imCamera.isVisible = false
                 }
             }
         })
-
-
     }
 
     override fun setupListeners() {
@@ -67,16 +67,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         openEmojiSoftKeyboard()
         backToHomeFragment()
         onBackPressed()
-        binding.btnMessage.setOnClickListener {
-            args.phoneNumber?.let { it1 ->
-                viewModel.sendMessage(
-                    "+996552109876",
-                    it1,
-                    binding.etMessage.text.toString(),
-                    formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT)
-                )
-            }
-        }
     }
 
     private fun onBackPressed() {
@@ -84,36 +74,30 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             if (checkWhetherSoftKeyboardIsOpenedOrNot()) {
                 hideSoftKeyboard()
             } else {
-                findNavController().navigateUp()
+                findNavController().navigate(R.id.homeFragment)
             }
 
         })
     }
 
     private fun backToHomeFragment() {
-        binding.imBack.setOnClickListener {
-
+        binding.imBack.setOnSingleClickListener {
             findNavController().navigate(R.id.homeFragment)
         }
-
     }
 
-
     private fun sendMessage() = with(binding) {
-        when (imMicrophone.drawable) {
-            R.drawable.ic_send_message.toDrawable() -> {
-                imMicrophone.setOnClickListener {
-                    viewModel.sendMessage(
-                        "+996704190504",
-                        "+996704190504",
-                        etMessage.text.toString(),
-                        formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT)
-                    )
-                    etMessage.text?.clear()
-                }
-            }
-            else -> null
+        imSendMessage.setOnSingleClickListener {
+            viewModel.sendMessage(
+                "+996704190504",
+                args.phoneNumber.toString(),
+                etMessage.text.toString(),
+                formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT)
+            )
+            etMessage.text?.clear()
+
         }
+
     }
 
     private fun openEmojiSoftKeyboard() {

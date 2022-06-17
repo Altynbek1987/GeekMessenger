@@ -3,6 +3,7 @@ package com.geektechkb.feature_auth.data.repositories.authentication
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH
+import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_USERS_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
@@ -17,7 +18,7 @@ import com.geektechkb.feature_auth.domain.repositories.AuthRepository
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
-import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -25,9 +26,11 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val authorizationPreferences: AuthorizePreferences,
+    firebaseFirestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
-    private val userRef: CollectionReference
-) : BaseRepository(), AuthRepository {
+
+    ) : BaseRepository(), AuthRepository {
+    private val usersRef = firebaseFirestore.collection(FIREBASE_FIRESTORE_USERS_COLLECTION_PATH)
     private val cloudStorageRef = cloudStorage.reference
 
     private var forceResendingToken: PhoneAuthProvider.ForceResendingToken? = null
@@ -96,7 +99,7 @@ class AuthRepositoryImpl @Inject constructor(
         imageFileName: String
     ) {
         addDocument(
-            userRef, hashMapOf(
+            usersRef, hashMapOf(
                 FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
                 FIREBASE_USER_NAME_KEY to name,
                 FIREBASE_USER_SURNAME_KEY to surname,
