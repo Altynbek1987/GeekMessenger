@@ -34,7 +34,7 @@ class CodeVerificationRepositoryImpl @Inject constructor(
     ) {
         val optionsBuilder = PhoneAuthOptions.newBuilder(notAnActualFirebaseAuth as FirebaseAuth)
             .setPhoneNumber(phoneNumber)
-            .setTimeout(60L, TimeUnit.SECONDS)
+            .setTimeout(120L, TimeUnit.SECONDS)
             .setActivity(notAnActualActivity as AppCompatActivity)
             .setCallbacks(notAnActualCallbacks as PhoneAuthProvider.OnVerificationStateChangedCallbacks)
 

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.viewbinding.ViewBinding
+import com.geektechkb.common.constants.Constants.HOURS_MINUTES_DATE_FORMAT
 import com.geektechkb.core.base.BaseDiffUtil
 import com.geektechkb.core.base.BaseRecyclerViewHolder
 import com.geektechkb.core.extensions.formatCurrentUserTime
@@ -77,7 +78,7 @@ class MessagesAdapter :
         BaseRecyclerViewHolder<ItemSentMessageBinding, Message>(binding) {
         override fun onBind(item: Message) {
             binding.tvMessage.text = item.message
-            binding.tvTimeMessageWasSent.text = formatCurrentUserTime("HH:mm")
+            binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
         }
     }
 
@@ -85,7 +86,8 @@ class MessagesAdapter :
         BaseRecyclerViewHolder<ItemReceivedMessageBinding, Message>(binding) {
         override fun onBind(item: Message) {
             binding.tvMessage.text = item.message
-            binding.tvTimeMessageWasSent.text = formatCurrentUserTime("HH:mm")
+            binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
+
         }
 
     }

@@ -23,6 +23,7 @@ class ChatViewModel @Inject constructor(
 ) : BaseViewModel() {
     private val _userState = mutableUiStateFlow<User>()
     val userState = _userState.asStateFlow()
+
     fun sendMessage(
         id: String,
         receiverPhoneNumber: String,

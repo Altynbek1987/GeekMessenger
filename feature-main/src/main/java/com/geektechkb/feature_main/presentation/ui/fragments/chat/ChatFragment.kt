@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
@@ -72,7 +73,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     "+996552109876",
                     it1,
                     binding.etMessage.text.toString(),
-                    getCurrentUserTime("yyyy-MM-dd-HH:mm:ss")
+                    formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT)
                 )
             }
         }
@@ -106,7 +107,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         "+996704190504",
                         "+996704190504",
                         etMessage.text.toString(),
-                        getCurrentUserTime("yyyy-MM-dd-HH:mm:ss")
+                        formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT)
                     )
                     etMessage.text?.clear()
                 }
