@@ -84,6 +84,25 @@ abstract class BaseRepository {
             .get()
             .await()
 
+    suspend fun uploadUncompressedImageToCloudStorage(
+        storageRef: StorageReference,
+        file: Uri?,
+        folderPath: String,
+        id: String
+    ) =
+        file?.let {
+            storageRef
+                .child("$folderPath/$id")
+                .putFile(it)
+                .await()
+                .storage
+                .downloadUrl
+                .await()
+                .toString()
+
+        }
+
+
     suspend fun uploadCompressedImageToCloudStorage(
         storageRef: StorageReference,
         file: ByteArray?,
@@ -102,7 +121,8 @@ abstract class BaseRepository {
 
         }
 
-    suspend fun uploadUncompressedImageOrVoiceMessageToCloudStorage(
+
+    suspend fun uploadVoiceMessageToCloudStorage(
         storageRef: StorageReference,
         file: Uri?,
         folderPath: String,

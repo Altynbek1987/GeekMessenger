@@ -24,6 +24,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override val binding by viewBinding(FragmentChatBinding::bind)
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
+    private var isEmojiKeyboardShown = false
     private val args: ChatFragmentArgs by navArgs()
 
 
@@ -115,19 +116,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun openEmojiSoftKeyboard() {
+
         binding.apply {
 
-            binding.imEmoji.setOnClickListener {
-                val emojiPopUp = EmojiPopup(
-                    binding.root,
-                    binding.etMessage,
-                    popupWindowHeight = 500,
-                    onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
-
-                    onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
-                )
+            val emojiPopUp = EmojiPopup(
+                root,
+                binding.etMessage,
+                onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
+                onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
+            )
+            binding.imEmoji.setOnSingleClickListener {
 
                 emojiPopUp.toggle()
+
             }
 
 

@@ -20,7 +20,7 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val authorizationPreferences: AuthorizePreferences,
-    private val cloudStorage: FirebaseStorage,
+    cloudStorage: FirebaseStorage,
     private val userRef: CollectionReference
 ) : BaseRepository(), AuthRepository {
     private val cloudStorageRef = cloudStorage.reference
@@ -95,15 +95,14 @@ class AuthRepositoryImpl @Inject constructor(
                 "phoneNumber" to phoneNumber,
                 "name" to name,
                 "surname" to surname,
-                "profileImage" to uploadUncompressedImageOrVoiceMessageToCloudStorage(
+                "profileImage" to uploadUncompressedImageToCloudStorage(
                     cloudStorageRef,
-                    imageFileName as Uri?,
+                    profileImage as Uri?,
                     "profileImages",
                     imageFileName
-                )
+                ).toString()
             )
         )
-
 
     }
 

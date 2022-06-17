@@ -18,6 +18,7 @@ import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentCreateProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.*
 
 @AndroidEntryPoint
 class CreateProfileFragment :
@@ -53,6 +54,8 @@ class CreateProfileFragment :
                             args.phoneNumber,
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
+                            uri,
+                            UUID.randomUUID().toString().substring(0, 15)
                         )
                     }
 

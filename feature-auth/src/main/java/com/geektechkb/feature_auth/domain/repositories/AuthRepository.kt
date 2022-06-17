@@ -26,6 +26,4 @@ interface AuthRepository {
         profileImage: NotAnActualUri?,
         imageFileName: String
     )
-
-
 }
