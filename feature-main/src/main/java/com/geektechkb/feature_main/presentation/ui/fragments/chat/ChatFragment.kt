@@ -16,7 +16,6 @@ import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.util.*
 
 
 @AndroidEntryPoint
@@ -68,12 +67,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         backToHomeFragment()
         onBackPressed()
         binding.btnMessage.setOnClickListener {
-            viewModel.sendMessage(
-                "+99655109876",
-                "+996704190504",
-                binding.etMessage.text.toString(),
-                Calendar.getInstance().timeInMillis.toString()
-            )
+            args.phoneNumber?.let { it1 ->
+                viewModel.sendMessage(
+                    "+996552109876",
+                    it1,
+                    binding.etMessage.text.toString(),
+                    getCurrentUserTime("yyyy-MM-dd-HH:mm:ss")
+                )
+            }
         }
     }
 
@@ -82,7 +83,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             if (checkWhetherSoftKeyboardIsOpenedOrNot()) {
                 hideSoftKeyboard()
             } else {
-                findNavController().navigate(R.id.homeFragment)
+                findNavController().navigateUp()
             }
 
         })
@@ -105,7 +106,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         "+996704190504",
                         "+996704190504",
                         etMessage.text.toString(),
-                        Calendar.getInstance().timeInMillis.toString()
+                        getCurrentUserTime("yyyy-MM-dd-HH:mm:ss")
                     )
                     etMessage.text?.clear()
                 }
@@ -138,7 +139,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun fetchUser() {
         lifecycleScope.launch {
-            viewModel.fetchUser("1289")
+            args.phoneNumber?.let { viewModel.fetchUser(it) }
+            Log.e("gayPop", args.phoneNumber.toString())
         }
     }
 
@@ -160,7 +162,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewModel.fetchPagedMessages().spectatePaging(success = {
             messagesAdapter.submitData(it)
-            Log.e("TAG", it.toString())
         })
     }
 }

@@ -2,8 +2,8 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.geektechkb.core.base.BaseViewModel
-import com.geektechkb.core.typealiases.NotAnActualPagingData
 import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.useCases.FetchPagedMessagesUseCase
@@ -36,12 +36,8 @@ class ChatViewModel @Inject constructor(
 
     @Suppress("UNCHECKED_CAST")
     fun fetchPagedMessages(): Flow<PagingData<Message>> {
-
-        fetchPagedMessagesUseCase().apply {
-            this as Flow<PagingData<Message>>
-            this.gatherPagingRequest { }
-            return this
-        }
+        val pagedMessages = fetchPagedMessagesUseCase() as Flow<PagingData<Message>>
+        return pagedMessages.cachedIn(viewModelScope)
     }
 
     suspend fun fetchUser(phoneNumber: String) =
@@ -52,10 +48,3 @@ class ChatViewModel @Inject constructor(
         fetchPagedMessages()
     }
 }
-
-
-@Suppress("UNCHECKED_CAST")
-inline fun <reified T : Any> NotAnActualPagingData.checkPagingDataOf() =
-    if (this is List<*> && this.all { it is T }) {
-        this as Flow<PagingData<T>>
-    } else null

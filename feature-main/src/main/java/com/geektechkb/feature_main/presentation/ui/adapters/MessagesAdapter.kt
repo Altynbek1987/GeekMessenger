@@ -3,19 +3,24 @@ package com.geektechkb.feature_main.presentation.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.geektechkb.core.base.BaseDiffUtil
+import com.geektechkb.core.base.BaseRecyclerViewHolder
+import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.ItemReceivedMessageBinding
 import com.geektechkb.feature_main.databinding.ItemSentMessageBinding
 import com.geektechkb.feature_main.domain.models.Message
 
 class MessagesAdapter :
-    PagingDataAdapter<Message, RecyclerView.ViewHolder>(BaseDiffUtil()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    PagingDataAdapter<Message, BaseRecyclerViewHolder<ViewBinding, Message>>(BaseDiffUtil()) {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): BaseRecyclerViewHolder<ViewBinding, Message> {
         return when (viewType) {
 
-            MESSAGE_SENT -> {
+            R.layout.item_sent_message -> {
                 MessageSentViewHolder(
                     ItemSentMessageBinding.inflate(
                         LayoutInflater.from(parent.context),
@@ -39,7 +44,10 @@ class MessagesAdapter :
     }
 
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: BaseRecyclerViewHolder<ViewBinding, Message>,
+        position: Int
+    ) {
         when (getItemViewType(position)) {
             R.layout.item_sent_message -> getItem(position)?.let {
                 (holder as MessageSentViewHolder).onBind(
@@ -65,24 +73,22 @@ class MessagesAdapter :
     }
 
 
-    inner class MessageSentViewHolder(private val binding: ItemSentMessageBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(message: Message) {
-            binding.tvMessage.text = message.message
-            binding.tvTimeMessageWasSent.text = message.timeMessageWasSent
+    inner class MessageSentViewHolder(binding: ItemSentMessageBinding) :
+        BaseRecyclerViewHolder<ItemSentMessageBinding, Message>(binding) {
+        override fun onBind(item: Message) {
+            binding.tvMessage.text = item.message
+            binding.tvTimeMessageWasSent.text = formatCurrentUserTime("HH:mm")
         }
     }
 
-    inner class MessageReceivedViewHolder(private val binding: ItemReceivedMessageBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(message: Message) {
-            binding.tvMessage.text = message.message
-            binding.tvTimeMessageWasSent.text = message.timeMessageWasSent
+    inner class MessageReceivedViewHolder(binding: ItemReceivedMessageBinding) :
+        BaseRecyclerViewHolder<ItemReceivedMessageBinding, Message>(binding) {
+        override fun onBind(item: Message) {
+            binding.tvMessage.text = item.message
+            binding.tvTimeMessageWasSent.text = formatCurrentUserTime("HH:mm")
         }
 
     }
 
-    companion object {
-        private const val MESSAGE_SENT = 0
-    }
+
 }

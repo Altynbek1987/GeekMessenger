@@ -17,7 +17,7 @@ class CreateProfileViewModel @Inject constructor(
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: NotAnActualUri?,
+        profileImage: NotAnActualUri? = null,
         imageFileName: String
     ) =
         authenticateUserUseCase(phoneNumber, name, surname, profileImage as Uri?, imageFileName)
