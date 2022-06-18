@@ -77,6 +77,33 @@ abstract class BaseRepository {
         }
     }
 
+    suspend fun addChildDocument(
+        collection: CollectionReference,
+        hashMap: HashMap<String, Any?>,
+        title: String? = null,
+        childCollectionTitle: String? = null
+    ): Boolean {
+        return try {
+            if (title != null && childCollectionTitle != null) {
+                collection
+                    .document(title)
+                    .collection(childCollectionTitle)
+                    .document()
+                    .set(hashMap)
+                    .await()
+            } else {
+                collection
+                    .document()
+                    .set(hashMap)
+                    .await()
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+
     suspend fun getDocument(collection: CollectionReference, id: String): DocumentSnapshot =
         collection
             .document(id)
@@ -91,7 +118,7 @@ abstract class BaseRepository {
     ) =
         file?.let {
             storageRef
-                .child("$folderPath/$id")
+                .child("$folderPath$id")
                 .putFile(it)
                 .await()
                 .storage
