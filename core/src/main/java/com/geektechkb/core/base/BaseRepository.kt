@@ -167,5 +167,32 @@ abstract class BaseRepository {
 
         }
 
+    suspend fun addChildDocument(
+        mainCollection: CollectionReference,
+        childCollection: String,
+        hashMap: HashMap<String, Any>,
+        id: String? = null,
+    ): Boolean {
+        return try {
+            if (id != null) {
+                mainCollection
+                    .document(id)
+                    .collection(childCollection)
+                    .document()
+                    .set(hashMap)
+                    .await()
+            } else {
+                mainCollection
+                    .document()
+                    .collection(childCollection)
+                    .document()
+                    .set(hashMap)
+                    .await()
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
 
 }

@@ -10,7 +10,7 @@ import com.geektechkb.core.base.BaseRecyclerViewHolder
 import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.ItemReceivedMessageBinding
-import com.geektechkb.feature_main.databinding.ItemSentMessageBinding
+import com.geektechkb.feature_main.databinding.ItemSentMessagesBinding
 import com.geektechkb.feature_main.domain.models.Message
 
 class MessagesAdapter :
@@ -21,9 +21,9 @@ class MessagesAdapter :
     ): BaseRecyclerViewHolder<ViewBinding, Message> {
         return when (viewType) {
 
-            R.layout.item_sent_message -> {
+            R.layout.item_sent_messages -> {
                 MessageSentViewHolder(
-                    ItemSentMessageBinding.inflate(
+                    ItemSentMessagesBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -50,7 +50,7 @@ class MessagesAdapter :
         position: Int
     ) {
         when (getItemViewType(position)) {
-            R.layout.item_sent_message -> getItem(position)?.let {
+            R.layout.item_sent_messages -> getItem(position)?.let {
                 (holder as MessageSentViewHolder).onBind(
                     it
                 )
@@ -65,7 +65,7 @@ class MessagesAdapter :
     override fun getItemViewType(position: Int): Int {
         return when {
             getItem(position)?.phoneNumber.equals(getItem(position)?.phoneNumber) -> {
-                R.layout.item_sent_message
+                R.layout.item_sent_messages
             }
             else -> {
                 R.layout.item_received_message
@@ -74,8 +74,8 @@ class MessagesAdapter :
     }
 
 
-    inner class MessageSentViewHolder(binding: ItemSentMessageBinding) :
-        BaseRecyclerViewHolder<ItemSentMessageBinding, Message>(binding) {
+    inner class MessageSentViewHolder(binding: ItemSentMessagesBinding) :
+        BaseRecyclerViewHolder<ItemSentMessagesBinding, Message>(binding) {
         override fun onBind(item: Message) {
             binding.tvMessage.text = item.message
             binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
