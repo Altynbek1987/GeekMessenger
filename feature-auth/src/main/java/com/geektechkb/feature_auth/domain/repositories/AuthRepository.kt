@@ -20,6 +20,7 @@ interface AuthRepository {
 
     fun provideResendingToken(): NotAnActualForceResendingToken?
     suspend fun authenticateUser(
+        lastSeen: String = "",
         phoneNumber: String,
         name: String,
         surname: String,

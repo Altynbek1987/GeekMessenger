@@ -59,6 +59,7 @@
             app:destination="@id/deniedPermissionsDialogFragment" />
         <argument
             android:name="phoneNumber"
+            android:defaultValue=""
             app:argType="string" />
     </fragment>
 

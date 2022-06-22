@@ -14,13 +14,21 @@ class CreateProfileViewModel @Inject constructor(
     private val isUserAuthenticatedUseCase: IsUserAuthenticatedUseCase,
 ) : BaseViewModel() {
     suspend fun authenticateUser(
+        lastSeen: String,
         phoneNumber: String,
         name: String,
         surname: String,
         profileImage: NotAnActualUri? = null,
         imageFileName: String
     ) =
-        authenticateUserUseCase(phoneNumber, name, surname, profileImage as Uri?, imageFileName)
+        authenticateUserUseCase(
+            lastSeen,
+            phoneNumber,
+            name,
+            surname,
+            profileImage as Uri?,
+            imageFileName
+        )
 
     fun isUserAuthenticated() = isUserAuthenticatedUseCase()
 }

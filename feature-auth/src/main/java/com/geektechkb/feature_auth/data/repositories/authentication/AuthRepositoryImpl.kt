@@ -3,7 +3,8 @@ package com.geektechkb.feature_auth.data.repositories.authentication
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH
-import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_USERS_COLLECTION_PATH
+import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
+import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
@@ -32,7 +33,9 @@ class AuthRepositoryImpl @Inject constructor(
     cloudStorage: FirebaseStorage,
 
     ) : BaseRepository(), AuthRepository {
-    private val usersRef = firebaseFirestore.collection(FIREBASE_FIRESTORE_USERS_COLLECTION_PATH)
+    private val usersRef = firebaseFirestore.collection(
+        FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
+    )
     private val cloudStorageRef = cloudStorage.reference
 
     private var forceResendingToken: PhoneAuthProvider.ForceResendingToken? = null
@@ -94,6 +97,7 @@ class AuthRepositoryImpl @Inject constructor(
 
     override fun provideResendingToken() = forceResendingToken
     override suspend fun authenticateUser(
+        lastSeen: String,
         phoneNumber: String,
         name: String,
         surname: String,
@@ -103,6 +107,7 @@ class AuthRepositoryImpl @Inject constructor(
         userPreferencesHelper.currentUserPhoneNumber = phoneNumber.trim()
         addDocument(
             usersRef, hashMapOf(
+                FIREBASE_USER_LAST_SEEN_TIME_KEY to lastSeen,
                 FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
                 FIREBASE_USER_NAME_KEY to name,
                 FIREBASE_USER_SURNAME_KEY to surname,
@@ -112,7 +117,7 @@ class AuthRepositoryImpl @Inject constructor(
                     FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH,
                     imageFileName
                 ).toString()
-            )
+            ), phoneNumber
         )
     }
 }

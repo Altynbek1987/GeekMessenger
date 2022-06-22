@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.hasPermissionCheckAndRequest
 import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.core.extensions.setImage
@@ -26,7 +27,7 @@ class CreateProfileFragment :
     override val binding by viewBinding(FragmentCreateProfileBinding::bind)
     override val viewModel: CreateProfileViewModel by viewModels()
     private val args: CreateProfileFragmentArgs by navArgs()
-    private lateinit var uri: Uri
+    private var uri: Uri? = null
 
     override fun setupListeners() {
         val requestPermissionLauncher = registerForActivityResult(
@@ -49,8 +50,8 @@ class CreateProfileFragment :
                 } else {
                     viewModel.isUserAuthenticated()
                     lifecycleScope.launch {
-
                         viewModel.authenticateUser(
+                            formatCurrentUserTime("HH:mm"),
                             args.phoneNumber,
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
@@ -58,7 +59,6 @@ class CreateProfileFragment :
                             UUID.randomUUID().toString().substring(0, 15)
                         )
                     }
-
                     mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
                 }
             }
