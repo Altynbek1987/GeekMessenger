@@ -1,6 +1,5 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile
 
-import android.net.Uri
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.core.typealiases.NotAnActualUri
 import com.geektechkb.feature_auth.domain.useCases.authentication.AuthenticateUserUseCase
@@ -20,15 +19,35 @@ class CreateProfileViewModel @Inject constructor(
         surname: String,
         profileImage: NotAnActualUri? = null,
         imageFileName: String
-    ) =
-        authenticateUserUseCase(
-            lastSeen,
-            phoneNumber,
-            name,
-            surname,
-            profileImage as Uri?,
-            imageFileName
-        )
+    ) {
+        when (profileImage) {
+            " " -> {
+                authenticateUserUseCase(
+                    lastSeen,
+                    phoneNumber,
+                    name,
+                    surname,
+                    " ",
+                    imageFileName
+                )
+
+            }
+            else -> {
+                authenticateUserUseCase(
+                    lastSeen,
+                    phoneNumber,
+                    name,
+                    surname,
+                    profileImage,
+                    imageFileName
+                )
+
+
+            }
+
+        }
+    }
+
 
     fun isUserAuthenticated() = isUserAuthenticatedUseCase()
 }

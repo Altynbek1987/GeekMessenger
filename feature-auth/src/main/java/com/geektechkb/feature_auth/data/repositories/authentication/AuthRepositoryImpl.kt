@@ -107,10 +107,10 @@ class AuthRepositoryImpl @Inject constructor(
         userPreferencesHelper.currentUserPhoneNumber = phoneNumber.trim()
         addDocument(
             usersRef, hashMapOf(
-                FIREBASE_USER_LAST_SEEN_TIME_KEY to lastSeen,
-                FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
-                FIREBASE_USER_NAME_KEY to name,
                 FIREBASE_USER_SURNAME_KEY to surname,
+                FIREBASE_USER_LAST_SEEN_TIME_KEY to lastSeen,
+                FIREBASE_USER_NAME_KEY to name,
+                FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
                 FIREBASE_USER_PROFILE_IMAGE_KEY to uploadUncompressedImageToCloudStorage(
                     cloudStorageRef,
                     profileImage as Uri?,
@@ -119,5 +119,6 @@ class AuthRepositoryImpl @Inject constructor(
                 ).toString()
             ), phoneNumber
         )
+
     }
 }

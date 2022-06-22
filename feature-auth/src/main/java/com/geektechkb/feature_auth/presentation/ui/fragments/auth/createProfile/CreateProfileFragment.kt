@@ -11,15 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.formatCurrentUserTime
-import com.geektechkb.core.extensions.hasPermissionCheckAndRequest
-import com.geektechkb.core.extensions.navigateSafely
-import com.geektechkb.core.extensions.setImage
+import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentCreateProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.util.*
 
 @AndroidEntryPoint
 class CreateProfileFragment :
@@ -56,8 +52,9 @@ class CreateProfileFragment :
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
                             uri,
-                            UUID.randomUUID().toString().substring(0, 15)
+                            generateRandomId()
                         )
+
                     }
                     mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
                 }
