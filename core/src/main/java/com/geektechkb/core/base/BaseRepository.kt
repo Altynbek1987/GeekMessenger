@@ -195,4 +195,13 @@ abstract class BaseRepository {
         }
     }
 
+    suspend fun updateASingleFieldInDocument(
+        collection: CollectionReference,
+        documentPath: String,
+        fieldToUpdate: String,
+        valueToReplaceTheOldOne: Any
+    ) {
+        collection.document(documentPath).update(fieldToUpdate, valueToReplaceTheOldOne)
+    }
+
 }

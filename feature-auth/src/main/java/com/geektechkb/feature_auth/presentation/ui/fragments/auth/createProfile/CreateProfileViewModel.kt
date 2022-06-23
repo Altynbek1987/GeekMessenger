@@ -1,5 +1,6 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile
 
+import android.net.Uri
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.core.typealiases.NotAnActualUri
 import com.geektechkb.feature_auth.domain.useCases.authentication.AuthenticateUserUseCase
@@ -38,7 +39,7 @@ class CreateProfileViewModel @Inject constructor(
                     phoneNumber,
                     name,
                     surname,
-                    profileImage,
+                    profileImage as Uri?,
                     imageFileName
                 )
 

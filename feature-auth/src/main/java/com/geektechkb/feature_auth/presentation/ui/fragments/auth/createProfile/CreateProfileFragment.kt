@@ -48,7 +48,7 @@ class CreateProfileFragment :
                     lifecycleScope.launch {
                         viewModel.authenticateUser(
                             formatCurrentUserTime("HH:mm"),
-                            args.phoneNumber,
+                            args.phoneNumber.trim(),
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
                             uri,
