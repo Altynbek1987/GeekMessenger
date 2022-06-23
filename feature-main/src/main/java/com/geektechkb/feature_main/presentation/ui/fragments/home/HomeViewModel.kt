@@ -9,7 +9,6 @@ import com.geektechkb.feature_main.domain.useCases.FetchPagedUsersUseCase
 import com.geektechkb.feature_main.domain.useCases.UpdateUserStatusUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,9 +23,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun updateUserStatus(status: String) {
-        viewModelScope.launch {
-            updateUserStatusUseCase(status)
-        }
+        updateUserStatusUseCase(status)
     }
 
     init {

@@ -36,7 +36,7 @@ class UsersRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun updateUserStatus(status: String) {
+    override fun updateUserStatus(status: String) {
         updateASingleFieldInDocument(
             usersRef, usersPreferencesHelper.currentUserPhoneNumber,
             FIREBASE_USER_LAST_SEEN_TIME_KEY, status

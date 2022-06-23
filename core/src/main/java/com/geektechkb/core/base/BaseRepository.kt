@@ -195,7 +195,7 @@ abstract class BaseRepository {
         }
     }
 
-    suspend fun updateASingleFieldInDocument(
+    fun updateASingleFieldInDocument(
         collection: CollectionReference,
         documentPath: String,
         fieldToUpdate: String,
