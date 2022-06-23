@@ -11,11 +11,13 @@ import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.data.remote.pagingsources.UsersPagingSource
 import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(
+    private val firebaseAuth: FirebaseAuth,
     firestore: FirebaseFirestore,
     private val usersPreferencesHelper: UserPreferencesHelper
 ) : BaseRepository(), UsersRepository {
@@ -37,10 +39,13 @@ class UsersRepositoryImpl @Inject constructor(
     }
 
     override fun updateUserStatus(status: String) {
-        updateASingleFieldInDocument(
-            usersRef, usersPreferencesHelper.currentUserPhoneNumber,
-            FIREBASE_USER_LAST_SEEN_TIME_KEY, status
-        )
+        firebaseAuth.currentUser?.let {
+            updateASingleFieldInDocument(
+                usersRef, usersPreferencesHelper.currentUserPhoneNumber,
+                FIREBASE_USER_LAST_SEEN_TIME_KEY, status
+            )
+        }
+
     }
 
 

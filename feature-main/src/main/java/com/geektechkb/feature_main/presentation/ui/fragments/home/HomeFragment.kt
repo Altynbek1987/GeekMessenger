@@ -34,7 +34,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private fun subscribeToUsers() {
         viewModel.fetchPagedUsers().spectatePaging(success = {
-
             usersAdapter.submitData(it)
         })
     }
@@ -50,6 +49,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun onStart() {
         super.onStart()
+
         viewModel.updateUserStatus("В сети")
     }
 
