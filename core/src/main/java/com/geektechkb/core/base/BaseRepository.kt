@@ -77,22 +77,31 @@ abstract class BaseRepository {
         }
     }
 
+
+    suspend fun getDocument(collection: CollectionReference, id: String): DocumentSnapshot =
+        collection
+            .document(id)
+            .get()
+            .await()
+
     suspend fun addChildDocument(
-        collection: CollectionReference,
-        hashMap: HashMap<String, Any?>,
-        title: String? = null,
-        childCollectionTitle: String? = null
+        mainCollection: CollectionReference,
+        childCollection: String,
+        hashMap: HashMap<String, Any>,
+        id: String? = null,
     ): Boolean {
         return try {
-            if (title != null && childCollectionTitle != null) {
-                collection
-                    .document(title)
-                    .collection(childCollectionTitle)
+            if (id != null) {
+                mainCollection
+                    .document(id)
+                    .collection(childCollection)
                     .document()
                     .set(hashMap)
                     .await()
             } else {
-                collection
+                mainCollection
+                    .document()
+                    .collection(childCollection)
                     .document()
                     .set(hashMap)
                     .await()
@@ -103,12 +112,33 @@ abstract class BaseRepository {
         }
     }
 
+    suspend fun getChildDocument(
+        mainCollection: CollectionReference,
+        childCollection: String,
+        id: String? = null,
+    ): Boolean {
+        return try {
+            if (id != null) {
+                mainCollection
+                    .document(id)
+                    .collection(childCollection)
+                    .document()
+                    .get()
+                    .await()
+            } else {
+                mainCollection
+                    .document()
+                    .collection(childCollection)
+                    .document()
+                    .get()
+                    .await()
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
 
-    suspend fun getDocument(collection: CollectionReference, id: String): DocumentSnapshot =
-        collection
-            .document(id)
-            .get()
-            .await()
 
     suspend fun uploadUncompressedImageToCloudStorage(
         storageRef: StorageReference,
@@ -167,33 +197,6 @@ abstract class BaseRepository {
 
         }
 
-    suspend fun addChildDocument(
-        mainCollection: CollectionReference,
-        childCollection: String,
-        hashMap: HashMap<String, Any>,
-        id: String? = null,
-    ): Boolean {
-        return try {
-            if (id != null) {
-                mainCollection
-                    .document(id)
-                    .collection(childCollection)
-                    .document()
-                    .set(hashMap)
-                    .await()
-            } else {
-                mainCollection
-                    .document()
-                    .collection(childCollection)
-                    .document()
-                    .set(hashMap)
-                    .await()
-            }
-            true
-        } catch (e: Exception) {
-            false
-        }
-    }
 
     fun updateASingleFieldInDocument(
         collection: CollectionReference,
