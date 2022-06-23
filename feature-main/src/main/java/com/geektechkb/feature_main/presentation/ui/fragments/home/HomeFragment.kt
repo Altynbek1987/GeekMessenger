@@ -52,6 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun onStop() {
         super.onStop()
+
         viewModel.updateUserStatus(formatCurrentUserTime("HH:mm"))
     }
 }

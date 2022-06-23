@@ -37,6 +37,15 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         hideCameraIconAndChangeMicrophoneToSendWhenUserInputMessage()
     }
 
+    private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
+        binding.etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
+            if (usersPreferencesHelper.currentUserPhoneNumber != receiverPhoneNumber)
+                viewModel.updateUserStatus("печатает...")
+        }, doSomethingAfterTextChanged = {
+            viewModel.updateUserStatus("В сети")
+        })
+    }
+
     private fun hideNotificationThatThereAreNoMessages() {
         if (messagesAdapter.itemCount == 0) {
 
@@ -134,14 +143,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
 
     override fun launchObservers() {
-        subscribeToMessages()
         subscribeToUser()
-
-
+        subscribeToMessages()
     }
 
     private fun subscribeToUser() {
         viewModel.userState.spectateUiState(success = {
+            changeUserStatusToTyping(it.phoneNumber)
+
             binding.imProfile.loadImageWithGlide(it.profileImage)
             binding.tvUsername.text = it.name
         })

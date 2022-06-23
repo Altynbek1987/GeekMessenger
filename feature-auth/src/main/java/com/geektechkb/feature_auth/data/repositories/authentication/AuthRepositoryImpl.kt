@@ -10,6 +10,7 @@ import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
 import com.geektechkb.core.base.BaseRepository
+import com.geektechkb.core.extensions.removeExtraSpaces
 import com.geektechkb.core.typealiases.NotAnActualActivity
 import com.geektechkb.core.typealiases.NotAnActualCallbacks
 import com.geektechkb.core.typealiases.NotAnActualFirebaseAuth
@@ -104,21 +105,23 @@ class AuthRepositoryImpl @Inject constructor(
         profileImage: NotAnActualUri?,
         imageFileName: String
     ) {
-        userPreferencesHelper.currentUserPhoneNumber = phoneNumber.trim()
+        userPreferencesHelper.currentUserPhoneNumber = phoneNumber.removeExtraSpaces()
+        profileImage as Uri?
         addDocument(
             usersRef, hashMapOf(
                 FIREBASE_USER_NAME_KEY to name,
                 FIREBASE_USER_LAST_NAME_KEY to surname,
                 FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
-                FIREBASE_USER_PROFILE_IMAGE_KEY to uploadUncompressedImageToCloudStorage(
-                    cloudStorageRef,
-                    profileImage as Uri?,
-                    FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH,
-                    imageFileName
-                ).toString(),
+                FIREBASE_USER_PROFILE_IMAGE_KEY to profileImage?.let {
+                    uploadUncompressedImageToCloudStorage(
+                        cloudStorageRef,
+                        it,
+                        FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH,
+                        imageFileName
+                    )
+                },
                 FIREBASE_USER_LAST_SEEN_TIME_KEY to lastSeen,
             ), phoneNumber
         )
-
     }
 }

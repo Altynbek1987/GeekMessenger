@@ -9,6 +9,7 @@ import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.useCases.FetchPagedMessagesUseCase
 import com.geektechkb.feature_main.domain.useCases.FetchUserUseCase
 import com.geektechkb.feature_main.domain.useCases.SendMessageUseCase
+import com.geektechkb.feature_main.domain.useCases.UpdateUserStatusUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,6 +21,7 @@ class ChatViewModel @Inject constructor(
     private val sendMessageUseCase: SendMessageUseCase,
     private val fetchPagedMessagesUseCase: FetchPagedMessagesUseCase,
     private val fetchUserUseCase: FetchUserUseCase,
+    private val updateUserStatusUseCase: UpdateUserStatusUseCase
 ) : BaseViewModel() {
     private val _userState = mutableUiStateFlow<User>()
     val userState = _userState.asStateFlow()
@@ -44,6 +46,7 @@ class ChatViewModel @Inject constructor(
     suspend fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
 
+    fun updateUserStatus(status: String) = updateUserStatusUseCase(status)
 
     init {
         fetchPagedMessages()

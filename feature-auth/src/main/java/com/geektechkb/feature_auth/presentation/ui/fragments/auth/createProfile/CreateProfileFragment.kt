@@ -11,7 +11,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.*
+import com.geektechkb.core.extensions.generateRandomId
+import com.geektechkb.core.extensions.hasPermissionCheckAndRequest
+import com.geektechkb.core.extensions.navigateSafely
+import com.geektechkb.core.extensions.setImage
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentCreateProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,7 +50,7 @@ class CreateProfileFragment :
                     viewModel.isUserAuthenticated()
                     lifecycleScope.launch {
                         viewModel.authenticateUser(
-                            formatCurrentUserTime("HH:mm"),
+                            "был(а) недавно",
                             args.phoneNumber,
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
@@ -56,6 +59,7 @@ class CreateProfileFragment :
                         )
                     }
                     mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
+
                 }
             }
 

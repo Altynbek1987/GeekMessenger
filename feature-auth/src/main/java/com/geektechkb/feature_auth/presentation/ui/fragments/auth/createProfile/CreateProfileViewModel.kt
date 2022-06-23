@@ -20,35 +20,14 @@ class CreateProfileViewModel @Inject constructor(
         surname: String,
         profileImage: NotAnActualUri? = null,
         imageFileName: String
-    ) {
-        when (profileImage) {
-            " " -> {
-                authenticateUserUseCase(
-                    lastSeen,
-                    phoneNumber,
-                    name,
-                    surname,
-                    " ",
-                    imageFileName
-                )
-
-            }
-            else -> {
-                authenticateUserUseCase(
-                    lastSeen,
-                    phoneNumber,
-                    name,
-                    surname,
-                    profileImage as Uri?,
-                    imageFileName
-                )
-
-
-            }
-
-        }
-    }
-
+    ) = authenticateUserUseCase(
+        lastSeen,
+        phoneNumber,
+        name,
+        surname,
+        profileImage as Uri?,
+        imageFileName
+    )
 
     fun isUserAuthenticated() = isUserAuthenticatedUseCase()
 }
