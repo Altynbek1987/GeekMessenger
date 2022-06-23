@@ -48,13 +48,12 @@ class CreateProfileFragment :
                     lifecycleScope.launch {
                         viewModel.authenticateUser(
                             formatCurrentUserTime("HH:mm"),
-                            args.phoneNumber.trim(),
+                            args.phoneNumber,
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
                             uri,
                             generateRandomId()
                         )
-
                     }
                     mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
                 }
