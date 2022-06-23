@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.directionsSafeNavigation
-import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentHomeBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.UsersAdapter
@@ -43,16 +42,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
                 phoneNumber
             )
         )
-    }
-
-    override fun onStart() {
-        super.onStart()
-        viewModel.updateUserStatus("В сети")
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-        viewModel.updateUserStatus(formatCurrentUserTime("HH:mm"))
     }
 }

@@ -120,6 +120,17 @@
                 app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
                 app:layout_constraintTop_toBottomOf="@id/tv_username" />
 
+            <TextView
+                android:id="@+id/tv_typing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/last_seen_recently_russian"
+                android:textColor="#9F9F9F"
+                android:textSize="11sp"
+                app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
+                app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -132,8 +143,7 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/gl_wallpaper_bottom"
-        app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom"
-        tools:listitem="@layout/item_sent_message" />
+        app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_mcv_no_messages_top"
