@@ -2,11 +2,11 @@ package com.geektechkb.feature_main.data.repositories
 
 import android.util.Log
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
+import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
-import com.geektechkb.common.constants.Constants.FIREBASE_USER_SURNAME_KEY
 import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.data.remote.pagingsources.UsersPagingSource
@@ -35,7 +35,7 @@ class UsersRepositoryImpl @Inject constructor(
     override suspend fun fetchUser(phoneNumber: String) = doRequest {
         return@doRequest User(
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_NAME_KEY) as String,
-            getDocument(usersRef, phoneNumber).get(FIREBASE_USER_SURNAME_KEY) as String,
+            getDocument(usersRef, phoneNumber).get(FIREBASE_USER_LAST_NAME_KEY) as String,
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_PHONE_NUMBER_KEY) as String,
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_PROFILE_IMAGE_KEY) as String
         )
