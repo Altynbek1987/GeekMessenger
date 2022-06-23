@@ -28,8 +28,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun launchObservers() {
         subscribeToUsers()
-
-
     }
 
     private fun subscribeToUsers() {
@@ -49,7 +47,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun onStart() {
         super.onStart()
-
         viewModel.updateUserStatus("В сети")
     }
 
