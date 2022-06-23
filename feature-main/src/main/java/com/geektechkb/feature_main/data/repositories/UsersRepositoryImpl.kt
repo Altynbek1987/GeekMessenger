@@ -1,6 +1,7 @@
 package com.geektechkb.feature_main.data.repositories
 
-import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_USERS_COLLECTION_PATH
+import android.util.Log
+import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
@@ -21,7 +22,10 @@ class UsersRepositoryImpl @Inject constructor(
     firestore: FirebaseFirestore,
     private val usersPreferencesHelper: UserPreferencesHelper
 ) : BaseRepository(), UsersRepository {
-    private val usersRef = firestore.collection(FIREBASE_FIRESTORE_USERS_COLLECTION_PATH)
+    private val usersRef = firestore.collection(
+        FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
+    )
+
     private val sortedUsers = usersRef.orderBy("name", Query.Direction.ASCENDING)
 
     override fun fetchPagedUsers() =
@@ -39,6 +43,7 @@ class UsersRepositoryImpl @Inject constructor(
     }
 
     override fun updateUserStatus(status: String) {
+        Log.e("gaypop", usersPreferencesHelper.currentUserPhoneNumber)
         firebaseAuth.currentUser?.let {
             updateASingleFieldInDocument(
                 usersRef, usersPreferencesHelper.currentUserPhoneNumber,
