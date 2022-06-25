@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@drawable/ic_chat_wallpaper"
     android:fitsSystemWindows="true"
     tools:context=".presentation.ui.fragments.chat.ChatFragment">
@@ -111,17 +110,6 @@
 
             <TextView
                 android:id="@+id/tv_user_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="@string/last_seen_recently_russian"
-                android:textColor="#9F9F9F"
-                android:textSize="11sp"
-                app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
-                app:layout_constraintTop_toBottomOf="@id/tv_username" />
-
-            <TextView
-                android:id="@+id/tv_typing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

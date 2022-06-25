@@ -39,10 +39,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
         binding.etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
-            if (usersPreferencesHelper.currentUserPhoneNumber != receiverPhoneNumber)
-                viewModel.updateUserStatus("печатает...")
+            if (usersPreferencesHelper.currentUserPhoneNumber != receiverPhoneNumber) {
+                binding.tvUserStatus.text = "печатает..."
+            }
         }, doSomethingAfterTextChanged = {
-            viewModel.updateUserStatus("В сети")
+            binding.tvUserStatus.text = "в сети"
         })
     }
 
@@ -150,7 +151,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToUser() {
         viewModel.userState.spectateUiState(success = {
             changeUserStatusToTyping(it.phoneNumber)
-
             binding.imProfile.loadImageWithGlide(it.profileImage)
             binding.tvUsername.text = it.name
         })
