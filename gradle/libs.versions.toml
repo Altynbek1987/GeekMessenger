@@ -51,6 +51,7 @@ dotsIndicator = "4.3"
 #Firebase
 firebaseFirestore = "24.1.2"
 firebaseCloudStorage = "20.0.1"
+firebaseUiStorage = "8.0.1"
 googleServices = "4.3.10"
 firebasePlatform = "30.1.0"
 firebaseCrashlytics = "2.8.1"
@@ -133,6 +134,7 @@ paging-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "
 #Firebase
 firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebaseFirestore" }
 firebase-cloudStorage = { module = "com.google.firebase:firebase-storage-ktx", version.ref = "firebaseCloudStorage" }
+firebase-uiStorage = { module = "com.firebaseui:firebase-ui-storage", version.ref = "firebaseUiStorage" }
 firebase-platform = { module = "com.google.firebase:firebase-bom", version.ref = "firebasePlatform" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "firebaseAnalytics" }
@@ -174,7 +176,7 @@ lifecycle = ["lifecycle-viewModel", "lifecycle-runtime", "lifecycle-liveData"]
 #Firebase
 firebase = ["firebase-firestore", "firebase-platform", "firebase-coroutines"]
 firebaseNoCrashlytics = ["firebase-firestore", "firebase-cloudStorage", "firebase-coroutines", "firebase-analytics", "firebase-auth", "firebase-cloudMessaging", "firebase-inAppMessaging", "firebase-inAppMessagingDisplay", "firebase-adMob"]
-firebaseNoAdMobAndCrashlytics = ["firebase-firestore", "firebase-cloudStorage", "firebase-coroutines", "firebase-analytics", "firebase-auth", "firebase-cloudMessaging", "firebase-inAppMessaging", "firebase-inAppMessagingDisplay"]
+firebaseNoAdMobAndCrashlytics = ["firebase-firestore", "firebase-cloudStorage", "firebase-coroutines", "firebase-analytics", "firebase-auth", "firebase-cloudMessaging", "firebase-inAppMessaging", "firebase-inAppMessagingDisplay", "firebase-uiStorage"]
 
 
 [plugins]

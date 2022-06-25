@@ -1,6 +1,7 @@
 package com.geektechkb.core.base
 
 import android.net.Uri
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
@@ -145,8 +146,8 @@ abstract class BaseRepository {
         file: Uri?,
         folderPath: String,
         id: String
-    ) =
-        file?.let {
+    ): String? {
+        return file?.let {
             storageRef
                 .child("$folderPath$id")
                 .putFile(it)
@@ -156,6 +157,33 @@ abstract class BaseRepository {
                 .await()
                 .toString()
         }
+    }
+
+    suspend fun uploadUncompressedAlymToCloudStorage(
+        storageRef: StorageReference,
+        file: Uri?,
+        folderPath: String,
+        id: String
+    ): String? {
+        var downloadUrl = ""
+        file?.let { it1 ->
+            storageRef
+                .child("profileImages/$id")
+                .putFile(it1)
+                .await()
+                .storage
+                .child("profileImages/$id")
+                .downloadUrl.addOnFailureListener {
+                    Log.e("alymgay", it.toString())
+                }.addOnSuccessListener {
+                    downloadUrl = it.toString()
+
+                }
+                .await()
+                .toString()
+        }
+        return downloadUrl
+    }
 
 
     suspend fun uploadCompressedImageToCloudStorage(
