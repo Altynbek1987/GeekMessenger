@@ -65,12 +65,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 0 -> {
                     imMicrophone.isGone = false
                     imSendMessage.isGone = true
-                    imCamera.isVisible = true
+                    imClip.isVisible = true
                 }
                 else -> {
                     imMicrophone.isGone = true
                     imSendMessage.isGone = false
-                    imCamera.isVisible = false
+                    imClip.isVisible = false
                 }
             }
         })
@@ -88,7 +88,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             if (checkWhetherSoftKeyboardIsOpenedOrNot()) {
                 hideSoftKeyboard()
             } else {
-                findNavController().navigate(R.id.homeFragment)
+                findNavController().navigateUp()
             }
 
         })
