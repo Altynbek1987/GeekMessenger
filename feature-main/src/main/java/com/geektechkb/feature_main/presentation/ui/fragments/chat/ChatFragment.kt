@@ -106,7 +106,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
-                formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT)
+                formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
+                generateRandomId()
             )
             etMessage.text?.clear()
         }
@@ -132,13 +133,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun establishRequest() {
         fetchUser()
+        fetchMessages()
 
     }
+
 
     private fun fetchUser() {
         lifecycleScope.launch {
             args.phoneNumber?.let { viewModel.fetchUser(it) }
         }
+    }
+
+    private fun fetchMessages() {
+        viewModel.fetchPagedMessages()
     }
 
 
@@ -152,12 +159,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             changeUserStatusToTyping(it.phoneNumber)
             binding.imProfile.loadImageWithGlide(it.profileImage)
             binding.tvUsername.text = it.name
+            binding.tvUserStatus.text = it.lastSeen
         })
     }
 
     private fun subscribeToMessages() {
         viewModel.fetchPagedMessages().spectatePaging(success = {
             messagesAdapter.submitData(it)
+            binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
         })
     }
 }

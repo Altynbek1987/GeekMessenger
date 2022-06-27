@@ -7,7 +7,8 @@ data class User(
     val lastName: String? = null,
     override val phoneNumber: String? = null,
     val profileImage: String? = null,
-    val lastSeen: String? = null
+    val lastSeen: String? = null,
+    val latestMessages : ArrayList<Message>? = null
 ) : BaseDiffModel
 
 

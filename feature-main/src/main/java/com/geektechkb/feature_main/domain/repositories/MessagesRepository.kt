@@ -7,8 +7,14 @@ interface MessagesRepository {
         id: String,
         receiverPhoneNumber: String,
         message: String,
-        timeMessageWasSent: String
+        timeMessageWasSent: String,
+        messageId: String
     )
 
     fun fetchPagedMessages(): NotAnActualPagingData
+    suspend fun setupOneOnOneChat(
+        id: String?,
+        firstChatterPhoneNumber: String,
+        secondChatterPhoneNumber: String
+    ): String?
 }

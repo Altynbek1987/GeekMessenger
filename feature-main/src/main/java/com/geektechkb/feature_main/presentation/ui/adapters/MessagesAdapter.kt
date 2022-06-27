@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -15,35 +16,44 @@ import com.geektechkb.feature_main.domain.models.Message
 
 class MessagesAdapter :
     PagingDataAdapter<Message, BaseRecyclerViewHolder<ViewBinding, Message>>(BaseDiffUtil()) {
+    private var phoneNumber: String? = null
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): BaseRecyclerViewHolder<ViewBinding, Message> {
-        return when (viewType) {
-
+        lateinit var viewHolder: BaseRecyclerViewHolder<ViewBinding, Message>
+        when (viewType) {
             R.layout.item_sent_messages -> {
-                MessageSentViewHolder(
-                    ItemSentMessagesBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
+                viewHolder =
+                    MessageSentViewHolder(
+                        ItemSentMessagesBinding.inflate(
+                            LayoutInflater.from(parent.context),
+                            parent,
+                            false
+                        )
                     )
-                )
 
+                Log.e("gaypop", viewHolder.binding.toString())
             }
-            else -> {
-                MessageReceivedViewHolder(
-                    ItemReceivedMessageBinding.inflate(
-                        LayoutInflater.from(
-                            parent.context
-                        ), parent, false
+            R.layout.item_received_message -> {
+                viewHolder =
+
+                    MessageReceivedViewHolder(
+                        ItemReceivedMessageBinding.inflate(
+                            LayoutInflater.from(
+                                parent.context
+                            ), parent, false
+                        )
                     )
-                )
+                Log.e("gaypop2", viewHolder.binding.toString())
             }
+
         }
+        return viewHolder
 
     }
-
 
     override fun onBindViewHolder(
         holder: BaseRecyclerViewHolder<ViewBinding, Message>,
@@ -55,20 +65,21 @@ class MessagesAdapter :
                     it
                 )
             }
-
-            else -> getItem(position)?.let { (holder as MessageReceivedViewHolder).onBind(it) }
+            R.layout.item_received_message -> getItem(position)?.let {
+                (holder as MessageReceivedViewHolder).onBind(
+                    it
+                )
+            }
         }
-
-
     }
 
     override fun getItemViewType(position: Int): Int {
         return when {
-            getItem(position)?.phoneNumber.equals(getItem(position)?.phoneNumber) -> {
-                R.layout.item_sent_messages
+            getItem(position)?.phoneNumber?.equals(phoneNumber) == false -> {
+                R.layout.item_received_message
             }
             else -> {
-                R.layout.item_received_message
+                R.layout.item_sent_messages
             }
         }
     }
@@ -87,10 +98,6 @@ class MessagesAdapter :
         override fun onBind(item: Message) {
             binding.tvMessage.text = item.message
             binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
-
         }
-
     }
-
-
 }

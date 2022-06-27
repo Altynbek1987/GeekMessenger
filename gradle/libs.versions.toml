@@ -4,7 +4,7 @@ agp = "7.1.1"
 #Gradle
 gradle = "7.3.3"
 #Kotlin
-kotlin = "1.6.21"
+kotlin = "1.7.0"
 #Android Config
 compileSdk = "32"
 minSdk = "23"

@@ -35,7 +35,7 @@ class UsersAdapter(private val onItemClick: ((phoneNumber: String?) -> Unit)? = 
             binding.root.setOnClickListener {
                 onItemClick?.let { it1 -> it1(user.phoneNumber) }
             }
-
         }
+
     }
 }
