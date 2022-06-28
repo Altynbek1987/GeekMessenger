@@ -55,6 +55,6 @@ class MainFlowFragment : BaseFlowFragment(
 
     override fun onStop() {
         super.onStop()
-        viewModel.updateUserStatus(formatCurrentUserTime("HH:mm"))
+        viewModel.updateUserStatus("был(а) в ${formatCurrentUserTime("HH:mm")}")
     }
 }

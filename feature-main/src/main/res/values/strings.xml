@@ -24,6 +24,7 @@
     <string name="image_view_to_launch_camera">image view to launch camera</string>
     <string name="image_view_for_recording_voice_messages">image view for recording voice messages</string>
     <string name="button_to_send_message">button to send message</string>
+    <string name="typing">печатает...</string>
 
 
 </resources>

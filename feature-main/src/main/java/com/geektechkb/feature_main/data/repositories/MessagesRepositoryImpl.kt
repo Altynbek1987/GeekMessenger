@@ -7,6 +7,7 @@ import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_TIME_MESSAGE
 import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.feature_main.data.remote.pagingsources.MessagePagingSource
 import com.geektechkb.feature_main.domain.repositories.MessagesRepository
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
@@ -35,8 +36,9 @@ class MessagesRepositoryImpl @Inject constructor(
             hashMapOf(
                 "senderPhoneNumber" to id,
                 "receiverPhoneNumber" to receiverPhoneNumber,
-                "messages" to message,
-                "timeMessageWasSent" to timeMessageWasSent
+                "timeMessageWasSent" to timeMessageWasSent,
+                "messages" to messagesRef.document(receiverPhoneNumber)
+                    .update("messages", FieldValue.arrayUnion(message))
             ), messageId
 
         )
@@ -58,6 +60,7 @@ class MessagesRepositoryImpl @Inject constructor(
                 FIREBASE_FIRESTORE_CHATTERS_KEY to listOf(
                     firstChatterPhoneNumber,
                     secondChatterPhoneNumber
+
                 )
             ), id
         )

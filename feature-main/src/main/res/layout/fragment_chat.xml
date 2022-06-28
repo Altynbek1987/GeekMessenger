@@ -102,7 +102,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="12dp"
-                android:text="Илюха 1love"
                 android:textColor="#2C2C2C"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
@@ -113,9 +112,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@string/last_seen_recently_russian"
                 android:textColor="#9F9F9F"
                 android:textSize="11sp"
+                app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
+                app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
+            <TextView
+                android:id="@+id/tv_typing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/typing"
+                android:textColor="#9F9F9F"
+                android:textSize="11sp"
+                android:visibility="invisible"
                 app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
                 app:layout_constraintTop_toBottomOf="@id/tv_username" />
 
@@ -260,7 +270,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.01" />
+        app:layout_constraintGuide_percent="0.03" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_emoji_end"

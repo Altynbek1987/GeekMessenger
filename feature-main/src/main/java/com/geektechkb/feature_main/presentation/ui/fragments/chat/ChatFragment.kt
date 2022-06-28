@@ -26,6 +26,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
+    private var savedUserStatus: String? = null
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
@@ -38,13 +39,18 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
-        binding.etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
-            if (usersPreferencesHelper.currentUserPhoneNumber != receiverPhoneNumber) {
-                binding.tvUserStatus.text = "печатает..."
-            }
-        }, doSomethingAfterTextChanged = {
-            binding.tvUserStatus.text = "в сети"
-        })
+        binding.apply {
+            binding.etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
+                if (usersPreferencesHelper.currentUserPhoneNumber != receiverPhoneNumber) {
+                    tvUserStatus.isVisible = false
+                    tvTyping.isVisible = true
+                }
+            }, doSomethingAfterTextChanged = {
+                tvUserStatus.isVisible = true
+                tvTyping.isVisible = false
+            })
+        }
+
     }
 
     private fun hideNotificationThatThereAreNoMessages() {
@@ -156,6 +162,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun subscribeToUser() {
         viewModel.userState.spectateUiState(success = {
+            savedUserStatus = it.lastSeen
             changeUserStatusToTyping(it.phoneNumber)
             binding.imProfile.loadImageWithGlide(it.profileImage)
             binding.tvUsername.text = it.name
