@@ -140,7 +140,9 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/gl_wallpaper_bottom"
-        app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom" />
+        app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom"
+        app:stackFromEnd="true"
+        tools:listitem="@layout/item_sent_messages" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_mcv_no_messages_top"
@@ -310,8 +312,6 @@
             android:id="@+id/til_message"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:fadeScrollbars="false"
-            android:isScrollContainer="true"
             android:minHeight="75dp"
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
@@ -333,17 +333,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:fadeScrollbars="false"
                 android:hint="@string/message_russian"
                 android:includeFontPadding="false"
                 android:inputType="textMultiLine|textCapSentences"
                 android:minHeight="75dp"
                 android:minLines="1"
                 android:padding="2dp"
-                android:scrollbars="vertical"
                 android:textColor="@color/black"
                 android:textColorHint="#9F9F9F"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
 

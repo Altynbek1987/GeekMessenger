@@ -76,6 +76,7 @@ class MessagesAdapter :
     override fun getItemViewType(position: Int): Int {
         return when {
             getItem(position)?.phoneNumber?.equals(phoneNumber) == false -> {
+
                 R.layout.item_received_message
             }
             else -> {
@@ -90,6 +91,12 @@ class MessagesAdapter :
         override fun onBind(item: Message) {
             binding.tvMessage.text = item.message
             binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
+            when(absoluteAdapterPosition) {
+                FIRST_IN_POSITION -> {
+
+                }
+
+            }
         }
     }
 
@@ -99,5 +106,11 @@ class MessagesAdapter :
             binding.tvMessage.text = item.message
             binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
         }
+    }
+
+    companion object {
+        private const val FIRST_IN_POSITION = -1
+        private const val MIDDLE_IN_POSITION = 0
+        private const val LAST_IN_POSITION = 1
     }
 }
