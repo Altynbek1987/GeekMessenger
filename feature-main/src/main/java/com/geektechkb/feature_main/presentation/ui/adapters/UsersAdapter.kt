@@ -22,7 +22,6 @@ class UsersAdapter(private val onItemClick: ((phoneNumber: String?) -> Unit)? = 
         )
     }
 
-
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         getItem(position)?.let { holder.onBind(it) }
     }
@@ -36,6 +35,5 @@ class UsersAdapter(private val onItemClick: ((phoneNumber: String?) -> Unit)? = 
                 onItemClick?.let { it1 -> it1(user.phoneNumber) }
             }
         }
-
     }
 }

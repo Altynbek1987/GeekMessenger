@@ -1,8 +1,8 @@
 package com.geektechkb.feature_main.presentation.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
 import androidx.paging.PagingDataAdapter
 import androidx.viewbinding.ViewBinding
 import com.geektechkb.common.constants.Constants.HOURS_MINUTES_DATE_FORMAT
@@ -34,12 +34,9 @@ class MessagesAdapter :
                             false
                         )
                     )
-
-                Log.e("gaypop", viewHolder.binding.toString())
             }
             R.layout.item_received_message -> {
                 viewHolder =
-
                     MessageReceivedViewHolder(
                         ItemReceivedMessageBinding.inflate(
                             LayoutInflater.from(
@@ -47,12 +44,10 @@ class MessagesAdapter :
                             ), parent, false
                         )
                     )
-                Log.e("gaypop2", viewHolder.binding.toString())
             }
 
         }
         return viewHolder
-
     }
 
     override fun onBindViewHolder(
@@ -76,7 +71,6 @@ class MessagesAdapter :
     override fun getItemViewType(position: Int): Int {
         return when {
             getItem(position)?.phoneNumber?.equals(phoneNumber) == false -> {
-
                 R.layout.item_received_message
             }
             else -> {
@@ -88,15 +82,20 @@ class MessagesAdapter :
 
     inner class MessageSentViewHolder(binding: ItemSentMessagesBinding) :
         BaseRecyclerViewHolder<ItemSentMessagesBinding, Message>(binding) {
-        override fun onBind(item: Message) {
-            binding.tvMessage.text = item.message
-            binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
-            when(absoluteAdapterPosition) {
-                FIRST_IN_POSITION -> {
+        override fun onBind(item: Message) = with(binding) {
+            tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
 
-                }
 
+            when (absoluteAdapterPosition) {
+                FIRST_IN_POSITION ->
+                    clMessage.background =
+                        R.drawable.first_message_sent_cornered_background.toDrawable()
+                MIDDLE_IN_POSITION -> clMessage.background =
+                    R.drawable.middle_message_sent_cornered_background.toDrawable()
+                LAST_IN_POSITION -> clMessage.background =
+                    R.drawable.last_message_sent_cornered_background.toDrawable()
             }
+            tvMessage.text = item.message
         }
     }
 
@@ -110,7 +109,7 @@ class MessagesAdapter :
 
     companion object {
         private const val FIRST_IN_POSITION = -1
-        private const val MIDDLE_IN_POSITION = 0
+        private const val MIDDLE_IN_POSITION = 2
         private const val LAST_IN_POSITION = 1
     }
 }

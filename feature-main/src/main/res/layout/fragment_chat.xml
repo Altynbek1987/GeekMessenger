@@ -141,6 +141,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/gl_wallpaper_bottom"
         app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom"
+        app:reverseLayout="true"
         app:stackFromEnd="true"
         tools:listitem="@layout/item_sent_messages" />
 
