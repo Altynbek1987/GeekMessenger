@@ -37,6 +37,7 @@
         <entry key="feature-main/src/main/res/drawable/ic_emoji.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_keyboard.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_play_button.xml" value="0.15" />
+        <entry key="feature-main/src/main/res/drawable/ic_received_message_play_button.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/last_message_received_cornered_background.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/last_message_sent_cornered_background.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/message_corners_background.xml" value="0.141" />
@@ -53,10 +54,11 @@
         <entry key="feature-main/src/main/res/layout/item_home.xml" value="0.23802083333333332" />
         <entry key="feature-main/src/main/res/layout/item_message.xml" value="0.3098958333333333" />
         <entry key="feature-main/src/main/res/layout/item_received_message.xml" value="0.6783412985605737" />
+        <entry key="feature-main/src/main/res/layout/item_received_voice_message.xml" value="0.5130260521042084" />
         <entry key="feature-main/src/main/res/layout/item_sent_message.xml" value="0.522772216796875" />
         <entry key="feature-main/src/main/res/layout/item_sent_messages.xml" value="0.31153846153846154" />
         <entry key="feature-main/src/main/res/layout/item_sent_messagesss.xml" value="0.5898617511520737" />
-        <entry key="feature-main/src/main/res/layout/item_sent_voice_message.xml" value="0.37925925925925924" />
+        <entry key="feature-main/src/main/res/layout/item_sent_voice_message.xml" value="0.27291664236656327" />
         <entry key="feature-main/src/main/res/layout/item_user.xml" value="0.7414601643880209" />
         <entry key="feature-main/src/main/res/menu/chat_toolbar_menu.xml" value="0.30885416666666665" />
         <entry key="feature-main/src/main/res/menu/main_drawer.xml" value="0.3098958333333333" />

@@ -106,7 +106,6 @@ class MessagesAdapter :
     inner class VoiceMessageSentViewHolder(binding: ItemSentVoiceMessageBinding) :
         BaseRecyclerViewHolder<ItemSentVoiceMessageBinding, Message>(binding) {
         override fun onBind(item: Message) {
-            binding.waveformSeekbar.
 
 
         }
