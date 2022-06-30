@@ -21,6 +21,8 @@ appCompat = "1.4.1"
 splashScreen = "1.0.0-beta01"
 maskedEditText = "1.0.0"
 emojiPopUp = "0.15.0"
+waveformSeekBar = "5.0.1"
+waveformAmplituda = "2.1.4"
 #Core
 core = "1.8.0"
 #Activity
@@ -88,6 +90,8 @@ ui-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "s
 ui-dotsIndicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsIndicator" }
 ui-emojiMaterial = { module = "com.vanniktech:emoji-material", version.ref = "emojiPopUp" }
 ui-emojiGoogle = { module = "com.vanniktech:emoji-google", version.ref = "emojiPopUp" }
+ui-waveformSeekBar = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformSeekBar" }
+ui-waveformSeekBarAmplituda = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformAmplituda" }
 glide-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 
 #Legacy Support
