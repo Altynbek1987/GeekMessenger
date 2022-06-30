@@ -11,6 +11,7 @@ import com.geektechkb.core.base.BaseRecyclerViewHolder
 import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.ItemReceivedMessageBinding
+import com.geektechkb.feature_main.databinding.ItemReceivedVoiceMessageBinding
 import com.geektechkb.feature_main.databinding.ItemSentMessagesBinding
 import com.geektechkb.feature_main.databinding.ItemSentVoiceMessageBinding
 import com.geektechkb.feature_main.domain.models.Message
@@ -24,10 +25,10 @@ class MessagesAdapter :
         parent: ViewGroup,
         viewType: Int
     ): BaseRecyclerViewHolder<ViewBinding, Message> {
-        lateinit var viewHolder: BaseRecyclerViewHolder<ViewBinding, Message>
+        lateinit var layout: BaseRecyclerViewHolder<ViewBinding, Message>
         when (viewType) {
             R.layout.item_sent_messages -> {
-                viewHolder =
+                layout =
                     MessageSentViewHolder(
                         ItemSentMessagesBinding.inflate(
                             LayoutInflater.from(parent.context),
@@ -37,7 +38,7 @@ class MessagesAdapter :
                     )
             }
             R.layout.item_received_message -> {
-                viewHolder =
+                layout =
                     MessageReceivedViewHolder(
                         ItemReceivedMessageBinding.inflate(
                             LayoutInflater.from(
@@ -46,9 +47,23 @@ class MessagesAdapter :
                         )
                     )
             }
+            R.layout.item_received_voice_message -> {
+                layout = VoiceMessageReceivedViewHolder(
+                    ItemReceivedVoiceMessageBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
+                    )
+                )
+            }
+            R.layout.item_sent_voice_message -> {
+                layout = VoiceMessageSentViewHolder(
+                    ItemSentVoiceMessageBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
+                    )
+                )
+            }
 
         }
-        return viewHolder
+        return layout
     }
 
     override fun onBindViewHolder(
@@ -68,6 +83,9 @@ class MessagesAdapter :
             }
             R.layout.item_sent_voice_message -> getItem(position)?.let {
                 (holder as VoiceMessageSentViewHolder).onBind(it)
+            }
+            R.layout.item_received_voice_message -> getItem(position)?.let {
+                (holder as VoiceMessageReceivedViewHolder).onBind(it)
             }
         }
     }
@@ -112,11 +130,18 @@ class MessagesAdapter :
 
     }
 
+
     inner class MessageReceivedViewHolder(binding: ItemReceivedMessageBinding) :
         BaseRecyclerViewHolder<ItemReceivedMessageBinding, Message>(binding) {
         override fun onBind(item: Message) {
             binding.tvMessage.text = item.message
             binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
+        }
+    }
+
+    inner class VoiceMessageReceivedViewHolder(binding: ItemReceivedVoiceMessageBinding) :
+        BaseRecyclerViewHolder<ItemReceivedVoiceMessageBinding, Message>(binding) {
+        override fun onBind(item: Message) {
         }
     }
 
