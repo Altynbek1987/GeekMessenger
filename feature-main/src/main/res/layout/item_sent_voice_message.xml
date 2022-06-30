@@ -21,6 +21,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_voice_message"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
@@ -37,16 +38,107 @@
             android:layout_height="match_parent">
 
             <ImageButton
+                android:id="@+id/ib_player"
                 android:layout_width="23dp"
                 android:layout_height="23dp"
                 android:layout_marginStart="6dp"
                 android:src="@drawable/ic_sent_voice_message_play_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <See
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_waveform_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.80" />
+
+            <com.masoudss.lib.WaveformSeekBar
+                android:id="@+id/waveform_seekbar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_waveform_end"
+                app:layout_constraintStart_toEndOf="@id/ib_player"
+                app:layout_constraintTop_toTopOf="parent"
+                app:wave_background_color="@color/white40PercentOpacity"
+                app:wave_corner_radius="2dp"
+                app:wave_gap="2dp"
+                app:wave_gravity="center"
+                app:wave_max_progress="100"
+                app:wave_min_height="5dp"
+                app:wave_progress="33"
+                app:wave_progress_color="@color/white"
+                app:wave_width="5dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_voice_message_duration_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.93" />
+
+            <TextView
+                android:id="@+id/tv_time_message_was_sent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="14:38"
+                android:textColor="#D4D4D4"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@id/gl_voice_message_duration_end"
+                app:layout_constraintStart_toEndOf="@id/waveform_seekbar"
+                app:layout_constraintTop_toBottomOf="@id/mcv_voice_message_duration" />
+
+            <ImageView
+                android:id="@+id/im_message_status"
+                android:layout_width="14dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_received_and_seen"
+                app:layout_constraintStart_toEndOf="@id/tv_time_message_was_sent"
+                app:layout_constraintTop_toBottomOf="@id/mcv_voice_message_duration" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_voice_message_duration"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginBottom="18dp"
+                android:background="@color/white"
+                app:cardCornerRadius="10dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_voice_message_duration_end"
+                app:layout_constraintStart_toEndOf="@id/waveform_seekbar"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/tv_voice_message_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="00:35"
+                    android:textColor="@color/sentMessagesColor"
+                    android:textSize="8sp" />
+
+
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </com.google.android.material.card.MaterialCardView>
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -12,6 +12,7 @@ import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.ItemReceivedMessageBinding
 import com.geektechkb.feature_main.databinding.ItemSentMessagesBinding
+import com.geektechkb.feature_main.databinding.ItemSentVoiceMessageBinding
 import com.geektechkb.feature_main.domain.models.Message
 
 class MessagesAdapter :
@@ -65,6 +66,9 @@ class MessagesAdapter :
                     it
                 )
             }
+            R.layout.item_sent_voice_message -> getItem(position)?.let {
+                (holder as VoiceMessageSentViewHolder).onBind(it)
+            }
         }
     }
 
@@ -99,6 +103,16 @@ class MessagesAdapter :
         }
     }
 
+    inner class VoiceMessageSentViewHolder(binding: ItemSentVoiceMessageBinding) :
+        BaseRecyclerViewHolder<ItemSentVoiceMessageBinding, Message>(binding) {
+        override fun onBind(item: Message) {
+            binding.waveformSeekbar.
+
+
+        }
+
+    }
+
     inner class MessageReceivedViewHolder(binding: ItemReceivedMessageBinding) :
         BaseRecyclerViewHolder<ItemReceivedMessageBinding, Message>(binding) {
         override fun onBind(item: Message) {
@@ -106,6 +120,7 @@ class MessagesAdapter :
             binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
         }
     }
+
 
     companion object {
         private const val FIRST_IN_POSITION = -1
