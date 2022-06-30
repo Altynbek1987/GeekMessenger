@@ -153,7 +153,7 @@ koin-koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
 [bundles]
 #UI Components
-uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-maskedEditText", "ui-dotsIndicator", "ui-emojiMaterial", "ui-emojiGoogle"]
+uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-maskedEditText", "ui-dotsIndicator", "ui-emojiMaterial", "ui-emojiGoogle", "ui-waveformSeekBar", "ui-waveformSeekBarAmplituda"]
 
 #Room
 room = ["room-runtime", "room-kotlinExtensionsAndCoroutinesSupport"]

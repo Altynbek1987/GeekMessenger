@@ -25,6 +25,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
+        android:background="#5393D0"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="@id/gl_voice_message_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gl_voice_message_start"
@@ -33,9 +35,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageButton
-                android:layout_width=""
-                android:layout_height=""
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_sent_voice_message_play_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <See
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
