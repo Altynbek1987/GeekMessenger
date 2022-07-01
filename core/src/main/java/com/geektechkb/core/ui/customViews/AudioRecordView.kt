@@ -19,6 +19,8 @@ import androidx.annotation.DrawableRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.geektechkb.core.databinding.ViewAudioRecordBinding
+import com.geektechkb.core.databinding.ViewSlidePanelBinding
 import com.tougee.recorderview.*
 import com.tougee.recorderview.databinding.ViewAudioRecordBinding
 import com.tougee.recorderview.databinding.ViewSlidePanelBinding
@@ -36,7 +38,7 @@ class AudioRecordView : FrameLayout {
     lateinit var callback: Callback
     lateinit var activity: Activity
     lateinit var binding: ViewAudioRecordBinding
-    lateinit var _binding: ViewSlidePanelBinding
+    var _binding: ViewSlidePanelBinding
 
     private var isRecording = false
     private var upBeforeGrant = false
