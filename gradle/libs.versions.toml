@@ -23,6 +23,7 @@ maskedEditText = "1.0.0"
 emojiPopUp = "0.15.0"
 waveformSeekBar = "5.0.1"
 waveformAmplituda = "2.1.4"
+audioRecorderView = "1.0.4"
 #Core
 core = "1.8.0"
 #Activity
@@ -92,6 +93,7 @@ ui-emojiMaterial = { module = "com.vanniktech:emoji-material", version.ref = "em
 ui-emojiGoogle = { module = "com.vanniktech:emoji-google", version.ref = "emojiPopUp" }
 ui-waveformSeekBar = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformSeekBar" }
 ui-waveformSeekBarAmplituda = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformAmplituda" }
+ui-audioRecorderView = { module = "com.github.tougee:audiorecorderview", version.ref = "audioRecorderView" }
 glide-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 
 #Legacy Support

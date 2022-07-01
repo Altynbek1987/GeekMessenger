@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.15602836879432624" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/app/src/main/res/layout/activity_main.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_auth_with_phone_number.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authoritarian_flow.xml" value="0.184375" />
@@ -34,8 +35,10 @@
         <entry key="feature-main/src/main/res/drawable/edit_text_cornered_background.xml" value="0.1445" />
         <entry key="feature-main/src/main/res/drawable/first_message_received_cornered_background.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/first_message_sent_cornered_background.xml" value="0.15" />
+        <entry key="feature-main/src/main/res/drawable/ic_chat_wallpaper.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_emoji.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_keyboard.xml" value="0.1" />
+        <entry key="feature-main/src/main/res/drawable/ic_microphone.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_play_button.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_received_message_play_button.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/last_message_received_cornered_background.xml" value="0.1" />

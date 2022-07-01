@@ -1,6 +1,5 @@
 package com.geektechkb.feature_auth.domain.useCases.authentication
 
-import com.geektechkb.core.typealiases.NotAnActualUri
 import com.geektechkb.feature_auth.domain.repositories.AuthRepository
 import javax.inject.Inject
 
@@ -12,7 +11,7 @@ class AuthenticateUserUseCase @Inject constructor(
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: NotAnActualUri?,
+        profileImage: String?,
         imageFileName: String
     ) =
         authRepository.authenticateUser(

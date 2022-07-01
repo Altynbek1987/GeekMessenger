@@ -1,6 +1,9 @@
 package com.geektechkb.feature_auth.domain.repositories
 
-import com.geektechkb.core.typealiases.*
+import com.geektechkb.core.typealiases.NotAnActualActivity
+import com.geektechkb.core.typealiases.NotAnActualCallbacks
+import com.geektechkb.core.typealiases.NotAnActualFirebaseAuth
+import com.geektechkb.core.typealiases.NotAnActualForceResendingToken
 
 interface AuthRepository {
 
@@ -24,7 +27,7 @@ interface AuthRepository {
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: NotAnActualUri?,
+        profileImage: String?,
         imageFileName: String
     )
 }

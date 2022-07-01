@@ -14,7 +14,6 @@ import com.geektechkb.core.extensions.removeExtraSpaces
 import com.geektechkb.core.typealiases.NotAnActualActivity
 import com.geektechkb.core.typealiases.NotAnActualCallbacks
 import com.geektechkb.core.typealiases.NotAnActualFirebaseAuth
-import com.geektechkb.core.typealiases.NotAnActualUri
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.domain.repositories.AuthRepository
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
@@ -102,7 +101,7 @@ class AuthRepositoryImpl @Inject constructor(
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: NotAnActualUri?,
+        profileImage: String?,
         imageFileName: String
     ) {
         userPreferencesHelper.currentUserPhoneNumber = phoneNumber.removeExtraSpaces()
@@ -113,12 +112,12 @@ class AuthRepositoryImpl @Inject constructor(
                 FIREBASE_USER_LAST_NAME_KEY to surname,
                 FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
                 FIREBASE_USER_LAST_SEEN_TIME_KEY to lastSeen,
-                FIREBASE_USER_PROFILE_IMAGE_KEY to profileImage?.let {
-                    uploadUncompressedAlymToCloudStorage(
-                        cloudStorageRef, it,
-                        FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH, imageFileName
-                    )
-                }
+                FIREBASE_USER_PROFILE_IMAGE_KEY to
+                        uploadUncompressedImageToCloudStorage(
+                            cloudStorageRef, Uri.parse(profileImage),
+                            FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH, imageFileName
+                        )
+
             ), phoneNumber
         )
     }

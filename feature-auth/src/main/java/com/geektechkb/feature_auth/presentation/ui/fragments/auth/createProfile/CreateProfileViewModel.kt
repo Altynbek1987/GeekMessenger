@@ -1,8 +1,6 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile
 
-import android.net.Uri
 import com.geektechkb.core.base.BaseViewModel
-import com.geektechkb.core.typealiases.NotAnActualUri
 import com.geektechkb.feature_auth.domain.useCases.authentication.AuthenticateUserUseCase
 import com.geektechkb.feature_auth.domain.useCases.authentication.IsUserAuthenticatedUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,14 +16,14 @@ class CreateProfileViewModel @Inject constructor(
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: NotAnActualUri? = null,
+        profileImage: String? = null,
         imageFileName: String
     ) = authenticateUserUseCase(
         lastSeen,
         phoneNumber,
         name,
         surname,
-        profileImage as Uri?,
+        profileImage,
         imageFileName
     )
 
