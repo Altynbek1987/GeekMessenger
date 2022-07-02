@@ -1,4 +1,4 @@
-package com.tougee.recorderview
+package com.geektechkb.core.ui.customViews
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -12,7 +12,10 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
-import com.tougee.recorderview.databinding.ViewSlidePanelBinding
+import com.geektechkb.core.R
+import com.geektechkb.core.databinding.ViewSlidePanelBinding
+import com.tougee.recorderview.dip
+import com.tougee.recorderview.formatMillis
 import kotlin.math.abs
 
 class SlidePanelView : RelativeLayout {
@@ -30,7 +33,11 @@ class SlidePanelView : RelativeLayout {
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         binding = ViewSlidePanelBinding.inflate(LayoutInflater.from(context), this)
         setBackgroundColor(Color.WHITE)
         isClickable = true

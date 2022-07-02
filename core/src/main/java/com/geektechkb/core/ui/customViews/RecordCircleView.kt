@@ -1,4 +1,4 @@
-package com.tougee.recorderview
+package com.geektechkb.core.ui.customViews
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,6 +9,8 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.geektechkb.core.R
+import com.tougee.recorderview.dipInt
 import kotlin.math.max
 import kotlin.math.min
 
@@ -56,7 +58,7 @@ class RecordCircleView : View {
     lateinit var callback: Callback
 
     var audioDrawable: Drawable =
-        ResourcesCompat.getDrawable(resources, R.drawable.ic_record_mic_white, null)!!
+        ResourcesCompat.getDrawable(resources, R.drawable.ic_microphone_inactive, null)!!
     var releaseLockDrawable: Drawable =
         ResourcesCompat.getDrawable(resources, R.drawable.ic_release_locked_lock, null)!!
 
@@ -291,7 +293,7 @@ class RecordCircleView : View {
         lockBackgroundDrawable.draw(canvas)
         lockShadowDrawable.setBounds(
             cx - context.dipInt(16f),
-            lockY - context.dipInt(1f)  ,
+            lockY - context.dipInt(1f),
             cx + context.dipInt(16f),
             lockY + lockSize + context.dipInt(1f)
         )

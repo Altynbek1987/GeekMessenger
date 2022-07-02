@@ -11,9 +11,11 @@
         android:layout_gravity="end|bottom"
         android:background="@null"
         android:paddingStart="12dp"
+        android:paddingTop="8dp"
         android:paddingEnd="12dp"
-        android:src="@drawable/ic_record_mic_black"
+        android:src="@drawable/ic_microphone_inactive"
         tools:ignore="ContentDescription" />
+
 
     <ImageButton
         android:id="@+id/ib_release_player"
@@ -28,14 +30,14 @@
         tools:ignore="ContentDescription" />
 
 
-    <com.tougee.recorderview.SlidePanelView
+    <com.geektechkb.core.ui.customViews.SlidePanelView
         android:id="@+id/slide_panel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/chat_control_height"
         android:layout_gravity="bottom"
         android:visibility="gone" />
 
-    <com.tougee.recorderview.RecordCircleView
+    <com.geektechkb.core.ui.customViews.RecordCircleView
         android:id="@+id/record_circle"
         android:layout_width="124dp"
         android:layout_height="194dp"
@@ -50,7 +52,6 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="44dp"
-        android:background="@drawable/bg_record_tip"
         android:text="@string/hold_to_record_audio"
         android:textColor="@android:color/white"
         android:visibility="invisible" />

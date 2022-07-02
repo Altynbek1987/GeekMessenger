@@ -1,14 +1,9 @@
-package com.tougee.recorderview
+package com.geektechkb.core.ui.customViews
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator.INFINITE
 import android.animation.ValueAnimator.REVERSE
-import android.graphics.Canvas
-import android.graphics.ColorFilter
-import android.graphics.Paint
-import android.graphics.PixelFormat
-import android.graphics.Rect
-import android.graphics.RectF
+import android.graphics.*
 import android.graphics.drawable.Drawable
 
 class BlinkingDrawable(private val color: Int) : Drawable() {

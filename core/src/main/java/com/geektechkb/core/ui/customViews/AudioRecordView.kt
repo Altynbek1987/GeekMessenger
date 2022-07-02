@@ -19,11 +19,10 @@ import androidx.annotation.DrawableRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.geektechkb.core.R
 import com.geektechkb.core.databinding.ViewAudioRecordBinding
 import com.geektechkb.core.databinding.ViewSlidePanelBinding
 import com.tougee.recorderview.*
-import com.tougee.recorderview.databinding.ViewAudioRecordBinding
-import com.tougee.recorderview.databinding.ViewSlidePanelBinding
 
 @Suppress("MemberVisibilityCanBePrivate")
 class AudioRecordView : FrameLayout {
@@ -44,7 +43,7 @@ class AudioRecordView : FrameLayout {
     private var upBeforeGrant = false
 
     @DrawableRes
-    var micIcon: Int = R.drawable.ic_record_mic_black
+    var micIcon: Int = R.drawable.ic_microphone_inactive
         set(value) {
             if (value == field) return
 
@@ -53,7 +52,7 @@ class AudioRecordView : FrameLayout {
         }
 
     @DrawableRes
-    var micActiveIcon: Int = R.drawable.ic_record_mic_white
+    var micActiveIcon: Int = R.drawable.ic_microphone_active
         set(value) {
             if (value == field) return
 
@@ -82,7 +81,7 @@ class AudioRecordView : FrameLayout {
         }
 
     @DrawableRes
-    var micHintBg: Int = R.drawable.bg_record_tip
+    var micHintBg: Int = R.drawable.ic_microphone_active
         set(value) {
             if (value == field) return
 
@@ -91,7 +90,7 @@ class AudioRecordView : FrameLayout {
         }
 
     @ColorInt
-    var circleColor: Int = ContextCompat.getColor(context, R.color.color_blue)
+    var circleColor: Int = ContextCompat.getColor(context, R.color.sentMessagesColor)
         set(value) {
             if (value == field) return
 
