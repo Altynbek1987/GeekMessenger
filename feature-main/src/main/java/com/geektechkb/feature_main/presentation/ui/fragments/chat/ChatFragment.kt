@@ -1,6 +1,5 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
-import android.os.ParcelFileDescriptor
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -12,7 +11,6 @@ import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SE
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.*
 import com.geektechkb.core.ui.customViews.AudioRecordView
-import com.geektechkb.core.ui.customViews.AudioRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
@@ -20,7 +18,6 @@ import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.io.File
 import javax.inject.Inject
 
 
@@ -32,24 +29,15 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
     private var savedUserStatus: String? = null
-    private val tmpFile: File by lazy {
-        val f = File("${requireActivity().filesDir}${File.separator}tmp.pcm")
-        if (!f.exists()) {
-            f.createNewFile()
-        }
-        f
-    }
 
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
     override fun initialize() {
-        super.initialize()
         binding.recordView.activity = requireActivity()
         binding.recordView.callback = this
-    }
 
-    private var audioRecord: AudioRecorder? = null
+    }
 
 
     override fun assembleViews() {
@@ -147,6 +135,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             val emojiPopUp = EmojiPopup(
                 root,
                 binding.etMessage,
+
                 onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
                 onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
             )
@@ -198,15 +187,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     override fun onRecordStart() {
-        audioRecord =
-            AudioRecorder(ParcelFileDescriptor.open(tmpFile, ParcelFileDescriptor.MODE_READ_WRITE))
-        audioRecord?.start()
     }
 
 
     override fun isReady(): Boolean {
 
-        return false
+        return true
     }
 
     override fun onRecordEnd() {

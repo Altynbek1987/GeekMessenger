@@ -345,17 +345,18 @@
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.geektechkb.core.ui.customViews.AudioRecordView
             android:id="@+id/record_view"
-            android:layout_width="300dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:mic_active_icon="@drawable/ic_microphone_active"
-            app:layout_constraintStart_toStartOf="parent"
             android:translationZ="10dp"
-            app:vibration_enable="true"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:vibration_enable="true" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

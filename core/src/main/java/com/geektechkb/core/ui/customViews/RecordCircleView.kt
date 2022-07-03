@@ -10,7 +10,6 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.geektechkb.core.R
-import com.tougee.recorderview.dipInt
 import kotlin.math.max
 import kotlin.math.min
 
@@ -58,7 +57,7 @@ class RecordCircleView : View {
     lateinit var callback: Callback
 
     var audioDrawable: Drawable =
-        ResourcesCompat.getDrawable(resources, R.drawable.ic_microphone_inactive, null)!!
+        ResourcesCompat.getDrawable(resources, R.drawable.ic_microphone_active, null)!!
     var releaseLockDrawable: Drawable =
         ResourcesCompat.getDrawable(resources, R.drawable.ic_release_locked_lock, null)!!
 

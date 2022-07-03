@@ -12,4 +12,8 @@
     <color name="white40PercentOpacity">#6698BEE3</color>
     <color name="color_record_circle_bg">#EE1987FF</color>
     <color name="color_blink">#FF5E5E</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorDarkBlue">#1987FF</color>
 </resources>

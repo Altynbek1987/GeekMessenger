@@ -22,7 +22,6 @@ import androidx.core.content.res.ResourcesCompat
 import com.geektechkb.core.R
 import com.geektechkb.core.databinding.ViewAudioRecordBinding
 import com.geektechkb.core.databinding.ViewSlidePanelBinding
-import com.tougee.recorderview.*
 
 @Suppress("MemberVisibilityCanBePrivate")
 class AudioRecordView : FrameLayout {
@@ -37,13 +36,13 @@ class AudioRecordView : FrameLayout {
     lateinit var callback: Callback
     lateinit var activity: Activity
     lateinit var binding: ViewAudioRecordBinding
-    var _binding: ViewSlidePanelBinding
+    lateinit var _binding: ViewSlidePanelBinding
 
     private var isRecording = false
     private var upBeforeGrant = false
 
     @DrawableRes
-    var micIcon: Int = R.drawable.ic_microphone_inactive
+    var micIcon: Int = R.drawable.ic_record_mic_black
         set(value) {
             if (value == field) return
 
@@ -81,7 +80,7 @@ class AudioRecordView : FrameLayout {
         }
 
     @DrawableRes
-    var micHintBg: Int = R.drawable.ic_microphone_active
+    var micHintBg: Int = R.drawable.bg_record_tip
         set(value) {
             if (value == field) return
 

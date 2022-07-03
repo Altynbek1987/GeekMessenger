@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package com.tougee.recorderview
+package com.geektechkb.core.ui.customViews
 
 import android.animation.Animator
 import android.content.Context

@@ -11,11 +11,9 @@
         android:layout_gravity="end|bottom"
         android:background="@null"
         android:paddingStart="12dp"
-        android:paddingTop="8dp"
         android:paddingEnd="12dp"
-        android:src="@drawable/ic_microphone_inactive"
+        android:src="@drawable/ic_record_mic_black"
         tools:ignore="ContentDescription" />
-
 
     <ImageButton
         android:id="@+id/ib_release_player"
@@ -52,6 +50,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="44dp"
+        android:background="@drawable/bg_record_tip"
         android:text="@string/hold_to_record_audio"
         android:textColor="@android:color/white"
         android:visibility="invisible" />

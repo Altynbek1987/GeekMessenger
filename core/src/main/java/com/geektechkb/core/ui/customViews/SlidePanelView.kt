@@ -14,8 +14,6 @@ import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import com.geektechkb.core.R
 import com.geektechkb.core.databinding.ViewSlidePanelBinding
-import com.tougee.recorderview.dip
-import com.tougee.recorderview.formatMillis
 import kotlin.math.abs
 
 class SlidePanelView : RelativeLayout {
