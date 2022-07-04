@@ -71,24 +71,24 @@ class RecordCircleView : View {
     }
 
     private val lockDrawable: Drawable by lazy {
-        ResourcesCompat.getDrawable(resources, R.drawable.lock_middle, null)!!.apply {
+        ResourcesCompat.getDrawable(resources, R.drawable.ic_lock_padlock, null)!!.apply {
             colorFilter = PorterDuffColorFilter(colorLock, PorterDuff.Mode.MULTIPLY)
         }
     }
     private val lockTopDrawable: Drawable by lazy {
-        ResourcesCompat.getDrawable(resources, R.drawable.lock_top, null)!!.apply {
+        ResourcesCompat.getDrawable(resources, R.drawable.ic_lock_shackle, null)!!.apply {
             colorFilter = PorterDuffColorFilter(colorLock, PorterDuff.Mode.MULTIPLY)
         }
     }
 
     private val lockBackgroundDrawable: Drawable by lazy {
-        ResourcesCompat.getDrawable(resources, R.drawable.lock_round, null)!!.apply {
+        ResourcesCompat.getDrawable(resources, R.drawable.ic_lock_round, null)!!.apply {
             colorFilter =
                 PorterDuffColorFilter(lockBackgroundDrawableColor, PorterDuff.Mode.MULTIPLY)
         }
     }
     private val lockShadowDrawable: Drawable by lazy {
-        ResourcesCompat.getDrawable(resources, R.drawable.lock_round_shadow, null)!!.apply {
+        ResourcesCompat.getDrawable(resources, R.drawable.ic_lock_shadow, null)!!.apply {
             colorFilter =
                 PorterDuffColorFilter(lockBackgroundDrawableColor, PorterDuff.Mode.MULTIPLY)
 
