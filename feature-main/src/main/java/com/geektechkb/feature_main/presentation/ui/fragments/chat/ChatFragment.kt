@@ -62,10 +62,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun hideNotificationThatThereAreNoMessages() {
-        if (messagesAdapter.itemCount == 0) {
-
-            binding.mcvThereAreNoMessages.isVisible = false
-        }
+        viewModel.actIfThereAreNoMessages(actionIfAdapterIsEmpty = {
+            binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = true
+            true
+        }, actionIfViceVersa = {
+            binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = false
+            false
+        })
 
     }
 
@@ -184,6 +187,15 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             messagesAdapter.submitData(it)
             binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
         })
+    }
+
+    private fun hideThereAreNoMessagesNotificationIfRecyclerIsNotEmpty(
+    ) {
+        return when (messagesAdapter.itemCount) {
+            0 -> binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = true
+            else -> binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = false
+        }
+
     }
 
     override fun onRecordStart() {

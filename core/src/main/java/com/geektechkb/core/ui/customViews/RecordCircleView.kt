@@ -90,7 +90,7 @@ class RecordCircleView : View {
     private val lockShadowDrawable: Drawable by lazy {
         ResourcesCompat.getDrawable(resources, R.drawable.lock_round_shadow, null)!!.apply {
             colorFilter =
-                PorterDuffColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY)
+                PorterDuffColorFilter(lockBackgroundDrawableColor, PorterDuff.Mode.MULTIPLY)
 
         }
     }

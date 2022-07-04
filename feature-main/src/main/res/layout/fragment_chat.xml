@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="0"
     android:background="@drawable/ic_chat_wallpaper"
     android:fitsSystemWindows="true"
     tools:context=".presentation.ui.fragments.chat.ChatFragment">
@@ -145,111 +146,9 @@
         app:stackFromEnd="true"
         tools:listitem="@layout/item_sent_messages" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_mcv_no_messages_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.392" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_mcv_no_messages_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_mcv_no_messages_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_mcv_no_messages_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.58" />
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcv_there_are_no_messages"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardBackgroundColor="#8aacd0"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/gl_mcv_no_messages_bottom"
-        app:layout_constraintEnd_toEndOf="@id/gl_mcv_no_messages_end"
-        app:layout_constraintStart_toStartOf="@id/gl_mcv_no_messages_start"
-        app:layout_constraintTop_toTopOf="@id/gl_mcv_no_messages_top">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_no_messages_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_no_messages_end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.85" />
-
-            <TextView
-                android:id="@+id/tv_no_messages_yet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-
-                android:text="@string/there_is_nothing_yet_russian"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/gl_no_messages_end"
-                app:layout_constraintStart_toStartOf="@id/gl_no_messages_start"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_send_message_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.115" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_send_messages_end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.89" />
-
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:gravity="center"
-                android:text="@string/send_message_or_record_voice_message_russian"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@id/gl_send_messages_end"
-                app:layout_constraintStart_toStartOf="@id/gl_send_message_start"
-                app:layout_constraintTop_toBottomOf="@id/tv_no_messages_yet" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
+    <include
+        android:id="@+id/i_there_are_no_messages_yet"
+        layout="@layout/there_are_no_messages_yet" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -302,7 +201,7 @@
             app:layout_constraintGuide_percent="0.09" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_camera_end_edit_text"
+            android:id="@+id/gl_clip_end_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -324,7 +223,7 @@
             app:boxStrokeWidth="0dp"
             app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/gl_camera_end_edit_text"
+            app:layout_constraintEnd_toEndOf="@id/gl_clip_end_edit_text"
             app:layout_constraintStart_toStartOf="@id/gl_emoji_end_edit_text"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -346,20 +245,22 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.geektechkb.core.ui.customViews.AudioRecordView
-            android:id="@+id/record_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:translationZ="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:vibration_enable="true" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.geektechkb.core.ui.customViews.AudioRecordView
+        android:id="@+id/record_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:translationZ="10dp"
+        app:cancel_icon="@drawable/ic_release_locked_lock"
+        app:circle_color="@color/sentMessagesColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:mic_active_icon="@drawable/ic_microphone_active"
+        app:mic_icon="@drawable/ic_microphone_inactive"
+        app:vibration_enable="true" />
+
 
     <ImageView
         android:id="@+id/im_emoji"
@@ -373,7 +274,7 @@
         app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_mic_start"
+        android:id="@+id/gl_send_message_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -381,14 +282,14 @@
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_camera_end"
+        android:id="@+id/gl_clip_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.872" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_camera_start"
+        android:id="@+id/gl_clip_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -402,8 +303,8 @@
         android:contentDescription="@string/image_view_to_launch_camera"
         android:src="@drawable/ic_clip"
         app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
-        app:layout_constraintEnd_toEndOf="@id/gl_camera_end"
-        app:layout_constraintStart_toStartOf="@id/gl_camera_start"
+        app:layout_constraintEnd_toEndOf="@id/gl_clip_end"
+        app:layout_constraintStart_toStartOf="@id/gl_clip_start"
         app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -420,19 +321,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.982" />
 
-    <ImageView
-        android:id="@+id/im_microphone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="18dp"
-        android:background="@null"
-        android:contentDescription="@string/image_view_for_recording_voice_messages"
-        android:src="@drawable/ic_microphone"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/gl_mic_start"
-        app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
 
     <ImageView
         android:id="@+id/im_send_message"
@@ -445,7 +333,7 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/gl_mic_start"
+        app:layout_constraintStart_toStartOf="@id/gl_send_message_start"
         app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
 
 

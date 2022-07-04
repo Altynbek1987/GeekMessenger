@@ -73,6 +73,7 @@
         <entry key="feature-main/src/main/res/layout/item_sent_messagesss.xml" value="0.5898617511520737" />
         <entry key="feature-main/src/main/res/layout/item_sent_voice_message.xml" value="0.27291664236656327" />
         <entry key="feature-main/src/main/res/layout/item_user.xml" value="0.7414601643880209" />
+        <entry key="feature-main/src/main/res/layout/there_are_no_messages_yet.xml" value="0.27898550724637683" />
         <entry key="feature-main/src/main/res/menu/chat_toolbar_menu.xml" value="0.30885416666666665" />
         <entry key="feature-main/src/main/res/menu/main_drawer.xml" value="0.3098958333333333" />
       </map>
