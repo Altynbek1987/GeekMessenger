@@ -80,12 +80,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             when (etMessage.text?.length) {
                 0 -> {
-                    imMicrophone.isGone = false
+                    recordView.isGone = false
                     imSendMessage.isGone = true
                     imClip.isVisible = true
                 }
                 else -> {
-                    imMicrophone.isGone = true
+                    recordView.isGone = true
                     imSendMessage.isGone = false
                     imClip.isVisible = false
                 }
@@ -189,14 +189,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         })
     }
 
-    private fun hideThereAreNoMessagesNotificationIfRecyclerIsNotEmpty(
-    ) {
-        return when (messagesAdapter.itemCount) {
-            0 -> binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = true
-            else -> binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = false
-        }
-
-    }
 
     override fun onRecordStart() {
     }
