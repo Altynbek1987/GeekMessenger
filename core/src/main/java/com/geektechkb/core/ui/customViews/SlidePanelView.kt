@@ -24,7 +24,7 @@ class SlidePanelView : RelativeLayout {
     private var toCanceled = false
     private var isEnding = false
 
-    var timeoutSeconds = 60
+    private var timeoutSeconds = 60
 
     var callback: Callback? = null
     lateinit var binding: ViewSlidePanelBinding

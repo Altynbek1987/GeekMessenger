@@ -36,7 +36,7 @@ class AudioRecordView : FrameLayout {
     lateinit var callback: Callback
     lateinit var activity: Activity
     lateinit var binding: ViewAudioRecordBinding
-    lateinit var _binding: ViewSlidePanelBinding
+    var viewSlidePanelBinding: ViewSlidePanelBinding
 
     private var isRecording = false
     private var upBeforeGrant = false
@@ -115,7 +115,7 @@ class AudioRecordView : FrameLayout {
             if (value == field) return
 
             field = value
-            _binding.slideCancelTv.text = value
+            viewSlidePanelBinding.slideCancelTv.text = value
         }
 
     var cancelText: String = context.getString(R.string.cancel)
@@ -123,7 +123,7 @@ class AudioRecordView : FrameLayout {
             if (value == field) return
 
             field = value
-            _binding.cancelTv.text = value
+            viewSlidePanelBinding.cancelTv.text = value
         }
 
     var vibrationEnable: Boolean = true
@@ -136,7 +136,7 @@ class AudioRecordView : FrameLayout {
         defStyleAttr
     ) {
         binding = ViewAudioRecordBinding.inflate(LayoutInflater.from(context), this)
-        _binding = ViewSlidePanelBinding.bind(binding.root)
+        viewSlidePanelBinding = ViewSlidePanelBinding.bind(binding.root)
 
         val ta = context.obtainStyledAttributes(attrs, R.styleable.AudioRecordView)
         if (ta.hasValue(R.styleable.AudioRecordView_mic_icon)) {
@@ -196,9 +196,6 @@ class AudioRecordView : FrameLayout {
         binding.slidePanel.parent.requestDisallowInterceptTouchEvent(false)
     }
 
-    fun setTimeoutSeconds(seconds: Int) {
-        binding.slidePanel.timeoutSeconds = seconds
-    }
 
     private fun cleanUp() {
         startX = 0f

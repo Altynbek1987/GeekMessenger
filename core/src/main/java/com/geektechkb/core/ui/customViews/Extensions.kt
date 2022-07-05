@@ -27,14 +27,19 @@ inline fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT)
 
 fun Context.vibrate(pattern: LongArray) {
     if (Build.VERSION.SDK_INT >= 26) {
-        (getSystemService(Context.VIBRATOR_SERVICE) as Vibrator).vibrate(
+        (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as Vibrator).vibrate(
             VibrationEffect.createWaveform(
                 pattern,
                 -1
             )
         )
     } else {
-        (getSystemService(Context.VIBRATOR_SERVICE) as Vibrator).vibrate(pattern, -1)
+        (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as Vibrator).vibrate(
+            VibrationEffect.createWaveform(
+                pattern,
+                -1
+            )
+        )
     }
 }
 
@@ -109,8 +114,7 @@ fun View.fadeOut(duration: Long, delay: Long = 0) {
     ViewCompat.animate(this).alpha(0f).setStartDelay(delay).setDuration(duration)
         .setListener(object : ViewPropertyAnimatorListener {
             override fun onAnimationStart(view: View) {
-                @Suppress("DEPRECATION")
-                view.isDrawingCacheEnabled = true
+                view.isDrawingCacheEnabled= true
             }
 
             override fun onAnimationEnd(view: View) {

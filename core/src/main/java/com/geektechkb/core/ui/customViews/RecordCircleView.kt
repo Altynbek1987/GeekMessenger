@@ -35,7 +35,7 @@ class RecordCircleView : View {
 
     private val rect = RectF()
     private var sendClickBound = Rect()
-    var scale = 0f
+    private var scale = 0f
         set(value) {
             field = value
             invalidate()
