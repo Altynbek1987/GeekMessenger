@@ -70,9 +70,5 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     }
 
-    override fun onStop() {
-        super.onStop()
-    }
-
 
 }

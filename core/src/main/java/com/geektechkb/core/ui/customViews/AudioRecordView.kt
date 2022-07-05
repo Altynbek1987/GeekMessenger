@@ -42,7 +42,7 @@ class AudioRecordView : FrameLayout {
     private var upBeforeGrant = false
 
     @DrawableRes
-    var micIcon: Int = R.drawable.ic_record_mic_black
+    var micIcon: Int = R.drawable.ic_microphone_inactive
         set(value) {
             if (value == field) return
 
@@ -79,14 +79,6 @@ class AudioRecordView : FrameLayout {
             binding.recordTipTv.text = micHintText
         }
 
-    @DrawableRes
-    var micHintBg: Int = R.drawable.bg_record_tip
-        set(value) {
-            if (value == field) return
-
-            field = value
-            binding.recordTipTv.setBackgroundResource(value)
-        }
 
     @ColorInt
     var circleColor: Int = ContextCompat.getColor(context, R.color.sentMessagesColor)
@@ -164,9 +156,7 @@ class AudioRecordView : FrameLayout {
         if (ta.hasValue(R.styleable.AudioRecordView_mic_hint_color)) {
             micHintColor = ta.getColor(R.styleable.AudioRecordView_mic_hint_color, 0)
         }
-        if (ta.hasValue(R.styleable.AudioRecordView_mic_hint_bg)) {
-            micHintBg = ta.getResourceId(R.styleable.AudioRecordView_mic_hint_bg, 0)
-        }
+
         if (ta.hasValue(R.styleable.AudioRecordView_circle_color)) {
             circleColor = ta.getColor(R.styleable.AudioRecordView_circle_color, 0)
         }

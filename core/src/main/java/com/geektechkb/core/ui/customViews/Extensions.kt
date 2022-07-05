@@ -58,17 +58,10 @@ fun getStringForTime(builder: StringBuilder, formatter: Formatter, timeMs: Long)
         formatter.format("%02d:%02d", minutes, seconds).toString()
 }
 
-/**
- * Add an action which will be invoked when the animation has ended.
- *
- * @return the [Animator.AnimatorListener] added to the Animator
- * @see Animator.end
- */
+
 fun Animator.doOnEnd(action: (animator: Animator) -> Unit) = addListener(onEnd = action)
 
-/**
- * Add a listener to this Animator using the provided actions.
- */
+
 fun Animator.addListener(
     onEnd: ((animator: Animator) -> Unit)? = null,
     onStart: ((animator: Animator) -> Unit)? = null,

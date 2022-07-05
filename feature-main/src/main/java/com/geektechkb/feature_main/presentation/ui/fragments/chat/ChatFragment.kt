@@ -42,8 +42,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun assembleViews() {
         setupAdapter()
-        hideNotificationThatThereAreNoMessages()
-        hideCameraIconAndChangeMicrophoneToSendWhenUserInputMessage()
+        hideClipAndRecordViewWhenUserTyping()
     }
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
@@ -61,14 +60,16 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     }
 
-    private fun hideNotificationThatThereAreNoMessages() {
-        viewModel.actIfThereAreNoMessages(actionIfAdapterIsEmpty = {
-            binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = true
-            true
-        }, actionIfViceVersa = {
-            binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = false
-            false
-        })
+    private fun checkAdapterItemCountAndHideLayout(
+    ) {
+        when (messagesAdapter.snapshot().size) {
+            0 -> {
+                binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = true
+            }
+            else -> {
+                binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = false
+            }
+        }
 
     }
 
@@ -76,7 +77,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         binding.recyclerview.adapter = messagesAdapter
     }
 
-    private fun hideCameraIconAndChangeMicrophoneToSendWhenUserInputMessage() = with(binding) {
+    private fun hideClipAndRecordViewWhenUserTyping() = with(binding) {
         etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             when (etMessage.text?.length) {
                 0 -> {
@@ -185,6 +186,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewModel.fetchPagedMessages().spectatePaging(success = {
             messagesAdapter.submitData(it)
+            checkAdapterItemCountAndHideLayout()
+
             binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
         })
     }
@@ -194,10 +197,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
 
-    override fun isReady(): Boolean {
+    override fun isReady(): Boolean = true
 
-        return true
-    }
 
     override fun onRecordEnd() {
     }

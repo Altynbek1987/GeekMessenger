@@ -13,6 +13,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17798913043478262" />
         <entry key="core/src/main/res/drawable/ic_cancel_recording_audio.xml" value="0.15" />
         <entry key="core/src/main/res/drawable/ic_lock.xml" value="0.15" />
+        <entry key="core/src/main/res/drawable/ic_lock_closed.xml" value="0.127" />
+        <entry key="core/src/main/res/drawable/ic_lock_padlock.xml" value="0.127" />
+        <entry key="core/src/main/res/drawable/ic_lock_round.xml" value="0.127" />
+        <entry key="core/src/main/res/drawable/ic_lock_shackle.xml" value="0.127" />
+        <entry key="core/src/main/res/drawable/ic_lock_shadow.xml" value="0.127" />
         <entry key="core/src/main/res/drawable/ic_microphone_active.xml" value="0.15" />
         <entry key="core/src/main/res/drawable/ic_record_mic_black.xml" value="0.127" />
         <entry key="core/src/main/res/drawable/ic_release_locked_lock.xml" value="0.15" />

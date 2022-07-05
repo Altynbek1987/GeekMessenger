@@ -47,23 +47,6 @@ class ChatViewModel @Inject constructor(
     suspend fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
 
-    fun actIfThereAreNoMessages(
-        actionIfAdapterIsEmpty: () -> Boolean,
-        actionIfViceVersa: () -> Boolean
-    ) {
-        when (fetchPagedMessages() == null) {
-            false -> {
-                _messagesState.value = false
-                actionIfAdapterIsEmpty()
-            }
-            else -> {
-                _messagesState.value = true
-                actionIfViceVersa()
-            }
-        }
-
-    }
-
 
     init {
         fetchPagedMessages()

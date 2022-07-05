@@ -296,7 +296,7 @@ class RecordCircleView : View {
             cx + context.dipInt(16f),
             lockY + lockSize + context.dipInt(1f)
         )
-        lockShadowDrawable.draw(canvas)
+//        lockShadowDrawable.draw(canvas)
         lockTopDrawable.setBounds(
             cx - context.dipInt(6f),
             lockTopY,
