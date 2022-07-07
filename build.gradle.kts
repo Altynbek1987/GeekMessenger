@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.gradle) apply false
     alias(libs.plugins.navigation.safeArgs) apply false
     alias(libs.plugins.hilt.android) apply false
+//    id("org.jetbrains.kotlin.android") version "1.6.10" apply false
+//    id("org.jetbrains.kotlin.android") version "1.6.10" apply false
 
 }
 tasks.register("clean", Delete::class) {

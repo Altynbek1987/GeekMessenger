@@ -50,6 +50,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+//    buildFeatures {
+//        dataBinding = true
+//    }
 }
 
 dependencies {
@@ -72,5 +75,6 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt(libs.hilt.compiler)
 }

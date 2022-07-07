@@ -24,5 +24,4 @@ abstract class BaseFlowFragment(
 
     protected open fun setupNavigation(navController: NavController) {
     }
-
 }

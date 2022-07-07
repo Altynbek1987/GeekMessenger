@@ -13,6 +13,8 @@ plugins {
 
     // Hilt
     id(libs.plugins.hilt.android.get().pluginId)
+
+//    id(libs.plugins.agp.application.get().pluginId)
 }
 
 android {
@@ -42,11 +44,15 @@ android {
     buildFeatures {
         viewBinding = true
     }
+//    buildFeatures {
+//        dataBinding= true
+//    }
 }
 
 dependencies {
     api(project(":common"))
     api(project(":core"))
+//   api (project(":app"))
     // UI Components
     implementation(libs.bundles.uiComponents)
 
@@ -64,8 +70,13 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+//    implementation(project(mapOf("path" to ":app")))
     kapt(libs.hilt.compiler)
 
     //Paging 3
     implementation(libs.paging.paging)
+
+//    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+
 }
