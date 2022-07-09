@@ -101,11 +101,10 @@ class AuthRepositoryImpl @Inject constructor(
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: String?,
+        profileImage: String,
         imageFileName: String
     ) {
         userPreferencesHelper.currentUserPhoneNumber = phoneNumber.removeExtraSpaces()
-        profileImage as Uri?
         addDocument(
             usersRef, hashMapOf(
                 FIREBASE_USER_NAME_KEY to name,

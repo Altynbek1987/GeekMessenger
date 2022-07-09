@@ -1,5 +1,7 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -11,6 +13,7 @@ import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SE
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.*
 import com.geektechkb.core.ui.customViews.AudioRecordView
+import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
@@ -29,6 +32,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
     private var savedUserStatus: String? = null
+    private val appVoiceRecorder = AppVoiceRecorder()
 
 
     @Inject
@@ -39,6 +43,18 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.btn_clear_chat -> {
+                }
+                else -> {
+                }
+            }
+            true
+        }
+    }
 
     override fun assembleViews() {
         setupAdapter()
@@ -101,6 +117,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         onBackPressed()
     }
 
+
     private fun onBackPressed() {
         overrideOnBackPressed(actionWhenBackButtonPressed = {
             if (checkWhetherSoftKeyboardIsOpenedOrNot()) {
@@ -152,7 +169,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun establishRequest() {
         fetchUser()
-        fetchMessages()
 
     }
 
@@ -161,10 +177,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         lifecycleScope.launch {
             args.phoneNumber?.let { viewModel.fetchUser(it) }
         }
-    }
-
-    private fun fetchMessages() {
-        viewModel.fetchPagedMessages()
     }
 
 
@@ -194,15 +206,15 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
 
     override fun onRecordStart() {
+        appVoiceRecorder.startRecordingVoiceMessage(requireContext())
     }
-
-
-    override fun isReady(): Boolean = true
 
 
     override fun onRecordEnd() {
+        appVoiceRecorder.stopRecordingVoiceMessage()
     }
 
     override fun onRecordCancel() {
+        appVoiceRecorder.deleteRecordedVoiceMessage()
     }
 }

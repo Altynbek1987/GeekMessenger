@@ -31,17 +31,18 @@ class MessagesRepositoryImpl @Inject constructor(
         timeMessageWasSent: String,
         messageId: String
     ) {
-        addDocument(
-            messagesRef,
-            hashMapOf(
-                "senderPhoneNumber" to id,
-                "receiverPhoneNumber" to receiverPhoneNumber,
-                "timeMessageWasSent" to timeMessageWasSent,
-                "messages" to messagesRef.document(receiverPhoneNumber)
-                    .update("messages", FieldValue.arrayUnion(message))
-            ), messageId
 
-        )
+            addDocument(
+                messagesRef,
+                hashMapOf(
+                    "senderPhoneNumber" to id,
+                    "receiverPhoneNumber" to receiverPhoneNumber,
+                    "timeMessageWasSent" to timeMessageWasSent,
+                    "messages" to messagesRef.document(receiverPhoneNumber)
+                        .update("messages", FieldValue.arrayUnion(message))
+                ), messageId
+
+            )
     }
 
 

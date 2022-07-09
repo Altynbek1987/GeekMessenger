@@ -5,8 +5,9 @@ package com.geektechkb.core.ui.customViews
 import android.animation.Animator
 import android.content.Context
 import android.os.Build
+import android.os.CombinedVibration
 import android.os.VibrationEffect
-import android.os.Vibrator
+import android.os.VibratorManager
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
@@ -27,19 +28,14 @@ inline fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT)
 
 fun Context.vibrate(pattern: LongArray) {
     if (Build.VERSION.SDK_INT >= 26) {
-        (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as Vibrator).vibrate(
-            VibrationEffect.createWaveform(
-                pattern,
-                -1
-            )
+        (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager).vibrate(
+            CombinedVibration.createParallel(VibrationEffect.createWaveform(pattern, -1))
         )
     } else {
-        (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as Vibrator).vibrate(
-            VibrationEffect.createWaveform(
-                pattern,
-                -1
-            )
+        (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager).vibrate(
+            CombinedVibration.createParallel(VibrationEffect.createWaveform(pattern, -1))
         )
+
     }
 }
 
@@ -114,7 +110,7 @@ fun View.fadeOut(duration: Long, delay: Long = 0) {
     ViewCompat.animate(this).alpha(0f).setStartDelay(delay).setDuration(duration)
         .setListener(object : ViewPropertyAnimatorListener {
             override fun onAnimationStart(view: View) {
-                view.isDrawingCacheEnabled= true
+                view.isDrawingCacheEnabled = true
             }
 
             override fun onAnimationEnd(view: View) {

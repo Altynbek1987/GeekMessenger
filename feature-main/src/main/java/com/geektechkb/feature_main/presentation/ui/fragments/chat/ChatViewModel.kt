@@ -11,7 +11,6 @@ import com.geektechkb.feature_main.domain.useCases.FetchUserUseCase
 import com.geektechkb.feature_main.domain.useCases.SendMessageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,7 +23,6 @@ class ChatViewModel @Inject constructor(
 ) : BaseViewModel() {
     private val _userState = mutableUiStateFlow<User>()
     val userState = _userState.asStateFlow()
-    private val _messagesState = MutableStateFlow(false)
 
     fun sendMessage(
         id: String,

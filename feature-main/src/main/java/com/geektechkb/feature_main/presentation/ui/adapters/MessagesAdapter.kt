@@ -106,9 +106,7 @@ class MessagesAdapter :
         BaseRecyclerViewHolder<ItemSentMessagesBinding, Message>(binding) {
         override fun onBind(item: Message) = with(binding) {
             tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
-
-
-            when (absoluteAdapterPosition) {
+            when (itemViewType) {
                 FIRST_IN_POSITION ->
                     clMessage.background =
                         R.drawable.first_message_sent_cornered_background.toDrawable()
@@ -124,7 +122,6 @@ class MessagesAdapter :
     inner class VoiceMessageSentViewHolder(binding: ItemSentVoiceMessageBinding) :
         BaseRecyclerViewHolder<ItemSentVoiceMessageBinding, Message>(binding) {
         override fun onBind(item: Message) {
-
 
         }
 
@@ -148,7 +145,7 @@ class MessagesAdapter :
 
     companion object {
         private const val FIRST_IN_POSITION = -1
-        private const val MIDDLE_IN_POSITION = 2
+        private const val MIDDLE_IN_POSITION = 0
         private const val LAST_IN_POSITION = 1
     }
 }

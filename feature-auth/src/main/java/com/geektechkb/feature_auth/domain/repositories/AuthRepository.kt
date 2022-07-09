@@ -27,7 +27,7 @@ interface AuthRepository {
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: String?,
+        profileImage: String,
         imageFileName: String
     )
 }

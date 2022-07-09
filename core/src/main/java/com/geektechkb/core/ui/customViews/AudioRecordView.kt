@@ -442,7 +442,7 @@ class AudioRecordView : FrameLayout {
 
     interface Callback {
         fun onRecordStart()
-        fun isReady(): Boolean
+        fun isReady(): Boolean = true
         fun onRecordEnd()
         fun onRecordCancel()
     }
