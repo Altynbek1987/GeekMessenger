@@ -35,7 +35,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private var savedUserStatus: String? = null
     private val appVoiceRecorder = AppVoiceRecorder()
     private val requestPermissionLauncher =
-        createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+        createRequestPermissionLauncherToRequestSinglePermission(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            actionWhenPermissionHasBeenDenied = {
+
+                findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
+            })
 
 
     @Inject
@@ -121,7 +126,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 )
             )
                 showShortDurationSnackbar("fuck")
-
 
         }
     }

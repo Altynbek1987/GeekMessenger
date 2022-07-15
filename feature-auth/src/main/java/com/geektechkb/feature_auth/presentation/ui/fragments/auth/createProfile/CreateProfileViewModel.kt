@@ -16,14 +16,14 @@ class CreateProfileViewModel @Inject constructor(
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: String,
+        profileImage: String?,
         imageFileName: String
     ) = authenticateUserUseCase(
         lastSeen,
         phoneNumber,
         name,
         surname,
-        profileImage,
+        profileImage ?: " ",
         imageFileName
     )
 

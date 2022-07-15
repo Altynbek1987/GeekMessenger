@@ -101,7 +101,7 @@ class AuthRepositoryImpl @Inject constructor(
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: String,
+        profileImage: String?,
         imageFileName: String
     ) {
         userPreferencesHelper.currentUserPhoneNumber = phoneNumber.removeExtraSpaces()

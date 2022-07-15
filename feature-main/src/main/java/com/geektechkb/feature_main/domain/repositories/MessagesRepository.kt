@@ -10,7 +10,8 @@ interface MessagesRepository {
         timeMessageWasSent: String,
         messageId: String
     )
-    suspend fun sendVoiceMessage(file : String,voiceFileName :String)
+
+    suspend fun sendVoiceMessage(file: String, voiceFileName: String)
 
     fun fetchPagedMessages(): NotAnActualPagingData
     suspend fun setupOneOnOneChat(

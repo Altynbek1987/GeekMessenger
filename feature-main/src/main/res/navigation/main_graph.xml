@@ -41,5 +41,13 @@
             android:name="phoneNumber"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_chatFragment_to_deniedPermissionsDialogFragment"
+            app:destination="@id/deniedPermissionsDialogFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/deniedPermissionsDialogFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.dialogs.DeniedPermissionsDialogFragment"
+        android:label="DeniedPermissionsDialogFragment"
+        tools:layout="@layout/fragment_denied_permissions_dialog" />
 </navigation>
