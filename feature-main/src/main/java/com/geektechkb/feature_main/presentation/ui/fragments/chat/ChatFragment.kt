@@ -13,7 +13,6 @@ import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SE
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.*
 import com.geektechkb.core.ui.customViews.AudioRecordView
-import com.geektechkb.core.ui.customViews.RecordCircleView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
@@ -27,7 +26,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat),
-    AudioRecordView.Callback, RecordCircleView.Callback {
+    AudioRecordView.Callback {
     override val binding by viewBinding(FragmentChatBinding::bind)
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
@@ -222,7 +221,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO),
                 Manifest.permission.RECORD_AUDIO
             )
-
         )
             appVoiceRecorder.startRecordingVoiceMessage(requireContext())
     }
@@ -243,10 +241,5 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         appVoiceRecorder.deleteRecordedVoiceMessage()
     }
 
-    override fun onSend() {
-        appVoiceRecorder.showVoiceMessageFileName()
-    }
 
-    override fun onCancel() {
-    }
 }
