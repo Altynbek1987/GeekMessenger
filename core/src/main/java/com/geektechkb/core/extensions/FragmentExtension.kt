@@ -1,14 +1,11 @@
 package com.geektechkb.core.extensions
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.provider.MediaStore
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
-import androidx.core.app.ActivityCompat
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
@@ -22,25 +19,24 @@ fun Fragment.showLongDurationSnackbar(text: CharSequence) {
 }
 
 
-fun Fragment.checkWhetherPermissionHasBeenGrantedOrNot(
-    context: Context,
+fun Fragment.checkForPermissionStatusAndRequestIt(
+    requestPermissionLauncher: ActivityResultLauncher<String>,
     permission: String,
-    activity: Activity
-): Intent {
-    val galleryIntent =
-        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+): Boolean {
+    return when (ContextCompat.checkSelfPermission(
+        requireContext(),
+        permission
+    ) == PackageManager.PERMISSION_GRANTED) {
+        true -> true
 
-    when (ContextCompat.checkSelfPermission(context, permission)) {
-        -1 -> ActivityCompat.requestPermissions(
-            activity, arrayOf(
-                permission
-            ), 0
-        )
+        else -> {
+            requestPermissionLauncher.launch(permission)
+            false
+        }
     }
-    return galleryIntent
 }
 
-fun Fragment.hasPermissionCheckAndRequest(
+fun Fragment.checkForMultiplePermissionsAndRequestThem(
     requestPermissionLauncher: ActivityResultLauncher<Array<String>>,
     permission: Array<String>,
 ): Boolean {
@@ -56,6 +52,25 @@ fun Fragment.hasPermissionCheckAndRequest(
     }
     return true
 }
+
+fun Fragment.createRequestPermissionLauncherToRequestSinglePermission(
+    permission: String,
+    actionWhenPermissionHasBeenGranted: (() -> Unit)? = null,
+    actionWhenPermissionHasBeenDenied: (() -> Unit)? = null
+): ActivityResultLauncher<String> {
+    val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isPermissionGranted ->
+            when {
+                isPermissionGranted -> actionWhenPermissionHasBeenGranted?.invoke()
+                !shouldShowRequestPermissionRationale(permission) -> actionWhenPermissionHasBeenDenied?.invoke()
+                    ?: ""
+            }
+
+
+        }
+    return requestPermissionLauncher
+}
+
 
 fun Fragment.hideSoftKeyboard() {
     val inputMethodManager =
@@ -80,5 +95,4 @@ fun Fragment.overrideOnBackPressed(actionWhenBackButtonPressed: () -> Unit) {
 
         })
 }
-
 

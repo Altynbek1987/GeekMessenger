@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
+import android.Manifest
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -217,7 +218,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
 
     override fun onRecordStart() {
-        appVoiceRecorder.startRecordingVoiceMessage(requireContext())
+        if (checkForPermissionStatusAndRequestIt(
+                createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO),
+                Manifest.permission.RECORD_AUDIO
+            )
+
+        )
+            appVoiceRecorder.startRecordingVoiceMessage(requireContext())
     }
 
 

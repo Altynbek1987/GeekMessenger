@@ -12,7 +12,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.generateRandomId
-import com.geektechkb.core.extensions.hasPermissionCheckAndRequest
+import com.geektechkb.core.extensions.checkForMultiplePermissionsAndRequestThem
 import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.core.extensions.setImage
 import com.geektechkb.feature_auth.R
@@ -64,7 +64,7 @@ class CreateProfileFragment :
             }
 
             binding.imProfile.setOnClickListener {
-                if (hasPermissionCheckAndRequest(
+                if (checkForMultiplePermissionsAndRequestThem(
                         requestPermissionLauncher,
                         arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
                     )
