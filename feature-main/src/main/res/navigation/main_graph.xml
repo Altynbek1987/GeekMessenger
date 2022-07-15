@@ -44,10 +44,22 @@
         <action
             android:id="@+id/action_chatFragment_to_deniedPermissionsDialogFragment"
             app:destination="@id/deniedPermissionsDialogFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_clearChatHistoryFragment"
+            app:destination="@id/clearChatHistoryFragment" />
     </fragment>
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.dialogs.DeniedPermissionsDialogFragment"
         android:label="DeniedPermissionsDialogFragment"
         tools:layout="@layout/fragment_denied_permissions_dialog" />
+    <dialog
+        android:id="@+id/clearChatHistoryFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.dialogs.ClearChatHistoryFragment"
+        android:label="fragment_clear_chat_history"
+        tools:layout="@layout/fragment_clear_chat_history" >
+        <argument
+            android:name="usernameToDeleteChatHistoryWith"
+            app:argType="string" />
+    </dialog>
 </navigation>

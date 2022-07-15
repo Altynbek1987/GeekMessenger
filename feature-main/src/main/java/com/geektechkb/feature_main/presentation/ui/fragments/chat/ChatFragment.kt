@@ -32,6 +32,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
+    private var username: String? = null
     private var savedUserStatus: String? = null
     private val appVoiceRecorder = AppVoiceRecorder()
     private val requestPermissionLauncher =
@@ -162,6 +163,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     }
 
+
     private fun interactWithToolbarMenu() {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -173,7 +175,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     true
                 }
                 R.id.btn_clear_chat -> {
-                    showShortDurationSnackbar("fuck")
+                    findNavController().directionsSafeNavigation(
+                        ChatFragmentDirections.actionChatFragmentToClearChatHistoryFragment(
+                        username.toString()
+                        )
+                    )
                     true
                 }
                 R.id.btn_mute -> {
@@ -229,6 +235,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             binding.imProfile.loadImageWithGlide(it.profileImage)
             binding.tvUsername.text = it.name
             binding.tvUserStatus.text = it.lastSeen
+            username = it.name
         })
     }
 
