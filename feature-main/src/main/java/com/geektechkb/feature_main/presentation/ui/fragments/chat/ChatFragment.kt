@@ -27,12 +27,15 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat),
     AudioRecordView.Callback {
+
     override val binding by viewBinding(FragmentChatBinding::bind)
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
     private var savedUserStatus: String? = null
     private val appVoiceRecorder = AppVoiceRecorder()
+    private val requestPermissionLauncher =
+        createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.READ_EXTERNAL_STORAGE)
 
 
     @Inject
@@ -48,27 +51,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override fun assembleViews() {
         setupAdapter()
         hideClipAndRecordViewWhenUserTyping()
-        binding.toolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
 
-                R.id.btn_call -> {
-                    true
-                }
-                R.id.btn_video_call -> {
-                    true
-                }
-                R.id.btn_clear_chat -> {
-                    showShortDurationSnackbar("fuck")
-                    true
-                }
-                R.id.btn_mute -> {
-                    true
-                }
-                else -> {
-                    true
-                }
-            }
-        }
     }
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
@@ -122,9 +105,25 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun setupListeners() {
         sendMessage()
+        expandGalleryDialog()
         openEmojiSoftKeyboard()
         backToHomeFragment()
         onBackPressed()
+        interactWithToolbarMenu()
+
+    }
+
+    private fun expandGalleryDialog() {
+        binding.imClip.setOnSingleClickListener {
+            if (checkForPermissionStatusAndRequestIt(
+                    requestPermissionLauncher,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                )
+            )
+                showShortDurationSnackbar("fuck")
+
+
+        }
     }
 
 
@@ -159,6 +158,31 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     }
 
+    private fun interactWithToolbarMenu() {
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+
+                R.id.btn_call -> {
+                    true
+                }
+                R.id.btn_video_call -> {
+                    true
+                }
+                R.id.btn_clear_chat -> {
+                    showShortDurationSnackbar("fuck")
+                    true
+                }
+                R.id.btn_mute -> {
+                    true
+                }
+                else -> {
+                    true
+                }
+            }
+        }
+    }
+
+
     private fun openEmojiSoftKeyboard() {
 
         binding.apply {
@@ -179,7 +203,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun establishRequest() {
         fetchUser()
-
     }
 
 
