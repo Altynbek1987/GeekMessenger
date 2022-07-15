@@ -9,6 +9,7 @@ import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.useCases.FetchPagedMessagesUseCase
 import com.geektechkb.feature_main.domain.useCases.FetchUserUseCase
 import com.geektechkb.feature_main.domain.useCases.SendMessageUseCase
+import com.geektechkb.feature_main.domain.useCases.SendVoiceMessageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val sendMessageUseCase: SendMessageUseCase,
+    private val sendVoiceMessageUseCase: SendVoiceMessageUseCase,
     private val fetchPagedMessagesUseCase: FetchPagedMessagesUseCase,
     private val fetchUserUseCase: FetchUserUseCase,
 ) : BaseViewModel() {
@@ -33,6 +35,12 @@ class ChatViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             sendMessageUseCase(id, receiverPhoneNumber, message, timeMessageWasSent, messageId)
+        }
+    }
+
+    fun sendVoiceMessage(file: String, imageFileName: String) {
+        viewModelScope.launch {
+            sendVoiceMessageUseCase(file, imageFileName)
         }
     }
 

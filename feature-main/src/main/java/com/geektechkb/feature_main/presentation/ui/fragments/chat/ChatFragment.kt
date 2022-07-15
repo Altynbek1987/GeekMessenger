@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
+import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -19,7 +20,6 @@ import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -208,10 +208,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewModel.fetchPagedMessages().spectatePaging(success = {
             messagesAdapter.submitData(it)
-            when (messagesAdapter.loadStateFlow.count()) {
-                0 -> binding.iThereAreNoMessagesYet.root.isVisible = true
-                else -> binding.iThereAreNoMessagesYet.root.isVisible = false
-            }
+            messagesAdapter.notifyDataSetChanged()
+
             checkAdapterItemCountAndHideLayout()
             binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
         })
@@ -228,6 +226,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
+        viewModel.sendVoiceMessage(
+            appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
+            generateRandomId()
+        )
     }
 
     override fun onRecordCancel() {

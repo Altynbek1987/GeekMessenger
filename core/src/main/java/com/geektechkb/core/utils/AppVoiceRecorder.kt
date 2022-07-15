@@ -13,6 +13,7 @@ class AppVoiceRecorder {
     private lateinit var voiceMessageFile: File
     private var voiceMessageFileName: String = ""
 
+    fun retrieveVoiceMessageFile() = voiceMessageFile
     fun createFileForRecordedVoiceMessage(externalFilesDir: File?) {
         voiceMessageFileName += "/Audio${generateRandomId()}.mp3"
         Log.e("anime", "externalFile: ${externalFilesDir}$voiceMessageFileName")

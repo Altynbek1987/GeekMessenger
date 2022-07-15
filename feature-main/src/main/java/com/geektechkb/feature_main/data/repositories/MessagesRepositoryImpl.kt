@@ -1,6 +1,7 @@
 package com.geektechkb.feature_main.data.repositories
 
 import android.net.Uri
+import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_CHATTERS_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT
@@ -22,6 +23,7 @@ class MessagesRepositoryImpl @Inject constructor(
     private val sortedMessages =
         messagesRef.orderBy(FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT, Query.Direction.ASCENDING)
     private val voiceRef = cloudStorage.reference
+    private val cloudStorageRef = cloudStorage.reference
 
     override suspend fun sendMessage(
         id: String,
@@ -40,6 +42,13 @@ class MessagesRepositoryImpl @Inject constructor(
                 "messages" to message
             ), messageId
 
+        )
+    }
+
+    override suspend fun sendVoiceMessage(file: String, voiceFileName: String) {
+        uploadVoiceMessageToCloudStorage(
+            cloudStorageRef, Uri.parse(file),
+            FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH, voiceFileName
         )
     }
 
