@@ -366,7 +366,6 @@ class AudioRecordView : FrameLayout {
         }
         return@OnTouchListener true
     }
-
     private val sendClickRunnable = Runnable { clickSend() }
 
     private val hideRecordTipRunnable = Runnable {

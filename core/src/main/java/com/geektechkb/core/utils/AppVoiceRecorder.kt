@@ -14,7 +14,6 @@ class AppVoiceRecorder {
     private var voiceMessageFileName: String = ""
 
     fun createFileForRecordedVoiceMessage(externalFilesDir: File?) {
-        generateRandomId()
         voiceMessageFileName += "/Audio${generateRandomId()}.mp3"
         Log.e("anime", "externalFile: ${externalFilesDir}$voiceMessageFileName")
         voiceMessageFile = File(externalFilesDir, voiceMessageFileName)
@@ -64,5 +63,9 @@ class AppVoiceRecorder {
 
     fun deleteRecordedVoiceMessage() {
         voiceMessageFile.delete()
+    }
+
+    fun showVoiceMessageFileName() {
+        Log.e("faksf", voiceMessageFileName)
     }
 }

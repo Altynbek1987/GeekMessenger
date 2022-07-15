@@ -23,6 +23,7 @@
         <entry key="core/src/main/res/drawable/ic_release_locked_lock.xml" value="0.15" />
         <entry key="core/src/main/res/drawable/ic_send_white_24dp.xml" value="0.15" />
         <entry key="core/src/main/res/drawable/ic_stop_recording_when_audio_locked.xml" value="0.15" />
+        <entry key="core/src/main/res/drawable/ic_stop_recording_when_audio_not_locked.xml" value="0.1775" />
         <entry key="core/src/main/res/layout/view_audio_record.xml" value="0.2947916666666667" />
         <entry key="core/src/main/res/layout/view_slide_panel.xml" value="0.14336372847011145" />
         <entry key="feature-auth/src/main/res/drawable/box_stroke_color_selector.xml" value="0.1" />

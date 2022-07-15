@@ -1,7 +1,5 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
-import android.view.Menu
-import android.view.MenuInflater
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -13,6 +11,7 @@ import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SE
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.*
 import com.geektechkb.core.ui.customViews.AudioRecordView
+import com.geektechkb.core.ui.customViews.RecordCircleView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
@@ -20,13 +19,14 @@ import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat),
-    AudioRecordView.Callback {
+    AudioRecordView.Callback, RecordCircleView.Callback {
     override val binding by viewBinding(FragmentChatBinding::bind)
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
@@ -40,25 +40,35 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override fun initialize() {
         binding.recordView.activity = requireActivity()
         binding.recordView.callback = this
+        appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
 
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        binding.toolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.btn_clear_chat -> {
-                }
-                else -> {
-                }
-            }
-            true
-        }
-    }
 
     override fun assembleViews() {
         setupAdapter()
         hideClipAndRecordViewWhenUserTyping()
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+
+                R.id.btn_call -> {
+                    true
+                }
+                R.id.btn_video_call -> {
+                    true
+                }
+                R.id.btn_clear_chat -> {
+                    showShortDurationSnackbar("fuck")
+                    true
+                }
+                R.id.btn_mute -> {
+                    true
+                }
+                else -> {
+                    true
+                }
+            }
+        }
     }
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
@@ -78,12 +88,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun checkAdapterItemCountAndHideLayout(
     ) {
-        when (messagesAdapter.snapshot().size) {
+        when (messagesAdapter.itemCount) {
             0 -> {
-                binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = true
+                binding.iThereAreNoMessagesYet.root.isVisible = true
             }
             else -> {
-                binding.iThereAreNoMessagesYet.mcvThereAreNoMessages.isVisible = false
+                binding.iThereAreNoMessagesYet.root.isVisible = false
             }
         }
 
@@ -198,8 +208,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewModel.fetchPagedMessages().spectatePaging(success = {
             messagesAdapter.submitData(it)
+            when (messagesAdapter.loadStateFlow.count()) {
+                0 -> binding.iThereAreNoMessagesYet.root.isVisible = true
+                else -> binding.iThereAreNoMessagesYet.root.isVisible = false
+            }
             checkAdapterItemCountAndHideLayout()
-
             binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
         })
     }
@@ -210,11 +223,21 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
 
+    override fun isReady(): Boolean = true
+
+
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
     }
 
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
+    }
+
+    override fun onSend() {
+        appVoiceRecorder.showVoiceMessageFileName()
+    }
+
+    override fun onCancel() {
     }
 }

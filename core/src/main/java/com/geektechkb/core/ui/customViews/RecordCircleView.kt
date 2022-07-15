@@ -153,10 +153,8 @@ class RecordCircleView : View {
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (sendButtonVisible) {
-
             val x = event.x.toInt()
             val y = event.y.toInt()
-
             if (event.action == MotionEvent.ACTION_DOWN) {
                 pressedEnd = lockBackgroundDrawable.bounds.contains(x, y)
                 pressedSend = sendClickBound.contains(x, y)
@@ -166,17 +164,13 @@ class RecordCircleView : View {
             } else if (pressedEnd) {
                 if (event.action == MotionEvent.ACTION_UP) {
                     if (lockBackgroundDrawable.bounds.contains(x, y)) {
-
                         callback.onCancel()
-
-
                     }
                 }
                 return true
             } else if (pressedSend) {
                 if (event.action == MotionEvent.ACTION_UP) {
                     if (sendClickBound.contains(x, y)) {
-
                         callback.onSend()
                     }
                 }
@@ -329,6 +323,7 @@ class RecordCircleView : View {
                     (24).toFloat()
                 )
             )
+
             releaseLockDrawable.bounds = sendClickBound
             releaseLockDrawable.draw(canvas)
 
