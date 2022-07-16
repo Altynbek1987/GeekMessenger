@@ -54,7 +54,7 @@ class CreateProfileFragment :
                             args.phoneNumber,
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
-                            uri.toString(),
+                            uri.toString() ?: " ",
                             generateRandomId()
                         )
                     }
