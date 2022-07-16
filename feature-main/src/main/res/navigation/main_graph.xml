@@ -57,7 +57,7 @@
         android:id="@+id/clearChatHistoryFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.dialogs.ClearChatHistoryFragment"
         android:label="fragment_clear_chat_history"
-        tools:layout="@layout/fragment_clear_chat_history" >
+        tools:layout="@layout/fragment_clear_chat_history">
         <argument
             android:name="usernameToDeleteChatHistoryWith"
             app:argType="string" />

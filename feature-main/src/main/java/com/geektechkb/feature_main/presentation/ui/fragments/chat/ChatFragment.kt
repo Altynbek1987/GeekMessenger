@@ -20,7 +20,6 @@ import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -177,7 +176,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 R.id.btn_clear_chat -> {
                     findNavController().directionsSafeNavigation(
                         ChatFragmentDirections.actionChatFragmentToClearChatHistoryFragment(
-                        username.toString()
+                            username.toString()
                         )
                     )
                     true
@@ -185,9 +184,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 R.id.btn_mute -> {
                     true
                 }
-                else -> {
-                    true
-                }
+                else -> true
+
             }
         }
     }
@@ -217,8 +215,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
 
     private fun fetchUser() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             args.phoneNumber?.let { viewModel.fetchUser(it) }
+
         }
     }
 
@@ -242,7 +241,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewModel.fetchPagedMessages().spectatePaging(success = {
             messagesAdapter.submitData(it)
-            messagesAdapter.notifyDataSetChanged()
 
             checkAdapterItemCountAndHideLayout()
             binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
