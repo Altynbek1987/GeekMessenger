@@ -113,7 +113,7 @@ class AuthRepositoryImpl @Inject constructor(
                 FIREBASE_USER_LAST_SEEN_TIME_KEY to lastSeen,
                 FIREBASE_USER_PROFILE_IMAGE_KEY to
                         uploadUncompressedImageToCloudStorage(
-                            cloudStorageRef, Uri.parse(profileImage),
+                            cloudStorageRef, Uri.parse(profileImage ?: " "),
                             FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH, imageFileName
                         )
 

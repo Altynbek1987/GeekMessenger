@@ -25,6 +25,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
     }
 
+    override fun setupListeners() {
+        binding.btn.setOnClickListener {
+            findNavController().directionsSafeNavigation(
+                HomeFragmentDirections.actionHomeFragmentToChatFragment(
+                    "+996552109876"
+                )
+            )
+        }
+    }
+
     override fun launchObservers() {
         subscribeToUsers()
     }
