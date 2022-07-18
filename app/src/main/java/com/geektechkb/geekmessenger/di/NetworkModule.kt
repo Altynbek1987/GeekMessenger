@@ -27,7 +27,6 @@ object NetworkModule {
     @Provides
     fun provideUsersCollectionReference(firebaseFirestore: FirebaseFirestore) =
         firebaseFirestore.collection(FIREBASE_FIRESTORE_USERS_COLLECTION_PATH)
-
 //    @Singleton
 //    @Provides
 //    fun provideMessagesCollectionReference(firebaseFirestore: FirebaseFirestore) =
