@@ -55,6 +55,9 @@ dependencies {
     // Core
     implementation(libs.android.core)
 
+    //Retrofit
+    implementation(libs.bundles.retrofit)
+
     // Coroutines
     implementation(libs.coroutines.android)
 
@@ -70,4 +73,5 @@ dependencies {
 
     //Paging 3
     implementation(libs.paging.paging)
+    
 }

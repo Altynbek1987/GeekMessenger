@@ -22,6 +22,8 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
     Fragment(layoutId) {
     protected abstract val binding: Binding
     protected abstract val viewModel: ViewModel
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
@@ -53,7 +55,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
     protected fun <T : Any> Flow<PagingData<T>>.spectatePaging(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
         success: suspend (data: PagingData<T>) -> Unit,
-        error: ((error: String) -> Unit)? = null,
     ) {
         safeFlowGather(lifecycleState) {
             collectLatest {
@@ -62,6 +63,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
             }
         }
     }
+
 
     protected fun <T : Any> StateFlow<UIState<PagingData<T>>>.spectatePagingData(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
@@ -167,5 +169,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
         }
 
     }
+
 
 }

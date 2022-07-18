@@ -35,4 +35,5 @@
     <string name="verification_code_you_input_was_invalid_3_times_in_a_row_try_again_in_2_minutes_russian">Вы неправильно ввели код 3 раза.Повторите попытку через 3 минуты</string>
     <string name="input_your_phone_number_russian">Введите ваш \n номер телефона</string>
     <string name="phone_number_with_underscores">+996 ___ ___ ___</string>
+    <string name="select_a_photo">Выбрать фото</string>
 </resources>

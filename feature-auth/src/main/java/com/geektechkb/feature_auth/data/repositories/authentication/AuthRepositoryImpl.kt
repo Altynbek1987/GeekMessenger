@@ -14,7 +14,7 @@ import com.google.firebase.firestore.CollectionReference
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class AuthRepositoryImpl @Inject constructor(
+class   AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val authorizationPreferences: AuthorizePreferences,
     private val userRef: CollectionReference

@@ -9,6 +9,30 @@
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.1703125" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable-v24/arrow.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable-v24/ic_vector.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable/arrow.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable/ic_vector.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/drawable/arrow.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/drawable/ic_vector_1.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_attempts_to_verify_phone_number_exceeded_dialog.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.12982456140350876" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_dialog.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_on_board.xml" value="0.33217993079584773" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/item_board.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_sun.xml" value="0.119" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/app_bar_main.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_calls.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/nav_header_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17798913043478262" />
         <entry key="feature-auth/src/main/res/drawable/box_stroke_color_selector.xml" value="0.1" />
         <entry key="feature-auth/src/main/res/drawable/ic_back.xml" value="0.139" />
@@ -30,7 +54,18 @@
         <entry key="feature-auth/src/main/res/layout/fragment_verification_dialog.xml" value="0.19932432432432431" />
         <entry key="feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.24831288655598954" />
         <entry key="feature-auth/src/main/res/layout/item_board.xml" value="0.3088768115942029" />
-        <entry key="feature-main/src/main/res/layout/fragment_chat.xml" value="0.3098958333333333" />
+        <entry key="feature-main/src/main/res/drawable/chat_box_stroke_color_selector.xml" value="0.141" />
+        <entry key="feature-main/src/main/res/drawable/edit_text_cornered_background.xml" value="0.1445" />
+        <entry key="feature-main/src/main/res/drawable/message_corners_background.xml" value="0.141" />
+        <entry key="feature-main/src/main/res/drawable/received_message_cornered_background.xml" value="0.141" />
+        <entry key="feature-main/src/main/res/drawable/sent_message_cornered_background.xml" value="0.1445" />
+        <entry key="feature-main/src/main/res/layout/app_bar_main.xml" value="0.3098958333333333" />
+        <entry key="feature-main/src/main/res/layout/content_main.xml" value="0.23802083333333332" />
+        <entry key="feature-main/src/main/res/layout/fragment_chat.xml" value="0.2717071533203125" />
+        <entry key="feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.23802083333333332" />
+        <entry key="feature-main/src/main/res/layout/item_message.xml" value="0.3098958333333333" />
+        <entry key="feature-main/src/main/res/layout/item_received_message.xml" value="0.448210922787194" />
+        <entry key="feature-main/src/main/res/layout/item_sent_message.xml" value="0.2748123168945313" />
         <entry key="feature-main/src/main/res/menu/chat_toolbar_menu.xml" value="0.30885416666666665" />
         <entry key="feature-main/src/main/res/menu/main_drawer.xml" value="0.3098958333333333" />
       </map>

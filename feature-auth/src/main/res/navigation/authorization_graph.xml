@@ -93,8 +93,7 @@
         <action
             android:id="@+id/action_onBoardFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
-            app:popUpTo="@id/authorization_graph"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/authorization_graph" />
     </fragment>
 
 </navigation>
