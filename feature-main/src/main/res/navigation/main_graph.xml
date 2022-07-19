@@ -27,4 +27,24 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+    <action
+            android:id="@+id/action_homeFragment_to_connectionCheckFragment"
+            app:destination="@id/connectionCheckFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/connectionCheckFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.checknetworkconnection.ConnectionCheckFragment"
+        android:label="fragment_connection_check"
+        tools:layout="@layout/fragment_connection_check" >
+
+        <action
+            android:id="@+id/action_connectionCheckFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
 </navigation>
