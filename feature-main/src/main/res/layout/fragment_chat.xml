@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/ic_chat_wallpaper"
+    android:fitsSystemWindows="true"
+    tools:context=".presentation.ui.fragments.chat.ChatFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_toolbar_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:menu="@menu/chat_toolbar_menu" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_back_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.09" />
+
+            <ImageView
+                android:id="@+id/im_back"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="22dp"
+                android:contentDescription="@string/back_russian"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_back_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_user_information_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.12" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_profile_image_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.20" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_user_information_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.78" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_profile_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_profile_image_end"
+                app:layout_constraintStart_toStartOf="@id/gl_user_information_start"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/im_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image_for_user_s_profile_image"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gojo" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="12dp"
+                android:text="Илюха 1love"
+                android:textColor="#2C2C2C"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_user_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/last_seen_recently_russian"
+                android:textColor="#9F9F9F"
+                android:textSize="11sp"
+                app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
+                app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@id/gl_wallpaper_bottom"
+        app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom"
+        tools:listitem="@layout/item_sent_message" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_mcv_no_messages_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.392" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_mcv_no_messages_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_mcv_no_messages_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_mcv_no_messages_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.58" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_there_are_no_messages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardBackgroundColor="#8aacd0"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/gl_mcv_no_messages_bottom"
+        app:layout_constraintEnd_toEndOf="@id/gl_mcv_no_messages_end"
+        app:layout_constraintStart_toStartOf="@id/gl_mcv_no_messages_start"
+        app:layout_constraintTop_toTopOf="@id/gl_mcv_no_messages_top">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_no_messages_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_no_messages_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.85" />
+
+            <TextView
+                android:id="@+id/tv_no_messages_yet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+
+                android:text="@string/there_is_nothing_yet_russian"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/gl_no_messages_end"
+                app:layout_constraintStart_toStartOf="@id/gl_no_messages_start"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_send_message_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.115" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_send_messages_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.89" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:gravity="center"
+                android:text="@string/send_message_or_record_voice_message_russian"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/gl_send_messages_end"
+                app:layout_constraintStart_toStartOf="@id/gl_send_message_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_no_messages_yet" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_wallpaper_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_wallpaper_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.94" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_emoji_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_emoji_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/edit_text_cornered_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gl_wallpaper_bottom">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_emoji_end_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.09" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_camera_end_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.83" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_message"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:isScrollContainer="true"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@drawable/chat_box_stroke_color_selector"
+            app:boxStrokeWidth="0dp"
+            app:hintEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_camera_end_edit_text"
+            app:layout_constraintStart_toStartOf="@id/gl_emoji_end_edit_text"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:fadeScrollbars="false"
+                android:hint="@string/message_russian"
+                android:includeFontPadding="false"
+                android:inputType="textMultiLine|textCapSentences"
+                android:minHeight="75dp"
+                android:minLines="1"
+                android:padding="3dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/black"
+                android:textColorHint="#9F9F9F"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/im_emoji"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/button_for_emoji"
+        android:src="@drawable/ic_emoji"
+        app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
+        app:layout_constraintEnd_toEndOf="@id/gl_emoji_end"
+        app:layout_constraintStart_toStartOf="@id/gl_emoji_start"
+        app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_mic_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_camera_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.872" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_camera_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.827" />
+
+
+    <ImageView
+        android:id="@+id/im_camera"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/image_view_to_launch_camera"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
+        app:layout_constraintEnd_toEndOf="@id/gl_camera_end"
+        app:layout_constraintStart_toStartOf="@id/gl_camera_start"
+        app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_chat_actions_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.954" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_chat_actions_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.982" />
+
+    <ImageView
+        android:id="@+id/im_microphone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="18dp"
+        android:clickable="true"
+        android:contentDescription="@string/image_view_for_recording_voice_messages"
+        android:focusable="true"
+        android:src="@drawable/ic_microphone"
+        app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gl_mic_start"
+        app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

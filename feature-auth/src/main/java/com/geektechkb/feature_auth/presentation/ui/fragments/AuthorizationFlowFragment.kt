@@ -8,6 +8,4 @@ import dagger.hilt.android.AndroidEntryPoint
 class AuthorizationFlowFragment : BaseFlowFragment(
     R.layout.fragment_authorization_flow,
     R.id.nav_host_fragment_container_auth
-) {
-
-}
+)

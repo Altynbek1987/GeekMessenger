@@ -1,4 +1,39 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="nine_digits_with_dashes">###-###-###</string>
+    <string name="verification_code_was_sent_on_the_input_number">The verification code was sent to your phone %1$s</string>
+    <string name="zero">0</string>
+    <string name="nine">9</string>
+    <string name="eight">8</string>
+    <string name="seven">7</string>
+    <string name="six">6</string>
+    <string name="five">5</string>
+    <string name="four">4</string>
+    <string name="three">3</string>
+    <string name="two">2</string>
+    <string name="one">1</string>
+    <string name="proceed">Continue</string>
+    <string name="your_phone_number_must_contain_15_digits">Your phone number must contain 12 digits</string>
+    <string name="choose_your_name_and_load_an_photo">Введите свое имя и загрузите фотографию</string>
+    <string name="surname_unnecessary">Фамилия (необязательно)</string>
+    <string name="name_necessary">Имя(обязательно)</string>
+    <string name="verification_code_was_sent_to_the_entered_phone">Код был отправлен на номер %1$s</string>
+    <string name="proceed_russian">Продолжить</string>
+    <string name="continue_russian">Далее</string>
+    <string name="button_to_delete_digits_from_edittexts">button to delete digits from edittexts</string>
+    <string name="send_verification_code_again">Отправить код заново</string>
+    <string name="button_to_get_back_to_edit_phone_number_fragment">button to get back to edit phone number framgent</string>
+    <string name="user_s_profile_image">user\'s profile image</string>
+    <string name="profile_russian">Профиль</string>
+    <string name="geekMessenger_application_cant_function_without_needed_permissions_russian">Приложение GeekMessenger не может функционировать без разрешение на чтение галереи устройства. Вы можете включить их в разределе Настройки</string>
+    <string name="settings_russian">Настройки</string>
+    <string name="cancel_russian">Отмена</string>
+    <string name="button_to_clear_edittext_field">button to clear edittext field</string>
+    <string name="image_view_to_show_that_the_developers_of_geekmessenger_are_patriots">image view to show that the developers of GeekMessenger are patriots</string>
+    <string name="verification_code_you_input_was_invalid_3_times_in_a_row_try_again_in_2_minutes_russian">Вы неправильно ввели код 3 раза.Повторите попытку через 3 минуты</string>
+    <string name="input_your_phone_number_russian">Введите ваш \n номер телефона</string>
+    <string name="phone_number_with_underscores">+996 ___ ___ ___</string>
+    <string name="select_a_photo">Выбрать фото</string>
 </resources>
