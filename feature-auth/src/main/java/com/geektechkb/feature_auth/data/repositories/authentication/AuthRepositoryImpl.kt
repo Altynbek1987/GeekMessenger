@@ -25,7 +25,7 @@ import com.google.firebase.storage.FirebaseStorage
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class AuthRepositoryImpl @Inject constructor(
+class   AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val authorizationPreferences: AuthorizePreferences,
     private val userPreferencesHelper: UserPreferencesHelper,

@@ -42,6 +42,8 @@ class CreateProfileFragment :
                 }
             }
         }
+
+
         binding.apply {
             binding.btnSignIn.setOnClickListener {
                 if (etName.text.isNullOrEmpty() || etName.text.isNullOrBlank()) {
@@ -57,6 +59,7 @@ class CreateProfileFragment :
                             uri.toString(),
                             generateRandomId()
                         )
+
                     }
                     mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
 
@@ -74,6 +77,9 @@ class CreateProfileFragment :
             }
 
         }
+        binding.arBtn.setOnClickListener {
+            findNavController().navigate(R.id.signUpFragment)
+        }
     }
 
     private fun permissionMessage() {
@@ -83,6 +89,7 @@ class CreateProfileFragment :
                     "Приложение GeekMessenger не может функционировать без разрешение на галерею устройства. Вы можете включить их в разределе Настройки"
                 )
             )
+
         }
     }
 
@@ -91,9 +98,14 @@ class CreateProfileFragment :
             if (imageUri != null) {
                 binding.imProfile.setImage(imageUri.toString())
                 uri = imageUri
+                binding.tvPhotoSelection.text = "Изменить фото профиля"
+                binding.tvText.text = ""
+
+
             }
         }
 
     private fun Fragment.mainNavController() =
         requireActivity().findNavController(R.id.nav_host_fragment_container_auth)
+
 }
