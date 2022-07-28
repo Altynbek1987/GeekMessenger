@@ -35,18 +35,19 @@
         <entry key="feature-auth/src/main/res/drawable/oval.xml" value="0.139" />
         <entry key="feature-auth/src/main/res/drawable/oval_background.xml" value="0.139" />
         <entry key="feature-auth/src/main/res/drawable/rounded_custom_dialog_background.xml" value="0.1395" />
-        <entry key="feature-auth/src/main/res/layout/fragment_attempts_to_verify_phone_number_exceeded_dialog.xml" value="0.4671968190854871" />
+        <entry key="feature-auth/src/main/res/layout/fragment_attempts_to_verify_phone_number_exceeded_dialog.xml" value="0.42555541992187496" />
         <entry key="feature-auth/src/main/res/layout/fragment_auth_with_phone_number.xml" value="0.15520833333333334" />
         <entry key="feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.17798913043478262" />
         <entry key="feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.20669200003811863" />
         <entry key="feature-auth/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.2947916666666667" />
-        <entry key="feature-auth/src/main/res/layout/fragment_dialog.xml" value="0.15520833333333334" />
-        <entry key="feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.3530659993489585" />
+        <entry key="feature-auth/src/main/res/layout/fragment_dialog.xml" value="0.32756324900133155" />
+        <entry key="feature-auth/src/main/res/layout/fragment_on_board.xml" value="0.29030797101449274" />
+        <entry key="feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.8395696004231774" />
         <entry key="feature-auth/src/main/res/layout/fragment_profile.xml" value="0.2947916666666667" />
-        <entry key="feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.24335185846176072" />
+        <entry key="feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.3134614165672295" />
         <entry key="feature-auth/src/main/res/layout/fragment_verification_dialog.xml" value="0.19932432432432431" />
-        <entry key="feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.24831288655598954" />
-        <entry key="feature-auth/src/main/res/layout/item_board.xml" value="0.3088768115942029" />
+        <entry key="feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.432323201497396" />
+        <entry key="feature-auth/src/main/res/layout/item_board.xml" value="0.6212898364965467" />
         <entry key="feature-main/src/main/res/drawable/chat_box_stroke_color_selector.xml" value="0.141" />
         <entry key="feature-main/src/main/res/drawable/edit_text_cornered_background.xml" value="0.1445" />
         <entry key="feature-main/src/main/res/drawable/first_message_received_cornered_background.xml" value="0.15" />
@@ -82,6 +83,7 @@
         <entry key="feature-main/src/main/res/layout/item_sent_messagesss.xml" value="0.5898617511520737" />
         <entry key="feature-main/src/main/res/layout/item_sent_voice_message.xml" value="0.27291664236656327" />
         <entry key="feature-main/src/main/res/layout/item_user.xml" value="0.7414601643880209" />
+        <entry key="feature-main/src/main/res/layout/nav_header_main.xml" value="0.29030797101449274" />
         <entry key="feature-main/src/main/res/layout/there_are_no_messages_yet.xml" value="0.27898550724637683" />
         <entry key="feature-main/src/main/res/menu/chat_toolbar_menu.xml" value="0.30885416666666665" />
         <entry key="feature-main/src/main/res/menu/main_drawer.xml" value="0.3098958333333333" />
