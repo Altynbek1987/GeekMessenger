@@ -32,4 +32,40 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="croppedImage"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+        <action
+            android:id="@+id/action_profileFragment_to_cropPhotoFragment"
+            app:destination="@id/cropPhotoFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/galleryBottomSheetFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetFragment"
+        android:label="fragment_gallery_bottom_sheet"
+        tools:layout="@layout/fragment_gallery_bottom_sheet" >
+        <action
+            android:id="@+id/action_galleryBottomSheetFragment_to_cropPhotoFragment"
+            app:destination="@id/cropPhotoFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/cropPhotoFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.crop.CropPhotoFragment"
+        android:label="fragment_crop_photo"
+        tools:layout="@layout/fragment_crop_photo" >
+                <argument
+                    android:name="uri"
+                    app:argType="string"
+             />
+        <action
+            android:id="@+id/action_cropPhotoFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>
