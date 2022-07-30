@@ -16,4 +16,6 @@
 
     <color name="default_overlay_color">#aaffffff</color>
     <color name="color_red">#c0392b</color>
+    <color name="dark_gray">#333333</color>
+
 </resources>

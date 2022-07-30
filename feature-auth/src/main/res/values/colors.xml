@@ -7,5 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_gray">#D4D4D4</color>
+    <color name="blue">#5393D0</color>
+
     <color name="textInputLayout_default_borders_color" tools:override="true">#323232</color>
+
 </resources>
