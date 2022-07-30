@@ -32,10 +32,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun hideNotificationThatThereAreNoMessages() {
-        if (messagesAdapter.itemCount != null) {
-
-            binding.mcvThereAreNoMessages.isVisible = false
-        }
+        binding.mcvThereAreNoMessages.isVisible = false
 
     }
 

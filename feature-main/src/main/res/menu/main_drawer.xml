@@ -15,5 +15,9 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/menu_settings" />
+        <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_group"
+            android:title="@string/menu_profile" />
     </group>
 </menu>
