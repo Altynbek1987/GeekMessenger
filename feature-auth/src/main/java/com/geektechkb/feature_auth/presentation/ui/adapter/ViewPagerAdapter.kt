@@ -18,7 +18,11 @@ class ViewPagerAdapter(val onItemClick: (position: Int) -> Unit) :
         fun onBind(model: BoardModel) {
             binding.title.text = model.title
             binding.description.text = model.description
+            binding.startBtn.text = model.bottomName
             binding.imImage.loadImageWithGlide(model.image)
+            binding.startBtn.setOnClickListener {
+                onItemClick(absoluteAdapterPosition)
+            }
             if (model.description.isNullOrEmpty()) {
                 binding.description.gone()
             } else {

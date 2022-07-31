@@ -37,7 +37,4 @@
     <string name="the_activation_code_will_be_sent_via_SMS_ake_sure_your_device_can_receive_them.">Код активации будет отправлен в SMS-сообщении.Убедитесь,что ваше устройство может их принимать.</string>
     <string name="phone_number_with_underscores">+996 ___ ___ ___</string>
     <string name="kyrgyzstan"><u>Kyrgyzstan</u></string>
-    <string name="select_a_photo">Выбрать фото</string>
-    <string name="you_phone">Ваш телефон</string>
-    <string name="todo">TODO</string>
 </resources>

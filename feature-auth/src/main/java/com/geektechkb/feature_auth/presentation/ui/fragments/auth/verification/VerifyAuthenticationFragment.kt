@@ -74,7 +74,7 @@ class VerifyAuthenticationFragment :
                 if (view != null)
                     binding.tvCountDownTimer.isVisible = false
                 if (view != null)
-                    binding.tvVerificationCodeWasSent.isVisible = true
+                    binding.tvGetVerificationCode.isVisible = true
             }
         }
         countDownTimer.start()
@@ -93,9 +93,9 @@ class VerifyAuthenticationFragment :
     }
 
     private fun resendVerificationCode() {
-        binding.tvVerificationCodeWasSent.setOnClickListener {
+        binding.tvGetVerificationCode.setOnClickListener {
             binding.tvCountDownTimer.isVisible = true
-            binding.tvVerificationCodeWasSent.isVisible = false
+            binding.tvGetVerificationCode.isVisible = false
             setupCountDownTimer()
             resendVerificationCode(args.phoneNumber)
         }
@@ -111,8 +111,7 @@ class VerifyAuthenticationFragment :
                     etFifthDigit,
                     etSixthDigit
                 )
-                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty() && viewModel.getVerificationId() != null) {
-
+                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty()) {
                     signInWithPhoneAuthCredential(
                         viewModel.verifyPhoneNumberWithCode(
                             viewModel.getVerificationId(),
@@ -456,7 +455,7 @@ class VerifyAuthenticationFragment :
     private fun TextInputEditText.requestFocusOnTheNextDigit(
         editTextToRequestAFocusOn: TextInputEditText
     ) {
-        addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
+        addTextChangedListenerAnonymously(doSomething = {
             if (text?.length == 1)
                 editTextToRequestAFocusOn.requestFocus()
         })

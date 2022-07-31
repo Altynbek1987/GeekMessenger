@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-
     override fun recreate() {
         super.recreate()
         setTheme(R.style.Theme_GeekMessenger)

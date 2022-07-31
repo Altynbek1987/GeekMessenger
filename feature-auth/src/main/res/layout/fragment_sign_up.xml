@@ -6,33 +6,38 @@
     tools:context=".presentation.ui.fragments.auth.signUp.SignUpFragment">
 
 
-    <TextView
-        android:id="@+id/tv_enter_phone_number"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:includeFontPadding="false"
-        android:text="@string/input_your_phone_number_russian"
-        android:textColor="#5393D0"
-        android:textSize="18sp"
-        android:gravity="center"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@id/gl_enter_phone_number_top"
-        app:layout_constraintBottom_toTopOf="@id/tv_sms"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_enter_phone_number_top"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.036935706" />
+        app:layout_constraintGuide_end="704dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_enter_phone_number_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.074" />
 
 
     <TextView
-        android:id="@+id/tv_sms"
+        android:id="@+id/tv_enter_phone_number"
+        android:layout_width="288dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="40dp"
+        android:includeFontPadding="false"
+        android:text="@string/input_your_phone_number_russian"
+        android:textColor="#5393D0"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/gl_enter_phone_number_bottom"
+        app:layout_constraintStart_toStartOf="@id/gl_enter_phone_number_start"
+        app:layout_constraintTop_toTopOf="@id/gl_enter_phone_number_top"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_enter_phone_number_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -40,31 +45,23 @@
         android:text="@string/the_activation_code_will_be_sent_via_SMS_ake_sure_your_device_can_receive_them."
         android:textColor="#9F9F9F"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/gl_sms_bottom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/gl_enter_phone_number_bottom"
         tools:layout_editor_absoluteX="0dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_sms_bottom"
+        android:id="@+id/gl_enter_phone_number_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
-    <TextView
-        android:id="@+id/im_country"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+996"
-        android:textColor="#68819C"
-        android:textSize="18sp"
-        android:layout_marginStart="18dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tl_phone"
-        android:contentDescription= "@string/image_view_to_show_that_the_developers_of_geekmessenger_are_patriots"
-        app:layout_constraintEnd_toStartOf="@+id/tl_phone"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -75,6 +72,27 @@
         app:layout_constraintGuide_percent="0.24" />
 
 
+    <TextView
+        android:id="@+id/im_country"
+        android:layout_width="56dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="4dp"
+        android:text="+996"
+        android:textColor="#68819C"
+        android:textSize="23sp"
+        android:gravity="top"
+        android:contentDescription="@string/image_view_to_show_that_the_developers_of_geekmessenger_are_patriots"
+        app:layout_constraintStart_toStartOf="@id/gl_enter_phone_number_start"
+        app:layout_constraintTop_toTopOf="@id/gl_text_input_layout" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.83" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -178,7 +196,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.61422706" />
+        app:layout_constraintGuide_end="283dp" />
 
 
   <GridLayout

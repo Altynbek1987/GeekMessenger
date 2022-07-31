@@ -38,6 +38,4 @@ abstract class BaseViewModel : ViewModel() {
     ) = map {
         it.map { data -> mappedData(data) }
     }.cachedIn(viewModelScope)
-
-
 }

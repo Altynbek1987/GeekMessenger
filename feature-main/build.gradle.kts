@@ -7,8 +7,6 @@ plugins {
 
     // Kapt
     id("kotlin-kapt")
-//    id  ("com.android.application")
-//    id ("kotlin-android-extensions")
 
     // Navigation SafeArgs
     id(libs.plugins.navigation.safeArgs.get().pluginId)
@@ -57,9 +55,6 @@ dependencies {
     // Core
     implementation(libs.android.core)
 
-    //Retrofit
-    implementation(libs.bundles.retrofit)
-
     // Coroutines
     implementation(libs.coroutines.android)
 
@@ -71,14 +66,8 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt(libs.hilt.compiler)
 
     //Paging 3
     implementation(libs.paging.paging)
-
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("com.github.avito-tech:krop:0.64")
-    implementation("com.squareup.picasso:picasso:2.71828")
-    
 }

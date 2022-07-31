@@ -4,8 +4,6 @@ import com.geektechkb.feature_auth.data.repositories.authentication.AuthReposito
 import com.geektechkb.feature_auth.data.repositories.authentication.CodeVerificationRepositoryImpl
 import com.geektechkb.feature_auth.domain.repositories.AuthRepository
 import com.geektechkb.feature_auth.domain.repositories.CodeVerificationRepository
-import com.geektechkb.feature_main.data.repositories.MessagesRepositoryImpl
-import com.geektechkb.feature_main.domain.repositories.MessagesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,7 +18,4 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindCodeVerificationRepository(codeVerificationRepositoryImpl: CodeVerificationRepositoryImpl): CodeVerificationRepository
-
-    @Binds
-    abstract fun bindMessagesRepository(messagesRepositoryImpl: MessagesRepositoryImpl): MessagesRepository
 }
