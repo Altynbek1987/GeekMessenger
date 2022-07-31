@@ -74,7 +74,7 @@ class VerifyAuthenticationFragment :
                 if (view != null)
                     binding.tvCountDownTimer.isVisible = false
                 if (view != null)
-                    binding.tvGetVerificationCode.isVisible = true
+                    binding.tvVerificationCodeWasSent.isVisible = true
             }
         }
         countDownTimer.start()
@@ -93,9 +93,9 @@ class VerifyAuthenticationFragment :
     }
 
     private fun resendVerificationCode() {
-        binding.tvGetVerificationCode.setOnClickListener {
+        binding.tvVerificationCodeWasSent.setOnClickListener {
             binding.tvCountDownTimer.isVisible = true
-            binding.tvGetVerificationCode.isVisible = false
+            binding.tvVerificationCodeWasSent.isVisible = false
             setupCountDownTimer()
             resendVerificationCode(args.phoneNumber)
         }
