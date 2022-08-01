@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.widget.ViewFlipper
 import com.avito.android.krop.KropView
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 
 class CropPhotoTarget(
     private val cropContainer: ViewFlipper,

@@ -18,6 +18,7 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
+import com.sendbird.calls.AuthenticateParams
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -38,7 +39,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
             actionWhenPermissionHasBeenDenied = {
 
                 findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
@@ -124,7 +125,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         binding.imClip.setOnSingleClickListener {
             if (checkForPermissionStatusAndRequestIt(
                     readExternalStoragePermissionLauncher,
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                    Manifest.permission.READ_EXTERNAL_STORAGE
                 )
             )
                 showShortDurationSnackbar("fuck")
@@ -170,6 +171,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             when (it.itemId) {
 
                 R.id.btn_call -> {
+                    val params = AuthenticateParams(args.phoneNumber.toString()).setAccessToken(
+                        generateRandomId()
+                    )
                     true
                 }
                 R.id.btn_video_call -> {

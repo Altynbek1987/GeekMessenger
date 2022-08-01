@@ -344,8 +344,6 @@ class VerifyAuthenticationFragment :
     private fun moveToTheNextDigit() {
         binding.apply {
             establishProperFocusingOnTheNextDigit()
-
-
         }
     }
 

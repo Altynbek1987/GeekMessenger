@@ -8,6 +8,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 
 fun Fragment.showShortDurationSnackbar(text: CharSequence) {
@@ -94,4 +96,11 @@ fun Fragment.overrideOnBackPressed(actionWhenBackButtonPressed: () -> Unit) {
             }
 
         })
+}
+
+fun Fragment.stateBottomSheet(bottomSheet: BottomSheetBehavior<MaterialCardView>?, state: Int) {
+    val metrics = resources.displayMetrics
+    bottomSheet?.peekHeight = metrics.heightPixels / 2
+    bottomSheet?.state = state
+    bottomSheet?.maxWidth = 2000
 }

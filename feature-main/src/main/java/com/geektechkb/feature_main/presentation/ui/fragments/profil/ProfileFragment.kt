@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.stateBottomSheet
-import com.geektechkb.core.extensions.toast
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentProfileBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
@@ -66,7 +65,6 @@ class ProfileFragment :
                     if (BottomSheetBehavior.STATE_EXPANDED == newState) {
                         showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
                         binding.openBottomSheet.isVisible = false
-                        toast("expanded")
                     } else {
                         binding.openBottomSheet.isVisible = true
                         hideAppBar(binding.galleryBottomSheet.appbarLayout)

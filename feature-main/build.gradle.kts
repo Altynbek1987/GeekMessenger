@@ -33,6 +33,13 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            buildConfigField(
+                "String",
+                "SENDBIRD_APP_ID",
+                "\"06A52AC6-2F9A-4D6F-9157-E0D7E1BDEC94\""
+            )
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -54,7 +61,6 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    implementation("com.github.avito-tech:krop:0.64")
-    implementation("com.squareup.picasso:picasso:2.71828")
-
+    // Sendbird
+    api(libs.sendbird.sendbird)
 }
