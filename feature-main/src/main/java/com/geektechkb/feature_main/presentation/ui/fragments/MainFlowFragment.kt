@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.fragments
 
+import android.telecom.Call
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
@@ -42,8 +43,8 @@ class MainFlowFragment : BaseFlowFragment(
                 else -> binding.appBarMain.toolbarButton.isGone = false
             }
         }
-        binding.appBarMain.toolbarButton.setOnClickListener {
 
+        binding.appBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
     }

@@ -54,4 +54,7 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
+    implementation("com.github.avito-tech:krop:0.64")
+    implementation("com.squareup.picasso:picasso:2.71828")
+
 }

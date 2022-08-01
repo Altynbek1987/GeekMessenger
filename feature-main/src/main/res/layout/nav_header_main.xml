@@ -14,6 +14,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageButton
+        android:id="@+id/sun_btn"
         android:layout_width="440dp"
         android:layout_height="30dp"
         android:background="#4A7CE0"
@@ -27,9 +28,9 @@
         app:cardCornerRadius="50dp">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:id="@+id/image_profile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:background="@drawable/ic_baseline_person_24"
             android:clickable="true"
             android:contentDescription="@string/nav_header_desc"

@@ -45,12 +45,6 @@
             android:layout_marginEnd="10dp"
             android:src="@drawable/search" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/toolbar" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="0dp"

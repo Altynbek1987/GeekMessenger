@@ -38,7 +38,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
             actionWhenPermissionHasBeenDenied = {
 
                 findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
@@ -124,7 +124,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         binding.imClip.setOnSingleClickListener {
             if (checkForPermissionStatusAndRequestIt(
                     readExternalStoragePermissionLauncher,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
                 )
             )
                 showShortDurationSnackbar("fuck")
@@ -252,7 +252,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordStart() {
         if (checkForPermissionStatusAndRequestIt(
-                recordAudioPermissionLauncher, Manifest.permission.RECORD_AUDIO
+                recordAudioPermissionLauncher, android.Manifest.permission.RECORD_AUDIO
             )
         )
             appVoiceRecorder.startRecordingVoiceMessage(requireContext())

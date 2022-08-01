@@ -35,16 +35,15 @@
         app:layout_constraintGuide_percent="0.10" />
 
     <TextView
-        android:layout_width="0dp"
+        android:id="@+id/tv_photo_selection"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="@string/profile_russian"
-        android:textColor="#323232"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/im_profile"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guidLine2"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/select_a_photo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/im_profile" />
 
 
     <ImageView
@@ -64,13 +63,14 @@
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
         android:gravity="center"
+        android:padding="15dp"
         android:text="@string/choose_your_name_and_load_an_photo"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/til_name"
+        app:layout_constraintBottom_toTopOf="@id/btn_sign_in"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/im_profile" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -135,25 +135,72 @@
             android:layout_height="wrap_content"
             android:hint="@string/surname_unnecessary"
             android:inputType="textCapSentences"
-
             android:singleLine="true"
             android:textColor="@color/black"
             android:textSize="18sp" />
-
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_sign_in"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="175dp"
         android:layout_marginBottom="100dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#5393D0"
         android:text="@string/proceed_russian"
-        app:cornerRadius="16dp"
+        android:textColor="@color/white"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_surname" />
+        app:layout_constraintTop_toTopOf="@+id/tv_text" />
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="#5393D0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tb_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="10dp"
+        android:text="Профиль"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/ar_btn"
+        app:layout_constraintLeft_toLeftOf="@id/toolbar"
+        app:layout_constraintRight_toRightOf="@id/toolbar"
+        app:layout_constraintStart_toEndOf="@id/ar_btn"
+        app:layout_constraintStart_toStartOf="@+id/ar_btn"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <ImageButton
+        android:id="@+id/ar_btn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="#5393D0"
+        android:paddingStart="5dp"
+        android:src="@drawable/arrow"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <ImageButton
+        android:id="@+id/btn_start"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="5dp"
+        android:background="#5393D0"
+        android:paddingEnd="5dp"
+        android:src="@drawable/ic_vector_1"
+        app:layout_constraintBottom_toBottomOf="@id/ar_btn"
+        app:layout_constraintRight_toRightOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

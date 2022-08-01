@@ -26,7 +26,7 @@ class CreateProfileFragment :
     override val binding by viewBinding(FragmentCreateProfileBinding::bind)
     override val viewModel: CreateProfileViewModel by viewModels()
     private val args: CreateProfileFragmentArgs by navArgs()
-    private var uri: Uri? = null
+    private lateinit var uri: Uri
 
     override fun setupListeners() {
         val requestPermissionLauncher = registerForActivityResult(
@@ -91,6 +91,10 @@ class CreateProfileFragment :
             if (imageUri != null) {
                 binding.imProfile.setImage(imageUri.toString())
                 uri = imageUri
+                binding.tvPhotoSelection.text = "Изменить фото профиля"
+                binding.tvText.text = ""
+
+
             }
         }
 
