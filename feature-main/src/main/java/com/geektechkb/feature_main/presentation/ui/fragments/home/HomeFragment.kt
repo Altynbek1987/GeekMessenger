@@ -26,13 +26,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     override fun setupListeners() {
-        binding.btn.setOnClickListener {
-            findNavController().directionsSafeNavigation(
-                HomeFragmentDirections.actionHomeFragmentToChatFragment(
-                    "+996552109876"
-                )
-            )
-        }
     }
 
     override fun launchObservers() {

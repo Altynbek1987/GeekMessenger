@@ -28,6 +28,7 @@ interface AuthRepository {
         name: String,
         surname: String,
         profileImage: String?,
-        imageFileName: String
+        imageFileName: String,
+        doOnComplete: () -> Unit
     )
 }

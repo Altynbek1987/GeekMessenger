@@ -69,6 +69,20 @@
                 app:layout_constraintGuide_percent="0.20" />
 
             <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_profile_image_top_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.10" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_profile_image_bottom_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.90" />
+
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_user_information_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,13 +93,11 @@
                 android:id="@+id/mcv_profile_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="200dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/gl_profile_image_bottom_horizontal"
                 app:layout_constraintEnd_toEndOf="@id/gl_profile_image_end"
                 app:layout_constraintStart_toStartOf="@id/gl_user_information_start"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="@id/gl_profile_image_top_horizontal">
 
 
                 <ImageView
@@ -93,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/image_for_user_s_profile_image"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="fitXY" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView

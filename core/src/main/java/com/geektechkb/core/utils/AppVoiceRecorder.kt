@@ -2,7 +2,9 @@ package com.geektechkb.core.utils
 
 import android.content.Context
 import android.media.MediaRecorder
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.geektechkb.core.extensions.generateRandomId
 import java.io.File
 import java.io.IOException
@@ -21,7 +23,9 @@ class AppVoiceRecorder {
     }
 
     fun startRecordingVoiceMessage(context: Context) {
-        mediaRecorder = MediaRecorder(context)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            mediaRecorder = MediaRecorder(context)
+        }
         mediaRecorder.apply {
             actionWhenManipulatingWithVoiceMessage(actionWhenRecording = {
                 setAudioSource(MediaRecorder.AudioSource.MIC)
@@ -31,7 +35,6 @@ class AppVoiceRecorder {
                 prepare()
                 start()
             })
-
         }
     }
 

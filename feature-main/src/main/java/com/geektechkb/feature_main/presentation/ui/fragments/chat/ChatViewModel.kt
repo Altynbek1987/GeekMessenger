@@ -44,15 +44,10 @@ class ChatViewModel @Inject constructor(
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
-    fun fetchPagedMessages(): Flow<PagingData<Message>> {
-        val pagedMessages = fetchPagedMessagesUseCase() as Flow<PagingData<Message>>
-        return pagedMessages.cachedIn(viewModelScope)
-    }
+    fun fetchPagedMessages() = fetchPagedMessagesUseCase()
 
     suspend fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
-
 
     init {
         fetchPagedMessages()
