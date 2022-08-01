@@ -5,7 +5,6 @@ import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -14,7 +13,6 @@ import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import com.geektechkb.feature_main.presentation.ui.fragments.settings.MainFlowViewModel
-import com.geektechkb.feature_main.databinding.NavHeaderMainBinding
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,9 +46,6 @@ class MainFlowFragment : BaseFlowFragment(
         binding.appBarMain.toolbarButto.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
-
-        binding.appBarMain.toolbarButton.setOnClickListener {
-
     }
 
 

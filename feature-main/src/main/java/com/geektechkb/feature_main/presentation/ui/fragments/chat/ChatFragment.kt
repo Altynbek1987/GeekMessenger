@@ -234,7 +234,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             savedUserStatus = it.lastSeen
             changeUserStatusToTyping(it.phoneNumber)
             binding.imProfile.loadImageWithGlide(it.profileImage)
-            Toast.makeText(requireContext(), "${it.profileImage}", Toast.LENGTH_SHORT).show()
             binding.tvUsername.text = it.name
             binding.tvUserStatus.text = it.lastSeen
             username = it.name
