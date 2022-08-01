@@ -25,6 +25,15 @@
     <string name="image_view_for_recording_voice_messages">image view for recording voice messages</string>
     <string name="button_to_send_message">button to send message</string>
     <string name="typing">печатает...</string>
+    <string name="Gallery">Галерея</string>
+    <string name="account">Аккаунт</string>
+    <string name="number">0702345805</string>
+    <string name="chance_number">Нажмите чтобы изменить номер телефона</string>
+    <string name="settings">Настройки</string>
+    <string name="tv_notifications">Уведомление и звуки</string>
+    <string name="tv_crossed">Скрыть номер телефона</string>
+    <string name="tv_language">Язык</string>
+    <string name="gallery">Галерея</string>
 
 
 </resources>
