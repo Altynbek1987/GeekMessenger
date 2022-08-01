@@ -2,11 +2,10 @@ package com.geektechkb.feature_main.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toDrawable
-import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 import com.geektechkb.common.constants.Constants.HOURS_MINUTES_DATE_FORMAT
-import com.geektechkb.core.base.BaseDiffUtil
 import com.geektechkb.core.base.BaseRecyclerViewHolder
 import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.feature_main.R
@@ -17,82 +16,80 @@ import com.geektechkb.feature_main.databinding.ItemSentVoiceMessageBinding
 import com.geektechkb.feature_main.domain.models.Message
 
 class MessagesAdapter :
-    PagingDataAdapter<Message, BaseRecyclerViewHolder<ViewBinding, Message>>(BaseDiffUtil()) {
+    ListAdapter<Message, BaseRecyclerViewHolder<ViewBinding, Message>>(diffUtil) {
+
     private var phoneNumber: String? = null
 
+    fun setPhoneNumber(phoneNumber: String) {
+        this.phoneNumber = phoneNumber
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): BaseRecyclerViewHolder<ViewBinding, Message> {
-        lateinit var layout: BaseRecyclerViewHolder<ViewBinding, Message>
-        when (viewType) {
+        return when (viewType) {
             R.layout.item_sent_messages -> {
-                layout =
-                    MessageSentViewHolder(
-                        ItemSentMessagesBinding.inflate(
-                            LayoutInflater.from(parent.context),
-                            parent,
-                            false
-                        )
+                MessageSentViewHolder(
+                    ItemSentMessagesBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
                     )
+                )
             }
             R.layout.item_received_message -> {
-                layout =
-                    MessageReceivedViewHolder(
-                        ItemReceivedMessageBinding.inflate(
-                            LayoutInflater.from(
-                                parent.context
-                            ), parent, false
-                        )
+                MessageReceivedViewHolder(
+                    ItemReceivedMessageBinding.inflate(
+                        LayoutInflater.from(
+                            parent.context
+                        ), parent, false
                     )
+                )
             }
-            R.layout.item_received_voice_message -> {
-                layout = VoiceMessageReceivedViewHolder(
+            /*R.layout.item_received_voice_message -> {
+                VoiceMessageReceivedViewHolder(
                     ItemReceivedVoiceMessageBinding.inflate(
                         LayoutInflater.from(parent.context), parent, false
                     )
                 )
             }
             R.layout.item_sent_voice_message -> {
-                layout = VoiceMessageSentViewHolder(
+                VoiceMessageSentViewHolder(
                     ItemSentVoiceMessageBinding.inflate(
                         LayoutInflater.from(parent.context), parent, false
                     )
                 )
+            }*/
+            else -> {
+                throw IllegalArgumentException("Not found ViewHolder!")
             }
-
         }
-        return layout
     }
 
     override fun onBindViewHolder(
         holder: BaseRecyclerViewHolder<ViewBinding, Message>,
-        position: Int
+        position: Int,
     ) {
         when (getItemViewType(position)) {
             R.layout.item_sent_messages -> getItem(position)?.let {
-                (holder as MessageSentViewHolder).onBind(
-                    it
-                )
+                (holder as MessageSentViewHolder).onBind(it)
             }
             R.layout.item_received_message -> getItem(position)?.let {
-                (holder as MessageReceivedViewHolder).onBind(
-                    it
-                )
+                (holder as MessageReceivedViewHolder).onBind(it)
             }
-            R.layout.item_sent_voice_message -> getItem(position)?.let {
+            /*R.layout.item_sent_voice_message -> getItem(position)?.let {
                 (holder as VoiceMessageSentViewHolder).onBind(it)
             }
             R.layout.item_received_voice_message -> getItem(position)?.let {
                 (holder as VoiceMessageReceivedViewHolder).onBind(it)
-            }
+            }*/
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         return when {
-            getItem(position)?.phoneNumber?.equals(phoneNumber) == false -> {
+            getItem(position)?.senderPhoneNumber?.equals(phoneNumber) == false -> {
                 R.layout.item_received_message
             }
             else -> {
@@ -104,18 +101,19 @@ class MessagesAdapter :
 
     inner class MessageSentViewHolder(binding: ItemSentMessagesBinding) :
         BaseRecyclerViewHolder<ItemSentMessagesBinding, Message>(binding) {
-        override fun onBind(item: Message) = with(binding) {
-            tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
-            when (itemViewType) {
-                FIRST_IN_POSITION ->
-                    clMessage.background =
-                        R.drawable.first_message_sent_cornered_background.toDrawable()
-                MIDDLE_IN_POSITION -> clMessage.background =
-                    R.drawable.middle_message_sent_cornered_background.toDrawable()
-                LAST_IN_POSITION -> clMessage.background =
-                    R.drawable.last_message_sent_cornered_background.toDrawable()
-            }
-            tvMessage.text = item.message
+        override fun onBind(item: Message) {
+            binding.mcvMessage.setBackgroundResource(R.drawable.first_message_sent_cornered_background)
+            binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
+//            when (itemViewType) {
+//                FIRST_IN_POSITION ->
+//                    binding.clMessage.background =
+//                        itemView.context.getDrawable(R.drawable.first_message_sent_cornered_background)
+//                MIDDLE_IN_POSITION -> binding.clMessage.background =
+//                    itemView.context.getDrawable(R.drawable.middle_message_sent_cornered_background)
+//                LAST_IN_POSITION -> binding.clMessage.background =
+//                    itemView.context.getDrawable(R.drawable.last_message_sent_cornered_background)
+//            }
+            binding.tvMessage.text = item.message
         }
     }
 
@@ -124,7 +122,6 @@ class MessagesAdapter :
         override fun onBind(item: Message) {
 
         }
-
     }
 
 
@@ -144,6 +141,18 @@ class MessagesAdapter :
 
 
     companion object {
+
+        val diffUtil = object : DiffUtil.ItemCallback<Message>() {
+            override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: Message, newItem: Message): Boolean {
+                return oldItem.timeMessageWasSent == newItem.timeMessageWasSent
+            }
+
+        }
+
         private const val FIRST_IN_POSITION = -1
         private const val MIDDLE_IN_POSITION = 0
         private const val LAST_IN_POSITION = 1

@@ -43,7 +43,6 @@ class CreateProfileFragment :
             }
         }
 
-
         binding.apply {
             binding.btnSignIn.setOnClickListener {
                 if (etName.text.isNullOrEmpty() || etName.text.isNullOrBlank()) {
@@ -58,11 +57,10 @@ class CreateProfileFragment :
                             binding.etSurname.text.toString(),
                             uri.toString(),
                             generateRandomId()
-                        )
-
+                        ) {
+                            mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
+                        }
                     }
-                    mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
-
                 }
             }
 

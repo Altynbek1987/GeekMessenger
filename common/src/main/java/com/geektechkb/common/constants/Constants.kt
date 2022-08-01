@@ -6,8 +6,7 @@ object Constants {
     const val HAS_ONBOARD_BEEN_SHOWN_KEY = "hasOnBoardBeenShown"
     const val CURRENT_FIREBASE_USER_PHONE_NUMBER_KEY = "currentFirebaseUserPhoneNumber"
     const val FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH = "authenticatedUsers"
-    const val FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH = "messages"
-    const val FIREBASE_FIRESTORE_USERS_MESSAGES_COLLECTION_PATH = "usersMessages"
+    const val FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH = "personalMessages"
     const val FIREBASE_FIRESTORE_CHATTERS_KEY = "chatters"
 
     const val FIREBASE_USER_LAST_SEEN_TIME_KEY = "lastSeen"
@@ -22,4 +21,6 @@ object Constants {
     const val HOURS_MINUTES_DATE_FORMAT = "HH:mm"
     const val FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH = "profileImages/"
     const val FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH = "voiceMessages/"
+
+    const val INTENT_FILTER = "MESSENGER_EVENT"
 }

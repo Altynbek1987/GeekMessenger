@@ -13,6 +13,7 @@ plugins {
 
     // Hilt
     id(libs.plugins.hilt.android.get().pluginId)
+    id(libs.plugins.google.services.get().pluginId)
 }
 
 android {
@@ -52,6 +53,7 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
+    implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
     kapt(libs.hilt.compiler)
 
 }

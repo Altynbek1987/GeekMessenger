@@ -77,7 +77,6 @@ abstract class BaseRepository {
         }
     }
 
-
     suspend fun getDocument(collection: CollectionReference, id: String): DocumentSnapshot =
         collection
             .document(id)
@@ -145,6 +144,7 @@ abstract class BaseRepository {
         file: Uri?,
         folderPath: String,
         id: String,
+        doOnComplete: () -> Unit
     ) =
         file?.let {
             storageRef
@@ -153,6 +153,9 @@ abstract class BaseRepository {
                 .await()
                 .storage
                 .downloadUrl
+                .addOnCompleteListener {
+                    doOnComplete()
+                }
                 .await()
                 .toString()
         }
@@ -162,7 +165,7 @@ abstract class BaseRepository {
         storageRef: StorageReference,
         file: ByteArray?,
         folderPath: String,
-        id: String
+        id: String,
     ) =
         file?.let {
             storageRef
@@ -181,7 +184,7 @@ abstract class BaseRepository {
         storageRef: StorageReference,
         file: Uri?,
         folderPath: String,
-        id: String
+        id: String,
     ) =
         file?.let {
             storageRef
@@ -201,7 +204,7 @@ abstract class BaseRepository {
         collection: CollectionReference,
         documentPath: String,
         fieldToUpdate: String,
-        valueToReplaceTheOldOne: Any
+        valueToReplaceTheOldOne: Any,
     ) {
         collection.document(documentPath).update(fieldToUpdate, valueToReplaceTheOldOne)
     }

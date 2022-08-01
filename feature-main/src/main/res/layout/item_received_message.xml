@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp">
+    android:paddingStart="12dp"
+    android:paddingTop="12dp">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_message_card_view_start"
@@ -21,7 +22,6 @@
         android:background="@drawable/first_message_received_cornered_background"
         app:cardPreventCornerOverlap="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/gl_message_card_view_start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -37,12 +37,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
                 android:layout_marginTop="7dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
+                android:maxEms="14"
                 android:text="Okay i will tell that in 7 pm"
                 android:textColor="#2C2C2C"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_time_message_was_sent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
