@@ -19,6 +19,7 @@
             app:popupTheme="@style/Theme.NavDraw.PopupOverlay"
             app:titleMarginStart="60dp"
             app:titleTextColor="@color/black" />
+            app:titleTextColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="120dp"
@@ -45,6 +46,23 @@
             android:layout_marginEnd="10dp"
             android:src="@drawable/search" />
 
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="home"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="0dp"
@@ -56,6 +74,5 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_user" />
 
-    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

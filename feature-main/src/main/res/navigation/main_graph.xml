@@ -97,4 +97,14 @@
             android:name="usernameToDeleteChatHistoryWith"
             app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/connectionCheckFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.checknetworkconnection.ConnectionCheckFragment"
+        android:label="fragment_connection_check"
+        tools:layout="@layout/fragment_connection_check" >
+
+        <action
+            android:id="@+id/action_connectionCheckFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

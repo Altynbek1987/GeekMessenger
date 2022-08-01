@@ -10,9 +10,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(
     R.layout.fragment_group
+
 ) {
+
     override val binding by viewBinding(FragmentGroupBinding::bind)
     override val viewModel by viewModels<GroupViewModel>()
     override fun assembleViews() {
     }
+
 }
