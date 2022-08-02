@@ -3,7 +3,6 @@ package com.geektechkb.feature_main.presentation.ui.fragments.home
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
@@ -38,7 +37,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         }
         cld.observe(viewLifecycleOwner) {
             if (it) {
-                Log.e("connection",it.toString())
+                Log.e("connection", it.toString())
             } else {
                 findNavController().navigate(R.id.action_homeFragment_to_connectionCheckFragment)
             }

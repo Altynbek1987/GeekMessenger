@@ -31,6 +31,9 @@
             android:id="@+id/action_homeFragment_to_chatFragment"
             app:destination="@id/chatFragment"
             app:popUpTo="@id/main_graph" />
+        <action
+            android:id="@+id/action_homeFragment_to_connectionCheckFragment"
+            app:destination="@id/connectionCheckFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
