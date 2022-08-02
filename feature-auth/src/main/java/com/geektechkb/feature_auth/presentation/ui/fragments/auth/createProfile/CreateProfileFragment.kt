@@ -11,7 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.hasPermissionCheckAndRequest
+import com.geektechkb.core.extensions.checkForMultiplePermissionsAndRequestThem
+import com.geektechkb.core.extensions.generateRandomId
 import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.core.extensions.setImage
 import com.geektechkb.feature_auth.R
@@ -25,7 +26,7 @@ class CreateProfileFragment :
     override val binding by viewBinding(FragmentCreateProfileBinding::bind)
     override val viewModel: CreateProfileViewModel by viewModels()
     private val args: CreateProfileFragmentArgs by navArgs()
-    private lateinit var uri: Uri
+    private var uri: Uri? = null
 
     override fun setupListeners() {
         val requestPermissionLauncher = registerForActivityResult(
@@ -42,7 +43,6 @@ class CreateProfileFragment :
             }
         }
 
-
         binding.apply {
             binding.btnSignIn.setOnClickListener {
                 if (etName.text.isNullOrEmpty() || etName.text.isNullOrBlank()) {
@@ -50,35 +50,28 @@ class CreateProfileFragment :
                 } else {
                     viewModel.isUserAuthenticated()
                     lifecycleScope.launch {
-
                         viewModel.authenticateUser(
+                            "был(а) недавно",
                             args.phoneNumber,
                             binding.etName.text.toString(),
                             binding.etSurname.text.toString(),
-                            binding.imProfile.toString()
-
-                        )
-
+                            uri.toString(),
+                            generateRandomId()
+                        ) {
+                            mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
+                        }
                     }
-                    btnStart.setOnClickListener {
-                        findNavController().navigate(com.geektechkb.feature_main.R.id.homeFragment)
-                    }
-
-
-                    mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
                 }
             }
 
             binding.imProfile.setOnClickListener {
-                if (hasPermissionCheckAndRequest(
+                if (checkForMultiplePermissionsAndRequestThem(
                         requestPermissionLauncher,
                         arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
                     )
                 ) {
                     fileChooserContract.launch("image/*")
                 }
-
-
             }
 
         }

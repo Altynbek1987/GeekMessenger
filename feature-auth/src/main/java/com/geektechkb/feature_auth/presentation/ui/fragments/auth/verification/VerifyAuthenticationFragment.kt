@@ -372,7 +372,7 @@ class VerifyAuthenticationFragment :
                 userSuccessfullyVerifiedTheirPhoneNumber = {
                     findNavController().directionsSafeNavigation(
                         VerifyAuthenticationFragmentDirections.actionVerifyAuthenticationFragmentToCreateProfileFragment(
-                            args.phoneNumber
+                            args.phoneNumber.removeExtraSpaces()
                         )
                     )
                     showShortDurationSnackbar("Вы успешно авторизировались!")

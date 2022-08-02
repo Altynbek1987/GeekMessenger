@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/chat_control_height"
+    android:layout_alignParentBottom="true">
+
+    <FrameLayout
+        android:id="@+id/cancel_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp">
+
+        <TextView
+            android:id="@+id/cancel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:alpha="0"
+            android:paddingStart="48dp"
+            android:paddingEnd="48dp"
+            android:text="Отмена"
+            android:textColor="#5393D0"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/slide_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:gravity="center"
+            android:paddingStart="60dp"
+            android:paddingEnd="60dp"
+            tools:ignore="RelativeOverlap,UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:src="@drawable/ic_cancel_recording_audio"
+                tools:ignore="ContentDescription" />
+
+
+            <TextView
+                android:id="@+id/slide_cancel_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="Отмена"
+                android:textColor="#A9B5C3"
+                android:textSize="16sp"
+                tools:ignore="RelativeOverlap" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/margin12"
+        android:drawablePadding="@dimen/padding8"
+        android:fontFamily="@font/roboto_medium_500"
+        android:gravity="center_vertical"
+        android:textColor="#5393D0"
+        android:textSize="14sp"
+        android:typeface="monospace"
+        tools:ignore="RelativeOverlap" />
+</merge>

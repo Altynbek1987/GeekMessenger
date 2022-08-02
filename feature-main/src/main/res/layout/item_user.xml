@@ -2,10 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-
-    android:layout_height="70dp">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
@@ -22,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/roundedImageView"
+            android:id="@+id/im_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
@@ -42,7 +40,7 @@
         app:layout_constraintTop_toTopOf="@+id/cardview" />
 
     <TextView
-        android:id="@+id/username_textview_latest_message"
+        android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -55,7 +53,7 @@
         tools:text="Username" />
 
     <TextView
-        android:id="@+id/time"
+        android:id="@+id/tv_time_last_message_sent"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
@@ -66,7 +64,7 @@
         tools:text="15:17" />
 
     <TextView
-        android:id="@+id/message_textview_latest_message"
+        android:id="@+id/tv_last_message"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -77,7 +75,7 @@
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/cardview"
-        app:layout_constraintTop_toBottomOf="@+id/username_textview_latest_message"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username"
         tools:text="Банк россии снизил ключевую ставку до..." />
 
     <View
@@ -85,7 +83,7 @@
         android:layout_height="1dp"
         android:background="#EFE9E9"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="69dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="69dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

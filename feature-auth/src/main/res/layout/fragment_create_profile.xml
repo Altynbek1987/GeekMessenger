@@ -188,7 +188,7 @@
         android:layout_height="24dp"
         android:background="#5393D0"
         android:paddingStart="5dp"
-        android:src="@drawable/arrow"
+        android:src="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="@id/toolbar"
         app:layout_constraintTop_toTopOf="@id/toolbar" />
@@ -200,7 +200,7 @@
         android:layout_marginTop="5dp"
         android:background="#5393D0"
         android:paddingEnd="5dp"
-        android:src="@drawable/ic_vector_1"
+        android:src="@drawable/check"
         app:layout_constraintBottom_toBottomOf="@id/ar_btn"
         app:layout_constraintRight_toRightOf="@id/toolbar"
         app:layout_constraintTop_toTopOf="@id/toolbar" />
