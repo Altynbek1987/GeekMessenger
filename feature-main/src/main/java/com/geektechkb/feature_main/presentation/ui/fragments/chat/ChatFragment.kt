@@ -5,7 +5,9 @@ import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -21,6 +23,8 @@ import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.sendbird.calls.AuthenticateParams
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -41,7 +45,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE,
             actionWhenPermissionHasBeenDenied = {
-
                 findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
             })
 
@@ -118,7 +121,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         backToHomeFragment()
         onBackPressed()
         interactWithToolbarMenu()
-
     }
 
     private fun expandGalleryDialog() {
@@ -129,7 +131,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 )
             )
                 showShortDurationSnackbar("fuck")
-
         }
     }
 
@@ -162,7 +163,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             )
             etMessage.text?.clear()
         }
-
     }
 
 
@@ -223,7 +223,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun fetchUser() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             args.phoneNumber?.let { viewModel.fetchUser(it) }
-
         }
     }
 
@@ -245,14 +244,17 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun subscribeToMessages() {
-        viewModel.fetchPagedMessages().spectatePaging(success = {
-            messagesAdapter.submitData(it)
-
-            checkAdapterItemCountAndHideLayout()
-            binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
-        })
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.fetchPagedMessages().collectLatest {
+                    messagesAdapter.setPhoneNumber(usersPreferencesHelper.currentUserPhoneNumber)
+                    messagesAdapter.submitList(it)
+                    checkAdapterItemCountAndHideLayout()
+                    binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                }
+            }
+        }
     }
-
 
     override fun onRecordStart() {
         if (checkForPermissionStatusAndRequestIt(
@@ -277,6 +279,4 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
     }
-
-
 }

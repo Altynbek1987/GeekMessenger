@@ -2,15 +2,41 @@ package com.geektechkb.core.extensions
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
+
+fun ImageView.setImage(uri: String?) {
+    Glide.with(this)
+        .load(uri)
+        .circleCrop()
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(this)
+}
+
+fun ImageView.setImagee(uri: Uri?) {
+    Glide.with(this)
+        .load(uri)
+        .centerCrop()
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(this)
+}
+
+
+fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(requireContext(), message, duration).show()
+}
 
 fun Fragment.showShortDurationSnackbar(text: CharSequence) {
     view?.let { Snackbar.make(it, text, Snackbar.LENGTH_SHORT).show() }

@@ -16,10 +16,10 @@ class HomeViewModel @Inject constructor(
     private val fetchPagedUsersUseCase: FetchPagedUsersUseCase,
     private val updateUserStatusUseCase: UpdateUserStatusUseCase
 ) : BaseViewModel() {
+
     fun fetchPagedUsers(): Flow<PagingData<User>> {
         val pagedUsers = fetchPagedUsersUseCase() as Flow<PagingData<User>>
         return pagedUsers.cachedIn(viewModelScope)
-
     }
 
     fun updateUserStatus(status: String) {
@@ -28,8 +28,5 @@ class HomeViewModel @Inject constructor(
 
     init {
         fetchPagedUsers()
-
     }
-
-
 }

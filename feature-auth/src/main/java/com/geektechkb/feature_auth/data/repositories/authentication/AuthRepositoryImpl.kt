@@ -47,7 +47,7 @@ class AuthRepositoryImpl @Inject constructor(
     override fun provideAuthenticationCallbacks(
         authenticationSucceeded: ((() -> Unit))?,
         authInvalidCredentialsError: ((() -> Unit))?,
-        tooManyRequestsError: ((() -> Unit))?
+        tooManyRequestsError: ((() -> Unit))?,
     ): PhoneAuthProvider.OnVerificationStateChangedCallbacks {
         val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
@@ -65,7 +65,7 @@ class AuthRepositoryImpl @Inject constructor(
 
             override fun onCodeSent(
                 verificationId: String,
-                token: PhoneAuthProvider.ForceResendingToken
+                token: PhoneAuthProvider.ForceResendingToken,
             ) {
 
                 authorizationPreferences.verificationId = verificationId
@@ -80,7 +80,7 @@ class AuthRepositoryImpl @Inject constructor(
         notAnActualFirebaseAuth: NotAnActualFirebaseAuth,
         phoneNumber: String,
         notAnActualActivity: NotAnActualActivity,
-        notAnActualCallbacks: NotAnActualCallbacks
+        notAnActualCallbacks: NotAnActualCallbacks,
     ) {
         notAnActualFirebaseAuth as FirebaseAuth
         notAnActualFirebaseAuth.setLanguageCode("ru")
@@ -102,7 +102,8 @@ class AuthRepositoryImpl @Inject constructor(
         name: String,
         surname: String,
         profileImage: String?,
-        imageFileName: String
+        imageFileName: String,
+        doOnComplete: () -> Unit,
     ) {
         userPreferencesHelper.currentUserPhoneNumber = phoneNumber.removeExtraSpaces()
         addDocument(
@@ -115,7 +116,7 @@ class AuthRepositoryImpl @Inject constructor(
                         uploadUncompressedImageToCloudStorage(
                             cloudStorageRef, Uri.parse(profileImage ?: " "),
                             FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH, imageFileName
-                        )
+                        ) { doOnComplete() }
 
             ), phoneNumber
         )

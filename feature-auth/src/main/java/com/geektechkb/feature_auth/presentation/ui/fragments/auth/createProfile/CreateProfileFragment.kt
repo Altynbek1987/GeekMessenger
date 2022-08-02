@@ -26,7 +26,7 @@ class CreateProfileFragment :
     override val binding by viewBinding(FragmentCreateProfileBinding::bind)
     override val viewModel: CreateProfileViewModel by viewModels()
     private val args: CreateProfileFragmentArgs by navArgs()
-    private lateinit var uri: Uri
+    private var uri: Uri? = null
 
     override fun setupListeners() {
         val requestPermissionLauncher = registerForActivityResult(
@@ -42,6 +42,8 @@ class CreateProfileFragment :
                 }
             }
         }
+
+
         binding.apply {
             binding.btnSignIn.setOnClickListener {
                 if (etName.text.isNullOrEmpty() || etName.text.isNullOrBlank()) {
@@ -56,7 +58,8 @@ class CreateProfileFragment :
                             binding.etSurname.text.toString(),
                             uri.toString(),
                             generateRandomId()
-                        )
+                        ) {}
+
                     }
                     mainNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
 
@@ -71,6 +74,8 @@ class CreateProfileFragment :
                 ) {
                     fileChooserContract.launch("image/*")
                 }
+
+
             }
 
         }
@@ -83,6 +88,7 @@ class CreateProfileFragment :
                     "Приложение GeekMessenger не может функционировать без разрешение на галерею устройства. Вы можете включить их в разределе Настройки"
                 )
             )
+
         }
     }
 
@@ -100,4 +106,5 @@ class CreateProfileFragment :
 
     private fun Fragment.mainNavController() =
         requireActivity().findNavController(R.id.nav_host_fragment_container_auth)
+
 }

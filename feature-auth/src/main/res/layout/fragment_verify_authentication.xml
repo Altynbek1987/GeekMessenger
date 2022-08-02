@@ -126,7 +126,7 @@
             android:id="@+id/et_second_digit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/oval_background"
+            android:background="@drawable/edit_text_phone_oval"
             android:focusable="true"
             android:gravity="center"
             android:maxLength="1"

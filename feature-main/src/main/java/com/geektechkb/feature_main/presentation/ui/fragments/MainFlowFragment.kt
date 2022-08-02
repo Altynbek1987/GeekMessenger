@@ -1,6 +1,5 @@
 package com.geektechkb.feature_main.presentation.ui.fragments
 
-import android.telecom.Call
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
@@ -26,6 +25,7 @@ class MainFlowFragment : BaseFlowFragment(
     private val binding by viewBinding(FragmentMainFlowBinding::bind)
     private val viewModel: MainFlowViewModel by viewModels()
     override fun setupNavigation(navController: NavController) {
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         appBarConfiguration = AppBarConfiguration(

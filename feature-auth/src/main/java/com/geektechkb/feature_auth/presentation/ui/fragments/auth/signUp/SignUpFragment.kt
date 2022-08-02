@@ -7,7 +7,6 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.feature_auth.R
 import com.geektechkb.feature_auth.databinding.FragmentSignUpBinding
-import com.google.android.material.textfield.TextInputLayout
 import com.santalu.maskara.MaskChangedListener
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,20 +38,3 @@ class SignUpFragment :
 }
 
 
-private fun TextInputLayout.setFixedError(errorTxt: CharSequence?) {
-    if (error != errorTxt) {
-        error = errorTxt
-    }
-}
-
-//    private fun TextInputEditText.addMaskChangeListener() {
-//        maskChangedListener = MaskChangedListener(
-//            Mask(
-//                value = " ___ ___ ___",
-//                character = '_',
-//                style = MaskStyle.PERSISTENT
-//            )
-//        )
-//        addTextChangedListener(maskChangedListener)
-//    }
-//}

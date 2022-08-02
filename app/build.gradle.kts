@@ -40,6 +40,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
+
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -61,5 +63,6 @@ dependencies {
 
     // Hilt
     implementation(libs.bundles.hilt)
+    implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
     kapt(libs.hilt.compiler)
 }

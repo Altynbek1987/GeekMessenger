@@ -12,7 +12,8 @@ class AuthenticateUserUseCase @Inject constructor(
         name: String,
         surname: String,
         profileImage: String?,
-        imageFileName: String
+        imageFileName: String,
+        doOnComplete: () -> Unit
     ) =
         authRepository.authenticateUser(
             lastSeen,
@@ -20,6 +21,7 @@ class AuthenticateUserUseCase @Inject constructor(
             name,
             surname,
             profileImage,
-            imageFileName
+            imageFileName,
+            doOnComplete
         )
 }
