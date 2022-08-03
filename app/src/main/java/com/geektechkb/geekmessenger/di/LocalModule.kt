@@ -3,6 +3,7 @@ package com.geektechkb.geekmessenger.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
+import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object SharedPreferencesModule {
+object LocalModule {
 
     @Singleton
     @Provides
@@ -23,4 +24,9 @@ object SharedPreferencesModule {
     @Provides
     fun provideAuthorizePreferences(preferences: SharedPreferences) =
         AuthorizePreferences(preferences)
+
+    @Singleton
+    @Provides
+    fun provideOnBoardPreferences(preferences: SharedPreferences) =
+        OnBoardPreferencesHelper(preferences)
 }

@@ -15,6 +15,9 @@ plugins {
     // Hilt
     id(libs.plugins.hilt.android.get().pluginId)
 
+    // Google Services
+    id(libs.plugins.google.services.get().pluginId)
+
 }
 
 android {
@@ -71,6 +74,10 @@ dependencies {
     implementation(libs.bundles.navigation)
 
     // Hilt
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
+
+    // Firebase
+    implementation(platform(libs.firebase.platform))
+    implementation(libs.bundles.firebaseNoAdMobAndCrashlytics)
 }

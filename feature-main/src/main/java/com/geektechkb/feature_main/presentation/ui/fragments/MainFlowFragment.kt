@@ -7,6 +7,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFlowFragment
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
@@ -19,6 +25,27 @@ class MainFlowFragment : BaseFlowFragment(
     R.id.nav_host_fragment_content_main,
 ) {
 
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private val binding by viewBinding(FragmentMainFlowBinding::bind)
+    override fun setupNavigation(navController: NavController) {
+
+
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.nav_groups, R.id.nav_calls, R.id.nav_settings
+            ), drawerLayout
+        )
+        navView.setupWithNavController(navController)
+
+
+
+        binding.appBarMain.toolbarButton.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+    }
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val binding by viewBinding(FragmentMainFlowBinding::bind)
     override fun setupNavigation(navController: NavController) {
