@@ -64,4 +64,8 @@ dependencies {
     implementation("com.github.avito-tech:krop:0.64")
     implementation("com.squareup.picasso:picasso:2.71828")
 
+    // Room with coroutines
+    api(libs.bundles.room)
+    kapt(libs.room.compiler)
+
 }
