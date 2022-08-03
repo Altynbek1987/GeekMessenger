@@ -9,4 +9,8 @@ interface UsersRepository {
     fun fetchPagedUsers(): NotAnActualPagingData
     suspend fun fetchUser(phoneNumber: String): Flow<Either<String, User>>
     fun updateUserStatus(status: String)
+    fun getUsers(): Flow<List<User>>
+    fun insertAllUser(user: User)
+    fun updateUsers(user: User)
+    fun deleteUsers(user: User)
 }
