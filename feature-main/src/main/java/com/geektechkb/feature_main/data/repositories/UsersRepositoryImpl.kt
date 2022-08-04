@@ -7,7 +7,7 @@ import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
 import com.geektechkb.core.base.BaseRepository
-import com.geektechkb.feature_main.data.local.db.daos.UserDao
+import com.geektechkb.feature_main.data.local.db.daos.MessageDao
 import com.geektechkb.feature_main.data.remote.pagingsources.UsersPagingSource
 import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(
-    private val userDao: UserDao,
     private val firebaseAuth: FirebaseAuth,
     firestore: FirebaseFirestore,
 ) : BaseRepository(), UsersRepository {
@@ -59,18 +58,6 @@ class UsersRepositoryImpl @Inject constructor(
 
     }
 
-    //ROOM
-    override fun insertAllUser(user: User) =
-        TODO("Not yet implemented")
-
-    override fun getUsers(): Flow<List<User>> =
-        TODO("Not yet implemented")
-
-    override fun updateUsers(user: User) =
-        TODO("Not yet implemented")
-
-    override fun deleteUsers(user: User) =
-        TODO("Not yet implemented")
 }
 
 
