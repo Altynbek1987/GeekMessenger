@@ -1,6 +1,7 @@
 package com.geektechkb.feature_main.domain.repositories
 
 import com.geektechkb.feature_main.domain.models.Message
+import com.geektechkb.feature_main.domain.models.User
 import com.google.firebase.firestore.DocumentChange
 import kotlinx.coroutines.flow.Flow
 
@@ -22,4 +23,8 @@ interface MessagesRepository {
 //        firstChatterPhoneNumber: String,
 //        secondChatterPhoneNumber: String,
 //    ): String?
+    fun getMessage(): Flow<List<Message>>
+    fun insertAllMessage(message: Message)
+    fun updateMessage(message: Message)
+    fun deleteMessage(message: Message)
 }
