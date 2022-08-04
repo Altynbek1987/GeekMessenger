@@ -45,6 +45,6 @@ object LocalModule {
 
     @Singleton
     @Provides
-    fun provideMessageDao(appDataBase: AppDataBase) =
-        RoomClient().provideMessageDao(appDataBase)
+    fun provideUserDao(appDataBase: AppDataBase) =
+        RoomClient().provideUserDao(appDataBase)
 }

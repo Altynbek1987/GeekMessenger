@@ -6,9 +6,8 @@ import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_MESSAGES_COL
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT
 import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.core.extensions.snapshotFlow
-import com.geektechkb.feature_main.data.local.db.daos.MessageDao
+import com.geektechkb.feature_main.data.local.db.daos.UserDao
 import com.geektechkb.feature_main.domain.models.Message
-import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.repositories.MessagesRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -18,7 +17,6 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class MessagesRepositoryImpl @Inject constructor(
-    private val messageDao: MessageDao,
     firestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
 ) : BaseRepository(), MessagesRepository {
@@ -64,22 +62,7 @@ class MessagesRepositoryImpl @Inject constructor(
             }
         }
 
-        //Room
-    override fun getMessage(): Flow<List<Message>> {
-        TODO("Not yet implemented")
-    }
 
-    override fun insertAllMessage(message: Message) {
-        TODO("Not yet implemented")
-    }
-
-    override fun updateMessage(message: Message) {
-        TODO("Not yet implemented")
-    }
-
-    override fun deleteMessage(message: Message) {
-        TODO("Not yet implemented")
-    }
 
 //        override suspend fun setupOneOnOneChat(
 //            id: String?,

@@ -6,16 +6,16 @@ import com.geektechkb.feature_main.domain.models.User
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface MessageDao {
-    @Query("SELECT * FROM message")
-    fun getMessage(): Flow<List<Message>>
+interface UserDao {
+    @Query("SELECT * FROM user")
+    fun getUser(): Flow<List<User>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertMessage(message: Message)
+    fun insertAllUsers(user: User)
 
     @Delete
-    suspend fun deleteMessage(message: Message)
+    suspend fun deleteUser(user: User)
 
     @Update
-    suspend fun updateMessage(message: Message)
+    suspend fun updateUser(user: User)
 }
