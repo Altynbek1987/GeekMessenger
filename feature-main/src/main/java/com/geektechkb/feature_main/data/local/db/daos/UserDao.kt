@@ -1,8 +1,6 @@
 package com.geektechkb.feature_main.data.local.db.daos
 
 import androidx.room.*
-import com.geektechkb.feature_main.domain.models.Message
-import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.models.UserDb
 import kotlinx.coroutines.flow.Flow
 
