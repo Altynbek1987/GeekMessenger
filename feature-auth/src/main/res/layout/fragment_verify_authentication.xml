@@ -41,27 +41,34 @@
 
     <ImageButton
         android:id="@+id/check_byn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_margin="8dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/blue"
         android:src="@drawable/ic_baseline_check_24"
+        android:background="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginTop="6dp"
-        android:contentDescription="@string/todo"
         android:src="@drawable/image_verify_auth"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/gl_resend_verification_code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/gl_end_pictures_figures"
+        android:contentDescription="@string/todo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_end_pictures_figures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
 
     <TextView
         android:id="@+id/tv_verification_code_was_sent"
@@ -78,10 +85,10 @@
         android:id="@+id/tv_count_down_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:text="@string/send_verification_code_again"
         android:textSize="14sp"
         android:visibility="gone"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_verification_code_was_sent" />
@@ -268,7 +275,6 @@
         app:layout_constraintBottom_toTopOf="@+id/gl_button_ends"
         app:layout_constraintEnd_toStartOf="@id/gl_sixth_digit_end"
         app:layout_constraintTop_toBottomOf="@+id/gl_resend_verification_code_top" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_resend_verification_code_top"
         android:layout_width="wrap_content"
@@ -319,7 +325,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.63075197" />
+        app:layout_constraintGuide_percent="0.63" />
 
     <GridLayout
         android:id="@+id/gridLayout_second_three_digits"
@@ -414,9 +420,9 @@
         android:id="@+id/ib_backspace"
         android:layout_width="90dp"
         android:layout_height="39dp"
-        android:background="@color/white"
         android:contentDescription="@string/button_to_delete_digits_from_edittexts"
         android:src="@drawable/ic_backspace"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_zero"
         app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />

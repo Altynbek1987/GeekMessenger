@@ -10,4 +10,5 @@ data class UserDb(
     val id:Int,
     val name:String,
     val secondName:String,
-)
+    override val phoneNumber: String?,
+):BaseDiffModel
