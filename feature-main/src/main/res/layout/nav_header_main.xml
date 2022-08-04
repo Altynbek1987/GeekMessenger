@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/open"
     android:layout_width="match_parent"
-    android:layout_height="223dp"
+    android:layout_height="250dp"
     android:background="#4A7CE0"
-    android:gravity="bottom"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/sun_btn"
-        android:layout_width="440dp"
-        android:layout_height="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:background="#4A7CE0"
         android:src="@drawable/ic_sun" />
 
     <androidx.cardview.widget.CardView
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/user_name"
         android:id="@+id/card"
+        app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         android:elevation="50dp"
         app:cardCornerRadius="50dp">
 
         <ImageView
             android:id="@+id/image_profile"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@drawable/ic_baseline_person_24"
             android:clickable="true"
             android:contentDescription="@string/nav_header_desc"
@@ -39,16 +42,28 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/user_name"
+        android:layout_marginStart="10dp"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@id/user_number"
         android:layout_width="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
         android:text="Which user"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/user_number"
+        android:layout_width="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="9dp"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:text="+996 999880704" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

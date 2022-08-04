@@ -14,6 +14,7 @@
       },
       "oauth_client": [
         {
+ alymbek
           "client_id": "974311209739-3h3u6amtjue5vin68hjm9oalse5m8h8u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -35,6 +36,13 @@
           "android_info": {
             "package_name": "com.geektechkb.geekmessenger",
             "certificate_hash": "5d1cd4ac9a4e899b45dd18ee3ccef36441b3bf3c"
+
+          "client_id": "974311209739-gnipkuvk03ca7shm111thmv79ecqp9ou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geektechkb.geekmessenger",
+            "certificate_hash": "a9506b852e341feb85b51af63ec554ac307e5487"
+ develop-bekjan
           }
         },
         {

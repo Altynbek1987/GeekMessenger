@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class VerifyAuthenticationFragment :
     BaseFragment<FragmentVerifyAuthenticationBinding, VerifyAuthenticationViewModel>(R.layout.fragment_verify_authentication) {
     override val binding by viewBinding(FragmentVerifyAuthenticationBinding::bind)
-    override val viewModel: VerifyAuthenticationViewModel by viewModels()
+    override val galleryViewModel: VerifyAuthenticationViewModel by viewModels()
     private val args: VerifyAuthenticationFragmentArgs by navArgs()
     private var timeInSeconds = 0L
     private var attemptsToVerifyPhoneNumberAvailable = 3
@@ -111,11 +111,11 @@ class VerifyAuthenticationFragment :
                     etFifthDigit,
                     etSixthDigit
                 )
-                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty() && viewModel.getVerificationId() != null) {
+                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty() && galleryViewModel.getVerificationId() != null) {
 
                     signInWithPhoneAuthCredential(
-                        viewModel.verifyPhoneNumberWithCode(
-                            viewModel.getVerificationId(),
+                        galleryViewModel.verifyPhoneNumberWithCode(
+                            galleryViewModel.getVerificationId(),
                             retrievedVerificationCode.trim()
                         )
                     )
@@ -365,8 +365,8 @@ class VerifyAuthenticationFragment :
         binding.apply {
 
 
-            viewModel.signInWithPhoneAuthCredential(
-                viewModel.firebaseAuth,
+            galleryViewModel.signInWithPhoneAuthCredential(
+                galleryViewModel.firebaseAuth,
                 credential,
                 requireActivity(),
                 userSuccessfullyVerifiedTheirPhoneNumber = {
@@ -402,11 +402,11 @@ class VerifyAuthenticationFragment :
     private fun resendVerificationCode(
         phoneNumber: String,
     ) {
-        viewModel.resendVerificationCode(
-            viewModel.firebaseAuth,
+        galleryViewModel.resendVerificationCode(
+            galleryViewModel.firebaseAuth,
             phoneNumber,
             requireActivity(),
-            viewModel.provideCallbacks(
+            galleryViewModel.provideCallbacks(
                 authenticationSucceeded =
                 {
                     showShortDurationSnackbar("You have successfully authenticated")
@@ -419,7 +419,7 @@ class VerifyAuthenticationFragment :
 
                         "Looks like you have used all of the requests available"
                     )
-                }), viewModel.getForceResendingToken()
+                }), galleryViewModel.getForceResendingToken()
         )
     }
 

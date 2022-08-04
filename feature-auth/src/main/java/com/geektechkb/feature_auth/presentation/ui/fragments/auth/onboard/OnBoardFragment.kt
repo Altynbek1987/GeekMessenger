@@ -16,7 +16,7 @@ import javax.inject.Inject
 class OnBoardFragment :
     BaseFragment<FragmentOnBoardBinding, OnBoardViewModel>(R.layout.fragment_on_board) {
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
-    override val viewModel: OnBoardViewModel by viewModels()
+    override val galleryViewModel: OnBoardViewModel by viewModels()
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
     @Inject
     lateinit var preferences: OnBoardPreferencesHelper
