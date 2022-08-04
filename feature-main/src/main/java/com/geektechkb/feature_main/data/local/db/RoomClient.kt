@@ -2,7 +2,7 @@ package com.geektechkb.feature_main.data.local.db
 
 import android.content.Context
 import androidx.room.Room
-import com.geektechkb.feature_main.data.local.db.daos.UserDao
+import com.geektechkb.feature_main.data.local.db.daos.MessageDao
 import dagger.hilt.android.qualifiers.ApplicationContext
 
 class RoomClient {
@@ -14,5 +14,5 @@ class RoomClient {
         ).fallbackToDestructiveMigration()
             .build()
 
-    fun provideUserDao(userDataBase: AppDataBase): UserDao = userDataBase.userDao()
+    fun provideMessageDao(userDataBase: AppDataBase): MessageDao = userDataBase.messageDao()
 }
