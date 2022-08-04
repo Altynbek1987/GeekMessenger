@@ -1,20 +1,21 @@
 package com.geektechkb.feature_main.data.local.db.daos
 
 import androidx.room.*
+import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.domain.models.User
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface UserDao {
+interface MessageDao {
     @Query("SELECT * FROM message")
-    fun getUsers(): Flow<List<User>>
+    fun getMessage(): Flow<List<Message>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertUser(user: User)
+    fun insertMessage(message: Message)
 
     @Delete
-    suspend fun deleteUsers(user: User)
+    suspend fun deleteMessage(message: Message)
 
     @Update
-    suspend fun updateUsers(user: User)
+    suspend fun updateMessage(message: Message)
 }
