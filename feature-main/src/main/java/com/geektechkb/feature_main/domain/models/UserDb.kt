@@ -2,7 +2,6 @@ package com.geektechkb.feature_main.domain.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.geektechkb.core.base.BaseDiffModel
 
 @Entity
 data class UserDb(
