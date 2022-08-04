@@ -36,13 +36,19 @@ class VerifyAuthenticationFragment :
     }
 
     private fun setPhoneNumberCodeWasSentTo() {
+//        val phoneNumberVerificationCodeWasSentTo =
+//            String.format(
+//                getString(R.string.verification_code_was_sent_to_the_entered_phone),
+//                args.phoneNumber
+//            )
+//        binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
         val phoneNumberVerificationCodeWasSentTo =
             String.format(
-                getString(R.string.verification_code_was_sent_to_the_entered_phone),
                 args.phoneNumber
             )
-        binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
+        binding.tvVerificationUserNumberPhone.text = phoneNumberVerificationCodeWasSentTo
     }
+
 
     private fun updateCountDownTimer() {
         val minute = (timeInSeconds / 1000) / 60
