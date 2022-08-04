@@ -23,8 +23,4 @@ interface MessagesRepository {
 //        firstChatterPhoneNumber: String,
 //        secondChatterPhoneNumber: String,
 //    ): String?
-    fun getMessage(): Flow<List<Message>>
-    fun insertAllMessage(message: Message)
-    fun updateMessage(message: Message)
-    fun deleteMessage(message: Message)
 }
