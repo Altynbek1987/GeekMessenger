@@ -10,12 +10,13 @@ import kotlinx.coroutines.tasks.await
 import java.io.IOException
 
 class MessagePagingSource(
-    private val query: Query
+    private val query: Query,
 ) : PagingSource<QuerySnapshot, Message>() {
     override suspend fun load(params: LoadParams<QuerySnapshot>): LoadResult<QuerySnapshot, Message> {
         return try {
             val currentPage = params.key ?: query.get().await()
-            val lastVisibleMessage = currentPage.documents[currentPage.size() - 1]
+            val lastVisibleMessage = currentPage
+                .documents[currentPage.size() - 1]
             val nextPage = query.limit(1).startAfter(lastVisibleMessage).get().await()
             LoadResult.Page(
                 data = currentPage.toObjects(Message::class.java),
@@ -29,7 +30,6 @@ class MessagePagingSource(
         } catch (exception: Exception) {
             LoadResult.Error(exception)
         }
-
     }
 
     override fun getRefreshKey(state: PagingState<QuerySnapshot, Message>): QuerySnapshot? {

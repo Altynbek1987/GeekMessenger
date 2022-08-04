@@ -59,6 +59,7 @@
             app:destination="@id/deniedPermissionsDialogFragment" />
         <argument
             android:name="phoneNumber"
+            android:defaultValue=""
             app:argType="string" />
     </fragment>
 
@@ -66,7 +67,9 @@
     <fragment
         android:id="@+id/mainFlowFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.MainFlowFragment"
-        android:label="MainFlowFragment" />
+        android:label="MainFlowFragment">
+
+    </fragment>
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
         android:name="com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile.DeniedPermissionsDialogFragment"

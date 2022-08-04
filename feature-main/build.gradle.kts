@@ -13,14 +13,15 @@ plugins {
 
     // Hilt
     id(libs.plugins.hilt.android.get().pluginId)
+    id(libs.plugins.google.services.get().pluginId)
 }
 
 android {
-    compileSdk = 32
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,11 +36,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         viewBinding = true
@@ -49,29 +50,22 @@ android {
 dependencies {
     api(project(":common"))
     api(project(":core"))
-    // UI Components
-    implementation(libs.bundles.uiComponents)
-
-    // Core
-    implementation(libs.android.core)
-
-    //Retrofit
-    implementation(libs.bundles.retrofit)
-
-    // Coroutines
-    implementation(libs.coroutines.android)
-
-    // Lifecycle
-    implementation(libs.bundles.lifecycle)
-
-    // Navigation
-    implementation(libs.bundles.navigation)
 
     // Hilt
     implementation(libs.hilt.android)
+    implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt(libs.hilt.compiler)
 
     //Paging 3
     implementation(libs.paging.paging)
-    
+
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation("com.github.avito-tech:krop:0.64")
+    implementation("com.squareup.picasso:picasso:2.71828")
+
+    // Room with coroutines
+    api(libs.bundles.room)
+    kapt(libs.room.compiler)
+
 }

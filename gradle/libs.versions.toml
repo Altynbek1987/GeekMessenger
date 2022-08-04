@@ -4,7 +4,7 @@ agp = "7.1.1"
 #Gradle
 gradle = "7.3.3"
 #Kotlin
-kotlin = "1.6.21"
+kotlin = "1.7.0"
 #Android Config
 compileSdk = "32"
 minSdk = "23"
@@ -21,6 +21,9 @@ appCompat = "1.4.1"
 splashScreen = "1.0.0-beta01"
 maskedEditText = "1.0.0"
 emojiPopUp = "0.15.0"
+waveformSeekBar = "5.0.1"
+waveformAmplituda = "2.1.4"
+audioRecorderView = "1.0.4"
 #Core
 core = "1.8.0"
 #Activity
@@ -51,6 +54,7 @@ dotsIndicator = "4.3"
 #Firebase
 firebaseFirestore = "24.1.2"
 firebaseCloudStorage = "20.0.1"
+firebaseUiStorage = "8.0.1"
 googleServices = "4.3.10"
 firebasePlatform = "30.1.0"
 firebaseCrashlytics = "2.8.1"
@@ -87,6 +91,9 @@ ui-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "s
 ui-dotsIndicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsIndicator" }
 ui-emojiMaterial = { module = "com.vanniktech:emoji-material", version.ref = "emojiPopUp" }
 ui-emojiGoogle = { module = "com.vanniktech:emoji-google", version.ref = "emojiPopUp" }
+ui-waveformSeekBar = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformSeekBar" }
+ui-waveformSeekBarAmplituda = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformAmplituda" }
+ui-audioRecorderView = { module = "com.github.tougee:audiorecorderview", version.ref = "audioRecorderView" }
 glide-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 
 #Legacy Support
@@ -133,6 +140,7 @@ paging-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "
 #Firebase
 firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebaseFirestore" }
 firebase-cloudStorage = { module = "com.google.firebase:firebase-storage-ktx", version.ref = "firebaseCloudStorage" }
+firebase-uiStorage = { module = "com.firebaseui:firebase-ui-storage", version.ref = "firebaseUiStorage" }
 firebase-platform = { module = "com.google.firebase:firebase-bom", version.ref = "firebasePlatform" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "firebaseAnalytics" }
@@ -147,7 +155,7 @@ koin-koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
 [bundles]
 #UI Components
-uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-maskedEditText", "ui-dotsIndicator", "ui-emojiMaterial", "ui-emojiGoogle"]
+uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-maskedEditText", "ui-dotsIndicator", "ui-emojiMaterial", "ui-emojiGoogle", "ui-waveformSeekBar", "ui-waveformSeekBarAmplituda"]
 
 #Room
 room = ["room-runtime", "room-kotlinExtensionsAndCoroutinesSupport"]
@@ -174,7 +182,7 @@ lifecycle = ["lifecycle-viewModel", "lifecycle-runtime", "lifecycle-liveData"]
 #Firebase
 firebase = ["firebase-firestore", "firebase-platform", "firebase-coroutines"]
 firebaseNoCrashlytics = ["firebase-firestore", "firebase-cloudStorage", "firebase-coroutines", "firebase-analytics", "firebase-auth", "firebase-cloudMessaging", "firebase-inAppMessaging", "firebase-inAppMessagingDisplay", "firebase-adMob"]
-firebaseNoAdMobAndCrashlytics = ["firebase-firestore", "firebase-cloudStorage", "firebase-coroutines", "firebase-analytics", "firebase-auth", "firebase-cloudMessaging", "firebase-inAppMessaging", "firebase-inAppMessagingDisplay"]
+firebaseNoAdMobAndCrashlytics = ["firebase-firestore", "firebase-cloudStorage", "firebase-coroutines", "firebase-analytics", "firebase-auth", "firebase-cloudMessaging", "firebase-inAppMessaging", "firebase-inAppMessagingDisplay", "firebase-uiStorage"]
 
 
 [plugins]

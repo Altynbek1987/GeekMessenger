@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.fragments.crop.CropPhotoFragment">
+
+    <RadioGroup
+        android:id="@+id/overlay_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/shape_oval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="shape_oval"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <RadioButton
+            android:id="@+id/shape_rect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="shape_rect"
+            android:visibility="gone" />
+
+        <RadioButton
+            android:id="@+id/shape_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="shape_custom"
+            android:visibility="gone" />
+
+    </RadioGroup>
+
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ViewFlipper
+
+            android:id="@+id/crop_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.avito.android.krop.KropView
+                    android:id="@+id/krop_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:krop_aspectX="1"
+                    app:krop_aspectY="1"
+                    app:krop_overlayColor="@color/white"
+                    app:krop_shape="rect" />
+
+            </FrameLayout>
+
+        </ViewFlipper>
+
+        <ImageView
+            android:id="@+id/result_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="result" />
+
+    </ViewFlipper>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

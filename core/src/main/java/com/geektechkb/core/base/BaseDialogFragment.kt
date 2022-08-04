@@ -39,8 +39,6 @@ abstract class BaseDialogFragment<Binding : ViewBinding, ViewModel : BaseViewMod
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         assembleViews()
         initialize()
         setupListeners()

@@ -38,11 +38,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         viewBinding = true
@@ -53,31 +53,9 @@ dependencies {
     api(project(":common"))
     api(project(":core"))
     implementation(project(":feature-main"))
-    // UI Components
-    implementation(libs.bundles.uiComponents)
 
-
-    // Core
-
-    implementation(libs.android.core)
-
-    // Coroutines
-    implementation(libs.coroutines.android)
-
-    // Lifecycle
-    implementation(libs.bundles.lifecycle)
-
-    // Navigation
-    implementation(libs.bundles.navigation)
 
     // Hilt
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
-
-    // Firebase
-    implementation(platform(libs.firebase.platform))
-    implementation(libs.bundles.firebaseNoAdMobAndCrashlytics)
-
-    //Paging 3
-    implementation(libs.paging.paging)
 }

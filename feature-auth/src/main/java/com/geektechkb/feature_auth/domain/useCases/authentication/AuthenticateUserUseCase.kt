@@ -7,10 +7,21 @@ class AuthenticateUserUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ) {
     suspend operator fun invoke(
+        lastSeen: String,
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: String
+        profileImage: String?,
+        imageFileName: String,
+        doOnComplete: () -> Unit
     ) =
-        authRepository.authenticateUser(phoneNumber, name, surname, profileImage)
+        authRepository.authenticateUser(
+            lastSeen,
+            phoneNumber,
+            name,
+            surname,
+            profileImage,
+            imageFileName,
+            doOnComplete
+        )
 }
