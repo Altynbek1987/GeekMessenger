@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM message")
     fun getUsers(): Flow<List<User>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
