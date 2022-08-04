@@ -75,11 +75,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="@string/verification_code_was_sent_to_the_entered_phone"
+        android:text="@string/verification_code_was_sent_to_the_entered_phone_2"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_third_digit" />
+    <TextView
+        android:id="@+id/tv_verification_user_number_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_verification_code_was_sent"
+        app:layout_constraintStart_toStartOf="@id/tv_verification_code_was_sent"
+        app:layout_constraintTop_toBottomOf="@id/tv_verification_code_was_sent" />
 
     <TextView
         android:id="@+id/tv_count_down_timer"

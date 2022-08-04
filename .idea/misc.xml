@@ -107,6 +107,12 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/GekMesenger/feature-main/src/main/res/layout/fragment_group.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/GekMesenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/GekMesenger/feature-main/src/main/res/layout/nav_header_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.35280797101449274" />
+        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_dialog.xml" value="0.35280797101449274" />
+        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_on_board.xml" value="0.35280797101449274" />
+        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.35280797101449274" />
+        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.35280797101449274" />
+        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.35280797101449274" />
       </map>
     </option>
   </component>
