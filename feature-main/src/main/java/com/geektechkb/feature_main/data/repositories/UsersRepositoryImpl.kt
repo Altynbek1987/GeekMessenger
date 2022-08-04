@@ -10,6 +10,7 @@ import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.feature_main.data.local.db.daos.UserDao
 import com.geektechkb.feature_main.data.remote.pagingsources.UsersPagingSource
 import com.geektechkb.feature_main.domain.models.User
+import com.geektechkb.feature_main.domain.models.UserDb
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -59,19 +60,19 @@ class UsersRepositoryImpl @Inject constructor(
 
     }
 
-    override fun getUser(): Flow<List<User>> {
+    override fun getUser(): Flow<List<UserDb>> {
         TODO("Not yet implemented")
     }
 
-    override fun insertAllUser(user: User) {
+    override fun insertAllUser(user: UserDb) {
         TODO("Not yet implemented")
     }
 
-    override fun updateUser(user: User) {
+    override fun updateUser(user: UserDb) {
         TODO("Not yet implemented")
     }
 
-    override fun deleteUser(user: User) {
+    override fun deleteUser(user: UserDb) {
         TODO("Not yet implemented")
     }
 
