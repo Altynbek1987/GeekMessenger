@@ -1,6 +1,6 @@
 package com.geektechkb.feature_auth.domain.repositories
 
-import com.geektechkb.feature_auth.domain.typealiases.*
+import com.geektechkb.core.typealiases.*
 
 interface CodeVerificationRepository {
 

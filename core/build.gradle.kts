@@ -13,15 +13,14 @@ plugins {
 
     // Hilt
     id(libs.plugins.hilt.android.get().pluginId)
-
 }
 
 android {
-    compileSdk = 32
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,11 +35,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         viewBinding = true
@@ -50,31 +49,32 @@ android {
 dependencies {
 
     api(project(":common"))
-    implementation(libs.ui.viewBindingPropertyDelegate)
+    api(libs.bundles.uiComponents)
 
     // Core
-    implementation(libs.android.core)
+    api(libs.android.core)
 
     // Coroutines
-    implementation(libs.coroutines.android)
-    implementation(libs.coroutines.core)
+    api(libs.coroutines.android)
+    api(libs.coroutines.core)
 
     // Lifecycle
-    implementation(libs.bundles.lifecycle)
+    api(libs.bundles.lifecycle)
 
     // Navigation
-    implementation(libs.bundles.navigation)
+    api(libs.bundles.navigation)
 
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
     // Paging 3
-    implementation(libs.paging.paging)
+    api(libs.paging.paging)
 
     //FireBase
-    api(libs.bundles.firebase)
+    api(libs.bundles.firebaseNoAdMobAndCrashlytics)
+    api(platform(libs.firebase.platform))
 
     //Glide
-    implementation(libs.glide.glide)
+    api(libs.glide.glide)
 }

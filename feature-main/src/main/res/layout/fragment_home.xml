@@ -36,6 +36,7 @@
             android:layout_marginStart="8dp"
             android:src="@drawable/burger" />
 
+
         <ImageButton
             android:id="@+id/toolbar_search"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -46,11 +47,15 @@
             android:src="@drawable/search" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/all_message"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbar"
-            tools:listitem="@layout/item_home" />
+            android:id="@+id/recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_search"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_user" />
 
     </RelativeLayout>
 

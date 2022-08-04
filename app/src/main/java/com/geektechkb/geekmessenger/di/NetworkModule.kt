@@ -1,10 +1,11 @@
 package com.geektechkb.geekmessenger.di
 
-import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_USERS_COLLECTION_PATH
+import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,12 +27,11 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideUsersCollectionReference(firebaseFirestore: FirebaseFirestore) =
-        firebaseFirestore.collection(FIREBASE_FIRESTORE_USERS_COLLECTION_PATH)
-//    @Singleton
-//    @Provides
-//    fun provideMessagesCollectionReference(firebaseFirestore: FirebaseFirestore) =
-//        firebaseFirestore.collection(
-//            FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH
-//        )
+        firebaseFirestore.collection(FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH)
+
+    @Singleton
+    @Provides
+    fun provideFirebaseCloudStorage() = FirebaseStorage.getInstance()
+
 
 }

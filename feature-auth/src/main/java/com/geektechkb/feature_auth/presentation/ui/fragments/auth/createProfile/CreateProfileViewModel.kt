@@ -9,14 +9,25 @@ import javax.inject.Inject
 @HiltViewModel
 class CreateProfileViewModel @Inject constructor(
     private val authenticateUserUseCase: AuthenticateUserUseCase,
-    private val isUserAuthenticatedUseCase: IsUserAuthenticatedUseCase
+    private val isUserAuthenticatedUseCase: IsUserAuthenticatedUseCase,
 ) : BaseViewModel() {
     suspend fun authenticateUser(
+        lastSeen: String,
         phoneNumber: String,
         name: String,
         surname: String,
-        profileImage: String = " "
-    ) =
-        authenticateUserUseCase(phoneNumber, name, surname, profileImage)
+        profileImage: String?,
+        imageFileName: String,
+        doOnComplete: () -> Unit
+    ) = authenticateUserUseCase(
+        lastSeen,
+        phoneNumber,
+        name,
+        surname,
+        profileImage ?: " ",
+        imageFileName,
+        doOnComplete
+    )
+
     fun isUserAuthenticated() = isUserAuthenticatedUseCase()
 }

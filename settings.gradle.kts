@@ -16,9 +16,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "GeekMessenger"
-include(":app")
+include(":app", ":common", ":core", ":feature-auth", ":feature-main")
 enableFeaturePreview("VERSION_CATALOGS")
-include(":feature-auth")
-include(":core")
-include(":feature-main")
-include(":common")

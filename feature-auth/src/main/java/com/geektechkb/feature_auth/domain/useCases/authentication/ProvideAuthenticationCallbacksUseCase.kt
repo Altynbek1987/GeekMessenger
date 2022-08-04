@@ -10,9 +10,12 @@ class ProvideAuthenticationCallbacksUseCase @Inject constructor(
         authenticationSucceeded: ((() -> Unit))? = null,
         authInvalidCredentialsError: ((() -> Unit))? = null,
         tooManyRequestsError: ((() -> Unit))? = null,
-    ) = authRepository.provideAuthenticationCallbacks(authenticationSucceeded = {
-        authenticationSucceeded?.invoke()
-    }, authInvalidCredentialsError = { authInvalidCredentialsError }, tooManyRequestsError = {
-        tooManyRequestsError?.invoke()
-    })
+    ) = authRepository.provideAuthenticationCallbacks(
+        authenticationSucceeded = {
+            authenticationSucceeded?.invoke()
+        },
+        authInvalidCredentialsError = { authInvalidCredentialsError?.invoke() },
+        tooManyRequestsError = {
+            tooManyRequestsError?.invoke()
+        })
 }
