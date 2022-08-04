@@ -10,11 +10,10 @@
     <androidx.constraintlayout.utils.widget.ImageFilterButton
         android:id="@+id/im_image_profile"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/rectangle"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/view"
+        app:layout_constraintBottom_toTopOf="@id/gl_image_profile"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,20 +46,20 @@
         app:menu="@menu/toolbar_menu" />
 
     <TextView
+        android:id="@+id/tv_last_seen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="В сети"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/gl_tv_which_user" />
 
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="lazy genius"
         android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -71,9 +70,16 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_tv_which_user"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="320dp" />
+        app:layout_constraintGuide_percent="0.4271245" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_image_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -117,7 +123,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
         android:layout_marginTop="5dp"
-        android:text="@string/number"
         android:textAppearance="@style/text_number"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_account" />

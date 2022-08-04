@@ -1,7 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
-import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -34,7 +33,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override val binding by viewBinding(FragmentChatBinding::bind)
     private val messagesAdapter = MessagesAdapter()
-    override val viewModel: ChatViewModel by viewModels()
+    override val galleryViewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
     private var username: String? = null
     private var savedUserStatus: String? = null
@@ -154,7 +153,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun sendMessage() = with(binding) {
         imSendMessage.setOnSingleClickListener {
-            viewModel.sendMessage(
+            galleryViewModel.sendMessage(
                 usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
@@ -219,7 +218,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun fetchUser() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            args.phoneNumber?.let { viewModel.fetchUser(it) }
+            args.phoneNumber?.let { galleryViewModel.fetchUser(it) }
         }
     }
 
@@ -230,7 +229,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
+        galleryViewModel.userState.spectateUiState(success = {
             savedUserStatus = it.lastSeen
             changeUserStatusToTyping(it.phoneNumber)
             binding.imProfile.loadImageWithGlide(it.profileImage)
@@ -243,7 +242,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.fetchPagedMessages().collectLatest {
+                galleryViewModel.fetchPagedMessages().collectLatest {
                     messagesAdapter.setPhoneNumber(usersPreferencesHelper.currentUserPhoneNumber)
                     messagesAdapter.submitList(it)
                     checkAdapterItemCountAndHideLayout()
@@ -267,7 +266,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
-        viewModel.sendVoiceMessage(
+        galleryViewModel.sendVoiceMessage(
             appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
             generateRandomId()
         )

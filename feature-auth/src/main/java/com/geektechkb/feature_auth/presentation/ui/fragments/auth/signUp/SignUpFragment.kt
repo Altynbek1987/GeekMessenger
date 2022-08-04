@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SignUpFragment :
     BaseFragment<FragmentSignUpBinding, SignUpViewModel>(R.layout.fragment_sign_up) {
     override val binding by viewBinding(FragmentSignUpBinding::bind)
-    override val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
+    override val galleryViewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
     private var phoneNumberLength: Int? = null
     private lateinit var maskChangedListener: MaskChangedListener
 
