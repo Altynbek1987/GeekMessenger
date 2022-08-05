@@ -19,7 +19,7 @@ constraint = "2.1.4"
 viewBindingPropertyDelegate = "1.5.6"
 appCompat = "1.4.1"
 splashScreen = "1.0.0-beta01"
-maskedEditText = "1.0.0"
+maskedEditText = "4.0.7"
 emojiPopUp = "0.15.0"
 waveformSeekBar = "5.0.1"
 waveformAmplituda = "2.1.4"
@@ -90,7 +90,7 @@ ui-material = { module = "com.google.android.material:material", version.ref = "
 ui-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 ui-constraint = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraint" }
 ui-viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version.ref = "viewBindingPropertyDelegate" }
-ui-maskedEditText = { module = "com.github.santalu:maskara", version.ref = "maskedEditText" }
+ui-maskedEditText = { module = "io.github.vicmikhailau:MaskedEditText", version.ref = "maskedEditText" }
 ui-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
 ui-dotsIndicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsIndicator" }
 ui-emojiMaterial = { module = "com.vanniktech:emoji-material", version.ref = "emojiPopUp" }
