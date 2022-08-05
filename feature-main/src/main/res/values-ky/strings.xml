@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NavDraw</string>
+
+    <string name="nav_header_desc">Багыттоо аталышы</string>
+    <string name="menu_group">Топ түзүү</string>
+    <string name="menu_calls">Чалуулар</string>
+    <string name="menu_settings">Орнотуулар</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="back_russian">Артка</string>
+    <string name="mute_russian">Үндү өчүрүу</string>
+    <string name="clear_chat_russian">Маекти тазалоо</string>
+    <string name="video_call_russian">Видео чалуу</string>
+    <string name="make_call">Чалууларды жасоо</string>
+    <string name="last_seen_recently_russian">жакында болгон</string>
+    <string name="image_for_user_s_profile_image">колдонуучунун профилинин сүрөтү үчүн сүрөт</string>
+    <string name="amir_ex_loved_one">Saida</string>
+    <string name="there_is_nothing_yet_russian">Бул жерде азырынча эч нерсе жок...</string>
+    <string name="send_message_or_record_voice_message_russian">Билдирүү жөнөтүңүз же \n үн жазыңыз \n билдирүү.</string>
+    <string name="message_russian">Билдирүү</string>
+    <string name="button_for_emoji">Быйтыкчалар үчүн баскычи</string>
+    <string name="image_view_to_launch_camera">камераны ишке киргизүү үчүн сүрөттү көрүү</string>
+    <string name="image_view_for_recording_voice_messages">үн билдирүүлөрдү жаздыруу үчүн сүрөттү көрүү</string>
+    <string name="button_to_send_message">билдирүү жөнөтүү үчүн баскычты басыңыз</string>
+    <string name="typing">терүү...</string>
+    <string name="Gallery">Галерея</string>
+    <string name="account">Аккаунт</string>
+    <string name="number">0702345805</string>
+    <string name="chance_number">Телефон номерин өзгөртүү үчүн басыңыз</string>
+    <string name="settings">Орнотуулар</string>
+    <string name="tv_notifications">Кабарлоо жана үн</string>
+    <string name="tv_crossed">Телефон номерин жашыруу</string>
+    <string name="tv_language">Язык</string>
+    <string name="gallery">Галерея</string>
+</resources>
+

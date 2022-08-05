@@ -40,4 +40,6 @@
     <string name="select_a_photo">Выбрать фото</string>
     <string name="you_phone">Ваш телефон</string>
     <string name="todo">TODO</string>
+    <string name="verification_code_was_sent_to_the_entered_phone_2">Код был отправлен на номер</string>
+    <string name="profile">Профиль</string>
 </resources>

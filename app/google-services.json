@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "974311209739-hbjf68oqq5h2cd7qug7omdq3tge8pr0r.apps.googleusercontent.com",
+          "client_id": "974311209739-8gies98rsl5co97bjnnn922k7i4tbf0m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.geektechkb.geekmessenger",
-            "certificate_hash": "4798d3118ec6952bcd5429ae2c9779ec8e010613"
+            "certificate_hash": "75141cb8c73e67701988b9c337256f65a6f7af5d"
           }
         },
         {

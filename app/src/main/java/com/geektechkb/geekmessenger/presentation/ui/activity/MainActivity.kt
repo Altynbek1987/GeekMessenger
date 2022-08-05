@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
+import com.geektechkb.feature_main.data.local.preferences.LocaleHelper
 import com.geektechkb.geekmessenger.R
 import com.geektechkb.geekmessenger.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,9 +26,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     @Inject
     lateinit var onBoardPreferencesHelper: OnBoardPreferencesHelper
 
+    @Inject
+    lateinit var localeHelper: LocaleHelper
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_GeekMessenger)
         super.onCreate(savedInstanceState)
+        localeHelper.loadLocale(this)
         setUpNavigation()
     }
 

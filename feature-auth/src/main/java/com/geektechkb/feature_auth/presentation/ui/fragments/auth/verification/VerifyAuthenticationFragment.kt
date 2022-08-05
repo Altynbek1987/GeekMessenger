@@ -36,13 +36,19 @@ class VerifyAuthenticationFragment :
     }
 
     private fun setPhoneNumberCodeWasSentTo() {
+//        val phoneNumberVerificationCodeWasSentTo =
+//            String.format(
+//                getString(R.string.verification_code_was_sent_to_the_entered_phone),
+//                args.phoneNumber
+//            )
+//        binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
         val phoneNumberVerificationCodeWasSentTo =
             String.format(
-                getString(R.string.verification_code_was_sent_to_the_entered_phone),
                 args.phoneNumber
             )
-        binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
+        binding.tvVerificationUserNumberPhone.text = phoneNumberVerificationCodeWasSentTo
     }
+
 
     private fun updateCountDownTimer() {
         val minute = (timeInSeconds / 1000) / 60
@@ -75,6 +81,7 @@ class VerifyAuthenticationFragment :
                     binding.tvCountDownTimer.isVisible = false
                 if (view != null)
                     binding.tvVerificationCodeWasSent.isVisible = true
+                binding.tvVerificationUserNumberPhone.isVisible = true
             }
         }
         countDownTimer.start()
@@ -96,11 +103,11 @@ class VerifyAuthenticationFragment :
         binding.tvVerificationCodeWasSent.setOnClickListener {
             binding.tvCountDownTimer.isVisible = true
             binding.tvVerificationCodeWasSent.isVisible = false
+            binding.tvVerificationUserNumberPhone.isVisible = false
             setupCountDownTimer()
             resendVerificationCode(args.phoneNumber)
         }
     }
-
     private fun verifyPhoneNumberUsingCode() {
         binding.apply {
             btnContinue.setOnClickListener {
@@ -173,17 +180,13 @@ class VerifyAuthenticationFragment :
                 etThirdDigit,
                 etFourthDigit,
                 etFifthDigit,
-                etSixthDigit
+                etSixthDigit,
             )
-
-
         }
-
     }
 
     private fun setupClickingOnTwo() {
         binding.apply {
-
             tvTwo.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -193,15 +196,12 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
-
         }
 
     }
 
     private fun setupClickingOnThree() {
         binding.apply {
-
             tvThree.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -211,7 +211,6 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
@@ -227,13 +226,11 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
     private fun setupClickingOnFive() {
         binding.apply {
-
             tvFive.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -258,13 +255,9 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
-    }
-
-    private fun setupClickingOnSeven() {
+    }private fun setupClickingOnSeven() {
         binding.apply {
-
             tvSeven.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -280,7 +273,6 @@ class VerifyAuthenticationFragment :
 
     private fun setupClickingOnEight() {
         binding.apply {
-
             tvEight.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -398,7 +390,6 @@ class VerifyAuthenticationFragment :
         }
 
     }
-
     private fun resendVerificationCode(
         phoneNumber: String,
     ) {
@@ -506,7 +497,4 @@ class VerifyAuthenticationFragment :
         digits[2].keyListener = null
         digits[3].keyListener = null
         digits[4].keyListener = null
-    }
-
-
-}
+    }}
