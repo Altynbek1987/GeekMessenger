@@ -2,9 +2,9 @@ package com.geektechkb.geekmessenger.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
-import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
