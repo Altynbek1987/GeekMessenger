@@ -34,6 +34,5 @@
     <string name="gallery">Галерея</string>
     <string name="button_to_send_message">button to send message</string>
     <string name="typing">печатает...</string>
-
-
+    <string name="speaker">Динамик</string>
 </resources>

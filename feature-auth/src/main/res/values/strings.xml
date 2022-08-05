@@ -19,7 +19,7 @@
     <string name="choose_your_name_and_load_an_photo">Введите свое имя и загрузите фотографию</string>
     <string name="surname_unnecessary">Фамилия (необязательно)</string>
     <string name="name_necessary">Имя(обязательно)</string>
-    <string name="verification_code_was_sent_to_the_entered_phone">Код был отправлен на номер +996</string>
+    <string name="verification_code_was_sent_to_the_entered_phone">Код был отправлен на номер + </string>
     <string name="proceed_russian">Продолжить</string>
     <string name="continue_russian">Далее</string>
     <string name="button_to_delete_digits_from_edittexts">button to delete digits from edittexts</string>
@@ -40,4 +40,5 @@
     <string name="select_a_photo">Выбрать фото</string>
     <string name="you_phone">Ваш телефон</string>
     <string name="todo">TODO</string>
+    <string name="phone_number_must_consist_of_9_digits">Номер телефона содержит 9 цифр</string>
 </resources>
