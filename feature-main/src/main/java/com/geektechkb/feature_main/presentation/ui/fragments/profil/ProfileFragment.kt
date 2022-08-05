@@ -16,7 +16,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.core.extensions.stateBottomSheet
 import com.geektechkb.core.extensions.toast
 import com.geektechkb.feature_main.R
