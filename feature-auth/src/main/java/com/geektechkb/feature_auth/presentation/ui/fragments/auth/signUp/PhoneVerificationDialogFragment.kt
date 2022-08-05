@@ -19,7 +19,11 @@ class PhoneVerificationDialogFragment :
     override val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
     private val args: PhoneVerificationDialogFragmentArgs by navArgs()
     override fun assembleViews() {
-        binding.tvEnteredNumber.text = args.inputPhoneNumber
+        binding.tvEnteredNumber.text =
+            "${args.inputPhoneNumber.substring(0, 4)} ${
+                args.inputPhoneNumber.substringAfter("+996")
+                    .chunked(3).joinToString(" ")
+            }"
     }
 
 
@@ -44,7 +48,7 @@ class PhoneVerificationDialogFragment :
                 viewModel.provideCallbacks(
                     authenticationSucceeded =
                     {
-                        showShortDurationSnackbar("You have successfully authenticated")
+                        showShortDurationSnackbar("Вы успешно аутентифицировались")
                     },
                     authInvalidCredentialsError = {
                         showShortDurationSnackbar("The phone number you entered was wrong")
@@ -55,10 +59,11 @@ class PhoneVerificationDialogFragment :
                         )
                     })
             )
-
             findNavController().directionsSafeNavigation(
                 PhoneVerificationDialogFragmentDirections.actionPhoneVerificationDialogFragmentToVerifyAuthenticationFragment(
                     args.inputPhoneNumber
+
+
                 )
             )
         }
