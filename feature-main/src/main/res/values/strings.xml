@@ -1,10 +1,9 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="app_name">NavDraw</string>
 
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_desc">Заголовок навигации</string>
     <string name="menu_group">Создать группу</string>
     <string name="menu_calls">Звонки</string>
     <string name="menu_settings">Настройки</string>
@@ -13,17 +12,17 @@
     <string name="mute_russian">Выключить звук</string>
     <string name="clear_chat_russian">Очистить чат</string>
     <string name="video_call_russian">Видеозвонок</string>
-    <string name="make_call">Make call</string>
+    <string name="make_call">Совершать звонки</string>
     <string name="last_seen_recently_russian">был(а) недавно</string>
-    <string name="image_for_user_s_profile_image">image for user\'s profile image</string>
+    <string name="image_for_user_s_profile_image">изображение для изображения профиля пользователя</string>
     <string name="amir_ex_loved_one">Saida</string>
     <string name="there_is_nothing_yet_russian">Здесь пока ничего нет...</string>
     <string name="send_message_or_record_voice_message_russian">Отправьте сообщение или \n запишите голосовое \n сообщение.</string>
     <string name="message_russian">Сообщение</string>
-    <string name="button_for_emoji">button for emoji</string>
-    <string name="image_view_to_launch_camera">image view to launch camera</string>
-    <string name="image_view_for_recording_voice_messages">image view for recording voice messages</string>
-    <string name="button_to_send_message">button to send message</string>
+    <string name="button_for_emoji">кнопка для эмодзи</string>
+    <string name="image_view_to_launch_camera">просмотр изображения для запуска камеры</string>
+    <string name="image_view_for_recording_voice_messages">просмотр изображения для записи голосовых сообщений</string>
+    <string name="button_to_send_message">кнопка для отправки сообщения</string>
     <string name="typing">печатает...</string>
     <string name="Gallery">Галерея</string>
     <string name="account">Аккаунт</string>
@@ -34,6 +33,4 @@
     <string name="tv_crossed">Скрыть номер телефона</string>
     <string name="tv_language">Язык</string>
     <string name="gallery">Галерея</string>
-
-
 </resources>

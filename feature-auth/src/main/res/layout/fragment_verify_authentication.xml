@@ -17,9 +17,10 @@
 
         <ImageButton
             android:id="@+id/ib_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_margin="10dp"
+            android:layout_marginTop="6dp"
             android:background="@color/blue"
             android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment"
             android:src="@drawable/baseline_arrow_back"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/you_phone"
+            android:layout_marginTop="6dp"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -41,27 +43,27 @@
 
     <ImageButton
         android:id="@+id/check_byn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="8dp"
-        android:src="@drawable/ic_baseline_check_24"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="6dp"
         android:background="@color/blue"
+        android:src="@drawable/ic_baseline_check_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="10dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/image_verify_auth"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/gl_resend_verification_code"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_end_pictures_figures"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintEnd_toEndOf="@id/gl_sixth_digit_end"
+        app:layout_constraintStart_toStartOf="@id/gl_verification_code_was_sent_start"
+        app:layout_constraintTop_toBottomOf="@id/gl_end_pictures_figures" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_end_pictures_figures"
@@ -75,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="@string/verification_code_was_sent_to_the_entered_phone_2"
+        android:text="@string/verification_code_was_sent_to_the_entered_phone"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,14 +96,13 @@
         android:id="@+id/tv_count_down_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="@string/send_verification_code_again"
         android:textSize="14sp"
         android:visibility="gone"
-        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_verification_code_was_sent" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_digit"
         android:layout_width="45dp"
@@ -272,18 +273,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.40" />
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:background="@drawable/oval_button"
         android:drawableBottom="@drawable/ic_baseline_arrow_forward_24"
-        android:gravity="center"
         app:cornerRadius="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_button_ends"
-        app:layout_constraintEnd_toStartOf="@id/gl_sixth_digit_end"
-        app:layout_constraintTop_toBottomOf="@+id/gl_resend_verification_code_top" />
+        app:layout_constraintBottom_toBottomOf="@+id/gl_button_ends"
+        app:layout_constraintEnd_toEndOf="@+id/gl_sixth_digit_end"
+        app:layout_constraintTop_toTopOf="@+id/gl_resend_verification_code_top" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_resend_verification_code_top"
         android:layout_width="wrap_content"
@@ -295,6 +294,7 @@
         android:id="@+id/gridLayout_first_three_digits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout_second_three_digits"
         app:layout_constraintEnd_toEndOf="@+id/gl_sixth_digit_end"
         app:layout_constraintStart_toStartOf="@id/gl_verification_code_was_sent_start"
@@ -302,7 +302,7 @@
 
         <TextView
             android:id="@+id/tv_one"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/one"
@@ -311,7 +311,7 @@
 
         <TextView
             android:id="@+id/tv_two"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/two"
@@ -320,7 +320,7 @@
 
         <TextView
             android:id="@+id/tv_three"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/three"
@@ -340,6 +340,7 @@
         android:id="@+id/gridLayout_second_three_digits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/grid_layout_third_three_digits"
         app:layout_constraintEnd_toEndOf="@+id/gl_sixth_digit_end"
         app:layout_constraintStart_toStartOf="@id/gl_verification_code_was_sent_start"
@@ -347,7 +348,7 @@
 
         <TextView
             android:id="@+id/tv_four"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/four"
@@ -356,7 +357,7 @@
 
         <TextView
             android:id="@+id/tv_five"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/five"
@@ -365,7 +366,7 @@
 
         <TextView
             android:id="@+id/tv_six"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/six"
@@ -373,11 +374,11 @@
             android:textSize="29sp" />
 
     </GridLayout>
-
     <GridLayout
         android:id="@+id/grid_layout_third_three_digits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@id/tv_zero"
         app:layout_constraintEnd_toEndOf="@+id/gl_sixth_digit_end"
         app:layout_constraintStart_toStartOf="@id/gl_verification_code_was_sent_start"
@@ -385,7 +386,7 @@
 
         <TextView
             android:id="@+id/tv_seven"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/seven"
@@ -394,7 +395,7 @@
 
         <TextView
             android:id="@+id/tv_eight"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/eight"
@@ -403,7 +404,7 @@
 
         <TextView
             android:id="@+id/tv_nine"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/nine"
@@ -414,8 +415,9 @@
 
     <TextView
         android:id="@+id/tv_zero"
-        android:layout_width="90dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:gravity="center"
         android:text="@string/zero"
         android:textAlignment="center"
@@ -427,11 +429,11 @@
 
     <ImageButton
         android:id="@+id/ib_backspace"
-        android:layout_width="90dp"
+        android:layout_width="100dp"
         android:layout_height="39dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/button_to_delete_digits_from_edittexts"
         android:src="@drawable/ic_backspace"
-        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_zero"
         app:layout_constraintTop_toBottomOf="@id/grid_layout_third_three_digits" />
