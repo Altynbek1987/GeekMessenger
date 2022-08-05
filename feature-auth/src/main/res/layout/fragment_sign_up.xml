@@ -67,7 +67,7 @@
     <View
         android:layout_width="50dp"
         android:layout_height="2dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
         android:background="#D9D9D9"
         app:layout_constraintEnd_toStartOf="@id/tl_phone"
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.96" />
+        app:layout_constraintGuide_percent="0.70" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -124,7 +124,7 @@
         app:errorTextColor="@color/regal_blue"
         app:expandedHintEnabled="false"
         app:layout_constraintBottom_toBottomOf="@id/gl_til_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/gl_til_end"
         app:layout_constraintStart_toStartOf="@id/gl_til_start"
         app:layout_constraintTop_toTopOf="@id/gl_text_input_layout"
         app:placeholderText="Номер телефона"
