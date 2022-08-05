@@ -84,6 +84,9 @@
         <action
             android:id="@+id/action_chatFragment_to_clearChatHistoryFragment"
             app:destination="@id/clearChatHistoryFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_voiceCallFragment"
+            app:destination="@id/voiceCallFragment" />
     </fragment>
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
@@ -112,5 +115,22 @@
             android:id="@+id/action_connectionCheckFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/voiceCallFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice.VoiceCallFragment"
+        android:label="fragment_voice_call"
+        tools:layout="@layout/fragment_voice_call">
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_voiceCallFragment_to_incomingCallFragment"
+            app:destination="@id/incomingCallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/incomingCallFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming.IncomingCallFragment"
+        android:label="fragment_incoming_call"
+        tools:layout="@layout/fragment_incoming_call" />
 
 </navigation>
