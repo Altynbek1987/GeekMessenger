@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btn_overflow_menu"
+        android:icon="@drawable/ic_overflow_menu"
+        android:title="@string/make_call"
+        app:showAsAction="ifRoom">
+        <menu>
+
+            <item
+                android:id="@+id/btn_share"
+                android:icon="@drawable/ic_share"
+                android:orderInCategory="1"
+                android:title="Поделиться"
+                app:showAsAction="collapseActionView"
+
+                />
+            <item
+                android:id="@+id/btn_clear_chat"
+                android:icon="@drawable/ic_clear_chat"
+                android:orderInCategory="2"
+                android:title="Удалить"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/btn_save_image"
+                android:icon="@drawable/ic_add_image"
+                android:orderInCategory="3"
+                android:title="Сохранить фото"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+</menu>
