@@ -28,6 +28,9 @@
         <entry key="core/src/main/res/layout/view_audio_record.xml" value="0.2947916666666667" />
         <entry key="core/src/main/res/layout/view_slide_panel.xml" value="0.14336372847011145" />
         <entry key="feature-auth/src/main/res/drawable/box_stroke_color_selector.xml" value="0.1" />
+        <entry key="feature-auth/src/main/res/drawable/current_focused_edit_text_oval_background.xml" value="0.1555" />
+        <entry key="feature-auth/src/main/res/drawable/edit_text_background_selector.xml" value="0.1555" />
+        <entry key="feature-auth/src/main/res/drawable/edit_text_phone_oval.xml" value="0.1555" />
         <entry key="feature-auth/src/main/res/drawable/ic_back.xml" value="0.139" />
         <entry key="feature-auth/src/main/res/drawable/ic_backspace.xml" value="0.139" />
         <entry key="feature-auth/src/main/res/drawable/ic_cancel.xml" value="0.139" />
@@ -46,7 +49,7 @@
         <entry key="feature-auth/src/main/res/layout/fragment_profile.xml" value="0.2947916666666667" />
         <entry key="feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.3134614165672295" />
         <entry key="feature-auth/src/main/res/layout/fragment_verification_dialog.xml" value="0.19932432432432431" />
-        <entry key="feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.23609364827473978" />
+        <entry key="feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.1" />
         <entry key="feature-auth/src/main/res/layout/item_board.xml" value="0.6212898364965467" />
         <entry key="feature-main/src/main/res/drawable/chat_box_stroke_color_selector.xml" value="0.141" />
         <entry key="feature-main/src/main/res/drawable/edit_text_cornered_background.xml" value="0.1445" />
@@ -58,13 +61,18 @@
         <entry key="feature-main/src/main/res/drawable/ic_microphone.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_play_button.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_received_message_play_button.xml" value="0.15" />
+        <entry key="feature-main/src/main/res/drawable/ic_speaker.xml" value="0.1555" />
+        <entry key="feature-main/src/main/res/drawable/ic_start_video.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/last_message_received_cornered_background.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/last_message_sent_cornered_background.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/message_corners_background.xml" value="0.141" />
         <entry key="feature-main/src/main/res/drawable/middle_message_received_cornered_background.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/middle_message_sent_cornered_background.xml" value="0.15" />
+        <entry key="feature-main/src/main/res/drawable/mute_selector.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/received_message_cornered_background.xml" value="0.141" />
         <entry key="feature-main/src/main/res/drawable/sent_message_cornered_background.xml" value="0.1445" />
+        <entry key="feature-main/src/main/res/drawable/speaker_selector.xml" value="0.1555" />
+        <entry key="feature-main/src/main/res/drawable/start_video_selector.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/voice_message_sent_background.xml" value="0.15" />
         <entry key="feature-main/src/main/res/layout/app_bar_main.xml" value="0.3098958333333333" />
         <entry key="feature-main/src/main/res/layout/content_main.xml" value="0.23802083333333332" />
@@ -74,7 +82,9 @@
         <entry key="feature-main/src/main/res/layout/fragment_gallery_bottom_sheet.xml" value="0.2947916666666667" />
         <entry key="feature-main/src/main/res/layout/fragment_group.xml" value="0.12001811594202899" />
         <entry key="feature-main/src/main/res/layout/fragment_home.xml" value="0.2470189412434896" />
+        <entry key="feature-main/src/main/res/layout/fragment_incoming_call.xml" value="0.6684674339572878" />
         <entry key="feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.23802083333333332" />
+        <entry key="feature-main/src/main/res/layout/fragment_voice_call.xml" value="0.21292928059895833" />
         <entry key="feature-main/src/main/res/layout/item_home.xml" value="0.23802083333333332" />
         <entry key="feature-main/src/main/res/layout/item_message.xml" value="0.3098958333333333" />
         <entry key="feature-main/src/main/res/layout/item_received_message.xml" value="0.6783412985605737" />
@@ -88,6 +98,7 @@
         <entry key="feature-main/src/main/res/layout/there_are_no_messages_yet.xml" value="0.27898550724637683" />
         <entry key="feature-main/src/main/res/menu/chat_toolbar_menu.xml" value="0.30885416666666665" />
         <entry key="feature-main/src/main/res/menu/main_drawer.xml" value="0.3098958333333333" />
+        <entry key="feature-main/src/main/res/menu/toolbar_menu.xml" value="0.3098958333333333" />
       </map>
     </option>
   </component>
@@ -103,6 +114,5 @@
         <option name="scale" value="0.1" />
       </ProjectState>
     </option>
-    <option name="id" value="Android" />
   </component>
 </project>
