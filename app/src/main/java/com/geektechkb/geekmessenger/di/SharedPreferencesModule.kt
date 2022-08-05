@@ -1,7 +1,7 @@
 package com.geektechkb.geekmessenger.di
 
 import android.content.SharedPreferences
-import com.geektechkb.core.data.local.preferences.PreferencesHelper
+import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

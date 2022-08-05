@@ -1,6 +1,6 @@
-package com.geektechkb.core.data.local.preferences
+package com.geektechkb.feature_main.data.local.preferences
 
-import Localization
+import com.geektechkb.feature_main.data.local.Localization
 import android.content.SharedPreferences
 import javax.inject.Inject
 import javax.inject.Singleton

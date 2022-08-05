@@ -1,3 +1,5 @@
+package com.geektechkb.feature_main.data.local
+
 enum class Localization(
     val option1: String,
     val option2: String,
