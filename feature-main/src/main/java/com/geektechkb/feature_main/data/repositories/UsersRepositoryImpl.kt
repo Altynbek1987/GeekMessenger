@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.data.repositories
 
+import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
@@ -14,6 +15,7 @@ import com.geektechkb.feature_main.domain.models.UserDb
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -21,6 +23,7 @@ class UsersRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
     private val firebaseAuth: FirebaseAuth,
     firestore: FirebaseFirestore,
+    cloudStorage: FirebaseStorage,
 ) : BaseRepository(), UsersRepository {
     private val usersRef =
         firestore.collection(FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH)
@@ -29,6 +32,7 @@ class UsersRepositoryImpl @Inject constructor(
             FIREBASE_USER_PHONE_NUMBER_KEY,
             firebaseAuth.currentUser?.phoneNumber
         ).orderBy(FIREBASE_USER_PHONE_NUMBER_KEY)
+    private val cloudStorageRef = cloudStorage.reference
 
 
     override fun fetchPagedUsers() =
@@ -59,6 +63,23 @@ class UsersRepositoryImpl @Inject constructor(
         }
 
     }
+
+    override suspend fun updateUserProfileImage(imageFileName: String, byte: ByteArray): String? {
+        val compressedImage = uploadCompressedImageToCloudStorage(
+            cloudStorageRef, byte,
+            FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH, imageFileName
+        )
+        compressedImage?.let { image ->
+            firebaseAuth.currentUser?.let {
+                updateASingleFieldInDocument(
+                    usersRef, it.phoneNumber.toString(),
+                    FIREBASE_USER_PROFILE_IMAGE_KEY, image
+                )
+            }
+        }
+        return compressedImage
+    }
+
 
     override fun getUser(): Flow<List<UserDb>> {
         TODO("Not yet implemented")

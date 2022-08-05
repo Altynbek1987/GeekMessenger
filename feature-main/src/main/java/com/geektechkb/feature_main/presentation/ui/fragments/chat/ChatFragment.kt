@@ -1,7 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
-import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -14,11 +13,11 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
 import com.geektechkb.core.ui.customViews.AudioRecordView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
-import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.vanniktech.emoji.EmojiPopup
@@ -37,6 +36,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
     private var username: String? = null
+    private var chatterPhoneNumber: String? = null
     private var savedUserStatus: String? = null
     private val appVoiceRecorder = AppVoiceRecorder()
     private val recordAudioPermissionLauncher =

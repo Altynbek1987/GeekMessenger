@@ -25,14 +25,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Номер указан верно?"
+                android:textAlignment="center"
                 android:textColor="#323232"
                 android:textSize="16sp"
-                android:textAlignment="center"
-                app:layout_constraintTop_toBottomOf="@+id/gl_is_number_correct_top"
-                app:layout_constraintStart_toEndOf="@+id/gl_is_number_correct_start"
                 app:layout_constraintEnd_toStartOf="@+id/gl_is_number_correct_end"
-                />
-
+                app:layout_constraintStart_toEndOf="@+id/gl_is_number_correct_start"
+                app:layout_constraintTop_toBottomOf="@+id/gl_is_number_correct_top" />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -66,10 +64,9 @@
                 android:text="+996552109876"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@+id/gl_entered_phone_number_top"
+                app:layout_constraintEnd_toStartOf="@+id/gl_is_number_correct_end"
                 app:layout_constraintStart_toEndOf="@+id/gl_is_number_correct_start"
-                app:layout_constraintEnd_toStartOf="@+id/gl_is_number_correct_end"/>
-
+                app:layout_constraintTop_toBottomOf="@+id/gl_entered_phone_number_top" />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -84,15 +81,14 @@
                 android:id="@+id/tv_edit_phone_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
                 android:layout_marginBottom="14dp"
                 android:text="Изменить"
                 android:textColor="#5393D0"
                 android:textSize="14sp"
-                android:layout_marginStart="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/gl_is_number_correct_start"
                 app:layout_constraintTop_toTopOf="@id/gl_edit_phone_number_top" />
-
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -114,9 +110,9 @@
                 android:id="@+id/tv_continue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
                 android:layout_marginBottom="14dp"
                 android:text="Да"
-                android:layout_marginEnd="6dp"
                 android:textColor="#5393D0"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -18,14 +18,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/Theme.NavDraw.PopupOverlay"
             app:titleMarginStart="60dp"
-            app:titleTextColor="@color/black" />
+            app:titleTextColor="@color/black">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="120dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="23dp"
-            android:background="@drawable/gekmes" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="GeekMessenger"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
 
         <ImageButton
             android:id="@+id/toolbar_button"
@@ -36,6 +39,7 @@
             android:layout_marginStart="8dp"
             android:src="@drawable/burger" />
 
+
         <ImageButton
             android:id="@+id/toolbar_search"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -45,11 +49,12 @@
             android:layout_marginEnd="10dp"
             android:src="@drawable/search" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar_search"
+            android:layout_below="@id/toolbar"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"

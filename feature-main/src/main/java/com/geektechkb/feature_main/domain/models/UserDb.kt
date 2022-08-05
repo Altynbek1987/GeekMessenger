@@ -7,8 +7,8 @@ import com.geektechkb.core.base.BaseDiffModel
 @Entity
 data class UserDb(
     @PrimaryKey(autoGenerate = true)
-    val id:Int,
-    val name:String,
-    val secondName:String,
+    val id: Int,
+    val name: String,
+    val secondName: String,
     override val phoneNumber: String?,
-):BaseDiffModel
+) : BaseDiffModel

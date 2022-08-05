@@ -7,5 +7,5 @@ class GetUserUseCase @Inject constructor(
     private val usersRepository: UsersRepository
 ) {
     operator fun invoke() =
-            usersRepository.getUser()
+        usersRepository.getUser()
 }

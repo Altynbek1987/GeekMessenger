@@ -77,4 +77,8 @@ dependencies {
 
     //Glide
     api(libs.glide.glide)
+
+    // Room
+    api(libs.bundles.room)
+    kapt(libs.room.compiler)
 }

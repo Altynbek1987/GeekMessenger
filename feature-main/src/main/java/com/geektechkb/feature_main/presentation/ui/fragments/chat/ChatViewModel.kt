@@ -1,17 +1,10 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.geektechkb.core.base.BaseViewModel
-import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.domain.models.User
-import com.geektechkb.feature_main.domain.useCases.FetchPagedMessagesUseCase
-import com.geektechkb.feature_main.domain.useCases.FetchUserUseCase
-import com.geektechkb.feature_main.domain.useCases.SendMessageUseCase
-import com.geektechkb.feature_main.domain.useCases.SendVoiceMessageUseCase
+import com.geektechkb.feature_main.domain.useCases.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,6 +15,7 @@ class ChatViewModel @Inject constructor(
     private val sendVoiceMessageUseCase: SendVoiceMessageUseCase,
     private val fetchPagedMessagesUseCase: FetchPagedMessagesUseCase,
     private val fetchUserUseCase: FetchUserUseCase,
+    private val makeAVoiceCallUseCase: MakeAVoiceCallUseCase
 ) : BaseViewModel() {
     private val _userState = mutableUiStateFlow<User>()
     val userState = _userState.asStateFlow()
@@ -48,6 +42,20 @@ class ChatViewModel @Inject constructor(
 
     suspend fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
+
+    fun makeAVoiceCall(
+        callerId: String,
+        calleeId: String,
+        actionOnCallCreatedSuccessfully: (() -> Unit)? = null,
+        actionOnCallConnected: (() -> Unit)? = null,
+        actionOnCallEnded: (() -> Unit)? = null
+    ) = makeAVoiceCallUseCase(
+        callerId,
+        calleeId,
+        actionOnCallCreatedSuccessfully,
+        actionOnCallConnected,
+        actionOnCallEnded
+    )
 
     init {
         fetchPagedMessages()

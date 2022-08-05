@@ -19,11 +19,13 @@ constraint = "2.1.4"
 viewBindingPropertyDelegate = "1.5.6"
 appCompat = "1.4.1"
 splashScreen = "1.0.0-beta01"
-maskedEditText = "1.0.0"
+maskedEditText = "4.0.7"
 emojiPopUp = "0.15.0"
 waveformSeekBar = "5.0.1"
 waveformAmplituda = "2.1.4"
 audioRecorderView = "1.0.4"
+krop = "0.64"
+picasso = "2.71828"
 #Core
 core = "1.8.0"
 #Activity
@@ -67,6 +69,8 @@ firebaseAdMob = "21.0.0"
 glide = "4.13.0"
 #Koin
 koin = "3.2.0-beta-1"
+#Sendbird
+sendbird = "1.8.0"
 [libraries]
 
 #Kotlin
@@ -86,7 +90,7 @@ ui-material = { module = "com.google.android.material:material", version.ref = "
 ui-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 ui-constraint = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraint" }
 ui-viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version.ref = "viewBindingPropertyDelegate" }
-ui-maskedEditText = { module = "com.github.santalu:maskara", version.ref = "maskedEditText" }
+ui-maskedEditText = { module = "io.github.vicmikhailau:MaskedEditText", version.ref = "maskedEditText" }
 ui-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
 ui-dotsIndicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsIndicator" }
 ui-emojiMaterial = { module = "com.vanniktech:emoji-material", version.ref = "emojiPopUp" }
@@ -95,6 +99,8 @@ ui-waveformSeekBar = { module = "com.github.massoudss:waveformSeekBar", version.
 ui-waveformSeekBarAmplituda = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformAmplituda" }
 ui-audioRecorderView = { module = "com.github.tougee:audiorecorderview", version.ref = "audioRecorderView" }
 glide-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+krop-krop = { module = "com.github.avito-tech:krop", version.ref = "krop" }
+picasso-picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 
 #Legacy Support
 legacySupport-legacySupport = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupport" }
@@ -134,8 +140,13 @@ room-kotlinExtensionsAndCoroutinesSupport = { module = "androidx.room:room-ktx",
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 datastore-proto = { module = "androidx.datastore:datastore", version.ref = "datastore" }
 
+#Krop
+
 #Paging
 paging-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "paging" }
+
+#Sendbird
+sendbird-sendbird = { module = "com.sendbird.sdk:sendbird-calls", version.ref = "sendbird" }
 
 #Firebase
 firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebaseFirestore" }
@@ -155,7 +166,7 @@ koin-koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
 [bundles]
 #UI Components
-uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-maskedEditText", "ui-dotsIndicator", "ui-emojiMaterial", "ui-emojiGoogle", "ui-waveformSeekBar", "ui-waveformSeekBarAmplituda"]
+uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-maskedEditText", "ui-dotsIndicator", "ui-emojiMaterial", "ui-emojiGoogle", "ui-waveformSeekBar", "ui-waveformSeekBarAmplituda", "krop-krop", "picasso-picasso"]
 
 #Room
 room = ["room-runtime", "room-kotlinExtensionsAndCoroutinesSupport"]

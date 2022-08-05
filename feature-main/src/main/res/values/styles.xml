@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="which_user">
 
         <item name="android:textSize">
@@ -28,8 +29,7 @@
 
     </style>
 
-    <style
-        name="text_account">
+    <style name="text_account">
 
 
         <item name="android:textSize">
@@ -45,8 +45,8 @@
         </item>
 
     </style>
-    <string name="ScrollingAppBarLayoutBehavior">com.mahc.custombottomsheetbehavior.ScrollingAppBarLayoutBehavior</string>
 
+    <string name="ScrollingAppBarLayoutBehavior">com.mahc.custombottomsheetbehavior.ScrollingAppBarLayoutBehavior</string>
 
 
     <style name="text_number">
