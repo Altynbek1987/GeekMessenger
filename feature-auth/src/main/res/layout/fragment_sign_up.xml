@@ -52,17 +52,27 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <TextView
-        android:id="@+id/im_country"
+        android:id="@+id/tv_country_phone_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:contentDescription="@string/image_view_to_show_that_the_developers_of_geekmessenger_are_patriots"
+        android:layout_marginTop="10dp"
         android:text="+996"
         android:textColor="#68819C"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tl_phone"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/tl_phone"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gl_text_input_layout" />
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
+        android:background="#D9D9D9"
+        app:layout_constraintEnd_toStartOf="@id/tl_phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_country_phone_code" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -86,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.88" />
+        app:layout_constraintGuide_percent="0.96" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -99,9 +109,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_phone"
-        android:layout_width="275dp"
-        android:layout_height="56dp"
-        android:textAlignment="inherit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"
@@ -111,17 +120,16 @@
         app:boxStrokeColor="#68819C"
         app:boxStrokeWidth="0.4dp"
         app:boxStrokeWidthFocused="0.4dp"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@null"
-        app:errorTextAppearance="@id/et_phone"
+        app:errorIconTint="@color/regal_blue"
+        app:errorTextColor="@color/regal_blue"
         app:expandedHintEnabled="false"
         app:layout_constraintBottom_toBottomOf="@id/gl_til_bottom"
-        app:layout_constraintEnd_toEndOf="@id/gl_til_end"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gl_til_start"
         app:layout_constraintTop_toTopOf="@id/gl_text_input_layout"
-        app:placeholderText=" ___ ___ ___"
-        app:placeholderTextColor="#68819C"
-        app:prefixTextColor="#68819C">
+        app:placeholderText="Номер телефона"
+        app:placeholderTextAppearance="@style/PhoneNumberEditTextHintAppearance"
+        app:placeholderTextColor="#68819C">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -129,15 +137,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rounded_backgraunt"
+            android:digits="1234567890"
             android:focusable="true"
-            android:gravity="center"
-            android:maxLength="14"
-            android:paddingStart="15dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="10dp"
+            android:gravity="start"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:paddingStart="31dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
             android:textColor="#68819C"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,29 +186,5 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.61422706" />
 
-
-    <GridLayout
-        android:id="@+id/gridLayout_first_three_digits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_first_three_digits"></GridLayout>
-
-    <GridLayout
-        android:id="@+id/gridLayout_second_three_digits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gridLayout_first_three_digits"></GridLayout>
-
-    <GridLayout
-        android:id="@+id/grid_layout_third_three_digits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gridLayout_second_three_digits"></GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
