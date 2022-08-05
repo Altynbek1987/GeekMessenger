@@ -12,7 +12,7 @@
         android:label="AuthorizationFlowFragment" />
     <fragment
         android:id="@+id/mainFlowFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.MainFlowFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.mainflow.MainFlowFragment"
         android:label="MainFlowFragment" />
 
 

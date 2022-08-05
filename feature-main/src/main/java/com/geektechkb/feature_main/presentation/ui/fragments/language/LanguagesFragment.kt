@@ -1,14 +1,14 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.language
 
-import com.geektechkb.feature_main.data.local.Localization
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.R
+import com.geektechkb.feature_main.data.local.Localization
+import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentLanguagesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

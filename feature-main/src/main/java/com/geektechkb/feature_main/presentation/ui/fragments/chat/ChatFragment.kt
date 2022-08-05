@@ -171,18 +171,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             when (it.itemId) {
 
                 R.id.btn_call -> {
-                    viewModel.makeAVoiceCall(
-                        usersPreferencesHelper.currentUserPhoneNumber,
-                        chatterPhoneNumber.toString(),
-
-                        actionOnCallCreatedSuccessfully = {
-                            findNavController().directionsSafeNavigation(
-                                ChatFragmentDirections.actionChatFragmentToVoiceCallFragment(
-                                    username.toString()
-                                )
-                            )
-                        }
-                    )
                     true
                 }
                 R.id.btn_video_call -> {
@@ -243,7 +231,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun subscribeToUser() {
         viewModel.userState.spectateUiState(success = {
-            chatterPhoneNumber = it.phoneNumber
             savedUserStatus = it.lastSeen
             changeUserStatusToTyping(it.phoneNumber)
             binding.imProfile.loadImageWithGlide(it.profileImage)
@@ -268,7 +255,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordStart() {
         if (checkForPermissionStatusAndRequestIt(
-                recordAudioPermissionLauncher, android.Manifest.permission.RECORD_AUDIO
+                recordAudioPermissionLauncher, Manifest.permission.RECORD_AUDIO
             )
         )
             appVoiceRecorder.startRecordingVoiceMessage(requireContext())

@@ -2,7 +2,6 @@ package com.geektechkb.feature_main.data.local.preferences
 
 import android.content.Context
 import android.content.res.Configuration
-import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import java.util.*
 import javax.inject.Inject
 

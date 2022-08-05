@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    tools:context=".presentation.ui.fragments.mainflow.MainFlowFragment"
     tools:openDrawer="start">
+
 
     <include
         android:id="@+id/app_bar_main"
@@ -23,6 +25,10 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/main_drawer">
+
+        <include
+            android:id="@+id/nav"
+            layout="@layout/nav_header_main" />
 
     </com.google.android.material.navigation.NavigationView>
 
