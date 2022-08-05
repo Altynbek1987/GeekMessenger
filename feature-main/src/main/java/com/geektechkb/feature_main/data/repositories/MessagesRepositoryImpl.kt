@@ -11,7 +11,6 @@ import com.geektechkb.feature_main.domain.repositories.MessagesRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class MessagesRepositoryImpl @Inject constructor(
@@ -20,7 +19,6 @@ class MessagesRepositoryImpl @Inject constructor(
 ) : BaseRepository(), MessagesRepository {
     private val messagesRef =
         firestore.collection(FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH)
-    private val voiceRef = cloudStorage.reference
     private val cloudStorageRef = cloudStorage.reference
     private val messageMap = hashMapOf<String, Any?>()
 
@@ -60,35 +58,5 @@ class MessagesRepositoryImpl @Inject constructor(
             }
         }
 
-//        override suspend fun setupOneOnOneChat(
-//            id: String?,
-//            firstChatterPhoneNumber: String,
-//            secondChatterPhoneNumber: String,
-//        ): String? {
-//            addDocument(
-//                messagesRef,
-//                hashMapOf(
-//                    FIREBASE_FIRESTORE_CHATTERS_KEY to listOf(
-//                        firstChatterPhoneNumber,
-//                        secondChatterPhoneNumber
-//
-//                    )
-//                ), id
-//            )
-//            return id
-//        }
 
-
-    suspend fun sendVoiceMessageToCloudStorage(file: Uri?, voiceFileName: String) =
-        file?.let {
-            voiceRef
-                .child("voiceMessages/")
-                .child(voiceFileName)
-                .putFile(it)
-                .await()
-                .storage
-                .downloadUrl
-                .await()
-                .toString()
-        }
 }
