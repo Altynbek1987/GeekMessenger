@@ -26,6 +26,7 @@ class MainFlowFragment : BaseFlowFragment(
     private val viewModel: MainFlowViewModel by viewModels()
     override fun setupNavigation(navController: NavController) {
 
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         appBarConfiguration = AppBarConfiguration(
@@ -39,7 +40,8 @@ class MainFlowFragment : BaseFlowFragment(
 
             when (destination.id) {
 
-                R.id.chatFragment -> binding.appBarMain.toolbarButton.isGone = true
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment -> binding.appBarMain.toolbarButton.isGone =
+                    true
                 else -> binding.appBarMain.toolbarButton.isGone = false
             }
         }
@@ -48,6 +50,7 @@ class MainFlowFragment : BaseFlowFragment(
             drawerLayout.openDrawer(GravityCompat.START)
         }
     }
+
 
     override fun onStart() {
         super.onStart()
