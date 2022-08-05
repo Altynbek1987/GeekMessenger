@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="app_name">NavDraw</string>
+
+    <string name="nav_header_desc">Navigation title</string>
+    <string name="menu_group">Create a group</string>
+    <string name="menu_calls">Calls</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_profile">Profile</string>
+    <string name="back_russian">Back</string>
+    <string name="mute_russian">Turn off the sound</string>
+    <string name="clear_chat_russian">Clear the chat</string>
+    <string name="video_call_russian">Video Call</string>
+    <string name="make_call">Make calls</string>
+    <string name="last_seen_recently_russian">was recently</string>
+    <string name="image_for_user_s_profile_image">image for user/s profile image</string>
+    <string name="amir_ex_loved_one">Saida</string>
+    <string name="there_is_nothing_yet_russian">Theres nothing here yet...</string>
+    <string name="send_message_or_record_voice_message_russian">Send a message or \n record a voice\n message.</string>
+    <string name="message_russian">Message</string>
+    <string name="button_for_emoji">emoji button</string>
+    <string name="image_view_to_launch_camera">viewing an image to launch the camera</string>
+    <string name="image_view_for_recording_voice_messages">viewing an image for recording voice messages</string>
+    <string name="button_to_send_message">button to send a message</string>
+    <string name="typing">typing...</string>
+    <string name="Gallery">Gallery</string>
+    <string name="account">Account</string>
+    <string name="number">0702345805</string>
+    <string name="chance_number">Click to change the phone number</string>
+    <string name="settings">Settings</string>
+    <string name="tv_notifications">Notification and sounds</string>
+    <string name="tv_crossed">Hide phone number</string>
+    <string name="tv_language">Language</string>
+    <string name="gallery">Gallery</string>
+</resources>

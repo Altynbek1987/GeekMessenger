@@ -75,8 +75,8 @@ class CreateProfileFragment :
             }
 
         }
-        binding.arBtn.setOnClickListener {
-            findNavController().navigate(R.id.signUpFragment)
+        binding.ibBack.setOnClickListener {
+            findNavController().navigate(R.id.verifyAuthenticationFragment)
         }
     }
 

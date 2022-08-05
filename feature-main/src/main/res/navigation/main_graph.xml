@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_languagesFragment"
+            app:destination="@id/languagesFragment" />
     </fragment>
     <dialog
         android:id="@+id/galleryBottomSheetFragment"
@@ -109,5 +112,14 @@
         <action
             android:id="@+id/action_connectionCheckFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.language.LanguagesFragment"
+        android:label="fragment_languages"
+        tools:layout="@layout/fragment_languages" >
+        <action
+            android:id="@+id/action_languagesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>
