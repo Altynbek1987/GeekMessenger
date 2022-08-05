@@ -23,4 +23,6 @@ object Constants {
     const val FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH = "voiceMessages/"
 
     const val INTENT_FILTER = "MESSENGER_EVENT"
+
+    const val UNIQUE_HANDLER_ID = "uniqueHandlerId"
 }
