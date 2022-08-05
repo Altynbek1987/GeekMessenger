@@ -33,15 +33,18 @@ class VerifyAuthenticationFragment :
         updateCountDownTimer()
         setupCountDownTimer()
 
+
     }
 
     private fun setPhoneNumberCodeWasSentTo() {
-        val phoneNumberVerificationCodeWasSentTo =
-            String.format(
-                getString(R.string.verification_code_was_sent_to_the_entered_phone),
-                args.phoneNumber
-            )
-        binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
+        binding.tvVerificationCodeWasSent.text =
+            "${getString(R.string.verification_code_was_sent_to_the_entered_phone)}${
+                args.phoneNumber.substringAfter(
+                    "+"
+                ).chunked(3).joinToString(" ")
+            }"
+
+
     }
 
     private fun updateCountDownTimer() {
@@ -82,6 +85,7 @@ class VerifyAuthenticationFragment :
 
 
     override fun setupListeners() {
+
         returnBackToTheNumberInput()
         addBackspaceListener()
         moveToTheNextDigit()
@@ -90,7 +94,10 @@ class VerifyAuthenticationFragment :
         disableEditTextsKeyListener()
         verifyPhoneNumberUsingCode()
         resendVerificationCode()
+
+
     }
+
 
     private fun resendVerificationCode() {
         binding.tvVerificationCodeWasSent.setOnClickListener {
@@ -359,7 +366,7 @@ class VerifyAuthenticationFragment :
 
     }
 
-    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) = with(binding) {
         binding.apply {
 
 
@@ -387,7 +394,17 @@ class VerifyAuthenticationFragment :
                             showLongDurationSnackbar(
                                 "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
                             )
+                            clearTextInEditTextsIfAuthenticationFailed(
+                                etFirstDigit,
+                                etSecondDigit,
+                                etThirdDigit,
+                                etFourthDigit,
+                                etFifthDigit,
+                                etSixthDigit
+                            )
+                            focusOnTheFirstDigit()
                         }
+
                     }
                 }
 
@@ -421,15 +438,24 @@ class VerifyAuthenticationFragment :
         )
     }
 
+    private fun clearTextInEditTextsIfAuthenticationFailed(vararg digits: TextInputEditText) {
+        digits.forEach {
+            it.text?.clear()
+        }
+    }
+
 
     private fun TextInputEditText.deleteACharacterThenFocusOnThePreviousDigit(
         vararg digits: TextInputEditText
     ) {
-        when (requireView().findFocus()) {
-            this -> this.text?.clear()
+
+        when (rootView.findFocus()) {
+            this -> {
+                text?.clear()
+            }
             digits[0] -> {
                 digits[0].text?.clear()
-                this.requestFocus()
+                requestFocus()
             }
             digits[1] -> {
                 digits[1].text?.clear()
@@ -459,6 +485,7 @@ class VerifyAuthenticationFragment :
                 editTextToRequestAFocusOn.requestFocus()
         })
     }
+
 
     private fun TextView.setOnNumericClickListener(
         view: View?,
@@ -498,6 +525,7 @@ class VerifyAuthenticationFragment :
     private fun TextInputEditText.disableKeyListeners(
         vararg digits: TextInputEditText
     ) {
+
         keyListener = null
         digits[0].keyListener = null
         digits[1].keyListener = null
