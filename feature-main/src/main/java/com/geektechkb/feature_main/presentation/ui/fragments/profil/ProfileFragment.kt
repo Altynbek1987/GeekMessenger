@@ -2,23 +2,26 @@ package com.geektechkb.feature_main.presentation.ui.fragments.profil
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.extensions.generateRandomId
+import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.core.extensions.stateBottomSheet
-import com.geektechkb.core.extensions.toast
 import com.geektechkb.feature_main.R
+import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentProfileBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
@@ -26,20 +29,27 @@ import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment :
     BaseFragment<FragmentProfileBinding, GalleryBottomSheetViewModel>(R.layout.fragment_profile) {
 
     override val binding by viewBinding(FragmentProfileBinding::bind)
-    override val viewModel: GalleryBottomSheetViewModel by viewModels()
+    override val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
+    private val viewModel: ProfileViewModel by viewModels()
     private val args by navArgs<ProfileFragmentArgs>()
+        private var username: String? = null
+        private var savedUserStatus: String? = null
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private val pictures = ArrayList<GalleryPicture>()
     private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    @Inject
+    lateinit var preferences: UserPreferencesHelper
+    override fun initialize() {
         requestReadStoragePermission()
     }
 
@@ -66,7 +76,6 @@ class ProfileFragment :
                     if (BottomSheetBehavior.STATE_EXPANDED == newState) {
                         showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
                         binding.openBottomSheet.isVisible = false
-                        toast("expanded")
                     } else {
                         binding.openBottomSheet.isVisible = true
                         hideAppBar(binding.galleryBottomSheet.appbarLayout)
@@ -86,11 +95,46 @@ class ProfileFragment :
         }
     }
 
+    override fun establishRequest() {
+        fetchUser()
+
+    }
+
+    private fun fetchUser() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.fetchUser(preferences.currentUserPhoneNumber)
+        }
+    }
+
+    override fun launchObservers() {
+        subscribeToUser()
+    }
+
+    private fun subscribeToUser() {
+        viewModel.userState.spectateUiState(success = {
+            savedUserStatus = it.lastSeen
+            binding.tvNumber.text = (it.phoneNumber)
+            if (args.croppedImage.isNullOrEmpty()) {
+                binding.imImageProfile.loadImageWithGlide(it.profileImage)}
+            binding.tvName.text = it.name
+            binding.tvLastSeen.text = it.lastSeen
+            username = it.name
+        })
+        Log.e("animee", viewModel.userState.toString())
+    }
+
     private fun setupBottomSheet() {
         args.croppedImage?.let {
             val imageBytes = Base64.decode(it, 0)
             val image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-            binding.imImageProfile.setImageBitmap(image)
+            val stream = ByteArrayOutputStream()
+            image.compress(Bitmap.CompressFormat.PNG, 90, stream)
+            lifecycleScope.launch {
+                viewModel.updateUserProfileImage(generateRandomId(), stream.toByteArray())
+                    ?.let { image ->
+                        binding.imImageProfile.loadImageWithGlide(image)
+                    }
+            }
         }
         bottomSheetBehavior =
             BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
@@ -128,7 +172,7 @@ class ProfileFragment :
     }
 
     private fun loadPictures() {
-        viewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
+        galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
             if (it.isNotEmpty()) {
                 pictures.addAll(it)
                 adapter.notifyItemRangeInserted(pictures.size, it.size)
