@@ -56,9 +56,7 @@ class MainFlowFragment : BaseFlowFragment(
         binding.appBarMain.toolbarButto.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
-//        binding.nav.imageProfile.setOnClickListener {
 //
-//        }
     }
 
     override fun establishRequest() {

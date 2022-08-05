@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
+import com.geektechkb.feature_main.data.local.db.AppDataBase
+import com.geektechkb.feature_main.data.local.db.RoomClient
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import dagger.Module
 import dagger.Provides
@@ -35,4 +37,14 @@ object LocalModule {
     @Provides
     fun provideUserPreferences(preferences: SharedPreferences) =
         UserPreferencesHelper(preferences)
+
+    @Singleton
+    @Provides
+    fun provideAppDatabase(@ApplicationContext context: Context) =
+        RoomClient().provideCreateAppDataBase(context)
+
+    @Singleton
+    @Provides
+    fun provideUserDao(appDataBase: AppDataBase) =
+        RoomClient().provideUserDao(appDataBase)
 }
