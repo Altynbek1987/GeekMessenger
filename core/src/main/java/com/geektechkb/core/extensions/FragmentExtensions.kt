@@ -2,6 +2,8 @@ package com.geektechkb.core.extensions
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
@@ -16,6 +18,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 
 fun ImageView.setImage(uri: String?) {
     Glide.with(this)
@@ -130,3 +134,33 @@ fun Fragment.stateBottomSheet(bottomSheet: BottomSheetBehavior<MaterialCardView>
     bottomSheet?.state = state
     bottomSheet?.maxWidth = 2000
 }
+
+fun Fragment.loadWithPicassoCenterCropImageIntoTargetAndDoSomethingWithBitmap(
+    url: String,
+    actionOnBitmapLoaded: ((Bitmap?) -> Unit)? = null,
+    actionOnBitmapFailed: ((Exception?) -> Unit)? = null,
+    actionOnPrepareLoad: ((Drawable?) -> Unit)? = null
+) =
+    Picasso.get().load(url).centerCrop().resize(
+        getDisplayWidthPixels(),
+        getDisplayHeightPixels()
+    ).into(object : Target {
+
+        override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+            actionOnBitmapLoaded?.invoke(bitmap)
+        }
+
+        override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+            actionOnBitmapFailed?.invoke(e)
+        }
+
+        override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+            actionOnPrepareLoad?.invoke(placeHolderDrawable)
+        }
+
+    })
+
+private fun Fragment.getDisplayWidthPixels() = requireContext().resources.displayMetrics.widthPixels
+private fun Fragment.getDisplayHeightPixels() =
+    requireContext().resources.displayMetrics.heightPixels
+
