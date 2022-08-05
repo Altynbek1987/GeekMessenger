@@ -90,6 +90,9 @@
         <action
             android:id="@+id/action_chatFragment_to_voiceCallFragment"
             app:destination="@id/voiceCallFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_photoReviewFragment"
+            app:destination="@id/photoReviewFragment" />
     </fragment>
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
@@ -144,5 +147,14 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming.IncomingCallFragment"
         android:label="fragment_incoming_call"
         tools:layout="@layout/fragment_incoming_call" />
+    <fragment
+        android:id="@+id/photoReviewFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.reviews.PhotoReviewFragment"
+        android:label="fragment_photo_preview"
+        tools:layout="@layout/fragment_photo_preview" >
+        <argument
+            android:name="photo"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
