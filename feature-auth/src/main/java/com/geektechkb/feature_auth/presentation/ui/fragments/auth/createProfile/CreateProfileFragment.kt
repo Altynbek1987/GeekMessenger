@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 class CreateProfileFragment :
     BaseFragment<FragmentCreateProfileBinding, CreateProfileViewModel>(R.layout.fragment_create_profile) {
     override val binding by viewBinding(FragmentCreateProfileBinding::bind)
-    override val viewModel: CreateProfileViewModel by viewModels()
+    override val galleryViewModel: CreateProfileViewModel by viewModels()
     private val args: CreateProfileFragmentArgs by navArgs()
     private var uri: Uri? = null
 
@@ -48,9 +48,9 @@ class CreateProfileFragment :
                 if (etName.text.isNullOrEmpty() || etName.text.isNullOrBlank()) {
                     etName.error = "Это поле обязательно для заполнения"
                 } else {
-                    viewModel.isUserAuthenticated()
+                    galleryViewModel.isUserAuthenticated()
                     lifecycleScope.launch {
-                        viewModel.authenticateUser(
+                        galleryViewModel.authenticateUser(
                             "был(а) недавно",
                             args.phoneNumber,
                             binding.etName.text.toString(),
