@@ -6,7 +6,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainFlowViewModel @Inject constructor(private val updateUserStatusUseCase: UpdateUserStatusUseCase) :
+class MainFlowViewModel @Inject constructor(
+    private val updateUserStatusUseCase: UpdateUserStatusUseCase,
+) :
     BaseViewModel() {
     fun updateUserStatus(status: String) = updateUserStatusUseCase(status)
 }
