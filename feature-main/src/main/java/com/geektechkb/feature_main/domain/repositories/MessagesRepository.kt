@@ -15,10 +15,4 @@ interface MessagesRepository {
     suspend fun sendVoiceMessage(file: String, voiceFileName: String)
 
     fun fetchPagedMessages(): Flow<List<Message?>>
-
-//    suspend fun setupOneOnOneChat(
-//        id: String?,
-//        firstChatterPhoneNumber: String,
-//        secondChatterPhoneNumber: String,
-//    ): String?
 }

@@ -38,12 +38,12 @@ class CreateProfileFragment :
             }
         }
 
-
         binding.apply {
             binding.btnSignIn.setOnClickListener {
                 if (etName.text.isNullOrEmpty() || etName.text.isNullOrBlank()) {
                     etName.error = "Это поле обязательно для заполнения"
                 } else {
+                    viewModel.isUserAuthenticated()
                     lifecycleScope.launch {
                         viewModel.authenticateUser(
                             "был(а) недавно",
@@ -73,6 +73,9 @@ class CreateProfileFragment :
 
             }
 
+        }
+        binding.ibBack.setOnClickListener {
+            findNavController().navigate(R.id.verifyAuthenticationFragment)
         }
     }
 

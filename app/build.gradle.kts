@@ -65,4 +65,6 @@ dependencies {
     implementation(libs.bundles.hilt)
     implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
     kapt(libs.hilt.compiler)
+    implementation("com.akexorcist:localization:1.2.11")
+
 }

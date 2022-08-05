@@ -75,6 +75,13 @@ class ProfileFragment :
                 }
             })
         }
+        languageСhange()
+    }
+
+    private fun languageСhange() {
+        binding.tvLanguage.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_languagesFragment)
+        }
     }
 
     private fun setupBottomSheet() {
@@ -143,6 +150,7 @@ class ProfileFragment :
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(uri.toString())
         )
     }
+
 
 }
 

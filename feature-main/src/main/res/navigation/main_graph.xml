@@ -23,6 +23,19 @@
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/main_graph" />
+        <action
+            android:id="@+id/action_homeFragment_to_connectionCheckFragment"
+            app:destination="@id/connectionCheckFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/profileFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFragment"
         android:label="fragment_profile"
@@ -35,6 +48,9 @@
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_languagesFragment"
+            app:destination="@id/languagesFragment" />
     </fragment>
     <dialog
         android:id="@+id/galleryBottomSheetFragment"
@@ -59,16 +75,6 @@
     </fragment>
 
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_chatFragment"
-            app:destination="@id/chatFragment"
-            app:popUpTo="@id/main_graph" />
-    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.chat.ChatFragment"
@@ -114,6 +120,15 @@
         <action
             android:id="@+id/action_connectionCheckFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.language.LanguagesFragment"
+        android:label="fragment_languages"
+        tools:layout="@layout/fragment_languages">
+        <action
+            android:id="@+id/action_languagesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/voiceCallFragment"

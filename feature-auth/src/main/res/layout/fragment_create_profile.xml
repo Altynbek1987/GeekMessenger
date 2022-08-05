@@ -6,6 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.auth.createProfile.CreateProfileFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/blue"
+            android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment"
+            android:src="@drawable/baseline_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="6dp"
+            android:text="@string/profile"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/ib_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
         android:layout_width="0dp"
@@ -155,52 +191,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_text" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:background="#5393D0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+
+    <ImageButton
+        android:id="@+id/check_byn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:background="@color/blue"
+        android:src="@drawable/ic_baseline_check_24"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tb_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="10dp"
-        android:text="Профиль"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/ar_btn"
-        app:layout_constraintLeft_toLeftOf="@id/toolbar"
-        app:layout_constraintRight_toRightOf="@id/toolbar"
-        app:layout_constraintStart_toEndOf="@id/ar_btn"
-        app:layout_constraintStart_toStartOf="@+id/ar_btn"
-        app:layout_constraintTop_toTopOf="@id/toolbar" />
-
-    <ImageButton
-        android:id="@+id/ar_btn"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:background="#5393D0"
-        android:paddingStart="5dp"
-        android:src="@drawable/ic_back"
-        app:layout_constraintBottom_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="@id/toolbar"
-        app:layout_constraintTop_toTopOf="@id/toolbar" />
-
-    <ImageButton
-        android:id="@+id/btn_start"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="5dp"
-        android:background="#5393D0"
-        android:paddingEnd="5dp"
-        android:src="@drawable/check"
-        app:layout_constraintBottom_toBottomOf="@id/ar_btn"
-        app:layout_constraintRight_toRightOf="@id/toolbar"
-        app:layout_constraintTop_toTopOf="@id/toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

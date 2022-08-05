@@ -25,4 +25,6 @@ object Constants {
     const val INTENT_FILTER = "MESSENGER_EVENT"
 
     const val UNIQUE_HANDLER_ID = "uniqueHandlerId"
+    const val CHANGE_LANGUAGE = "language"
+
 }

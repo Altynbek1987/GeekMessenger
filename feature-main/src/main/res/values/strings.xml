@@ -1,7 +1,4 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="app_name">NavDraw</string>
 
     <string name="nav_header_desc">Navigation header</string>
@@ -23,6 +20,7 @@
     <string name="button_for_emoji">button for emoji</string>
     <string name="image_view_to_launch_camera">image view to launch camera</string>
     <string name="image_view_for_recording_voice_messages">image view for recording voice messages</string>
+    <string name="typing">печатает...</string>
     <string name="Gallery">Галерея</string>
     <string name="account">Аккаунт</string>
     <string name="number">0702345805</string>
@@ -33,6 +31,5 @@
     <string name="tv_language">Язык</string>
     <string name="gallery">Галерея</string>
     <string name="button_to_send_message">button to send message</string>
-    <string name="typing">печатает...</string>
     <string name="speaker">Динамик</string>
 </resources>

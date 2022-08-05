@@ -60,7 +60,17 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
+    implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt(libs.hilt.compiler)
+
+    //Paging 3
+    implementation(libs.paging.paging)
+
+
+    // Room with coroutines
+    api(libs.bundles.room)
+    kapt(libs.room.compiler)
 
     // Sendbird
     api(libs.sendbird.sendbird)

@@ -85,7 +85,6 @@ class VerifyAuthenticationFragment :
 
 
     override fun setupListeners() {
-
         returnBackToTheNumberInput()
         addBackspaceListener()
         moveToTheNextDigit()
@@ -94,10 +93,7 @@ class VerifyAuthenticationFragment :
         disableEditTextsKeyListener()
         verifyPhoneNumberUsingCode()
         resendVerificationCode()
-
-
     }
-
 
     private fun resendVerificationCode() {
         binding.tvVerificationCodeWasSent.setOnClickListener {
@@ -351,6 +347,8 @@ class VerifyAuthenticationFragment :
     private fun moveToTheNextDigit() {
         binding.apply {
             establishProperFocusingOnTheNextDigit()
+
+
         }
     }
 
@@ -366,7 +364,7 @@ class VerifyAuthenticationFragment :
 
     }
 
-    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) = with(binding) {
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         binding.apply {
 
 
@@ -394,17 +392,7 @@ class VerifyAuthenticationFragment :
                             showLongDurationSnackbar(
                                 "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
                             )
-                            clearTextInEditTextsIfAuthenticationFailed(
-                                etFirstDigit,
-                                etSecondDigit,
-                                etThirdDigit,
-                                etFourthDigit,
-                                etFifthDigit,
-                                etSixthDigit
-                            )
-                            focusOnTheFirstDigit()
                         }
-
                     }
                 }
 
@@ -486,7 +474,6 @@ class VerifyAuthenticationFragment :
         })
     }
 
-
     private fun TextView.setOnNumericClickListener(
         view: View?,
         vararg allDigits: TextInputEditText,
@@ -525,7 +512,6 @@ class VerifyAuthenticationFragment :
     private fun TextInputEditText.disableKeyListeners(
         vararg digits: TextInputEditText
     ) {
-
         keyListener = null
         digits[0].keyListener = null
         digits[1].keyListener = null
@@ -533,6 +519,4 @@ class VerifyAuthenticationFragment :
         digits[3].keyListener = null
         digits[4].keyListener = null
     }
-
-
 }

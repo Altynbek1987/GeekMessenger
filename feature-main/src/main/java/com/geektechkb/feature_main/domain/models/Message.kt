@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.domain.models
 
+
 data class Message(
     val messageId: String? = null,
     val message: String? = null,
