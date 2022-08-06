@@ -25,6 +25,7 @@ import com.geektechkb.core.ui.customViews.AudioRecordView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
+import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
