@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.data.local.preferences
+package com.geektechkb.core.data.local.preferences
 
 import android.content.SharedPreferences
 import com.geektechkb.common.constants.Constants.CURRENT_FIREBASE_USER_PHONE_NUMBER_KEY

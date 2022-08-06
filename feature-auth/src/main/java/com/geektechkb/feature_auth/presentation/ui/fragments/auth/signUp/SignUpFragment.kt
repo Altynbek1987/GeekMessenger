@@ -1,30 +1,42 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp
 
-import android.widget.Toast
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.extensions.addTextChangedListenerAnonymously
 import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.feature_auth.R
+import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.databinding.FragmentSignUpBinding
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import com.santalu.maskara.Mask
-import com.santalu.maskara.MaskChangedListener
-import com.santalu.maskara.MaskStyle
+import com.vicmikhailau.maskededittext.MaskedFormatter
+import com.vicmikhailau.maskededittext.MaskedWatcher
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class SignUpFragment :
     BaseFragment<FragmentSignUpBinding, SignUpViewModel>(R.layout.fragment_sign_up) {
+    @Inject
+    lateinit var authorizePreferences: AuthorizePreferences
+
     override val binding by viewBinding(FragmentSignUpBinding::bind)
-    override val galleryViewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
-    private var phoneNumberLength: Int? = null
-    private lateinit var maskChangedListener: MaskChangedListener
+    override val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
+    private val maskFormatter = MaskedFormatter("### ### ###")
+
+    override fun initialize() {
+        addMaskToThePhoneNumberEditText()
+        disableHelperText()
+    }
 
 
+    private fun addMaskToThePhoneNumberEditText() {
+        binding.etPhone.addTextChangedListener(MaskedWatcher(maskFormatter, binding.etPhone))
+    }
+
+    private fun disableHelperText() {
+    }
 
 
     override fun setupListeners() {
@@ -34,31 +46,24 @@ class SignUpFragment :
 
     private fun openPhoneNumberVerificationDialog() {
         binding.btnContinue.setOnClickListener {
+            if (binding.etPhone.text?.length != 11) {
+                binding.tlPhone.isErrorEnabled = true
+                binding.tlPhone.error = getString(R.string.phone_number_must_consist_of_9_digits)
+            } else
+
                 findNavController().directionsSafeNavigation(
                     SignUpFragmentDirections.actionSignUpFragmentToPhoneVerificationDialogFragment(
-                        "${binding.etPhone.text?.trim()}"
+                        binding.tvCountryPhoneCode.text.toString() + maskFormatter.formatString(
+                            binding.etPhone.text?.toString().toString()
+                        )?.unMaskedString
                     )
                 )
-            }
-
+            binding.etPhone.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
+                binding.tlPhone.isErrorEnabled = false
+            })
         }
+
     }
+}
 
 
-    private fun TextInputLayout.setFixedError(errorTxt: CharSequence?) {
-        if (error != errorTxt) {
-            error = errorTxt
-        }
-    }
-
-//    private fun TextInputEditText.addMaskChangeListener() {
-//        maskChangedListener = MaskChangedListener(
-//            Mask(
-//                value = " ___ ___ ___",
-//                character = '_',
-//                style = MaskStyle.PERSISTENT
-//            )
-//        )
-//        addTextChangedListener(maskChangedListener)
-//    }
-//}

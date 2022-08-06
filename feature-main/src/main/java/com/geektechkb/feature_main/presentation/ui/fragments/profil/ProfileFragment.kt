@@ -17,6 +17,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.generateRandomId
 import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.core.extensions.stateBottomSheet
@@ -35,14 +36,14 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment :
-    BaseFragment<FragmentProfileBinding, GalleryBottomSheetViewModel>(R.layout.fragment_profile) {
+    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
 
     override val binding by viewBinding(FragmentProfileBinding::bind)
-    override val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
-    private val viewModel: ProfileViewModel by viewModels()
+    override val viewModel: ProfileViewModel by viewModels()
+    private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args by navArgs<ProfileFragmentArgs>()
-        private var username: String? = null
-        private var savedUserStatus: String? = null
+    private var username: String? = null
+    private var savedUserStatus: String? = null
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private val pictures = ArrayList<GalleryPicture>()
     private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
@@ -115,7 +116,8 @@ class ProfileFragment :
             savedUserStatus = it.lastSeen
             binding.tvNumber.text = (it.phoneNumber)
             if (args.croppedImage.isNullOrEmpty()) {
-                binding.imImageProfile.loadImageWithGlide(it.profileImage)}
+                binding.imImageProfile.loadImageWithGlide(it.profileImage)
+            }
             binding.tvName.text = it.name
             binding.tvLastSeen.text = it.lastSeen
             username = it.name

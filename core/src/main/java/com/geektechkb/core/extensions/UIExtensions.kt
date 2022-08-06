@@ -14,3 +14,14 @@ fun ImageView.setImage(uri: String) {
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
 }
+
+fun ImageView.changeIconWhenActivated(vararg imageViews: ImageView) {
+    setOnClickListener {
+        isActivated = !isActivated
+    }
+    imageViews.forEach { imageView ->
+        imageView.setOnClickListener {
+            imageView.isActivated = !imageView.isActivated
+        }
+    }
+}

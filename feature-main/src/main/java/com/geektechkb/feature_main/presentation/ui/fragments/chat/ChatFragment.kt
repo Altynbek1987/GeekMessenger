@@ -1,6 +1,11 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.util.Log
+import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -10,16 +15,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
 import com.geektechkb.core.ui.customViews.AudioRecordView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
-import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
+import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
+import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.card.MaterialCardView
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -32,11 +42,15 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     AudioRecordView.Callback {
 
     override val binding by viewBinding(FragmentChatBinding::bind)
+    private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
+    private val pictures = ArrayList<GalleryPicture>()
+    private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
     private val messagesAdapter = MessagesAdapter()
-    override val galleryViewModel: ChatViewModel by viewModels()
+    override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
     private var username: String? = null
     private var savedUserStatus: String? = null
+    private var stateBottomSheet: Boolean = false
     private val appVoiceRecorder = AppVoiceRecorder()
     private val recordAudioPermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
@@ -47,7 +61,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
             })
 
-
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
     override fun initialize() {
@@ -56,7 +69,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
 
     }
-
 
     override fun assembleViews() {
         setupAdapter()
@@ -123,14 +135,106 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun expandGalleryDialog() {
+        if (stateBottomSheet) {
+            initBottomSheetRecycler()
+            openBottomSheet()
+        }
         binding.imClip.setOnSingleClickListener {
+            requestReadStoragePermission()
             if (checkForPermissionStatusAndRequestIt(
                     readExternalStoragePermissionLauncher,
                     Manifest.permission.READ_EXTERNAL_STORAGE
                 )
-            )
-                showShortDurationSnackbar("fuck")
+            ) {
+                openBottomSheet()
+            }
         }
+    }
+
+    private fun openBottomSheet() {
+        binding.coordinatorGallery.isVisible = true
+        stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
+        bottomSheetBehavior?.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (BottomSheetBehavior.STATE_EXPANDED == newState) {
+                    showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
+                } else {
+                    hideAppBar(binding.galleryBottomSheet.appbarLayout)
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            }
+        })
+    }
+
+    private fun requestReadStoragePermission() {
+        val readStorage = Manifest.permission.READ_EXTERNAL_STORAGE
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                readStorage
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(arrayOf(readStorage), 3)
+        } else initBottomSheetRecycler()
+        setupBottomSheet()
+    }
+
+    private fun setupBottomSheet() {
+        bottomSheetBehavior =
+            BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
+    }
+
+    private fun initBottomSheetRecycler() {
+        binding.galleryBottomSheet.recyclerviewRating.adapter = adapter
+        binding.galleryBottomSheet.recyclerviewRating.addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                loadPictures()
+            }
+        })
+        loadPictures()
+    }
+
+    private fun loadPictures() {
+        viewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
+            if (it.isNotEmpty()) {
+                pictures.addAll(it)
+                adapter.notifyItemRangeInserted(pictures.size, it.size)
+            }
+            Log.e("GalleryListSize", "${pictures.size}")
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            initBottomSheetRecycler()
+    }
+
+    private fun showView(view: View, size: Int) {
+        val params = view.layoutParams
+        params.height = size
+        binding.galleryBottomSheet.appbarLayout.isVisible = true
+        view.layoutParams = params
+    }
+
+    private fun hideAppBar(view: View) {
+        val params = view.layoutParams
+        params.height = 4
+        binding.galleryBottomSheet.appbarLayout.isVisible = false
+        view.layoutParams = params
+    }
+
+    private fun getActionBarSize(): Int {
+        val array =
+            requireContext().theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
+        return array.getDimension(0, 0f).toInt()
     }
 
 
@@ -153,7 +257,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun sendMessage() = with(binding) {
         imSendMessage.setOnSingleClickListener {
-            galleryViewModel.sendMessage(
+            viewModel.sendMessage(
                 usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
@@ -218,7 +322,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun fetchUser() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            args.phoneNumber?.let { galleryViewModel.fetchUser(it) }
+            args.phoneNumber?.let { viewModel.fetchUser(it) }
         }
     }
 
@@ -229,7 +333,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun subscribeToUser() {
-        galleryViewModel.userState.spectateUiState(success = {
+        viewModel.userState.spectateUiState(success = {
             savedUserStatus = it.lastSeen
             changeUserStatusToTyping(it.phoneNumber)
             binding.imProfile.loadImageWithGlide(it.profileImage)
@@ -242,7 +346,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                galleryViewModel.fetchPagedMessages().collectLatest {
+                viewModel.fetchPagedMessages().collectLatest {
                     messagesAdapter.setPhoneNumber(usersPreferencesHelper.currentUserPhoneNumber)
                     messagesAdapter.submitList(it)
                     checkAdapterItemCountAndHideLayout()
@@ -251,6 +355,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             }
         }
     }
+
+    private fun onSelect(uri: Uri) {
+        stateBottomSheet = true
+        findNavController().navigate(
+            ChatFragmentDirections.actionChatFragmentToPhotoReviewFragment(uri.toString())
+        )
+    }
+
 
     override fun onRecordStart() {
         if (checkForPermissionStatusAndRequestIt(
@@ -266,7 +378,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
-        galleryViewModel.sendVoiceMessage(
+        viewModel.sendVoiceMessage(
             appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
             generateRandomId()
         )
@@ -275,4 +387,5 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
     }
+
 }

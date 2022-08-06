@@ -12,15 +12,16 @@ import com.geektechkb.feature_main.databinding.FragmentConnectionCheckBinding
 
 class ConnectionCheckFragment : Fragment() {
 
-     private lateinit var binding: FragmentConnectionCheckBinding
-     private lateinit var cld: CheckInternet
+    private lateinit var binding: FragmentConnectionCheckBinding
+    private lateinit var cld: CheckInternet
 
-     override fun onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentConnectionCheckBinding.inflate(LayoutInflater.from(context), container, false)
+        binding =
+            FragmentConnectionCheckBinding.inflate(LayoutInflater.from(context), container, false)
         checkInternet()
         return binding.root
 
@@ -30,7 +31,8 @@ class ConnectionCheckFragment : Fragment() {
         activity?.application?.let {
             cld = CheckInternet(it)
         }
-        cld.observe(viewLifecycleOwner) { if (it) {
+        cld.observe(viewLifecycleOwner) {
+            if (it) {
                 findNavController().navigateUp()
                 binding.connectionImage.visibility = View.GONE
                 binding.connectionText.visibility = View.GONE

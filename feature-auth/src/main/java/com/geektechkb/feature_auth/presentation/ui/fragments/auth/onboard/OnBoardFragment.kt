@@ -1,4 +1,5 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.onboard
+
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -16,8 +17,9 @@ import javax.inject.Inject
 class OnBoardFragment :
     BaseFragment<FragmentOnBoardBinding, OnBoardViewModel>(R.layout.fragment_on_board) {
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
-    override val galleryViewModel: OnBoardViewModel by viewModels()
+    override val viewModel: OnBoardViewModel by viewModels()
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
+
     @Inject
     lateinit var preferences: OnBoardPreferencesHelper
     override fun setupListeners() {
@@ -34,14 +36,16 @@ class OnBoardFragment :
         }
 
     }
+
     override fun assembleViews() {
-        if(preferences.hasOnBoardBeenShown) {
+        if (preferences.hasOnBoardBeenShown) {
             findNavController().navigate(R.id.signUpFragment)
         }
         setupAdapter()
         changeButtonTextDependingOnPagerCurrentItem()
 
     }
+
     private fun changeButtonTextDependingOnPagerCurrentItem() {
         binding.pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

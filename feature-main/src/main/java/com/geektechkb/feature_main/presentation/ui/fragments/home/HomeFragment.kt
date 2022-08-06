@@ -18,17 +18,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     R.layout.fragment_home
 ) {
     override val binding by viewBinding(FragmentHomeBinding::bind)
-    override val galleryViewModel by viewModels<HomeViewModel>()
-    private val usersAdapter = UsersAdapter(this::onItemClick)
+    override val viewModel by viewModels<HomeViewModel>()
     private lateinit var cld: CheckInternet
+
+    override fun setupListeners() {
+        checkInternet()
+    }
+
+    private val usersAdapter = UsersAdapter(this::onItemClick)
+
 
     override fun assembleViews() {
         binding.recyclerview.adapter = usersAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
     }
 
-    override fun setupListeners() {
-        checkInternet()
+
+    override fun launchObservers() {
+        subscribeToUsers()
     }
 
     private fun checkInternet() {
@@ -44,15 +51,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         }
     }
 
-    override fun launchObservers() {
-        subscribeToUsers()
-    }
-
     private fun subscribeToUsers() {
-        galleryViewModel.fetchPagedUsers().spectatePaging(success = {
+        viewModel.fetchPagedUsers().spectatePaging(success = {
             usersAdapter.submitData(it)
         })
     }
+
 
     private fun onItemClick(phoneNumber: String?) {
         findNavController().directionsSafeNavigation(

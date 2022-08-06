@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -11,11 +12,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFlowFragment
+import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.feature_main.R
-import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -36,6 +38,10 @@ class MainFlowFragment : BaseFlowFragment(
 
     @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
+
+
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
@@ -43,18 +49,19 @@ class MainFlowFragment : BaseFlowFragment(
 
                 ), binding.drawerLayout
         )
-
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                R.id.chatFragment -> binding.appBarMain.toolbarButto.isGone = true
-                else -> binding.appBarMain.toolbarButto.isGone = false
+
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment -> binding.appBarMain.toolbarButton.isGone =
+                    true
+                else -> binding.appBarMain.toolbarButton.isGone = false
             }
         }
 
-        binding.appBarMain.toolbarButto.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
+        binding.appBarMain.toolbarButton.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
         }
 //
     }
@@ -81,7 +88,6 @@ class MainFlowFragment : BaseFlowFragment(
             binding.nav.userNumber.text = (it.phoneNumber)
             binding.nav.imageProfile.loadImageWithGlide(it.profileImage)
             binding.nav.userName.text = it.name
-//            binding.nav.userName.text = it.lastSeen
             username = it.name
         })
         Log.e("anime", viewModel.userState.toString())
