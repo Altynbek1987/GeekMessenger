@@ -54,7 +54,7 @@ class MainFlowFragment : BaseFlowFragment(
 
             when (destination.id) {
 
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment -> binding.appBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.appBarMain.toolbarButton.isGone =
                     true
                 else -> binding.appBarMain.toolbarButton.isGone = false
             }

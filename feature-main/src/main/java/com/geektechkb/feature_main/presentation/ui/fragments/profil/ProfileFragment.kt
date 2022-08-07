@@ -47,6 +47,12 @@ class ProfileFragment :
     private val pictures = ArrayList<GalleryPicture>()
     private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
 
+    override fun assembleViews() {
+        binding.toolbarButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
     @Inject
     lateinit var preferences: UserPreferencesHelper
     override fun initialize() {
