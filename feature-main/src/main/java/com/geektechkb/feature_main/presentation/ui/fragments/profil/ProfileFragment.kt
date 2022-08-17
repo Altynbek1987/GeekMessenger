@@ -20,6 +20,7 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.generateRandomId
 import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.core.extensions.stateBottomSheet
+import com.geektechkb.core.extensions.toast
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentProfileBinding
@@ -31,6 +32,7 @@ import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
+import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -41,8 +43,8 @@ class ProfileFragment :
     override val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val viewModel: ProfileViewModel by viewModels()
     private val args by navArgs<ProfileFragmentArgs>()
-        private var username: String? = null
-        private var savedUserStatus: String? = null
+    private var username: String? = null
+    private var savedUserStatus: String? = null
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private val pictures = ArrayList<GalleryPicture>()
     private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
@@ -67,30 +69,48 @@ class ProfileFragment :
 
     override fun setupListeners() {
         binding.openBottomSheet.setOnClickListener {
-            binding.openBottomSheet.isVisible = false
-            binding.coordinatorGallery.isVisible = true
-            stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
-            bottomSheetBehavior?.addBottomSheetCallback(object :
-                BottomSheetBehavior.BottomSheetCallback() {
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    if (BottomSheetBehavior.STATE_EXPANDED == newState) {
-                        showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
-                        binding.openBottomSheet.isVisible = false
-                    } else {
-                        binding.openBottomSheet.isVisible = true
-                        hideAppBar(binding.galleryBottomSheet.appbarLayout)
-                    }
-                }
-
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                }
-            })
+            getData()
         }
+        //menu navigation
+        binding.menuToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.profile ->
+                    toast("GeekTech")
+                R.id.photo ->
+                    getData()
+                R.id.delete ->
+                    toast("Ты Лузер Работай Хорошо, и НЕ Сдавайся")
+            }
+            true
+        }
+        binding.chanceBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+    }
+
+    private fun getData() {
+        binding.openBottomSheet.isVisible = false
+        binding.coordinatorGallery.isVisible = true
+        stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
+        bottomSheetBehavior?.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (BottomSheetBehavior.STATE_EXPANDED == newState) {
+                    showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
+                    binding.openBottomSheet.isVisible = false
+                } else {
+                    binding.openBottomSheet.isVisible = true
+                    hideAppBar(binding.galleryBottomSheet.appbarLayout)
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
     }
 
     override fun establishRequest() {
         fetchUser()
-
     }
 
     private fun fetchUser() {
