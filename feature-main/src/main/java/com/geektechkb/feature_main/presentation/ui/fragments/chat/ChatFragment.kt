@@ -91,6 +91,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             })
         }
 
+
     }
 
     private fun checkAdapterItemCountAndHideLayout(
