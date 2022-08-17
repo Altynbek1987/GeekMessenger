@@ -48,15 +48,24 @@ class MainFlowFragment : BaseFlowFragment(
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                R.id.chatFragment -> binding.appBarMain.toolbarButto.isGone = true
-                else -> binding.appBarMain.toolbarButto.isGone = false
+                R.id.chatFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
+                R.id.profileFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
+                R.id.cropPhotoFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
+                R.id.nav_groups -> binding.homeAppBarMain.toolbarButto.isGone = true
+                R.id.nav_calls -> binding.homeAppBarMain.toolbarButto.isGone = true
+                R.id.nav_host_fragment_content_main -> binding.homeAppBarMain.toolbarButto.isGone =
+                    true
+                R.id.action_chatFragment_to_deniedPermissionsDialogFragment -> binding.homeAppBarMain.toolbarButto.isGone =
+                    true
+                R.id.galleryBottomSheetFragment -> binding.homeAppBarMain.toolbarButto.isGone =
+                    true
+                R.id.homeFragment -> binding.homeAppBarMain.toolbarButto.isGone = false
             }
         }
 
-        binding.appBarMain.toolbarButto.setOnClickListener {
+        binding.homeAppBarMain.toolbarButto.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
-//
     }
 
     override fun establishRequest() {
