@@ -22,7 +22,7 @@
             app:titleTextColor="@color/white" />
 
         <ImageButton
-            android:id="@+id/toolbar_button"
+            android:id="@+id/toolbar_btn"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="40dp"
             android:layout_height="60dp"

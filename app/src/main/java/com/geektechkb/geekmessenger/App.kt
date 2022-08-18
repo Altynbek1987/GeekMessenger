@@ -22,11 +22,9 @@ class App : Application() {
         installEmojiProvider()
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                return@addOnCompleteListener
-            }
-
+            if (!task.isSuccessful) {return@addOnCompleteListener }
             val token = task.result
+            Log.e("RUSS", "Token -> $token")}}}
             Log.e("RUSS", "Token -> $token")
         }
         SendBirdCall.addListener(UNIQUE_HANDLER_ID, object : SendBirdCallListener() {
