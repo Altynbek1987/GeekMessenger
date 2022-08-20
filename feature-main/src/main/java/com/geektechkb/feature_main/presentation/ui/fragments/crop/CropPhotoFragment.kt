@@ -71,7 +71,7 @@ open class CropPhotoFragment :
             .resize(3000, 3000)
             .noFade()
             .priority(Picasso.Priority.LOW)
-            .rotate(90F, 90F, 0F)
+            .rotate(0F, 0F, 0F)
             .into(target!!)
     }
 
