@@ -3,9 +3,9 @@
 
     <style name="EditTextBorders" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@drawable/box_stroke_color_selector</item>
-        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidth">2dp</item>
         <item name="boxBackgroundMode">outline</item>
-        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
         <item name="boxCornerRadiusBottomEnd">6dp</item>
         <item name="boxCornerRadiusBottomStart">6dp</item>
         <item name="boxCornerRadiusTopEnd">6dp</item>

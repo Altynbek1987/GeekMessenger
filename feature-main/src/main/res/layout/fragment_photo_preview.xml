@@ -31,19 +31,19 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"
-            tools:text="Манхва по ветролому"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            tools:text="Манхва по ветролому" />
 
         <TextView
             android:id="@+id/tv_name_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            tools:text="albert"
             android:textColor="@color/white"
             android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="albert" />
 
         <TextView
             android:id="@+id/tv_im_date_time_info"
@@ -51,9 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginBottom="4dp"
-            tools:text="01.01.2022"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            tools:text="01.01.2022" />
 
     </LinearLayout>
 
