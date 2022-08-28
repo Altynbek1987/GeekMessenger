@@ -15,8 +15,8 @@ import com.geektechkb.feature_main.domain.models.UserDb
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.flow.Flow
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(

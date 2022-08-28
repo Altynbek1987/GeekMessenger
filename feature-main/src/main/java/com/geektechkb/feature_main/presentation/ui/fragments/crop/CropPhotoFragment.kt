@@ -24,7 +24,7 @@ import java.io.ByteArrayOutputStream
 open class CropPhotoFragment :
     BaseFragment<FragmentCropPhotoBinding, CropPhotoViewModel>(R.layout.fragment_crop_photo) {
     override val binding by viewBinding(FragmentCropPhotoBinding::bind)
-    override val galleryViewModel by viewModels<CropPhotoViewModel>()
+    override val viewModel by viewModels<CropPhotoViewModel>()
     private var uri: Uri = Uri.EMPTY
     private var target: CropPhotoTarget? = null
     private val args by navArgs<CropPhotoFragmentArgs>()
@@ -71,7 +71,7 @@ open class CropPhotoFragment :
             .resize(3000, 3000)
             .noFade()
             .priority(Picasso.Priority.LOW)
-            .rotate(90F, 90F, 0F)
+            .rotate(0F, 0F, 0F)
             .into(target!!)
     }
 

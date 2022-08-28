@@ -91,10 +91,11 @@ class LanguagesFragment : Fragment() {
     }
 
     private fun setupListener() {
-      binding.checkByn.setOnClickListener {
-          findNavController().navigate(R.id.action_languagesFragment_to_profileFragment)
-      }
+        binding.checkByn.setOnClickListener {
+            findNavController().navigate(R.id.action_languagesFragment_to_profileFragment)
+        }
         binding.ibBack.setOnClickListener {
             findNavController().navigate(R.id.action_languagesFragment_to_profileFragment)
-        }    }
+        }
+    }
 }

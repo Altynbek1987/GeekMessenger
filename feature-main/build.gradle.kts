@@ -34,6 +34,13 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            buildConfigField(
+                "String",
+                "SENDBIRD_APP_ID",
+                "\"06A52AC6-2F9A-4D6F-9157-E0D7E1BDEC94\""
+            )
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -61,12 +68,11 @@ dependencies {
     //Paging 3
     implementation(libs.paging.paging)
 
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("com.github.avito-tech:krop:0.64")
-    implementation("com.squareup.picasso:picasso:2.71828")
 
     // Room with coroutines
     api(libs.bundles.room)
     kapt(libs.room.compiler)
 
+    // Sendbird
+    api(libs.sendbird.sendbird)
 }

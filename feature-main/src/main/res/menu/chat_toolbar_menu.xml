@@ -31,7 +31,7 @@
 
             <item
                 android:id="@+id/btn_mute"
-                android:icon="@drawable/ic_mute"
+                android:icon="@drawable/ic_mute_notifications"
                 android:orderInCategory="3"
                 android:title="@string/mute_russian"
                 app:showAsAction="never" />

@@ -13,7 +13,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-class GalleryBottomSheetViewModel: BaseViewModel(){
+class GalleryBottomSheetViewModel : BaseViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     private var startingRow = 0

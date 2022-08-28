@@ -1,4 +1,5 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.onboard
+
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -16,8 +17,9 @@ import javax.inject.Inject
 class OnBoardFragment :
     BaseFragment<FragmentOnBoardBinding, OnBoardViewModel>(R.layout.fragment_on_board) {
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
-    override val galleryViewModel: OnBoardViewModel by viewModels()
+    override val viewModel: OnBoardViewModel by viewModels()
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
+
     @Inject
     lateinit var preferences: OnBoardPreferencesHelper
     override fun setupListeners() {
@@ -34,19 +36,21 @@ class OnBoardFragment :
         }
 
     }
+
     override fun assembleViews() {
-        if(preferences.hasOnBoardBeenShown) {
+        if (preferences.hasOnBoardBeenShown) {
             findNavController().navigate(R.id.signUpFragment)
         }
         setupAdapter()
         changeButtonTextDependingOnPagerCurrentItem()
 
     }
+
     private fun changeButtonTextDependingOnPagerCurrentItem() {
         binding.pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    2 -> binding.startBtn.text = "Погнали!"
+                    2 -> binding.startBtn.text = "Начать"
                     else -> binding.startBtn.text = "Далее"
                 }
             }
@@ -64,18 +68,18 @@ class OnBoardFragment :
         list.add(
             BoardModel(
                 R.drawable.ic_group_24,
-                "GeekMessage", "Добро пожаловать в GeekMessenger",
+                "Geek Messenger", "Ваш персональный путеводитель в мир IT",
             )
         )
         list.add(
             BoardModel(
-                R.drawable.communicationpng, "Описание", "Отличный и удобный messenger",
+                R.drawable.communicationpng, "Geek Messenger", "Отличный и удобный messenger",
             )
         )
         list.add(
             BoardModel(
                 R.drawable.ideapng,
-                " Погнали",
+                " Geek Messenger",
                 "Скорее нажимай на кнопку",
             )
         )

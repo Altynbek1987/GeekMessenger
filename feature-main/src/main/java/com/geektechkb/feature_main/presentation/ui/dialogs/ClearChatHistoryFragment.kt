@@ -29,14 +29,12 @@ class ClearChatHistoryFragment :
 
     private fun setUsername() {
         binding.tvDeleteChatHistoryWithFollowingUser.text =
-            SpannableStringBuilder().append("Вы точно хотите очистить историю переписки с ")
+            SpannableStringBuilder("Вы точно хотите очистить историю переписки с ")
                 .bold {
                     append(
                         args.usernameToDeleteChatHistoryWith
                     )
                 }
-
-
     }
 
     override fun setupListeners() {
@@ -56,6 +54,4 @@ class ClearChatHistoryFragment :
             dismiss()
         }
     }
-
-
 }

@@ -70,6 +70,8 @@
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
     </fragment>
+
+
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.chat.ChatFragment"
@@ -85,6 +87,12 @@
         <action
             android:id="@+id/action_chatFragment_to_clearChatHistoryFragment"
             app:destination="@id/clearChatHistoryFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_voiceCallFragment"
+            app:destination="@id/voiceCallFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_photoReviewFragment"
+            app:destination="@id/photoReviewFragment" />
     </fragment>
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
@@ -100,11 +108,14 @@
             android:name="usernameToDeleteChatHistoryWith"
             app:argType="string" />
     </dialog>
+    <action
+        android:id="@+id/action_homeFragment_to_connectionCheckFragment"
+        app:destination="@id/connectionCheckFragment" />
     <fragment
         android:id="@+id/connectionCheckFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.checknetworkconnection.ConnectionCheckFragment"
         android:label="fragment_connection_check"
-        tools:layout="@layout/fragment_connection_check" >
+        tools:layout="@layout/fragment_connection_check">
 
         <action
             android:id="@+id/action_connectionCheckFragment_to_homeFragment"
@@ -114,9 +125,36 @@
         android:id="@+id/languagesFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.language.LanguagesFragment"
         android:label="fragment_languages"
-        tools:layout="@layout/fragment_languages" >
+        tools:layout="@layout/fragment_languages">
         <action
             android:id="@+id/action_languagesFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/voiceCallFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice.VoiceCallFragment"
+        android:label="fragment_voice_call"
+        tools:layout="@layout/fragment_voice_call">
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_voiceCallFragment_to_incomingCallFragment"
+            app:destination="@id/incomingCallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/incomingCallFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming.IncomingCallFragment"
+        android:label="fragment_incoming_call"
+        tools:layout="@layout/fragment_incoming_call" />
+    <fragment
+        android:id="@+id/photoReviewFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.reviews.PhotoReviewFragment"
+        android:label="fragment_photo_preview"
+        tools:layout="@layout/fragment_photo_preview">
+        <argument
+            android:name="photo"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

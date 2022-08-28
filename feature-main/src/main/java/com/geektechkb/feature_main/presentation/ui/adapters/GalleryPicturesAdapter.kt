@@ -16,13 +16,11 @@ class GalleryPicturesAdapter(
 ) : RecyclerView.Adapter<GalleryPicturesAdapter.GalleryPicturesViewHolder>() {
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): GalleryPicturesViewHolder {
         return GalleryPicturesViewHolder(
             ItemGalleryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
-
 
 
     override fun onBindViewHolder(holder: GalleryPicturesViewHolder, position: Int) {
@@ -34,7 +32,7 @@ class GalleryPicturesAdapter(
 
         fun onBind(galleryPicture: GalleryPicture) {
             Glide.with(binding.ivImg).load(galleryPicture.path).into(binding.ivImg)
-            Log.e("olo", galleryPicture.path.toString() )
+            Log.e("olo", galleryPicture.path.toString())
             binding.root.setOnClickListener {
                 onSelect(Uri.parse(galleryPicture.path))
             }
