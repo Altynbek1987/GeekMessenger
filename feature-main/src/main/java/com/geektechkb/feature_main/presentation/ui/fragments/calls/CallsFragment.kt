@@ -17,4 +17,10 @@ class CallsFragment : BaseFragment<FragmentCallsBinding, СallsViewModel>(
             findNavController().navigateUp()
         }
     }
+    override val galleryViewModel by viewModels<СallsViewModel>()
+    override fun setupListeners() {
+        binding.toolbarButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
 }

@@ -40,12 +40,20 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
+<!--        <argument-->
+<!--            android:name="numberHide"-->
+<!--            app:argType="false"-->
+<!--             />-->
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
         <action
             android:id="@+id/action_profileFragment_to_languagesFragment"
             app:destination="@id/languagesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+
     </fragment>
     <dialog
         android:id="@+id/galleryBottomSheetFragment"
@@ -81,6 +89,9 @@
             android:name="phoneNumber"
             app:argType="string"
             app:nullable="true" />
+<!--        <argument-->
+<!--            android:name="numberHide"-->
+<!--            app:argType="boolean" />-->
         <action
             android:id="@+id/action_chatFragment_to_deniedPermissionsDialogFragment"
             app:destination="@id/deniedPermissionsDialogFragment" />

@@ -22,6 +22,11 @@ class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(
         binding.toolbarButton.setOnClickListener {
             findNavController().navigateUp()
         }
+    override val galleryViewModel by viewModels<GroupViewModel>()
+    override fun setupListeners() {
+        binding.toolbarBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }
