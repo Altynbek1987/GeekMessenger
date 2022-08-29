@@ -4,7 +4,6 @@
     <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="nine_digits_with_dashes">###-###-###</string>
     <string name="verification_code_was_sent_on_the_input_number">The verification code was sent to your phone %1$s</string>
-    <string name="zero">0</string>
     <string name="nine">9</string>
     <string name="eight">8</string>
     <string name="seven">7</string>
@@ -16,7 +15,7 @@
     <string name="one">1</string>
     <string name="proceed">Continue</string>
     <string name="your_phone_number_must_contain_15_digits">Your phone number must contain 12 digits</string>
-    <string name="choose_your_name_and_load_an_photo">Введите свое имя и загрузите фотографию</string>
+    <string name="choose_your_name_and_load_an_photo">Введите свое имя пользователя и загрузите \n  фотографию</string>
     <string name="surname_unnecessary">Фамилия (необязательно)</string>
     <string name="name_necessary">Имя(обязательно)</string>
     <string name="verification_code_was_sent_to_the_entered_phone">Код был отправлен на номер + </string>
@@ -34,7 +33,7 @@
     <string name="image_view_to_show_that_the_developers_of_geekmessenger_are_patriots">image view to show that the developers of GeekMessenger are patriots</string>
     <string name="verification_code_you_input_was_invalid_3_times_in_a_row_try_again_in_2_minutes_russian">Вы неправильно ввели код 3 раза.Повторите попытку через 3 минуты</string>
     <string name="input_your_phone_number_russian">Введите свой номер телефона</string>
-    <string name="the_activation_code_will_be_sent_via_SMS_ake_sure_your_device_can_receive_them.">Код активации будет отправлен в SMS-сообщении.Убедитесь,что ваше устройство может их принимать.</string>
+    <string name="the_activation_code_will_be_sent_via_SMS_ake_sure_your_device_can_receive_them.">Код активации будет отправлен в SMS- \n сообщении.Убедитесь,что ваше устройство может их  \n принимать.</string>
     <string name="phone_number_with_underscores">+996 ___ ___ ___</string>
     <string name="kyrgyzstan"><u>Kyrgyzstan</u></string>
     <string name="select_a_photo">Выбрать фото</string>
@@ -43,4 +42,5 @@
     <string name="phone_number_must_consist_of_9_digits">Номер телефона содержит 9 цифр</string>
     <string name="verification_code_was_sent_to_the_entered_phone_2">Код был отправлен на номер</string>
     <string name="profile">Профиль</string>
+    <string name="zero">"0       +</string>
 </resources>

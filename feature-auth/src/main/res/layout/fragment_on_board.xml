@@ -4,27 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".presentation.ui.fragments.auth.onboard.OnBoardFragment">
 
-    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
         android:id="@+id/dots_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:dotsColor="#0000FF"
-        app:dotsSize="8dp"
-        app:dotsSpacing="12dp"
+        app:dotsColor="#004EA3"
+        app:dotsSize="12dp"
+        app:dotsSpacing="8dp"
+        app:dotsStrokeColor="#DA101A"
         app:dotsWidthFactor="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gl_dots_indicator_top"
-        app:selectedDotColor="#FF0000" />
+        app:layout_constraintTop_toTopOf="@id/gl_dots_indicator_top" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_dots_indicator_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="522dp" />
+        app:layout_constraintGuide_percent="0.60" />
 
 
     <androidx.viewpager2.widget.ViewPager2
@@ -44,15 +45,18 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/start_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
-        android:backgroundTint="#4A7CE0"
+        android:layout_marginTop="42dp"
+        android:backgroundTint="#004EA3"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        app:cornerRadius="20dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gl_button_bottom" />
+        app:layout_constraintTop_toBottomOf="@id/dots_indicator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

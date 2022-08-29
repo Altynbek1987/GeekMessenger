@@ -3,6 +3,7 @@ package com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile
 import android.Manifest
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -97,11 +98,7 @@ class CreateProfileFragment :
                 binding.imProfile.setImage(imageUri.toString())
                 uri = imageUri
                 binding.tvPhotoSelection.text = "Изменить фото профиля"
-                binding.tvText.text = ""
-
-
+                binding.tvText.isVisible = false
             }
         }
-
-
 }

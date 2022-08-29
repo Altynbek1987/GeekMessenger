@@ -1,5 +1,3 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package com.geektechkb.core.ui.customViews
 
 import android.animation.Animator
@@ -19,7 +17,7 @@ fun Context.dip(value: Float): Float = (value * resources.displayMetrics.density
 
 fun Context.dipInt(value: Float): Int = dip(value).toInt()
 
-inline fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT): Toast {
+fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT): Toast {
     return Toast.makeText(this, text, duration).apply {
         setGravity(Gravity.CENTER, 0, 0)
         show()

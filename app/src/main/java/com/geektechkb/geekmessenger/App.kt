@@ -15,7 +15,6 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class App : Application() {
 
-
     override fun onCreate() {
         super.onCreate()
         initSendBird()
@@ -45,7 +44,5 @@ class App : Application() {
             applicationContext,
             BuildConfig.SENDBIRD_APP_ID
         )
-
     }
-
 }
