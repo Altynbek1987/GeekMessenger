@@ -5,6 +5,7 @@ import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_VOICE_ME
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT
 import com.geektechkb.core.base.BaseRepository
+import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.snapshotFlow
 import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.domain.repositories.MessagesRepository
@@ -32,6 +33,7 @@ class MessagesRepositoryImpl @Inject constructor(
         messageId: String,
     ) {
         messageMap["messageId"] = messageId
+        messageMap["messageKey"] = (id + receiverPhoneNumber)
         messageMap["message"] = message
         messageMap["senderPhoneNumber"] = id
         messageMap["receiverPhoneNumber"] = receiverPhoneNumber
@@ -50,15 +52,23 @@ class MessagesRepositoryImpl @Inject constructor(
         )
     }
 
-    override fun fetchPagedMessages() = messagesRef
-        .orderBy(FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT)
-        .limitToLast(10)
-        .snapshotFlow()
-        .map { list ->
-            list.map { document ->
-                document.toObject(Message::class.java)
+    override fun fetchPagedMessages(senderPhoneNumber: String, receiverPhoneNumber: String) =
+        messagesRef
+            .whereIn(
+                "messageKey",
+                listOf(
+                    senderPhoneNumber + receiverPhoneNumber,
+                    receiverPhoneNumber + senderPhoneNumber
+                )
+            )
+            .orderBy(FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT)
+            .limitToLast(10)
+            .snapshotFlow()
+            .map { list ->
+                list.map { document ->
+                    document.toObject(Message::class.java)
+                }
             }
-        }
 
 
     suspend fun sendVoiceMessageToCloudStorage(file: Uri?, voiceFileName: String) =

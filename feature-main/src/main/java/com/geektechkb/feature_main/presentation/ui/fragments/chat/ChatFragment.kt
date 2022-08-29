@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.isGone
@@ -347,11 +348,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.fetchPagedMessages().collectLatest {
-                    messagesAdapter.setPhoneNumber(usersPreferencesHelper.currentUserPhoneNumber)
-                    messagesAdapter.submitList(it)
-                    checkAdapterItemCountAndHideLayout()
-                    binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                args.phoneNumber?.let { receiverPhoneNumber ->
+                    viewModel.fetchPagedMessages(
+                        usersPreferencesHelper.currentUserPhoneNumber,
+                        receiverPhoneNumber
+                    ).collectLatest {
+                        messagesAdapter.setPhoneNumber(
+                            usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
+                        )
+                        toast(receiverPhoneNumber, Toast.LENGTH_SHORT)
+                        messagesAdapter.submitList(it)
+                        checkAdapterItemCountAndHideLayout()
+                        binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                    }
                 }
             }
         }

@@ -52,12 +52,13 @@ class CreateProfileFragment :
                             binding.etSurname.text.toString(),
                             uri.toString(),
                             generateRandomId()
-                        ) {}
-
+                        ) {
+                            viewModel.isUserAuthenticated()
+                            mainNavController(R.id.nav_host_fragment_container_auth).navigateSafely(
+                                R.id.action_profileFragment_to_mainFlowFragment
+                            )
+                        }
                     }
-                    viewModel.isUserAuthenticated()
-                    mainNavController(R.id.nav_host_fragment_container_auth).navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
-
                 }
             }
 
