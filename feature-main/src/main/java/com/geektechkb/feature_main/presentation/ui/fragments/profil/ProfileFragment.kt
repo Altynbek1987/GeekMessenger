@@ -32,7 +32,6 @@ import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
-import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -75,31 +74,6 @@ class ProfileFragment :
 
     override fun setupListeners() {
         binding.openBottomSheet.setOnClickListener {
-            binding.openBottomSheet.isVisible = false
-            binding.coordinatorGallery.isVisible = true
-            stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
-            bottomSheetBehavior?.addBottomSheetCallback(object :
-                BottomSheetBehavior.BottomSheetCallback() {
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    if (BottomSheetBehavior.STATE_EXPANDED == newState) {
-                        showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
-                        binding.openBottomSheet.isVisible = false
-                    } else {
-                        binding.openBottomSheet.isVisible = true
-                        hideAppBar(binding.galleryBottomSheet.appbarLayout)
-                    }
-                }
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                }
-            })
-        }
-        languageСhange()
-    }
-
-    private fun languageСhange() {
-        binding.tvLanguage.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_languagesFragment)
-        }
             getData()
         }
         //menu navigation
@@ -114,10 +88,16 @@ class ProfileFragment :
             }
             true
         }
-        binding.chanceBtn.setOnClickListener {
+        binding.toolbarButton.setOnClickListener {
             findNavController().navigateUp()
         }
+        languageСhange()
+    }
 
+    private fun languageСhange() {
+        binding.tvLanguage.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_languagesFragment)
+        }
     }
 
     private fun getData() {
@@ -241,7 +221,8 @@ class ProfileFragment :
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(uri.toString())
         )
     }
-
-
 }
+
+
+
 

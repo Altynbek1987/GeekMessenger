@@ -3,49 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/box_stroke_color_selector.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/check.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/ic_back.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/ic_backspace.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/ic_clear.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/ic_group_24.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/icon_cel.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/icon_profile_image.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/drawable/oval.xml" value="0.1415" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.21944444444444444" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.21403508771929824" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-main/src/main/res/drawable/first_message_sent_cornered_background.xml" value="0.127" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-main/src/main/res/layout/fragment_chat.xml" value="0.305019305019305" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-main/src/main/res/layout/fragment_home.xml" value="0.21944444444444444" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-main/src/main/res/layout/item_received_message.xml" value="0.264" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-main/src/main/res/layout/item_received_voice_message.xml" value="0.259375" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-main/src/main/res/layout/item_sent_messages.xml" value="0.264" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-main/src/main/res/layout/item_sent_voice_message.xml" value="0.259375" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger3000som/feature-main/src/main/res/layout/item_user.xml" value="0.21944444444444444" />
         <entry key="../../../../layout/custom_preview.xml" value="0.31701011928260747" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.10833333333333334" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/drawable/check.xml" value="0.1395" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/drawable/ic_camera.xml" value="0.139" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/app_bar_main.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/content_main.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_calls.xml" value="0.16799999999999998" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_chat.xml" value="0.4" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_crop_photo.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_gallery_bottom_sheet.xml" value="0.152" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_group.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_home.xml" value="0.2269021739130435" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.264" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.10552536231884058" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_profile.xml" value="0.4" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_profile.xml" value="0.16750902527075812" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/fragment_settings.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/item_gallery.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/item_home.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/item_received_message.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/item_sent_message.xml" value="0.2269021739130435" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/nav_header_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/layout/nav_header_main.xml" value="0.2196969696969697" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/menu/chat_toolbar_menu.xml" value="0.2484375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/menu/main_drawer.xml" value="0.2484375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/menu/toolbar_menu.xml" value="0.2484375" />
@@ -65,6 +40,7 @@
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/arrow.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/chat_box_stroke_color_selector.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_arrow.xml" value="0.2265" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_back.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_baseline_check_24.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_camera.xml" value="0.2265" />
@@ -75,16 +51,48 @@
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/image_counter_selected.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/last_message_received_cornered_background.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/middle_message_sent_cornered_background.xml" value="0.2265" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/content_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_calls.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_chat.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_clear_chat_history.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_connection_check.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_crop_photo.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_gallery_bottom_sheet.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_group.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.176" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_incoming_call.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_languages.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.1703125" />
-        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_profile.xml" value="0.4" />
-        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_profile.xml" value="0.176" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_photo_preview.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_voice_call.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_gallery.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_received_image.xml" value="0.2734375" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_received_message.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_received_voice_message.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_sent_image_message.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_sent_int_message.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_sent_messages.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_sent_voice_message.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_user.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/nav_header_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/there_are_no_messages_yet.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/menu/info_preview_menu.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/app/src/main/res/layout/activity_main.xml" value="0.2212962962962963" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/core/src/main/res/layout/view_audio_record.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/core/src/main/res/layout/view_slide_panel.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_attempts_to_verify_phone_number_exceeded_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_auth_with_phone_number.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_on_board.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-auth/src/main/res/layout/item_board.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable-v24/ic_baseline_person_24.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1425" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_back.xml" value="0.138" />
@@ -104,12 +112,25 @@
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/app_bar_main.xml" value="0.176" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/content_main.xml" value="0.21296296296296297" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_calls.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_group.xml" value="0.4" />
-        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.16875" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_chat.xml" value="0.536" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_clear_chat_history.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_connection_check.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_crop_photo.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_gallery_bottom_sheet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_group.xml" value="0.1" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.264" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_profile.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_settings.xml" value="0.2" />
-        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/nav_header_main.xml" value="0.264" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_gallery.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_received_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_received_voice_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_sent_messages.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_sent_voice_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/nav_header_main.xml" value="0.176" />
+        <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/there_are_no_messages_yet.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/toolbar_burger.xml" value="0.253125" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/menu/activity_main_drawer.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/Alumbek/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/menu/main.xml" value="0.25416666666666665" />
@@ -138,12 +159,6 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/GekMesenger/feature-main/src/main/res/layout/fragment_group.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/GekMesenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/GekMesenger/feature-main/src/main/res/layout/nav_header_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.35280797101449274" />
-        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_dialog.xml" value="0.35280797101449274" />
-        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_on_board.xml" value="0.35280797101449274" />
-        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.35280797101449274" />
-        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.35280797101449274" />
-        <entry key="..\:/Users/worldpc/AndroidStudioProjects/GeekMessengers/feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable-v24/arrow.xml" value="0.119" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable-v24/ic_vector.xml" value="0.119" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekMessenger/app/src/main/res/drawable/arrow.xml" value="0.119" />
@@ -277,11 +292,10 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
-    <option name="id" value="Android" />
     <option name="id" value="jpab" />
   </component>
   <component name="VisualizationToolProject">

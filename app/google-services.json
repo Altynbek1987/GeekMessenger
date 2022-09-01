@@ -14,23 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "974311209739-8gies98rsl5co97bjnnn922k7i4tbf0m.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.geektechkb.geekmessenger",
-            "certificate_hash": "75141cb8c73e67701988b9c337256f65a6f7af5d",
-          }
-        },
-        {
-          "client_id": "974311209739-5v6vuq69jb17ttefth51h911nrdk6qm0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.geektechkb.geekmessenger",
-            "certificate_hash": "75141cb8c73e67701988b9c337256f65a6f7af5d"
-          }
-        },
-        {
-          "client_id": "974311209739-r6tfl59fbq705tehov0okc60l7uksuf3.apps.googleusercontent.com",
+          "client_id": "974311209739-640fj2h0no9ls7t87ovgcfochqeg77df.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.geektechkb.geekmessenger",
@@ -38,11 +22,19 @@
           }
         },
         {
-          "client_id": "974311209739-gnipkuvk03ca7shm111thmv79ecqp9ou.apps.googleusercontent.com",
+          "client_id": "974311209739-ndvmru2e17agujhokducr024rdau8r8b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.geektechkb.geekmessenger",
-            "certificate_hash": "a9506b852e341feb85b51af63ec554ac307e5487"
+            "certificate_hash": "75141cb8c73e67701988b9c337256f65a6f7af5d"
+          }
+        },
+        {
+          "client_id": "974311209739-re6f01qihiajq66p405j0npi9lpl20km.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geektechkb.geekmessenger",
+            "certificate_hash": "442ce20bbbcb366ec0aef8131813ec0dcfeb470c"
           }
         },
         {
