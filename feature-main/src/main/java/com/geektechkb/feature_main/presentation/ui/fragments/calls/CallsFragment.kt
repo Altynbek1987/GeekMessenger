@@ -11,8 +11,8 @@ class CallsFragment : BaseFragment<FragmentCallsBinding, СallsViewModel>(
     R.layout.fragment_calls
 ) {
     override val binding by viewBinding(FragmentCallsBinding::bind)
-    override val viewModel by viewModels<СallsViewModel>()
-    override fun assembleViews() {
+    override val galleryViewModel by viewModels<СallsViewModel>()
+    override fun setupListeners() {
         binding.toolbarButton.setOnClickListener {
             findNavController().navigateUp()
         }

@@ -53,17 +53,28 @@ class MainFlowFragment : BaseFlowFragment(
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.appBarMain.toolbarButton.isGone =
+                R.id.chatFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.cropPhotoFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_groups -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_calls -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_host_fragment_content_main -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                else -> binding.appBarMain.toolbarButton.isGone = false
+                R.id.action_chatFragment_to_deniedPermissionsDialogFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                    true
+                R.id.galleryBottomSheetFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                    true
+                R.id.homeFragment -> binding.homeAppBarMain.toolbarButton.isGone = false
+
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                    true
+                else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
 
-        binding.appBarMain.toolbarButton.setOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
+            binding.homeAppBarMain.toolbarButton.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
         }
-//
     }
 
     override fun establishRequest() {

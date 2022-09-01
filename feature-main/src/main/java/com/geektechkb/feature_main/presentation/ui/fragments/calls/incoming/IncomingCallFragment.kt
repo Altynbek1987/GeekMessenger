@@ -1,7 +1,9 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming
 
+import android.os.Build
 import android.view.DragEvent
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -15,14 +17,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class IncomingCallFragment :
     BaseFragment<FragmentIncomingCallBinding, IncomingCallViewModel>(R.layout.fragment_incoming_call) {
     override val binding by viewBinding(FragmentIncomingCallBinding::bind)
-    override val viewModel by viewModels<IncomingCallViewModel>()
+    override val galleryViewModel by viewModels<IncomingCallViewModel> ()
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun setupListeners() {
         binding.imAcceptCall.setOnClickListener {
-            viewModel.acceptAnIncomingCall()
+            galleryViewModel.acceptAnIncomingCall()
         }
         binding.imHangUpCall.setOnDragListener { v, event ->
             when (event.action) {
-
                 DragEvent.ACTION_DRAG_STARTED -> {
                     v.startDragAndDrop(
                         null,

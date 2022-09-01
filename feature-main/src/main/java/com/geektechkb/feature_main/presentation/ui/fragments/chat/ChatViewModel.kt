@@ -131,7 +131,8 @@ class ChatViewModel @Inject constructor(
         path.toLong()
     )
 
-    fun fetchPagedMessages() = fetchPagedMessagesUseCase()
+    fun fetchPagedMessages(senderPhoneNumber: String, receiverPhoneNumber: String) =
+        fetchPagedMessagesUseCase(senderPhoneNumber, receiverPhoneNumber)
 
     suspend fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
@@ -149,8 +150,4 @@ class ChatViewModel @Inject constructor(
         actionOnCallConnected,
         actionOnCallEnded
     )
-
-    init {
-        fetchPagedMessages()
-    }
 }

@@ -14,6 +14,7 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class App : Application() {
+    val emojiManager = EmojiManager.install(GoogleEmojiProvider())
 
     override fun onCreate() {
         super.onCreate()
@@ -21,13 +22,9 @@ class App : Application() {
         installEmojiProvider()
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                return@addOnCompleteListener
-            }
-
+            if (!task.isSuccessful) {return@addOnCompleteListener }
             val token = task.result
-            Log.e("RUSS", "Token -> $token")
-        }
+            Log.e("RUSS", "Token -> $token")}
         SendBirdCall.addListener(UNIQUE_HANDLER_ID, object : SendBirdCallListener() {
             override fun onRinging(call: DirectCall) {
             }
