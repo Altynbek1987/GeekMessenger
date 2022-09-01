@@ -53,26 +53,26 @@ class MainFlowFragment : BaseFlowFragment(
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                R.id.chatFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.profileFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.cropPhotoFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.nav_groups -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.nav_calls -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.nav_host_fragment_content_main -> binding.homeAppBarMain.toolbarButto.isGone =
+                R.id.chatFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.cropPhotoFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_groups -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_calls -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_host_fragment_content_main -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                R.id.action_chatFragment_to_deniedPermissionsDialogFragment -> binding.homeAppBarMain.toolbarButto.isGone =
+                R.id.action_chatFragment_to_deniedPermissionsDialogFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                R.id.galleryBottomSheetFragment -> binding.homeAppBarMain.toolbarButto.isGone =
+                R.id.galleryBottomSheetFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                R.id.homeFragment -> binding.homeAppBarMain.toolbarButto.isGone = false
+                R.id.homeFragment -> binding.homeAppBarMain.toolbarButton.isGone = false
 
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.appBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                else -> binding.appBarMain.toolbarButton.isGone = false
+                else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
 
-            binding.homeAppBarMain.toolbarButto.setOnClickListener {
+            binding.homeAppBarMain.toolbarButton.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
     }
