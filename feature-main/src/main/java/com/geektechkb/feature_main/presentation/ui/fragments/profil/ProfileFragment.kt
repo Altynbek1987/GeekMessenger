@@ -109,6 +109,26 @@ class ProfileFragment :
         })
     }
 
+    private fun getData() {
+        binding.openBottomSheet.isVisible = false
+        binding.coordinatorGallery.isVisible = true
+        stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
+        bottomSheetBehavior?.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (BottomSheetBehavior.STATE_EXPANDED == newState) {
+                    showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
+                    binding.openBottomSheet.isVisible = false
+                } else {
+                    binding.openBottomSheet.isVisible = true
+                    hideAppBar(binding.galleryBottomSheet.appbarLayout)
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
+    }
+
     override fun establishRequest() {
         fetchUser()
     }
@@ -209,7 +229,8 @@ class ProfileFragment :
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(uri.toString())
         )
     }
-
-
 }
+
+
+
 

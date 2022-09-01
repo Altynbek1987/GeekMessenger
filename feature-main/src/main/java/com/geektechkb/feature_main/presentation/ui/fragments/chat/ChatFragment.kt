@@ -2,7 +2,10 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -36,6 +39,7 @@ import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 
@@ -132,10 +136,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         sendMessage()
         expandGalleryDialog()
         openEmojiSoftKeyboard()
-        backToHomeFragment()
         onBackPressed()
         interactWithToolbarMenu()
+        backToHomeFragment()
     }
+
 
     private fun expandGalleryDialog() {
         if (stateBottomSheet) {
@@ -184,10 +189,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         setupBottomSheet()
     }
 
-    private fun setupBottomSheet() {
-        bottomSheetBehavior =
-            BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
-    }
+        private fun setupBottomSheet() {
+            bottomSheetBehavior =
+                BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
+        }
 
     private fun initBottomSheetRecycler() {
         binding.galleryBottomSheet.recyclerviewRating.adapter = adapter
@@ -252,11 +257,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         })
     }
 
-    private fun backToHomeFragment() {
-        binding.imBack.setOnSingleClickListener {
-            findNavController().navigate(R.id.homeFragment)
-        }
-    }
+
 
     private fun sendMessage() = with(binding) {
         imSendMessage.setOnSingleClickListener {
@@ -296,6 +297,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 else -> true
 
             }
+        }
+    }
+
+    private fun backToHomeFragment() {
+        binding.imBack.setOnSingleClickListener {
+            findNavController().navigate(R.id.action_chatFragment_to_homeFragment)
         }
     }
 

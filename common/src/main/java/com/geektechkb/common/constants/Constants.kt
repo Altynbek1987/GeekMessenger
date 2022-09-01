@@ -17,9 +17,11 @@ object Constants {
     const val FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT = "timeMessageWasSent"
     const val FIREBASE_USER_LAST_NAME_KEY = "lastName"
     const val FIREBASE_USER_PROFILE_IMAGE_KEY = "profileImage"
+    const val FIREBASE_USER_MESSAGE_IMAGE_KEY = "messageImage"
     const val YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT = "yyyy-MM-dd-HH:mm:ss"
     const val HOURS_MINUTES_DATE_FORMAT = "HH:mm"
     const val FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH = "profileImages/"
+    const val FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH = "messageImages/"
     const val FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH = "voiceMessages/"
 
     const val INTENT_FILTER = "MESSENGER_EVENT"
@@ -31,4 +33,8 @@ object Constants {
     const val UNIQUE_HANDLER_ID = "uniqueHandlerId"
     const val CHANGE_LANGUAGE = "language"
 
+
+    const val BASE_URL = "https://fcm.googleapis.com"
+    const val SERVER_KEY = "AAAA4tl5Ows:APA91bE6G6MElF0snum44KolLtwwmnCecHS5gRCFNi5P7z4PpiL1SFEqBhjJoCqQ9UE9pz7hLAMH6UGSUQe-GdFcNy2lolWDOaLxO4LuVo9nTTCmGhu_FiXtuMBrdm1eW2D3giz-zrUs" // get firebase server key from firebase project setting
+    const val CONTENT_TYPE = "application/json"
 }

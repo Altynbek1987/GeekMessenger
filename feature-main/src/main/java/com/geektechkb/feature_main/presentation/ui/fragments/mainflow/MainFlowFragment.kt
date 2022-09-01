@@ -38,8 +38,6 @@ class MainFlowFragment : BaseFlowFragment(
 
     @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
-
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         appBarConfiguration = AppBarConfiguration(
@@ -51,7 +49,6 @@ class MainFlowFragment : BaseFlowFragment(
         )
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
             when (destination.id) {
                 R.id.chatFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
                 R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
@@ -71,6 +68,7 @@ class MainFlowFragment : BaseFlowFragment(
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
+
 
             binding.homeAppBarMain.toolbarButton.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
@@ -103,7 +101,6 @@ class MainFlowFragment : BaseFlowFragment(
         })
         Log.e("anime", viewModel.userState.toString())
     }
-
 
     override fun onStart() {
         super.onStart()

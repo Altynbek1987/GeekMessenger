@@ -170,5 +170,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
         }
     }
 
+
     open protected fun File(imImageProfile: ImageFilterButton) {}
 }

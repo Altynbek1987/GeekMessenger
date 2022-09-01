@@ -33,7 +33,6 @@ class CreateProfileFragment :
                     permission.value -> fileChooserContract.launch("image/*")
                     !shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE) -> {
                         permissionMessage()
-
                     }
                 }
             }
@@ -88,7 +87,6 @@ class CreateProfileFragment :
                     "Приложение GeekMessenger не может функционировать без разрешение на галерею устройства. Вы можете включить их в разределе Настройки"
                 )
             )
-
         }
     }
 

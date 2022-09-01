@@ -42,10 +42,10 @@ class ChatViewModel @Inject constructor(
         receiverPhoneNumber: String,
         message: String,
         timeMessageWasSent: String,
-        messageId: String
+        messageId: String,
     ) {
         viewModelScope.launch {
-            sendMessageUseCase(id, receiverPhoneNumber, message, timeMessageWasSent, messageId)
+            sendMessageUseCase(id, receiverPhoneNumber, message, timeMessageWasSent, messageId )
         }
     }
 
@@ -54,6 +54,7 @@ class ChatViewModel @Inject constructor(
             sendVoiceMessageUseCase(file, imageFileName)
         }
     }
+
 
     fun getImagesFromGallery(
         context: Context,

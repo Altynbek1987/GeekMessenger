@@ -25,12 +25,11 @@ class App : Application() {
             if (!task.isSuccessful) {return@addOnCompleteListener }
             val token = task.result
             Log.e("RUSS", "Token -> $token")}
-        SendBirdCall.addListener(UNIQUE_HANDLER_ID, object : SendBirdCallListener() {
-            override fun onRinging(call: DirectCall) {
-            }
+    SendBirdCall.addListener(UNIQUE_HANDLER_ID, object : SendBirdCallListener() {
+        override fun onRinging(call: DirectCall) {
+        }
 
-        })
-    }
+    })}
 
     private fun installEmojiProvider() {
         EmojiManager.install(GoogleEmojiProvider())
@@ -42,4 +41,7 @@ class App : Application() {
             BuildConfig.SENDBIRD_APP_ID
         )
     }
+
+
+
 }

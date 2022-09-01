@@ -54,6 +54,10 @@
         <action
             android:id="@+id/action_profileFragment_to_languagesFragment"
             app:destination="@id/languagesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+
     </fragment>
     <dialog
         android:id="@+id/galleryBottomSheetFragment"
@@ -89,9 +93,12 @@
             android:name="phoneNumber"
             app:argType="string"
             app:nullable="true" />
-<!--        <argument-->
-<!--            android:name="numberHide"-->
-<!--            app:argType="boolean" />-->
+        <argument
+            android:name="image"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
         <action
             android:id="@+id/action_chatFragment_to_deniedPermissionsDialogFragment"
             app:destination="@id/deniedPermissionsDialogFragment" />
@@ -104,6 +111,9 @@
         <action
             android:id="@+id/action_chatFragment_to_photoReviewFragment"
             app:destination="@id/photoReviewFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
@@ -166,6 +176,11 @@
         <argument
             android:name="photo"
             app:argType="string" />
+        <action
+            android:id="@+id/action_photoReviewFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>
