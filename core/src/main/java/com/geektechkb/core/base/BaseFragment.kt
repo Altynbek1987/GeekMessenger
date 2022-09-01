@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@LayoutRes layoutId: Int) :
     Fragment(layoutId) {
     protected abstract val binding: Binding
-    protected abstract val viewModel: ViewModel
+    protected abstract val galleryViewModel: ViewModel
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -168,9 +168,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
 
             }
         }
-
     }
-
 
 
     open protected fun File(imImageProfile: ImageFilterButton) {}

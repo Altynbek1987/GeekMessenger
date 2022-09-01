@@ -32,27 +32,22 @@ import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
+import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment :
-    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
+    BaseFragment<FragmentProfileBinding, GalleryBottomSheetViewModel>(R.layout.fragment_profile) {
 
     override val binding by viewBinding(FragmentProfileBinding::bind)
-    override val viewModel: ProfileViewModel by viewModels()
-    private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
+    override val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
+    private val viewModel: ProfileViewModel by viewModels()
     private val args by navArgs<ProfileFragmentArgs>()
     private var username: String? = null
     private var savedUserStatus: String? = null
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private val pictures = ArrayList<GalleryPicture>()
     private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
-
-    override fun assembleViews() {
-        binding.toolbarButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
-    }
 
     @Inject
     lateinit var preferences: UserPreferencesHelper
@@ -88,16 +83,30 @@ class ProfileFragment :
             }
             true
         }
-        binding.toolbarButton.setOnClickListener {
+        binding.chanceBtn.setOnClickListener {
             findNavController().navigateUp()
         }
-        languageСhange()
+
     }
 
-    private fun languageСhange() {
-        binding.tvLanguage.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_languagesFragment)
-        }
+    private fun getData() {
+        binding.openBottomSheet.isVisible = false
+        binding.coordinatorGallery.isVisible = true
+        stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
+        bottomSheetBehavior?.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (BottomSheetBehavior.STATE_EXPANDED == newState) {
+                    showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
+                    binding.openBottomSheet.isVisible = false
+                } else {
+                    binding.openBottomSheet.isVisible = true
+                    hideAppBar(binding.galleryBottomSheet.appbarLayout)
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
     }
 
     private fun getData() {
@@ -139,8 +148,7 @@ class ProfileFragment :
             savedUserStatus = it.lastSeen
             binding.tvNumber.text = (it.phoneNumber)
             if (args.croppedImage.isNullOrEmpty()) {
-                binding.imImageProfile.loadImageWithGlide(it.profileImage)
-            }
+                binding.imImageProfile.loadImageWithGlide(it.profileImage)}
             binding.tvName.text = it.name
             binding.tvLastSeen.text = it.lastSeen
             username = it.name

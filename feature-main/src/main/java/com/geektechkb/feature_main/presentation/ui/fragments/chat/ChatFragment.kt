@@ -8,6 +8,7 @@ import android.net.Uri
 import android.util.Base64
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.isGone
@@ -28,6 +29,7 @@ import com.geektechkb.core.ui.customViews.AudioRecordView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
+import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
@@ -50,7 +52,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private val pictures = ArrayList<GalleryPicture>()
     private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
     private val messagesAdapter = MessagesAdapter()
-    override val viewModel: ChatViewModel by viewModels()
+    override val galleryViewModel by viewModels<ChatViewModel> ()
     private val args: ChatFragmentArgs by navArgs()
     private var username: String? = null
     private var savedUserStatus: String? = null
@@ -204,7 +206,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun loadPictures() {
-        viewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
+        galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
             if (it.isNotEmpty()) {
                 pictures.addAll(it)
                 adapter.notifyItemRangeInserted(pictures.size, it.size)
@@ -259,7 +261,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun sendMessage() = with(binding) {
         imSendMessage.setOnSingleClickListener {
-            viewModel.sendMessage(
+            galleryViewModel.sendMessage(
                 usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
@@ -330,7 +332,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun fetchUser() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            args.phoneNumber?.let { viewModel.fetchUser(it) }
+            args.phoneNumber?.let { galleryViewModel.fetchUser(it) }
         }
     }
 
@@ -341,7 +343,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
+        galleryViewModel.userState.spectateUiState(success = {
             savedUserStatus = it.lastSeen
             changeUserStatusToTyping(it.phoneNumber)
             binding.imProfile.loadImageWithGlide(it.profileImage)
@@ -354,11 +356,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.fetchPagedMessages().collectLatest {
-                    messagesAdapter.setPhoneNumber(usersPreferencesHelper.currentUserPhoneNumber)
-                    messagesAdapter.submitList(it)
-                    checkAdapterItemCountAndHideLayout()
-                    binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                args.phoneNumber?.let { receiverPhoneNumber ->
+                    galleryViewModel.fetchPagedMessages(
+                        usersPreferencesHelper.currentUserPhoneNumber,
+                        receiverPhoneNumber
+                    ).collectLatest {
+                        messagesAdapter.setPhoneNumber(
+                            usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
+                        )
+                        toast(receiverPhoneNumber, Toast.LENGTH_SHORT)
+                        messagesAdapter.submitList(it)
+                        checkAdapterItemCountAndHideLayout()
+                        binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                    }
                 }
             }
         }
@@ -386,7 +396,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
-        viewModel.sendVoiceMessage(
+        galleryViewModel.sendVoiceMessage(
             appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
             generateRandomId()
         )

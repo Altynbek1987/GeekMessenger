@@ -27,7 +27,7 @@ class PhotoReviewFragment :
     BaseFragment<FragmentPhotoPreviewBinding, PhotoReviewViewModel>(R.layout.fragment_photo_preview) {
 
     override val binding by viewBinding(FragmentPhotoPreviewBinding::bind)
-    override val viewModel by viewModels<PhotoReviewViewModel>()
+    override val galleryViewModel by viewModels<PhotoReviewViewModel> ()
     private var uri: Uri = Uri.EMPTY
     private val args by navArgs<PhotoReviewFragmentArgs>()
 

@@ -42,8 +42,9 @@
 
             <ImageView
                 android:id="@+id/im_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="22dp"
@@ -343,6 +344,7 @@
         android:contentDescription="@string/button_to_send_message"
         android:src="@drawable/ic_send_message"
         android:visibility="gone"
+        android:src="@drawable/ic_send_message"
         app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gl_send_message_start"

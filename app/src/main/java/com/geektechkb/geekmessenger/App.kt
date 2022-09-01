@@ -14,6 +14,7 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class App : Application() {
+    val emojiManager = EmojiManager.install(GoogleEmojiProvider())
 
     override fun onCreate() {
         super.onCreate()

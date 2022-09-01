@@ -15,7 +15,7 @@ import com.geektechkb.feature_main.databinding.FragmentVoiceCallBinding
 class VoiceCallFragment :
     BaseFragment<FragmentVoiceCallBinding, VoiceCallViewModel>(R.layout.fragment_voice_call) {
     override val binding by viewBinding(FragmentVoiceCallBinding::bind)
-    override val viewModel by viewModels<VoiceCallViewModel>()
+    override val galleryViewModel by viewModels <VoiceCallViewModel>()
     private val args by navArgs<VoiceCallFragmentArgs>()
     override fun establishRequest() {
         changeButtonsImageWhenActivated()

@@ -50,8 +50,6 @@ class MainFlowFragment : BaseFlowFragment(
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
-                    true
                 R.id.chatFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
                 R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
                 R.id.cropPhotoFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
@@ -64,15 +62,16 @@ class MainFlowFragment : BaseFlowFragment(
                 R.id.galleryBottomSheetFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
                 R.id.homeFragment -> binding.homeAppBarMain.toolbarButton.isGone = false
+
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                    true
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
 
-        binding.homeAppBarMain.toolbarButton.setOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
+
             binding.homeAppBarMain.toolbarButton.setOnClickListener {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
-            }
+            binding.drawerLayout.openDrawer(GravityCompat.START)
         }
     }
 
