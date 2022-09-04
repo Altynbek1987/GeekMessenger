@@ -17,7 +17,6 @@ import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
-import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -41,7 +40,6 @@ class MainFlowFragment : BaseFlowFragment(
 
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
@@ -54,16 +52,14 @@ class MainFlowFragment : BaseFlowFragment(
 
             when (destination.id) {
 
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.appBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.languagesFragment, R.id.notificationsAndSoundsFragment, R.id.editProfileFragment -> binding.appBarMain.toolbarButton.isGone =
                     true
                 else -> binding.appBarMain.toolbarButton.isGone = false
             }
         }
-
         binding.appBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
-//
     }
 
     override fun establishRequest() {

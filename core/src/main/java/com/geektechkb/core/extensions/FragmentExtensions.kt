@@ -5,16 +5,21 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.util.TypedValue
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
@@ -164,3 +169,77 @@ private fun Fragment.getDisplayWidthPixels() = requireContext().resources.displa
 private fun Fragment.getDisplayHeightPixels() =
     requireContext().resources.displayMetrics.heightPixels
 
+
+fun Fragment.openGalleryBottomSheet(
+    cardView: MaterialCardView,
+    bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>?,
+    appBarLayout: AppBarLayout,
+    coordinatorLayout: CoordinatorLayout,
+    actionOnDialogOpened: (() -> Unit)? = null,
+    actionOnDialogHalfExpanded: (() -> Unit)? = null,
+    actionOnDialogStateExpanded: (() -> Unit)? = null,
+    actionOnDialogStateDragging: (() -> Unit)? = null,
+    actionOnDialogStateHidden: (() -> Unit)? = null,
+    actionOnDialogAnyState: (() -> Unit)? = null
+) {
+    actionOnDialogOpened?.invoke()
+    coordinatorLayout.isVisible = true
+    stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
+    bottomSheetBehavior?.addBottomSheetCallback(object :
+        BottomSheetBehavior.BottomSheetCallback() {
+        override fun onStateChanged(bottomSheet: View, newState: Int) {
+            when (newState) {
+                BottomSheetBehavior.STATE_HALF_EXPANDED ->
+                    actionOnDialogHalfExpanded?.invoke()
+
+                BottomSheetBehavior.STATE_EXPANDED -> {
+                    showView(appBarLayout, getActionBarSize(), appBarLayout)
+                    actionOnDialogStateExpanded?.invoke()
+                    cardView.radius =
+                        TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP,
+                            0F,
+                            context?.resources?.displayMetrics
+                        )
+                }
+                BottomSheetBehavior.STATE_HIDDEN ->
+                    actionOnDialogStateHidden?.invoke()
+                BottomSheetBehavior.STATE_DRAGGING -> actionOnDialogStateDragging?.invoke()
+                else -> {
+                    actionOnDialogAnyState?.invoke()
+                    cardView.radius =
+                        TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP,
+                            10F,
+                            context?.resources?.displayMetrics
+                        )
+                    hideAppBar(appBarLayout, appBarLayout)
+                }
+            }
+        }
+
+        override fun onSlide(bottomSheet: View, slideOffset: Float) {
+        }
+    })
+}
+
+fun Fragment.showView(view: View, size: Int, appBarLayout: AppBarLayout) {
+    val params = view.layoutParams
+    params.height = size
+    appBarLayout.isVisible = true
+    view.layoutParams = params
+}
+
+
+fun Fragment.hideAppBar(view: View, appBarLayout: AppBarLayout) {
+    val params = view.layoutParams
+    params.height = 4
+    appBarLayout.isVisible = false
+    view.layoutParams = params
+}
+
+fun Fragment.getActionBarSize(): Int {
+    val array =
+        requireContext().theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
+    return array.getDimension(0, 0f).toInt()
+}
