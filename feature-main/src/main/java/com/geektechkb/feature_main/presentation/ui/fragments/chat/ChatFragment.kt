@@ -27,7 +27,6 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
-import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.vanniktech.emoji.EmojiPopup
@@ -43,8 +42,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override val binding by viewBinding(FragmentChatBinding::bind)
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
-    private val pictures = ArrayList<GalleryPicture>()
-    private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
+    private val adapter = GalleryPicturesAdapter(this::onSelect)
     private val messagesAdapter = MessagesAdapter()
     override val viewModel: ChatViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
@@ -63,6 +61,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
+
     override fun initialize() {
         binding.recordView.activity = requireActivity()
         binding.recordView.callback = this
@@ -200,10 +199,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun loadPictures() {
         viewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
             if (it.isNotEmpty()) {
-                pictures.addAll(it)
-                adapter.notifyItemRangeInserted(pictures.size, it.size)
+                adapter.submitList(it)
+//                pictures.addAll(it)
+                adapter.notifyItemRangeInserted(adapter.currentList.size, it.size)
             }
-            Log.e("GalleryListSize", "${pictures.size}")
+            Log.e("GalleryListSize", "${adapter.currentList.size}")
         }
     }
 
