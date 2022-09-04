@@ -21,14 +21,6 @@
             "certificate_hash": "5d1cd4ac9a4e899b45dd18ee3ccef36441b3bf3c"
           }
         },
-
-          "client_id": "974311209739-ndvmru2e17agujhokducr024rdau8r8b.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.geektechkb.geekmessenger",
-            "certificate_hash": "75141cb8c73e67701988b9c337256f65a6f7af5d"
-          }
-        },
         {
           "client_id": "974311209739-re6f01qihiajq66p405j0npi9lpl20km.apps.googleusercontent.com",
           "client_type": 1,

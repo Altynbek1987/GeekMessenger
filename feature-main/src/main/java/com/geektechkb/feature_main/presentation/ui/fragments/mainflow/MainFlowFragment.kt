@@ -17,7 +17,6 @@ import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
-import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -38,8 +37,9 @@ class MainFlowFragment : BaseFlowFragment(
 
     @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
+
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
@@ -49,29 +49,16 @@ class MainFlowFragment : BaseFlowFragment(
         )
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.chatFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
-                R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
-                R.id.cropPhotoFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
-                R.id.nav_groups -> binding.homeAppBarMain.toolbarButton.isGone = true
-                R.id.nav_calls -> binding.homeAppBarMain.toolbarButton.isGone = true
-                R.id.nav_host_fragment_content_main -> binding.homeAppBarMain.toolbarButton.isGone =
-                    true
-                R.id.action_chatFragment_to_deniedPermissionsDialogFragment -> binding.homeAppBarMain.toolbarButton.isGone =
-                    true
-                R.id.galleryBottomSheetFragment -> binding.homeAppBarMain.toolbarButton.isGone =
-                    true
-                R.id.homeFragment -> binding.homeAppBarMain.toolbarButton.isGone = false
 
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+            when (destination.id) {
+
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.languagesFragment, R.id.notificationsAndSoundsFragment, R.id.editProfileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
-
-
-            binding.homeAppBarMain.toolbarButton.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
+        binding.homeAppBarMain.toolbarButton.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
         }
     }
 
@@ -101,6 +88,7 @@ class MainFlowFragment : BaseFlowFragment(
         })
         Log.e("anime", viewModel.userState.toString())
     }
+
 
     override fun onStart() {
         super.onStart()

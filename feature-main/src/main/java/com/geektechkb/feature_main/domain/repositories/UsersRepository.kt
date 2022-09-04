@@ -15,4 +15,9 @@ interface UsersRepository {
     fun insertAllUser(user: UserDb)
     fun updateUser(user: UserDb)
     fun deleteUser(user: UserDb)
+    fun updateUserName(name: String)
+    fun updateUserLastName(lastName: String)
+    fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean)
+    fun subscribeToNotificationTopic(vararg topics: String)
+    fun unsubscribeFromNotificationTopic(vararg topics: String)
 }

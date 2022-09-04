@@ -43,7 +43,7 @@
         android:id="@+id/view_flipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/black"
+        android:background="#2C2C2C"
         app:layout_constraintTop_toTopOf="parent">
 
         <ViewFlipper
@@ -68,7 +68,6 @@
                     android:layout_height="match_parent"
                     app:krop_aspectX="1"
                     app:krop_aspectY="1"
-                    app:krop_overlayColor="@color/white"
                     app:krop_shape="rect" />
 
             </FrameLayout>
@@ -89,9 +88,34 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/check"
+        android:src="@drawable/ic_baseline_check_24"
+        app:backgroundTint="@color/blue"
+        app:backgroundTintMode="src_atop"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/im_rotate_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_rotate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/im_flip_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_flip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/im_rotate_image" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

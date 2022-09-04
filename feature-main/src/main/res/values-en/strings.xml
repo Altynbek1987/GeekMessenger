@@ -34,4 +34,9 @@
     <string name="tv_crossed">Hide phone number</string>
     <string name="tv_language">Language</string>
     <string name="gallery">Gallery</string>
+    <string name="groups">Groups</string>
+    <string name="notifications_and_sound">Notifications and sounds</string>
+    <string name="chat_notifications">Notifications from chats</string>
+    <string name="private_chats">Private chats</string>
+    <string name="edit_profile">Редактировать профиль</string>
 </resources>

@@ -32,5 +32,10 @@
     <string name="tv_crossed">Телефон номерин жашыруу</string>
     <string name="tv_language">Тил</string>
     <string name="gallery">Галерея</string>
+    <string name="groups">Топтор</string>
+    <string name="notifications_and_sound">Эскертмелер жана үндөр</string>
+    <string name="chat_notifications">Чат эскертмелери</string>
+    <string name="private_chats">Жеке чаттар</string>
+    <string name="edit_profile">Редактировать профиль</string>
 </resources>
 

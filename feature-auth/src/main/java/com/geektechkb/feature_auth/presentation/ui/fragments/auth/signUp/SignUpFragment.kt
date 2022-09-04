@@ -1,7 +1,6 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp
 
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
@@ -23,7 +22,7 @@ class SignUpFragment :
     lateinit var authorizePreferences: AuthorizePreferences
 
     override val binding by viewBinding(FragmentSignUpBinding::bind)
-    override val galleryViewModel by viewModels<SignUpViewModel> ()
+    override val viewModel by viewModels<SignUpViewModel>()
     private val maskFormatter = MaskedFormatter("### ### ###")
 
     override fun initialize() {

@@ -1,12 +1,10 @@
 package com.geektechkb.feature_main.data.repositories
 
 import android.net.Uri
-import com.geektechkb.common.constants.Constants
 import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT
 import com.geektechkb.core.base.BaseRepository
-import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.snapshotFlow
 import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.domain.repositories.MessagesRepository
@@ -21,7 +19,7 @@ class MessagesRepositoryImpl @Inject constructor(
     firestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
     private val firebaseAuth: FirebaseAuth,
-    ) : BaseRepository(), MessagesRepository {
+) : BaseRepository(), MessagesRepository {
     private val messagesRef =
         firestore.collection(FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH)
     private val voiceRef = cloudStorage.reference

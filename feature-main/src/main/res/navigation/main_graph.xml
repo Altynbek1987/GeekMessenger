@@ -40,10 +40,10 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
-<!--        <argument-->
-<!--            android:name="numberHide"-->
-<!--            app:argType="false"-->
-<!--             />-->
+        <!--        <argument-->
+        <!--            android:name="numberHide"-->
+        <!--            app:argType="false"-->
+        <!--             />-->
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
@@ -55,9 +55,11 @@
             android:id="@+id/action_profileFragment_to_languagesFragment"
             app:destination="@id/languagesFragment" />
         <action
-            android:id="@+id/action_profileFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
-
+            android:id="@+id/action_profileFragment_to_notificationsAndSoundsFragment"
+            app:destination="@id/notificationsAndSoundsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <dialog
         android:id="@+id/galleryBottomSheetFragment"
@@ -81,6 +83,14 @@
             app:destination="@id/profileFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_cropPhotoFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="whereToNavigateBack"
+            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest" />
     </fragment>
 
 
@@ -181,6 +191,25 @@
             app:destination="@id/chatFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsAndSoundsFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.notificationsAndSounds.NotificationsAndSoundsFragment"
+        android:label="fragment_notifications_and_sounds"
+        tools:layout="@layout/fragment_notifications_and_sounds" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_cropPhotoFragment"
+            app:destination="@id/cropPhotoFragment" />
+        <argument
+            android:name="croppedProfileAvatar"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 
 </navigation>

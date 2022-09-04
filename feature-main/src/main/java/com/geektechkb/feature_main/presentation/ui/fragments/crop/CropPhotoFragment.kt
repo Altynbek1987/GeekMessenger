@@ -4,18 +4,19 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Matrix
 import android.net.Uri
-import android.os.Bundle
 import android.util.Base64
 import android.util.Log
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentCropPhotoBinding
+import com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.ByteArrayOutputStream
@@ -24,33 +25,96 @@ import java.io.ByteArrayOutputStream
 open class CropPhotoFragment :
     BaseFragment<FragmentCropPhotoBinding, CropPhotoViewModel>(R.layout.fragment_crop_photo) {
     override val binding by viewBinding(FragmentCropPhotoBinding::bind)
-    override val galleryViewModel by viewModels<CropPhotoViewModel> ()
+    override val viewModel by viewModels<CropPhotoViewModel>()
     private var uri: Uri = Uri.EMPTY
     private var target: CropPhotoTarget? = null
     private val args by navArgs<CropPhotoFragmentArgs>()
+    private var rotateDegrees = 0F
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+    override fun initialize() {
         getData()
-//        setupListeners()
     }
 
+    override fun assembleViews() {
+        applyCropViewOverlayColor()
+    }
+
+    private fun applyCropViewOverlayColor() {
+        binding.kropView.applyOverlayColor(Color.parseColor("#B22C2C2C"))
+    }
 
     private fun getData() {
-        uri = Uri.parse(args.uri.toString())
+        uri = Uri.parse(args.uri)
         showCrop()
         true.loadUri()
     }
 
     override fun setupListeners() {
+        rotateImage()
+        flipImage()
+        navigateBackToAccordingFragment()
+    }
+
+    private fun navigateBackToAccordingFragment() {
         binding.btnResult.setOnClickListener {
-            findNavController().navigate(
-                CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
-                    getCroppedImage()
+            when (args.whereToNavigateBack) {
+                CropPhotoRequest.PROFILE -> findNavController().navigate(
+                    CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
+                        getCroppedImage()
+                    )
                 )
-            )
+                CropPhotoRequest.EDIT_PROFILE -> findNavController().directionsSafeNavigation(
+                    CropPhotoFragmentDirections.actionCropPhotoFragmentToEditProfileFragment(
+                        getCroppedImage()
+                    )
+                )
+            }
+
         }
     }
+
+    private fun rotateImage() {
+        binding.imRotateImage.setOnClickListener {
+            rotateDegrees += 90F
+            target = CropPhotoTarget(binding.cropContainer, binding.kropView, true)
+            Picasso
+                .get()
+                .load(uri)
+                .centerInside()
+                .resize(3000, 3000)
+                .noFade()
+
+                .priority(Picasso.Priority.LOW)
+                .rotate(rotateDegrees)
+                .into(target!!)
+        }
+
+    }
+
+    private fun flipImage() {
+        binding.imFlipImage.setOnClickListener {
+            val croppedBitmap = binding.kropView.getCroppedBitmap()
+            croppedBitmap?.let { bitmap ->
+                val cx = bitmap.width / 2f
+                val cy = bitmap.height / 2f
+                val flippedBitmap = bitmap.flip(1f, -1f, cx, cy)
+                binding.kropView.setBitmap(flippedBitmap)
+                target = CropPhotoTarget(binding.cropContainer, binding.kropView, true)
+                Picasso
+                    .get()
+                    .load(Uri.parse(getCroppedImage()))
+                    .centerInside()
+                    .resize(3000, 3000)
+                    .noFade()
+                    .priority(Picasso.Priority.LOW)
+                    .rotate(rotateDegrees)
+                    .into(target!!)
+            }
+
+        }
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -70,8 +134,9 @@ open class CropPhotoFragment :
             .centerInside()
             .resize(3000, 3000)
             .noFade()
+
             .priority(Picasso.Priority.LOW)
-            .rotate(0F, 0F, 0F)
+            .rotate(0F)
             .into(target!!)
     }
 
@@ -93,4 +158,8 @@ open class CropPhotoFragment :
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
+    private fun Bitmap.flip(x: Float, y: Float, cx: Float, cy: Float): Bitmap {
+        val matrix = Matrix().apply { postScale(x, y, cx, cy) }
+        return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
+    }
 }
