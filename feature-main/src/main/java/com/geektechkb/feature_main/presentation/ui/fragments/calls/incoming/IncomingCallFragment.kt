@@ -17,11 +17,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class IncomingCallFragment :
     BaseFragment<FragmentIncomingCallBinding, IncomingCallViewModel>(R.layout.fragment_incoming_call) {
     override val binding by viewBinding(FragmentIncomingCallBinding::bind)
-    override val galleryViewModel by viewModels<IncomingCallViewModel> ()
+    override val viewModel by viewModels<IncomingCallViewModel>()
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun setupListeners() {
         binding.imAcceptCall.setOnClickListener {
-            galleryViewModel.acceptAnIncomingCall()
+            viewModel.acceptAnIncomingCall()
         }
         binding.imHangUpCall.setOnDragListener { v, event ->
             when (event.action) {

@@ -105,8 +105,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
 
-
-
             </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

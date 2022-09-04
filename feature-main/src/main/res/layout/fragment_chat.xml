@@ -42,12 +42,12 @@
 
             <ImageView
                 android:id="@+id/im_back"
-                android:backgroundTint="@color/black"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="22dp"
+                android:backgroundTint="@color/black"
                 android:contentDescription="@string/back_russian"
                 android:src="@drawable/ic_back"
                 app:layout_constraintEnd_toEndOf="@id/gl_back_end"
@@ -344,7 +344,6 @@
         android:contentDescription="@string/button_to_send_message"
         android:src="@drawable/ic_send_message"
         android:visibility="gone"
-        android:src="@drawable/ic_send_message"
         app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gl_send_message_start"
@@ -360,6 +359,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <include
             android:id="@+id/gallery_bottom_sheet"
             layout="@layout/fragment_gallery_bottom_sheet" />

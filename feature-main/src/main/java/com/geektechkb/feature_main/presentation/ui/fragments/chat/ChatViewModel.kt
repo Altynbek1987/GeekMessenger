@@ -45,7 +45,7 @@ class ChatViewModel @Inject constructor(
         messageId: String,
     ) {
         viewModelScope.launch {
-            sendMessageUseCase(id, receiverPhoneNumber, message, timeMessageWasSent, messageId )
+            sendMessageUseCase(id, receiverPhoneNumber, message, timeMessageWasSent, messageId)
         }
     }
 

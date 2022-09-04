@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context=".presentation.ui.fragments.mainflow.MainFlowFragment"
     tools:openDrawer="start">
+
     <include
         android:id="@+id/home_appBar_main"
         layout="@layout/app_bar_main"

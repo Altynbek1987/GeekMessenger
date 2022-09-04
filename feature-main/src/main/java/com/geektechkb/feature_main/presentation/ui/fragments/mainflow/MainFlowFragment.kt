@@ -52,12 +52,12 @@ class MainFlowFragment : BaseFlowFragment(
 
             when (destination.id) {
 
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.languagesFragment, R.id.notificationsAndSoundsFragment, R.id.editProfileFragment -> binding.appBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.languagesFragment, R.id.notificationsAndSoundsFragment, R.id.editProfileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                else -> binding.appBarMain.toolbarButton.isGone = false
+                else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
-        binding.appBarMain.toolbarButton.setOnClickListener {
+        binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
     }

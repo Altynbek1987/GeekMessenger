@@ -18,7 +18,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     R.layout.fragment_home
 ) {
     override val binding by viewBinding(FragmentHomeBinding::bind)
-    override val galleryViewModel by viewModels<HomeViewModel> ()
+    override val viewModel by viewModels<HomeViewModel>()
     private lateinit var cld: CheckInternet
 
     override fun setupListeners() {
@@ -52,7 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     private fun subscribeToUsers() {
-        galleryViewModel.fetchPagedUsers().spectatePaging(success = {
+        viewModel.fetchPagedUsers().spectatePaging(success = {
             usersAdapter.submitData(it)
         })
     }
