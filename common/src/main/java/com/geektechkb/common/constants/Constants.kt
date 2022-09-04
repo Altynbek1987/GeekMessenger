@@ -7,7 +7,6 @@ object Constants {
     const val CURRENT_FIREBASE_USER_PHONE_NUMBER_KEY = "currentFirebaseUserPhoneNumber"
     const val FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH = "authenticatedUsers"
     const val FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH = "personalMessages"
-    const val FIREBASE_FIRESTORE_CHATTERS_KEY = "chatters"
 
     const val FIREBASE_USER_LAST_SEEN_TIME_KEY = "lastSeen"
     const val FIREBASE_USER_LATEST_MESSAGE_KEY = "latestMessage"
@@ -17,6 +16,7 @@ object Constants {
     const val FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT = "timeMessageWasSent"
     const val FIREBASE_USER_LAST_NAME_KEY = "lastName"
     const val FIREBASE_USER_PROFILE_IMAGE_KEY = "profileImage"
+    const val FIREBASE_USER_PHONE_NUMBER_HIDDENNESS = "isPhoneNumberHidden"
     const val YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT = "yyyy-MM-dd-HH:mm:ss"
     const val HOURS_MINUTES_DATE_FORMAT = "HH:mm"
     const val FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH = "profileImages/"
@@ -26,5 +26,15 @@ object Constants {
 
     const val UNIQUE_HANDLER_ID = "uniqueHandlerId"
     const val CHANGE_LANGUAGE = "language"
+
+    const val IS_PHONE_NUMBER_HIDDEN = "isPhoneNumberHidden"
+
+    const val ARE_PRIVATE_CHATS_NOTIFICATIONS_TURNED_ON = "arePrivateChatsNotificationsTurnedOn"
+    const val ARE_GROUP_CHATS_NOTIFICATIONS_TURNED_ON = "areGroupChatsNotificationsTurnedOn"
+    const val ARE_CALLS_NOTIFICATIONS_TURNED_ON = "areCallsNotificationsTurnedOn"
+
+    const val PRIVATE_CHATS_MESSAGE_TOPIC = "PrivateChats"
+    const val GROUP_CHATS_MESSAGE_TOPIC = "GroupChats"
+    const val CALLS_MESSAGE_TOPIC = "Calls"
 
 }
