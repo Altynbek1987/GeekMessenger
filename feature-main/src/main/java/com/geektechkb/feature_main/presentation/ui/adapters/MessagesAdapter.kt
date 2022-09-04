@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,20 +9,21 @@ import androidx.viewbinding.ViewBinding
 import com.geektechkb.common.constants.Constants.HOURS_MINUTES_DATE_FORMAT
 import com.geektechkb.core.base.BaseRecyclerViewHolder
 import com.geektechkb.core.extensions.formatCurrentUserTime
+import com.geektechkb.core.extensions.setImage
 import com.geektechkb.feature_main.R
-import com.geektechkb.feature_main.databinding.ItemReceivedMessageBinding
-import com.geektechkb.feature_main.databinding.ItemReceivedVoiceMessageBinding
-import com.geektechkb.feature_main.databinding.ItemSentMessagesBinding
-import com.geektechkb.feature_main.databinding.ItemSentVoiceMessageBinding
+import com.geektechkb.feature_main.databinding.*
 import com.geektechkb.feature_main.domain.models.Message
+import java.lang.IllegalStateException
 
 class MessagesAdapter :
     ListAdapter<Message, BaseRecyclerViewHolder<ViewBinding, Message>>(diffUtil) {
 
-    private var phoneNumber: String? = null
+    private var senderPhoneNumber: String? = null
+    private var receiverPhoneNumber: String? = null
 
-    fun setPhoneNumber(phoneNumber: String) {
-        this.phoneNumber = phoneNumber
+    fun setPhoneNumber(senderPhoneNumber: String, receiverPhoneNumber: String) {
+        this.senderPhoneNumber = senderPhoneNumber
+        this.receiverPhoneNumber = receiverPhoneNumber
     }
 
     override fun onCreateViewHolder(
@@ -61,11 +63,13 @@ class MessagesAdapter :
                     )
                 )
             }*/
-            else -> {
+
+                   else -> {
                 throw IllegalArgumentException("Not found ViewHolder!")
             }
         }
     }
+
 
     override fun onBindViewHolder(
         holder: BaseRecyclerViewHolder<ViewBinding, Message>,
@@ -84,16 +88,17 @@ class MessagesAdapter :
             R.layout.item_received_voice_message -> getItem(position)?.let {
                 (holder as VoiceMessageReceivedViewHolder).onBind(it)
             }*/
+
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         return when {
-            getItem(position)?.senderPhoneNumber?.equals(phoneNumber) == false -> {
-                R.layout.item_received_message
+            getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == true -> {
+                R.layout.item_sent_messages
             }
             else -> {
-                R.layout.item_sent_messages
+                R.layout.item_received_message
             }
         }
     }
@@ -114,8 +119,10 @@ class MessagesAdapter :
 //                    itemView.context.getDrawable(R.drawable.last_message_sent_cornered_background)
 //            }
             binding.tvMessage.text = item.message
+            Log.e("check", "sender ${item.message}")
         }
     }
+
 
     inner class VoiceMessageSentViewHolder(binding: ItemSentVoiceMessageBinding) :
         BaseRecyclerViewHolder<ItemSentVoiceMessageBinding, Message>(binding) {
@@ -130,6 +137,7 @@ class MessagesAdapter :
         override fun onBind(item: Message) {
             binding.tvMessage.text = item.message
             binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
+            Log.e("check", "receiver ${item.message}")
         }
     }
 
@@ -138,7 +146,6 @@ class MessagesAdapter :
         override fun onBind(item: Message) {
         }
     }
-
 
     companion object {
 

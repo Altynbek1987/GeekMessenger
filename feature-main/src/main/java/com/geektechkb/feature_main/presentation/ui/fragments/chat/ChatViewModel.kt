@@ -42,10 +42,10 @@ class ChatViewModel @Inject constructor(
         receiverPhoneNumber: String,
         message: String,
         timeMessageWasSent: String,
-        messageId: String
+        messageId: String,
     ) {
         viewModelScope.launch {
-            sendMessageUseCase(id, receiverPhoneNumber, message, timeMessageWasSent, messageId)
+            sendMessageUseCase(id, receiverPhoneNumber, message, timeMessageWasSent, messageId )
         }
     }
 
@@ -54,6 +54,7 @@ class ChatViewModel @Inject constructor(
             sendVoiceMessageUseCase(file, imageFileName)
         }
     }
+
 
     fun getImagesFromGallery(
         context: Context,
@@ -131,7 +132,8 @@ class ChatViewModel @Inject constructor(
         path.toLong()
     )
 
-    fun fetchPagedMessages() = fetchPagedMessagesUseCase()
+    fun fetchPagedMessages(senderPhoneNumber: String, receiverPhoneNumber: String) =
+        fetchPagedMessagesUseCase(senderPhoneNumber, receiverPhoneNumber)
 
     suspend fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
@@ -149,8 +151,4 @@ class ChatViewModel @Inject constructor(
         actionOnCallConnected,
         actionOnCallEnded
     )
-
-    init {
-        fetchPagedMessages()
-    }
 }

@@ -58,4 +58,7 @@ dependencies {
     // Hilt
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
+    //Retrofit
+    implementation(libs.retrofit.retrofit)
+
 }
