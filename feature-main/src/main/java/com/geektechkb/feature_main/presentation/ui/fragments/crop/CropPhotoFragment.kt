@@ -4,10 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.Matrix
 import android.net.Uri
 import android.util.Base64
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,12 +15,13 @@ import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentCropPhotoBinding
 import com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest
+import com.geektechkb.feature_main.presentation.ui.utils.MirrorTransformation
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.ByteArrayOutputStream
 
 @AndroidEntryPoint
-open class CropPhotoFragment :
+class CropPhotoFragment :
     BaseFragment<FragmentCropPhotoBinding, CropPhotoViewModel>(R.layout.fragment_crop_photo) {
     override val binding by viewBinding(FragmentCropPhotoBinding::bind)
     override val viewModel by viewModels<CropPhotoViewModel>()
@@ -30,7 +29,7 @@ open class CropPhotoFragment :
     private var target: CropPhotoTarget? = null
     private val args by navArgs<CropPhotoFragmentArgs>()
     private var rotateDegrees = 0F
-
+    private var shouldFlipImage = true
 
     override fun initialize() {
         getData()
@@ -59,7 +58,7 @@ open class CropPhotoFragment :
     private fun navigateBackToAccordingFragment() {
         binding.btnResult.setOnClickListener {
             when (args.whereToNavigateBack) {
-                CropPhotoRequest.PROFILE -> findNavController().navigate(
+                CropPhotoRequest.PROFILE -> findNavController().directionsSafeNavigation(
                     CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
                         getCroppedImage()
                     )
@@ -70,13 +69,12 @@ open class CropPhotoFragment :
                     )
                 )
             }
-
         }
     }
 
     private fun rotateImage() {
         binding.imRotateImage.setOnClickListener {
-            rotateDegrees += 90F
+            rotateDegrees -= 90F
             target = CropPhotoTarget(binding.cropContainer, binding.kropView, true)
             Picasso
                 .get()
@@ -84,47 +82,53 @@ open class CropPhotoFragment :
                 .centerInside()
                 .resize(3000, 3000)
                 .noFade()
-
                 .priority(Picasso.Priority.LOW)
                 .rotate(rotateDegrees)
                 .into(target!!)
         }
-
     }
 
     private fun flipImage() {
         binding.imFlipImage.setOnClickListener {
-            val croppedBitmap = binding.kropView.getCroppedBitmap()
-            croppedBitmap?.let { bitmap ->
-                val cx = bitmap.width / 2f
-                val cy = bitmap.height / 2f
-                val flippedBitmap = bitmap.flip(1f, -1f, cx, cy)
-                binding.kropView.setBitmap(flippedBitmap)
-                target = CropPhotoTarget(binding.cropContainer, binding.kropView, true)
-                Picasso
-                    .get()
-                    .load(Uri.parse(getCroppedImage()))
-                    .centerInside()
-                    .resize(3000, 3000)
-                    .noFade()
-                    .priority(Picasso.Priority.LOW)
-                    .rotate(rotateDegrees)
-                    .into(target!!)
+            shouldFlipImage = when (shouldFlipImage) {
+                true -> {
+                    target = CropPhotoTarget(binding.cropContainer, binding.kropView, true)
+                    Picasso
+                        .get()
+                        .load(uri)
+                        .centerInside()
+                        .resize(3000, 3000)
+                        .noFade()
+                        .priority(Picasso.Priority.LOW)
+                        .rotate(rotateDegrees)
+                        .transform(MirrorTransformation())
+                        .into(target!!)
+                    false
+                }
+                false -> {
+                    target = CropPhotoTarget(binding.cropContainer, binding.kropView, true)
+                    Picasso
+                        .get()
+                        .load(uri)
+                        .centerInside()
+                        .resize(3000, 3000)
+                        .noFade()
+                        .priority(Picasso.Priority.LOW)
+                        .rotate(rotateDegrees)
+                        .into(target!!)
+                    true
+                }
             }
-
         }
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             uri = data?.data ?: return
             true.loadUri()
-            Log.e("aime", uri.toString())
         }
     }
-
 
     private fun Boolean.loadUri() {
         target = CropPhotoTarget(binding.cropContainer, binding.kropView, this)
@@ -134,7 +138,6 @@ open class CropPhotoFragment :
             .centerInside()
             .resize(3000, 3000)
             .noFade()
-
             .priority(Picasso.Priority.LOW)
             .rotate(0F)
             .into(target!!)
@@ -147,7 +150,7 @@ open class CropPhotoFragment :
         binding.kropView.applyOverlayShape(0)
     }
 
-    protected open fun getCroppedImage(): String {
+    private fun getCroppedImage(): String {
         val bitmap = binding.kropView.getCroppedBitmap()
         activity?.invalidateOptionsMenu()
         binding.kropView.applyOverlayColor(Color.TRANSPARENT)
@@ -156,10 +159,5 @@ open class CropPhotoFragment :
         bitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
         val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
-    }
-
-    private fun Bitmap.flip(x: Float, y: Float, cx: Float, cy: Float): Bitmap {
-        val matrix = Matrix().apply { postScale(x, y, cx, cy) }
-        return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
     }
 }

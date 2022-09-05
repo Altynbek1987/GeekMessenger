@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">NavDraw</string>
+    <string name="app_name">GeekMessenger</string>
 
     <string name="nav_header_desc">Багыттоо аталышы</string>
     <string name="menu_group">Топ түзүү</string>
