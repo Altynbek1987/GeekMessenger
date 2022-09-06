@@ -15,6 +15,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFlowFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.formatCurrentUserTime
+import com.geektechkb.core.extensions.takeFirstCharacterAndCapitalizeIt
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -76,7 +77,6 @@ class MainFlowFragment : BaseFlowFragment(
         subscribeToUser()
     }
 
-
     private fun subscribeToUser() = with(binding.nav) {
         viewModel.userState.spectateUiState(success = { user ->
             user.apply {
@@ -84,17 +84,26 @@ class MainFlowFragment : BaseFlowFragment(
                     userNumber.text = StringBuilder(phoneNumber.substring(0, 4)).append(" ")
                         .append(phoneNumber.substringAfter("+996"))
                 }
-                userName.text = "$name $lastName"
-                avatarView.loadImage(data = profileImage, onError = { _, _ ->
-                    avatarView.avatarInitials = SpannableStringBuilder(
-                        name?.first()?.uppercaseChar().toString()
-                    ).append(lastName?.first()?.uppercaseChar().toString()).toString()
-
-                    val random = Random
-                    val randomAvatarBackgroundColor =
-                        Color.rgb(random.nextInt(255), random.nextInt(255), random.nextInt(255))
-                    avatarView.avatarInitialsBackgroundColor = randomAvatarBackgroundColor
-                })
+                name?.let { nonNullName ->
+                    lastName?.let { nonNullLastName ->
+                        userName.text = "$nonNullName $nonNullLastName"
+                    }
+                }
+                avatarView.apply {
+                    loadImage(data = profileImage, onError = { _, _ ->
+                        val random = Random
+                        val randomAvatarBackgroundColor =
+                            Color.rgb(
+                                random.nextInt(255),
+                                random.nextInt(255),
+                                random.nextInt(255)
+                            )
+                        avatarInitialsBackgroundColor = randomAvatarBackgroundColor
+                        avatarInitials = SpannableStringBuilder(
+                            name.takeFirstCharacterAndCapitalizeIt()
+                        ).append(lastName.takeFirstCharacterAndCapitalizeIt()).toString()
+                    })
+                }
             }
         })
     }
