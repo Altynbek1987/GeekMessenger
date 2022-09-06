@@ -19,14 +19,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions/FragmentExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions/FragmentExtensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions/StringExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions/StringExtensions.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-auth/src/main/java/com/geektechkb/feature_auth/presentation/ui/fragments/auth/createProfile/CreateProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-auth/src/main/java/com/geektechkb/feature_auth/presentation/ui/fragments/auth/createProfile/CreateProfileFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/mainflow/MainFlowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/mainflow/MainFlowFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/nav_header_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/nav_header_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
