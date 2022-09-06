@@ -12,7 +12,7 @@ class CropPhotoTarget(
     private val kropView: KropView,
     private val resetZoom: Boolean
 ) : Target {
-    
+
     override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
         cropLoading()
     }

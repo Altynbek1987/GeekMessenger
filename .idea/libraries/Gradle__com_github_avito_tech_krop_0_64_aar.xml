@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.avito-tech:krop:0.64@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1f5fd5c09a5830bd0f534f9a5eeb9c4d/transformed/jetified-krop-0.64/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1f5fd5c09a5830bd0f534f9a5eeb9c4d/transformed/jetified-krop-0.64/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1f5fd5c09a5830bd0f534f9a5eeb9c4d/transformed/jetified-krop-0.64/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.avito-tech/krop/0.64/ab8a6eb1121b856c114d700db5848f28471bf2cf/krop-0.64-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

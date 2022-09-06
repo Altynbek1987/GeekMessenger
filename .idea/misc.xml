@@ -3,10 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.2269021739130435" />
         <entry key="../../../../layout/custom_preview.xml" value="0.31701011928260747" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_back.xml" value="0.1945" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_chat.xml" value="0.15534420289855072" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.10833333333333334" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/drawable/check.xml" value="0.1395" />
@@ -258,14 +258,17 @@
         <entry key="feature-main/src/main/res/drawable/ic_digit_background.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_emoji.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_flip.xml" value="0.1555" />
+        <entry key="feature-main/src/main/res/drawable/ic_group.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_keyboard.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_microphone.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_overflow_menu.xml" value="0.1555" />
+        <entry key="feature-main/src/main/res/drawable/ic_phone.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_play_button.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_received_message_play_button.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_share.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_speaker.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_start_video.xml" value="0.1555" />
+        <entry key="feature-main/src/main/res/drawable/ic_sun.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_switch_checked.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_switch_track_checked.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_switch_unchecked.xml" value="0.1555" />
