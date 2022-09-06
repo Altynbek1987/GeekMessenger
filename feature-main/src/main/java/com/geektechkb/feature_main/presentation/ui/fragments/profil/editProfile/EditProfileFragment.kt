@@ -62,16 +62,8 @@ class EditProfileFragment :
     override fun setupListeners() {
         openBottomSheetByClickingOnAvatar()
         submitChanges()
+        navigateBack()
         hideBottomSheetOnClick()
-    }
-
-    private fun submitChanges() = with(binding) {
-        ibSubmit.setOnSingleClickListener {
-            viewModel.updateUserName(etName.text.toString())
-            viewModel.updateUserLastName(etSurname.text.toString())
-            getCroppedImageAndSetIt()
-
-        }
     }
 
     private fun openBottomSheetByClickingOnAvatar() {
@@ -90,12 +82,24 @@ class EditProfileFragment :
                         imAvatar.isVisible = false
                         mcvProfileAvatar.isVisible = false
                     }, actionOnDialogStateHidden = {
-                        mcvProfileAvatar.isVisible = false
+                        mcvProfileAvatar.isVisible = true
                         imAvatar.isVisible = true
                     }
                 )
             }
         }
+    }
+
+    private fun submitChanges() = with(binding) {
+        ibSubmit.setOnSingleClickListener {
+            viewModel.updateUserName(etName.text.toString())
+            viewModel.updateUserLastName(etSurname.text.toString())
+            getCroppedImageAndSetIt()
+        }
+    }
+
+    private fun navigateBack() {
+        findNavController().navigateUp()
     }
 
     private fun hideBottomSheetOnClick() {
