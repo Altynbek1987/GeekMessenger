@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.sendbird.sdk:sendbird-calls:1.8.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6f2fd8bbd99f6e75de67e809b72f703a/transformed/jetified-sendbird-calls-1.8.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6f2fd8bbd99f6e75de67e809b72f703a/transformed/jetified-sendbird-calls-1.8.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6f2fd8bbd99f6e75de67e809b72f703a/transformed/jetified-sendbird-calls-1.8.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6f2fd8bbd99f6e75de67e809b72f703a/transformed/jetified-sendbird-calls-1.8.0/jars/libs/sendbird-calls-shadow.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

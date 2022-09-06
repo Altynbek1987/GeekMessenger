@@ -26,6 +26,7 @@ waveformAmplituda = "2.1.4"
 audioRecorderView = "1.0.4"
 krop = "0.64"
 picasso = "2.71828"
+avatarView = "1.0.6"
 #Core
 core = "1.8.0"
 #Activity
@@ -101,6 +102,7 @@ ui-audioRecorderView = { module = "com.github.tougee:audiorecorderview", version
 glide-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 krop-krop = { module = "com.github.avito-tech:krop", version.ref = "krop" }
 picasso-picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+avatarView-avatarView = { module = "io.getstream:avatarview-coil", version.ref = "avatarView" }
 
 #Legacy Support
 legacySupport-legacySupport = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupport" }
@@ -166,7 +168,7 @@ koin-koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
 [bundles]
 #UI Components
-uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-maskedEditText", "ui-dotsIndicator", "ui-emojiMaterial", "ui-emojiGoogle", "ui-waveformSeekBar", "ui-waveformSeekBarAmplituda", "krop-krop", "picasso-picasso"]
+uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "ui-material", "ui-viewBindingPropertyDelegate", "glide-glide", "ui-splashScreen", "ui-maskedEditText", "ui-dotsIndicator", "ui-emojiMaterial", "ui-emojiGoogle", "ui-waveformSeekBar", "ui-waveformSeekBarAmplituda", "krop-krop", "picasso-picasso", "avatarView-avatarView"]
 
 #Room
 room = ["room-runtime", "room-kotlinExtensionsAndCoroutinesSupport"]

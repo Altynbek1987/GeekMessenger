@@ -29,13 +29,10 @@ class EditProfileViewModel @Inject constructor(
         }
     }
 
-
     suspend fun updateUserProfileImage(imageFileName: String, byte: ByteArray) =
         updateUserProfileImageUseCase(imageFileName, byte)
 
     fun updateUserName(name: String) = updateUserNameUseCase(name)
 
     fun updateUserLastName(lastName: String) = updateUserLastNameUseCase(lastName)
-
-
 }

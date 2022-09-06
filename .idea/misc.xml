@@ -259,14 +259,17 @@
         <entry key="feature-main/src/main/res/drawable/ic_digit_background.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_emoji.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_flip.xml" value="0.1555" />
+        <entry key="feature-main/src/main/res/drawable/ic_group.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_keyboard.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_microphone.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_overflow_menu.xml" value="0.1555" />
+        <entry key="feature-main/src/main/res/drawable/ic_phone.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_play_button.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_received_message_play_button.xml" value="0.15" />
         <entry key="feature-main/src/main/res/drawable/ic_share.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_speaker.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_start_video.xml" value="0.1555" />
+        <entry key="feature-main/src/main/res/drawable/ic_sun.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_switch_checked.xml" value="0.1555" />
         <entry key="feature-main/src/main/res/drawable/ic_switch_track_checked.xml" value="0.1" />
         <entry key="feature-main/src/main/res/drawable/ic_switch_unchecked.xml" value="0.1555" />
