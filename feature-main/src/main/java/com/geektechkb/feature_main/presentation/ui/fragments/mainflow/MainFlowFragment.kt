@@ -1,7 +1,8 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.mainflow
 
 import android.annotation.SuppressLint
-import android.util.Log
+import android.graphics.Color
+import android.text.SpannableStringBuilder
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,11 +15,12 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFlowFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.formatCurrentUserTime
-import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import dagger.hilt.android.AndroidEntryPoint
+import io.getstream.avatarview.coil.loadImage
 import javax.inject.Inject
+import kotlin.random.Random
 
 
 @AndroidEntryPoint
@@ -29,8 +31,6 @@ class MainFlowFragment : BaseFlowFragment(
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val binding by viewBinding(FragmentMainFlowBinding::bind)
     private val viewModel: MainFlowViewModel by viewModels()
-    private var username: String? = null
-    private var savedUserStatus: String? = null
 
     @Inject
     lateinit var preferences: UserPreferencesHelper
@@ -64,7 +64,6 @@ class MainFlowFragment : BaseFlowFragment(
 
     override fun establishRequest() {
         fetchUser()
-
     }
 
     private fun fetchUser() {
@@ -78,17 +77,27 @@ class MainFlowFragment : BaseFlowFragment(
     }
 
 
-    private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
-            savedUserStatus = it.lastSeen
-            binding.nav.userNumber.text = (it.phoneNumber)
-            binding.nav.imageProfile.loadImageWithGlide(it.profileImage)
-            binding.nav.userName.text = it.name
-            username = it.name
-        })
-        Log.e("anime", viewModel.userState.toString())
-    }
+    private fun subscribeToUser() = with(binding.nav) {
+        viewModel.userState.spectateUiState(success = { user ->
+            user.apply {
+                phoneNumber?.let { phoneNumber ->
+                    userNumber.text = StringBuilder(phoneNumber.substring(0, 4)).append(" ")
+                        .append(phoneNumber.substringAfter("+996"))
+                }
+                userName.text = "$name $lastName"
+                avatarView.loadImage(data = profileImage, onError = { _, _ ->
+                    avatarView.avatarInitials = SpannableStringBuilder(
+                        name?.first()?.uppercaseChar().toString()
+                    ).append(lastName?.first()?.uppercaseChar().toString()).toString()
 
+                    val random = Random
+                    val randomAvatarBackgroundColor =
+                        Color.rgb(random.nextInt(255), random.nextInt(255), random.nextInt(255))
+                    avatarView.avatarInitialsBackgroundColor = randomAvatarBackgroundColor
+                })
+            }
+        })
+    }
 
     override fun onStart() {
         super.onStart()
