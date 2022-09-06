@@ -12,7 +12,6 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentIncomingCallBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class IncomingCallFragment :
     BaseFragment<FragmentIncomingCallBinding, IncomingCallViewModel>(R.layout.fragment_incoming_call) {
@@ -48,4 +47,5 @@ class IncomingCallFragment :
 
         }
     }
+
 }

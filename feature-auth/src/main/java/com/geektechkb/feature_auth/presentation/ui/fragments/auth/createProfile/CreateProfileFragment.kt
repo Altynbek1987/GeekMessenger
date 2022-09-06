@@ -55,7 +55,7 @@ class CreateProfileFragment :
                         ) {
                             viewModel.isUserAuthenticated()
                             mainNavController(R.id.nav_host_fragment_container_auth).navigateSafely(
-                                R.id.action_profileFragment_to_mainFlowFragment
+                                R.id.action_createProfileFragment_to_mainFlowFragment
                             )
                         }
                     }

@@ -22,6 +22,22 @@
           }
         },
         {
+          "client_id": "974311209739-k6j6v6krvf24f3lfbt3k9ee7705t74vj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geektechkb.geekmessenger",
+            "certificate_hash": "6f58fbe01a925b00de6f71a4da7229a3623346d9"
+          }
+        },
+        {
+          "client_id": "974311209739-ndvmru2e17agujhokducr024rdau8r8b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geektechkb.geekmessenger",
+            "certificate_hash": "75141cb8c73e67701988b9c337256f65a6f7af5d"
+          }
+        },
+        {
           "client_id": "974311209739-re6f01qihiajq66p405j0npi9lpl20km.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

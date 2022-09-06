@@ -40,10 +40,10 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
-        <!--        <argument-->
-        <!--            android:name="numberHide"-->
-        <!--            app:argType="false"-->
-        <!--             />-->
+<!--        <argument-->
+<!--            android:name="numberHide"-->
+<!--            app:argType="false"-->
+<!--             />-->
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
@@ -60,6 +60,7 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+
     </fragment>
     <dialog
         android:id="@+id/galleryBottomSheetFragment"
