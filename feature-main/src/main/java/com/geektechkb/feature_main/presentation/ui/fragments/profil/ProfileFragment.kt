@@ -34,16 +34,15 @@ class ProfileFragment :
     BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
 
     override val binding by viewBinding(FragmentProfileBinding::bind)
-    override val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
-    private val viewModel: ProfileViewModel by viewModels()
+    override val viewModel: ProfileViewModel by viewModels()
+    private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args by navArgs<ProfileFragmentArgs>()
     private var name: String? = null
     private var lastName: String? = null
     private var profileAvatar: String? = null
     private var savedUserStatus: String? = null
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
-    private val pictures = ArrayList<GalleryPicture>()
-    private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
+    private val adapter = GalleryPicturesAdapter(this::onSelect)
 
     @Inject
     lateinit var preferences: UserPreferencesHelper
@@ -160,12 +159,6 @@ class ProfileFragment :
                 else -> true
             }
         }
-    }
-
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
     }
 
     override fun establishRequest() {

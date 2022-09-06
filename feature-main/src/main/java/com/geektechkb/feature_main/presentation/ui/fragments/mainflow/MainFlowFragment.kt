@@ -77,6 +77,7 @@ class MainFlowFragment : BaseFlowFragment(
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
     }
+    }
 
 
     override fun establishRequest() {

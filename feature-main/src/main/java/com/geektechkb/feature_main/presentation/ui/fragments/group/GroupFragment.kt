@@ -13,7 +13,7 @@ class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(
     R.layout.fragment_group
 ) {
     override val binding by viewBinding(FragmentGroupBinding::bind)
-    override val galleryViewModel by viewModels<GroupViewModel>()
+    override val viewModel by viewModels<GroupViewModel>()
     override fun assembleViews() {
         binding.toolbarBtn.setOnClickListener {
             findNavController().navigateUp()
