@@ -2,10 +2,7 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -29,17 +26,15 @@ import com.geektechkb.core.ui.customViews.AudioRecordView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
-import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
-import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
+import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 
@@ -49,10 +44,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override val binding by viewBinding(FragmentChatBinding::bind)
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
-    private val pictures = ArrayList<GalleryPicture>()
-    private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
+    private val adapter = GalleryPicturesAdapter(this::onSelect)
     private val messagesAdapter = MessagesAdapter()
-    override val galleryViewModel by viewModels<ChatViewModel> ()
+    override val viewModel by viewModels<ChatViewModel>()
+    private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
     private var username: String? = null
     private var savedUserStatus: String? = null
@@ -69,6 +64,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
+
     override fun initialize() {
         binding.recordView.activity = requireActivity()
         binding.recordView.callback = this
@@ -189,10 +185,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         setupBottomSheet()
     }
 
-        private fun setupBottomSheet() {
-            bottomSheetBehavior =
-                BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
-        }
+    private fun setupBottomSheet() {
+        bottomSheetBehavior =
+            BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
+    }
 
     private fun initBottomSheetRecycler() {
         binding.galleryBottomSheet.recyclerviewRating.adapter = adapter
@@ -208,10 +204,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun loadPictures() {
         galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
             if (it.isNotEmpty()) {
-                pictures.addAll(it)
-                adapter.notifyItemRangeInserted(pictures.size, it.size)
+                adapter.submitList(it)
+//                pictures.addAll(it)
+                adapter.notifyItemRangeInserted(adapter.currentList.size, it.size)
             }
-            Log.e("GalleryListSize", "${pictures.size}")
+            Log.e("GalleryListSize", "${adapter.currentList.size}")
         }
     }
 
@@ -258,10 +255,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
 
-
     private fun sendMessage() = with(binding) {
         imSendMessage.setOnSingleClickListener {
-            galleryViewModel.sendMessage(
+            viewModel.sendMessage(
                 usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
@@ -332,7 +328,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun fetchUser() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            args.phoneNumber?.let { galleryViewModel.fetchUser(it) }
+            args.phoneNumber?.let { viewModel.fetchUser(it) }
         }
     }
 
@@ -343,7 +339,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun subscribeToUser() {
-        galleryViewModel.userState.spectateUiState(success = {
+        viewModel.userState.spectateUiState(success = {
             savedUserStatus = it.lastSeen
             changeUserStatusToTyping(it.phoneNumber)
             binding.imProfile.loadImageWithGlide(it.profileImage)
@@ -357,7 +353,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 args.phoneNumber?.let { receiverPhoneNumber ->
-                    galleryViewModel.fetchPagedMessages(
+                    viewModel.fetchPagedMessages(
                         usersPreferencesHelper.currentUserPhoneNumber,
                         receiverPhoneNumber
                     ).collectLatest {
@@ -396,7 +392,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
-        galleryViewModel.sendVoiceMessage(
+        viewModel.sendVoiceMessage(
             appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
             generateRandomId()
         )

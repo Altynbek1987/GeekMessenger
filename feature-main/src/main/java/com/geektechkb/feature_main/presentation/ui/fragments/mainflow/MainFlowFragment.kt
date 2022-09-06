@@ -37,6 +37,8 @@ class MainFlowFragment : BaseFlowFragment(
 
     @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
+
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         appBarConfiguration = AppBarConfiguration(
@@ -68,6 +70,8 @@ class MainFlowFragment : BaseFlowFragment(
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
+        binding.homeAppBarMain.toolbarButton.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
 
         binding.homeAppBarMain.toolbarButton.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)

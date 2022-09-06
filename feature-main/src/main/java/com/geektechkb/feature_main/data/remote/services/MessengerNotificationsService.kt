@@ -10,28 +10,21 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.google.firebase.messaging.ktx.messaging
 import kotlin.random.Random
 
 class MessengerNotificationsService : FirebaseMessagingService() {
 
     val CHANNWL_ID = "my_notification_channel"
-
-    companion object {
-        var sharePref: SharedPreferences? = null
-        var token: String?
-            get() {
-                return sharePref?.getString("token", "")
-            }
-            set(value) {
-                sharePref?.edit()?.putString("token", value)?.apply()
-            }
-    }
 
     override fun onNewToken(tokenUser: String) {
         super.onNewToken(tokenUser)
@@ -78,5 +71,37 @@ class MessengerNotificationsService : FirebaseMessagingService() {
             lightColor = Color.WHITE
         }
         notificationManager.createNotificationChannel(channel)
+    }
+
+    companion object {
+        var sharePref: SharedPreferences? = null
+        var token: String?
+            get() {
+                return sharePref?.getString("token", "")
+            }
+            set(value) {
+                sharePref?.edit()?.putString("token", value)?.apply()
+            }
+
+        fun subscribeToTopic(vararg topics: String) {
+            for (topic in topics)
+                Firebase.messaging.subscribeToTopic(topic).addOnCompleteListener(
+                    OnCompleteListener { task ->
+                        if (!task.isSuccessful)
+                            return@OnCompleteListener
+                        Log.d("Push", task.isSuccessful.toString())
+                    })
+
+        }
+
+        fun unsubscribeFromTopic(vararg topics: String) {
+            for (topic in topics)
+                Firebase.messaging.unsubscribeFromTopic(topic)
+                    .addOnCompleteListener(OnCompleteListener { task ->
+                        if (!task.isSuccessful)
+                            return@OnCompleteListener
+                        Log.d("Push", task.isSuccessful.toString())
+                    })
+        }
     }
 }

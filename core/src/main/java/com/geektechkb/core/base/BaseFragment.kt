@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@LayoutRes layoutId: Int) :
     Fragment(layoutId) {
     protected abstract val binding: Binding
-    protected abstract val galleryViewModel: ViewModel
+    protected abstract val viewModel: ViewModel
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

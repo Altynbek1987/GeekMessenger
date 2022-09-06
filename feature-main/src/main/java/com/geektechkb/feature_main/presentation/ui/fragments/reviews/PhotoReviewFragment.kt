@@ -2,8 +2,6 @@ package com.geektechkb.feature_main.presentation.ui.fragments.reviews
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Base64
@@ -17,8 +15,6 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentPhotoPreviewBinding
-import com.geektechkb.feature_main.presentation.ui.fragments.crop.CropPhotoFragmentDirections
-import com.geektechkb.feature_main.presentation.ui.fragments.crop.CropPhotoTarget
 import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
 
@@ -27,7 +23,7 @@ class PhotoReviewFragment :
     BaseFragment<FragmentPhotoPreviewBinding, PhotoReviewViewModel>(R.layout.fragment_photo_preview) {
 
     override val binding by viewBinding(FragmentPhotoPreviewBinding::bind)
-    override val galleryViewModel by viewModels<PhotoReviewViewModel> ()
+    override val viewModel by viewModels<PhotoReviewViewModel>()
     private var uri: Uri = Uri.EMPTY
     private val args by navArgs<PhotoReviewFragmentArgs>()
 
@@ -37,7 +33,7 @@ class PhotoReviewFragment :
     }
 
     private fun getData() {
-        uri = Uri.parse(args.photo.toString())
+        uri = Uri.parse(args.photo)
         true.loadUri()
     }
 

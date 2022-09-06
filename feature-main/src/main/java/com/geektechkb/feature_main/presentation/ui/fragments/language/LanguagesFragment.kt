@@ -32,53 +32,55 @@ class LanguagesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.checkboxRus.isChecked = preferences.getLanguage() == "ru"
+        binding.radioButtonRussian.isChecked = preferences.getLanguage() == "ru"
+        binding.radioButtonEnglish.isChecked = preferences.getLanguage() == "en"
+        binding.radioButtonKyrgyz.isChecked = preferences.getLanguage() == "ky"
         setupRussian()
         setupListener()
     }
 
 
     private fun setupRussian() = with(binding) {
-        checkboxEng.setOnCheckedChangeListener { compoundButton, b ->
+        radioButtonEnglish.setOnCheckedChangeListener { compoundButton, b ->
             setLocale(Localization.RUSSIAN)
-            checkboxEng.isChecked = false
+            radioButtonEnglish.isChecked = false
 
         }
-        binding.checkboxEng.setOnCheckedChangeListener { chip, isChecked ->
-            checkboxEng.isChecked = true
+        binding.radioButtonEnglish.setOnCheckedChangeListener { chip, isChecked ->
+            radioButtonEnglish.isChecked = true
             if (isChecked) {
                 setLocale(Localization.ENGLISH)
-                binding.checkboxRus.isChecked = false
-                binding.checkboxKg.isChecked = false
+                binding.radioButtonRussian.isChecked = false
+                binding.radioButtonKyrgyz.isChecked = false
             }
             if (!isChecked) {
-                checkboxEng.isChecked = false
+                radioButtonEnglish.isChecked = false
 
             }
         }
 
-        binding.checkboxKg.setOnCheckedChangeListener { chip, isChecked ->
-            checkboxKg.isChecked = true
+        binding.radioButtonKyrgyz.setOnCheckedChangeListener { _, isChecked ->
+            radioButtonKyrgyz.isChecked = true
             if (isChecked) {
                 setLocale(Localization.KYRGYZ)
-                binding.checkboxEng.isChecked = false
-                binding.checkboxRus.isChecked = false
+                binding.radioButtonEnglish.isChecked = false
+                binding.radioButtonRussian.isChecked = false
             }
             if (!isChecked) {
-                checkboxKg.isChecked = false
+                radioButtonKyrgyz.isChecked = false
 
             }
         }
 
-        binding.checkboxRus.setOnCheckedChangeListener { chip, isChecked ->
-            checkboxRus.isChecked = true
+        binding.radioButtonRussian.setOnCheckedChangeListener { chip, isChecked ->
+            radioButtonRussian.isChecked = true
             if (isChecked) {
                 setLocale(Localization.RUSSIAN)
-                binding.checkboxEng.isChecked = false
-                binding.checkboxKg.isChecked = false
+                radioButtonEnglish.isChecked = false
+                radioButtonKyrgyz.isChecked = false
             }
             if (!isChecked) {
-                checkboxRus.isChecked = false
+                radioButtonRussian.isChecked = false
             }
         }
     }

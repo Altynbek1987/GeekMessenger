@@ -17,7 +17,6 @@ plugins {
 
     // Google Services
     id(libs.plugins.google.services.get().pluginId)
-
 }
 
 android {
@@ -59,7 +58,6 @@ android {
 
 dependencies {
     implementation(project(":feature-auth"))
-    implementation(project(":feature-main"))
 
     // Hilt
     implementation(libs.bundles.hilt)

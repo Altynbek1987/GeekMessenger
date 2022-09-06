@@ -19,6 +19,7 @@ class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(
             findNavController().navigateUp()
         }
     }
+
     override fun setupListeners() {
         binding.toolbarBtn.setOnClickListener {
             findNavController().navigateUp()

@@ -9,11 +9,12 @@ import androidx.viewbinding.ViewBinding
 import com.geektechkb.common.constants.Constants.HOURS_MINUTES_DATE_FORMAT
 import com.geektechkb.core.base.BaseRecyclerViewHolder
 import com.geektechkb.core.extensions.formatCurrentUserTime
-import com.geektechkb.core.extensions.setImage
 import com.geektechkb.feature_main.R
-import com.geektechkb.feature_main.databinding.*
+import com.geektechkb.feature_main.databinding.ItemReceivedMessageBinding
+import com.geektechkb.feature_main.databinding.ItemReceivedVoiceMessageBinding
+import com.geektechkb.feature_main.databinding.ItemSentMessagesBinding
+import com.geektechkb.feature_main.databinding.ItemSentVoiceMessageBinding
 import com.geektechkb.feature_main.domain.models.Message
-import java.lang.IllegalStateException
 
 class MessagesAdapter :
     ListAdapter<Message, BaseRecyclerViewHolder<ViewBinding, Message>>(diffUtil) {
@@ -64,7 +65,7 @@ class MessagesAdapter :
                 )
             }*/
 
-                   else -> {
+            else -> {
                 throw IllegalArgumentException("Not found ViewHolder!")
             }
         }

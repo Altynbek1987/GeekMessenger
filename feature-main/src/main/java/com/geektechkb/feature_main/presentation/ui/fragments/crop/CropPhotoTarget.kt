@@ -12,6 +12,7 @@ class CropPhotoTarget(
     private val kropView: KropView,
     private val resetZoom: Boolean
 ) : Target {
+    
     override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
         cropLoading()
     }
@@ -31,7 +32,6 @@ class CropPhotoTarget(
             cropLoaded()
         }
     }
-
 
     private fun cropLoading() {
         cropContainer.displayedChild = 0
