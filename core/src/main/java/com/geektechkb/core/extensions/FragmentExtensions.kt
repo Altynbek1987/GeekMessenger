@@ -1,10 +1,13 @@
 package com.geektechkb.core.extensions
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -25,6 +28,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
+import java.io.OutputStream
 
 fun ImageView.setImage(uri: String?) {
     Glide.with(this)
@@ -242,4 +246,32 @@ fun Fragment.getActionBarSize(): Int {
     val array =
         requireContext().theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
     return array.getDimension(0, 0f).toInt()
+}
+
+fun Fragment.saveImageToLocalStorageAndRetrieveItsUri(bitmap: Bitmap): Uri {
+    val filename = "IMG_${System.currentTimeMillis()}.png"
+    var outputStream: OutputStream?
+    var imageUri: Uri?
+    val contentValues = ContentValues().apply {
+        put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
+        put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
+        put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+        put(MediaStore.Video.Media.IS_PENDING, 1)
+    }
+
+    val contentResolver = requireActivity().applicationContext.contentResolver
+
+    contentResolver.also { resolver ->
+        imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+        outputStream = imageUri?.let { resolver.openOutputStream(it) }
+    }
+
+    outputStream?.use { bitmap.compress(Bitmap.CompressFormat.PNG, 100, it) }
+
+    contentValues.clear()
+    contentValues.put(MediaStore.Video.Media.IS_PENDING, 0)
+    imageUri?.let {
+        contentResolver.update(it, contentValues, null, null)
+    }
+    return imageUri!!
 }
