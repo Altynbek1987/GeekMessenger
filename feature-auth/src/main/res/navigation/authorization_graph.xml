@@ -51,8 +51,8 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_create_profile">
         <action
-            android:id="@+id/action_profileFragment_to_mainFlowFragment"
-            app:destination="@id/mainFlowFragment"
+            android:id="@+id/action_createProfileFragment_to_mainFlowFragment"
+            app:destination="@id/mainFlowFragment2"
             app:popUpTo="@id/authorization_graph" />
         <action
             android:id="@+id/action_profileFragment_to_deniedPermissionsDialogFragment"
@@ -65,7 +65,7 @@
 
 
     <fragment
-        android:id="@+id/mainFlowFragment"
+        android:id="@+id/mainFlowFragment2"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.mainflow.MainFlowFragment"
         android:label="MainFlowFragment">
 

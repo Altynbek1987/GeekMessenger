@@ -18,7 +18,6 @@ class IncomingCallFragment :
     BaseFragment<FragmentIncomingCallBinding, IncomingCallViewModel>(R.layout.fragment_incoming_call) {
     override val binding by viewBinding(FragmentIncomingCallBinding::bind)
     override val galleryViewModel by viewModels<IncomingCallViewModel> ()
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun setupListeners() {
         binding.imAcceptCall.setOnClickListener {
             galleryViewModel.acceptAnIncomingCall()

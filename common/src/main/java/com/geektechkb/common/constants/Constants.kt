@@ -34,7 +34,4 @@ object Constants {
     const val CHANGE_LANGUAGE = "language"
 
 
-    const val BASE_URL = "https://fcm.googleapis.com"
-    const val SERVER_KEY = "AAAA4tl5Ows:APA91bE6G6MElF0snum44KolLtwwmnCecHS5gRCFNi5P7z4PpiL1SFEqBhjJoCqQ9UE9pz7hLAMH6UGSUQe-GdFcNy2lolWDOaLxO4LuVo9nTTCmGhu_FiXtuMBrdm1eW2D3giz-zrUs" // get firebase server key from firebase project setting
-    const val CONTENT_TYPE = "application/json"
 }

@@ -344,7 +344,6 @@
         android:contentDescription="@string/button_to_send_message"
         android:src="@drawable/ic_send_message"
         android:visibility="gone"
-        android:src="@drawable/ic_send_message"
         app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gl_send_message_start"

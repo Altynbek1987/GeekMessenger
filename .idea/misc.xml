@@ -3,10 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.2269021739130435" />
         <entry key="../../../../layout/custom_preview.xml" value="0.31701011928260747" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/drawable/ic_back.xml" value="0.1945" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_chat.xml" value="0.15534420289855072" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.10833333333333334" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-auth/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekMessengerNew/feature-main/src/main/res/drawable/check.xml" value="0.1395" />
@@ -39,6 +39,7 @@
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authoritarian_flow.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_authorization_flow.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_create_profile.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_on_board.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.1265625" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.27447916666666666" />
@@ -66,7 +67,7 @@
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_denied_permissions_dialog.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_gallery_bottom_sheet.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_group.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.176" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_incoming_call.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_languages.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.1703125" />

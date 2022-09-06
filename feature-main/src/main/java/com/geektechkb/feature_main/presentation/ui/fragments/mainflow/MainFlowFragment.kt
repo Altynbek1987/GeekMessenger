@@ -21,7 +21,6 @@ import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class MainFlowFragment : BaseFlowFragment(
     R.layout.fragment_main_flow,
@@ -49,6 +48,7 @@ class MainFlowFragment : BaseFlowFragment(
         )
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
+
             when (destination.id) {
                 R.id.chatFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
                 R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
@@ -69,11 +69,11 @@ class MainFlowFragment : BaseFlowFragment(
             }
         }
 
-
-            binding.homeAppBarMain.toolbarButton.setOnClickListener {
+        binding.homeAppBarMain.toolbarButton.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
     }
+
 
     override fun establishRequest() {
         fetchUser()
@@ -101,6 +101,7 @@ class MainFlowFragment : BaseFlowFragment(
         })
         Log.e("anime", viewModel.userState.toString())
     }
+
 
     override fun onStart() {
         super.onStart()

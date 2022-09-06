@@ -17,9 +17,9 @@ class CallsFragment : BaseFragment<FragmentCallsBinding, СallsViewModel>(
             findNavController().navigateUp()
         }
     }
-    override fun setupListeners() {
-        binding.toolbarButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
-    }
+//    override fun setupListeners() {
+//        binding.toolbarButton.setOnClickListener {
+//            findNavController().navigateUp()
+//        }
+//    }
 }
