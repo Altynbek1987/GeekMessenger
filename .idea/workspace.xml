@@ -10,7 +10,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="gaypop" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -20,24 +19,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="changes">
-      <change beforePath="$PROJECT_DIR$/.MainActivity.kt.swp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/crop/CropPhotoTarget.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/crop/CropPhotoTarget.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions/FragmentExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions/FragmentExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions/StringExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions/StringExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-auth/src/main/java/com/geektechkb/feature_auth/presentation/ui/fragments/auth/createProfile/CreateProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-auth/src/main/java/com/geektechkb/feature_auth/presentation/ui/fragments/auth/createProfile/CreateProfileFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/mainflow/MainFlowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/mainflow/MainFlowFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_group.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_group.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_main_flow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_main_flow.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/nav_header_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/nav_header_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/menu/main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/menu/main_drawer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R58RC1DS6EE]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/timplifier/.android/avd/Resizable_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -76,11 +72,11 @@
         <option value="GraphQL File" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin File" />
         <option value="resourceFile" />
         <option value="Kotlin Enum" />
         <option value="valueResourceFile" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
