@@ -1,9 +1,14 @@
 package com.geektechkb.core.extensions
 
+import android.graphics.Color
+import android.text.SpannableStringBuilder
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.switchmaterial.SwitchMaterial
+import io.getstream.avatarview.AvatarView
+import io.getstream.avatarview.coil.loadImage
+import kotlin.random.Random
 
 fun ImageView.loadImageWithGlide(url: Any?) = Glide.with(this).load(url).into(this)
 
@@ -28,4 +33,21 @@ fun SwitchMaterial.actionOnCheckedChange(action: (Boolean) -> Unit) {
     setOnCheckedChangeListener { _, isChecked ->
         action(isChecked)
     }
+}
+
+fun AvatarView.loadImageAndSetInitialsIfFailed(url: String?, name: String?, lastName: String?) {
+    loadImage(data = url, onError = { _, _ ->
+
+        val random = Random
+        val randomAvatarBackgroundColor =
+            Color.rgb(
+                random.nextInt(255),
+                random.nextInt(255),
+                random.nextInt(255)
+            )
+        avatarInitialsBackgroundColor = randomAvatarBackgroundColor
+        avatarInitials = SpannableStringBuilder(
+            name.takeFirstCharacterAndCapitalizeIt()
+        ).append(lastName.takeFirstCharacterAndCapitalizeIt()).toString()
+    })
 }
