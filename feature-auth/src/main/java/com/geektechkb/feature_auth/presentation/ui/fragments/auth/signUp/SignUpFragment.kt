@@ -30,7 +30,6 @@ class SignUpFragment :
         disableHelperText()
     }
 
-
     private fun addMaskToThePhoneNumberEditText() {
         binding.etPhone.addTextChangedListener(MaskedWatcher(maskFormatter, binding.etPhone))
     }
@@ -38,11 +37,9 @@ class SignUpFragment :
     private fun disableHelperText() {
     }
 
-
     override fun setupListeners() {
         openPhoneNumberVerificationDialog()
     }
-
 
     private fun openPhoneNumberVerificationDialog() {
         binding.btnContinue.setOnClickListener {
@@ -50,7 +47,6 @@ class SignUpFragment :
                 binding.tlPhone.isErrorEnabled = true
                 binding.tlPhone.error = getString(R.string.phone_number_must_consist_of_9_digits)
             } else
-
                 findNavController().directionsSafeNavigation(
                     SignUpFragmentDirections.actionSignUpFragmentToPhoneVerificationDialogFragment(
                         binding.tvCountryPhoneCode.text.toString() + maskFormatter.formatString(
@@ -59,11 +55,9 @@ class SignUpFragment :
                     )
                 )
             binding.etPhone.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
+                binding.tlPhone.error = null
                 binding.tlPhone.isErrorEnabled = false
             })
         }
-
     }
 }
-
-
