@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.settings.notificationsAndSounds
+package com.geektechkb.feature_main.presentation.ui.fragments.profil.notificationsAndSounds
 
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.domain.useCases.SubscribeToNotificationTopicUseCase

@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.settings.ProfileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <argument
@@ -154,7 +154,7 @@
     </fragment>
     <fragment
         android:id="@+id/languagesFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.settings.language.LanguagesFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.language.LanguagesFragment"
         android:label="fragment_languages"
         tools:layout="@layout/fragment_languages">
         <action
@@ -194,12 +194,12 @@
     </fragment>
     <fragment
         android:id="@+id/notificationsAndSoundsFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.settings.notificationsAndSounds.NotificationsAndSoundsFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.notificationsAndSounds.NotificationsAndSoundsFragment"
         android:label="fragment_notifications_and_sounds"
         tools:layout="@layout/fragment_notifications_and_sounds" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.settings.editProfile.EditProfileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile">
         <action

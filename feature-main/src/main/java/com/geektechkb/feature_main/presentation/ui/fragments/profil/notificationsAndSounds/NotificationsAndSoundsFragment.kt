@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.settings.notificationsAndSounds
+package com.geektechkb.feature_main.presentation.ui.fragments.profil.notificationsAndSounds
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
