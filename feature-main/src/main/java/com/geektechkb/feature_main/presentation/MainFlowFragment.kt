@@ -1,13 +1,10 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.mainflow
+package com.geektechkb.feature_main.presentation
 
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.text.SpannableStringBuilder
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -15,13 +12,11 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFlowFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.formatCurrentUserTime
-import com.geektechkb.core.extensions.takeFirstCharacterAndCapitalizeIt
+import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import dagger.hilt.android.AndroidEntryPoint
-import io.getstream.avatarview.coil.loadImage
 import javax.inject.Inject
-import kotlin.random.Random
 
 
 @AndroidEntryPoint
@@ -68,9 +63,7 @@ class MainFlowFragment : BaseFlowFragment(
     }
 
     private fun fetchUser() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.fetchUser(preferences.currentUserPhoneNumber)
-        }
+        viewModel.fetchUser(preferences.currentUserPhoneNumber)
     }
 
     override fun launchObservers() {
@@ -89,21 +82,7 @@ class MainFlowFragment : BaseFlowFragment(
                         userName.text = "$nonNullName $nonNullLastName"
                     }
                 }
-                avatarView.apply {
-                    loadImage(data = profileImage, onError = { _, _ ->
-                        val random = Random
-                        val randomAvatarBackgroundColor =
-                            Color.rgb(
-                                random.nextInt(255),
-                                random.nextInt(255),
-                                random.nextInt(255)
-                            )
-                        avatarInitialsBackgroundColor = randomAvatarBackgroundColor
-                        avatarInitials = SpannableStringBuilder(
-                            name.takeFirstCharacterAndCapitalizeIt()
-                        ).append(lastName.takeFirstCharacterAndCapitalizeIt()).toString()
-                    })
-                }
+                avatarView.loadImageAndSetInitialsIfFailed(profileImage, name, lastName)
             }
         })
     }
