@@ -5,28 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview"
+    <io.getstream.avatarview.AvatarView
+        android:id="@+id/av_profile"
         android:layout_width="54dp"
         android:layout_height="54dp"
-        android:layout_margin="5dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:elevation="10dp"
-        app:cardCornerRadius="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="6dp"
+        app:avatarViewBorderWidth="0dp"
+        app:avatarViewShape="circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/im_profile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:scaleType="centerCrop"
-            android:src="@drawable/imageee" />
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/circular_progressbar_latest_message_menu"
@@ -34,10 +24,10 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/cardview"
-        app:layout_constraintEnd_toEndOf="@+id/cardview"
-        app:layout_constraintStart_toStartOf="@+id/cardview"
-        app:layout_constraintTop_toTopOf="@+id/cardview" />
+        app:layout_constraintBottom_toBottomOf="@+id/av_profile"
+        app:layout_constraintEnd_toEndOf="@+id/av_profile"
+        app:layout_constraintStart_toStartOf="@+id/av_profile"
+        app:layout_constraintTop_toTopOf="@+id/av_profile" />
 
     <TextView
         android:id="@+id/tv_username"
@@ -48,8 +38,8 @@
         android:textColor="@android:color/black"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cardview"
-        app:layout_constraintTop_toTopOf="@+id/cardview"
+        app:layout_constraintStart_toEndOf="@+id/av_profile"
+        app:layout_constraintTop_toTopOf="@+id/av_profile"
         tools:text="Username" />
 
     <TextView
@@ -74,7 +64,7 @@
         android:maxLines="1"
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardview"
+        app:layout_constraintStart_toEndOf="@+id/av_profile"
         app:layout_constraintTop_toBottomOf="@+id/tv_username"
         tools:text="Банк россии снизил ключевую ставку до..." />
 
