@@ -14,16 +14,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/ib_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="10dp"
-            android:background="@color/blue"
-            android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment"
-            android:src="@drawable/check" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,7 +59,7 @@
         android:id="@+id/tv_country_phone_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="+996"
         android:textColor="#68819C"
         android:textSize="20sp"
@@ -110,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.70" />
+        app:layout_constraintGuide_percent="0.71" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -155,11 +145,12 @@
             android:inputType="phone"
             android:maxLength="11"
             android:maxLines="1"
+            android:minLines="1"
             android:paddingStart="31dp"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
             android:textColor="#68819C"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </com.google.android.material.textfield.TextInputLayout>
