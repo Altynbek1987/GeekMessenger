@@ -22,7 +22,9 @@
 
     <style name="Theme.NavDraw.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.NavDraw.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.NavDraw.PopupOverlay" parent="@style/Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/toolbar_overflow_menu_background</item>
+    </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
