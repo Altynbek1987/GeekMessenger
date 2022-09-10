@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.settings.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <argument
@@ -40,10 +40,6 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
-        <!--        <argument-->
-        <!--            android:name="numberHide"-->
-        <!--            app:argType="false"-->
-        <!--             />-->
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
@@ -129,7 +125,11 @@
         android:id="@+id/deniedPermissionsDialogFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.dialogs.DeniedPermissionsDialogFragment"
         android:label="DeniedPermissionsDialogFragment"
-        tools:layout="@layout/fragment_denied_permissions_dialog" />
+        tools:layout="@layout/fragment_denied_permissions_dialog">
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
     <dialog
         android:id="@+id/clearChatHistoryFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.dialogs.ClearChatHistoryFragment"
@@ -154,7 +154,7 @@
     </fragment>
     <fragment
         android:id="@+id/languagesFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.language.LanguagesFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.settings.language.LanguagesFragment"
         android:label="fragment_languages"
         tools:layout="@layout/fragment_languages">
         <action
@@ -194,12 +194,12 @@
     </fragment>
     <fragment
         android:id="@+id/notificationsAndSoundsFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.notificationsAndSounds.NotificationsAndSoundsFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.settings.notificationsAndSounds.NotificationsAndSoundsFragment"
         android:label="fragment_notifications_and_sounds"
         tools:layout="@layout/fragment_notifications_and_sounds" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile.EditProfileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.settings.editProfile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile">
         <action
@@ -211,5 +211,4 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
-
 </navigation>
