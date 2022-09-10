@@ -49,9 +49,8 @@
                 tools:text="+996552109876" />
 
             <View
-                android:layout_width="130dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="18dp"
                 android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="@id/tv_entered_number"
                 app:layout_constraintStart_toStartOf="@id/tv_entered_number"
