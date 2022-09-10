@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.mainflow
+package com.geektechkb.feature_main.presentation
 
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.domain.models.User
@@ -13,7 +13,7 @@ import javax.inject.Inject
 class MainFlowViewModel @Inject constructor(
     private val updateUserStatusUseCase: UpdateUserStatusUseCase,
     private val fetchUserUseCase: FetchUserUseCase,
-    private val updateUserProfileImageUseCase: UpdateUserProfileImageUseCase
+
 ) :
     BaseViewModel() {
     fun updateUserStatus(status: String) = updateUserStatusUseCase(status)
@@ -21,9 +21,6 @@ class MainFlowViewModel @Inject constructor(
     private val _userState = mutableUiStateFlow<User>()
     val userState = _userState.asStateFlow()
 
-    suspend fun fetchUser(phoneNumber: String) =
+    fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
-
-    suspend fun updateUserProfileImage(imageFileName: String, byte: ByteArray) =
-        updateUserProfileImageUseCase(imageFileName, byte)
 }
