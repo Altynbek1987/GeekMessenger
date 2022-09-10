@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface UsersRepository {
     fun fetchPagedUsers(): NotAnActualPagingData
-    suspend fun fetchUser(phoneNumber: String): Flow<Either<String, User>>
+    fun fetchUser(phoneNumber: String): Flow<Either<String, User>>
 
     fun updateUserStatus(status: String)
 
