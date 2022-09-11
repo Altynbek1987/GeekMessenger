@@ -30,8 +30,11 @@ import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
+import com.sendbird.calls.shadow.com.google.gson.Gson
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -250,7 +253,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun backToHomeFragment() {
-        binding.imBack.setOnSingleClickListener {
+       /* binding.imBack.setOnSingleClickListener {
+            findNavController().navigate(R.id.homeFragment)
+        }*/
+        binding.imBack.setOnClickListener {
             findNavController().navigate(R.id.homeFragment)
         }
     }
@@ -263,9 +269,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 etMessage.text.toString(),
                 formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
                 generateRandomId()
+
             )
             etMessage.text?.clear()
+
         }
+
     }
 
 
@@ -354,6 +363,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 }
             }
         }
+
     }
 
     private fun onSelect(uri: Uri) {
@@ -387,5 +397,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
     }
+    
+
+
 
 }
