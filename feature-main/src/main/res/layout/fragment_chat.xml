@@ -42,8 +42,8 @@
 
             <ImageView
                 android:id="@+id/im_back"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="22dp"
@@ -152,9 +152,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@id/gl_wallpaper_bottom"
+        app:layout_constraintBottom_toBottomOf="@id/gl_recycler"
         app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom"
         app:stackFromEnd="true"
+        android:padding="5dp"
         tools:listitem="@layout/item_sent_messages" />
 
     <include
@@ -163,6 +164,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.935" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -226,7 +234,9 @@
             android:id="@+id/til_message"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:inputType="text"
             android:minHeight="75dp"
+            android:textIsSelectable="true"
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="20dp"
@@ -249,15 +259,15 @@
                 android:backgroundTint="@color/white"
                 android:hint="@string/message_russian"
                 android:includeFontPadding="false"
-                android:inputType="textMultiLine|textCapSentences"
+                android:inputType="text"
                 android:minHeight="75dp"
                 android:minLines="1"
-                android:padding="2dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="#9F9F9F"
+                android:textIsSelectable="true"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -266,6 +276,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:translationZ="10dp"
+        android:paddingTop = "15dp"
         app:cancel_icon="@drawable/ic_release_locked_lock"
         app:circle_color="@color/sentMessagesColor"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -274,6 +285,13 @@
         app:mic_active_icon="@drawable/ic_microphone_active"
         app:mic_icon="@drawable/ic_microphone_inactive"
         app:vibration_enable="true" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1.09" />
 
 
     <ImageView
@@ -335,18 +353,19 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.982" />
 
-
     <ImageView
         android:id="@+id/im_send_message"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="18dp"
         android:background="@null"
+        android:src="@drawable/ic_send_message"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gl_send_message_start"
         app:layout_constraintTop_toTopOf="@id/gl_chat_actions_top" />
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_gallery"
