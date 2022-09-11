@@ -56,6 +56,7 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+
     </fragment>
     <dialog
         android:id="@+id/galleryBottomSheetFragment"
