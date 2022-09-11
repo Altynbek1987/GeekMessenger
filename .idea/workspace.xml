@@ -19,17 +19,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="changes">
-      <change beforePath="$PROJECT_DIR$/feature-auth/src/main/java/com/geektechkb/feature_auth/presentation/ui/fragments/auth/createProfile/CreateProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-auth/src/main/java/com/geektechkb/feature_auth/presentation/ui/fragments/auth/createProfile/CreateProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/mainflow/MainFlowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/mainflow/MainFlowFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/di/LocalModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/di/LocalModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/di/SharedPreferencesModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/di/SharedPreferencesModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/presentation/ui/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/presentation/ui/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/geektechkb/common/constants/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/geektechkb/common/constants/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/local/Localization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/local/Localization.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/local/preferences/LocaleHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/local/preferences/LocaleHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/local/preferences/PreferencesHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/local/preferences/PreferencesHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/language/LanguagesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/language/LanguagesFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_languages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_languages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/navigation/main_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/navigation/main_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/values-en/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/values-ky/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/values-ky/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/timplifier/.android/avd/Resizable_API_33.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R58RC1DS6EE]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -94,28 +105,28 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/style.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-auth/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/strings.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/core/.gitignore" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/core/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/.gitignore" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-main/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/gradle/libs.versions.toml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/attrs.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/studio.vmoptions" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle/libs.versions.toml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/core/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/attrs.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/strings.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="29bhqCrmJVfKxUIPoZq7CHqHepm" />
   <component name="ProjectLevelVcsManager">

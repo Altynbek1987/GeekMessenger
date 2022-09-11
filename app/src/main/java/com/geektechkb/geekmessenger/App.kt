@@ -14,6 +14,7 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class App : Application() {
+
     val emojiManager = EmojiManager.install(GoogleEmojiProvider())
 
     override fun onCreate() {
@@ -45,6 +46,4 @@ class App : Application() {
             BuildConfig.SENDBIRD_APP_ID
         )
     }
-
-
 }

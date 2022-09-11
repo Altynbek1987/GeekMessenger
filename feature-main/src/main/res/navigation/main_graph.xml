@@ -158,9 +158,6 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.language.LanguagesFragment"
         android:label="fragment_languages"
         tools:layout="@layout/fragment_languages">
-        <action
-            android:id="@+id/action_languagesFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/voiceCallFragment"

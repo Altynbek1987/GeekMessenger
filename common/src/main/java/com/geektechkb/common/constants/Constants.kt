@@ -25,6 +25,9 @@ object Constants {
     const val FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH = "messageImages/"
     const val FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH = "voiceMessages/"
 
+    const val LANGUAGE_KEY = "language"
+    const val LANGUAGE_CODE_KEY = "languageCode"
+
     const val INTENT_FILTER = "MESSENGER_EVENT"
 
 
