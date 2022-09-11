@@ -60,21 +60,4 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             findNavController(com.geektechkb.feature_main.R.id.nav_host_fragment_content_main)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
-
-
-    override fun recreate() {
-        super.recreate()
-        setTheme(R.style.Theme_GeekMessenger)
-
-
-    }
-
-    override fun onRestart() {
-        setTheme(R.style.Theme_GeekMessenger)
-
-        super.onRestart()
-
-    }
-
-
 }
