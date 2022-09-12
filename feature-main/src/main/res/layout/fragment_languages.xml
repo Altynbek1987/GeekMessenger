@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,10 +16,11 @@
 
         <ImageButton
             android:id="@+id/ib_back"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_margin="10dp"
-            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             android:background="@color/blue"
             android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment"
             android:src="@drawable/arrow"
@@ -29,96 +30,62 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             android:text="@string/tv_language"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/ib_back"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageButton
-        android:id="@+id/check_byn"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/blue"
-        android:src="@drawable/ic_baseline_check_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <CheckBox
-        android:id="@+id/checkbox_kg"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_languages"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="Кыргызский"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:text="Язык"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <View
-        android:id="@+id/strip1"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_margin="10dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkbox_kg" />
-
-    <CheckBox
-        android:id="@+id/checkbox_rus"
-        android:layout_width="match_parent"
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/radio_button_russian"
+        style="@style/LanguagesMaterialRadioButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginTop="20dp"
         android:text="Русский"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkbox_kg" />
+        app:layout_constraintTop_toBottomOf="@id/tv_languages" />
+
+
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/radio_button_kyrgyz"
+        style="@style/LanguagesMaterialRadioButton"
+        android:layout_marginTop="6dp"
+        android:text="Кыргызский"
+        app:buttonTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_button_russian" />
 
     <View
-        android:id="@+id/strip2"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_margin="10dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkbox_rus" />
-
-    <CheckBox
-        android:id="@+id/checkbox_eng"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="English"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkbox_rus" />
+        android:layout_marginStart="62dp"
+        android:background="#D4D4D4"
+        app:layout_constraintStart_toStartOf="@id/radio_button_russian"
+        app:layout_constraintTop_toBottomOf="@id/radio_button_russian" />
 
     <View
-        android:id="@+id/strip3"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_margin="10dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="62dp"
+        android:background="#D4D4D4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkbox_eng" />
-
+        app:layout_constraintTop_toBottomOf="@id/radio_button_kyrgyz" />
 </androidx.constraintlayout.widget.ConstraintLayout>

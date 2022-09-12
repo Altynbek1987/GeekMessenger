@@ -1,24 +1,22 @@
 package com.geektechkb.geekmessenger.presentation.ui.activity
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
-import com.geektechkb.feature_main.data.local.preferences.LocaleHelper
 import com.geektechkb.geekmessenger.R
-import com.geektechkb.geekmessenger.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-    private lateinit var navController: NavController
-    private val binding by viewBinding(ActivityMainBinding::bind)
 
+    private lateinit var navController: NavController
 
     @Inject
     lateinit var userPreferences: AuthorizePreferences
@@ -26,14 +24,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     @Inject
     lateinit var onBoardPreferencesHelper: OnBoardPreferencesHelper
 
-    @Inject
-    lateinit var localeHelper: LocaleHelper
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_GeekMessenger)
         super.onCreate(savedInstanceState)
-        localeHelper.loadLocale(this)
         setUpNavigation()
     }
 
@@ -45,12 +38,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
         when (userPreferences.isAuthorized) {
-            false -> {
-                navGraph.setStartDestination(R.id.authorizationFlowFragment)
-            }
             true -> {
                 navGraph.setStartDestination(R.id.mainFlowFragment)
             }
+            false -> {
+                navGraph.setStartDestination(R.id.authorizationFlowFragment)
+            }
+
         }
         navController.graph = navGraph
     }
@@ -61,20 +55,16 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-
-    override fun recreate() {
-        super.recreate()
-        setTheme(R.style.Theme_GeekMessenger)
-
-
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(setAppLocale(newBase, Locale.getDefault().language))
     }
 
-    override fun onRestart() {
-        setTheme(R.style.Theme_GeekMessenger)
-
-        super.onRestart()
-
+    private fun setAppLocale(context: Context, language: String): Context {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val config = context.resources.configuration
+        config.setLocale(locale)
+        config.setLayoutDirection(locale)
+        return context.createConfigurationContext(config)
     }
-
-
 }

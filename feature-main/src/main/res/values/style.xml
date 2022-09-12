@@ -1,22 +1,45 @@
+<?xml version="1.0"?>
+
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
-    <style name="Theme.NavDraw" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    <style name="Theme.NavDraw" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+
         <!-- Primary brand color. -->
+
         <item name="colorPrimary">#4A7CE0</item>
+
         <item name="colorPrimaryVariant">#4A7CE0</item>
+
         <item name="colorOnPrimary">#4A7CE0</item>
+
         <!-- Secondary brand color. -->
+
+        <item name="windowActionModeOverlay">true</item>
+
         <item name="colorSecondary">@color/teal_200</item>
+
         <item name="colorSecondaryVariant">@color/teal_700</item>
+
         <item name="colorOnSecondary">@color/black</item>
+
         <!-- Status bar color. -->
+
+
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
+
+
     </style>
 
     <style name="Theme.NavDraw.NoActionBar">
+
         <item name="windowActionBar">false</item>
+
         <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="Theme.NavDraw.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -24,5 +47,93 @@
     <style name="Theme.NavDraw.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="NotificationsAndSoundsMaterialSwitch">
+
+        <item name="android:layout_width">wrap_content</item>
+
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:minWidth">36dp</item>
+
+        <item name="android:minHeight">20dp</item>
+
+        <item name="android:maxWidth">36dp</item>
+
+        <item name="android:maxHeight">20dp</item>
+
+        <item name="android:thumb">@drawable/notifications_switch_thumb</item>
+
+        <item name="android:layout_marginTop">16dp</item>
+
+        <item name="android:layout_marginEnd">15dp</item>
+
+        <item name="android:background">@null</item>
+
+    </style>
+
+
+    <style name="Foo">
+
+        <item name="android:layout_width">wrap_content</item>
+
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:minWidth">36dp</item>
+
+        <item name="android:minHeight">20dp</item>
+
+        <item name="android:maxWidth">36dp</item>
+
+        <item name="android:maxHeight">20dp</item>
+
+        <item name="android:thumb">@drawable/notifications_switch_thumb</item>
+
+        <item name="android:layout_marginTop">16dp</item>
+
+        <item name="android:layout_marginEnd">15dp</item>
+
+        <item name="android:background">@null</item>
+
+    </style>
+
+
+    <style name="NotificationsAndSoundsTextView">
+
+        <item name="android:layout_width">wrap_content</item>
+
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginStart">18dp</item>
+
+        <item name="android:layout_marginTop">16dp</item>
+
+        <item name="android:textColor">#2C2C2C</item>
+
+        <item name="android:textSize">16sp</item>
+
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="LanguagesMaterialRadioButton">
+
+        <item name="android:layout_width">wrap_content</item>
+
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:buttonTint">@color/blue</item>
+
+        <item name="android:textColor">#2C2C2C</item>
+
+        <item name="android:textSize">18sp</item>
+
+        <item name="android:paddingStart">15dp</item>
+
+        <item name="android:layout_marginStart">15dp</item>
+
+        <item name="android:paddingBottom">6dp</item>
+
+    </style>
 
 </resources>
