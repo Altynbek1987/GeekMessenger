@@ -14,6 +14,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
     private lateinit var navController: NavController
 
     @Inject
@@ -24,7 +25,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     @Inject
     lateinit var localeHelper: LocaleHelper
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_GeekMessenger)
@@ -41,13 +41,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
         when (userPreferences.isAuthorized) {
-            true -> {
-                navGraph.setStartDestination(R.id.mainFlowFragment)
-            }
             false -> {
                 navGraph.setStartDestination(R.id.authorizationFlowFragment)
             }
-
+            true -> {
+                navGraph.setStartDestination(R.id.mainFlowFragment)
+            }
         }
         navController.graph = navGraph
     }
@@ -56,16 +55,5 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navController =
             findNavController(com.geektechkb.feature_main.R.id.nav_host_fragment_content_main)
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
-
-    override fun recreate() {
-        super.recreate()
-        setTheme(R.style.Theme_GeekMessenger)
-    }
-
-    override fun onRestart() {
-        setTheme(R.style.Theme_GeekMessenger)
-        super.onRestart()
-
     }
 }

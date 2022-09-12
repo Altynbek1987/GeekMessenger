@@ -29,7 +29,6 @@ abstract class BaseRepository {
         emit(Either.Left(exception.localizedMessage ?: "An error occurred"))
     }
 
-
     protected fun <Key : Any, Model : Any> doPagingRequest(
         pagingSource: PagingSource<Key, Model>,
     ) =
@@ -138,13 +137,11 @@ abstract class BaseRepository {
         }
     }
 
-
     suspend fun uploadUncompressedImageToCloudStorage(
         storageRef: StorageReference,
         file: Uri?,
         folderPath: String,
         id: String,
-        doOnComplete: () -> Unit
     ) =
         file?.let {
             storageRef
@@ -153,13 +150,9 @@ abstract class BaseRepository {
                 .await()
                 .storage
                 .downloadUrl
-                .addOnCompleteListener {
-                    doOnComplete()
-                }
                 .await()
                 .toString()
         }
-
 
     suspend fun uploadCompressedImageToCloudStorage(
         storageRef: StorageReference,
@@ -176,9 +169,7 @@ abstract class BaseRepository {
                 .downloadUrl
                 .await()
                 .toString()
-
         }
-
 
     suspend fun uploadVoiceMessageToCloudStorage(
         storageRef: StorageReference,
@@ -199,7 +190,6 @@ abstract class BaseRepository {
 
         }
 
-
     fun updateASingleFieldInDocument(
         collection: CollectionReference,
         documentPath: String,
@@ -208,5 +198,4 @@ abstract class BaseRepository {
     ) {
         collection.document(documentPath).update(fieldToUpdate, valueToReplaceTheOldOne)
     }
-
 }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.constraintlayout.utils.widget.ImageFilterButton
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -141,12 +141,12 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
     }
 
     protected fun <T> UIState<T>.assembleViewVisibility(
-        group: ConstraintLayout,
+        group: Group,
         loader: CircularProgressIndicator,
         navigationSucceed: Boolean = false,
     ) {
         fun displayLoader(isDisplayed: Boolean) {
-            group.isVisible = isDisplayed
+            group.isVisible = !isDisplayed
             loader.isVisible = isDisplayed
         }
         when (this) {

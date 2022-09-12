@@ -14,8 +14,8 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentCropPhotoBinding
+import com.geektechkb.feature_main.presentation.ui.fragments.crop.transformations.MirrorTransformation
 import com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest
-import com.geektechkb.feature_main.presentation.ui.utils.MirrorTransformation
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.ByteArrayOutputStream

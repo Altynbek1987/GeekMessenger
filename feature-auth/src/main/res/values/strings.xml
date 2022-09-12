@@ -22,11 +22,10 @@
     <string name="proceed_russian">Продолжить</string>
     <string name="continue_russian">Далее</string>
     <string name="button_to_delete_digits_from_edittexts">button to delete digits from edittexts</string>
-    <string name="send_verification_code_again">Отправить код заново</string>
+    <string name="send_verification_code_again">Отправить код </string>
     <string name="button_to_get_back_to_edit_phone_number_fragment">button to get back to edit phone number framgent</string>
     <string name="user_s_profile_image">user\'s profile image</string>
     <string name="profile_russian">Профиль</string>
-    <string name="geekMessenger_application_cant_function_without_needed_permissions_russian">Приложение GeekMessenger не может функционировать без разрешение на чтение галереи устройства. Вы можете включить их в разределе Настройки</string>
     <string name="settings_russian">Настройки</string>
     <string name="cancel_russian">Отмена</string>
     <string name="button_to_clear_edittext_field">button to clear edittext field</string>
