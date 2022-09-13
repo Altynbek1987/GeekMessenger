@@ -63,12 +63,16 @@ fun Fragment.showLongDurationSnackbar(text: CharSequence) {
 fun Fragment.checkForPermissionStatusAndRequestIt(
     requestPermissionLauncher: ActivityResultLauncher<String>,
     permission: String,
+    actionWhenPermissionHasBeenGranted: (() -> Unit)? = null
 ): Boolean {
     return when (ContextCompat.checkSelfPermission(
         requireContext(),
         permission
     ) == PackageManager.PERMISSION_GRANTED) {
-        true -> true
+        true -> {
+            actionWhenPermissionHasBeenGranted?.invoke()
+            true
+        }
 
         else -> {
             requestPermissionLauncher.launch(permission)
@@ -104,14 +108,17 @@ fun Fragment.createRequestPermissionLauncherToRequestSinglePermission(
             when {
                 isPermissionGranted -> actionWhenPermissionHasBeenGranted?.invoke()
                 !shouldShowRequestPermissionRationale(permission) -> actionWhenPermissionHasBeenDenied?.invoke()
-                    ?: ""
             }
-
-
         }
     return requestPermissionLauncher
 }
 
+fun Fragment.createFileChooserContractToGetImageUri(actionWithImageUri: (imageUri: Uri?) -> Unit) =
+    registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
+        if (imageUri != null) {
+            actionWithImageUri(imageUri)
+        }
+    }
 
 fun Fragment.hideSoftKeyboard() {
     val inputMethodManager =

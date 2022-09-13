@@ -39,4 +39,5 @@
     <string name="chat_notifications">Уведомления из чатов</string>
     <string name="private_chats">Личные чаты</string>
     <string name="edit_profile">Редактировать профиль</string>
+    <string name="hyphensIfPhoneNumberIsHidden">--- --- --- ---</string>
 </resources>

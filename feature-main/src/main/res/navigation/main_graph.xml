@@ -40,10 +40,6 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
-<!--        <argument-->
-<!--            android:name="numberHide"-->
-<!--            app:argType="false"-->
-<!--             />-->
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
@@ -130,7 +126,11 @@
         android:id="@+id/deniedPermissionsDialogFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.dialogs.DeniedPermissionsDialogFragment"
         android:label="DeniedPermissionsDialogFragment"
-        tools:layout="@layout/fragment_denied_permissions_dialog" />
+        tools:layout="@layout/fragment_denied_permissions_dialog">
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
     <dialog
         android:id="@+id/clearChatHistoryFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.dialogs.ClearChatHistoryFragment"
@@ -155,7 +155,7 @@
     </fragment>
     <fragment
         android:id="@+id/languagesFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.language.LanguagesFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.language.LanguagesFragment"
         android:label="fragment_languages"
         tools:layout="@layout/fragment_languages">
     </fragment>
@@ -209,5 +209,4 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
-
 </navigation>

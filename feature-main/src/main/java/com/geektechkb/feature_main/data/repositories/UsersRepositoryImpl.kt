@@ -45,7 +45,7 @@ class UsersRepositoryImpl @Inject constructor(
         )
 
 
-    override suspend fun fetchUser(phoneNumber: String) = doRequest {
+    override fun fetchUser(phoneNumber: String) = doRequest {
         return@doRequest User(
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_NAME_KEY) as String?,
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_LAST_NAME_KEY) as String?,
