@@ -21,7 +21,6 @@ import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class MainFlowFragment : BaseFlowFragment(
     R.layout.fragment_main_flow,
@@ -54,66 +53,67 @@ class MainFlowFragment : BaseFlowFragment(
 
             when (destination.id) {
 
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.appBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                else -> binding.appBarMain.toolbarButton.isGone = false
-                R.id.chatFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.profileFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.cropPhotoFragment -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.nav_groups -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.nav_calls -> binding.homeAppBarMain.toolbarButto.isGone = true
-                R.id.nav_host_fragment_content_main -> binding.homeAppBarMain.toolbarButto.isGone =
+                R.id.chatFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.cropPhotoFragment -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_groups -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_calls -> binding.homeAppBarMain.toolbarButton.isGone = true
+                R.id.nav_host_fragment_content_main -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                R.id.action_chatFragment_to_deniedPermissionsDialogFragment -> binding.homeAppBarMain.toolbarButto.isGone =
+                R.id.action_chatFragment_to_deniedPermissionsDialogFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                R.id.galleryBottomSheetFragment -> binding.homeAppBarMain.toolbarButto.isGone =
+                R.id.galleryBottomSheetFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-                R.id.homeFragment -> binding.homeAppBarMain.toolbarButto.isGone = false
+                R.id.homeFragment -> binding.homeAppBarMain.toolbarButton.isGone = false
+                else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
 
-        binding.appBarMain.toolbarButton.setOnClickListener {
+        binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
-        binding.homeAppBarMain.toolbarButto.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
+            binding.homeAppBarMain.toolbarButton.setOnClickListener {
+                binding.drawerLayout.openDrawer(GravityCompat.START)
+            }
         }
     }
 
-    override fun establishRequest() {
-        fetchUser()
+        override fun establishRequest() {
+            fetchUser()
 
-    }
-
-    private fun fetchUser() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.fetchUser(preferences.currentUserPhoneNumber)
         }
-    }
 
-    override fun launchObservers() {
-        subscribeToUser()
-    }
+        private fun fetchUser() {
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                viewModel.fetchUser(preferences.currentUserPhoneNumber)
+            }
+        }
 
-
-    private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
-            savedUserStatus = it.lastSeen
-            binding.nav.userNumber.text = (it.phoneNumber)
-            binding.nav.imageProfile.loadImageWithGlide(it.profileImage)
-            binding.nav.userName.text = it.name
-            username = it.name
-        })
-        Log.e("anime", viewModel.userState.toString())
-    }
+        override fun launchObservers() {
+            subscribeToUser()
+        }
 
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.updateUserStatus("В сети")
-    }
+        private fun subscribeToUser() {
+            viewModel.userState.spectateUiState(success = {
+                savedUserStatus = it.lastSeen
+                binding.nav.userNumber.text = (it.phoneNumber)
+                binding.nav.imageProfile.loadImageWithGlide(it.profileImage)
+                binding.nav.userName.text = it.name
+                username = it.name
+            })
+            Log.e("anime", viewModel.userState.toString())
+        }
 
-    override fun onStop() {
-        super.onStop()
-        viewModel.updateUserStatus("был(а) в ${formatCurrentUserTime("HH:mm")}")
-    }
+
+        override fun onStart() {
+            super.onStart()
+            viewModel.updateUserStatus("В сети")
+        }
+
+        override fun onStop() {
+            super.onStop()
+            viewModel.updateUserStatus("был(а) в ${formatCurrentUserTime("HH:mm")}")
+        }
 }
