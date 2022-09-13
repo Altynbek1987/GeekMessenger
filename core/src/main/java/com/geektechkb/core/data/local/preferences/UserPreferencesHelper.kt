@@ -13,4 +13,8 @@ class UserPreferencesHelper @Inject constructor(private val preferences: SharedP
         get() = preferences.getString(CURRENT_FIREBASE_USER_PHONE_NUMBER_KEY, "").toString()
         set(value) = preferences.edit().putString(CURRENT_FIREBASE_USER_PHONE_NUMBER_KEY, value)
             .apply()
+
+    var isHidePhoneNumber: Boolean
+        get() = preferences.getBoolean("hidePhoneNumber", false)
+        set(value) = preferences.edit().putBoolean("hidePhoneNumber", value).apply()
 }
