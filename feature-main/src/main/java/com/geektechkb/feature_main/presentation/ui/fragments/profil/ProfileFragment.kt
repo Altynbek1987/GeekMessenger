@@ -18,7 +18,6 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
-import com.geektechkb.feature_main.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentProfileBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
