@@ -32,7 +32,7 @@ import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
-import java.io.File
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -50,7 +50,7 @@ class ProfileFragment :
     private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
 
     override fun assembleViews() {
-        binding.toolbarButton.setOnClickListener {
+        binding.chanceBtn.setOnClickListener {
             findNavController().navigateUp()
         }
     }
@@ -92,7 +92,14 @@ class ProfileFragment :
         binding.chanceBtn.setOnClickListener {
             findNavController().navigateUp()
         }
+        languageСhange()
+        hideOrShowPhoneNumber()
+    }
 
+    private fun hideOrShowPhoneNumber() {
+        binding.switchNumbers.setOnCheckedChangeListener { _, b ->
+            preferences.isHidePhoneNumber = b
+        }
     }
 
     private fun getData() {
@@ -111,19 +118,30 @@ class ProfileFragment :
                 }
             }
 
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
+        binding.openBottomSheet.isVisible = true
+        binding.coordinatorGallery.isVisible = true
+        stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
+        bottomSheetBehavior?.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (BottomSheetBehavior.STATE_EXPANDED == newState) {
+                    showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
+                    binding.openBottomSheet.isVisible = false
+                } else {
+                    binding.openBottomSheet.isVisible = true
+                    hideAppBar(binding.galleryBottomSheet.appbarLayout)
                 }
-            })
-        }
-        languageСhange()
+            }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            }
+        })
     }
-
     private fun languageСhange() {
         binding.tvLanguage.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_languagesFragment)
         }
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
     }
 
     override fun establishRequest() {
@@ -227,7 +245,4 @@ class ProfileFragment :
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(uri.toString())
         )
     }
-
-
 }
-
