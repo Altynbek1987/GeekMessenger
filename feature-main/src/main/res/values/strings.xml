@@ -32,4 +32,6 @@
     <string name="gallery">Галерея</string>
     <string name="button_to_send_message">button to send message</string>
     <string name="speaker">Динамик</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
