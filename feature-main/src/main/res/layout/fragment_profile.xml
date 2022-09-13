@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.profil.ProfileFragment">
 
-
     <androidx.constraintlayout.utils.widget.ImageFilterButton
         android:id="@+id/im_image_profile"
         android:layout_width="match_parent"
@@ -18,10 +17,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/toolbar_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
     <ImageView
         android:id="@+id/chance_btn"
         android:layout_width="30dp"
@@ -87,7 +82,6 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.45" />
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/openBottomSheet"
@@ -211,7 +205,6 @@
         app:layout_constraintStart_toEndOf="@id/vk_notifications"
         app:layout_constraintTop_toBottomOf="@id/tv_settings" />
 
-
     <TextView
         android:id="@+id/tv_crossed"
         android:layout_width="wrap_content"
@@ -224,6 +217,15 @@
         app:layout_constraintStart_toEndOf="@id/vk_crossed"
         app:layout_constraintTop_toBottomOf="@id/tv_notifications" />
 
+    <Switch
+        android:id="@+id/switch_numbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_language"
+        app:layout_constraintTop_toBottomOf="@id/tv_notifications"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:id="@+id/tv_language"
