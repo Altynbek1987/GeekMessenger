@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.geektechkb.core.base.BaseDiffUtil
-import com.geektechkb.core.extensions.loadImageWithGlide
+import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
 import com.geektechkb.feature_main.databinding.ItemUserBinding
 import com.geektechkb.feature_main.domain.models.User
 
-class UsersAdapter(private val onItemClick: ((phoneNumber: String?) -> Unit)? = null) :
+class UsersAdapter(private val onItemClick: (phoneNumber: String?) -> Unit) :
     PagingDataAdapter<User, UsersAdapter.UsersViewHolder>(BaseDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
@@ -28,11 +28,16 @@ class UsersAdapter(private val onItemClick: ((phoneNumber: String?) -> Unit)? = 
 
     inner class UsersViewHolder(private val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(user: User) {
-            binding.tvUsername.text = user.name
-            binding.imProfile.loadImageWithGlide(user.profileImage)
+        fun onBind(user: User) = with(user) {
+            binding.apply {
+                tvUsername.text = name
+                avProfile.loadImageAndSetInitialsIfFailed(profileImage, name, lastName)
+            }
+        }
+
+        init {
             binding.root.setOnClickListener {
-                onItemClick?.let { it1 -> it1(user.phoneNumber) }
+                onItemClick(getItem(absoluteAdapterPosition)?.phoneNumber)
             }
         }
     }

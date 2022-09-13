@@ -7,43 +7,11 @@
     android:orientation="vertical"
     tools:context=".presentation.ui.fragments.crop.CropPhotoFragment">
 
-    <RadioGroup
-        android:id="@+id/overlay_shape"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/shape_oval"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="shape_oval"
-            android:textColor="@color/black"
-            android:visibility="gone" />
-
-        <RadioButton
-            android:id="@+id/shape_rect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="shape_rect"
-            android:visibility="gone" />
-
-        <RadioButton
-            android:id="@+id/shape_custom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="shape_custom"
-            android:visibility="gone" />
-
-    </RadioGroup>
-
     <ViewFlipper
         android:id="@+id/view_flipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/black"
+        android:background="#2C2C2C"
         app:layout_constraintTop_toTopOf="parent">
 
         <ViewFlipper
@@ -68,7 +36,6 @@
                     android:layout_height="match_parent"
                     app:krop_aspectX="1"
                     app:krop_aspectY="1"
-                    app:krop_overlayColor="@color/white"
                     app:krop_shape="rect" />
 
             </FrameLayout>
@@ -89,9 +56,40 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/check"
+        android:src="@drawable/ic_baseline_check_24"
+        app:backgroundTint="@color/blue"
+        app:backgroundTintMode="src_atop"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_rotate_image_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.365" />
+
+
+    <ImageView
+        android:id="@+id/im_rotate_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_rotate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gl_rotate_image_start" />
+
+    <ImageView
+        android:id="@+id/im_flip_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_flip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/im_rotate_image" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

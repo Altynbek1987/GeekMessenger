@@ -6,14 +6,13 @@ import javax.inject.Inject
 class AuthenticateUserUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ) {
-    suspend operator fun invoke(
+    operator fun invoke(
         lastSeen: String,
         phoneNumber: String,
         name: String,
         surname: String,
         profileImage: String?,
         imageFileName: String,
-        doOnComplete: () -> Unit
     ) =
         authRepository.authenticateUser(
             lastSeen,
@@ -22,6 +21,5 @@ class AuthenticateUserUseCase @Inject constructor(
             surname,
             profileImage,
             imageFileName,
-            doOnComplete
         )
 }

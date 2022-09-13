@@ -20,7 +20,7 @@
         android:layout_marginTop="32dp"
         android:text="GeekMessage"
         android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/description"
@@ -30,8 +30,8 @@
         android:layout_marginTop="21dp"
         android:text="Будь всегда на связи с GeekTech"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textColor="#7B7A7A"
+        android:textSize="20sp" />
 
 
 </LinearLayout>

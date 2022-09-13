@@ -17,7 +17,7 @@ import javax.inject.Inject
 class OnBoardFragment :
     BaseFragment<FragmentOnBoardBinding, OnBoardViewModel>(R.layout.fragment_on_board) {
     override val binding by viewBinding(FragmentOnBoardBinding::bind)
-    override val viewModel: OnBoardViewModel by viewModels()
+    override val viewModel by viewModels<OnBoardViewModel>()
     private val viewPagerAdapter = ViewPagerAdapter(this::onItemClick)
 
     @Inject
@@ -50,7 +50,7 @@ class OnBoardFragment :
         binding.pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    2 -> binding.startBtn.text = "Погнали!"
+                    2 -> binding.startBtn.text = "Начать"
                     else -> binding.startBtn.text = "Далее"
                 }
             }
@@ -68,18 +68,18 @@ class OnBoardFragment :
         list.add(
             BoardModel(
                 R.drawable.ic_group_24,
-                "GeekMessage", "Добро пожаловать в GeekMessenger",
+                "Geek Messenger", "Ваш персональный путеводитель в мир IT",
             )
         )
         list.add(
             BoardModel(
-                R.drawable.communicationpng, "Описание", "Отличный и удобный messenger",
+                R.drawable.communicationpng, "Geek Messenger", "Отличный и удобный messenger",
             )
         )
         list.add(
             BoardModel(
                 R.drawable.ideapng,
-                " Погнали",
+                " Geek Messenger",
                 "Скорее нажимай на кнопку",
             )
         )

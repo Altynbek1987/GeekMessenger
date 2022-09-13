@@ -5,20 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
 import com.geektechkb.feature_main.data.local.preferences.LocaleHelper
 import com.geektechkb.geekmessenger.R
-import com.geektechkb.geekmessenger.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-    private lateinit var navController: NavController
-    private val binding by viewBinding(ActivityMainBinding::bind)
 
+    private lateinit var navController: NavController
 
     @Inject
     lateinit var userPreferences: AuthorizePreferences
@@ -28,7 +25,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     @Inject
     lateinit var localeHelper: LocaleHelper
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_GeekMessenger)

@@ -14,5 +14,9 @@ interface MessagesRepository {
 
     suspend fun sendVoiceMessage(file: String, voiceFileName: String)
 
-    fun fetchPagedMessages(): Flow<List<Message?>>
+
+    fun fetchPagedMessages(
+        senderPhoneNumber: String,
+        receiverPhoneNumber: String
+    ): Flow<List<Message?>>
 }

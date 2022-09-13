@@ -4,7 +4,7 @@ import com.geektechkb.core.typealiases.*
 
 interface CodeVerificationRepository {
 
-    fun getVerificationId(): String
+    fun getVerificationId(): String?
     fun verifyPhoneNumberWithCode(
         verificationId: String,
         code: String,

@@ -11,7 +11,6 @@ import com.geektechkb.core.extensions.setOnSingleClickListener
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentVoiceCallBinding
 
-
 class VoiceCallFragment :
     BaseFragment<FragmentVoiceCallBinding, VoiceCallViewModel>(R.layout.fragment_voice_call) {
     override val binding by viewBinding(FragmentVoiceCallBinding::bind)

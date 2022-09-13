@@ -2,32 +2,31 @@ package com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile
 
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_auth.domain.useCases.authentication.AuthenticateUserUseCase
-import com.geektechkb.feature_auth.domain.useCases.authentication.IsUserAuthenticatedUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class CreateProfileViewModel @Inject constructor(
     private val authenticateUserUseCase: AuthenticateUserUseCase,
-    private val isUserAuthenticatedUseCase: IsUserAuthenticatedUseCase,
 ) : BaseViewModel() {
-    suspend fun authenticateUser(
+
+    private val _authenticationState = mutableUiStateFlow<Unit>()
+    val authenticationState = _authenticationState.asStateFlow()
+
+    fun authenticateUser(
         lastSeen: String,
         phoneNumber: String,
         name: String,
         surname: String,
         profileImage: String?,
         imageFileName: String,
-        doOnComplete: () -> Unit
     ) = authenticateUserUseCase(
         lastSeen,
         phoneNumber,
         name,
         surname,
-        profileImage ?: " ",
+        profileImage,
         imageFileName,
-        doOnComplete
-    )
-
-    fun isUserAuthenticated() = isUserAuthenticatedUseCase()
+    ).gatherRequest(_authenticationState)
 }

@@ -32,4 +32,12 @@
     <string name="gallery">Галерея</string>
     <string name="button_to_send_message">button to send message</string>
     <string name="speaker">Динамик</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="groups">Группы</string>
+    <string name="notifications_and_sound">Уведомления и звуки</string>
+    <string name="chat_notifications">Уведомления из чатов</string>
+    <string name="private_chats">Личные чаты</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="hyphensIfPhoneNumberIsHidden">--- --- --- ---</string>
 </resources>

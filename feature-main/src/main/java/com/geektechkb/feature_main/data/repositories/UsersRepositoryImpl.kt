@@ -5,11 +5,13 @@ import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATE
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
+import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_HIDDENNESS
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
 import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.feature_main.data.local.db.daos.UserDao
 import com.geektechkb.feature_main.data.remote.pagingsources.UsersPagingSource
+import com.geektechkb.feature_main.data.remote.services.MessengerNotificationsService
 import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.models.UserDb
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
@@ -43,7 +45,7 @@ class UsersRepositoryImpl @Inject constructor(
         )
 
 
-    override suspend fun fetchUser(phoneNumber: String) = doRequest {
+    override fun fetchUser(phoneNumber: String) = doRequest {
         return@doRequest User(
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_NAME_KEY) as String?,
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_LAST_NAME_KEY) as String?,
@@ -94,7 +96,47 @@ class UsersRepositoryImpl @Inject constructor(
     }
 
     override fun deleteUser(user: UserDb) {
-        TODO("Not yet implemented")
+
+    }
+
+    override fun updateUserName(name: String) {
+        firebaseAuth.currentUser?.let {
+            updateASingleFieldInDocument(
+                usersRef,
+                it.phoneNumber.toString(),
+                FIREBASE_USER_NAME_KEY,
+                name
+            )
+        }
+    }
+
+    override fun updateUserLastName(lastName: String) {
+        firebaseAuth.currentUser?.let {
+            updateASingleFieldInDocument(
+                usersRef,
+                it.phoneNumber.toString(),
+                FIREBASE_USER_LAST_NAME_KEY,
+                lastName
+            )
+        }
+    }
+
+    override fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean) {
+        firebaseAuth.currentUser?.let {
+            updateASingleFieldInDocument(
+                usersRef, it.phoneNumber.toString(),
+                FIREBASE_USER_PHONE_NUMBER_HIDDENNESS, isUserPhoneNumberHidden
+            )
+        }
+    }
+
+    override fun subscribeToNotificationTopic(vararg topics: String) {
+        MessengerNotificationsService.subscribeToTopic(*topics)
+
+    }
+
+    override fun unsubscribeFromNotificationTopic(vararg topics: String) {
+        MessengerNotificationsService.unsubscribeFromTopic(*topics)
     }
 
 }

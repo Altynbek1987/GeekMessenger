@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class VerifyAuthenticationFragment :
     BaseFragment<FragmentVerifyAuthenticationBinding, VerifyAuthenticationViewModel>(R.layout.fragment_verify_authentication) {
     override val binding by viewBinding(FragmentVerifyAuthenticationBinding::bind)
-    override val viewModel: VerifyAuthenticationViewModel by viewModels()
+    override val viewModel by viewModels<VerifyAuthenticationViewModel>()
     private val args: VerifyAuthenticationFragmentArgs by navArgs()
     private var timeInSeconds = 0L
     private var attemptsToVerifyPhoneNumberAvailable = 3
@@ -77,7 +77,7 @@ class VerifyAuthenticationFragment :
                 if (view != null)
                     binding.tvCountDownTimer.isVisible = false
                 if (view != null)
-                    binding.tvVerificationCodeWasSent.isVisible = true
+                    binding.tvResendVerificationCode.isVisible = true
             }
         }
         countDownTimer.start()
@@ -96,9 +96,9 @@ class VerifyAuthenticationFragment :
     }
 
     private fun resendVerificationCode() {
-        binding.tvVerificationCodeWasSent.setOnClickListener {
+        binding.tvResendVerificationCode.setOnClickListener {
             binding.tvCountDownTimer.isVisible = true
-            binding.tvVerificationCodeWasSent.isVisible = false
+            binding.tvResendVerificationCode.isVisible = false
             setupCountDownTimer()
             resendVerificationCode(args.phoneNumber)
         }
@@ -116,12 +116,15 @@ class VerifyAuthenticationFragment :
                 )
                 if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty() && viewModel.getVerificationId() != null) {
 
-                    signInWithPhoneAuthCredential(
-                        viewModel.verifyPhoneNumberWithCode(
-                            viewModel.getVerificationId(),
-                            retrievedVerificationCode.trim()
+                    viewModel.getVerificationId()?.let {
+                        signInWithPhoneAuthCredential(
+                            viewModel.verifyPhoneNumberWithCode(
+                                it,
+                                retrievedVerificationCode.trim()
+                            )
                         )
-                    )
+                    }
+
                 } else {
 
                     showLongDurationSnackbar("Код подтверждения состоит из 6 цифр. Вы должны заполнить все 6 полей чтобы ввести код подтверждения")
@@ -323,10 +326,8 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
-
 
     private fun addBackspaceListener() {
         binding.apply {
@@ -338,10 +339,8 @@ class VerifyAuthenticationFragment :
                     etFifthDigit,
                     etSixthDigit,
                 )
-
             }
         }
-
     }
 
     private fun moveToTheNextDigit() {
@@ -360,8 +359,6 @@ class VerifyAuthenticationFragment :
             etFourthDigit.requestFocusOnTheNextDigit(etFifthDigit)
             etFifthDigit.requestFocusOnTheNextDigit(etSixthDigit)
         }
-
-
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
@@ -392,14 +389,19 @@ class VerifyAuthenticationFragment :
                             showLongDurationSnackbar(
                                 "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
                             )
+                            clearTextInEditTextsIfAuthenticationFailed(
+                                etFirstDigit,
+                                etSecondDigit,
+                                etThirdDigit,
+                                etFourthDigit,
+                                etFifthDigit,
+                                etSixthDigit
+                            )
                         }
                     }
                 }
-
             )
-
         }
-
     }
 
     private fun resendVerificationCode(
@@ -487,7 +489,6 @@ class VerifyAuthenticationFragment :
             )
         }
     }
-
 
     private fun View.appendTextDependingOnTheFocus(
         vararg allDigits: TextInputEditText,

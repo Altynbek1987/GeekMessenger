@@ -14,7 +14,7 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class App : Application() {
-
+    val emojiManager = EmojiManager.install(GoogleEmojiProvider())
 
     override fun onCreate() {
         super.onCreate()
@@ -25,7 +25,6 @@ class App : Application() {
             if (!task.isSuccessful) {
                 return@addOnCompleteListener
             }
-
             val token = task.result
             Log.e("RUSS", "Token -> $token")
         }
@@ -45,7 +44,7 @@ class App : Application() {
             applicationContext,
             BuildConfig.SENDBIRD_APP_ID
         )
-
     }
+
 
 }

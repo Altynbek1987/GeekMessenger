@@ -6,5 +6,5 @@ import javax.inject.Inject
 class FetchUserUseCase @Inject constructor(
     private val usersRepository: UsersRepository
 ) {
-    suspend operator fun invoke(phoneNumber: String) = usersRepository.fetchUser(phoneNumber)
+    operator fun invoke(phoneNumber: String) = usersRepository.fetchUser(phoneNumber)
 }

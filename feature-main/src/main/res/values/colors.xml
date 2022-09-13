@@ -6,7 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
 
     <color name="color_primary">#F5F5F5</color>
     <color name="color_primary_dark">#E0E0E0</color>
@@ -23,4 +23,5 @@
     <color name="finlandia">#555E55</color>
     <color name="chineseSilver">#CCCCCC</color>
     <color name="transparent_50">#800B0A0A</color>
+    <color name="transparentCrop">#B22C2C2C</color>
 </resources>

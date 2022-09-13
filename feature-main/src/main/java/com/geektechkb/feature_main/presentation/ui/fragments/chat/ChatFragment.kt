@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.isGone
@@ -27,14 +28,11 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
-import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
+import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
-import com.sendbird.calls.shadow.com.google.gson.Gson
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -46,10 +44,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override val binding by viewBinding(FragmentChatBinding::bind)
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
-    private val pictures = ArrayList<GalleryPicture>()
-    private val adapter = GalleryPicturesAdapter(this::onSelect, pictures)
+    private val adapter = GalleryPicturesAdapter(this::onSelect)
     private val messagesAdapter = MessagesAdapter()
-    override val viewModel: ChatViewModel by viewModels()
+    override val viewModel by viewModels<ChatViewModel>()
+    private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args: ChatFragmentArgs by navArgs()
     private var username: String? = null
     private var savedUserStatus: String? = null
@@ -66,17 +64,16 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
+
     override fun initialize() {
         binding.recordView.activity = requireActivity()
         binding.recordView.callback = this
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
-
     }
 
     override fun assembleViews() {
         setupAdapter()
         hideClipAndRecordViewWhenUserTyping()
-
     }
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
@@ -91,7 +88,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 tvTyping.isVisible = false
             })
         }
-
     }
 
     private fun checkAdapterItemCountAndHideLayout(
@@ -104,7 +100,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 binding.iThereAreNoMessagesYet.root.isVisible = false
             }
         }
-
     }
 
     private fun setupAdapter() {
@@ -132,9 +127,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         sendMessage()
         expandGalleryDialog()
         openEmojiSoftKeyboard()
-        backToHomeFragment()
         onBackPressed()
         interactWithToolbarMenu()
+        backToHomeFragment()
     }
 
     private fun expandGalleryDialog() {
@@ -166,7 +161,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     hideAppBar(binding.galleryBottomSheet.appbarLayout)
                 }
             }
-
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
             }
         })
@@ -201,12 +195,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun loadPictures() {
-        viewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
+        galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
             if (it.isNotEmpty()) {
-                pictures.addAll(it)
-                adapter.notifyItemRangeInserted(pictures.size, it.size)
+                adapter.submitList(it)
+//                pictures.addAll(it)
+                adapter.notifyItemRangeInserted(adapter.currentList.size, it.size)
             }
-            Log.e("GalleryListSize", "${pictures.size}")
+            Log.e("GalleryListSize", "${adapter.currentList.size}")
         }
     }
 
@@ -252,15 +247,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         })
     }
 
-    private fun backToHomeFragment() {
-       /* binding.imBack.setOnSingleClickListener {
-            findNavController().navigate(R.id.homeFragment)
-        }*/
-        binding.imBack.setOnClickListener {
-            findNavController().navigate(R.id.homeFragment)
-        }
-    }
-
     private fun sendMessage() = with(binding) {
         imSendMessage.setOnSingleClickListener {
             viewModel.sendMessage(
@@ -269,14 +255,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 etMessage.text.toString(),
                 formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
                 generateRandomId()
-
             )
             etMessage.text?.clear()
-
         }
-
     }
-
 
     private fun interactWithToolbarMenu() {
         binding.toolbar.setOnMenuItemClickListener {
@@ -302,6 +284,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 else -> true
 
             }
+        }
+    }
+
+    private fun backToHomeFragment() {
+        binding.imBack.setOnSingleClickListener {
+            findNavController().navigate(R.id.action_chatFragment_to_homeFragment)
         }
     }
 
@@ -355,15 +343,22 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun subscribeToMessages() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.fetchPagedMessages().collectLatest {
-                    messagesAdapter.setPhoneNumber(usersPreferencesHelper.currentUserPhoneNumber)
-                    messagesAdapter.submitList(it)
-                    checkAdapterItemCountAndHideLayout()
-                    binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                args.phoneNumber?.let { receiverPhoneNumber ->
+                    viewModel.fetchPagedMessages(
+                        usersPreferencesHelper.currentUserPhoneNumber,
+                        receiverPhoneNumber
+                    ).collectLatest {
+                        messagesAdapter.setPhoneNumber(
+                            usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
+                        )
+                        toast(receiverPhoneNumber, Toast.LENGTH_SHORT)
+                        messagesAdapter.submitList(it)
+                        checkAdapterItemCountAndHideLayout()
+                        binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                    }
                 }
             }
         }
-
     }
 
     private fun onSelect(uri: Uri) {
@@ -397,8 +392,5 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
     }
-    
-
-
 
 }

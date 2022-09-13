@@ -1,6 +1,6 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp
 
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
@@ -22,14 +22,13 @@ class SignUpFragment :
     lateinit var authorizePreferences: AuthorizePreferences
 
     override val binding by viewBinding(FragmentSignUpBinding::bind)
-    override val viewModel: SignUpViewModel by hiltNavGraphViewModels(R.id.authorization_graph)
+    override val viewModel by viewModels<SignUpViewModel>()
     private val maskFormatter = MaskedFormatter("### ### ###")
 
     override fun initialize() {
         addMaskToThePhoneNumberEditText()
         disableHelperText()
     }
-
 
     private fun addMaskToThePhoneNumberEditText() {
         binding.etPhone.addTextChangedListener(MaskedWatcher(maskFormatter, binding.etPhone))
@@ -38,11 +37,9 @@ class SignUpFragment :
     private fun disableHelperText() {
     }
 
-
     override fun setupListeners() {
         openPhoneNumberVerificationDialog()
     }
-
 
     private fun openPhoneNumberVerificationDialog() {
         binding.btnContinue.setOnClickListener {
@@ -50,7 +47,6 @@ class SignUpFragment :
                 binding.tlPhone.isErrorEnabled = true
                 binding.tlPhone.error = getString(R.string.phone_number_must_consist_of_9_digits)
             } else
-
                 findNavController().directionsSafeNavigation(
                     SignUpFragmentDirections.actionSignUpFragmentToPhoneVerificationDialogFragment(
                         binding.tvCountryPhoneCode.text.toString() + maskFormatter.formatString(
@@ -59,11 +55,9 @@ class SignUpFragment :
                     )
                 )
             binding.etPhone.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
+                binding.tlPhone.error = null
                 binding.tlPhone.isErrorEnabled = false
             })
         }
-
     }
 }
-
-

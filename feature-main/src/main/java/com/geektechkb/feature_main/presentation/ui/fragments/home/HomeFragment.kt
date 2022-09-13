@@ -19,14 +19,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 ) {
     override val binding by viewBinding(FragmentHomeBinding::bind)
     override val viewModel by viewModels<HomeViewModel>()
+    private val usersAdapter = UsersAdapter(this::onItemClick)
     private lateinit var cld: CheckInternet
 
     override fun setupListeners() {
         checkInternet()
     }
-
-    private val usersAdapter = UsersAdapter(this::onItemClick)
-
 
     override fun assembleViews() {
         binding.recyclerview.adapter = usersAdapter
@@ -56,7 +54,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
             usersAdapter.submitData(it)
         })
     }
-
 
     private fun onItemClick(phoneNumber: String?) {
         findNavController().directionsSafeNavigation(
