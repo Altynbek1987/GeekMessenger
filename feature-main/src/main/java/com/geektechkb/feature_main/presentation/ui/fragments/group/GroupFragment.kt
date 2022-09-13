@@ -4,7 +4,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentGroupBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,16 +16,18 @@ class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(
 
     override val binding by viewBinding(FragmentGroupBinding::bind)
     override val viewModel by viewModels<GroupViewModel>()
+    private val galleryViewModel by viewModels<GroupViewModel>()
+
     override fun assembleViews() {
 
-        binding.toolbarButton.setOnClickListener {
+        binding.toolbar.setOnClickListener {
             findNavController().navigateUp()
         }
-    override val galleryViewModel by viewModels<GroupViewModel>()
+    }
+
     override fun setupListeners() {
         binding.toolbarBtn.setOnClickListener {
             findNavController().navigateUp()
         }
     }
-
 }
