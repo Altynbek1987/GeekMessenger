@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.language
+package com.geektechkb.feature_main.presentation.ui.fragments.profil.language
 
 import android.os.Bundle
 import android.view.View
