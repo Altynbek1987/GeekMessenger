@@ -37,5 +37,6 @@
     <string name="chat_notifications">Чат эскертмелери</string>
     <string name="private_chats">Жеке чаттар</string>
     <string name="edit_profile">Редактировать профиль</string>
+    <string name="user_list">Список пользователей</string>
 </resources>
 
