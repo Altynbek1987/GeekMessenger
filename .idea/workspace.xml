@@ -296,6 +296,11 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Gradle.GeekMessenger" />
+      <item itemvalue="Gradle.GeekMessenger [signingReport]" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GeekMessenger [signingReport]" />

@@ -69,13 +69,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         binding.recordView.activity = requireActivity()
         binding.recordView.callback = this
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
-
     }
 
     override fun assembleViews() {
         setupAdapter()
         hideClipAndRecordViewWhenUserTyping()
-
     }
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
@@ -90,8 +88,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 tvTyping.isVisible = false
             })
         }
-
-
     }
 
     private fun checkAdapterItemCountAndHideLayout(
@@ -104,7 +100,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 binding.iThereAreNoMessagesYet.root.isVisible = false
             }
         }
-
     }
 
     private fun setupAdapter() {
@@ -136,7 +131,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         interactWithToolbarMenu()
         backToHomeFragment()
     }
-
 
     private fun expandGalleryDialog() {
         if (stateBottomSheet) {
@@ -204,8 +198,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun loadPictures() {
         galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
             if (it.isNotEmpty()) {
-                adapter.submitList(it)
-//                pictures.addAll(it)
+                val mutableAdapterList = adapter.currentList.toMutableList()
+                mutableAdapterList.addAll(it)
+                adapter.submitList(mutableAdapterList)
                 adapter.notifyItemRangeInserted(adapter.currentList.size, it.size)
             }
             Log.e("GalleryListSize", "${adapter.currentList.size}")
@@ -254,7 +249,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         })
     }
 
-
     private fun sendMessage() = with(binding) {
         imSendMessage.setOnSingleClickListener {
             viewModel.sendMessage(
@@ -267,7 +261,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             etMessage.text?.clear()
         }
     }
-
 
     private fun interactWithToolbarMenu() {
         binding.toolbar.setOnMenuItemClickListener {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.geektechkb.geekmessenger">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -28,8 +27,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/splashScreenTheme"
-            android:windowSoftInputMode="adjustPan|stateVisible"
-            tools:ignore="LockedOrientationActivity">
+            android:windowSoftInputMode="adjustResize">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <service
             android:name="com.geektechkb.feature_main.data.remote.services.MessengerNotificationsService"
