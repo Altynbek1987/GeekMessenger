@@ -10,10 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.paging.PagingData
+import androidx.paging.*
 import androidx.viewbinding.ViewBinding
 import com.geektechkb.core.ui.state.UIState
 import com.google.android.material.progressindicator.CircularProgressIndicator
+import io.reactivex.internal.util.NotificationLite.error
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -43,7 +44,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
     protected open fun setupListeners() {
     }
 
-
     protected open fun establishRequest() {
 
     }
@@ -64,7 +64,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
             }
         }
     }
-
 
     protected fun <T : Any> StateFlow<UIState<PagingData<T>>>.spectatePagingData(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
