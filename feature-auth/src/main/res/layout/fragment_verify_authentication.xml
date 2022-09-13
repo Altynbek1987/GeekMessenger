@@ -39,17 +39,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageButton
-        android:id="@+id/check_byn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="8dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/blue"
-        android:src="@drawable/ic_baseline_check_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="wrap_content"
