@@ -23,6 +23,7 @@
         android:theme="@style/Theme.GeekMessenger">
         <activity
             android:name=".presentation.ui.activity.MainActivity"
+            android:configChanges="locale"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/splashScreenTheme"

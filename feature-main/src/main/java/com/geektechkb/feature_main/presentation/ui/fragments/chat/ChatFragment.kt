@@ -3,6 +3,7 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -202,6 +203,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 adapter.submitList(mutableAdapterList)
                 adapter.notifyItemRangeInserted(adapter.currentList.size, it.size)
             }
+            Log.e("GalleryListSize", "${adapter.currentList.size}")
         }
     }
 
@@ -263,6 +265,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun interactWithToolbarMenu() {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
+
                 R.id.btn_call -> {
                     true
                 }
@@ -281,6 +284,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     true
                 }
                 else -> true
+
             }
         }
     }
@@ -291,11 +295,15 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
+
     private fun openEmojiSoftKeyboard() {
+
         binding.apply {
+
             val emojiPopUp = EmojiPopup(
                 root,
                 binding.etMessage,
+
                 onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
                 onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
             )
@@ -310,11 +318,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         fetchUser()
     }
 
+
     private fun fetchUser() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             args.phoneNumber?.let { viewModel.fetchUser(it) }
         }
     }
+
 
     override fun launchObservers() {
         subscribeToUser()
@@ -360,6 +370,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         )
     }
 
+
     override fun onRecordStart() {
         if (checkForPermissionStatusAndRequestIt(
                 recordAudioPermissionLauncher, Manifest.permission.RECORD_AUDIO
@@ -368,7 +379,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             appVoiceRecorder.startRecordingVoiceMessage(requireContext())
     }
 
+
     override fun isReady(): Boolean = true
+
 
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
@@ -381,4 +394,5 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
     }
+
 }
