@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Base64
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -77,6 +78,7 @@ class ProfileFragment :
         navigateToNotificationsAndSoundsFragment()
         navigateToLanguagesFragment()
         hidePhoneNumberOnSwitchChecked()
+        backToHomeFragment()
         binding.openBottomSheet.setOnClickListener {
             binding.apply {
                 openGalleryBottomSheet(
@@ -96,6 +98,12 @@ class ProfileFragment :
         }
         binding.toolbarButton.setOnClickListener {
             findNavController().navigateUp()
+        }
+    }
+
+    private fun backToHomeFragment() {
+        binding.toolbarButton.setOnClickListener{
+            findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
         }
     }
 
@@ -192,6 +200,10 @@ class ProfileFragment :
             name = it.name
             lastName = it.lastName
 
+        }, error = {
+            Log.e("gaypopError", it)
+        }, gatherIfSucceed = {
+            it.assembleViewVisibility(binding.gProfile, binding.cpiProfile)
         })
     }
 
@@ -200,7 +212,7 @@ class ProfileFragment :
             val imageBytes = Base64.decode(it, 0)
             val image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
             val stream = ByteArrayOutputStream()
-            image.compress(Bitmap.CompressFormat.PNG, 90, stream)
+            image.compress(Bitmap.CompressFormat.PNG, 1, stream)
             lifecycleScope.launch {
                 viewModel.updateUserProfileImage(generateRandomId(), stream.toByteArray())
                     ?.let { image ->
