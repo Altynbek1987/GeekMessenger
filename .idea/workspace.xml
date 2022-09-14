@@ -18,15 +18,27 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="">
+    <list default="true" id="7b1bd57d-2b22-42a3-a9e4-7766559d8d91" name="Changes" comment="added a method with logic for the back button.Added a progress barwhen uploading a photo">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/crop/CropPhotoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/crop/CropPhotoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/ProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_eye_checked.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_eye_checked.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_eye_unchecked.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_eye_unchecked.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/navigation/main_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/navigation/main_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/timplifier/.android/avd/Resizable_API_33.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Admin\.android\avd\Pixel_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -91,31 +103,30 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/style.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/.gitignore" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/studio.vmoptions" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/gradle/libs.versions.toml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/attrs.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/strings.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-main/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/feature-auth/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/core/.gitignore" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/core/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/style.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/strings.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/attrs.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle/libs.versions.toml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="29bhqCrmJVfKxUIPoZq7CHqHepm" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -154,7 +165,7 @@
     <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_View_DIMENSIONS" value="1080&#10;1920" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.developerphil.adbidea.selecteddevices" value="R58RC1DS6EE" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -162,11 +173,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\StudioProjects\GeekMessenger\core\src\main\java\com\geektechkb\core\extensions" />
       <recent name="$PROJECT_DIR$/core/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/feature-auth/src/main/res/font" />
       <recent name="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments" />
-      <recent name="$PROJECT_DIR$/feature-main/src/main/res/drawable" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming" />
@@ -311,7 +322,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="" />
+      <changelist id="7b1bd57d-2b22-42a3-a9e4-7766559d8d91" name="Changes" comment="" />
       <created>1653387880475</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -676,7 +687,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="overflow menu for profile fragment" />
     <MESSAGE value="icon for rotating an image" />
     <MESSAGE value="for switch track" />
     <MESSAGE value="for thumbs" />
@@ -701,6 +711,7 @@
     <MESSAGE value="deleted lambda, added return type" />
     <MESSAGE value="upload image if uri is not empty, upload double quotes otherwise" />
     <MESSAGE value="changed constraint layout to group, also changed group visibility" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed constraint layout to group, also changed group visibility" />
+    <MESSAGE value="added a method with logic for the back button.Added a progress barwhen uploading a photo" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a method with logic for the back button.Added a progress barwhen uploading a photo" />
   </component>
 </project>
