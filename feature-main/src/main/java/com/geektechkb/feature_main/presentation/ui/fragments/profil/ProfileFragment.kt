@@ -103,7 +103,7 @@ class ProfileFragment :
 
     private fun backToHomeFragment() {
         binding.toolbarButton.setOnClickListener{
-            findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
+            findNavController().navigateSafely(R.id.action_profileFragment_to_homeFragment)
         }
     }
 
@@ -212,7 +212,7 @@ class ProfileFragment :
             val imageBytes = Base64.decode(it, 0)
             val image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
             val stream = ByteArrayOutputStream()
-            image.compress(Bitmap.CompressFormat.PNG, 1, stream)
+            image.compress(Bitmap.CompressFormat.PNG, 90, stream)
             lifecycleScope.launch {
                 viewModel.updateUserProfileImage(generateRandomId(), stream.toByteArray())
                     ?.let { image ->
@@ -264,6 +264,4 @@ class ProfileFragment :
             )
         )
     }
-
-
 }
