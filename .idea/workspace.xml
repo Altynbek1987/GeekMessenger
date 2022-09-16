@@ -18,27 +18,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b1bd57d-2b22-42a3-a9e4-7766559d8d91" name="Changes" comment="added a method with logic for the back button.Added a progress barwhen uploading a photo">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.main.iml" afterDir="false" />
+    <list default="true" id="7b1bd57d-2b22-42a3-a9e4-7766559d8d91" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/crop/CropPhotoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/crop/CropPhotoFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/ProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_eye_checked.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_eye_checked.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_eye_unchecked.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_eye_unchecked.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/navigation/main_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/navigation/main_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Admin\.android\avd\Pixel_API_33.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[004ca2810307]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -327,41 +317,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1653387880475</updated>
-    </task>
-    <task id="LOCAL-00011" summary="added unique handler id constant">
-      <created>1659730668801</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730668801</updated>
-    </task>
-    <task id="LOCAL-00012" summary="code refactoring">
-      <created>1659730696037</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730696037</updated>
-    </task>
-    <task id="LOCAL-00013" summary="deleted deploymentTargetDropDown.xml">
-      <created>1659730709922</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730709922</updated>
-    </task>
-    <task id="LOCAL-00014" summary="refactored design to match the one from figma">
-      <created>1659730729676</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730729676</updated>
-    </task>
-    <task id="LOCAL-00015" summary="added selector for digits background">
-      <created>1659730800506</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730800506</updated>
     </task>
     <task id="LOCAL-00016" summary="extra extensions for getting display width and height in pixels, also load background with picasso">
       <created>1659730830864</created>
@@ -671,7 +626,42 @@
       <option name="project" value="LOCAL" />
       <updated>1662834518041</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="added a method with logic for the back button.Added a progress bar when uploading a photo">
+      <created>1663176648431</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1663176648432</updated>
+    </task>
+    <task id="LOCAL-00061" summary="I made an adaptive design">
+      <created>1663176754914</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1663176754914</updated>
+    </task>
+    <task id="LOCAL-00062" summary="added action profile fragment to home fragment">
+      <created>1663176830028</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1663176830028</updated>
+    </task>
+    <task id="LOCAL-00063" summary="changed the size">
+      <created>1663176904278</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1663176904278</updated>
+    </task>
+    <task id="LOCAL-00064" summary="small changes">
+      <created>1663176950548</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1663176950548</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -687,11 +677,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="icon for rotating an image" />
-    <MESSAGE value="for switch track" />
-    <MESSAGE value="for thumbs" />
-    <MESSAGE value="background for images in gallery" />
-    <MESSAGE value="track and thumb for notifications" />
     <MESSAGE value="fragment for managing notifications" />
     <MESSAGE value="sub and unsub to and from notifications" />
     <MESSAGE value="cornered background for toolbar" />
@@ -712,6 +697,11 @@
     <MESSAGE value="upload image if uri is not empty, upload double quotes otherwise" />
     <MESSAGE value="changed constraint layout to group, also changed group visibility" />
     <MESSAGE value="added a method with logic for the back button.Added a progress barwhen uploading a photo" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a method with logic for the back button.Added a progress barwhen uploading a photo" />
+    <MESSAGE value="added a method with logic for the back button.Added a progress bar when uploading a photo" />
+    <MESSAGE value="I made an adaptive design" />
+    <MESSAGE value="added action profile fragment to home fragment" />
+    <MESSAGE value="changed the size" />
+    <MESSAGE value="small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes" />
   </component>
 </project>
