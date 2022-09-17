@@ -13,7 +13,12 @@ plugins {
 
     // Hilt
     id(libs.plugins.hilt.android.get().pluginId)
+
+    // Google Services
     id(libs.plugins.google.services.get().pluginId)
+
+    // Kotlin Serialization
+    id(libs.plugins.kotlin.serialization.get().pluginId)
 }
 
 android {
@@ -58,6 +63,9 @@ dependencies {
     api(project(":common"))
     api(project(":core"))
 
+    // Algolia
+    implementation(libs.bundles.algolia)
+
     // Hilt
     implementation(libs.hilt.android)
     implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
@@ -67,7 +75,6 @@ dependencies {
 
     //Paging 3
     implementation(libs.paging.paging)
-
 
     // Room with coroutines
     api(libs.bundles.room)
