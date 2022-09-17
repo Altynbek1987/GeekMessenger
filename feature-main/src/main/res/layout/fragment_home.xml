@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".presentation.ui.fragments.home.HomeFragment">
 
 
@@ -13,13 +14,13 @@
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/Theme.NavDraw.PopupOverlay"
-        app:titleMarginStart="60dp"
-        app:titleTextColor="@color/black">
+        app:popupTheme="@style/Theme.NavDraw.PopupOverlay">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 
             <ImageView
                 android:id="@+id/toolbar_button"
@@ -35,7 +36,9 @@
                 android:id="@+id/im_search_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
                 android:src="@drawable/ic_search"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -60,27 +63,35 @@
                 android:id="@+id/search_view_users"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
                 android:imeOptions="actionSearch"
                 android:inputType="textCapSentences|textVisiblePassword|textNoSuggestions"
-                android:paddingStart="20dp"
-                app:closeIcon="@drawable/ic_clear"
                 app:iconifiedByDefault="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:queryHint="Поиск..."
                 app:searchIcon="@drawable/ic_search" />
+
+            <ImageView
+                android:id="@+id/im_clear"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="14dp"
+                android:src="@drawable/ic_clear"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.appcompat.widget.Toolbar>
 
     <View
         android:id="@+id/v_start_of_toolbar"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_alignBottom="@id/toolbar"
         android:background="#D4D4D4"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
@@ -101,8 +112,6 @@
         android:id="@+id/tv_user_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@id/im_user"
-        android:layout_alignTop="@id/v_start_of_toolbar"
         android:layout_marginStart="4dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
@@ -117,7 +126,6 @@
         android:id="@+id/v_end_of_toolbar"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_alignTop="@id/im_user"
         android:layout_marginTop="30dp"
         android:background="#D4D4D4"
         app:layout_constraintTop_toBottomOf="@id/v_start_of_toolbar" />
@@ -127,7 +135,6 @@
         android:id="@+id/recyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_below="@id/toolbar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
