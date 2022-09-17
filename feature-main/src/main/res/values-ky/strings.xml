@@ -38,5 +38,6 @@
     <string name="private_chats">Жеке чаттар</string>
     <string name="edit_profile">Редактировать профиль</string>
     <string name="user_list">Список пользователей</string>
+    <string name="search"></string>
 </resources>
 
