@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.NavDraw" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Primary brand color. -->
@@ -11,7 +11,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:actionBarWidgetTheme">@style/HomeFragmentActionBarTextColorHint</item>
     </style>
@@ -35,7 +35,6 @@
         <item name="android:fontFamily">@font/avenir_next_regular</item>
     </style>
 
-
     <style name="NotificationsAndSoundsMaterialSwitch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -48,20 +47,6 @@
         <item name="android:layout_marginEnd">15dp</item>
         <item name="android:background">@null</item>
     </style>
-
-    <style name="Foo">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:minWidth">36dp</item>
-        <item name="android:minHeight">20dp</item>
-        <item name="android:maxWidth">36dp</item>
-        <item name="android:maxHeight">20dp</item>
-        <item name="android:thumb">@drawable/notifications_switch_thumb</item>
-        <item name="android:layout_marginTop">16dp</item>
-        <item name="android:layout_marginEnd">15dp</item>
-        <item name="android:background">@null</item>
-    </style>
-
 
     <style name="NotificationsAndSoundsTextView">
         <item name="android:layout_width">wrap_content</item>
