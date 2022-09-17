@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: io.getstream:avatarview:1.0.6@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d534c50ead5e0ec10a14492d1b1255f0/transformed/jetified-avatarview-1.0.6/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d534c50ead5e0ec10a14492d1b1255f0/transformed/jetified-avatarview-1.0.6/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d534c50ead5e0ec10a14492d1b1255f0/transformed/jetified-avatarview-1.0.6/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b20da916277c5319f2b335f8718fe5bc/transformed/jetified-avatarview-1.0.6/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b20da916277c5319f2b335f8718fe5bc/transformed/jetified-avatarview-1.0.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b20da916277c5319f2b335f8718fe5bc/transformed/jetified-avatarview-1.0.6/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.getstream/avatarview/1.0.6/5bf8430e148dba75197d08dc798786714c3962bb/avatarview-1.0.6-javadoc.jar!/" />
