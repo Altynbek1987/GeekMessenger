@@ -245,7 +245,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             } else {
                 findNavController().navigateUp()
             }
-
         })
     }
 
@@ -290,9 +289,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun backToHomeFragment() {
-        binding.imBack.setOnSingleClickListener {
+        binding.imBack.setOnClickListener {
             findNavController().navigate(R.id.action_chatFragment_to_homeFragment)
         }
+
     }
 
 
