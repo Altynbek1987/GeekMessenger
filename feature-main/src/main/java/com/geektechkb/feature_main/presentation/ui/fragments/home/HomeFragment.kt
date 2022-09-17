@@ -22,10 +22,10 @@ import com.algolia.instantsearch.searchbox.connectView
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.core.utils.CheckInternet
+import com.geektechkb.core.utils.CustomTypefaceSpan
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentHomeBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.UsersAdapter
-import com.geektechkb.feature_main.presentation.ui.utils.CustomTypefaceSpan
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
