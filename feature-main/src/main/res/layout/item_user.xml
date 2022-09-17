@@ -3,8 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_marginTop="5dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/cpi_user_avatar"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="6dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:indicatorColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <io.getstream.avatarview.AvatarView
         android:id="@+id/av_profile"
@@ -15,33 +30,22 @@
         android:layout_marginBottom="6dp"
         app:avatarViewBorderWidth="0dp"
         app:avatarViewShape="circle"
-        tools:src="@drawable/gojo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/circular_progressbar_latest_message_menu"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/av_profile"
-        app:layout_constraintEnd_toEndOf="@+id/av_profile"
-        app:layout_constraintStart_toStartOf="@+id/av_profile"
-        app:layout_constraintTop_toTopOf="@+id/av_profile" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/gojo" />
 
     <TextView
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:maxWidth="185dp"
+        android:layout_marginTop="10dp"
         android:textColor="@android:color/black"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/av_profile"
-        app:layout_constraintTop_toTopOf="@+id/av_profile"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Username" />
 
     <TextView
@@ -56,16 +60,32 @@
         tools:text="15:17" />
 
     <TextView
+        android:id="@+id/tv_amount_of_unread_messages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/unread_messages_background"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1" />
+
+    <TextView
         android:id="@+id/tv_last_message"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="8dp"
-        android:maxWidth="240dp"
+        android:layout_marginEnd="20dp"
         android:maxLines="1"
         android:textSize="12sp"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/tv_amount_of_unread_messages"
         app:layout_constraintStart_toEndOf="@+id/av_profile"
         app:layout_constraintTop_toBottomOf="@+id/tv_username"
         tools:text="Банк россии снизил ключевую ставку до..." />
@@ -77,5 +97,4 @@
         android:background="#D4D4D4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_last_message" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
