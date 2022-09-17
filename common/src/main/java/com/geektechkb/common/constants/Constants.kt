@@ -20,6 +20,7 @@ object Constants {
     const val FIREBASE_USER_MESSAGE_IMAGE_KEY = "messageImage"
     const val FIREBASE_USER_PHONE_NUMBER_HIDDENNESS = "isPhoneNumberHidden"
     const val YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT = "yyyy-MM-dd-HH:mm:ss"
+    const val DAY_MONTH_YEAR_HOURS_AND_MINUTES_DATE_FORMAT = "dd/MM/yyyy HH:mm"
     const val HOURS_MINUTES_DATE_FORMAT = "HH:mm"
     const val FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH = "profileImages/"
     const val FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH = "messageImages/"
