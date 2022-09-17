@@ -1,26 +1,31 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.home
 
 import android.graphics.Color
-import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableStringBuilder
-import android.text.style.TypefaceSpan
 import android.util.Log
 import android.widget.EditText
-import android.widget.SearchView
 import android.widget.TextView
+import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.paging.filter
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.algolia.instantsearch.android.list.autoScrollToStart
+import com.algolia.instantsearch.android.paging3.flow
+import com.algolia.instantsearch.android.searchbox.SearchBoxViewAppCompat
+import com.algolia.instantsearch.core.connection.ConnectionHandler
+import com.algolia.instantsearch.searchbox.connectView
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.core.utils.CheckInternet
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentHomeBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.UsersAdapter
+import com.geektechkb.feature_main.presentation.ui.utils.CustomTypefaceSpan
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,69 +36,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override val viewModel by viewModels<HomeViewModel>()
     private val usersAdapter = UsersAdapter(this::onItemClick)
     private lateinit var cld: CheckInternet
+    private val connectionHandler = ConnectionHandler()
 
     override fun initialize() {
         instantiateAdapter()
-    }
-
-    private fun instantiateAdapter() {
-        binding.recyclerview.adapter = usersAdapter
-        binding.recyclerview.layoutManager = LinearLayoutManager(context)
-    }
-
-    override fun setupListeners() {
         checkInternet()
-        establishSearch()
+        initializeSearchBoxAndSetItsConnection()
     }
 
-
-    override fun assembleViews() {
-        renderToolbarTitle()
-        modifySearchView()
-        changeViewsVisibilityOnSearchViewManipulations()
-    }
-
-    private fun renderToolbarTitle() {
-        binding.tvToolbarTitle.text =
-            transformTitleSecondPartFontInToolbar()
-    }
-
-    private fun modifySearchView() {
-        val queryHint: TextView =
-            binding.searchViewUsers.findViewById(androidx.appcompat.R.id.search_src_text)
-        val searchEditText: EditText =
-            binding.searchViewUsers.findViewById(androidx.appcompat.R.id.search_src_text)
-        queryHint.typeface =
-            ResourcesCompat.getFont(requireContext(), com.geektechkb.core.R.font.roboto_medium_500)
-        searchEditText.setTextColor(Color.parseColor("#2C2C2C"))
-//        searchEditText.typeface = Typeface.createFromAsset(
-//            resources.assets,
-//            "avenir_next_regular.otf"
-//        )
-        searchEditText.setHintTextColor(Color.parseColor("#A9B5C3"))
-        searchEditText
-    }
-
-    private fun changeViewsVisibilityOnSearchViewManipulations() = with(binding) {
-        searchViewUsers.setOnQueryTextFocusChangeListener { _, hasFocus ->
-            when (hasFocus) {
-                true -> {
-                    tvToolbarTitle.isGone = true
-                    toolbarButton.isGone = true
-                    imSearchIcon.isGone = false
-                }
-                else -> {
-                    tvToolbarTitle.isGone = false
-                    toolbarButton.isGone = false
-                    imSearchIcon.isGone = true
-                    searchViewUsers.onActionViewCollapsed()
-                }
-            }
-        }
-    }
-
-    override fun launchObservers() {
-        subscribeToUsers()
+    private fun instantiateAdapter() = with(binding.recyclerview) {
+        adapter = usersAdapter
+        layoutManager = LinearLayoutManager(context)
+        autoScrollToStart(usersAdapter)
+        itemAnimator = null
     }
 
     private fun checkInternet() {
@@ -109,21 +64,89 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         }
     }
 
-    private fun establishSearch() {
-        binding.searchViewUsers.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-            }
+    private fun initializeSearchBoxAndSetItsConnection() {
+        val searchBoxView = SearchBoxViewAppCompat(binding.searchViewUsers)
+        connectionHandler += viewModel.searchBox.connectView(searchBoxView)
+    }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-            }
+    override fun assembleViews() {
+        renderToolbarTitle()
+        modifySearchView()
+        changeViewsVisibilityOnSearchViewManipulations()
+    }
 
-        })
+    private fun renderToolbarTitle() {
+        binding.tvToolbarTitle.text =
+            transformTextFont()
+    }
+
+    private fun modifySearchView() {
+        changeQueryHintTextColorAndFont()
+        changeSearchEditTextTextColorAndHintTextColor()
+    }
+
+    private fun changeQueryHintTextColorAndFont() {
+        val queryHint: TextView =
+            binding.searchViewUsers.findViewById(androidx.appcompat.R.id.search_src_text)
+        queryHint.typeface =
+            ResourcesCompat.getFont(requireContext(), com.geektechkb.core.R.font.roboto_medium_500)
+        binding.searchViewUsers.queryHint =
+            transformTextFont(
+                getString(R.string.search),
+                R.font.avenir_next_regular,
+                0,
+                8
+            )
+    }
+
+    private fun changeSearchEditTextTextColorAndHintTextColor() {
+        val searchEditText: EditText =
+            binding.searchViewUsers.findViewById(androidx.appcompat.R.id.search_src_text)
+        searchEditText.setTextColor(Color.parseColor("#2C2C2C"))
+        searchEditText.setHintTextColor(Color.parseColor("#A9B5C3"))
+    }
+
+    private fun changeViewsVisibilityOnSearchViewManipulations() = with(binding) {
+        searchViewUsers.setOnQueryTextFocusChangeListener { _, hasFocus ->
+            when (hasFocus) {
+                true -> {
+                    tvToolbarTitle.isGone = true
+                    toolbarButton.isGone = true
+                    imClear.isGone = false
+                    imSearchIcon.isGone = false
+                }
+                else -> {
+                    tvToolbarTitle.isGone = false
+                    toolbarButton.isGone = false
+                    imClear.isGone = true
+                    imSearchIcon.isGone = true
+                    searchViewUsers.onActionViewCollapsed()
+                }
+            }
+        }
+    }
+
+    override fun setupListeners() {
+        clearSearchViewQueryAndFocus()
+    }
+
+    private fun clearSearchViewQueryAndFocus() {
+        binding.imClear.setOnClickListener {
+            binding.searchViewUsers.setQuery("", true)
+            binding.searchViewUsers.clearFocus()
+        }
+    }
+
+    override fun launchObservers() {
+        subscribeToUsers()
     }
 
     private fun subscribeToUsers() {
-        viewModel.fetchPagedUsers().spectatePaging(success = {
-            usersAdapter.submitData(it)
-        })
+        viewModel.paginator.flow.spectatePaging {
+            val usersExcludingTheCurrent =
+                it.filter { user -> user.phoneNumber != viewModel.getCurrentUserPhoneNumber() }
+            usersAdapter.submitData(usersExcludingTheCurrent)
+        }
     }
 
     private fun onItemClick(phoneNumber: String?) {
@@ -134,16 +157,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         )
     }
 
-    private fun transformTitleSecondPartFontInToolbar(): SpannableStringBuilder {
-        val span = SpannableStringBuilder("GeekMessenger")
+    private fun transformTextFont(
+        textToTransform: String = getString(R.string.app_name),
+        @FontRes fontId: Int = R.font.avenir_next_bold,
+        startIndex: Int = 4,
+        endIndex: Int = 13
+    ): SpannableStringBuilder {
+        val span = SpannableStringBuilder(textToTransform)
         val typeface =
-            Typeface.createFromAsset(requireActivity().assets, "avenir_next_bold.otf")
-        val typefaceSpan = TypefaceSpan(typeface)
+            ResourcesCompat.getFont(requireContext(), fontId)
         span.setSpan(
-            typefaceSpan,
-            4, 13,
+            CustomTypefaceSpan(typeface),
+            startIndex, endIndex,
             Spannable.SPAN_INCLUSIVE_INCLUSIVE
         )
         return span
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        connectionHandler.clear()
     }
 }
