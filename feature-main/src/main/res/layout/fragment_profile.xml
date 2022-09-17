@@ -6,6 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.profil.ProfileFragment">
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/g_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="im_image_profile,toolbar_button,menu_toolbar" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/cpi_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:indicatorColor="@color/blue"
+        app:layout_constraintTop_toTopOf="@id/im_image_profile"
+        app:layout_constraintBottom_toBottomOf="@id/im_image_profile"
+        app:layout_constraintStart_toStartOf="@id/im_image_profile"
+        app:layout_constraintEnd_toEndOf="@id/im_image_profile"
+        />
+
+
     <androidx.constraintlayout.utils.widget.ImageFilterButton
         android:id="@+id/im_image_profile"
         android:layout_width="0dp"
@@ -38,15 +58,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/toolbar_menu" />
 
-    <TextView
-        android:id="@+id/tv_last_seen"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_tv_start"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gl_tv_which_user" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
 
     <TextView
         android:id="@+id/tv_name"
@@ -54,17 +71,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:textColor="@color/white"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/gl_tv_which_user"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_last_seen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/gl_image_profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_tv_which_user"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4271245" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_image_profile"
@@ -72,6 +102,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.45" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/openBottomSheet"
@@ -82,8 +113,10 @@
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_tv_which_user"
+        app:layout_constraintTop_toBottomOf="@id/im_image_profile"
+        app:layout_constraintBottom_toTopOf="@id/gl_image_profile"
         app:srcCompat="@drawable/ic_camera" />
+
 
     <View
         android:id="@+id/view"
@@ -99,25 +132,23 @@
         android:id="@+id/tv_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
         android:layout_marginTop="14dp"
         android:text="@string/account"
         android:textAppearance="@style/text_account"
         android:textColor="#5393D0"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/im_image_profile" />
 
     <TextView
         android:id="@+id/tv_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:textColor="#2C2C2C"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/tv_account"
         tools:text="+996 704190504" />
 
@@ -125,16 +156,15 @@
         android:id="@+id/tv_chance_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
         android:layout_marginTop="5dp"
         android:text="@string/chance_number"
         android:textAppearance="@style/text_chance"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/tv_number" />
 
     <View
+        android:id="@+id/vw_setting"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="11dp"
@@ -155,51 +185,50 @@
         android:id="@+id/tv_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="@string/settings"
         android:textAppearance="@style/text_account"
         android:textColor="#5393D0"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_chance_number" />
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
+        app:layout_constraintTop_toBottomOf="@id/vw_setting" />
 
     <ImageView
         android:id="@+id/vk_notifications"
-        android:layout_width="25dp"
+        android:layout_width="30dp"
         android:layout_height="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_bell"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/tv_settings" />
 
     <View
         android:id="@+id/v_notifications"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="6dp"
         android:background="#66D9D9D9"
         app:layout_constraintTop_toBottomOf="@id/tv_settings" />
 
     <View
         android:id="@+id/vk_crossed"
         android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="13dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/ic_crossed_eye"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/v_notifications" />
 
     <View
         android:id="@+id/vk_globe"
         android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="13dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/ic_language"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/v_hide_phone_number" />
 
     <TextView
@@ -217,10 +246,9 @@
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switch_hide_phone_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="11dp"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="10dp"
         android:background="@null"
         android:thumb="@drawable/hide_phone_number_switch_selector"
         app:layout_constraintEnd_toEndOf="parent"

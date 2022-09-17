@@ -33,10 +33,11 @@
     <string name="tv_language">Тил</string>
     <string name="gallery">Галерея</string>
     <string name="groups">Топтор</string>
+    <string name="speaker">Баяндамачы</string>
     <string name="notifications_and_sound">Эскертмелер жана үндөр</string>
     <string name="chat_notifications">Чат эскертмелери</string>
     <string name="private_chats">Жеке чаттар</string>
-    <string name="edit_profile">Редактировать профиль</string>
+    <string name="edit_profile">Профильди түзөтүү</string>
     <string name="user_list">Список пользователей</string>
     <string name="search"></string>
 </resources>
