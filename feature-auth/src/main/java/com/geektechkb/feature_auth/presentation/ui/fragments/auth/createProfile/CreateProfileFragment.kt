@@ -109,6 +109,7 @@ class CreateProfileFragment :
         }, error = {
             Log.e("gaypopError", it)
         }, gatherIfSucceed = {
+            hideSoftKeyboard()
             it.assembleViewVisibility(binding.gCreateProfile, binding.cpiCreateProfile)
         })
     }
