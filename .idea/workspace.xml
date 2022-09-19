@@ -18,19 +18,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="background for amount of unread messages">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="background for amount of unread messages" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R58RC1DS6EE]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/timplifier/.android/avd/Resizable_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -165,8 +159,6 @@
     <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_View_DIMENSIONS" value="1080&#10;1920" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.developerphil.adbidea.selecteddevices" value="R58RC1DS6EE" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/feature-main/src/main/res/drawable" />
-    <property name="project.structure.last.edited" value="Modules" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/feature-main/src/main/assets" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
