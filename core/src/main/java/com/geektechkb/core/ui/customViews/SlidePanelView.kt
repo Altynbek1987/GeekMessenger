@@ -52,7 +52,7 @@ class SlidePanelView : RelativeLayout {
             interpolator = DecelerateInterpolator()
             duration = 200
             addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
                     blinkingDrawable?.blinking()
                     postDelayed(updateTimeRunnable, 200)
                 }
@@ -105,12 +105,12 @@ class SlidePanelView : RelativeLayout {
             interpolator = AccelerateInterpolator()
             duration = 200
             addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
                     handleEnd()
                     isEnding = false
                 }
 
-                override fun onAnimationCancel(animation: Animator?) {
+                override fun onAnimationCancel(animation: Animator) {
                     handleEnd()
                     isEnding = false
                 }

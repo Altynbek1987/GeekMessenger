@@ -1,32 +1,58 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.home
 
-import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
+import com.algolia.instantsearch.android.paging3.Paginator
+import com.algolia.instantsearch.android.paging3.searchbox.connectPaginator
+import com.algolia.instantsearch.core.connection.ConnectionHandler
+import com.algolia.instantsearch.searchbox.SearchBoxConnector
+import com.algolia.instantsearch.searcher.hits.HitsSearcher
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.domain.models.User
+import com.geektechkb.feature_main.domain.useCases.CreateHitsSearcherUseCase
+import com.geektechkb.feature_main.domain.useCases.CreatePaginatorUseCase
 import com.geektechkb.feature_main.domain.useCases.FetchPagedUsersUseCase
-import com.geektechkb.feature_main.domain.useCases.UpdateUserStatusUseCase
+import com.geektechkb.feature_main.domain.useCases.GetCurrentUserPhoneNumberUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val fetchPagedUsersUseCase: FetchPagedUsersUseCase,
-    private val updateUserStatusUseCase: UpdateUserStatusUseCase
+    createHitsSearcherUseCase: CreateHitsSearcherUseCase,
+    createPaginatorUseCase: CreatePaginatorUseCase,
+    private val getCurrentUserPhoneNumberUseCase: GetCurrentUserPhoneNumberUseCase
 ) : BaseViewModel() {
+    fun getCurrentUserPhoneNumber() = getCurrentUserPhoneNumberUseCase()
 
-    fun fetchPagedUsers(): Flow<PagingData<User>> {
-        val pagedUsers = fetchPagedUsersUseCase() as Flow<PagingData<User>>
-        return pagedUsers.cachedIn(viewModelScope)
-    }
+    private fun fetchPagedUsers() =
+        fetchPagedUsersUseCase().gatherPagingRequest {
+            it
+        }
 
-    fun updateUserStatus(status: String) {
-        updateUserStatusUseCase(status)
-    }
+    private val searcher = createHitsSearcherUseCase(
+        APPLICATION_ID,
+        API_KEY,
+        ALGOLIA_INDEX_NAME
+    ) as HitsSearcher
+    val paginator =
+        createPaginatorUseCase(searcher) as Paginator<User>
+
+    val searchBox = SearchBoxConnector(searcher)
+    private val connectionHandler = ConnectionHandler(searchBox)
 
     init {
         fetchPagedUsers()
+        connectionHandler += searchBox.connectPaginator(paginator)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        searcher.cancel()
+        connectionHandler.clear()
+    }
+
+    companion object {
+        private const val APPLICATION_ID = "D3DVWWYZ3S"
+        private const val API_KEY = "c7245757ed76948cc6a464e3d669d384"
+        private const val ALGOLIA_INDEX_NAME = "authenticatedUsers"
     }
 }

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: io.getstream:avatarview-coil:1.0.6@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0bca7e1effcf5f1a3e202740f226fd87/transformed/jetified-avatarview-coil-1.0.6/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0bca7e1effcf5f1a3e202740f226fd87/transformed/jetified-avatarview-coil-1.0.6/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0bca7e1effcf5f1a3e202740f226fd87/transformed/jetified-avatarview-coil-1.0.6/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/30b892f1c6368797977e5c40e15dbcb2/transformed/jetified-avatarview-coil-1.0.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/30b892f1c6368797977e5c40e15dbcb2/transformed/jetified-avatarview-coil-1.0.6/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.getstream/avatarview-coil/1.0.6/d36279d28513dc7b09f4448c06c085adbdabd02a/avatarview-coil-1.0.6-javadoc.jar!/" />

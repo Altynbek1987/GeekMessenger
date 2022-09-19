@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NavDraw</string>
+    <string name="app_name">GeekMessenger</string>
 
     <string name="nav_header_desc">Navigation header</string>
     <string name="menu_group">Создать группу</string>
@@ -40,4 +40,8 @@
     <string name="private_chats">Личные чаты</string>
     <string name="edit_profile">Редактировать профиль</string>
     <string name="hyphensIfPhoneNumberIsHidden">--- --- --- ---</string>
+    <string name="user_list">Список пользователей</string>
+    <string name="search">Поиск...</string>
+    <string name="firstAndLastName">%1$s %2$s</string>
 </resources>
+
