@@ -31,19 +31,19 @@ class UsersAdapter(private val onItemClick: (phoneNumber: String?) -> Unit) :
         fun onBind(user: User) = with(user) {
             binding.apply {
                 tvUsername.text = highlightedName?.toSpannedString() ?: name
-
-                lastName?.let { nonNullLastName ->
-                    avProfile.loadImageAndSetInitialsIfFailed(
+                when (lastName?.isEmpty()) {
+                    true -> avProfile.loadImageAndSetInitialsIfFailed(
                         profileImage,
                         name,
-                        nonNullLastName,
                         cpiUserAvatar
                     )
-                } ?: avProfile.loadImageAndSetInitialsIfFailed(
-                    profileImage,
-                    name,
-                    cpiUserAvatar
-                )
+                    else -> avProfile.loadImageAndSetInitialsIfFailed(
+                        profileImage,
+                        name,
+                        lastName,
+                        cpiUserAvatar
+                    )
+                }
             }
         }
 

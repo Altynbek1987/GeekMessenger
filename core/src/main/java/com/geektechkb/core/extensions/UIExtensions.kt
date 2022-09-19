@@ -40,7 +40,7 @@ fun SwitchMaterial.actionOnCheckedChange(action: (Boolean) -> Unit) {
 fun AvatarView.loadImageAndSetInitialsIfFailed(
     url: String?,
     name: String?,
-    lastName: String? = null,
+    lastName: String?,
     progressBar: ProgressBar
 ) {
     loadImage(data = url, onError = { _, _ ->
