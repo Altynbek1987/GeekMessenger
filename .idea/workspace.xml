@@ -19,16 +19,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="added new color from figma">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/home/HomeFragment.kt" afterDir="false" />
     </list>
-    <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="background for amount of unread messages" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/timplifier/.android/avd/Resizable_API_33.avd]" />
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R58RC1DS6EE]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -128,7 +127,6 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -163,8 +161,6 @@
     <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_View_DIMENSIONS" value="1080&#10;1920" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.developerphil.adbidea.selecteddevices" value="R58RC1DS6EE" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/feature-main/src/main/res/drawable" />
-    <property name="project.structure.last.edited" value="Modules" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/feature-main/src/main/assets" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
@@ -344,13 +340,6 @@
       <option name="presentableId" value="Default" />
       <updated>1653387880475</updated>
     </task>
-    <task id="LOCAL-00055" summary="delete lambda argument, made it sequential">
-      <created>1662834447579</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1662834447579</updated>
-    </task>
     <task id="LOCAL-00056" summary="can't navigate back from create profile">
       <created>1662834467627</created>
       <option name="number" value="00056" />
@@ -400,10 +389,13 @@
       <option name="project" value="LOCAL" />
       <updated>1663050147310</updated>
     </task>
-    <task id="LOCAL-00063" summary="imported new fonts"/>
+    <task id="LOCAL-00063" summary="imported new fonts">
       <created>1663050161317</created>
       <option name="number" value="00063" />
       <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1663050161317</updated>
+    </task>
     <task id="LOCAL-00019" summary="icon for incomingCallFragment">
       <created>1659730927089</created>
       <option name="number" value="00019" />
@@ -691,63 +683,6 @@
       <option name="project" value="LOCAL" />
       <updated>1663426312484</updated>
     </task>
-    <task id="LOCAL-00060" summary="refactored design code,deleted useless relative layout inside the constraint one">
-      <created>1663050073948</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1663050073948</updated>
-    </task>
-    <task id="LOCAL-00061" summary="added string">
-      <created>1663050107756</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1663050107756</updated>
-    </task>
-    <task id="LOCAL-00062" summary="imported new icons">
-      <created>1663050147310</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1663050147310</updated>
-    </task>
-    <task id="LOCAL-00063" summary="imported new fonts">
-      <created>1663050161317</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1663050161317</updated>
-    </task>
-    <task id="LOCAL-00064" summary="idea">
-      <created>1663050173187</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1663050173187</updated>
-    </task>
-    <task id="LOCAL-00065" summary="refactored existing code">
-      <created>1663050195981</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1663050195981</updated>
-    </task>
-    <task id="LOCAL-00066" summary="for searchview">
-      <created>1663050205651</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1663050205651</updated>
-    </task>
-    <task id="LOCAL-00067" summary="added new color from figma">
-      <created>1663050219761</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1663050219761</updated>
-    </task>
-    <option name="localTasksCounter" value="68" />
     <option name="localTasksCounter" value="104" />
     <servers />
   </component>
@@ -788,7 +723,6 @@
     <MESSAGE value="to compare user from paging data adapter and current user phone numbers" />
     <MESSAGE value="7.3.3 gradle" />
     <MESSAGE value="background for amount of unread messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="background for amount of unread messages" />
     <MESSAGE value="cornered background for toolbar" />
     <MESSAGE value="update user last name, name and phone number hiddenness use cases to use in profile fragment s and editprofile fragment" />
     <MESSAGE value="refactored gradle" />
