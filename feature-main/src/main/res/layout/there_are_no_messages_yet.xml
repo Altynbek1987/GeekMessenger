@@ -37,12 +37,11 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv_there_are_no_messages"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="#33070707"
         app:cardBackgroundColor="#33070707"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
-        android:inputType="textMultiLine|textCapSentences"
         app:layout_constraintBottom_toBottomOf="@id/gl_mcv_no_messages_bottom"
         app:layout_constraintEnd_toEndOf="@id/gl_mcv_no_messages_end"
         app:layout_constraintStart_toStartOf="@id/gl_mcv_no_messages_start"
@@ -50,7 +49,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_no_messages_start"
@@ -70,7 +69,8 @@
                 android:id="@+id/tv_no_messages_yet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="16dp"
+
                 android:text="@string/there_is_nothing_yet_russian"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -97,7 +97,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="13dp"
                 android:gravity="center"
                 android:text="@string/send_message_or_record_voice_message_russian"
                 android:textColor="@color/white"
