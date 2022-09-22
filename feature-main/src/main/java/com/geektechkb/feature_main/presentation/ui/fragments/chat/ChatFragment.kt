@@ -3,6 +3,7 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -53,17 +54,21 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private var savedUserStatus: String? = null
     private var stateBottomSheet: Boolean = false
     private val appVoiceRecorder = AppVoiceRecorder()
-    private val recordAudioPermissionLauncher =
-        createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
+    private val recordAudioPermissionLauncher = createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE,
             actionWhenPermissionHasBeenDenied = {
                 findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
             })
+    private var isKeyboardShown: Boolean? = false
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        onBackPressed()
+    }
 
     override fun initialize() {
         binding.recordView.activity = requireActivity()
@@ -127,7 +132,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         sendMessage()
         expandGalleryDialog()
         openEmojiSoftKeyboard()
-        onBackPressed()
         interactWithToolbarMenu()
         backToHomeFragment()
     }
@@ -239,13 +243,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
 
     private fun onBackPressed() {
-        overrideOnBackPressed(actionWhenBackButtonPressed = {
-            if (checkWhetherSoftKeyboardIsOpenedOrNot()) {
+        overrideOnBackPressed() {
+            if (checkWhetherSoftKeyboardIsVisibleOrNot()) {
                 hideSoftKeyboard()
             } else {
-                findNavController().navigateUp()
+                findNavController().navigateSafely(R.id.action_chatFragment_to_homeFragment)
+                isKeyboardShown = null
             }
-        })
+        }
     }
 
     private fun sendMessage() = with(binding) {
@@ -289,10 +294,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun backToHomeFragment() {
-        binding.imBack.setOnClickListener {
+        binding.imBack.setOnSingleClickListener {
             findNavController().navigate(R.id.action_chatFragment_to_homeFragment)
         }
-
     }
 
 
@@ -393,6 +397,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
-    }
 
+    }
 }
