@@ -3,7 +3,6 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -54,7 +53,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private var savedUserStatus: String? = null
     private var stateBottomSheet: Boolean = false
     private val appVoiceRecorder = AppVoiceRecorder()
-    private val recordAudioPermissionLauncher = createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
+    private val recordAudioPermissionLauncher =
+        createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -65,10 +65,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        onBackPressed()
-    }
 
     override fun initialize() {
         binding.recordView.activity = requireActivity()
@@ -134,6 +130,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         openEmojiSoftKeyboard()
         interactWithToolbarMenu()
         backToHomeFragment()
+        onBackPressed()
     }
 
     private fun expandGalleryDialog() {
