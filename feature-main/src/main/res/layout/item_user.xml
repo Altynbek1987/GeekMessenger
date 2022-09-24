@@ -28,7 +28,6 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="6dp"
         app:avatarViewBorderWidth="0dp"
-        app:avatarViewInitialsBackgroundColor="#5CB5DC"
         app:avatarViewInitialsTextSize="28sp"
         app:avatarViewInitialsTextStyle="bold"
         app:avatarViewShape="circle"
