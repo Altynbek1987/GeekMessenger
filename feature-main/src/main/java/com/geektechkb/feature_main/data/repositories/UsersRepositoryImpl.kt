@@ -16,7 +16,6 @@ import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
 import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.core.typealiases.NotAnActualHitsSearcher
-import com.geektechkb.feature_main.data.remote.pagingsources.UsersPagingSource
 import com.geektechkb.feature_main.data.remote.services.MessengerNotificationsService
 import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
@@ -32,20 +31,7 @@ class UsersRepositoryImpl @Inject constructor(
 ) : BaseRepository(), UsersRepository {
     private val usersRef =
         firestore.collection(FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH)
-    private val usersExcludingTheCurrent = usersRef
-        .whereNotEqualTo(
-            FIREBASE_USER_PHONE_NUMBER_KEY,
-            firebaseAuth.currentUser?.phoneNumber
-        ).orderBy(FIREBASE_USER_PHONE_NUMBER_KEY)
     private val cloudStorageRef = cloudStorage.reference
-
-
-    override fun fetchPagedUsers() =
-        doPagingRequest(
-            UsersPagingSource(
-                usersExcludingTheCurrent
-            )
-        )
 
     override fun fetchUser(phoneNumber: String) = doRequest {
         return@doRequest User(
@@ -139,7 +125,7 @@ class UsersRepositoryImpl @Inject constructor(
         PagingConfig(
             pageSize = 2,
             prefetchDistance = 1,
-            enablePlaceholders = true,
+            enablePlaceholders = false,
             initialLoadSize = 2,
             maxSize = Int.MAX_VALUE,
             jumpThreshold = Int.MIN_VALUE
