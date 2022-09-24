@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.algolia.instantsearch.android.highlighting.toSpannedString
 import com.geektechkb.core.base.BaseDiffUtil
 import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
 import com.geektechkb.feature_main.databinding.ItemUserBinding
@@ -30,20 +29,8 @@ class UsersAdapter(private val onItemClick: (phoneNumber: String?) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(user: User) = with(user) {
             binding.apply {
-                tvUsername.text = highlightedName?.toSpannedString() ?: name
-                when (lastName?.isEmpty()) {
-                    true -> avProfile.loadImageAndSetInitialsIfFailed(
-                        profileImage,
-                        name,
-                        cpiUserAvatar
-                    )
-                    else -> avProfile.loadImageAndSetInitialsIfFailed(
-                        profileImage,
-                        name,
-                        lastName,
-                        cpiUserAvatar
-                    )
-                }
+                tvUsername.text = name
+                avProfile.loadImageAndSetInitialsIfFailed(profileImage, name, cpiUserAvatar)
             }
         }
 
