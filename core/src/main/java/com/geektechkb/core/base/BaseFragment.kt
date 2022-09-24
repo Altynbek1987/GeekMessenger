@@ -3,7 +3,6 @@ package com.geektechkb.core.base
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
-import androidx.constraintlayout.utils.widget.ImageFilterButton
 import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -60,7 +59,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
         safeFlowGather(lifecycleState) {
             collectLatest {
                 success(it)
-                error(it)
             }
         }
     }
@@ -169,7 +167,4 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(@L
             }
         }
     }
-
-
-    open protected fun File(imImageProfile: ImageFilterButton) {}
 }
