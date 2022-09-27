@@ -9,24 +9,18 @@ import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.useCases.CreateHitsSearcherUseCase
 import com.geektechkb.feature_main.domain.useCases.CreatePaginatorUseCase
-import com.geektechkb.feature_main.domain.useCases.FetchPagedUsersUseCase
 import com.geektechkb.feature_main.domain.useCases.GetCurrentUserPhoneNumberUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val fetchPagedUsersUseCase: FetchPagedUsersUseCase,
     createHitsSearcherUseCase: CreateHitsSearcherUseCase,
     createPaginatorUseCase: CreatePaginatorUseCase,
-    private val getCurrentUserPhoneNumberUseCase: GetCurrentUserPhoneNumberUseCase
+    private val getCurrentUserPhoneNumberUseCase: GetCurrentUserPhoneNumberUseCase,
 ) : BaseViewModel() {
-    fun getCurrentUserPhoneNumber() = getCurrentUserPhoneNumberUseCase()
 
-    private fun fetchPagedUsers() =
-        fetchPagedUsersUseCase().gatherPagingRequest {
-            it
-        }
+    fun getCurrentUserPhoneNumber() = getCurrentUserPhoneNumberUseCase()
 
     private val searcher = createHitsSearcherUseCase(
         APPLICATION_ID,
@@ -40,7 +34,6 @@ class HomeViewModel @Inject constructor(
     private val connectionHandler = ConnectionHandler(searchBox)
 
     init {
-        fetchPagedUsers()
         connectionHandler += searchBox.connectPaginator(paginator)
     }
 

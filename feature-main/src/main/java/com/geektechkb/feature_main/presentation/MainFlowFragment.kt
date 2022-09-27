@@ -80,21 +80,12 @@ class MainFlowFragment : BaseFlowFragment(
                     userNumber.text = StringBuilder(phoneNumber.substring(0, 4)).append(" ")
                         .append(phoneNumber.substringAfter("+996"))
                 }
-                name?.let { name ->
-                    userName.text = name
-                }
-                lastName?.let { lastName ->
-                    avatarView.loadImageAndSetInitialsIfFailed(
-                        profileImage,
-                        name,
-                        lastName,
-                        binding.nav.cpiCurrentUserAvatar
-                    )
-                } ?: avatarView.loadImageAndSetInitialsIfFailed(
+                avatarView.loadImageAndSetInitialsIfFailed(
                     profileImage,
                     name,
                     binding.nav.cpiCurrentUserAvatar
                 )
+                userName.text = name
             }
         })
     }
