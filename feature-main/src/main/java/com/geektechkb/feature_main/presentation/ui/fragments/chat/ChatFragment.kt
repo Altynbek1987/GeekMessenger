@@ -61,6 +61,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             actionWhenPermissionHasBeenDenied = {
                 findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
             })
+    private var isKeyboardShown: Boolean? = false
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
@@ -127,9 +128,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         sendMessage()
         expandGalleryDialog()
         openEmojiSoftKeyboard()
-        onBackPressed()
         interactWithToolbarMenu()
         backToHomeFragment()
+        onBackPressed()
     }
 
     private fun expandGalleryDialog() {
@@ -239,14 +240,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
 
     private fun onBackPressed() {
-        overrideOnBackPressed(actionWhenBackButtonPressed = {
-            if (checkWhetherSoftKeyboardIsOpenedOrNot()) {
+        overrideOnBackPressed() {
+            if (checkWhetherSoftKeyboardIsVisibleOrNot()) {
                 hideSoftKeyboard()
             } else {
-                findNavController().navigateUp()
+                findNavController().navigateSafely(R.id.action_chatFragment_to_homeFragment)
+                isKeyboardShown = null
             }
-
-        })
+        }
     }
 
     private fun sendMessage() = with(binding) {
@@ -393,6 +394,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
-    }
 
+    }
 }

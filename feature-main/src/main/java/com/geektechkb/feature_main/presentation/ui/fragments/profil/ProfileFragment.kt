@@ -102,7 +102,7 @@ class ProfileFragment :
     }
 
     private fun backToHomeFragment() {
-        binding.toolbarButton.setOnClickListener{
+        binding.toolbarButton.setOnClickListener {
             findNavController().navigateSafely(R.id.action_profileFragment_to_homeFragment)
         }
     }
