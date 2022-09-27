@@ -1,23 +1,23 @@
 [versions]
 #AGP
-agp = "7.1.1"
+agp = "7.2.2"
 #Gradle
-gradle = "7.3.3"
+gradle = "7.5.0"
 #Kotlin
-kotlin = "1.7.0"
+kotlin = "1.7.10"
 #Android Config
 compileSdk = "32"
 minSdk = "23"
 targetSdk = "32"
 #Coroutines
-coroutines = "1.6.2"
+coroutines = "1.6.4"
 #Legacy support
 legacySupport = "1.0.0"
 #UI Components
 material = "1.6.1"
 constraint = "2.1.4"
 viewBindingPropertyDelegate = "1.5.6"
-appCompat = "1.4.1"
+appCompat = "1.5.1"
 splashScreen = "1.0.0-beta01"
 maskedEditText = "4.0.7"
 emojiPopUp = "0.15.0"
@@ -27,27 +27,28 @@ audioRecorderView = "1.0.4"
 krop = "0.64"
 picasso = "2.71828"
 avatarView = "1.0.6"
+algolia = "3.1.3"
 #Core
 core = "1.8.0"
 #Activity
-activity = "1.4.0"
+activity = "1.5.1"
 #fragment
-fragment = "1.4.1"
+fragment = "1.5.2"
 #Lifecycle
-lifecycle = "2.4.1"
+lifecycle = "2.5.1"
 #Navigation
-navigation = "2.4.2"
+navigation = "2.5.2"
 #Hilt
-hilt = "2.42"
+hilt = "2.43.2"
 hiltNavGraphViewModels = "1.0.0"
 #Javax
 javax = "1"
 #Retrofit
 retrofit = "2.9.0"
 #OkHttp
-okHttp = "5.0.0-alpha.7"
+okHttp = "5.0.0-alpha.10"
 #Room
-room = "2.4.2"
+room = "2.4.3"
 #Datastore
 datastore = "1.0.0"
 #Paging
@@ -103,6 +104,8 @@ glide-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide
 krop-krop = { module = "com.github.avito-tech:krop", version.ref = "krop" }
 picasso-picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 avatarView-avatarView = { module = "io.getstream:avatarview-coil", version.ref = "avatarView" }
+algolia-android = { module = "com.algolia:instantsearch-android", version.ref = "algolia" }
+algolia-paging = { module = "com.algolia:instantsearch-android-paging3", version.ref = "algolia" }
 
 #Legacy Support
 legacySupport-legacySupport = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupport" }
@@ -142,10 +145,9 @@ room-kotlinExtensionsAndCoroutinesSupport = { module = "androidx.room:room-ktx",
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 datastore-proto = { module = "androidx.datastore:datastore", version.ref = "datastore" }
 
-#Krop
-
 #Paging
 paging-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "paging" }
+paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
 
 #Sendbird
 sendbird-sendbird = { module = "com.sendbird.sdk:sendbird-calls", version.ref = "sendbird" }
@@ -180,7 +182,6 @@ datastore = ["datastore-preferences", "datastore-proto"]
 retrofit = ["retrofit-retrofit", "retrofit-gsonConverter"]
 
 #Hilt
-
 hilt = ["hilt-android", "hilt-viewModels"]
 
 #OkHttp
@@ -192,20 +193,25 @@ navigation = ["navigation-fragment", "navigation-ui"]
 #Lifecycle
 lifecycle = ["lifecycle-viewModel", "lifecycle-runtime", "lifecycle-liveData"]
 
+#Paging
+paging = ["paging-paging", "paging-common"]
+
+#Algolia
+algolia = ["algolia-android", "algolia-paging"]
+
 #Firebase
 firebase = ["firebase-firestore", "firebase-platform", "firebase-coroutines"]
 firebaseNoCrashlytics = ["firebase-firestore", "firebase-cloudStorage", "firebase-coroutines", "firebase-analytics", "firebase-auth", "firebase-cloudMessaging", "firebase-inAppMessaging", "firebase-inAppMessagingDisplay", "firebase-adMob"]
 firebaseNoAdMobAndCrashlytics = ["firebase-firestore", "firebase-cloudStorage", "firebase-coroutines", "firebase-analytics", "firebase-auth", "firebase-cloudMessaging", "firebase-inAppMessaging", "firebase-inAppMessagingDisplay", "firebase-uiStorage"]
 
-
 [plugins]
 #AGP
-
 agp-application = { id = "com.android.application", version.ref = "agp" }
 agp-library = { id = "com.android.library", version.ref = "agp" }
 
 #Kotlin
 kotlin-gradle = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 #Navigation
 navigation-safeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }

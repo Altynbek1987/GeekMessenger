@@ -271,9 +271,9 @@
         app:cancel_icon="@drawable/ic_release_locked_lock"
         app:circle_color="@color/sentMessagesColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gl_record_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gl_record_view"
         app:mic_active_icon="@drawable/ic_microphone_active"
         app:mic_icon="@drawable/ic_microphone_inactive"
         app:vibration_enable="true" />
@@ -296,6 +296,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.92" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_record_view"
         android:layout_width="wrap_content"
@@ -303,7 +304,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.92"
 
-    />
+        />
 
 
     <androidx.constraintlayout.widget.Guideline
