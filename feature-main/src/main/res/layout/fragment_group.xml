@@ -17,7 +17,7 @@
             android:background="#4A7CE0"
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/Theme.NavDraw.PopupOverlay"
-            app:title="Создать группу"
+            app:title="@string/menu_group"
             app:titleMarginStart="50dp"
             app:titleTextColor="@color/white" />
 
