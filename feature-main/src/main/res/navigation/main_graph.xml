@@ -124,7 +124,9 @@
             app:destination="@id/photoReviewFragment" />
         <action
             android:id="@+id/action_chatFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
@@ -161,8 +163,7 @@
         android:id="@+id/languagesFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.language.LanguagesFragment"
         android:label="fragment_languages"
-        tools:layout="@layout/fragment_languages">
-    </fragment>
+        tools:layout="@layout/fragment_languages"></fragment>
     <fragment
         android:id="@+id/voiceCallFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice.VoiceCallFragment"

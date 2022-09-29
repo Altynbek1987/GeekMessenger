@@ -1,5 +1,6 @@
 package com.geektechkb.core.extensions
 
+import android.R
 import android.content.ContentValues
 import android.content.Context
 import android.content.pm.PackageManager
@@ -13,11 +14,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -126,23 +127,9 @@ fun Fragment.hideSoftKeyboard() {
     inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
 }
 
-fun Fragment.checkWhetherSoftKeyboardIsOpenedOrNot(): Boolean {
-    val inputMethodManager =
-        context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    return inputMethodManager.isAcceptingText
-
-}
-
-fun Fragment.overrideOnBackPressed(actionWhenBackButtonPressed: () -> Unit) {
-    activity?.onBackPressedDispatcher?.addCallback(
-        requireActivity(),
-        object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                actionWhenBackButtonPressed.invoke()
-            }
-
-        })
-}
+fun Fragment.checkWhetherSoftKeyboardIsVisibleOrNot() =
+    WindowInsetsCompat.toWindowInsetsCompat(requireView().rootWindowInsets)
+        .isVisible(WindowInsetsCompat.Type.ime())
 
 fun Fragment.stateBottomSheet(bottomSheet: BottomSheetBehavior<MaterialCardView>?, state: Int) {
     val metrics = resources.displayMetrics
@@ -251,7 +238,7 @@ fun Fragment.hideAppBar(view: View, appBarLayout: AppBarLayout) {
 
 fun Fragment.getActionBarSize(): Int {
     val array =
-        requireContext().theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
+        requireContext().theme.obtainStyledAttributes(intArrayOf(R.attr.actionBarSize))
     return array.getDimension(0, 0f).toInt()
 }
 

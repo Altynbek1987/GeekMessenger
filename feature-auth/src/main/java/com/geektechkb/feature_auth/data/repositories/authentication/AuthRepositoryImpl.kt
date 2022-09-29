@@ -52,7 +52,6 @@ class AuthRepositoryImpl @Inject constructor(
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 authenticationSucceeded?.invoke()
             }
-
             override fun onVerificationFailed(e: FirebaseException) {
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
@@ -61,16 +60,13 @@ class AuthRepositoryImpl @Inject constructor(
                     tooManyRequestsError?.invoke()
                 }
             }
-
             override fun onCodeSent(
                 verificationId: String,
                 token: PhoneAuthProvider.ForceResendingToken,
             ) {
-
                 authorizationPreferences.verificationId = verificationId
                 forceResendingToken = token
             }
-
         }
         return callbacks
     }
