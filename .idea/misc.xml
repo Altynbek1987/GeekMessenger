@@ -43,6 +43,7 @@
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_phone_verification_dialog.xml" value="0.1265625" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_sign_up.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/fragment_verify_authentication.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-auth/src/main/res/layout/item_board.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable-v24/ic_baseline_person_24.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/arrow.xml" value="0.2265" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/drawable/chat_box_stroke_color_selector.xml" value="0.2265" />
@@ -76,7 +77,7 @@
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_languages.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_main_flow.xml" value="0.1703125" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_photo_preview.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_profile.xml" value="0.152" />
+        <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_profile.xml" value="0.4" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/fragment_voice_call.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_gallery.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Admin/StudioProjects/GeekMessenger/feature-main/src/main/res/layout/item_received_image.xml" value="0.2734375" />

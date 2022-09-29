@@ -10,6 +10,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="TAG" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -18,17 +19,33 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b1bd57d-2b22-42a3-a9e4-7766559d8d91" name="Changes" comment="">
+    <list default="true" id="7b1bd57d-2b22-42a3-a9e4-7766559d8d91" name="Changes" comment="small changes">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/GeekMessenger.app.unitTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/common/GeekMessenger.common.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/common/GeekMessenger.common.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/common/GeekMessenger.common.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/common/GeekMessenger.common.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/core/GeekMessenger.core.unitTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-auth/GeekMessenger.feature-auth.unitTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/feature-main/GeekMessenger.feature-main.unitTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/ProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_profile.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[004ca2810307]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Admin\.android\avd\Nexus_5_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -70,8 +87,8 @@
         <option value="resourceFile" />
         <option value="Kotlin Enum" />
         <option value="valueResourceFile" />
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -153,6 +170,8 @@
     <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/SlidePanelView.kt_SlidePanelView_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_SELECTED" value="View" />
     <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_View_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-viewC:/Users/Admin/.gradle/caches/modules-2/files-2.1/com.github.avito-tech/krop/0.64/ab8a6eb1121b856c114d700db5848f28471bf2cf/krop-0.64-sources.jar!/com/avito/android/krop/KropView.kt_KropView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-viewC:/Users/Admin/.gradle/caches/modules-2/files-2.1/com.github.avito-tech/krop/0.64/ab8a6eb1121b856c114d700db5848f28471bf2cf/krop-0.64-sources.jar!/com/avito/android/krop/KropView.kt_SELECTED" value="KropView" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.developerphil.adbidea.selecteddevices" value="R58RC1DS6EE" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/extensions" />
@@ -317,48 +336,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1653387880475</updated>
-    </task>
-    <task id="LOCAL-00016" summary="extra extensions for getting display width and height in pixels, also load background with picasso">
-      <created>1659730830864</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730830864</updated>
-    </task>
-    <task id="LOCAL-00017" summary="overwrote googlejson">
-      <created>1659730840153</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730840153</updated>
-    </task>
-    <task id="LOCAL-00018" summary="gradle">
-      <created>1659730845473</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730845473</updated>
-    </task>
-    <task id="LOCAL-00019" summary="icon for incomingCallFragment">
-      <created>1659730927089</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730927089</updated>
-    </task>
-    <task id="LOCAL-00020" summary="moved preferences to core">
-      <created>1659730934049</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730934049</updated>
-    </task>
-    <task id="LOCAL-00021" summary="action to voice call fragment">
-      <created>1659730943324</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1659730943324</updated>
     </task>
     <task id="LOCAL-00022" summary="disable navigation drawer in certain fragments">
       <created>1659730985627</created>
@@ -661,7 +638,49 @@
       <option name="project" value="LOCAL" />
       <updated>1663176950548</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="small changes">
+      <created>1663301907173</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1663301907174</updated>
+    </task>
+    <task id="LOCAL-00066" summary="fixed the bugs">
+      <created>1663302078103</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1663302078103</updated>
+    </task>
+    <task id="LOCAL-00067" summary="changed the way the photo was updated to the url">
+      <created>1664444607891</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1664444607892</updated>
+    </task>
+    <task id="LOCAL-00068" summary="changed the way to send photos via conversion from a raster photo to file">
+      <created>1664444842311</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1664444842311</updated>
+    </task>
+    <task id="LOCAL-00069" summary="added new use Case and repository to update photos in Firestore">
+      <created>1664445012411</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1664445012411</updated>
+    </task>
+    <task id="LOCAL-00070" summary="small changes">
+      <created>1664445129954</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1664445129954</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -677,9 +696,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fragment for managing notifications" />
-    <MESSAGE value="sub and unsub to and from notifications" />
-    <MESSAGE value="cornered background for toolbar" />
     <MESSAGE value="update user last name, name and phone number hiddenness use cases to use in profile fragment s and editprofile fragment" />
     <MESSAGE value="refactored gradle" />
     <MESSAGE value="refactored" />
@@ -701,6 +717,9 @@
     <MESSAGE value="I made an adaptive design" />
     <MESSAGE value="added action profile fragment to home fragment" />
     <MESSAGE value="changed the size" />
+    <MESSAGE value="changed the way the photo was updated to the url" />
+    <MESSAGE value="changed the way to send photos via conversion from a raster photo to file" />
+    <MESSAGE value="added new use Case and repository to update photos in Firestore" />
     <MESSAGE value="small changes" />
     <option name="LAST_COMMIT_MESSAGE" value="small changes" />
   </component>
