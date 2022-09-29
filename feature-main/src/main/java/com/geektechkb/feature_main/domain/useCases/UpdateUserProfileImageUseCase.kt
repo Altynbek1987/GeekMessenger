@@ -7,6 +7,6 @@ class UpdateUserProfileImageUseCase @Inject constructor(
     private val repository: UsersRepository
 ) {
 
-    suspend operator fun invoke(imageFileName: String, byte: ByteArray) =
-        repository.updateUserProfileImage(imageFileName, byte)
+    suspend operator fun invoke(url: String) =
+        repository.updateUserProfileImage(url)
 }
