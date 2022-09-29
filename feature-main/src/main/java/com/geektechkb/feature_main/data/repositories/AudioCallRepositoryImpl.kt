@@ -24,11 +24,7 @@ class AudioCallRepositoryImpl @Inject constructor() : BaseRepository(), AudioCal
             } else {
                 Log.e("gaypopFuckingError", e.message.toString())
             }
-
-
         }
-
-
     }
 
     private fun registerPushToken() {

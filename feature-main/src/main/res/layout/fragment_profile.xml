@@ -26,7 +26,7 @@
         />
 
 
-    <androidx.constraintlayout.utils.widget.ImageFilterButton
+    <ImageView
         android:id="@+id/im_image_profile"
         android:layout_width="0dp"
         android:layout_height="0dp"
