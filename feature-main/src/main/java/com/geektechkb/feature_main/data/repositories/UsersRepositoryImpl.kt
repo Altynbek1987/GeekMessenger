@@ -5,9 +5,8 @@ import androidx.paging.PagingConfig
 import com.algolia.instantsearch.android.paging3.Paginator
 import com.algolia.instantsearch.searcher.hits.HitsSearcher
 import com.algolia.search.model.APIKey
-import com.algolia.search.model.ApplicationID
+ import com.algolia.search.model.ApplicationID
 import com.algolia.search.model.IndexName
-import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
@@ -17,8 +16,6 @@ import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
 import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.core.extensions.generateRandomId
-import com.geektechkb.feature_main.data.local.db.daos.UserDao
-import com.geektechkb.feature_main.data.remote.pagingsources.UsersPagingSource
 import com.geektechkb.core.typealiases.NotAnActualHitsSearcher
 import com.geektechkb.feature_main.data.remote.services.MessengerNotificationsService
 import com.geektechkb.feature_main.domain.models.User
@@ -26,10 +23,8 @@ import com.geektechkb.feature_main.domain.repositories.UsersRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 import java.io.File
-import java.net.URI
 import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(
@@ -105,7 +100,6 @@ class UsersRepositoryImpl @Inject constructor(
             )
         }
     }
-
     override fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean) {
         firebaseAuth.currentUser?.let {
             updateASingleFieldInDocument(
