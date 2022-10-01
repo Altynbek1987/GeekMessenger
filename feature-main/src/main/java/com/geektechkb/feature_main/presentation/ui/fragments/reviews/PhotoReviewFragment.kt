@@ -11,14 +11,21 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.geektechkb.common.constants.Constants
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
+import com.geektechkb.core.extensions.formatCurrentUserTime
+import com.geektechkb.core.extensions.generateRandomId
 import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentPhotoPreviewBinding
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.ByteArrayOutputStream
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class PhotoReviewFragment :
     BaseFragment<FragmentPhotoPreviewBinding, PhotoReviewViewModel>(R.layout.fragment_photo_preview) {
 
@@ -26,6 +33,9 @@ class PhotoReviewFragment :
     override val viewModel by viewModels<PhotoReviewViewModel>()
     private var uri: Uri = Uri.EMPTY
     private val args by navArgs<PhotoReviewFragmentArgs>()
+
+    @Inject
+    lateinit var usersPreferencesHelper: UserPreferencesHelper
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,9 +73,17 @@ class PhotoReviewFragment :
 
     override fun setupListeners() {
         binding.btnResult.setOnClickListener {
+            viewModel.sendMessage(
+                usersPreferencesHelper.currentUserPhoneNumber,
+                args.phoneNumber,
+                "",
+                uri.toString(),
+                formatCurrentUserTime(Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
+                generateRandomId()
+            )
             findNavController().navigate(
                 PhotoReviewFragmentDirections.actionPhotoReviewFragmentToChatFragment(
-                    getCroppedImage()
+                    args.phoneNumber, args.photo
                 )
             )
         }
