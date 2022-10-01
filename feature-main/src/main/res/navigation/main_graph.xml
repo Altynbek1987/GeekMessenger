@@ -35,11 +35,7 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
-        <argument
-            android:name="croppedImage"
-            android:defaultValue="@null"
-            app:argType="string"
-            app:nullable="true" />
+
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
@@ -59,6 +55,11 @@
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="croppedImage"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
 
     </fragment>
     <dialog
