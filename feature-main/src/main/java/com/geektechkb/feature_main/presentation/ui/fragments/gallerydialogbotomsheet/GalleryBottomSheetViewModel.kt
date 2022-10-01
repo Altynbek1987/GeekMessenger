@@ -3,8 +3,9 @@ package com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotom
 import android.content.ContentUris
 import android.content.Context
 import android.database.Cursor
+import android.media.MediaPlayer
+import android.net.Uri
 import android.provider.MediaStore
-import android.util.Log
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
 import io.reactivex.Single
@@ -12,6 +13,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.*
+import java.util.concurrent.TimeUnit
+
 
 class GalleryBottomSheetViewModel : BaseViewModel() {
 
@@ -19,6 +22,7 @@ class GalleryBottomSheetViewModel : BaseViewModel() {
     private var startingRow = 0
     private var rowsToLoad = 0
     private var allLoaded = false
+    private var shouldVideoBeShownInGallery = false
 
     fun getImagesFromGallery(
         context: Context,
@@ -37,13 +41,6 @@ class GalleryBottomSheetViewModel : BaseViewModel() {
         )
     }
 
-    fun getGallerySize(context: Context): Int {
-        val cursor = getGalleryCursor(context)
-        val rows = cursor!!.count
-        cursor.close()
-        return rows
-    }
-
     private fun fetchGalleryImages(context: Context, rowsPerLoad: Int): List<GalleryPicture> {
         val galleryImageUrls = LinkedList<GalleryPicture>()
         val cursor = getGalleryCursor(context)
@@ -59,13 +56,15 @@ class GalleryBottomSheetViewModel : BaseViewModel() {
             for (i in startingRow until rowsToLoad) {
                 cursor.moveToPosition(i)
                 val dataColumnIndex =
-                    cursor.getColumnIndex(MediaStore.MediaColumns._ID) //get column index
-                galleryImageUrls.add(GalleryPicture(getImageUri(cursor.getString(dataColumnIndex)).toString())) //get Image path from column index
+                    cursor.getColumnIndex(MediaStore.MediaColumns._ID)
+                galleryImageUrls.add(
+                    GalleryPicture(
+                        getImageUri(cursor.getString(dataColumnIndex)).toString(),
+                        false
+                    )
+                )
 
             }
-            Log.i("TotalGallerySize", "$totalRows")
-            Log.i("GalleryStart", "$startingRow")
-            Log.i("GalleryEnd", "$rowsToLoad")
 
             startingRow = rowsToLoad
 
@@ -79,15 +78,59 @@ class GalleryBottomSheetViewModel : BaseViewModel() {
             }
 
             cursor.close()
-            Log.i("PartialGallerySize", " ${galleryImageUrls.size}")
         }
+        if (shouldVideoBeShownInGallery) {
+            val videoCursor = getVideoCursor(context)
+            if (videoCursor != null && !allLoaded) {
+                val totalRows = videoCursor.count
+
+                allLoaded = rowsToLoad == totalRows
+                if (rowsToLoad < rowsPerLoad) {
+                    rowsToLoad = rowsPerLoad
+                }
+
+                for (i in startingRow until rowsToLoad) {
+                    videoCursor.moveToPosition(i)
+                    val dataColumnIndex =
+                        videoCursor.getColumnIndex(MediaStore.MediaColumns._ID)
+                    galleryImageUrls.add(
+                        GalleryPicture(
+                            getVideoUri(
+                                videoCursor.getString(
+                                    dataColumnIndex
+                                )
+                            ).toString(),
+                            true,
+                            getVideoDuration(
+                                context,
+                                getVideoUri(videoCursor.getString(dataColumnIndex))
+                            )
+                        )
+                    )
+                }
+
+                startingRow = rowsToLoad
+
+                if (rowsPerLoad > totalRows || rowsToLoad >= totalRows)
+                    rowsToLoad = totalRows
+                else {
+                    if (totalRows - rowsToLoad <= rowsPerLoad)
+                        rowsToLoad = totalRows
+                    else
+                        rowsToLoad += rowsPerLoad
+                }
+
+                videoCursor.close()
+            }
+        }
+
         return galleryImageUrls
     }
 
     private fun getGalleryCursor(context: Context): Cursor? {
         val externalUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         val columns = arrayOf(MediaStore.MediaColumns._ID, MediaStore.MediaColumns.DATE_MODIFIED)
-        val orderBy = MediaStore.MediaColumns.DATE_MODIFIED //order data by modified
+        val orderBy = MediaStore.MediaColumns.DATE_MODIFIED
         return context.contentResolver
             .query(
                 externalUri,
@@ -95,7 +138,21 @@ class GalleryBottomSheetViewModel : BaseViewModel() {
                 null,
                 null,
                 "$orderBy DESC"
-            )//get all data in Cursor by sorting in DESC order
+            )
+    }
+
+    private fun getVideoCursor(context: Context): Cursor? {
+        val externalUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+        val columns = arrayOf(MediaStore.MediaColumns._ID, MediaStore.MediaColumns.DATE_MODIFIED)
+        val orderBy = MediaStore.MediaColumns.DATE_MODIFIED
+        return context.contentResolver
+            .query(
+                externalUri,
+                columns,
+                null,
+                null,
+                "$orderBy DESC"
+            )
     }
 
     private fun getImageUri(path: String) = ContentUris.withAppendedId(
@@ -103,7 +160,38 @@ class GalleryBottomSheetViewModel : BaseViewModel() {
         path.toLong()
     )
 
+    private fun getVideoUri(path: String) =
+        ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, path.toLong())
+
     override fun onCleared() {
         compositeDisposable.clear()
+    }
+
+    fun shouldVideoBeShown(areVideoShown: Boolean) {
+        shouldVideoBeShownInGallery = areVideoShown
+    }
+
+    private fun getVideoDuration(context: Context, uri: Uri): String {
+        val mediaPlayer: MediaPlayer = MediaPlayer.create(context, uri)
+        val duration = mediaPlayer.duration.toLong()
+        val durationInSeconds =
+            TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(
+                TimeUnit.MILLISECONDS.toMinutes(duration)
+            )
+        mediaPlayer.release()
+        return when (durationInSeconds.toString().length < 2) {
+            true ->
+                String.format(
+                    "%d:0%d ",
+                    TimeUnit.MILLISECONDS.toMinutes(duration),
+                    durationInSeconds
+                )
+            false ->
+                String.format(
+                    "%d:%d",
+                    TimeUnit.MILLISECONDS.toMinutes(duration),
+                    durationInSeconds
+                )
+        }
     }
 }
