@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.domain.repositories
 
+import android.net.Uri
 import com.geektechkb.common.either.Either
 import com.geektechkb.core.typealiases.NotAnActualHitsSearcher
 import com.geektechkb.core.typealiases.NotAnActualPaginator
@@ -12,11 +13,13 @@ interface UsersRepository {
 
     fun updateUserStatus(status: String)
 
-    suspend fun updateUserProfileImage(imageFileName: String, byte: ByteArray): String?
+    suspend fun updateUserProfileImage(url: String): String
 
     fun updateUserName(name: String)
 
     fun updateUserLastName(lastName: String)
+
+    suspend fun updateUserProfileImageInFireStore(url: String)
 
     fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean)
 

@@ -2,11 +2,9 @@ package com.geektechkb.feature_main.presentation.ui.fragments.profil
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Base64
 import android.util.Log
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -27,7 +25,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -103,7 +100,7 @@ class ProfileFragment :
 
     private fun backToHomeFragment() {
         binding.toolbarButton.setOnClickListener {
-            findNavController().navigateSafely(R.id.action_profileFragment_to_homeFragment)
+            findNavController().navigateUp()
         }
     }
 
@@ -160,7 +157,7 @@ class ProfileFragment :
                     binding.imImageProfile.setImageDrawable(null)
                     binding.imImageProfile.drawable.toString()
                     viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                        viewModel.updateUserProfileImage("", "".toByteArray())
+//                        viewModel.updateUserProfileImage()
                     }
                     true
                 }
@@ -187,7 +184,7 @@ class ProfileFragment :
         viewModel.userState.spectateUiState(success = {
             savedUserStatus = it.lastSeen
             profileAvatar = it.profileImage
-            if (args.croppedImage.isNullOrEmpty()) {
+            if (args.croppedImage == null) {
                 binding.imImageProfile.loadImageWithGlide(it.profileImage)
             }
             binding.tvName.text = it.name
@@ -209,15 +206,12 @@ class ProfileFragment :
 
     private fun setupBottomSheet() {
         args.croppedImage?.let {
-            val imageBytes = Base64.decode(it, 0)
-            val image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-            val stream = ByteArrayOutputStream()
-            image.compress(Bitmap.CompressFormat.PNG, 90, stream)
             lifecycleScope.launch {
-                viewModel.updateUserProfileImage(generateRandomId(), stream.toByteArray())
-                    ?.let { image ->
-                        binding.imImageProfile.loadImageWithGlide(image)
-                    }
+                viewModel.updateUserProfileImage(it).let {
+                    viewModel.updateUserProfileImageInFireStore(it)
+                    binding.imImageProfile.loadImageWithGlide(it)
+                    Log.e("TAG", it)
+                }
             }
         }
         bottomSheetBehavior =
@@ -264,4 +258,6 @@ class ProfileFragment :
             )
         )
     }
+
+
 }
