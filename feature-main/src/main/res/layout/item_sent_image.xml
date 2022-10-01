@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="155dp"
+    android:layout_height="326dp"
+    android:layout_gravity="end"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/im_sent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/image_background_to"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars" />
+</LinearLayout>
