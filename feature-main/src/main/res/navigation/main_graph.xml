@@ -162,7 +162,7 @@
         android:id="@+id/languagesFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.language.LanguagesFragment"
         android:label="fragment_languages"
-        tools:layout="@layout/fragment_languages"></fragment>
+        tools:layout="@layout/fragment_languages" />
     <fragment
         android:id="@+id/voiceCallFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice.VoiceCallFragment"
@@ -185,6 +185,9 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.reviews.PhotoReviewFragment"
         android:label="fragment_photo_preview"
         tools:layout="@layout/fragment_photo_preview">
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
         <argument
             android:name="photo"
             app:argType="string" />
