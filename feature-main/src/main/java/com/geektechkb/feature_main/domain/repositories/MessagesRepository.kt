@@ -8,6 +8,7 @@ interface MessagesRepository {
         id: String,
         receiverPhoneNumber: String,
         message: String,
+        image :String,
         timeMessageWasSent: String,
         messageId: String,
     )
