@@ -42,9 +42,13 @@ class ProfileFragment :
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
                 initBottomSheetRecycler()
+                openGalleryBottomSheet()
             },
             actionWhenPermissionHasBeenDenied = {
-                findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
+                if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
+                    findNavController().navigateSafely(
+                        R.id.deniedPermissionsDialogFragment
+                    )
             })
 
     @Inject
@@ -71,22 +75,10 @@ class ProfileFragment :
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 actionWhenPermissionHasBeenGranted = {
                     binding.apply {
-                        openGalleryBottomSheet(
-                            galleryBottomSheet.galleryBottomSheetDialog,
-                            bottomSheetBehavior,
-                            galleryBottomSheet.appbarLayout,
-                            coordinatorGallery,
-                            actionOnDialogStateDragging = {
-                                openBottomSheet.isVisible = false
-                            }, actionOnDialogStateExpanded = {
-                                openBottomSheet.isVisible = false
-                            }, actionOnDialogStateHidden = {
-                                openBottomSheet.isVisible = true
-                            }
-                        )
+                        initBottomSheetRecycler()
+                        openGalleryBottomSheet()
                     }
                 })
-
         }
         binding.toolbarButton.setOnClickListener {
             findNavController().navigateUp()
@@ -125,7 +117,7 @@ class ProfileFragment :
         }
     }
 
-    private fun interactWithToolbarMenu() = with(binding) {
+    private fun interactWithToolbarMenu() {
         binding.menuToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.edit_profile -> {
@@ -133,26 +125,22 @@ class ProfileFragment :
                     true
                 }
                 R.id.choose_avatar -> {
-                    openGalleryBottomSheet(
-                        galleryBottomSheet.galleryBottomSheetDialog,
-                        bottomSheetBehavior,
-                        galleryBottomSheet.appbarLayout,
-                        coordinatorGallery,
-                        actionOnDialogStateDragging = {
-                            openBottomSheet.isVisible = false
-                        }, actionOnDialogStateExpanded = {
-                            openBottomSheet.isVisible = false
-                        }, actionOnDialogStateHidden = {
-                            openBottomSheet.isVisible = true
-                        }
-                    )
+                    checkForPermissionStatusAndRequestIt(
+                        readExternalStoragePermissionLauncher,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        actionWhenPermissionHasBeenGranted = {
+                            binding.apply {
+                                initBottomSheetRecycler()
+                                openGalleryBottomSheet()
+                            }
+                        })
                     true
                 }
                 R.id.delete_avatar -> {
                     binding.imImageProfile.setImageDrawable(null)
                     binding.imImageProfile.drawable.toString()
                     viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-//                        viewModel.updateUserProfileImage()
+    //                        viewModel.updateUserProfileImage()
                     }
                     true
                 }
@@ -199,6 +187,25 @@ class ProfileFragment :
         })
     }
 
+    private fun openGalleryBottomSheet() {
+        binding.apply {
+            openGalleryBottomSheet(
+                galleryBottomSheet.galleryBottomSheetDialog,
+                bottomSheetBehavior,
+                galleryBottomSheet.appbarLayout,
+                coordinatorGallery,
+                actionOnDialogStateDragging = {
+                    openBottomSheet.isVisible = false
+                }, actionOnDialogStateExpanded = {
+                    openBottomSheet.isVisible = false
+                }, actionOnDialogStateHidden = {
+                    openBottomSheet.isVisible = true
+                }
+            )
+        }
+
+    }
+
     private fun setupBottomSheet() {
         args.croppedImage?.let {
             lifecycleScope.launch {
@@ -209,11 +216,11 @@ class ProfileFragment :
                 }
             }
         }
-        bottomSheetBehavior =
-            BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
     }
 
     private fun initBottomSheetRecycler() {
+        bottomSheetBehavior =
+            BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
         binding.galleryBottomSheet.recyclerviewRating.adapter = adapter
         binding.galleryBottomSheet.recyclerviewRating.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
