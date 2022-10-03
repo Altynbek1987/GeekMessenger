@@ -5,8 +5,9 @@ import androidx.paging.PagingConfig
 import com.algolia.instantsearch.android.paging3.Paginator
 import com.algolia.instantsearch.searcher.hits.HitsSearcher
 import com.algolia.search.model.APIKey
- import com.algolia.search.model.ApplicationID
+import com.algolia.search.model.ApplicationID
 import com.algolia.search.model.IndexName
+import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
@@ -23,9 +24,11 @@ import com.geektechkb.feature_main.domain.repositories.UsersRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.tasks.await
 import java.io.File
 import javax.inject.Inject
+
 
 class UsersRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
@@ -59,13 +62,14 @@ class UsersRepositoryImpl @Inject constructor(
 
     override suspend fun updateUserProfileImage(url: String): String {
         val file = Uri.fromFile(File(url))
-        return cloudStorageRef.child("profileImages/${generateRandomId()}")
+        return file.let {
+            cloudStorageRef.child("profileImages/${generateRandomId()}")
             .putFile(file)
             .await()
             .storage
             .downloadUrl
             .await()
-            .toString()
+            .toString() }
     }
 
     override fun updateUserName(name: String) {
