@@ -28,6 +28,7 @@ class SignUpFragment :
     override fun initialize() {
         addMaskToThePhoneNumberEditText()
         disableHelperText()
+
     }
 
     private fun addMaskToThePhoneNumberEditText() {
