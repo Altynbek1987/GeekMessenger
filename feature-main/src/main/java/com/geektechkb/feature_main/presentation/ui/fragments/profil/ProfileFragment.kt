@@ -193,10 +193,13 @@ class ProfileFragment :
                 coordinatorGallery,
                 actionOnDialogStateDragging = {
                     openBottomSheet.isVisible = false
+                    toolbarButton.isVisible = false
                 }, actionOnDialogStateExpanded = {
                     openBottomSheet.isVisible = false
+                    toolbarButton.isVisible = false
                 }, actionOnDialogStateHidden = {
                     openBottomSheet.isVisible = true
+                    toolbarButton.isVisible = true
                 }
             )
         }
