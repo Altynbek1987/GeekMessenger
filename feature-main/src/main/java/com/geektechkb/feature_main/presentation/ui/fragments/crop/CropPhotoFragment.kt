@@ -156,18 +156,7 @@ class CropPhotoFragment :
         binding.kropView.applyOverlayShape(0)
     }
 
-//    private fun getCroppedImage(): String {
-//        val bitmap = binding.kropView.getCroppedBitmap()
-//        activity?.invalidateOptionsMenu()
-//        binding.kropView.applyOverlayColor(Color.TRANSPARENT)
-//        binding.viewFlipper.displayedChild = 1
-//        val byteArrayOutputStream = ByteArrayOutputStream()
-//        bitmap?.compress(Bitmap.CompressFormat.PNG, 30, byteArrayOutputStream)
-//        val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
-//        return Base64.encodeToString(byteArray, Base64.DEFAULT)
-//    }
-
-    private fun bitmapToFile(): File? {
+    private fun bitmapToFile(): File {
         val bitmap = binding.kropView.getCroppedBitmap()
         activity?.invalidateOptionsMenu()
         binding.kropView.applyOverlayColor(Color.TRANSPARENT)
@@ -176,7 +165,7 @@ class CropPhotoFragment :
         var file = wrapper.getDir("Images", Context.MODE_PRIVATE)
         file = File(file, "${UUID.randomUUID()}.jpg")
         val stream: OutputStream = FileOutputStream(file)
-        bitmap?.compress(Bitmap.CompressFormat.JPEG, 50, stream)
+        bitmap?.compress(Bitmap.CompressFormat.JPEG, 90, stream)
         stream.flush()
         stream.close()
         return file

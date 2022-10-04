@@ -1,11 +1,8 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.profil
 
 import android.Manifest
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -41,32 +38,29 @@ class ProfileFragment :
     private var savedUserStatus: String? = null
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private val adapter = GalleryPicturesAdapter(this::onSelect)
+    private val readExternalStoragePermissionLauncher =
+        createRequestPermissionLauncherToRequestSinglePermission(
+            Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
+                initBottomSheetRecycler()
+                openGalleryBottomSheet()
+            },
+            actionWhenPermissionHasBeenDenied = {
+                if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
+                    findNavController().navigateSafely(
+                        R.id.deniedPermissionsDialogFragment
+                    )
+            })
 
     @Inject
     lateinit var preferences: UserPreferencesHelper
 
     override fun assembleViews() {
         makeSwitchCheckedIfPhoneNumberIsHidden()
+        setupBottomSheet()
     }
 
     private fun makeSwitchCheckedIfPhoneNumberIsHidden() {
         binding.switchHidePhoneNumber.isChecked = preferences.isPhoneNumberHidden == true
-    }
-
-    override fun initialize() {
-        requestReadStoragePermission()
-    }
-
-    private fun requestReadStoragePermission() {
-        val readStorage = Manifest.permission.READ_EXTERNAL_STORAGE
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                readStorage
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(arrayOf(readStorage), 3)
-        } else initBottomSheetRecycler()
-        setupBottomSheet()
     }
 
     override fun setupListeners() {
@@ -77,28 +71,20 @@ class ProfileFragment :
         hidePhoneNumberOnSwitchChecked()
         backToHomeFragment()
         binding.openBottomSheet.setOnClickListener {
-            binding.apply {
-                openGalleryBottomSheet(
-                    galleryBottomSheet.galleryBottomSheetDialog,
-                    bottomSheetBehavior,
-                    galleryBottomSheet.appbarLayout,
-                    coordinatorGallery,
-                    actionOnDialogStateDragging = {
-                        openBottomSheet.isVisible = false
-                    }, actionOnDialogStateExpanded = {
-                        openBottomSheet.isVisible = false
-                    }, actionOnDialogStateHidden = {
-                        openBottomSheet.isVisible = true
+            checkForPermissionStatusAndRequestIt(
+                readExternalStoragePermissionLauncher,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                actionWhenPermissionHasBeenGranted = {
+                    binding.apply {
+                        initBottomSheetRecycler()
+                        openGalleryBottomSheet()
                     }
-                )
-            }
-        }
-        binding.toolbarButton.setOnClickListener {
-            findNavController().navigateUp()
+                })
         }
     }
 
     private fun backToHomeFragment() {
+        binding.toolbarButton.bringToFront()
         binding.toolbarButton.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -130,7 +116,7 @@ class ProfileFragment :
         }
     }
 
-    private fun interactWithToolbarMenu() = with(binding) {
+    private fun interactWithToolbarMenu() {
         binding.menuToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.edit_profile -> {
@@ -138,26 +124,22 @@ class ProfileFragment :
                     true
                 }
                 R.id.choose_avatar -> {
-                    openGalleryBottomSheet(
-                        galleryBottomSheet.galleryBottomSheetDialog,
-                        bottomSheetBehavior,
-                        galleryBottomSheet.appbarLayout,
-                        coordinatorGallery,
-                        actionOnDialogStateDragging = {
-                            openBottomSheet.isVisible = false
-                        }, actionOnDialogStateExpanded = {
-                            openBottomSheet.isVisible = false
-                        }, actionOnDialogStateHidden = {
-                            openBottomSheet.isVisible = true
-                        }
-                    )
+                    checkForPermissionStatusAndRequestIt(
+                        readExternalStoragePermissionLauncher,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        actionWhenPermissionHasBeenGranted = {
+                            binding.apply {
+                                initBottomSheetRecycler()
+                                openGalleryBottomSheet()
+                            }
+                        })
                     true
                 }
                 R.id.delete_avatar -> {
                     binding.imImageProfile.setImageDrawable(null)
                     binding.imImageProfile.drawable.toString()
                     viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-//                        viewModel.updateUserProfileImage()
+                        viewModel.updateUserProfileImage("")
                     }
                     true
                 }
@@ -171,9 +153,7 @@ class ProfileFragment :
     }
 
     private fun fetchUser() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.fetchUser(preferences.currentUserPhoneNumber)
-        }
+        viewModel.fetchUser(preferences.currentUserPhoneNumber)
     }
 
     override fun launchObservers() {
@@ -200,8 +180,30 @@ class ProfileFragment :
         }, error = {
             Log.e("gaypopError", it)
         }, gatherIfSucceed = {
-            it.assembleViewVisibility(binding.gProfile, binding.cpiProfile)
+            it.assembleViewVisibility(binding.gOpenBottomSheet, binding.cpiProfile)
         })
+    }
+
+    private fun openGalleryBottomSheet() {
+        binding.apply {
+            openGalleryBottomSheet(
+                galleryBottomSheet.galleryBottomSheetDialog,
+                bottomSheetBehavior,
+                galleryBottomSheet.appbarLayout,
+                coordinatorGallery,
+                actionOnDialogStateDragging = {
+                    openBottomSheet.isVisible = false
+                    toolbarButton.isVisible = false
+                }, actionOnDialogStateExpanded = {
+                    openBottomSheet.isVisible = false
+                    toolbarButton.isVisible = false
+                }, actionOnDialogStateHidden = {
+                    openBottomSheet.isVisible = true
+                    toolbarButton.isVisible = true
+                }
+            )
+        }
+
     }
 
     private fun setupBottomSheet() {
@@ -214,11 +216,11 @@ class ProfileFragment :
                 }
             }
         }
-        bottomSheetBehavior =
-            BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
     }
 
     private fun initBottomSheetRecycler() {
+        bottomSheetBehavior =
+            BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)
         binding.galleryBottomSheet.recyclerviewRating.adapter = adapter
         binding.galleryBottomSheet.recyclerviewRating.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
@@ -240,16 +242,6 @@ class ProfileFragment :
         }
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            initBottomSheetRecycler()
-    }
-
     private fun onSelect(uri: Uri) {
         findNavController().navigate(
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(
@@ -258,6 +250,4 @@ class ProfileFragment :
             )
         )
     }
-
-
 }
