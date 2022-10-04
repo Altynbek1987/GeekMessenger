@@ -56,6 +56,7 @@ class ProfileFragment :
 
     override fun assembleViews() {
         makeSwitchCheckedIfPhoneNumberIsHidden()
+        setupBottomSheet()
     }
 
     private fun makeSwitchCheckedIfPhoneNumberIsHidden() {
@@ -80,12 +81,10 @@ class ProfileFragment :
                     }
                 })
         }
-        binding.toolbarButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
     private fun backToHomeFragment() {
+        binding.toolbarButton.bringToFront()
         binding.toolbarButton.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -140,7 +139,7 @@ class ProfileFragment :
                     binding.imImageProfile.setImageDrawable(null)
                     binding.imImageProfile.drawable.toString()
                     viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-    //                        viewModel.updateUserProfileImage()
+                        viewModel.updateUserProfileImage("")
                     }
                     true
                 }
@@ -154,9 +153,7 @@ class ProfileFragment :
     }
 
     private fun fetchUser() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.fetchUser(preferences.currentUserPhoneNumber)
-        }
+        viewModel.fetchUser(preferences.currentUserPhoneNumber)
     }
 
     override fun launchObservers() {
@@ -183,7 +180,7 @@ class ProfileFragment :
         }, error = {
             Log.e("gaypopError", it)
         }, gatherIfSucceed = {
-            it.assembleViewVisibility(binding.gProfile, binding.cpiProfile)
+            it.assembleViewVisibility(binding.gOpenBottomSheet, binding.cpiProfile)
         })
     }
 
