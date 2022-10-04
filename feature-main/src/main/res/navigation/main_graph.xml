@@ -57,9 +57,9 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="croppedImage"
+            android:defaultValue="@null"
             app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null"/>
+            app:nullable="true" />
 
     </fragment>
     <dialog
@@ -82,13 +82,11 @@
         <action
             android:id="@+id/action_cropPhotoFragment_to_profileFragment"
             app:destination="@id/profileFragment"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_cropPhotoFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/profileFragment" />
         <argument
             android:name="whereToNavigateBack"
             app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest" />
