@@ -7,10 +7,11 @@
     tools:context=".presentation.ui.fragments.profil.ProfileFragment">
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/g_profile"
+        android:id="@+id/g_open_bottom_sheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="im_image_profile,toolbar_button,menu_toolbar" />
+        app:constraint_referenced_ids="openBottomSheet,toolbar_button,menu_toolbar" />
+
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/cpi_profile"
@@ -19,10 +20,10 @@
         android:indeterminate="true"
         android:visibility="invisible"
         app:indicatorColor="@color/blue"
-        app:layout_constraintBottom_toBottomOf="@id/im_image_profile"
-        app:layout_constraintEnd_toEndOf="@id/im_image_profile"
-        app:layout_constraintStart_toStartOf="@id/im_image_profile"
-        app:layout_constraintTop_toTopOf="@id/im_image_profile" />
+        app:layout_constraintBottom_toTopOf="@id/gl_image_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
