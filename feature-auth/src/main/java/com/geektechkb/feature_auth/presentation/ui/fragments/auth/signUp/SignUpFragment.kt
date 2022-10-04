@@ -1,5 +1,6 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.signUp
 
+import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -27,15 +28,15 @@ class SignUpFragment :
 
     override fun initialize() {
         addMaskToThePhoneNumberEditText()
-        disableHelperText()
-
+        setWindowSoftInputModeToAdjustPan()
     }
 
     private fun addMaskToThePhoneNumberEditText() {
         binding.etPhone.addTextChangedListener(MaskedWatcher(maskFormatter, binding.etPhone))
     }
 
-    private fun disableHelperText() {
+    private fun setWindowSoftInputModeToAdjustPan() {
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
     }
 
     override fun setupListeners() {
