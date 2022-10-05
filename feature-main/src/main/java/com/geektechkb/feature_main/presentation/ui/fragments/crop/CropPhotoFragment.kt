@@ -165,7 +165,7 @@ class CropPhotoFragment :
         var file = wrapper.getDir("Images", Context.MODE_PRIVATE)
         file = File(file, "${UUID.randomUUID()}.jpg")
         val stream: OutputStream = FileOutputStream(file)
-        bitmap?.compress(Bitmap.CompressFormat.JPEG, 90, stream)
+        bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
         stream.flush()
         stream.close()
         return file
