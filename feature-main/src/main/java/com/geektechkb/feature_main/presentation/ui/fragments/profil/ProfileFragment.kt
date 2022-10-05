@@ -1,13 +1,12 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.profil
 
 import android.Manifest
+import android.graphics.Color
 import android.net.Uri
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
@@ -61,9 +60,15 @@ class ProfileFragment :
     private fun uploadCroppedImageToFirestoreAndLoadImage() {
         args.croppedImage?.let {
             viewLifecycleOwner.lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.updateUserProfileImage(it).let {
-                        viewModel.updateUserProfileImageInFireStore(it)
+                binding.gProfile.isVisible = false
+                binding.cpiProfileImage.isVisible = true
+                overrideOnBackPressed {}
+                viewModel.updateUserProfileImage(it).also {
+                    viewModel.updateUserProfileImageInFireStore(it)
+                    binding.gProfile.isVisible = true
+                    binding.cpiProfileImage.isVisible = false
+                    overrideOnBackPressed {
+                        findNavController().navigateUp()
                     }
                 }
             }
@@ -159,6 +164,7 @@ class ProfileFragment :
         binding.toolbarButton.bringToFront()
         binding.toolbarButton.setOnClickListener {
             findNavController().navigateUp()
+            uploadCroppedImageToFirestoreAndLoadImage()
         }
     }
 
@@ -183,7 +189,8 @@ class ProfileFragment :
                     } ?: avProfileImage.loadImageAndSetInitialsIfFailed(
                         profileImage,
                         name,
-                        cpiProfile
+                        cpiProfileImage,
+                        Color.rgb(83, 147, 208)
                     )
                     tvName.text = name
                     tvLastSeen.text = lastSeen
@@ -196,7 +203,7 @@ class ProfileFragment :
             }, error = {
                 Log.e("gaypopError", it)
             }, gatherIfSucceed = {
-                it.assembleViewVisibility(gOpenBottomSheet, cpiProfile)
+                cpiProfileImage.bindToUIStateLoading(it)
             })
         }
     }
@@ -220,7 +227,6 @@ class ProfileFragment :
                 }
             )
         }
-
     }
 
     private fun initBottomSheetRecycler() {
