@@ -1,6 +1,7 @@
 package com.geektechkb.feature_main.presentation
 
 import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,6 +15,7 @@ import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
 import com.geektechkb.feature_main.R
+import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,9 +33,21 @@ class MainFlowFragment : BaseFlowFragment(
     @Inject
     lateinit var preferences: UserPreferencesHelper
 
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+
+    override fun assembleViews() {
+        if (!preferencesHelper.isLightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
+        }
+    }
+
     @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
-
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
@@ -69,12 +83,25 @@ class MainFlowFragment : BaseFlowFragment(
         binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
 
-        binding.homeAppBarMain.toolbarButton.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
+            binding.homeAppBarMain.toolbarButton.setOnClickListener {
+                binding.drawerLayout.openDrawer(GravityCompat.START)
+            }
         }
     }
-    }
 
+    override fun setupListeners() {
+        binding.nav.sunBtn.setOnClickListener {
+            if (!preferencesHelper.isLightMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
+                preferencesHelper.isLightMode = true
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
+                preferencesHelper.isLightMode = false
+            }
+        }
+    }
 
     override fun establishRequest() {
         fetchUser()
