@@ -63,12 +63,13 @@ class CropPhotoFragment :
     private fun navigateBackToAccordingFragment() {
         binding.btnResult.setOnClickListener {
             when (args.whereToNavigateBack) {
-                CropPhotoRequest.PROFILE -> findNavController().directionsSafeNavigation(
-                    CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
-                        bitmapToFile().toString()
+                CropPhotoRequest.PROFILE ->
+                    findNavController().directionsSafeNavigation(
+                        CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
+                            bitmapToFile().toString()
+                        )
                     )
 
-                )
                 CropPhotoRequest.EDIT_PROFILE -> findNavController().directionsSafeNavigation(
                     CropPhotoFragmentDirections.actionCropPhotoFragmentToEditProfileFragment(
                         bitmapToFile().toString()

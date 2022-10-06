@@ -1,12 +1,16 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.profil
 
 import android.Manifest
+import android.app.Dialog
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +40,8 @@ class ProfileFragment :
     private val args by navArgs<ProfileFragmentArgs>()
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private val adapter = GalleryPicturesAdapter(this::onSelect)
+    private var dialog: Dialog? = null
+
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
@@ -58,17 +64,14 @@ class ProfileFragment :
     }
 
     private fun uploadCroppedImageToFirestoreAndLoadImage() {
+
         args.croppedImage?.let {
             viewLifecycleOwner.lifecycleScope.launch {
-                binding.gProfile.isVisible = false
-                binding.cpiProfileImage.isVisible = true
-                overrideOnBackPressed {}
-                viewModel.updateUserProfileImage(it).also {
-                    viewModel.updateUserProfileImageInFireStore(it)
-                    binding.gProfile.isVisible = true
-                    binding.cpiProfileImage.isVisible = false
-                    overrideOnBackPressed {
-                        findNavController().navigateUp()
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    showDialog(R.layout.dialog_progressbar)
+                    viewModel.updateUserProfileImage(it).also {
+                        viewModel.updateUserProfileImageInFireStore(it)
+                        dialog?.dismiss()
                     }
                 }
             }
@@ -87,6 +90,7 @@ class ProfileFragment :
         navigateToLanguagesFragment()
         hidePhoneNumberOnSwitchChecked()
         backToHomeFragment()
+
     }
 
     private fun interactWithToolbarMenu() {
@@ -163,8 +167,9 @@ class ProfileFragment :
     private fun backToHomeFragment() {
         binding.toolbarButton.bringToFront()
         binding.toolbarButton.setOnClickListener {
-            findNavController().navigateUp()
-            uploadCroppedImageToFirestoreAndLoadImage()
+            mainNavController(R.id.nav_host_fragment_container_profile).navigateSafely(
+                R.id.action_profileFragment_to_mainFlowFragment
+            )
         }
     }
 
@@ -203,7 +208,8 @@ class ProfileFragment :
             }, error = {
                 Log.e("gaypopError", it)
             }, gatherIfSucceed = {
-                cpiProfileImage.bindToUIStateLoading(it)
+                if (args.croppedImage == null)
+                    cpiProfileImage.bindToUIStateLoading(it)
             })
         }
     }
@@ -260,5 +266,17 @@ class ProfileFragment :
                 CropPhotoRequest.PROFILE
             )
         )
+    }
+
+    private fun showDialog(
+        layout: Int
+    ) {
+        dialog = Dialog(requireContext())
+        with(dialog) {
+            this?.setContentView(layout)
+            this?.setCanceledOnTouchOutside(false)
+            this?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+        dialog?.show()
     }
 }
