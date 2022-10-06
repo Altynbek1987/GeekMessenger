@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.profil
+package com.geektechkb.feature_main.presentation.ui.fragments.profil.profile
 
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.domain.models.User
