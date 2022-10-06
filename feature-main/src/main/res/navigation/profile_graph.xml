@@ -47,13 +47,7 @@
             android:id="@+id/action_profileFragment_to_mainFlowFragment"
             app:destination="@id/mainFlowFragment"
             app:popUpTo="@id/profile_graph"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/profile_graph"
             app:popUpToInclusive="true" />
-
     </fragment>
 
     <fragment
@@ -93,9 +87,4 @@
         android:name="com.geektechkb.feature_main.presentation.MainFlowFragment"
         android:label="fragment_main_flow"
         tools:layout="@layout/fragment_main_flow" />
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
 </navigation>
