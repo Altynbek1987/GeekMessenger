@@ -14,6 +14,7 @@ import com.geektechkb.core.base.BaseFlowFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
+import com.geektechkb.core.extensions.overrideOnBackPressed
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,6 +54,12 @@ class MainFlowFragment : BaseFlowFragment(
         }
         binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
+    }
+
+    override fun setupListeners() {
+        overrideOnBackPressed {
+            requireActivity().finish()
         }
     }
 
