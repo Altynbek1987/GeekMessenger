@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.presentation
 
+import android.util.Log
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
@@ -38,25 +39,21 @@ class MainFlowFragment : BaseFlowFragment(
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
-                R.id.nav_groups, R.id.nav_calls, R.id.profileFragment,
+                R.id.nav_groups, R.id.nav_calls, R.id.profileFlowFragment,
 
                 ), binding.drawerLayout
         )
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
             when (destination.id) {
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.cropPhotoFragment, R.id.editProfileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFlowFragment, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
+
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
         binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
-
-            binding.homeAppBarMain.toolbarButton.setOnClickListener {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
-            }
         }
     }
 
@@ -86,6 +83,7 @@ class MainFlowFragment : BaseFlowFragment(
                     binding.nav.cpiCurrentUserAvatar
                 )
                 userName.text = name
+                Log.e("gaypop", profileImage.toString())
             }
         })
     }
