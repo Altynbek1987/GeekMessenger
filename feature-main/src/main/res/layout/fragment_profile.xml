@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.profil.ProfileFragment">
+    tools:context=".presentation.ui.fragments.profil.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/g_profile"
