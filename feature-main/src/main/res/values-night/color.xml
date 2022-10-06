@@ -16,7 +16,7 @@
 
     <color name="default_overlay_color">#FFD1aa</color>
     <color name="color_red">#c0392b</color>
-    <color name="dark_gray">#FFFFFF</color>
+    <color name="dark_gray">#333333</color>
     <color name="blue">#5393D0</color>
 
     <color name="browser_actions_bg_grey">#C4C4C4</color>
