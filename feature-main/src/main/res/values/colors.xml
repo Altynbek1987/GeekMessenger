@@ -5,7 +5,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
 
     <color name="color_primary">#F5F5F5</color>
@@ -20,8 +20,8 @@
     <color name="blue">#5393D0</color>
 
     <color name="browser_actions_bg_grey">#F5F5F5</color>
-    <color name="finlandia">#555E55</color>
+    <color name="finlandia">#FFFFFF</color>
     <color name="chineseSilver">#CCCCCC</color>
     <color name="transparent_50">#800B0A0A</color>
-    <color name="transparentCrop">#B22C2C2C</color>
+    <color name="transparentCrop">#FFFFFF</color>
 </resources>
