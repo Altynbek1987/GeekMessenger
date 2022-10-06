@@ -135,10 +135,5 @@
         android:id="@+id/profileFlowFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFlowFragment"
         android:label="ProfileFlowFragment"
-        tools:layout="@layout/fragment_profile_flow">
-        <action
-            android:id="@+id/action_profileFlowFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/main_graph" />
-    </fragment>
+        tools:layout="@layout/fragment_profile_flow" />
 </navigation>
