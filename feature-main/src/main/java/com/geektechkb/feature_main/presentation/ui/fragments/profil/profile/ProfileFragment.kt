@@ -64,11 +64,10 @@ class ProfileFragment :
     }
 
     private fun uploadCroppedImageToFirestoreAndLoadImage() {
-
         args.croppedImage?.let {
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    showDialog(R.layout.dialog_progressbar)
+                    showProgressDialog(R.layout.dialog_progressbar)
                     viewModel.updateUserProfileImage(it).also {
                         viewModel.updateUserProfileImageInFireStore(it)
                         dialog?.dismiss()
@@ -164,11 +163,11 @@ class ProfileFragment :
     }
 
     private fun backToHomeFragment() {
-        binding.toolbarButton.bringToFront()
-        binding.toolbarButton.setOnClickListener {
-            mainNavController(R.id.nav_host_fragment_container_profile).navigateSafely(
-                R.id.action_profileFragment_to_mainFlowFragment
-            )
+        binding.menuToolbar.setNavigationOnClickListener {
+            findNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
+        }
+        overrideOnBackPressed {
+            findNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
         }
     }
 
@@ -198,11 +197,11 @@ class ProfileFragment :
                     )
                     tvName.text = name
                     tvLastSeen.text = lastSeen
-                    phoneNumber?.let { phoneNumber ->
-                        tvNumber.text =
-                            StringBuilder(phoneNumber.substring(0, 4)).append(" ")
-                                .append(phoneNumber.substringAfter("+996"))
-                    }
+                    tvNumber.text = getString(
+                        R.string.plus, phoneNumber?.substringAfter(
+                            "+"
+                        )?.chunked(3)?.joinToString(" ")
+                    )
                 }
             }, error = {
                 Log.e("gaypopError", it)
@@ -222,13 +221,10 @@ class ProfileFragment :
                 coordinatorGallery,
                 actionOnDialogStateDragging = {
                     openBottomSheet.isVisible = false
-                    toolbarButton.isVisible = false
                 }, actionOnDialogStateExpanded = {
                     openBottomSheet.isVisible = false
-                    toolbarButton.isVisible = false
                 }, actionOnDialogStateHidden = {
                     openBottomSheet.isVisible = true
-                    toolbarButton.isVisible = true
                 }
             )
         }
@@ -267,7 +263,7 @@ class ProfileFragment :
         )
     }
 
-    private fun showDialog(
+    private fun showProgressDialog(
         layout: Int
     ) {
         dialog = Dialog(requireContext())
