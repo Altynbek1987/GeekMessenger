@@ -1,6 +1,5 @@
 package com.geektechkb.feature_main.presentation
 
-import android.util.Log
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
@@ -73,10 +72,11 @@ class MainFlowFragment : BaseFlowFragment(
         viewModel.userState.spectateUiState(success = { user ->
             user.apply {
                 userStatus = user.lastSeen
-                phoneNumber?.let { phoneNumber ->
-                    userNumber.text = StringBuilder(phoneNumber.substring(0, 4)).append(" ")
-                        .append(phoneNumber.substringAfter("+996"))
-                }
+                userNumber.text = getString(
+                    R.string.plus, phoneNumber?.substringAfter(
+                        "+"
+                    )?.chunked(3)?.joinToString(" ")
+                )
                 avatarView.loadImageAndSetInitialsIfFailed(
                     profileImage,
                     name,
