@@ -83,7 +83,6 @@ class MainFlowFragment : BaseFlowFragment(
                     binding.nav.cpiCurrentUserAvatar
                 )
                 userName.text = name
-                Log.e("gaypop", profileImage.toString())
             }
         })
     }
