@@ -3,6 +3,8 @@ package com.geektechkb.core.extensions
 import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.widget.ImageView
+import android.widget.ProgressBar
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -35,7 +37,12 @@ fun SwitchMaterial.actionOnCheckedChange(action: (Boolean) -> Unit) {
     }
 }
 
-fun AvatarView.loadImageAndSetInitialsIfFailed(url: String?, name: String?, lastName: String?) {
+fun AvatarView.loadImageAndSetInitialsIfFailed(
+    url: String?,
+    name: String?,
+    lastName: String? = null,
+    progressBar: ProgressBar
+) {
     loadImage(data = url, onError = { _, _ ->
 
         val random = Random
@@ -49,5 +56,34 @@ fun AvatarView.loadImageAndSetInitialsIfFailed(url: String?, name: String?, last
         avatarInitials = SpannableStringBuilder(
             name.takeFirstCharacterAndCapitalizeIt()
         ).append(lastName.takeFirstCharacterAndCapitalizeIt()).toString()
+    }, onStart = {
+        progressBar.isVisible = true
+    }, onComplete = {
+        progressBar.isVisible = false
+    })
+}
+
+fun AvatarView.loadImageAndSetInitialsIfFailed(
+    url: String?,
+    name: String?,
+    progressBar: ProgressBar
+) {
+    loadImage(data = url, onError = { _, _ ->
+
+        val random = Random
+        val randomAvatarBackgroundColor =
+            Color.rgb(
+                random.nextInt(255),
+                random.nextInt(255),
+                random.nextInt(255)
+            )
+        avatarInitialsBackgroundColor = randomAvatarBackgroundColor
+        avatarInitials = SpannableStringBuilder(
+            name.takeFirstCharacterAndCapitalizeIt()
+        ).toString()
+    }, onStart = {
+        progressBar.isVisible = true
+    }, onComplete = {
+        progressBar.isVisible = false
     })
 }
