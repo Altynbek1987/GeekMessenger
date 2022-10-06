@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_graph"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_cropPhotoFragment"
+            app:destination="@id/cropPhotoFragment" />
+
+        <argument
+            android:name="croppedProfileAvatar"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/action_profileFragment_to_cropPhotoFragment"
+            app:destination="@id/cropPhotoFragment" />
+
+        <action
+            android:id="@+id/action_profileFragment_to_languagesFragment"
+            app:destination="@id/languagesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_notificationsAndSoundsFragment"
+            app:destination="@id/notificationsAndSoundsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <argument
+            android:name="croppedImage"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_mainFlowFragment"
+            app:destination="@id/mainFlowFragment"
+            app:popUpTo="@id/mainFlowFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/cropPhotoFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.crop.CropPhotoFragment"
+        android:label="fragment_crop_photo"
+        tools:layout="@layout/fragment_crop_photo">
+        <argument
+            android:name="uri"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_cropPhotoFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/profile_graph"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_cropPhotoFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:popUpTo="@id/profileFragment" />
+        <argument
+            android:name="whereToNavigateBack"
+            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.language.LanguagesFragment"
+        android:label="fragment_languages"
+        tools:layout="@layout/fragment_languages" />
+    <fragment
+        android:id="@+id/notificationsAndSoundsFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.notificationsAndSounds.NotificationsAndSoundsFragment"
+        android:label="fragment_notifications_and_sounds"
+        tools:layout="@layout/fragment_notifications_and_sounds" />
+    <fragment
+        android:id="@+id/mainFlowFragment"
+        android:name="com.geektechkb.feature_main.presentation.MainFlowFragment"
+        android:label="fragment_main_flow"
+        tools:layout="@layout/fragment_main_flow" />
+</navigation>
