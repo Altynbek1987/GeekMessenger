@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@+id/homeFragment">
-
     <fragment
         android:id="@+id/nav_groups"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.group.GroupFragment"
@@ -30,70 +29,6 @@
             android:id="@+id/action_homeFragment_to_connectionCheckFragment"
             app:destination="@id/connectionCheckFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
-
-        <action
-            android:id="@+id/action_profileFragment_to_cropPhotoFragment"
-            app:destination="@id/cropPhotoFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
-
-        <action
-            android:id="@+id/action_profileFragment_to_languagesFragment"
-            app:destination="@id/languagesFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_notificationsAndSoundsFragment"
-            app:destination="@id/notificationsAndSoundsFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <argument
-            android:name="croppedImage"
-            app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null"/>
-
-    </fragment>
-    <dialog
-        android:id="@+id/galleryBottomSheetFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetFragment"
-        android:label="fragment_gallery_bottom_sheet"
-        tools:layout="@layout/fragment_gallery_bottom_sheet">
-        <action
-            android:id="@+id/action_galleryBottomSheetFragment_to_cropPhotoFragment"
-            app:destination="@id/cropPhotoFragment" />
-    </dialog>
-    <fragment
-        android:id="@+id/cropPhotoFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.crop.CropPhotoFragment"
-        android:label="fragment_crop_photo"
-        tools:layout="@layout/fragment_crop_photo">
-        <argument
-            android:name="uri"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_cropPhotoFragment_to_profileFragment"
-            app:destination="@id/profileFragment"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_cropPhotoFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
-        <argument
-            android:name="whereToNavigateBack"
-            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest" />
-    </fragment>
-
 
     <fragment
         android:id="@+id/chatFragment"
@@ -159,11 +94,7 @@
             android:id="@+id/action_connectionCheckFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/languagesFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.language.LanguagesFragment"
-        android:label="fragment_languages"
-        tools:layout="@layout/fragment_languages"></fragment>
+
     <fragment
         android:id="@+id/voiceCallFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice.VoiceCallFragment"
@@ -187,6 +118,9 @@
         android:label="fragment_photo_preview"
         tools:layout="@layout/fragment_photo_preview">
         <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
             android:name="photo"
             app:argType="string" />
         <action
@@ -195,23 +129,11 @@
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
     </fragment>
+
+
     <fragment
-        android:id="@+id/notificationsAndSoundsFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.notificationsAndSounds.NotificationsAndSoundsFragment"
-        android:label="fragment_notifications_and_sounds"
-        tools:layout="@layout/fragment_notifications_and_sounds" />
-    <fragment
-        android:id="@+id/editProfileFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile.EditProfileFragment"
-        android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile">
-        <action
-            android:id="@+id/action_editProfileFragment_to_cropPhotoFragment"
-            app:destination="@id/cropPhotoFragment" />
-        <argument
-            android:name="croppedProfileAvatar"
-            android:defaultValue="@null"
-            app:argType="string"
-            app:nullable="true" />
-    </fragment>
+        android:id="@+id/profileFlowFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFlowFragment"
+        android:label="ProfileFlowFragment"
+        tools:layout="@layout/fragment_profile_flow" />
 </navigation>

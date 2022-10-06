@@ -1,11 +1,16 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.profil
+package com.geektechkb.feature_main.presentation.ui.fragments.profil.profile
 
 import android.Manifest
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +26,7 @@ import com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
+import io.getstream.avatarview.coil.loadImage
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,12 +38,10 @@ class ProfileFragment :
     override val viewModel: ProfileViewModel by viewModels()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args by navArgs<ProfileFragmentArgs>()
-    private var name: String? = null
-    private var lastName: String? = null
-    private var profileAvatar: String? = null
-    private var savedUserStatus: String? = null
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private val adapter = GalleryPicturesAdapter(this::onSelect)
+    private var dialog: Dialog? = null
+
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
@@ -56,7 +60,21 @@ class ProfileFragment :
 
     override fun assembleViews() {
         makeSwitchCheckedIfPhoneNumberIsHidden()
-        setupBottomSheet()
+        uploadCroppedImageToFirestoreAndLoadImage()
+    }
+
+    private fun uploadCroppedImageToFirestoreAndLoadImage() {
+        args.croppedImage?.let {
+            viewLifecycleOwner.lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    showProgressDialog(R.layout.dialog_progressbar)
+                    viewModel.updateUserProfileImage(it).also {
+                        viewModel.updateUserProfileImageInFireStore(it)
+                        dialog?.dismiss()
+                    }
+                }
+            }
+        }
     }
 
     private fun makeSwitchCheckedIfPhoneNumberIsHidden() {
@@ -66,10 +84,45 @@ class ProfileFragment :
     override fun setupListeners() {
         interactWithToolbarMenu()
         hideBottomSheetOnClick()
+        requestPermissionAndOpenBottomSheet()
         navigateToNotificationsAndSoundsFragment()
         navigateToLanguagesFragment()
         hidePhoneNumberOnSwitchChecked()
         backToHomeFragment()
+    }
+
+    private fun interactWithToolbarMenu() {
+        binding.menuToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.edit_profile -> {
+                    findNavController().navigateSafely(R.id.action_profileFragment_to_editProfileFragment)
+                    true
+                }
+                R.id.choose_avatar -> {
+                    checkForPermissionStatusAndRequestIt(
+                        readExternalStoragePermissionLauncher,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        actionWhenPermissionHasBeenGranted = {
+                            binding.apply {
+                                initBottomSheetRecycler()
+                                openGalleryBottomSheet()
+                            }
+                        })
+                    true
+                }
+                R.id.delete_avatar -> {
+                    binding.avProfileImage.setImageDrawable(null)
+                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                        viewModel.updateUserProfileImage("")
+                    }
+                    true
+                }
+                else -> true
+            }
+        }
+    }
+
+    private fun requestPermissionAndOpenBottomSheet() {
         binding.openBottomSheet.setOnClickListener {
             checkForPermissionStatusAndRequestIt(
                 readExternalStoragePermissionLauncher,
@@ -80,13 +133,6 @@ class ProfileFragment :
                         openGalleryBottomSheet()
                     }
                 })
-        }
-    }
-
-    private fun backToHomeFragment() {
-        binding.toolbarButton.bringToFront()
-        binding.toolbarButton.setOnClickListener {
-            findNavController().navigateUp()
         }
     }
 
@@ -116,35 +162,12 @@ class ProfileFragment :
         }
     }
 
-    private fun interactWithToolbarMenu() {
-        binding.menuToolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.edit_profile -> {
-                    findNavController().navigateSafely(R.id.action_profileFragment_to_editProfileFragment)
-                    true
-                }
-                R.id.choose_avatar -> {
-                    checkForPermissionStatusAndRequestIt(
-                        readExternalStoragePermissionLauncher,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        actionWhenPermissionHasBeenGranted = {
-                            binding.apply {
-                                initBottomSheetRecycler()
-                                openGalleryBottomSheet()
-                            }
-                        })
-                    true
-                }
-                R.id.delete_avatar -> {
-                    binding.imImageProfile.setImageDrawable(null)
-                    binding.imImageProfile.drawable.toString()
-                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                        viewModel.updateUserProfileImage("")
-                    }
-                    true
-                }
-                else -> true
-            }
+    private fun backToHomeFragment() {
+        binding.menuToolbar.setNavigationOnClickListener {
+            findNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
+        }
+        overrideOnBackPressed {
+            findNavController().navigateSafely(R.id.action_profileFragment_to_mainFlowFragment)
         }
     }
 
@@ -161,27 +184,32 @@ class ProfileFragment :
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
-            savedUserStatus = it.lastSeen
-            profileAvatar = it.profileImage
-            if (args.croppedImage == null) {
-                binding.imImageProfile.loadImageWithGlide(it.profileImage)
-            }
-            binding.tvName.text = it.name
-            binding.tvLastSeen.text = it.lastSeen
-            it.phoneNumber?.let { phoneNumber ->
-                binding.tvNumber.text =
-                    StringBuilder(phoneNumber.substring(0, 4)).append(" ")
-                        .append(phoneNumber.substringAfter("+996"))
-            }
-            name = it.name
-            lastName = it.lastName
-
-        }, error = {
-            Log.e("gaypopError", it)
-        }, gatherIfSucceed = {
-            it.assembleViewVisibility(binding.gOpenBottomSheet, binding.cpiProfile)
-        })
+        binding.apply {
+            viewModel.userState.spectateUiState(success = { user ->
+                user.apply {
+                    args.croppedImage?.let {
+                        avProfileImage.loadImage(it)
+                    } ?: avProfileImage.loadImageAndSetInitialsIfFailed(
+                        profileImage,
+                        name,
+                        cpiProfileImage,
+                        Color.rgb(83, 147, 208)
+                    )
+                    tvName.text = name
+                    tvLastSeen.text = lastSeen
+                    tvNumber.text = getString(
+                        R.string.plus, phoneNumber?.substringAfter(
+                            "+"
+                        )?.chunked(3)?.joinToString(" ")
+                    )
+                }
+            }, error = {
+                Log.e("gaypopError", it)
+            }, gatherIfSucceed = {
+                if (args.croppedImage == null)
+                    cpiProfileImage.bindToUIStateLoading(it)
+            })
+        }
     }
 
     private fun openGalleryBottomSheet() {
@@ -193,28 +221,12 @@ class ProfileFragment :
                 coordinatorGallery,
                 actionOnDialogStateDragging = {
                     openBottomSheet.isVisible = false
-                    toolbarButton.isVisible = false
                 }, actionOnDialogStateExpanded = {
                     openBottomSheet.isVisible = false
-                    toolbarButton.isVisible = false
                 }, actionOnDialogStateHidden = {
                     openBottomSheet.isVisible = true
-                    toolbarButton.isVisible = true
                 }
             )
-        }
-
-    }
-
-    private fun setupBottomSheet() {
-        args.croppedImage?.let {
-            lifecycleScope.launch {
-                viewModel.updateUserProfileImage(it).let {
-                    viewModel.updateUserProfileImageInFireStore(it)
-                    binding.imImageProfile.loadImageWithGlide(it)
-                    Log.e("TAG", it)
-                }
-            }
         }
     }
 
@@ -249,5 +261,17 @@ class ProfileFragment :
                 CropPhotoRequest.PROFILE
             )
         )
+    }
+
+    private fun showProgressDialog(
+        layout: Int
+    ) {
+        dialog = Dialog(requireContext())
+        with(dialog) {
+            this?.setContentView(layout)
+            this?.setCanceledOnTouchOutside(false)
+            this?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+        dialog?.show()
     }
 }

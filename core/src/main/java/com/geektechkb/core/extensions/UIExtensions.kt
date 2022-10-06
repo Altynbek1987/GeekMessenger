@@ -38,17 +38,15 @@ fun SwitchMaterial.actionOnCheckedChange(action: (Boolean) -> Unit) {
 fun AvatarView.loadImageAndSetInitialsIfFailed(
     url: String?,
     name: String?,
-    progressBar: ProgressBar
+    progressBar: ProgressBar,
+    avatarBackgroundColor: Int = Color.rgb(
+        Random.nextInt(255),
+        Random.nextInt(255),
+        Random.nextInt(255)
+    )
 ) {
     loadImage(data = url, onError = { _, _ ->
-        val random = Random
-        val randomAvatarBackgroundColor =
-            Color.rgb(
-                random.nextInt(255),
-                random.nextInt(255),
-                random.nextInt(255)
-            )
-        avatarInitialsBackgroundColor = randomAvatarBackgroundColor
+        avatarInitialsBackgroundColor = avatarBackgroundColor
         avatarInitials = SpannableStringBuilder(
             name.takeFirstCharacterAndCapitalizeIt()
         ).toString()

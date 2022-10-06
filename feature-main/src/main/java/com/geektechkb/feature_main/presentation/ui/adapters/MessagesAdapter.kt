@@ -9,11 +9,9 @@ import androidx.viewbinding.ViewBinding
 import com.geektechkb.common.constants.Constants.HOURS_MINUTES_DATE_FORMAT
 import com.geektechkb.core.base.BaseRecyclerViewHolder
 import com.geektechkb.core.extensions.formatCurrentUserTime
+import com.geektechkb.core.extensions.loadImageWithGlide
 import com.geektechkb.feature_main.R
-import com.geektechkb.feature_main.databinding.ItemReceivedMessageBinding
-import com.geektechkb.feature_main.databinding.ItemReceivedVoiceMessageBinding
-import com.geektechkb.feature_main.databinding.ItemSentMessagesBinding
-import com.geektechkb.feature_main.databinding.ItemSentVoiceMessageBinding
+import com.geektechkb.feature_main.databinding.*
 import com.geektechkb.feature_main.domain.models.Message
 
 class MessagesAdapter :
@@ -31,25 +29,37 @@ class MessagesAdapter :
         parent: ViewGroup,
         viewType: Int,
     ): BaseRecyclerViewHolder<ViewBinding, Message> {
+        val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            R.layout.item_sent_messages -> {
+            R.layout.item_sent_messages ->
                 MessageSentViewHolder(
                     ItemSentMessagesBinding.inflate(
-                        LayoutInflater.from(parent.context),
+                        inflater,
                         parent,
                         false
                     )
                 )
-            }
-            R.layout.item_received_message -> {
+
+            R.layout.item_sent_image -> ImageSentViewHolder(
+                ItemSentImageBinding.inflate(
+                    inflater,
+                    parent,
+                    false
+                )
+            )
+            R.layout.item_received_message ->
                 MessageReceivedViewHolder(
                     ItemReceivedMessageBinding.inflate(
-                        LayoutInflater.from(
-                            parent.context
-                        ), parent, false
+                        inflater, parent, false
                     )
                 )
-            }
+            R.layout.item_received_image -> ImageReceivedViewHolder(
+                ItemReceivedImageBinding.inflate(
+                    inflater,
+                    parent,
+                    false
+                )
+            )
             /*R.layout.item_received_voice_message -> {
                 VoiceMessageReceivedViewHolder(
                     ItemReceivedVoiceMessageBinding.inflate(
@@ -64,7 +74,6 @@ class MessagesAdapter :
                     )
                 )
             }*/
-
             else -> {
                 throw IllegalArgumentException("Not found ViewHolder!")
             }
@@ -80,8 +89,14 @@ class MessagesAdapter :
             R.layout.item_sent_messages -> getItem(position)?.let {
                 (holder as MessageSentViewHolder).onBind(it)
             }
+            R.layout.item_sent_image -> getItem(position)?.let {
+                (holder as ImageSentViewHolder).onBind(it)
+            }
             R.layout.item_received_message -> getItem(position)?.let {
                 (holder as MessageReceivedViewHolder).onBind(it)
+            }
+            R.layout.item_received_image -> getItem(position)?.let {
+                (holder as ImageReceivedViewHolder).onBind(it)
             }
             /*R.layout.item_sent_voice_message -> getItem(position)?.let {
                 (holder as VoiceMessageSentViewHolder).onBind(it)
@@ -95,32 +110,42 @@ class MessagesAdapter :
 
     override fun getItemViewType(position: Int): Int {
         return when {
-            getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == true -> {
+            getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == true && getItem(
+                position
+            )?.mediaResource == "" -> {
                 R.layout.item_sent_messages
             }
-            else -> {
+            getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == true && !getItem(
+                position
+            )?.mediaResource.isNullOrEmpty() -> R.layout.item_sent_image
+            getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == false && getItem(
+                position
+            )?.mediaResource == "" -> {
                 R.layout.item_received_message
+            }
+            getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == false && !getItem(
+                position
+            )?.mediaResource.isNullOrEmpty() -> R.layout.item_received_image
+            else -> {
+                R.layout.item_sent_messages
             }
         }
     }
-
 
     inner class MessageSentViewHolder(binding: ItemSentMessagesBinding) :
         BaseRecyclerViewHolder<ItemSentMessagesBinding, Message>(binding) {
         override fun onBind(item: Message) {
             binding.mcvMessage.setBackgroundResource(R.drawable.first_message_sent_cornered_background)
             binding.tvTimeMessageWasSent.text = formatCurrentUserTime(HOURS_MINUTES_DATE_FORMAT)
-//            when (itemViewType) {
-//                FIRST_IN_POSITION ->
-//                    binding.clMessage.background =
-//                        itemView.context.getDrawable(R.drawable.first_message_sent_cornered_background)
-//                MIDDLE_IN_POSITION -> binding.clMessage.background =
-//                    itemView.context.getDrawable(R.drawable.middle_message_sent_cornered_background)
-//                LAST_IN_POSITION -> binding.clMessage.background =
-//                    itemView.context.getDrawable(R.drawable.last_message_sent_cornered_background)
-//            }
             binding.tvMessage.text = item.message
             Log.e("check", "sender ${item.message}")
+        }
+    }
+
+    inner class ImageSentViewHolder(binding: ItemSentImageBinding) :
+        BaseRecyclerViewHolder<ItemSentImageBinding, Message>(binding) {
+        override fun onBind(item: Message) {
+            binding.imSent.loadImageWithGlide(item.mediaResource)
         }
     }
 
@@ -128,7 +153,6 @@ class MessagesAdapter :
     inner class VoiceMessageSentViewHolder(binding: ItemSentVoiceMessageBinding) :
         BaseRecyclerViewHolder<ItemSentVoiceMessageBinding, Message>(binding) {
         override fun onBind(item: Message) {
-
         }
     }
 
@@ -142,6 +166,13 @@ class MessagesAdapter :
         }
     }
 
+    inner class ImageReceivedViewHolder(binding: ItemReceivedImageBinding) :
+        BaseRecyclerViewHolder<ItemReceivedImageBinding, Message>(binding) {
+        override fun onBind(item: Message) {
+            binding.imReceived.loadImageWithGlide(item.mediaResource)
+        }
+    }
+
     inner class VoiceMessageReceivedViewHolder(binding: ItemReceivedVoiceMessageBinding) :
         BaseRecyclerViewHolder<ItemReceivedVoiceMessageBinding, Message>(binding) {
         override fun onBind(item: Message) {
@@ -149,7 +180,6 @@ class MessagesAdapter :
     }
 
     companion object {
-
         val diffUtil = object : DiffUtil.ItemCallback<Message>() {
             override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
                 return oldItem == newItem
@@ -160,9 +190,5 @@ class MessagesAdapter :
             }
 
         }
-
-        private const val FIRST_IN_POSITION = -1
-        private const val MIDDLE_IN_POSITION = 0
-        private const val LAST_IN_POSITION = 1
     }
 }

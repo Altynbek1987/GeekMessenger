@@ -43,5 +43,5 @@
     <string name="user_list">Список пользователей</string>
     <string name="search">Поиск...</string>
     <string name="firstAndLastName">%1$s %2$s</string>
+    <string name="plus">+%1$s</string>
 </resources>
-

@@ -63,12 +63,13 @@ class CropPhotoFragment :
     private fun navigateBackToAccordingFragment() {
         binding.btnResult.setOnClickListener {
             when (args.whereToNavigateBack) {
-                CropPhotoRequest.PROFILE -> findNavController().directionsSafeNavigation(
-                    CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
-                        bitmapToFile().toString()
+                CropPhotoRequest.PROFILE ->
+                    findNavController().directionsSafeNavigation(
+                        CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
+                            bitmapToFile().toString()
+                        )
                     )
 
-                )
                 CropPhotoRequest.EDIT_PROFILE -> findNavController().directionsSafeNavigation(
                     CropPhotoFragmentDirections.actionCropPhotoFragmentToEditProfileFragment(
                         bitmapToFile().toString()
@@ -165,7 +166,7 @@ class CropPhotoFragment :
         var file = wrapper.getDir("Images", Context.MODE_PRIVATE)
         file = File(file, "${UUID.randomUUID()}.jpg")
         val stream: OutputStream = FileOutputStream(file)
-        bitmap?.compress(Bitmap.CompressFormat.JPEG, 90, stream)
+        bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
         stream.flush()
         stream.close()
         return file
