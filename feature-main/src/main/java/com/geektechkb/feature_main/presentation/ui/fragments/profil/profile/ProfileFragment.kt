@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.presentation.ui.fragments.profil
+package com.geektechkb.feature_main.presentation.ui.fragments.profil.profile
 
 import android.Manifest
 import android.app.Dialog
