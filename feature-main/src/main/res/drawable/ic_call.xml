@@ -1,6 +1,8 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:width="18dp"
     android:height="18dp"
+    android:tint="@color/black"
     android:viewportWidth="18"
     android:viewportHeight="18">
     <path
@@ -9,5 +11,6 @@
         android:strokeWidth="2"
         android:strokeColor="#2C2C2C"
         android:strokeLineCap="round"
-        android:strokeLineJoin="round" />
+        android:strokeLineJoin="round"
+        tools:ignore="VectorPath" />
 </vector>
