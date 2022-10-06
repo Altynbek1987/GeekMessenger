@@ -49,5 +49,9 @@
     <string name="language" translatable="false">Язык</string>
     <string name="russian" translatable="false">Русский</string>
     <string name="kyrgyz" translatable="false">Кыргызский</string>
+    <string name="toolbar" translatable="false">TODO</string>
+    <string name="search_icon" translatable="false">TODO</string>
+    <string name="clear" translatable="false">TODO</string>
+    <string name="im_user" translatable="false">TODO</string>
 </resources>
 
