@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="12dp"
-                android:textColor="#2C2C2C"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@id/mcv_profile_image"
                 app:layout_constraintTop_toTopOf="parent" />
