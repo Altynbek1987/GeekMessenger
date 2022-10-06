@@ -3,9 +3,9 @@
 
     <style name="EditTextBorders" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@drawable/box_stroke_color_selector</item>
-        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidth">2dp</item>
         <item name="boxBackgroundMode">outline</item>
-        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
         <item name="boxCornerRadiusBottomEnd">6dp</item>
         <item name="boxCornerRadiusBottomStart">6dp</item>
         <item name="boxCornerRadiusTopEnd">6dp</item>
@@ -15,5 +15,9 @@
         <item name="android:textColorHint">#727375</item>
     </style>
 
-
+    <style name="PhoneNumberEditTextHintAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#68819C</item>
+    </style>
 </resources>

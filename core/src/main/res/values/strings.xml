@@ -31,7 +31,6 @@
     <string name="button_to_get_back_to_edit_phone_number_fragment">button to get back to edit phone number framgent</string>
     <string name="user_s_profile_image">user\'s profile image</string>
     <string name="profile_russian">Профиль</string>
-    <string name="geekMessenger_application_cant_function_without_needed_permissions_russian">Приложение GeekMessenger не может функционировать без разрешение на чтение галереи устройства. Вы можете включить их в разределе Настройки</string>
     <string name="settings_russian">Настройки</string>
     <string name="cancel_russian">Отмена</string>
     <string name="button_to_clear_edittext_field">button to clear edittext field</string>
@@ -39,4 +38,5 @@
     <string name="verification_code_you_input_was_invalid_3_times_in_a_row_try_again_in_2_minutes_russian">Вы неправильно ввели код 3 раза.Повторите попытку через 3 минуты</string>
     <string name="input_your_phone_number_russian">Введите ваш \n номер телефона</string>
     <string name="phone_number_with_underscores">+996 ___ ___ ___</string>
+    <string name="geekMessenger_application_cant_function_without_needed_permissions_russian">Приложение GeekMessenger не может функционировать без разрешение на чтение галереи устройства. Вы можете включить их в разределе Настройки</string>
 </resources>

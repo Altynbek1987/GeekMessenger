@@ -12,7 +12,7 @@ class AuthorizePreferences @Inject constructor(private val preferences: SharedPr
     var isAuthorized: Boolean
         get() = preferences.getBoolean(IS_AUTHORIZED_KEY, false)
         set(value) = preferences.edit().putBoolean(IS_AUTHORIZED_KEY, value).apply()
-    var verificationId: String
+    var verificationId: String?
         get() = preferences.getString(VERIFICATION_ID_KEY, "").toString()
         set(value) = preferences.edit().putString(VERIFICATION_ID_KEY, value).apply()
 }

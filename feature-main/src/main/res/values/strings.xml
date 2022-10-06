@@ -1,8 +1,5 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="app_name">NavDraw</string>
+    <string name="app_name">GeekMessenger</string>
 
     <string name="nav_header_desc">Navigation header</string>
     <string name="menu_group">Создать группу</string>
@@ -23,7 +20,6 @@
     <string name="button_for_emoji">button for emoji</string>
     <string name="image_view_to_launch_camera">image view to launch camera</string>
     <string name="image_view_for_recording_voice_messages">image view for recording voice messages</string>
-    <string name="button_to_send_message">button to send message</string>
     <string name="typing">печатает...</string>
     <string name="Gallery">Галерея</string>
     <string name="account">Аккаунт</string>
@@ -34,6 +30,18 @@
     <string name="tv_crossed">Скрыть номер телефона</string>
     <string name="tv_language">Язык</string>
     <string name="gallery">Галерея</string>
-
-
+    <string name="button_to_send_message">button to send message</string>
+    <string name="speaker">Динамик</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="groups">Группы</string>
+    <string name="notifications_and_sound">Уведомления и звуки</string>
+    <string name="chat_notifications">Уведомления из чатов</string>
+    <string name="private_chats">Личные чаты</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="hyphensIfPhoneNumberIsHidden">--- --- --- ---</string>
+    <string name="user_list">Список пользователей</string>
+    <string name="search">Поиск...</string>
+    <string name="firstAndLastName">%1$s %2$s</string>
 </resources>
+

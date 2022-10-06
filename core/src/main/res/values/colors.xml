@@ -16,4 +16,16 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorDarkBlue">#1987FF</color>
+    <color name="background_light">#FFFFFFFF</color>
+    <color name="background_night">#1B1B1B</color>
+    <color name="background_pink">#F5D3FB</color>
+
+    <color name="icon_light">#131313</color>
+    <color name="icon_night">#ECECEC</color>
+
+    <color name="text_light">#131313</color>
+    <color name="text_night">#ECECEC</color>
+
+    <color name="button_light">#A5BEF4</color>
+    <color name="button_night">#b8b8b8</color>
 </resources>

@@ -11,15 +11,18 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GroupFragment : BaseFragment<FragmentGroupBinding, GroupViewModel>(
     R.layout.fragment_group
-
 ) {
-
     override val binding by viewBinding(FragmentGroupBinding::bind)
-    override val galleryViewModel by viewModels<GroupViewModel>()
-    override fun setupListeners() {
+    override val viewModel by viewModels<GroupViewModel>()
+    override fun assembleViews() {
         binding.toolbarBtn.setOnClickListener {
             findNavController().navigateUp()
         }
     }
 
+    override fun setupListeners() {
+        binding.toolbarBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
 }

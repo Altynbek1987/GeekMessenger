@@ -6,5 +6,6 @@ import javax.inject.Inject
 class FetchPagedMessagesUseCase @Inject constructor(
     private val messagesRepository: MessagesRepository
 ) {
-    operator fun invoke() = messagesRepository.fetchPagedMessages()
+    operator fun invoke(senderPhoneNumber: String, receiverPhoneNumber: String) =
+        messagesRepository.fetchPagedMessages(senderPhoneNumber, receiverPhoneNumber)
 }

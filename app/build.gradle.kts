@@ -17,7 +17,6 @@ plugins {
 
     // Google Services
     id(libs.plugins.google.services.get().pluginId)
-
 }
 
 android {
@@ -40,6 +39,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
+
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -57,10 +58,11 @@ android {
 
 dependencies {
     implementation(project(":feature-auth"))
-    implementation(project(":feature-main"))
 
     // Hilt
     implementation(libs.bundles.hilt)
     implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
     kapt(libs.hilt.compiler)
+    implementation("com.akexorcist:localization:1.2.11")
+
 }

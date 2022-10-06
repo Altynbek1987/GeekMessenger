@@ -38,7 +38,9 @@
 
         <action
             android:id="@+id/action_verifyAuthenticationFragment_to_createProfileFragment"
-            app:destination="@id/createProfileFragment" />
+            app:destination="@id/createProfileFragment"
+            app:popUpTo="@id/authorization_graph"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_verifyAuthenticationFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -55,7 +57,7 @@
             app:destination="@id/mainFlowFragment"
             app:popUpTo="@id/authorization_graph" />
         <action
-            android:id="@+id/action_profileFragment_to_deniedPermissionsDialogFragment"
+            android:id="@+id/action_createProfileFragment_to_deniedPermissionsDialogFragment"
             app:destination="@id/deniedPermissionsDialogFragment" />
         <argument
             android:name="phoneNumber"
@@ -66,7 +68,7 @@
 
     <fragment
         android:id="@+id/mainFlowFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.mainflow.MainFlowFragment"
+        android:name="com.geektechkb.feature_main.presentation.MainFlowFragment"
         android:label="MainFlowFragment">
 
     </fragment>

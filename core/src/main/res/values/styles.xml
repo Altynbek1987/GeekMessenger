@@ -2,7 +2,6 @@
 <resources>
 
     <style name="CustomDialog">
-
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowFullscreen">true</item>
@@ -36,4 +35,19 @@
         <item name="cornerSizeBottomRight">5dp</item>
         <item name="cornerSizeBottomLeft">25dp</item>
     </style>
+
+    <style name="EditTextBorders" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@drawable/box_stroke_color_selector</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="boxCornerRadiusBottomEnd">6dp</item>
+        <item name="boxCornerRadiusBottomStart">6dp</item>
+        <item name="boxCornerRadiusTopEnd">6dp</item>
+        <item name="boxCornerRadiusTopStart">6dp</item>
+        <item name="hintTextColor">#323232</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="android:textColorHint">#727375</item>
+    </style>
+
 </resources>

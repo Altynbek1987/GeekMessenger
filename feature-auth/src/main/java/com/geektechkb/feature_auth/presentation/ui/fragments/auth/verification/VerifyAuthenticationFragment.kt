@@ -1,5 +1,6 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
+import android.annotation.SuppressLint
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
@@ -16,12 +17,11 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.PhoneAuthCredential
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class VerifyAuthenticationFragment :
     BaseFragment<FragmentVerifyAuthenticationBinding, VerifyAuthenticationViewModel>(R.layout.fragment_verify_authentication) {
     override val binding by viewBinding(FragmentVerifyAuthenticationBinding::bind)
-    override val galleryViewModel: VerifyAuthenticationViewModel by viewModels()
+    override val viewModel by viewModels<VerifyAuthenticationViewModel>()
     private val args: VerifyAuthenticationFragmentArgs by navArgs()
     private var timeInSeconds = 0L
     private var attemptsToVerifyPhoneNumberAvailable = 3
@@ -32,16 +32,15 @@ class VerifyAuthenticationFragment :
         setPhoneNumberCodeWasSentTo()
         updateCountDownTimer()
         setupCountDownTimer()
-
     }
 
     private fun setPhoneNumberCodeWasSentTo() {
-        val phoneNumberVerificationCodeWasSentTo =
-            String.format(
-                getString(R.string.verification_code_was_sent_to_the_entered_phone),
-                args.phoneNumber
-            )
-        binding.tvVerificationCodeWasSent.text = phoneNumberVerificationCodeWasSentTo
+        binding.tvVerificationCodeWasSent.text =
+            "${getString(R.string.verification_code_was_sent_to_the_entered_phone)}${
+                args.phoneNumber.substringAfter(
+                    "+"
+                ).chunked(3).joinToString(" ")
+            }"
     }
 
     private fun updateCountDownTimer() {
@@ -61,7 +60,6 @@ class VerifyAuthenticationFragment :
         }
     }
 
-
     private fun setupCountDownTimer() {
         countDownTimer = object : CountDownTimer(120000, 1000) {
             override fun onTick(p0: Long) {
@@ -74,12 +72,11 @@ class VerifyAuthenticationFragment :
                 if (view != null)
                     binding.tvCountDownTimer.isVisible = false
                 if (view != null)
-                    binding.tvVerificationCodeWasSent.isVisible = true
+                    binding.tvResendVerificationCode.isVisible = true
             }
         }
         countDownTimer.start()
     }
-
 
     override fun setupListeners() {
         returnBackToTheNumberInput()
@@ -92,61 +89,39 @@ class VerifyAuthenticationFragment :
         resendVerificationCode()
     }
 
-    private fun resendVerificationCode() {
-        binding.tvVerificationCodeWasSent.setOnClickListener {
-            binding.tvCountDownTimer.isVisible = true
-            binding.tvVerificationCodeWasSent.isVisible = false
-            setupCountDownTimer()
-            resendVerificationCode(args.phoneNumber)
+    private fun returnBackToTheNumberInput() {
+        binding.ibBack.setOnClickListener {
+            findNavController().navigateSafely(R.id.action_verifyAuthenticationFragment_to_signUpFragment)
         }
     }
 
-    private fun verifyPhoneNumberUsingCode() {
+    private fun addBackspaceListener() {
         binding.apply {
-            btnContinue.setOnClickListener {
-                retrievedVerificationCode = etFirstDigit.retrieveVerificationCode(
+            ibBackspace.setOnClickListener {
+                etFirstDigit.deleteACharacterThenFocusOnThePreviousDigit(
                     etSecondDigit,
                     etThirdDigit,
                     etFourthDigit,
                     etFifthDigit,
-                    etSixthDigit
+                    etSixthDigit,
                 )
-                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty() && galleryViewModel.getVerificationId() != null) {
-
-                    signInWithPhoneAuthCredential(
-                        galleryViewModel.verifyPhoneNumberWithCode(
-                            galleryViewModel.getVerificationId(),
-                            retrievedVerificationCode.trim()
-                        )
-                    )
-                } else {
-
-                    showLongDurationSnackbar("Код подтверждения состоит из 6 цифр. Вы должны заполнить все 6 полей чтобы ввести код подтверждения")
-                }
             }
         }
-
     }
 
-    private fun disableEditTextsKeyListener() {
+    private fun moveToTheNextDigit() {
         binding.apply {
-            etFirstDigit.disableKeyListeners(
-                etSecondDigit,
-                etThirdDigit,
-                etFourthDigit,
-                etFifthDigit,
-                etSixthDigit
-            )
+            establishProperFocusingOnTheNextDigit()
         }
     }
 
-    private fun focusOnTheFirstDigit() {
-        binding.etFirstDigit.requestFocus()
-    }
-
-    private fun returnBackToTheNumberInput() {
-        binding.ibBack.setOnClickListener {
-            findNavController().navigateSafely(R.id.action_verifyAuthenticationFragment_to_signUpFragment)
+    private fun establishProperFocusingOnTheNextDigit() {
+        binding.apply {
+            etFirstDigit.requestFocusOnTheNextDigit(etSecondDigit)
+            etSecondDigit.requestFocusOnTheNextDigit(etThirdDigit)
+            etThirdDigit.requestFocusOnTheNextDigit(etFourthDigit)
+            etFourthDigit.requestFocusOnTheNextDigit(etFifthDigit)
+            etFifthDigit.requestFocusOnTheNextDigit(etSixthDigit)
         }
     }
 
@@ -163,7 +138,6 @@ class VerifyAuthenticationFragment :
         setupClickingOnZero()
     }
 
-
     private fun setupClickingOnOne() {
         binding.apply {
             tvOne.setOnNumericClickListener(
@@ -175,15 +149,11 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
-
         }
-
     }
 
     private fun setupClickingOnTwo() {
         binding.apply {
-
             tvTwo.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -193,15 +163,11 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
-
         }
-
     }
 
     private fun setupClickingOnThree() {
         binding.apply {
-
             tvThree.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -211,13 +177,11 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
     private fun setupClickingOnFour() {
         binding.apply {
-
             tvFour.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -227,13 +191,11 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
     private fun setupClickingOnFive() {
         binding.apply {
-
             tvFive.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -243,7 +205,6 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
@@ -258,13 +219,11 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
     private fun setupClickingOnSeven() {
         binding.apply {
-
             tvSeven.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -274,13 +233,11 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
     private fun setupClickingOnEight() {
         binding.apply {
-
             tvEight.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -295,7 +252,6 @@ class VerifyAuthenticationFragment :
 
     private fun setupClickingOnNine() {
         binding.apply {
-
             tvNine.setOnNumericClickListener(
                 view,
                 etFirstDigit,
@@ -305,7 +261,6 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
@@ -320,53 +275,67 @@ class VerifyAuthenticationFragment :
                 etFifthDigit,
                 etSixthDigit
             )
-
         }
     }
 
+    private fun focusOnTheFirstDigit() {
+        binding.etFirstDigit.requestFocus()
+    }
 
-    private fun addBackspaceListener() {
+    private fun disableEditTextsKeyListener() {
         binding.apply {
-            ibBackspace.setOnClickListener {
-                etFirstDigit.deleteACharacterThenFocusOnThePreviousDigit(
+            etFirstDigit.disableKeyListeners(
+                etSecondDigit,
+                etThirdDigit,
+                etFourthDigit,
+                etFifthDigit,
+                etSixthDigit
+            )
+        }
+    }
+
+    private fun verifyPhoneNumberUsingCode() {
+        binding.apply {
+            btnContinue.setOnClickListener {
+                retrievedVerificationCode = etFirstDigit.retrieveVerificationCode(
                     etSecondDigit,
                     etThirdDigit,
                     etFourthDigit,
                     etFifthDigit,
-                    etSixthDigit,
+                    etSixthDigit
                 )
+                if (retrievedVerificationCode.length == 6 && retrievedVerificationCode.isNotEmpty() && viewModel.getVerificationId() != null) {
 
+                    viewModel.getVerificationId()?.let {
+                        signInWithPhoneAuthCredential(
+                            viewModel.verifyPhoneNumberWithCode(
+                                it,
+                                retrievedVerificationCode.trim()
+                            )
+                        )
+                    }
+
+                } else {
+
+                    showLongDurationSnackbar("Код подтверждения состоит из 6 цифр. Вы должны заполнить все 6 полей чтобы ввести код подтверждения")
+                }
             }
         }
-
     }
 
-    private fun moveToTheNextDigit() {
-        binding.apply {
-            establishProperFocusingOnTheNextDigit()
-
-
+    private fun resendVerificationCode() {
+        binding.tvResendVerificationCode.setOnClickListener {
+            binding.tvCountDownTimer.isVisible = true
+            binding.tvResendVerificationCode.isVisible = false
+            setupCountDownTimer()
+            resendVerificationCode(args.phoneNumber)
         }
-    }
-
-    private fun establishProperFocusingOnTheNextDigit() {
-        binding.apply {
-            etFirstDigit.requestFocusOnTheNextDigit(etSecondDigit)
-            etSecondDigit.requestFocusOnTheNextDigit(etThirdDigit)
-            etThirdDigit.requestFocusOnTheNextDigit(etFourthDigit)
-            etFourthDigit.requestFocusOnTheNextDigit(etFifthDigit)
-            etFifthDigit.requestFocusOnTheNextDigit(etSixthDigit)
-        }
-
-
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         binding.apply {
-
-
-            galleryViewModel.signInWithPhoneAuthCredential(
-                galleryViewModel.firebaseAuth,
+            viewModel.signInWithPhoneAuthCredential(
+                viewModel.firebaseAuth,
                 credential,
                 requireActivity(),
                 userSuccessfullyVerifiedTheirPhoneNumber = {
@@ -389,24 +358,29 @@ class VerifyAuthenticationFragment :
                             showLongDurationSnackbar(
                                 "Введенный код подтверждения неверный. У вас осталось $attemptsToVerifyPhoneNumberAvailable попытки!"
                             )
+                            clearTextInEditTextsIfAuthenticationFailed(
+                                etFirstDigit,
+                                etSecondDigit,
+                                etThirdDigit,
+                                etFourthDigit,
+                                etFifthDigit,
+                                etSixthDigit
+                            )
                         }
                     }
                 }
-
             )
-
         }
-
     }
 
     private fun resendVerificationCode(
         phoneNumber: String,
     ) {
-        galleryViewModel.resendVerificationCode(
-            galleryViewModel.firebaseAuth,
+        viewModel.resendVerificationCode(
+            viewModel.firebaseAuth,
             phoneNumber,
             requireActivity(),
-            galleryViewModel.provideCallbacks(
+            viewModel.provideCallbacks(
                 authenticationSucceeded =
                 {
                     showShortDurationSnackbar("You have successfully authenticated")
@@ -419,19 +393,27 @@ class VerifyAuthenticationFragment :
 
                         "Looks like you have used all of the requests available"
                     )
-                }), galleryViewModel.getForceResendingToken()
+                }), viewModel.getForceResendingToken()
         )
     }
 
+    private fun clearTextInEditTextsIfAuthenticationFailed(vararg digits: TextInputEditText) {
+        digits.forEach {
+            it.text?.clear()
+        }
+    }
 
     private fun TextInputEditText.deleteACharacterThenFocusOnThePreviousDigit(
         vararg digits: TextInputEditText
     ) {
-        when (requireView().findFocus()) {
-            this -> this.text?.clear()
+
+        when (rootView.findFocus()) {
+            this -> {
+                text?.clear()
+            }
             digits[0] -> {
                 digits[0].text?.clear()
-                this.requestFocus()
+                requestFocus()
             }
             digits[1] -> {
                 digits[1].text?.clear()
@@ -451,7 +433,6 @@ class VerifyAuthenticationFragment :
             }
         }
     }
-
 
     private fun TextInputEditText.requestFocusOnTheNextDigit(
         editTextToRequestAFocusOn: TextInputEditText
@@ -476,7 +457,6 @@ class VerifyAuthenticationFragment :
         }
     }
 
-
     private fun View.appendTextDependingOnTheFocus(
         vararg allDigits: TextInputEditText,
         textToAppend: CharSequence
@@ -490,7 +470,6 @@ class VerifyAuthenticationFragment :
             allDigits[5] -> allDigits[5].text?.append(textToAppend)
         }
     }
-
 
     private fun TextInputEditText.retrieveVerificationCode(
         vararg digits: TextInputEditText,
@@ -507,6 +486,4 @@ class VerifyAuthenticationFragment :
         digits[3].keyListener = null
         digits[4].keyListener = null
     }
-
-
 }

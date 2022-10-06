@@ -1,26 +1,31 @@
 package com.geektechkb.feature_main.data.repositories
 
+import androidx.paging.PagingConfig
+import com.algolia.instantsearch.android.paging3.Paginator
+import com.algolia.instantsearch.searcher.hits.HitsSearcher
+import com.algolia.search.model.APIKey
+import com.algolia.search.model.ApplicationID
+import com.algolia.search.model.IndexName
 import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
+import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_HIDDENNESS
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
 import com.geektechkb.core.base.BaseRepository
-import com.geektechkb.feature_main.data.local.db.daos.UserDao
+import com.geektechkb.core.typealiases.NotAnActualHitsSearcher
 import com.geektechkb.feature_main.data.remote.pagingsources.UsersPagingSource
+import com.geektechkb.feature_main.data.remote.services.MessengerNotificationsService
 import com.geektechkb.feature_main.domain.models.User
-import com.geektechkb.feature_main.domain.models.UserDb
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.flow.Flow
 import com.google.firebase.storage.FirebaseStorage
 import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(
-    private val userDao: UserDao,
     private val firebaseAuth: FirebaseAuth,
     firestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
@@ -42,8 +47,7 @@ class UsersRepositoryImpl @Inject constructor(
             )
         )
 
-
-    override suspend fun fetchUser(phoneNumber: String) = doRequest {
+    override fun fetchUser(phoneNumber: String) = doRequest {
         return@doRequest User(
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_NAME_KEY) as String?,
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_LAST_NAME_KEY) as String?,
@@ -80,23 +84,66 @@ class UsersRepositoryImpl @Inject constructor(
         return compressedImage
     }
 
-
-    override fun getUser(): Flow<List<UserDb>> {
-        TODO("Not yet implemented")
+    override fun updateUserName(name: String) {
+        firebaseAuth.currentUser?.let {
+            updateASingleFieldInDocument(
+                usersRef,
+                it.phoneNumber.toString(),
+                FIREBASE_USER_NAME_KEY,
+                name
+            )
+        }
     }
 
-    override fun insertAllUser(user: UserDb) {
-        TODO("Not yet implemented")
+    override fun updateUserLastName(lastName: String) {
+        firebaseAuth.currentUser?.let {
+            updateASingleFieldInDocument(
+                usersRef,
+                it.phoneNumber.toString(),
+                FIREBASE_USER_LAST_NAME_KEY,
+                lastName
+            )
+        }
     }
 
-    override fun updateUser(user: UserDb) {
-        TODO("Not yet implemented")
+    override fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean) {
+        firebaseAuth.currentUser?.let {
+            updateASingleFieldInDocument(
+                usersRef, it.phoneNumber.toString(),
+                FIREBASE_USER_PHONE_NUMBER_HIDDENNESS, isUserPhoneNumberHidden
+            )
+        }
     }
 
-    override fun deleteUser(user: UserDb) {
-        TODO("Not yet implemented")
+    override fun subscribeToNotificationTopic(vararg topics: String) {
+        MessengerNotificationsService.subscribeToTopic(*topics)
+
     }
 
+    override fun unsubscribeFromNotificationTopic(vararg topics: String) {
+        MessengerNotificationsService.unsubscribeFromTopic(*topics)
+    }
+
+    override fun createHitsSearcher(
+        applicationId: String,
+        apiKey: String,
+        indexName: String
+    ) = HitsSearcher(
+        ApplicationID(applicationId),
+        APIKey(apiKey),
+        IndexName(indexName),
+    )
+
+    override fun createPaginator(notAnActualHitsSearcher: NotAnActualHitsSearcher) = Paginator(
+        notAnActualHitsSearcher as HitsSearcher,
+        PagingConfig(
+            pageSize = 2,
+            prefetchDistance = 1,
+            enablePlaceholders = true,
+            initialLoadSize = 2,
+            maxSize = Int.MAX_VALUE,
+            jumpThreshold = Int.MIN_VALUE
+        ), transformer = { hit -> hit.deserialize(User.serializer()) })
+
+    override fun getCurrentUserPhoneNumber() = firebaseAuth.currentUser?.phoneNumber
 }
-
-

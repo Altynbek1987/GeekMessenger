@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.profil.notificationsAndSounds.NotificationsAndSoundsFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/im_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="6dp"
+            android:contentDescription="@string/button_to_get_back_to_edit_phone_number_fragment"
+            android:src="@drawable/ic_profile_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/notifications_and_sound"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tv_chat_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/chat_notifications"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_private_chats"
+        style="@style/NotificationsAndSoundsTextView"
+        android:text="@string/private_chats"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_chat_notifications" />
+
+    <View
+        android:id="@+id/v_private_chats"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="#D4D4D4"
+        app:layout_constraintTop_toBottomOf="@id/tv_private_chats" />
+
+    <View
+        android:id="@+id/v_private_chats_switch"
+        android:layout_width="2dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:background="#D4D4D4"
+        app:layout_constraintEnd_toStartOf="@id/switch_private_chats_notifications"
+        app:layout_constraintTop_toBottomOf="@id/tv_chat_notifications" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_private_chats_notifications"
+        style="@style/NotificationsAndSoundsMaterialSwitch"
+        android:checked="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_chat_notifications"
+        app:track="@drawable/notifications_switch_track" />
+
+    <TextView
+        android:id="@+id/tv_group_chats"
+        style="@style/NotificationsAndSoundsTextView"
+        android:text="@string/groups"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_private_chats" />
+
+    <View
+        android:id="@+id/v_group_chats"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="#D4D4D4"
+        app:layout_constraintTop_toBottomOf="@id/tv_group_chats" />
+
+    <View
+        android:id="@+id/v_group_chats_switch"
+        android:layout_width="2dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:background="#D4D4D4"
+        app:layout_constraintEnd_toStartOf="@id/switch_group_chats_notifications"
+        app:layout_constraintTop_toBottomOf="@id/v_private_chats" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_group_chats_notifications"
+        style="@style/NotificationsAndSoundsMaterialSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_private_chats"
+        app:track="@drawable/notifications_switch_track" />
+
+    <TextView
+        android:id="@+id/tv_calls"
+        style="@style/NotificationsAndSoundsTextView"
+        android:text="@string/menu_calls"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_group_chats" />
+
+    <View
+        android:id="@+id/v_calls"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="#D4D4D4"
+        app:layout_constraintTop_toBottomOf="@id/tv_calls" />
+
+    <View
+        android:id="@+id/v_calls_switch"
+        android:layout_width="2dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:background="#D4D4D4"
+        app:layout_constraintEnd_toStartOf="@id/switch_calls_notifications"
+        app:layout_constraintTop_toBottomOf="@id/v_group_chats" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_calls_notifications"
+        style="@style/NotificationsAndSoundsMaterialSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_group_chats"
+        app:showText="false"
+        app:track="@drawable/notifications_switch_track" />
+</androidx.constraintlayout.widget.ConstraintLayout>

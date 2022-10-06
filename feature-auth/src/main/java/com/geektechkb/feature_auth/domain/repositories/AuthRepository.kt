@@ -1,13 +1,14 @@
 package com.geektechkb.feature_auth.domain.repositories
 
+import com.geektechkb.common.either.Either
 import com.geektechkb.core.typealiases.NotAnActualActivity
 import com.geektechkb.core.typealiases.NotAnActualCallbacks
 import com.geektechkb.core.typealiases.NotAnActualFirebaseAuth
 import com.geektechkb.core.typealiases.NotAnActualForceResendingToken
+import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
 
-    fun isUserAuthenticated(): Boolean
     fun provideAuthenticationCallbacks(
         authenticationSucceeded: ((() -> Unit))? = null,
         authInvalidCredentialsError: ((() -> Unit))? = null,
@@ -22,13 +23,12 @@ interface AuthRepository {
     )
 
     fun provideResendingToken(): NotAnActualForceResendingToken?
-    suspend fun authenticateUser(
+    fun authenticateUser(
         lastSeen: String = "",
         phoneNumber: String,
         name: String,
         surname: String,
         profileImage: String?,
         imageFileName: String,
-        doOnComplete: () -> Unit
-    )
+    ): Flow<Either<String, Unit>>
 }
