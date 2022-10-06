@@ -90,7 +90,6 @@ class ProfileFragment :
         navigateToLanguagesFragment()
         hidePhoneNumberOnSwitchChecked()
         backToHomeFragment()
-
     }
 
     private fun interactWithToolbarMenu() {
