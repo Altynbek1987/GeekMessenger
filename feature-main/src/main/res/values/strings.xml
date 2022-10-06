@@ -46,5 +46,8 @@
     <string name="todo" translatable="false">TODO</string>
     <string name="todoo" translatable="false">TODO</string>
     <string name="todooo" translatable="false">TODO</string>
+    <string name="language" translatable="false">Язык</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="kyrgyz" translatable="false">Кыргызский</string>
 </resources>
 
