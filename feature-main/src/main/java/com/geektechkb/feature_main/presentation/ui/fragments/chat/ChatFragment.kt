@@ -2,7 +2,6 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
 import android.net.Uri
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -17,8 +16,6 @@ import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SE
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
-import com.geektechkb.core.ui.customViews.AudioRecordView
-import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
@@ -34,8 +31,7 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat),
-    AudioRecordView.Callback {
+class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat) {
 
     override val binding by viewBinding(FragmentChatBinding::bind)
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
@@ -47,9 +43,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private var username: String? = null
     private var imageUri = Uri.EMPTY
     private var stateBottomSheet: Boolean = false
-    private val appVoiceRecorder = AppVoiceRecorder()
-    private val recordAudioPermissionLauncher =
-        createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
@@ -69,9 +62,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun initialize() {
         galleryViewModel.shouldVideoBeShown(true)
-        binding.recordView.activity = requireActivity()
-        binding.recordView.callback = this
-        appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
     }
 
     override fun assembleViews() {
@@ -108,12 +98,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             when (etMessage.text?.length) {
                 0 -> {
-                    recordView.isGone = false
+                    imMic.isGone = false
                     imSendMessage.isGone = true
                     imClip.isVisible = true
                 }
                 else -> {
-                    recordView.isGone = true
+                    imMic.isGone = true
                     imSendMessage.isGone = false
                     imClip.isVisible = false
                 }
@@ -154,13 +144,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 bottomSheetBehavior,
                 galleryBottomSheet.appbarLayout,
                 coordinatorGallery,
-                actionOnDialogStateDragging = {
-                    recordView.isVisible = false
-                }, actionOnDialogStateExpanded = {
-                    recordView.isVisible = false
-                }, actionOnDialogStateHidden = {
-                    recordView.isVisible = true
-                }
             )
         }
     }
@@ -217,9 +200,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun interactWithToolbarMenu() {
-        binding.toolbar.setOnMenuItemClickListener {
+        binding.chatToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-
                 R.id.btn_call -> {
                     true
                 }
@@ -238,7 +220,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     true
                 }
                 else -> true
-
             }
         }
     }
@@ -249,17 +230,16 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
-    private fun openEmojiSoftKeyboard() {
-        binding.apply {
-            val emojiPopUp = EmojiPopup(
-                root,
-                binding.etMessage,
-                onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
-                onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
-            )
-            binding.imEmoji.setOnSingleClickListener {
-                emojiPopUp.toggle()
-            }
+    private fun openEmojiSoftKeyboard() = with(binding) {
+        val emojiPopUp = EmojiPopup(
+            root,
+            etMessage,
+            onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
+            onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
+            popupWindowHeight = 502
+        )
+        binding.imEmoji.setOnSingleClickListener {
+            emojiPopUp.toggle()
         }
     }
 
@@ -279,13 +259,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
-            changeUserStatusToTyping(it.phoneNumber)
-            binding.imProfile.loadImageWithGlide(it.profileImage)
-            binding.tvUsername.text = it.name
-            binding.tvUserStatus.text = it.lastSeen
-            username = it.name
-        })
+        binding.apply {
+            viewModel.userState.spectateUiState(success = { user ->
+                user.apply {
+                    changeUserStatusToTyping(phoneNumber)
+                    avChatteeProfile.loadImageAndSetInitialsIfFailed(profileImage, name)
+                    tvUsername.text = name
+                    tvUserStatus.text = lastSeen
+                    username = name
+                }
+            }, gatherIfSucceed = {
+                cpiChatteeProfileImage.bindToUIStateLoading(it)
+            })
+        }
     }
 
     private fun subscribeToMessages() {
@@ -317,28 +303,5 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 uri.toString()
             )
         )
-    }
-
-    override fun onRecordStart() {
-        checkForPermissionStatusAndRequestIt(
-            recordAudioPermissionLauncher,
-            Manifest.permission.RECORD_AUDIO,
-            actionWhenPermissionHasBeenGranted = {
-                appVoiceRecorder.startRecordingVoiceMessage(requireContext())
-            })
-    }
-
-    override fun isReady(): Boolean = true
-
-    override fun onRecordEnd() {
-        appVoiceRecorder.stopRecordingVoiceMessage()
-        viewModel.sendVoiceMessage(
-            appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
-            generateRandomId()
-        )
-    }
-
-    override fun onRecordCancel() {
-        appVoiceRecorder.deleteRecordedVoiceMessage()
     }
 }
