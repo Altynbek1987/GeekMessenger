@@ -5,4 +5,4 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class CropPhotoViewModel @Inject constructor() : BaseViewModel()
+class CropPhotoViewModel @Inject constructor() : BaseViewModel() {}

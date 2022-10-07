@@ -10,6 +10,7 @@ class SendMessageUseCase @Inject constructor(
         id: String,
         receiverPhoneNumber: String,
         message: String,
+        image: String,
         timeMessageWasSent: String,
         messageId: String
     ) =
@@ -17,8 +18,8 @@ class SendMessageUseCase @Inject constructor(
             id,
             receiverPhoneNumber,
             message,
+            image,
             timeMessageWasSent,
             messageId
-
         )
 }

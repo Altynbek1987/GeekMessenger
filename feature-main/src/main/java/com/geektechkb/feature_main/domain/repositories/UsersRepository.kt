@@ -1,6 +1,6 @@
 package com.geektechkb.feature_main.domain.repositories
 
-import androidx.paging.PagingData
+import android.net.Uri
 import com.geektechkb.common.either.Either
 import com.geektechkb.core.typealiases.NotAnActualHitsSearcher
 import com.geektechkb.core.typealiases.NotAnActualPaginator
@@ -9,17 +9,17 @@ import kotlinx.coroutines.flow.Flow
 
 interface UsersRepository {
 
-    fun fetchPagedUsers(): Flow<PagingData<User>>
-
     fun fetchUser(phoneNumber: String): Flow<Either<String, User>>
 
     fun updateUserStatus(status: String)
 
-    suspend fun updateUserProfileImage(imageFileName: String, byte: ByteArray): String?
+    suspend fun updateUserProfileImage(url: String): String
 
     fun updateUserName(name: String)
 
     fun updateUserLastName(lastName: String)
+
+    suspend fun updateUserProfileImageInFireStore(url: String)
 
     fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean)
 

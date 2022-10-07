@@ -14,13 +14,13 @@
     <string name="last_seen_recently_russian">был(а) недавно</string>
     <string name="image_for_user_s_profile_image">image for user\'s profile image</string>
     <string name="amir_ex_loved_one">Saida</string>
-    <string name="there_is_nothing_yet_russian">Здесь пока ничего нет…</string>
+    <string name="there_is_nothing_yet_russian">Здесь пока ничего нет...</string>
     <string name="send_message_or_record_voice_message_russian">Отправьте сообщение или \n запишите голосовое \n сообщение.</string>
     <string name="message_russian">Сообщение</string>
     <string name="button_for_emoji">button for emoji</string>
     <string name="image_view_to_launch_camera">image view to launch camera</string>
     <string name="image_view_for_recording_voice_messages">image view for recording voice messages</string>
-    <string name="typing">печатает…</string>
+    <string name="typing">печатает...</string>
     <string name="Gallery">Галерея</string>
     <string name="account">Аккаунт</string>
     <string name="number">0702345805</string>
@@ -53,5 +53,7 @@
     <string name="search_icon" translatable="false">TODO</string>
     <string name="clear" translatable="false">TODO</string>
     <string name="im_user" translatable="false">TODO</string>
+    <string name="plus">+%1$s translatable="false"</string>
+
 </resources>
 

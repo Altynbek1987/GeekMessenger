@@ -132,7 +132,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private fun clearSearchViewQueryAndFocus() {
         binding.imClear.setOnClickListener {
-            binding.searchViewUsers.setQuery("", true)
+            binding.searchViewUsers.setQuery(null, true)
             binding.searchViewUsers.clearFocus()
         }
     }

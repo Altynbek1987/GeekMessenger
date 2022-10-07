@@ -16,6 +16,7 @@ import com.geektechkb.core.base.BaseFlowFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
+import com.geektechkb.core.extensions.overrideOnBackPressed
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
@@ -55,25 +56,27 @@ class MainFlowFragment : BaseFlowFragment(
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
-                R.id.nav_groups, R.id.nav_calls, R.id.profileFragment,
+                R.id.nav_groups, R.id.nav_calls, R.id.profileFlowFragment,
 
                 ), binding.drawerLayout
         )
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
             when (destination.id) {
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.cropPhotoFragment, R.id.editProfileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFlowFragment, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
+
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
         binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
+    }
 
-            binding.homeAppBarMain.toolbarButton.setOnClickListener {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
-            }
+    override fun setupListeners() {
+        overrideOnBackPressed {
+            requireActivity().finish()
         }
     }
 
@@ -107,25 +110,17 @@ class MainFlowFragment : BaseFlowFragment(
         viewModel.userState.spectateUiState(success = { user ->
             user.apply {
                 userStatus = user.lastSeen
-                phoneNumber?.let { phoneNumber ->
-                    userNumber.text = StringBuilder(phoneNumber.substring(0, 4)).append(" ")
-                        .append(phoneNumber.substringAfter("+996"))
-                }
-                name?.let { name ->
-                    userName.text = name
-                }
-                lastName?.let { lastName ->
-                    avatarView.loadImageAndSetInitialsIfFailed(
-                        profileImage,
-                        name,
-                        lastName,
-                        binding.nav.cpiCurrentUserAvatar
-                    )
-                } ?: avatarView.loadImageAndSetInitialsIfFailed(
+                userNumber.text = getString(
+                    R.string.plus, phoneNumber?.substringAfter(
+                        "+"
+                    )?.chunked(3)?.joinToString(" ")
+                )
+                avatarView.loadImageAndSetInitialsIfFailed(
                     profileImage,
                     name,
                     binding.nav.cpiCurrentUserAvatar
                 )
+                userName.text = name
             }
         })
     }

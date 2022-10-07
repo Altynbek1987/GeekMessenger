@@ -88,11 +88,28 @@
         android:id="@+id/btn_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/check"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_send_white_24dp"
+        app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:background="@color/transparent_50"
+        app:layout_constraintBottom_toBottomOf="parent">
 
+        <EditText
+            android:id="@+id/tv_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="14dp"
+            android:background="@null"
+            android:hint="Add caption..."
+            android:textColor="@color/white"
+            android:textColorHint="#B2FFFFFF" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

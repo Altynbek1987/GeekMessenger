@@ -3,6 +3,7 @@ package com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile
 import android.Manifest
 import android.net.Uri
 import android.util.Log
+import android.view.WindowManager
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -39,7 +40,7 @@ class CreateProfileFragment :
             }
         )
     private val fileChooserContract = createFileChooserContractToGetImageUri { imageUri ->
-        binding.imProfile.setImage(imageUri.toString())
+        binding.avProfile.setImage(imageUri.toString())
         uri = imageUri
         binding.tvPhotoSelection.text = "Изменить фото профиля"
         binding.tvText.isVisible = false
@@ -48,13 +49,22 @@ class CreateProfileFragment :
     @Inject
     lateinit var authorizePreferences: AuthorizePreferences
 
+    override fun initialize() {
+        setWindowSoftInputModeToAdjustPan()
+    }
+
+    private fun setWindowSoftInputModeToAdjustPan() {
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+    }
+
+
     override fun setupListeners() {
         setProfileAvatar()
         authenticateUser()
     }
 
     private fun setProfileAvatar() {
-        binding.imProfile.setOnClickListener {
+        binding.avProfile.setOnClickListener {
             checkForPermissionStatusAndRequestIt(
                 readExternalStoragePermissionLauncher,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -88,6 +98,7 @@ class CreateProfileFragment :
                         generateRandomId()
                     )
                 }
+
             }
             binding.etName.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
                 binding.tilName.error = null

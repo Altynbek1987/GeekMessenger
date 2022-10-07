@@ -4,11 +4,10 @@
 
     <item
         android:id="@+id/btn_overflow_menu"
-        android:icon="@drawable/ic_overflow_menu"
+        android:icon="@drawable/ic_profile_overflow_menu"
         android:title="@string/make_call"
         app:showAsAction="ifRoom">
         <menu>
-
             <item
                 android:id="@+id/btn_share"
                 android:icon="@drawable/ic_share"
