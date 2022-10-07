@@ -41,11 +41,11 @@ class MainFlowFragment : BaseFlowFragment(
 
     override fun assembleViews() {
         if (!preferencesHelper.isLightMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
 
@@ -75,22 +75,19 @@ class MainFlowFragment : BaseFlowFragment(
     }
 
     override fun setupListeners() {
-        overrideOnBackPressed {
-            requireActivity().finish()
-        }
-    }
-
-    override fun setupListeners() {
         binding.nav.sunBtn.setOnClickListener {
             if (!preferencesHelper.isLightMode) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
-                preferencesHelper.isLightMode = true
-            } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
+                preferencesHelper.isLightMode = true
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
                 preferencesHelper.isLightMode = false
             }
+        }
+        overrideOnBackPressed {
+            requireActivity().finish()
         }
     }
 

@@ -41,7 +41,7 @@
     <string name="edit_profile">Редактировать профиль</string>
     <string name="hyphensIfPhoneNumberIsHidden" translatable="false">--- --- --- ---</string>
     <string name="user_list">Список пользователей</string>
-    <string name="search">Поиск…</string>
+    <string name="search">Поиск...</string>
     <string name="firstAndLastName" translatable="false">%1$s %2$s</string>
     <string name="todo" translatable="false">TODO</string>
     <string name="todoo" translatable="false">TODO</string>
@@ -53,7 +53,7 @@
     <string name="search_icon" translatable="false">TODO</string>
     <string name="clear" translatable="false">TODO</string>
     <string name="im_user" translatable="false">TODO</string>
-    <string name="plus">+%1$s translatable="false"</string>
+    <string name="plus" translatable="false">+%1$s</string>
 
 </resources>
 

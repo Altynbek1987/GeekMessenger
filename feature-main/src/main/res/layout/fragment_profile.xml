@@ -314,4 +314,3 @@
             layout="@layout/fragment_gallery_bottom_sheet" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
