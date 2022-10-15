@@ -13,7 +13,8 @@ import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
 
 
 class GalleryPicturesAdapter(
-    val onSelect: (uri: Uri) -> Unit,
+    private val onImageSelected: (uri: Uri) -> Unit,
+    private val onVideoSelected: ((uri: Uri, videoDuration: String?) -> Unit)? = null
 ) : ListAdapter<GalleryPicture, GalleryPicturesAdapter.GalleryPicturesViewHolder>(Companion) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -32,20 +33,30 @@ class GalleryPicturesAdapter(
     inner class GalleryPicturesViewHolder(val binding: ItemGalleryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(galleryPicture: GalleryPicture) {
+        fun onBind(galleryPicture: GalleryPicture) = with(binding) {
             when (galleryPicture.isVideo) {
                 true -> {
-                    binding.tvVideoDuration.isGone = false
-                    binding.tvVideoDuration.text = galleryPicture.videoDuration
+                    tvVideoDuration.isGone = false
+                    tvVideoDuration.text = galleryPicture.videoDuration
                 }
                 false -> {
-                    binding.tvVideoDuration.isGone = true
-                    binding.tvVideoDuration.text = ""
+                    tvVideoDuration.isGone = true
+                    tvVideoDuration.text = ""
                 }
             }
-            Glide.with(binding.ivImg).load(galleryPicture.path).into(binding.ivImg)
-            binding.root.setOnClickListener {
-                onSelect(Uri.parse(galleryPicture.path))
+            Glide.with(ivImg).load(galleryPicture.path).into(ivImg)
+            root.setOnClickListener {
+
+                when (galleryPicture.isVideo) {
+                    false ->
+                        onImageSelected(
+                            Uri.parse(galleryPicture.path)
+                        )
+                    true -> onVideoSelected?.invoke(
+                        Uri.parse(galleryPicture.path),
+                        galleryPicture.videoDuration
+                    )
+                }
             }
         }
     }

@@ -33,7 +33,7 @@ class EditProfileFragment :
     override val viewModel by viewModels<EditProfileViewModel>()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args by navArgs<EditProfileFragmentArgs>()
-    private val galleryAdapter = GalleryPicturesAdapter(this::onSelect)
+    private val galleryAdapter = GalleryPicturesAdapter(this::onImageSelected)
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
 
     @Inject
@@ -136,7 +136,7 @@ class EditProfileFragment :
         })
     }
 
-    private fun onSelect(uri: Uri) {
+    private fun onImageSelected(uri: Uri) {
         findNavController().directionsSafeNavigation(
             EditProfileFragmentDirections.actionEditProfileFragmentToCropPhotoFragment(
                 uri.toString(),

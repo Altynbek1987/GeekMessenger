@@ -10,7 +10,6 @@ import com.geektechkb.core.extensions.generateRandomId
 import com.geektechkb.core.extensions.snapshotFlow
 import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.domain.repositories.MessagesRepository
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
@@ -34,7 +33,9 @@ class MessagesRepositoryImpl @Inject constructor(
         id: String,
         receiverPhoneNumber: String,
         message: String,
-        image: String,
+        media: String?,
+        mediaType: String?,
+        videoDuration: String?,
         timeMessageWasSent: String,
         messageId: String,
     ) {
@@ -43,11 +44,13 @@ class MessagesRepositoryImpl @Inject constructor(
             messageMap["messageKey"] = (id + receiverPhoneNumber)
             messageMap["message"] = message
             messageMap["mediaResource"] =
-                uploadUncompressedImageToCloudStorage(
+                uploadUncompressedMediaToCloudStorage(
                     cloudStorageRef,
-                    Uri.parse(image),
+                    Uri.parse(media),
                     FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH, generateRandomId()
                 )
+            messageMap["mediaType"] = mediaType
+            messageMap["videoDuration"] = videoDuration
             messageMap["senderPhoneNumber"] = id
             messageMap["receiverPhoneNumber"] = receiverPhoneNumber
             messageMap["timeMessageWasSent"] = timeMessageWasSent
@@ -60,7 +63,8 @@ class MessagesRepositoryImpl @Inject constructor(
             messageMap["messageId"] = messageId
             messageMap["messageKey"] = (id + receiverPhoneNumber)
             messageMap["message"] = message
-            messageMap["mediaResource"] = image
+            messageMap["mediaResource"] = media
+            messageMap["mediaType"] = mediaType
             messageMap["senderPhoneNumber"] = id
             messageMap["receiverPhoneNumber"] = receiverPhoneNumber
             messageMap["timeMessageWasSent"] = timeMessageWasSent
@@ -69,12 +73,12 @@ class MessagesRepositoryImpl @Inject constructor(
                 messageMap,
                 messageId
             )
-
         } catch (e: FileNotFoundException) {
             messageMap["messageId"] = messageId
             messageMap["messageKey"] = (id + receiverPhoneNumber)
             messageMap["message"] = message
-            messageMap["mediaResource"] = image
+            messageMap["mediaResource"] = media
+            messageMap["mediaType"] = mediaType
             messageMap["senderPhoneNumber"] = id
             messageMap["receiverPhoneNumber"] = receiverPhoneNumber
             messageMap["timeMessageWasSent"] = timeMessageWasSent
@@ -84,7 +88,6 @@ class MessagesRepositoryImpl @Inject constructor(
                 messageId
             )
         }
-
     }
 
     override suspend fun sendVoiceMessage(file: String, voiceFileName: String) {
@@ -111,7 +114,6 @@ class MessagesRepositoryImpl @Inject constructor(
                     document.toObject(Message::class.java)
                 }
             }
-
 
     suspend fun sendVoiceMessageToCloudStorage(file: Uri?, voiceFileName: String) =
         file?.let {

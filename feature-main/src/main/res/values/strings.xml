@@ -44,4 +44,6 @@
     <string name="search">Поиск...</string>
     <string name="firstAndLastName">%1$s %2$s</string>
     <string name="plus">+%1$s</string>
+    <string name="media_count">1 из %1$s</string>
+    <string name="time_photo">%1$s в %2$s</string>
 </resources>

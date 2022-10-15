@@ -4,34 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
     android:layout_marginTop="6dp"
-    android:layout_marginEnd="8dp"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcv_sent"
+        android:id="@+id/mcv_video_received"
         android:layout_width="155dp"
         android:layout_height="326dp"
-        android:layout_gravity="end"
+        android:layout_gravity="start"
         app:cardCornerRadius="15dp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="false"
-        app:strokeColor="@color/blue"
+        app:strokeColor="@color/white"
         app:strokeWidth="1.5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/im_sent"
+            <VideoView
+                android:id="@+id/vv_received"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/avatars" />
+                android:layout_height="match_parent" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_video_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/video_duration_background"
+                android:gravity="center"
+                android:maxLines="1"
+                android:minLines="1"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="0:15" />
+
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_time_sent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,10 +63,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="14:38" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
