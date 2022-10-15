@@ -22,7 +22,7 @@
         android:id="@+id/g_create_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="toolbar,im_profile,tv_photo_selection,til_name,til_surname,tv_text,btn_sign_in,tv_photo_selection" />
+        app:constraint_referenced_ids="toolbar,av_profile,tv_photo_selection,til_name,til_surname,tv_text,btn_sign_in,tv_photo_selection" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -43,13 +43,11 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/im_profile"
+    <io.getstream.avatarview.AvatarView
+        android:id="@+id/av_profile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="45dp"
-        android:contentDescription="@string/user_s_profile_image"
-        android:scaleType="centerCrop"
         android:src="@drawable/ic_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +64,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/im_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/av_profile" />
 
 
     <TextView

@@ -39,7 +39,7 @@ class CreateProfileFragment :
             }
         )
     private val fileChooserContract = createFileChooserContractToGetImageUri { imageUri ->
-        binding.imProfile.setImage(imageUri.toString())
+        binding.avProfile.setImage(imageUri.toString())
         uri = imageUri
         binding.tvPhotoSelection.text = "Изменить фото профиля"
         binding.tvText.isVisible = false
@@ -54,7 +54,7 @@ class CreateProfileFragment :
     }
 
     private fun setProfileAvatar() {
-        binding.imProfile.setOnClickListener {
+        binding.avProfile.setOnClickListener {
             checkForPermissionStatusAndRequestIt(
                 readExternalStoragePermissionLauncher,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -88,6 +88,7 @@ class CreateProfileFragment :
                         generateRandomId()
                     )
                 }
+
             }
             binding.etName.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
                 binding.tilName.error = null
@@ -109,6 +110,7 @@ class CreateProfileFragment :
         }, error = {
             Log.e("gaypopError", it)
         }, gatherIfSucceed = {
+            hideSoftKeyboard()
             it.assembleViewVisibility(binding.gCreateProfile, binding.cpiCreateProfile)
         })
     }

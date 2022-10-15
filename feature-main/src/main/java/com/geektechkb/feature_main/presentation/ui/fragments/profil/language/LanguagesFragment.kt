@@ -35,7 +35,6 @@ class LanguagesFragment : Fragment(R.layout.fragment_languages) {
         binding.radioButtonKyrgyz.isChecked = preferences.language == "ky"
     }
 
-
     private fun setupListener() {
         listenToLocalizationChanges()
         navigateBack()

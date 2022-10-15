@@ -22,7 +22,7 @@
     <string name="image_view_to_launch_camera">камераны ишке киргизүү үчүн сүрөттү көрүү</string>
     <string name="image_view_for_recording_voice_messages">үн билдирүүлөрдү жаздыруу үчүн сүрөттү көрүү</string>
     <string name="button_to_send_message">билдирүү жөнөтүү үчүн баскычты басыңыз</string>
-    <string name="typing">терүү…</string>
+    <string name="typing">терүү...</string>
     <string name="Gallery">Галерея</string>
     <string name="account">Аккаунт</string>
     <string name="number">0702345805</string>
@@ -38,5 +38,7 @@
     <string name="chat_notifications">Чат эскертмелери</string>
     <string name="private_chats">Жеке чаттар</string>
     <string name="edit_profile">Профильди түзөтүү</string>
+    <string name="user_list">Колдонуучулардын тизмеси</string>
+    <string name="search">Издөө...</string>
 </resources>
 

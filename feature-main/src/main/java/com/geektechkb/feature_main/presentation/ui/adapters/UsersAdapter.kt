@@ -12,15 +12,14 @@ import com.geektechkb.feature_main.domain.models.User
 class UsersAdapter(private val onItemClick: (phoneNumber: String?) -> Unit) :
     PagingDataAdapter<User, UsersAdapter.UsersViewHolder>(BaseDiffUtil()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
-        return UsersViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        UsersViewHolder(
             ItemUserBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
-    }
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         getItem(position)?.let { holder.onBind(it) }
@@ -31,7 +30,7 @@ class UsersAdapter(private val onItemClick: (phoneNumber: String?) -> Unit) :
         fun onBind(user: User) = with(user) {
             binding.apply {
                 tvUsername.text = name
-                avProfile.loadImageAndSetInitialsIfFailed(profileImage, name, lastName)
+                avProfile.loadImageAndSetInitialsIfFailed(profileImage, name, cpiUserAvatar)
             }
         }
 

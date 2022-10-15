@@ -106,13 +106,13 @@ class AudioScaleView : View {
             invalidate()
         }
         valueAnimator?.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 animQueue.pollLast()
                 animPos++
                 animating = false
             }
 
-            override fun onAnimationCancel(animation: Animator?) {
+            override fun onAnimationCancel(animation: Animator) {
                 animQueue.pollLast()
                 animPos++
                 animating = false

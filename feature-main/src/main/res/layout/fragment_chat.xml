@@ -16,18 +16,18 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.075" />
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:backgroundTint="@color/white"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -40,16 +40,17 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.09" />
 
-            <ImageView
+            <Button
                 android:id="@+id/im_back"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="22dp"
-                android:backgroundTint="@color/black"
+                android:background="@drawable/ic_baseline_arrow_back_24"
                 android:contentDescription="@string/back_russian"
-                android:src="@drawable/ic_back"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/gl_back_end"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -145,12 +146,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/gl_wallpaper_bottom"
         app:layout_constraintTop_toTopOf="@id/gl_toolbar_bottom"
@@ -271,6 +273,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gl_record_view"
         app:mic_active_icon="@drawable/ic_microphone_active"
         app:mic_icon="@drawable/ic_microphone_inactive"
         app:vibration_enable="true" />
@@ -294,6 +297,15 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.92" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_record_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92"
+
+        />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_clip_end"
@@ -308,6 +320,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.827" />
+
 
     <ImageView
         android:id="@+id/im_clip"
@@ -340,9 +353,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="18dp"
-        android:background="@null"
-        android:contentDescription="@string/button_to_send_message"
-        android:src="@drawable/ic_send_message"
+        android:background="@drawable/ic_send_message"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/gl_chat_actions_bottom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -359,6 +370,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <include
             android:id="@+id/gallery_bottom_sheet"

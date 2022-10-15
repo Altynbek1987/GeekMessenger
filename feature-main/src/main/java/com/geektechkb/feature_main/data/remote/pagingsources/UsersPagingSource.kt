@@ -29,7 +29,6 @@ class UsersPagingSource(
         } catch (exception: Exception) {
             LoadResult.Error(exception)
         }
-
     }
 
     override fun getRefreshKey(state: PagingState<QuerySnapshot, User>): QuerySnapshot? {
