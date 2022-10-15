@@ -1,14 +1,7 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -16,19 +9,20 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
-import com.geektechkb.core.ui.customViews.AudioRecordView
-import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
+import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequest
+import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.vanniktech.emoji.EmojiPopup
@@ -39,37 +33,50 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat),
-    AudioRecordView.Callback {
+class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat) {
 
     override val binding by viewBinding(FragmentChatBinding::bind)
-    private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
-    private val adapter = GalleryPicturesAdapter(this::onSelect)
-    private val messagesAdapter = MessagesAdapter()
     override val viewModel by viewModels<ChatViewModel>()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
+    private val messagesAdapter = MessagesAdapter(this::openPhotoPreview, this::openVideoPreview)
+    private val galleryAdapter =
+        GalleryPicturesAdapter(this::onImageSelected, this::onVideoSelected)
     private val args: ChatFragmentArgs by navArgs()
+    private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private var username: String? = null
-    private var savedUserStatus: String? = null
+    private var imageUri: Uri? = null
     private var stateBottomSheet: Boolean = false
-    private val appVoiceRecorder = AppVoiceRecorder()
-    private val recordAudioPermissionLauncher =
-        createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
+                setupBottomSheet()
+            },
             actionWhenPermissionHasBeenDenied = {
-                findNavController().navigateSafely(R.id.action_chatFragment_to_deniedPermissionsDialogFragment)
+                if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
+                    findNavController().directionsSafeNavigation(
+                        ChatFragmentDirections.actionChatFragmentToDeniedPermissionsDialogFragment(
+                            getString(com.geektechkb.core.R.string.geekMessenger_application_cant_function_without_needed_permissions_russian)
+                        )
+                    )
             })
-    private var isKeyboardShown: Boolean? = false
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
 
     override fun initialize() {
-        binding.recordView.activity = requireActivity()
-        binding.recordView.callback = this
-        appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
+        galleryViewModel.shouldVideoBeShown(true)
+        args.image?.let {
+            viewModel.sendMessage(
+                usersPreferencesHelper.currentUserPhoneNumber,
+                args.phoneNumber.toString(),
+                "",
+                it,
+                args.mediaType,
+                args.videoDuration,
+                formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
+                generateRandomId()
+            )
+        }
     }
 
     override fun assembleViews() {
@@ -79,7 +86,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
         binding.apply {
-            binding.etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
+            etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
                 if (usersPreferencesHelper.currentUserPhoneNumber != receiverPhoneNumber) {
                     tvUserStatus.isVisible = false
                     tvTyping.isVisible = true
@@ -91,34 +98,23 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
-    private fun checkAdapterItemCountAndHideLayout(
-    ) {
-        when (messagesAdapter.itemCount) {
-            0 -> {
-                binding.iThereAreNoMessagesYet.root.isVisible = true
-            }
-            else -> {
-                binding.iThereAreNoMessagesYet.root.isVisible = false
-            }
-        }
-    }
-
     private fun setupAdapter() {
         binding.recyclerview.adapter = messagesAdapter
+        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun hideClipAndRecordViewWhenUserTyping() = with(binding) {
         etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             when (etMessage.text?.length) {
                 0 -> {
-                    recordView.isGone = false
-                    imSendMessage.isGone = true
-                    imClip.isVisible = true
+                    imMic.visible()
+                    imSendMessage.invisible()
+                    imClip.visible()
                 }
                 else -> {
-                    recordView.isGone = true
-                    imSendMessage.isGone = false
-                    imClip.isVisible = false
+                    imMic.invisible()
+                    imSendMessage.visible()
+                    imClip.invisible()
                 }
             }
         })
@@ -130,7 +126,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         openEmojiSoftKeyboard()
         interactWithToolbarMenu()
         backToHomeFragment()
-        onBackPressed()
     }
 
     private fun expandGalleryDialog() {
@@ -139,45 +134,26 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             openBottomSheet()
         }
         binding.imClip.setOnSingleClickListener {
-            requestReadStoragePermission()
-            if (checkForPermissionStatusAndRequestIt(
-                    readExternalStoragePermissionLauncher,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-            ) {
-                openBottomSheet()
-            }
+            checkForPermissionStatusAndRequestIt(
+                readExternalStoragePermissionLauncher,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                actionWhenPermissionHasBeenGranted = {
+                    initBottomSheetRecycler()
+                    openBottomSheet()
+                    setupBottomSheet()
+                })
         }
     }
 
     private fun openBottomSheet() {
-        binding.coordinatorGallery.isVisible = true
-        stateBottomSheet(bottomSheetBehavior, BottomSheetBehavior.STATE_HALF_EXPANDED)
-        bottomSheetBehavior?.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (BottomSheetBehavior.STATE_EXPANDED == newState) {
-                    showView(binding.galleryBottomSheet.appbarLayout, getActionBarSize())
-                } else {
-                    hideAppBar(binding.galleryBottomSheet.appbarLayout)
-                }
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            }
-        })
-    }
-
-    private fun requestReadStoragePermission() {
-        val readStorage = Manifest.permission.READ_EXTERNAL_STORAGE
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                readStorage
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(arrayOf(readStorage), 3)
-        } else initBottomSheetRecycler()
-        setupBottomSheet()
+        binding.apply {
+            openGalleryBottomSheet(
+                galleryBottomSheet.galleryBottomSheetDialog,
+                bottomSheetBehavior,
+                galleryBottomSheet.appbarLayout,
+                coordinatorGallery,
+            )
+        }
     }
 
     private fun setupBottomSheet() {
@@ -186,7 +162,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun initBottomSheetRecycler() {
-        binding.galleryBottomSheet.recyclerviewRating.adapter = adapter
+        binding.galleryBottomSheet.recyclerviewRating.adapter = galleryAdapter
         binding.galleryBottomSheet.recyclerviewRating.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -199,53 +175,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun loadPictures() {
         galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
             if (it.isNotEmpty()) {
-                val mutableAdapterList = adapter.currentList.toMutableList()
+                val mutableAdapterList = galleryAdapter.currentList.toMutableList()
                 mutableAdapterList.addAll(it)
-                adapter.submitList(mutableAdapterList)
-                adapter.notifyItemRangeInserted(adapter.currentList.size, it.size)
-            }
-            Log.e("GalleryListSize", "${adapter.currentList.size}")
-        }
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            initBottomSheetRecycler()
-    }
-
-    private fun showView(view: View, size: Int) {
-        val params = view.layoutParams
-        params.height = size
-        binding.galleryBottomSheet.appbarLayout.isVisible = true
-        view.layoutParams = params
-    }
-
-    private fun hideAppBar(view: View) {
-        val params = view.layoutParams
-        params.height = 4
-        binding.galleryBottomSheet.appbarLayout.isVisible = false
-        view.layoutParams = params
-    }
-
-    private fun getActionBarSize(): Int {
-        val array =
-            requireContext().theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
-        return array.getDimension(0, 0f).toInt()
-    }
-
-
-    private fun onBackPressed() {
-        overrideOnBackPressed() {
-            if (checkWhetherSoftKeyboardIsVisibleOrNot()) {
-                hideSoftKeyboard()
-            } else {
-                findNavController().navigateSafely(R.id.action_chatFragment_to_homeFragment)
-                isKeyboardShown = null
+                galleryAdapter.submitList(mutableAdapterList)
+                galleryAdapter.notifyItemRangeInserted(galleryAdapter.currentList.size, it.size)
             }
         }
     }
@@ -256,23 +189,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
-                formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
-                generateRandomId()
+                "",
+                timeMessageWasSent = formatCurrentUserTime(
+                    YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
+                ),
+                messageId = generateRandomId()
             )
             etMessage.text?.clear()
         }
     }
 
     private fun interactWithToolbarMenu() {
-        binding.toolbar.setOnMenuItemClickListener {
+        binding.chatToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-
-                R.id.btn_call -> {
-                    true
-                }
-                R.id.btn_video_call -> {
-                    true
-                }
                 R.id.btn_clear_chat -> {
                     findNavController().directionsSafeNavigation(
                         ChatFragmentDirections.actionChatFragmentToClearChatHistoryFragment(
@@ -285,7 +214,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     true
                 }
                 else -> true
-
             }
         }
     }
@@ -296,36 +224,26 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
-
-    private fun openEmojiSoftKeyboard() {
-
-        binding.apply {
-
-            val emojiPopUp = EmojiPopup(
-                root,
-                binding.etMessage,
-
-                onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
-                onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
-            )
-            binding.imEmoji.setOnSingleClickListener {
-                emojiPopUp.toggle()
-            }
+    private fun openEmojiSoftKeyboard() = with(binding) {
+        val emojiPopUp = EmojiPopup(
+            root,
+            etMessage,
+            onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
+            onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
+            popupWindowHeight = 502
+        )
+        imEmoji.setOnSingleClickListener {
+            emojiPopUp.toggle()
         }
-
     }
 
     override fun establishRequest() {
         fetchUser()
     }
 
-
     private fun fetchUser() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            args.phoneNumber?.let { viewModel.fetchUser(it) }
-        }
+        args.phoneNumber?.let { viewModel.fetchUser(it) }
     }
-
 
     override fun launchObservers() {
         subscribeToUser()
@@ -333,14 +251,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
-            savedUserStatus = it.lastSeen
-            changeUserStatusToTyping(it.phoneNumber)
-            binding.imProfile.loadImageWithGlide(it.profileImage)
-            binding.tvUsername.text = it.name
-            binding.tvUserStatus.text = it.lastSeen
-            username = it.name
-        })
+        binding.apply {
+            viewModel.userState.spectateUiState(success = { user ->
+                user.apply {
+                    changeUserStatusToTyping(phoneNumber)
+                    avChatteeProfile.loadImageAndSetInitialsIfFailed(profileImage, name)
+                    tvUsername.text = name
+                    tvUserStatus.text = lastSeen
+                    username = name
+                }
+            }, gatherIfSucceed = {
+                cpiChatteeProfileImage.bindToUIStateLoading(it)
+            })
+        }
     }
 
     private fun subscribeToMessages() {
@@ -354,9 +277,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         messagesAdapter.setPhoneNumber(
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
-                        toast(receiverPhoneNumber, Toast.LENGTH_SHORT)
                         messagesAdapter.submitList(it)
-                        checkAdapterItemCountAndHideLayout()
+                        when (messagesAdapter.itemCount == 0 || it.isEmpty()) {
+                            true -> binding.iThereAreNoMessagesYet.root.isVisible = true
+                            false -> binding.iThereAreNoMessagesYet.root.isVisible = false
+                        }
                         binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
                     }
                 }
@@ -364,36 +289,60 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
-    private fun onSelect(uri: Uri) {
+    private fun onImageSelected(uri: Uri) {
+        imageUri = uri
         stateBottomSheet = true
-        findNavController().navigate(
-            ChatFragmentDirections.actionChatFragmentToPhotoReviewFragment(uri.toString())
-        )
-    }
-
-
-    override fun onRecordStart() {
-        if (checkForPermissionStatusAndRequestIt(
-                recordAudioPermissionLauncher, Manifest.permission.RECORD_AUDIO
+        hideSoftKeyboard()
+        findNavController().directionsSafeNavigation(
+            ChatFragmentDirections.actionChatFragmentToPhotoPreviewFragment(
+                args.phoneNumber.toString(),
+                uri.toString(),
+                PreviewPhotoRequest.SEND_PHOTO,
+                0,
+                ""
             )
         )
-            appVoiceRecorder.startRecordingVoiceMessage(requireContext())
     }
 
-
-    override fun isReady(): Boolean = true
-
-
-    override fun onRecordEnd() {
-        appVoiceRecorder.stopRecordingVoiceMessage()
-        viewModel.sendVoiceMessage(
-            appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
-            generateRandomId()
+    private fun onVideoSelected(uri: Uri, videoDuration: String?) {
+        hideSoftKeyboard()
+        findNavController().directionsSafeNavigation(
+            ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
+                chatteePhoneNumber = args.phoneNumber,
+                chatteeUsername = username,
+                selectedVideo = uri.toString(),
+                selectedVideoDuration = videoDuration,
+                videoPreview = PreviewVideoRequest.SENT_VIDEO,
+                videoCount = 0,
+                time = ""
+            )
         )
     }
 
-    override fun onRecordCancel() {
-        appVoiceRecorder.deleteRecordedVoiceMessage()
+    private fun openPhotoPreview(image: String, time: String, photoCount: Int) {
+        findNavController().directionsSafeNavigation(
+            ChatFragmentDirections.actionChatFragmentToPhotoPreviewFragment(
+                username.toString(),
+                image,
+                PreviewPhotoRequest.PHOTO,
+                photoCount,
+                time
+            )
+        )
+    }
 
+    private fun openVideoPreview(video: String, time: String, videoCount: Int) {
+        hideSoftKeyboard()
+        findNavController().directionsSafeNavigation(
+            ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
+                chatteePhoneNumber = args.phoneNumber,
+                chatteeUsername = username.toString(),
+                selectedVideo = video,
+                selectedVideoDuration = "",
+                videoPreview = PreviewVideoRequest.VIDEO,
+                videoCount = videoCount,
+                time = time
+            )
+        )
     }
 }

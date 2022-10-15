@@ -14,27 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "974311209739-7op8ahhho6gucs3tqpo5khint8pfdbqe.apps.googleusercontent.com",
+          "client_id": "974311209739-2651pro4vb3hush8sep0rjt41vhnomel.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.geektechkb.geekmessenger",
-            "certificate_hash": "442ce20bbbcb366ec0aef8131813ec0dcfeb470c"
-          }
-        },
-        {
-          "client_id": "974311209739-pti49ibjc9ert8e8g6liqt59hnri2cv5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.geektechkb.geekmessenger",
-            "certificate_hash": "75141cb8c73e67701988b9c337256f65a6f7af5d"
-          }
-        },
-        {
-          "client_id": "974311209739-stih9sig3kta1htq05rh1kkqkefa9i5h.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.geektechkb.geekmessenger",
-            "certificate_hash": "beaecb6b499f4e831725062046636503f875679b"
+            "certificate_hash": "5d1cd4ac9a4e899b45dd18ee3ccef36441b3bf3c"
           }
         },
         {

@@ -10,6 +10,9 @@ class SendMessageUseCase @Inject constructor(
         id: String,
         receiverPhoneNumber: String,
         message: String,
+        media: String?,
+        mediaType: String? = null,
+        videoDuration: String? = null,
         timeMessageWasSent: String,
         messageId: String
     ) =
@@ -17,8 +20,10 @@ class SendMessageUseCase @Inject constructor(
             id,
             receiverPhoneNumber,
             message,
+            media,
+            mediaType,
+            videoDuration,
             timeMessageWasSent,
             messageId
-
         )
 }

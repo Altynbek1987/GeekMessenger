@@ -12,11 +12,13 @@ interface UsersRepository {
 
     fun updateUserStatus(status: String)
 
-    suspend fun updateUserProfileImage(imageFileName: String, byte: ByteArray): String?
+    suspend fun updateUserProfileImage(url: String): String
 
     fun updateUserName(name: String)
 
     fun updateUserLastName(lastName: String)
+
+    suspend fun updateUserProfileImageInFireStore(url: String)
 
     fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean)
 

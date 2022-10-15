@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item
-        android:id="@+id/btn_call"
-        android:icon="@drawable/ic_call"
-        android:title="@string/make_call"
-        app:showAsAction="always" />
     <item
         android:id="@+id/btn_overflow_menu"
         android:icon="@drawable/ic_overflow_menu"
-        android:title="@string/make_call"
+        android:title="OverflowMenu"
         app:showAsAction="ifRoom">
         <menu>
-
-            <item
-                android:id="@+id/btn_video_call"
-                android:icon="@drawable/ic_video_call"
-                android:orderInCategory="1"
-                android:title="@string/video_call_russian"
-                app:showAsAction="collapseActionView"
-
-                />
             <item
                 android:id="@+id/btn_clear_chat"
                 android:icon="@drawable/ic_clear_chat"
@@ -37,6 +22,4 @@
                 app:showAsAction="never" />
         </menu>
     </item>
-
-
 </menu>

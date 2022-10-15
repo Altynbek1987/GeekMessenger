@@ -1,9 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Base64
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
-import com.geektechkb.core.extensions.*
+import com.geektechkb.core.extensions.directionsSafeNavigation
+import com.geektechkb.core.extensions.loadImageWithGlide
+import com.geektechkb.core.extensions.openGalleryBottomSheet
+import com.geektechkb.core.extensions.setOnSingleClickListener
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentEditProfileBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
@@ -23,7 +23,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 
@@ -34,7 +33,7 @@ class EditProfileFragment :
     override val viewModel by viewModels<EditProfileViewModel>()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args by navArgs<EditProfileFragmentArgs>()
-    private val galleryAdapter = GalleryPicturesAdapter(this::onSelect)
+    private val galleryAdapter = GalleryPicturesAdapter(this::onImageSelected)
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
 
     @Inject
@@ -137,7 +136,7 @@ class EditProfileFragment :
         })
     }
 
-    private fun onSelect(uri: Uri) {
+    private fun onImageSelected(uri: Uri) {
         findNavController().directionsSafeNavigation(
             EditProfileFragmentDirections.actionEditProfileFragmentToCropPhotoFragment(
                 uri.toString(),
@@ -159,15 +158,10 @@ class EditProfileFragment :
 
     private fun getCroppedImageAndSetIt() {
         args.croppedProfileAvatar?.let {
-            val imageBytes = Base64.decode(it, 0)
-            val image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-            val stream = ByteArrayOutputStream()
-            image.compress(Bitmap.CompressFormat.PNG, 90, stream)
             lifecycleScope.launch {
-                viewModel.updateUserProfileImage(generateRandomId(), stream.toByteArray())
-                    ?.let { image ->
-                        binding.imAvatar.loadImageWithGlide(image)
-                    }
+                viewModel.updateUserProfileImage(it).let {
+                    binding.imAvatar.loadImageWithGlide(it)
+                }
             }
             bottomSheetBehavior =
                 BottomSheetBehavior.from(binding.galleryBottomSheet.galleryBottomSheetDialog)

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mcv_gallery_image"
     android:layout_width="wrap_content"
@@ -17,4 +18,22 @@
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_video_duration"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/video_duration_background"
+        android:gravity="center"
+        android:maxLines="1"
+        android:minLines="1"
+        android:paddingEnd="5dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:drawableStartCompat="@drawable/ic_play_button"
+        tools:text="0:15"
+        tools:visibility="visible" />
 </FrameLayout>

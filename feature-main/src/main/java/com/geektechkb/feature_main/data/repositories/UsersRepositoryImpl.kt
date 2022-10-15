@@ -1,12 +1,12 @@
 package com.geektechkb.feature_main.data.repositories
 
+import android.net.Uri
 import androidx.paging.PagingConfig
 import com.algolia.instantsearch.android.paging3.Paginator
 import com.algolia.instantsearch.searcher.hits.HitsSearcher
 import com.algolia.search.model.APIKey
 import com.algolia.search.model.ApplicationID
 import com.algolia.search.model.IndexName
-import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
@@ -15,6 +15,7 @@ import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_HIDD
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
 import com.geektechkb.core.base.BaseRepository
+import com.geektechkb.core.extensions.generateRandomId
 import com.geektechkb.core.typealiases.NotAnActualHitsSearcher
 import com.geektechkb.feature_main.data.remote.services.MessengerNotificationsService
 import com.geektechkb.feature_main.domain.models.User
@@ -22,7 +23,10 @@ import com.geektechkb.feature_main.domain.repositories.UsersRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.tasks.await
+import java.io.File
 import javax.inject.Inject
+
 
 class UsersRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
@@ -54,20 +58,17 @@ class UsersRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun updateUserProfileImage(imageFileName: String, byte: ByteArray): String? {
-        val compressedImage = uploadCompressedImageToCloudStorage(
-            cloudStorageRef, byte,
-            FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH, imageFileName
-        )
-        compressedImage?.let { image ->
-            firebaseAuth.currentUser?.let {
-                updateASingleFieldInDocument(
-                    usersRef, it.phoneNumber.toString(),
-                    FIREBASE_USER_PROFILE_IMAGE_KEY, image
-                )
-            }
+    override suspend fun updateUserProfileImage(url: String): String {
+        val file = Uri.fromFile(File(url))
+        return file.let {
+            cloudStorageRef.child("profileImages/${generateRandomId()}")
+                .putFile(file)
+                .await()
+                .storage
+                .downloadUrl
+                .await()
+                .toString()
         }
-        return compressedImage
     }
 
     override fun updateUserName(name: String) {
@@ -88,6 +89,17 @@ class UsersRepositoryImpl @Inject constructor(
                 it.phoneNumber.toString(),
                 FIREBASE_USER_LAST_NAME_KEY,
                 lastName
+            )
+        }
+    }
+
+    override suspend fun updateUserProfileImageInFireStore(url: String) {
+        firebaseAuth.currentUser?.let {
+            updateASingleFieldInDocument(
+                usersRef,
+                it.phoneNumber.toString(),
+                FIREBASE_USER_PROFILE_IMAGE_KEY,
+                url
             )
         }
     }

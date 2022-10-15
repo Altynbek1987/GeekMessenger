@@ -1,5 +1,7 @@
 package com.geektechkb.feature_main.presentation
 
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,7 +16,9 @@ import com.geektechkb.core.base.BaseFlowFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
+import com.geektechkb.core.extensions.overrideOnBackPressed
 import com.geektechkb.feature_main.R
+import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -32,31 +36,57 @@ class MainFlowFragment : BaseFlowFragment(
     @Inject
     lateinit var preferences: UserPreferencesHelper
 
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+
+    override fun assembleViews() {
+        if (!preferencesHelper.isLightMode) {
+            binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+    }
+
+    @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
-                R.id.nav_groups, R.id.nav_calls, R.id.profileFragment,
+                R.id.nav_groups, R.id.profileFlowFragment,
 
                 ), binding.drawerLayout
         )
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
             when (destination.id) {
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.cropPhotoFragment, R.id.editProfileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.nav_groups, R.id.profileFlowFragment, R.id.profileFragment, R.id.photoPreviewFragment, R.id.videoPreviewFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
         binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
+    }
 
-            binding.homeAppBarMain.toolbarButton.setOnClickListener {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
+    override fun setupListeners() {
+        binding.nav.sunBtn.setOnClickListener {
+            if (!preferencesHelper.isLightMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
+                preferencesHelper.isLightMode = true
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
+                preferencesHelper.isLightMode = false
             }
+        }
+        overrideOnBackPressed {
+            requireActivity().finish()
         }
     }
 
@@ -76,10 +106,11 @@ class MainFlowFragment : BaseFlowFragment(
         viewModel.userState.spectateUiState(success = { user ->
             user.apply {
                 userStatus = user.lastSeen
-                phoneNumber?.let { phoneNumber ->
-                    userNumber.text = StringBuilder(phoneNumber.substring(0, 4)).append(" ")
-                        .append(phoneNumber.substringAfter("+996"))
-                }
+                userNumber.text = getString(
+                    R.string.plus, phoneNumber?.substringAfter(
+                        "+"
+                    )?.chunked(3)?.joinToString(" ")
+                )
                 avatarView.loadImageAndSetInitialsIfFailed(
                     profileImage,
                     name,
@@ -105,4 +136,5 @@ class MainFlowFragment : BaseFlowFragment(
             }"
         )
     }
+    //puoioufuf
 }

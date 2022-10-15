@@ -71,6 +71,7 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.firebase:firebase-auth-ktx:21.0.5")
+    implementation("com.google.firebase:firebase-storage:17.0.0")
     kapt(libs.hilt.compiler)
 
     //Paging 3

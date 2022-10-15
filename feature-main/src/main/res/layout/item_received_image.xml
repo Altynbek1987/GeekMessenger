@@ -1,74 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/photo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/black">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_voice_message_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.79" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_voice_message_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
-
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="6dp"
+    android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcv_voice_message"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
+        android:id="@+id/mcv_received"
+        android:layout_width="155dp"
+        android:layout_height="326dp"
+        android:layout_gravity="start"
+        android:clickable="true"
+        android:focusable="true"
         app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="@id/gl_voice_message_bottom"
-        app:layout_constraintEnd_toEndOf="@id/gl_voice_message_start"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1.5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_waveform_end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.80" />
-
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_voice_message_duration_end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.94" />
+            <ImageView
+                android:id="@+id/im_received"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/tv_time_message_was_sent"
+                android:id="@+id/tv_time_sent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
                 android:layout_marginEnd="10dp"
-                android:text="14:38"
-                android:textColor="#D4D4D4"
-                android:textSize="10sp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/video_duration_background"
+                android:gravity="center"
+                android:maxLines="1"
+                android:minLines="1"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="14:38" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </com.google.android.material.card.MaterialCardView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

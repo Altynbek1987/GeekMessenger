@@ -33,15 +33,27 @@
     <string name="button_to_send_message">button to send message</string>
     <string name="speaker">Динамик</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="groups">Группы</string>
     <string name="notifications_and_sound">Уведомления и звуки</string>
     <string name="chat_notifications">Уведомления из чатов</string>
     <string name="private_chats">Личные чаты</string>
     <string name="edit_profile">Редактировать профиль</string>
-    <string name="hyphensIfPhoneNumberIsHidden">--- --- --- ---</string>
+    <string name="hyphensIfPhoneNumberIsHidden" translatable="false">--- --- --- ---</string>
     <string name="user_list">Список пользователей</string>
     <string name="search">Поиск...</string>
-    <string name="firstAndLastName">%1$s %2$s</string>
+    <string name="firstAndLastName" translatable="false">%1$s %2$s</string>
+    <string name="todo" translatable="false">TODO</string>
+    <string name="todoo" translatable="false">TODO</string>
+    <string name="todooo" translatable="false">TODO</string>
+    <string name="language" translatable="false">Язык</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="kyrgyz" translatable="false">Кыргызский</string>
+    <string name="toolbar" translatable="false">TODO</string>
+    <string name="search_icon" translatable="false">TODO</string>
+    <string name="clear" translatable="false">TODO</string>
+    <string name="im_user" translatable="false">TODO</string>
+    <string name="plus" translatable="false">+%1$s</string>
+    <string name="media_count">1 из %1$s</string>
+    <string name="time_photo">%1$s в %2$s</string>
 </resources>
-
