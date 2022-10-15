@@ -1,6 +1,5 @@
 package com.geektechkb.feature_main.domain.repositories
 
-import android.net.Uri
 import com.geektechkb.common.either.Either
 import com.geektechkb.core.typealiases.NotAnActualHitsSearcher
 import com.geektechkb.core.typealiases.NotAnActualPaginator
