@@ -39,16 +39,15 @@ class MainFlowFragment : BaseFlowFragment(
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
-                R.id.nav_groups, R.id.nav_calls, R.id.profileFlowFragment,
+                R.id.nav_groups, R.id.profileFlowFragment,
 
                 ), binding.drawerLayout
         )
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFlowFragment, R.id.profileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.nav_groups, R.id.profileFlowFragment, R.id.profileFragment, R.id.photoPreviewFragment, R.id.videoPreviewFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
-
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
         }
