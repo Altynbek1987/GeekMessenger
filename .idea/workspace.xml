@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="pixel" />
+        <device id="pixel_4_xl" />
+        <option name="nonWearDeviceLastStateName" value="Portrait" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="preview related logic and viewmodel" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/timplifier/.android/avd/Resizable_API_33.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GeekMessenger" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GeekMessenger" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Object" />
+        <option value="Kotlin Data Class" />
+        <option value="GraphQL File" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin File" />
+        <option value="navigationResourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="valueResourceFile" />
+        <option value="resourceFile" />
+        <option value="Kotlin Enum" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="aliaskar" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle/libs.versions.toml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle.properties" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/dimens.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/style.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/strings.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/attrs.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/studio.vmoptions" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Library/Android/sdk/platforms/android-32/data/res/values/colors.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/app/google-services.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29bhqCrmJVfKxUIPoZq7CHqHepm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_a225f-adb-R58RC1DS6EE-2wpJhL._adb-tls-connect._tcp." />
+    <property name="DEBUGGABLE_PROCESS" value="com.geektechkb.geekmessenger" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="PROJECT_COMPLICATED_NOTIFICATION_LAST_HIDDEN_VERSION" value="2021.2" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/ConstraintLayout.java_SELECTED" value="ConstraintLayout" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/Guideline.java_Guideline_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/Guideline.java_SELECTED" value="Guideline" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_RecyclerView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_AppBarLayout_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_SELECTED" value="AppBarLayout" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/customViews/AudioVisualizer.kt_SELECTED" value="AudioWaveView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioRecordView.kt_AudioRecordView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioRecordView.kt_SELECTED" value="AudioRecordView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioScaleView.kt_AudioScaleView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioScaleView.kt_SELECTED" value="AudioScaleView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_WRAP_CONTENT_H" value="true" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_WRAP_CONTENT_W" value="true" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_SELECTED" value="RecordCircleView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/SlidePanelView.kt_SELECTED" value="SlidePanelView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/SlidePanelView.kt_SlidePanelView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_SELECTED" value="View" />
+    <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_View_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/widget/VideoView.java_SELECTED" value="VideoView" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="com.developerphil.adbidea.selecteddevices" value="adb-R58RC1DS6EE-2wpJhL._adb-tls-connect._tcp." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/core/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/feature-auth/src/main/res/font" />
+      <recent name="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.ui.fragments.mediaPreview.photo" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.fragments.profil.profile" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice" />
+      <recent name="com.geektechkb.core.base" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.ui" />
+      <recent name="com.geektechkb.feature_main.data" />
+      <recent name="com.geektechkb.feature_auth.data" />
+      <recent name="com.geektechkb.feature_auth.presentation.ui.fragments.auth" />
+      <recent name="com.geektechkb.feature_auth.presentation" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.utils" />
+      <recent name="com.geektechkb.core.data.local.preferences" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.dialogs" />
+      <recent name="com.geektechkb.core.ui.fragments" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.adapters" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.core.ui.customViews" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle signingReport" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="GeekMessenger.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+        <option name="PROFILING_MODE" value="NOT_SET" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeekMessenger [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GeekMessenger" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Gradle.GeekMessenger" />
+      <item itemvalue="Gradle.GeekMessenger [signingReport]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.GeekMessenger [signingReport]" />
+        <item itemvalue="Gradle.GeekMessenger" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="" />
+      <created>1653387880475</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653387880475</updated>
+    </task>
+    <task id="LOCAL-00089" summary="deleted space">
+      <created>1664818788426</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1664818788426</updated>
+    </task>
+    <task id="LOCAL-00090" summary="fsljkdfs">
+      <created>1664818921755</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1664818921755</updated>
+    </task>
+    <task id="LOCAL-00091" summary="changed gradle distribution version">
+      <created>1664819065907</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1664819065907</updated>
+    </task>
+    <task id="LOCAL-00092" summary="changed permission request handling">
+      <created>1664819928919</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1664819928919</updated>
+    </task>
+    <task id="LOCAL-00093" summary="changed version">
+      <created>1664819936503</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1664819936504</updated>
+    </task>
+    <task id="LOCAL-00094" summary="changed">
+      <created>1664819940546</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1664819940546</updated>
+    </task>
+    <task id="LOCAL-00095" summary="made fetchUser not suspend">
+      <created>1664873083088</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1664873083088</updated>
+    </task>
+    <task id="LOCAL-00096" summary="slightly changed the logic">
+      <created>1664873099503</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1664873099503</updated>
+    </task>
+    <task id="LOCAL-00097" summary="deleted unused method">
+      <created>1664873110895</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1664873110896</updated>
+    </task>
+    <task id="LOCAL-00098" summary="made that imageview is full height as usual even when it is empty">
+      <created>1664873129834</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1664873129834</updated>
+    </task>
+    <task id="LOCAL-00099" summary="handled toolbar button visibility">
+      <created>1664873295010</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1664873295010</updated>
+    </task>
+    <task id="LOCAL-00100" summary="set soft input mode to adjust pan in these particular fragments">
+      <created>1664882232871</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1664882232871</updated>
+    </task>
+    <task id="LOCAL-00101" summary="set soft input mode to adjust pan in this fragment">
+      <created>1664882297667</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1664882297667</updated>
+    </task>
+    <task id="LOCAL-00102" summary="code refactoring, naming changes, add placeholder">
+      <created>1664883374227</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1664883374227</updated>
+    </task>
+    <task id="LOCAL-00103" summary="adaptive design">
+      <created>1664883386462</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1664883386462</updated>
+    </task>
+    <task id="LOCAL-00104" summary="imported new icon">
+      <created>1664883398975</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1664883398975</updated>
+    </task>
+    <task id="LOCAL-00105" summary="changed pop up to to homeFragment and deleted inclusive">
+      <created>1664883419161</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1664883419161</updated>
+    </task>
+    <task id="LOCAL-00106" summary="deleted everything related to calls">
+      <created>1665858188680</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858188680</updated>
+    </task>
+    <task id="LOCAL-00107" summary="spaces">
+      <created>1665858207553</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858207554</updated>
+    </task>
+    <task id="LOCAL-00108" summary="renamed methods to media">
+      <created>1665858238810</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858238810</updated>
+    </task>
+    <task id="LOCAL-00109" summary="deleted calls-related logic, added mediaType and videoDuration">
+      <created>1665858314148</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858314148</updated>
+    </task>
+    <task id="LOCAL-00110" summary="added method to parse data">
+      <created>1665858341762</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858341762</updated>
+    </task>
+    <task id="LOCAL-00111" summary="styling">
+      <created>1665858353727</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858353727</updated>
+    </task>
+    <task id="LOCAL-00112" summary="renamed method">
+      <created>1665858368565</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858368565</updated>
+    </task>
+    <task id="LOCAL-00113" summary="preview logic">
+      <created>1665858381484</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858381484</updated>
+    </task>
+    <task id="LOCAL-00114" summary="deleted unused logic">
+      <created>1665858446119</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858446119</updated>
+    </task>
+    <task id="LOCAL-00115" summary="parsing video duration">
+      <created>1665858477087</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858477087</updated>
+    </task>
+    <task id="LOCAL-00116" summary="clean">
+      <created>1665858486987</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858486994</updated>
+    </task>
+    <task id="LOCAL-00117" summary="deleted unused backgrounds">
+      <created>1665858495960</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858495961</updated>
+    </task>
+    <task id="LOCAL-00118" summary="changed design">
+      <created>1665858525364</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858525364</updated>
+    </task>
+    <task id="LOCAL-00119" summary="deleted calls">
+      <created>1665858530898</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858530898</updated>
+    </task>
+    <task id="LOCAL-00120" summary="deleted calls-related fragments">
+      <created>1665858684608</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858684608</updated>
+    </task>
+    <task id="LOCAL-00121" summary="added mediaType and videoDuration parameters">
+      <created>1665858695560</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858695560</updated>
+    </task>
+    <task id="LOCAL-00122" summary="logic with media count and preview">
+      <created>1665858767607</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858767607</updated>
+    </task>
+    <task id="LOCAL-00123" summary="renamed image to media,added mediaType and videoDuration">
+      <created>1665858782531</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858782531</updated>
+    </task>
+    <task id="LOCAL-00124" summary="renamed image to media,added mediaType and videoDuration">
+      <created>1665858794673</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858794673</updated>
+    </task>
+    <task id="LOCAL-00125" summary="preview related logic and cleaned up the viewmodel due to its uselessness">
+      <created>1665858844857</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858844857</updated>
+    </task>
+    <task id="LOCAL-00126" summary="renamed">
+      <created>1665858850014</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858850014</updated>
+    </task>
+    <task id="LOCAL-00127" summary="renamed">
+      <created>1665858860000</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858860000</updated>
+    </task>
+    <task id="LOCAL-00128" summary="changed imports">
+      <created>1665858879804</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858879804</updated>
+    </task>
+    <task id="LOCAL-00129" summary="deleted audioCallRepository">
+      <created>1665858887772</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858887772</updated>
+    </task>
+    <task id="LOCAL-00130" summary="renamed image to media,added mediaType and videoDuration">
+      <created>1665858899188</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858899188</updated>
+    </task>
+    <task id="LOCAL-00131" summary="added media count and time_photo string">
+      <created>1665858909152</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858909152</updated>
+    </task>
+    <task id="LOCAL-00132" summary="cleaned up">
+      <created>1665858927958</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858927958</updated>
+    </task>
+    <task id="LOCAL-00133" summary="deleted uri import">
+      <created>1665858936316</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858936316</updated>
+    </task>
+    <task id="LOCAL-00134" summary="changed color">
+      <created>1665858941416</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858941416</updated>
+    </task>
+    <task id="LOCAL-00135" summary="space">
+      <created>1665858946531</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858946531</updated>
+    </task>
+    <task id="LOCAL-00136" summary="enums to preview or send video">
+      <created>1665858971819</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858971819</updated>
+    </task>
+    <task id="LOCAL-00137" summary="preview related logic and viewmodel">
+      <created>1665858994034</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1665858994034</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="timka" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="timka" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/zarina" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added method to parse data" />
+    <MESSAGE value="styling" />
+    <MESSAGE value="renamed method" />
+    <MESSAGE value="preview logic" />
+    <MESSAGE value="deleted unused logic" />
+    <MESSAGE value="parsing video duration" />
+    <MESSAGE value="clean" />
+    <MESSAGE value="deleted unused backgrounds" />
+    <MESSAGE value="changed design" />
+    <MESSAGE value="deleted calls" />
+    <MESSAGE value="deleted calls-related fragments" />
+    <MESSAGE value="added mediaType and videoDuration parameters" />
+    <MESSAGE value="logic with media count and preview" />
+    <MESSAGE value="preview related logic and cleaned up the viewmodel due to its uselessness" />
+    <MESSAGE value="renamed" />
+    <MESSAGE value="changed imports" />
+    <MESSAGE value="deleted audioCallRepository" />
+    <MESSAGE value="renamed image to media,added mediaType and videoDuration" />
+    <MESSAGE value="added media count and time_photo string" />
+    <MESSAGE value="cleaned up" />
+    <MESSAGE value="deleted uri import" />
+    <MESSAGE value="changed color" />
+    <MESSAGE value="space" />
+    <MESSAGE value="enums to preview or send video" />
+    <MESSAGE value="preview related logic and viewmodel" />
+    <option name="LAST_COMMIT_MESSAGE" value="preview related logic and viewmodel" />
+  </component>
+</project>

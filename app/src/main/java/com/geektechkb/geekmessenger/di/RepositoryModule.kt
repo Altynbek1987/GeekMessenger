@@ -4,10 +4,8 @@ import com.geektechkb.feature_auth.data.repositories.authentication.AuthReposito
 import com.geektechkb.feature_auth.data.repositories.authentication.CodeVerificationRepositoryImpl
 import com.geektechkb.feature_auth.domain.repositories.AuthRepository
 import com.geektechkb.feature_auth.domain.repositories.CodeVerificationRepository
-import com.geektechkb.feature_main.data.repositories.AudioCallRepositoryImpl
 import com.geektechkb.feature_main.data.repositories.MessagesRepositoryImpl
 import com.geektechkb.feature_main.data.repositories.UsersRepositoryImpl
-import com.geektechkb.feature_main.domain.repositories.AudioCallRepository
 import com.geektechkb.feature_main.domain.repositories.MessagesRepository
 import com.geektechkb.feature_main.domain.repositories.UsersRepository
 import dagger.Binds
@@ -30,7 +28,4 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindUsersRepository(usersRepositoryImpl: UsersRepositoryImpl): UsersRepository
-
-    @Binds
-    abstract fun bindAudioCallRepository(audioCallRepositoryImpl: AudioCallRepositoryImpl): AudioCallRepository
 }
