@@ -39,7 +39,7 @@ class ProfileFragment :
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args by navArgs<ProfileFragmentArgs>()
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
-    private val adapter = GalleryPicturesAdapter(this::onSelect)
+    private val adapter = GalleryPicturesAdapter(this::onImageSelected)
     private var dialog: Dialog? = null
 
     private val readExternalStoragePermissionLauncher =
@@ -254,7 +254,7 @@ class ProfileFragment :
         }
     }
 
-    private fun onSelect(uri: Uri) {
+    private fun onImageSelected(uri: Uri) {
         findNavController().navigate(
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(
                 uri.toString(),
