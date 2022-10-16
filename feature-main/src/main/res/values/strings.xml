@@ -42,7 +42,6 @@
     <string name="hyphensIfPhoneNumberIsHidden" translatable="false">--- --- --- ---</string>
     <string name="user_list">Список пользователей</string>
     <string name="search">Поиск...</string>
-    <string name="firstAndLastName" translatable="false">%1$s %2$s</string>
     <string name="todo" translatable="false">TODO</string>
     <string name="todoo" translatable="false">TODO</string>
     <string name="todooo" translatable="false">TODO</string>
