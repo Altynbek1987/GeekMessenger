@@ -70,11 +70,12 @@ class CropPhotoFragment :
                         )
                     )
 
-                CropPhotoRequest.EDIT_PROFILE -> findNavController().directionsSafeNavigation(
-                    CropPhotoFragmentDirections.actionCropPhotoFragmentToEditProfileFragment(
-                        bitmapToFile().toString()
+                CropPhotoRequest.EDIT_PROFILE ->
+                    findNavController().directionsSafeNavigation(
+                        CropPhotoFragmentDirections.actionCropPhotoFragmentToEditProfilFragment(
+                            bitmapToFile().toString()
+                        )
                     )
-                )
             }
         }
     }

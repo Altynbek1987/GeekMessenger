@@ -24,4 +24,6 @@
     <color name="chineseSilver">#CCCCCC</color>
     <color name="transparent_50">#800B0A0A</color>
     <color name="transparentCrop">#FFFFFF</color>
+    <color name="cadetBlue">#A9B5C3</color>
+    <color name="regal_blue">#68819C</color>
 </resources>
