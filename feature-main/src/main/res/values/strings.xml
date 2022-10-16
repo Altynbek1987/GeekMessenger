@@ -44,4 +44,5 @@
     <string name="search">Поиск...</string>
     <string name="firstAndLastName">%1$s %2$s</string>
     <string name="plus">+%1$s</string>
+    <string name="save">Cохранить</string>
 </resources>

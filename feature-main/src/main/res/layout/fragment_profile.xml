@@ -10,7 +10,7 @@
         android:id="@+id/g_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="toolbar_button,menu_toolbar,openBottomSheet,tv_name,tv_last_seen" />
+        app:constraint_referenced_ids="toolbar_button,openBottomSheet,tv_name,tv_last_seen" />
 
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -38,26 +38,26 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/gojo" />
 
-<!--    <ImageButton-->
-<!--        android:id="@+id/toolbar_button"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="12dp"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:background="@null"-->
-<!--        android:backgroundTint="@null"-->
-<!--        android:src="@drawable/ic_arrow"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/toolbar_button"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="12dp"-->
+    <!--        android:layout_marginTop="30dp"-->
+    <!--        android:background="@null"-->
+    <!--        android:backgroundTint="@null"-->
+    <!--        android:src="@drawable/ic_arrow"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/menu_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        app:navigationIcon="@drawable/ic_arrow"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/toolbar_menu" />
+        app:menu="@menu/toolbar_menu"
+        app:navigationIcon="@drawable/ic_arrow" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_tv_start"

@@ -12,8 +12,9 @@ class ProfileViewModel @Inject constructor(
     private val fetchUserUseCase: FetchUserUseCase,
     private val updateUserProfileImageUseCase: UpdateUserProfileImageUseCase,
     private val updateUserPhoneNumberHiddennessUseCase: UpdateUserPhoneNumberHiddennessUseCase,
-    private val updateUserProfileImageInFireStore: UpdateUserProfileImageInFireStore
-) : BaseViewModel() {
+    private val updateUserProfileImageInFireStore: UpdateUserProfileImageInFireStore,
+
+    ) : BaseViewModel() {
     private val _userState = mutableUiStateFlow<User>()
     val userState = _userState.asStateFlow()
 
@@ -29,4 +30,5 @@ class ProfileViewModel @Inject constructor(
     suspend fun updateUserProfileImageInFireStore(url: String) {
         updateUserProfileImageInFireStore.invoke(url)
     }
+
 }
