@@ -16,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
+import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
@@ -32,7 +33,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment :
-    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
+    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile)  {
 
     override val binding by viewBinding(FragmentProfileBinding::bind)
     override val viewModel: ProfileViewModel by viewModels()
@@ -95,7 +96,7 @@ class ProfileFragment :
         binding.menuToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.edit_profile -> {
-                    findNavController().navigateSafely(R.id.action_profileFragment_to_editProfileFragment)
+                    findNavController().navigateSafely(R.id.action_profileFragment_to_editProfilFragment)
                     true
                 }
                 R.id.choose_avatar -> {
@@ -111,9 +112,26 @@ class ProfileFragment :
                     true
                 }
                 R.id.delete_avatar -> {
-                    binding.avProfileImage.setImageDrawable(null)
-                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                        viewModel.updateUserProfileImage("")
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        binding.avProfileImage.setImageDrawable(null)
+                        repeatOnLifecycle(Lifecycle.State.STARTED) {
+                            showProgressDialog(R.layout.dialog_progressbar)
+                                viewModel.updateUserProfileImageInFireStore("")
+                                dialog?.dismiss()
+                            binding.apply {
+                                viewModel.userState.spectateUiState(success = { user ->
+                                    user.apply {
+                                         avProfileImage.loadImageAndSetInitialsIfFailed(
+                                            profileImage,
+                                            name,
+                                            cpiProfileImage,
+                                            Color.rgb(83, 147, 208)
+                                        )
+                                    }
+                                })
+                            }
+
+                        }
                     }
                     true
                 }
