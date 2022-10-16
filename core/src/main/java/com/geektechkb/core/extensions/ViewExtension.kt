@@ -21,6 +21,7 @@ fun View.invisible() {
 fun View.setOnSingleClickListener(l: (View) -> Unit) {
     setOnClickListener(OnSingleClickListener(l))
 }
+
 fun <T> ProgressBar.bindToUIStateLoading(uiState: UIState<T>) {
     isVisible = uiState is UIState.Loading
 }

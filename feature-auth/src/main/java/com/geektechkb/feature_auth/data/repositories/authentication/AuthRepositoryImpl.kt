@@ -52,6 +52,7 @@ class AuthRepositoryImpl @Inject constructor(
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 authenticationSucceeded?.invoke()
             }
+
             override fun onVerificationFailed(e: FirebaseException) {
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
@@ -60,6 +61,7 @@ class AuthRepositoryImpl @Inject constructor(
                     tooManyRequestsError?.invoke()
                 }
             }
+
             override fun onCodeSent(
                 verificationId: String,
                 token: PhoneAuthProvider.ForceResendingToken,
@@ -108,7 +110,7 @@ class AuthRepositoryImpl @Inject constructor(
                     FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
                     FIREBASE_USER_LAST_SEEN_TIME_KEY to lastSeen,
                     FIREBASE_USER_PROFILE_IMAGE_KEY to
-                            uploadUncompressedImageToCloudStorage(
+                            uploadUncompressedMediaToCloudStorage(
                                 cloudStorageRef, Uri.parse(profileImage),
                                 FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH, imageFileName
                             )

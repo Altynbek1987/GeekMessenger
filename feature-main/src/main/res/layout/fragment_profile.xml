@@ -10,7 +10,7 @@
         android:id="@+id/g_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="toolbar_button,openBottomSheet,tv_name,tv_last_seen" />
+        app:constraint_referenced_ids="menu_toolbar,openBottomSheet,tv_name,tv_last_seen" />
 
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -37,18 +37,6 @@
         app:layout_constraintBottom_toBottomOf="@id/gl_image_profile"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/gojo" />
-
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/toolbar_button"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="12dp"-->
-    <!--        android:layout_marginTop="30dp"-->
-    <!--        android:background="@null"-->
-    <!--        android:backgroundTint="@null"-->
-    <!--        android:src="@drawable/ic_arrow"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/menu_toolbar"
@@ -150,7 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="#2C2C2C"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/tv_account"
@@ -205,7 +193,8 @@
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_bell"
         app:layout_constraintStart_toStartOf="@id/gl_tv_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_settings" />
+        app:layout_constraintTop_toBottomOf="@id/tv_settings"
+        android:contentDescription="@string/todooo" />
 
     <View
         android:id="@+id/v_notifications"
@@ -243,7 +232,7 @@
         android:layout_marginTop="17dp"
         android:text="@string/tv_notifications"
         android:textAppearance="@style/tv_settings"
-        android:textColor="#2C2C2C"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/im_notifications_and_sounds"
         app:layout_constraintTop_toBottomOf="@id/tv_settings" />
@@ -275,7 +264,7 @@
         android:layout_marginTop="14dp"
         android:text="@string/tv_crossed"
         android:textAppearance="@style/tv_settings"
-        android:textColor="#2C2C2C"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/im_hide_phone_number"
         app:layout_constraintTop_toBottomOf="@id/v_notifications" />
@@ -288,7 +277,7 @@
         android:layout_marginTop="14dp"
         android:text="@string/tv_language"
         android:textAppearance="@style/tv_settings"
-        android:textColor="#2C2C2C"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/im_language"
         app:layout_constraintTop_toBottomOf="@id/v_hide_phone_number" />
@@ -313,4 +302,3 @@
             layout="@layout/fragment_gallery_bottom_sheet" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
-

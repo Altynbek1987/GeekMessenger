@@ -13,12 +13,10 @@ import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -34,22 +32,8 @@ import java.io.OutputStream
 fun ImageView.setImage(uri: String?) {
     Glide.with(this)
         .load(uri)
-        .circleCrop()
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
-}
-
-fun ImageView.setImagee(uri: Uri?) {
-    Glide.with(this)
-        .load(uri)
-        .centerCrop()
-        .transition(DrawableTransitionOptions.withCrossFade())
-        .into(this)
-}
-
-
-fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(requireContext(), message, duration).show()
 }
 
 fun Fragment.showShortDurationSnackbar(text: CharSequence) {
@@ -126,10 +110,6 @@ fun Fragment.hideSoftKeyboard() {
         context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
 }
-
-fun Fragment.checkWhetherSoftKeyboardIsVisibleOrNot() =
-    WindowInsetsCompat.toWindowInsetsCompat(requireView().rootWindowInsets)
-        .isVisible(WindowInsetsCompat.Type.ime())
 
 fun Fragment.stateBottomSheet(bottomSheet: BottomSheetBehavior<MaterialCardView>?, state: Int) {
     val metrics = resources.displayMetrics

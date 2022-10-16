@@ -34,7 +34,6 @@ class VerifyAuthenticationFragment :
         setupCountDownTimer()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setPhoneNumberCodeWasSentTo() {
         binding.tvVerificationCodeWasSent.text =
             "${getString(R.string.verification_code_was_sent_to_the_entered_phone)}${

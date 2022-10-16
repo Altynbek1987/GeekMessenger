@@ -11,12 +11,6 @@
         tools:layout="@layout/fragment_group" />
 
     <fragment
-        android:id="@+id/nav_calls"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.CallsFragment"
-        android:label="@string/menu_calls"
-        tools:layout="@layout/fragment_calls" />
-
-    <fragment
         android:id="@+id/homeFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
@@ -24,7 +18,7 @@
         <action
             android:id="@+id/action_homeFragment_to_chatFragment"
             app:destination="@id/chatFragment"
-            app:popUpTo="@id/main_graph" />
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_connectionCheckFragment"
             app:destination="@id/connectionCheckFragment" />
@@ -44,6 +38,16 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="mediaType"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="videoDuration"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
 
         <action
             android:id="@+id/action_chatFragment_to_deniedPermissionsDialogFragment"
@@ -52,16 +56,17 @@
             android:id="@+id/action_chatFragment_to_clearChatHistoryFragment"
             app:destination="@id/clearChatHistoryFragment" />
         <action
-            android:id="@+id/action_chatFragment_to_voiceCallFragment"
-            app:destination="@id/voiceCallFragment" />
-        <action
-            android:id="@+id/action_chatFragment_to_photoReviewFragment"
-            app:destination="@id/photoReviewFragment" />
+            android:id="@+id/action_chatFragment_to_photoPreviewFragment"
+            app:destination="@id/photoPreviewFragment" />
         <action
             android:id="@+id/action_chatFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_chatFragment_to_videoPreviewFragment"
+            app:destination="@id/videoPreviewFragment" />
+
     </fragment>
     <dialog
         android:id="@+id/deniedPermissionsDialogFragment"
@@ -96,25 +101,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/voiceCallFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice.VoiceCallFragment"
-        android:label="fragment_voice_call"
-        tools:layout="@layout/fragment_voice_call">
-        <argument
-            android:name="username"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_voiceCallFragment_to_incomingCallFragment"
-            app:destination="@id/incomingCallFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/incomingCallFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming.IncomingCallFragment"
-        android:label="fragment_incoming_call"
-        tools:layout="@layout/fragment_incoming_call" />
-    <fragment
-        android:id="@+id/photoReviewFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.reviews.PhotoReviewFragment"
+        android:id="@+id/photoPreviewFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.mediaPreview.photo.PhotoPreviewFragment"
         android:label="fragment_photo_preview"
         tools:layout="@layout/fragment_photo_preview">
         <argument
@@ -122,6 +110,15 @@
             app:argType="string" />
         <argument
             android:name="photo"
+            app:argType="string" />
+        <argument
+            android:name="photoPreview"
+            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequest" />
+        <argument
+            android:name="photoCount"
+            app:argType="integer" />
+        <argument
+            android:name="time"
             app:argType="string" />
         <action
             android:id="@+id/action_photoReviewFragment_to_chatFragment"
@@ -136,4 +133,42 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFlowFragment"
         android:label="ProfileFlowFragment"
         tools:layout="@layout/fragment_profile_flow" />
+    <fragment
+        android:id="@+id/videoPreviewFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.mediaPreview.video.VideoPreviewFragment"
+        android:label="fragment_video_preview"
+        tools:layout="@layout/fragment_video_preview">
+        <argument
+            android:name="chatteePhoneNumber"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="chatteeUsername"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="selectedVideo"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="selectedVideoDuration"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="videoPreview"
+            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest" />
+        <argument
+            android:name="videoCount"
+            app:argType="integer" />
+        <argument
+            android:name="time"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_videoPreviewFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

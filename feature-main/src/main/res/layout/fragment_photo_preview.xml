@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.reviews.PhotoReviewFragment">
+    tools:context=".presentation.ui.fragments.mediaPreview.photo.PhotoPreviewFragment">
 
     <ImageView
-        android:id="@+id/image_content"
+        android:id="@+id/im_selected_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="center"
@@ -15,48 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/bottom_image_info"
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:background="@color/transparent_50"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <TextView
-            android:id="@+id/tv_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            tools:text="Манхва по ветролому" />
-
-        <TextView
-            android:id="@+id/tv_name_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            tools:text="albert" />
-
-        <TextView
-            android:id="@+id/tv_im_date_time_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginBottom="4dp"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            tools:text="01.01.2022" />
-
-    </LinearLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/top_image_info"
@@ -79,9 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="1 из 1"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="1 из 1" />
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -96,6 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
+        android:id="@+id/container_bottom_info_send_preview"
         android:layout_width="match_parent"
         android:layout_height="84dp"
         android:background="@color/transparent_50"
@@ -112,4 +72,46 @@
             android:textColor="@color/white"
             android:textColorHint="#B2FFFFFF" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_bottom_info_preview"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@color/transparent_50"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            tools:text="Манхва по ветролому" />
+
+        <TextView
+            android:id="@+id/tv_name_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="albert" />
+
+        <TextView
+            android:id="@+id/tv_im_date_time_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:text="01.01.2022" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
