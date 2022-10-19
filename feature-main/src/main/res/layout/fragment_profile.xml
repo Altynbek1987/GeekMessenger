@@ -107,7 +107,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/av_profile_image"
         app:srcCompat="@drawable/ic_camera"
-        app:tint="@null" />
+        app:tint="@null"
+        android:contentDescription="@string/todo" />
 
 
     <View
@@ -144,16 +145,6 @@
         app:layout_constraintTop_toBottomOf="@id/tv_account"
         tools:text="+996 704190504" />
 
-    <TextView
-        android:id="@+id/tv_change_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/chance_number"
-        android:textAppearance="@style/text_chance"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_number" />
 
     <View
         android:id="@+id/v_settings"
@@ -161,7 +152,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="11dp"
         android:background="#9F9F9F"
-        app:layout_constraintTop_toBottomOf="@id/tv_change_number" />
+        app:layout_constraintTop_toBottomOf="@id/tv_number" />
 
 
     <View
@@ -212,7 +203,8 @@
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_crossed_eye"
         app:layout_constraintStart_toStartOf="@id/gl_tv_start"
-        app:layout_constraintTop_toBottomOf="@id/v_notifications" />
+        app:layout_constraintTop_toBottomOf="@id/v_notifications"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/im_language"
@@ -222,7 +214,8 @@
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_language"
         app:layout_constraintStart_toStartOf="@id/gl_tv_start"
-        app:layout_constraintTop_toBottomOf="@id/im_hide_phone_number" />
+        app:layout_constraintTop_toBottomOf="@id/im_hide_phone_number"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/tv_notifications"
