@@ -43,7 +43,8 @@ class UsersRepositoryImpl @Inject constructor(
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_LAST_NAME_KEY) as String?,
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_PHONE_NUMBER_KEY) as String?,
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_PROFILE_IMAGE_KEY) as String?,
-            getDocument(usersRef, phoneNumber).get(FIREBASE_USER_LAST_SEEN_TIME_KEY) as String?
+            getDocument(usersRef, phoneNumber).get(FIREBASE_USER_LAST_SEEN_TIME_KEY) as String?,
+            getDocument(usersRef, phoneNumber).get(FIREBASE_USER_PHONE_NUMBER_HIDDENNESS) as Boolean?
         )
 
     }
