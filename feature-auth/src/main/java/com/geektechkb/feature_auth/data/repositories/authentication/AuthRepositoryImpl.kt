@@ -7,6 +7,7 @@ import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_AUTHENTICATE
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_NAME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_LAST_SEEN_TIME_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_NAME_KEY
+import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_HIDDENNESS
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PHONE_NUMBER_KEY
 import com.geektechkb.common.constants.Constants.FIREBASE_USER_PROFILE_IMAGE_KEY
 import com.geektechkb.common.either.Either
@@ -103,6 +104,7 @@ class AuthRepositoryImpl @Inject constructor(
         try {
             addDocument(
                 usersRef, hashMapOf(
+                    FIREBASE_USER_PHONE_NUMBER_HIDDENNESS to false,
                     FIREBASE_USER_NAME_KEY to name,
                     FIREBASE_USER_LAST_NAME_KEY to surname,
                     FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
@@ -117,6 +119,7 @@ class AuthRepositoryImpl @Inject constructor(
         } catch (e: StorageException) {
             addDocument(
                 usersRef, hashMapOf(
+                    FIREBASE_USER_PHONE_NUMBER_HIDDENNESS to false,
                     FIREBASE_USER_NAME_KEY to name,
                     FIREBASE_USER_LAST_NAME_KEY to surname,
                     FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
@@ -127,6 +130,7 @@ class AuthRepositoryImpl @Inject constructor(
         } catch (e: FileNotFoundException) {
             addDocument(
                 usersRef, hashMapOf(
+                    FIREBASE_USER_PHONE_NUMBER_HIDDENNESS to false,
                     FIREBASE_USER_NAME_KEY to name,
                     FIREBASE_USER_LAST_NAME_KEY to surname,
                     FIREBASE_USER_PHONE_NUMBER_KEY to phoneNumber,
