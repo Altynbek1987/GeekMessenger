@@ -16,7 +16,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
-import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
@@ -33,7 +32,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment :
-    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile)  {
+    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
 
     override val binding by viewBinding(FragmentProfileBinding::bind)
     override val viewModel: ProfileViewModel by viewModels()
@@ -113,16 +112,14 @@ class ProfileFragment :
                 }
                 R.id.delete_avatar -> {
                     viewLifecycleOwner.lifecycleScope.launch {
-                        binding.avProfileImage.setImageDrawable(null)
                         repeatOnLifecycle(Lifecycle.State.STARTED) {
                             showProgressDialog(R.layout.dialog_progressbar)
-                                viewModel.updateUserProfileImageInFireStore("")
-                                dialog?.dismiss()
+                            viewModel.updateUserProfileImageInFireStore("")
+                            dialog?.dismiss()
                             binding.apply {
                                 viewModel.userState.spectateUiState(success = { user ->
                                     user.apply {
-                                         avProfileImage.loadImageAndSetInitialsIfFailed(
-                                            profileImage,
+                                        avProfileImage.loadImageAndSetInitialsIfFailedAfterDeletion(
                                             name,
                                             cpiProfileImage,
                                             Color.rgb(83, 147, 208)
