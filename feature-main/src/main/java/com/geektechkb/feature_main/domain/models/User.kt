@@ -11,5 +11,5 @@ data class User(
     override val phoneNumber: String? = null,
     var profileImage: String? = null,
     val lastSeen: String? = null,
-    val isPhoneNumberHidden: Boolean? = null,
+    val isPhoneNumberHidden: Boolean? = null
 ) : BaseDiffModel
