@@ -2,6 +2,7 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
 import android.net.Uri
+import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -296,6 +297,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         usersPreferencesHelper.currentUserPhoneNumber,
                         receiverPhoneNumber
                     ).collectLatest {
+                        if (!args.isPhoneNumberHidden) {
+                            toast(receiverPhoneNumber, Toast.LENGTH_SHORT)
+                        }
                         messagesAdapter.setPhoneNumber(
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
@@ -314,7 +318,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         findNavController().navigate(
             ChatFragmentDirections.actionChatFragmentToPhotoReviewFragment(
                 args.phoneNumber.toString(),
-                uri.toString()
+                uri.toString(),
+                args.isPhoneNumberHidden
             )
         )
     }
