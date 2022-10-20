@@ -149,10 +149,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         }
     }
 
-    private fun onItemClick(phoneNumber: String?) {
+    private fun onItemClick(phoneNumber: String?, isPhoneNumberHidden: Boolean) {
         findNavController().directionsSafeNavigation(
             HomeFragmentDirections.actionHomeFragmentToChatFragment(
-                phoneNumber
+                phoneNumber, isPhoneNumberHidden
             )
         )
     }
