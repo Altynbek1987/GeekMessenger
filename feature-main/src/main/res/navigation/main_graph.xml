@@ -45,6 +45,9 @@
             app:argType="string"
             app:nullable="true" />
 
+        <argument
+            android:name="isPhoneNumberHidden"
+            app:argType="boolean" />
         <action
             android:id="@+id/action_chatFragment_to_deniedPermissionsDialogFragment"
             app:destination="@id/deniedPermissionsDialogFragment" />
@@ -123,6 +126,9 @@
         <argument
             android:name="photo"
             app:argType="string" />
+        <argument
+            android:name="isPhoneNumberHidden"
+            app:argType="boolean" />
         <action
             android:id="@+id/action_photoReviewFragment_to_chatFragment"
             app:destination="@id/chatFragment"
