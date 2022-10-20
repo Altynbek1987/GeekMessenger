@@ -83,7 +83,7 @@ class PhotoReviewFragment :
             )
             findNavController().navigate(
                 PhotoReviewFragmentDirections.actionPhotoReviewFragmentToChatFragment(
-                    args.phoneNumber, args.photo
+                    phoneNumber = args.phoneNumber, image = args.photo, isPhoneNumberHidden = args.isPhoneNumberHidden
                 )
             )
         }
