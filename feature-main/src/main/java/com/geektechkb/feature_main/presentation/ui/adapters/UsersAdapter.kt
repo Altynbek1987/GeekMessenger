@@ -9,7 +9,7 @@ import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
 import com.geektechkb.feature_main.databinding.ItemUserBinding
 import com.geektechkb.feature_main.domain.models.User
 
-class UsersAdapter(private val onItemClick: (phoneNumber: String?) -> Unit) :
+class UsersAdapter(private val onItemClick: (phoneNumber: String?, isPhoneNumberHidden: Boolean) -> Unit) :
     PagingDataAdapter<User, UsersAdapter.UsersViewHolder>(BaseDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -36,7 +36,11 @@ class UsersAdapter(private val onItemClick: (phoneNumber: String?) -> Unit) :
 
         init {
             binding.root.setOnClickListener {
-                onItemClick(getItem(absoluteAdapterPosition)?.phoneNumber)
+                getItem(absoluteAdapterPosition)?.apply {
+                    if (isPhoneNumberHidden != null) {
+                        onItemClick(phoneNumber, isPhoneNumberHidden)
+                    }
+                }
             }
         }
     }
