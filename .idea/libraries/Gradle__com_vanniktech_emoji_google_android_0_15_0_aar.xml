@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.vanniktech:emoji-google-android:0.15.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d0ed9077f318d9eaa49f2cb867493972/transformed/jetified-emoji-google-release/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d0ed9077f318d9eaa49f2cb867493972/transformed/jetified-emoji-google-release/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d0ed9077f318d9eaa49f2cb867493972/transformed/jetified-emoji-google-release/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vanniktech/emoji-google-android/0.15.0/ccf18becf9bfb0645b9e9a3020d791f27b19fc74/emoji-google-android-0.15.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vanniktech/emoji-google-android/0.15.0/769936b4dc8833a3a7de8488b18053251eaa276b/emoji-google-android-0.15.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

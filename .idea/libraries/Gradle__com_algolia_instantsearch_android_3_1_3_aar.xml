@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.algolia:instantsearch-android:3.1.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f79556f4a4d33b0220106bdbec02c21e/transformed/jetified-instantsearch-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f79556f4a4d33b0220106bdbec02c21e/transformed/jetified-instantsearch-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.algolia/instantsearch-android/3.1.3/414d74b4bdf52c0ca4a587fc1b81a70bba3761cd/instantsearch-android-3.1.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.algolia/instantsearch-android/3.1.3/d332be95556f7f683b9cba670640698961447038/instantsearch-android-3.1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.algolia:instantsearch-android-paging3:3.1.3@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a414cec646fa6570b42893de34dc6b00/transformed/jetified-instantsearch-android-paging3-3.1.3/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a414cec646fa6570b42893de34dc6b00/transformed/jetified-instantsearch-android-paging3-3.1.3/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.algolia/instantsearch-android-paging3/3.1.3/3187d147cebf5aadc99649f8b6787b24d7d11399/instantsearch-android-paging3-3.1.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.algolia/instantsearch-android-paging3/3.1.3/b74872905a6cc124508e50e997164ca8f09bcbf7/instantsearch-android-paging3-3.1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

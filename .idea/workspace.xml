@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="pixel" />
+        <device id="pixel_4_xl" />
+        <option name="nonWearDeviceLastStateName" value="Portrait" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="gradle updated" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Pixel_XL_API_30.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GeekMessenger" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GeekMessenger" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GeekMessenger" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="android" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GeekMessenger" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Data Class" />
+        <option value="GraphQL File" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
+        <option value="Kotlin Enum" />
+        <option value="valueResourceFile" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Object" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="aliaskardemo" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/strings.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/attrs.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/style.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle/libs.versions.toml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29bhqCrmJVfKxUIPoZq7CHqHepm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_a225f-adb-R58RC1DS6EE-2wpJhL._adb-tls-connect._tcp." />
+    <property name="DEBUGGABLE_PROCESS" value="com.geektechkb.geekmessenger" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="PROJECT_COMPLICATED_NOTIFICATION_LAST_HIDDEN_VERSION" value="2021.2" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/ConstraintLayout.java_SELECTED" value="ConstraintLayout" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/Guideline.java_Guideline_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/Guideline.java_SELECTED" value="Guideline" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_RecyclerView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_AppBarLayout_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_SELECTED" value="AppBarLayout" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/customViews/AudioVisualizer.kt_SELECTED" value="AudioWaveView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioRecordView.kt_AudioRecordView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioRecordView.kt_SELECTED" value="AudioRecordView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioScaleView.kt_AudioScaleView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioScaleView.kt_SELECTED" value="AudioScaleView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_WRAP_CONTENT_H" value="true" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_WRAP_CONTENT_W" value="true" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_SELECTED" value="RecordCircleView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/SlidePanelView.kt_SELECTED" value="SlidePanelView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/SlidePanelView.kt_SlidePanelView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_SELECTED" value="View" />
+    <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_View_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_RecyclerView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="android-custom-viewC:/Users/User/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioRecordView.kt_SELECTED" value="AudioRecordView" />
+    <property name="android-custom-viewC:/Users/User/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioScaleView.kt_SELECTED" value="AudioScaleView" />
+    <property name="android-custom-viewC:/Users/User/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_SELECTED" value="RecordCircleView" />
+    <property name="android-custom-viewC:/Users/User/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/SlidePanelView.kt_SELECTED" value="SlidePanelView" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="com.android.tools.idea.emulator.zoom.toolbar.visible" value="false" />
+    <property name="com.developerphil.adbidea.selecteddevices" value="R58RC1DS6EE" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Shelf.Project.Settings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\AndroidStudioProjects\GeekMessenger\feature-main\src\main\res\values-night" />
+      <recent name="C:\Users\User\AndroidStudioProjects\GeekMessenger\core\src\main\java\com\geektechkb\core\utils" />
+      <recent name="$PROJECT_DIR$/core/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/feature-auth/src/main/res/font" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.ui.utils" />
+      <recent name="com.geektechkb.feature_main.presentation" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice" />
+      <recent name="com.geektechkb.core.base" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.ui" />
+      <recent name="com.geektechkb.feature_main.data" />
+      <recent name="com.geektechkb.feature_auth.data" />
+      <recent name="com.geektechkb.feature_auth.presentation.ui.fragments.auth" />
+      <recent name="com.geektechkb.feature_auth.presentation" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.utils" />
+      <recent name="com.geektechkb.core.data.local.preferences" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.dialogs" />
+      <recent name="com.geektechkb.core.ui.fragments" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.adapters" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.core.ui.customViews" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle signingReport" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="GeekMessenger.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+        <option name="PROFILING_MODE" value="NOT_SET" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeekMessenger [signingReport]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GeekMessenger" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Gradle.GeekMessenger" />
+      <item itemvalue="Gradle.GeekMessenger [signingReport]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.GeekMessenger [signingReport]" />
+        <item itemvalue="Gradle.GeekMessenger" />
+        <item itemvalue="Gradle.GeekMessenger [signingReport]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\User\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="" />
+      <created>1653387880475</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653387880475</updated>
+    </task>
+    <task id="LOCAL-00060" summary="made a code refactor, removed everything superfluous">
+      <created>1663161616167</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1663161616168</updated>
+    </task>
+    <task id="LOCAL-00061" summary="made changes">
+      <created>1663161692334</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1663161692334</updated>
+    </task>
+    <task id="LOCAL-00062" summary="no add">
+      <created>1665060972931</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1665060972932</updated>
+    </task>
+    <task id="LOCAL-00063" summary="no add">
+      <created>1665061036638</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061036638</updated>
+    </task>
+    <task id="LOCAL-00064" summary="no add">
+      <created>1665061047690</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061047690</updated>
+    </task>
+    <task id="LOCAL-00065" summary="no add">
+      <created>1665061059923</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061059923</updated>
+    </task>
+    <task id="LOCAL-00066" summary="add colors">
+      <created>1665061200456</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061200456</updated>
+    </task>
+    <task id="LOCAL-00067" summary="add colors, changed colors">
+      <created>1665061246889</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061246890</updated>
+    </task>
+    <task id="LOCAL-00068" summary="no add">
+      <created>1665061459716</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061459716</updated>
+    </task>
+    <task id="LOCAL-00069" summary="no add">
+      <created>1665061613894</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061613894</updated>
+    </task>
+    <task id="LOCAL-00070" summary="no add">
+      <created>1665061626506</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061626506</updated>
+    </task>
+    <task id="LOCAL-00071" summary="no add">
+      <created>1665061633478</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061633478</updated>
+    </task>
+    <task id="LOCAL-00072" summary="no add">
+      <created>1665061657941</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061657941</updated>
+    </task>
+    <task id="LOCAL-00073" summary="no add">
+      <created>1665061687976</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061687976</updated>
+    </task>
+    <task id="LOCAL-00074" summary="no add">
+      <created>1665061709574</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061709574</updated>
+    </task>
+    <task id="LOCAL-00075" summary="added theme changer">
+      <created>1665061943771</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061943771</updated>
+    </task>
+    <task id="LOCAL-00076" summary="no add">
+      <created>1665061960969</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1665061960969</updated>
+    </task>
+    <task id="LOCAL-00077" summary="add boolean theme">
+      <created>1665062062956</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1665062062956</updated>
+    </task>
+    <task id="LOCAL-00078" summary="removed SuppressLint">
+      <created>1665062227783</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1665062227784</updated>
+    </task>
+    <task id="LOCAL-00079" summary="added a burger to HomeFragment">
+      <created>1665062311376</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1665062311376</updated>
+    </task>
+    <task id="LOCAL-00080" summary="added values-night in which there are colors">
+      <created>1665062419013</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1665062419013</updated>
+    </task>
+    <task id="LOCAL-00081" summary="made changes">
+      <created>1665062461303</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1665062461303</updated>
+    </task>
+    <task id="LOCAL-00082" summary="made changes">
+      <created>1665062594262</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1665062594262</updated>
+    </task>
+    <task id="LOCAL-00083" summary="ргмгшрг">
+      <created>1665062960285</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1665062960285</updated>
+    </task>
+    <task id="LOCAL-00084" summary="add color">
+      <created>1665084252389</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1665084252391</updated>
+    </task>
+    <task id="LOCAL-00085" summary="changed color">
+      <created>1665084296908</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1665084296908</updated>
+    </task>
+    <task id="LOCAL-00086" summary="changed color">
+      <created>1665084310775</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1665084310775</updated>
+    </task>
+    <task id="LOCAL-00087" summary="changed colors">
+      <created>1665084583109</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1665084583109</updated>
+    </task>
+    <task id="LOCAL-00088" summary="changed colors">
+      <created>1665084609902</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1665084609903</updated>
+    </task>
+    <task id="LOCAL-00089" summary="changed colors">
+      <created>1665084617753</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1665084617753</updated>
+    </task>
+    <task id="LOCAL-00090" summary="changed colors">
+      <created>1665084678515</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1665084678515</updated>
+    </task>
+    <task id="LOCAL-00091" summary="changed color">
+      <created>1665084835876</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1665084835876</updated>
+    </task>
+    <task id="LOCAL-00092" summary="add string">
+      <created>1665085001976</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1665085001976</updated>
+    </task>
+    <task id="LOCAL-00093" summary="changed radio button color">
+      <created>1665085187915</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1665085187915</updated>
+    </task>
+    <task id="LOCAL-00094" summary="changed radio button color, string language">
+      <created>1665085316521</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1665085316521</updated>
+    </task>
+    <task id="LOCAL-00095" summary="changed radio button color, string language,changed color textView">
+      <created>1665085697279</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1665085697279</updated>
+    </task>
+    <task id="LOCAL-00096" summary="changed radio button color, imageView">
+      <created>1665085779215</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1665085779215</updated>
+    </task>
+    <task id="LOCAL-00097" summary="added a request to hide the number">
+      <created>1666230370299</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1666230370300</updated>
+    </task>
+    <task id="LOCAL-00098" summary="added a toast to display the number">
+      <created>1666230515248</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1666230515248</updated>
+    </task>
+    <task id="LOCAL-00099" summary="added boolean to hide number">
+      <created>1666230613016</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1666230613016</updated>
+    </task>
+    <task id="LOCAL-00100" summary="added argument to boolean">
+      <created>1666230674706</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1666230674706</updated>
+    </task>
+    <task id="LOCAL-00101" summary="changed the api key because it&#10;its usage period has expired, users were not displayed">
+      <created>1666230835951</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1666230835951</updated>
+    </task>
+    <task id="LOCAL-00102" summary="there were problems with the sdk">
+      <created>1666230886372</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1666230886373</updated>
+    </task>
+    <task id="LOCAL-00103" summary="add clarification">
+      <created>1666230968033</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1666230968033</updated>
+    </task>
+    <task id="LOCAL-00104" summary="added a request to hide the number in the model">
+      <created>1666231074253</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1666231074253</updated>
+    </task>
+    <task id="LOCAL-00105" summary="added a new boolean parameter to onItemClick, set a conditional parameter to check the number">
+      <created>1666231266050</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1666231266050</updated>
+    </task>
+    <task id="LOCAL-00106" summary="added boolean">
+      <created>1666231298742</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1666231298742</updated>
+    </task>
+    <task id="LOCAL-00107" summary="gradle updated">
+      <created>1666268324671</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1666268324671</updated>
+    </task>
+    <task id="LOCAL-00108" summary="gradle updated">
+      <created>1666289671301</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1666289671302</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add boolean theme" />
+    <MESSAGE value="removed SuppressLint" />
+    <MESSAGE value="added a burger to HomeFragment" />
+    <MESSAGE value="added values-night in which there are colors" />
+    <MESSAGE value="made changes" />
+    <MESSAGE value="ргмгшрг" />
+    <MESSAGE value="add color" />
+    <MESSAGE value="changed colors" />
+    <MESSAGE value="changed color" />
+    <MESSAGE value="add string" />
+    <MESSAGE value="changed radio button color" />
+    <MESSAGE value="changed radio button color, string language" />
+    <MESSAGE value="changed radio button color, string language,changed color textView" />
+    <MESSAGE value="changed radio button color, imageView" />
+    <MESSAGE value="added a request to hide the number" />
+    <MESSAGE value="added a toast to display the number" />
+    <MESSAGE value="added boolean to hide number" />
+    <MESSAGE value="added argument to boolean" />
+    <MESSAGE value="changed the api key because it&#10;its usage period has expired, users were not displayed" />
+    <MESSAGE value="there were problems with the sdk" />
+    <MESSAGE value="add clarification" />
+    <MESSAGE value="added a request to hide the number in the model" />
+    <MESSAGE value="added a new boolean parameter to onItemClick, set a conditional parameter to check the number" />
+    <MESSAGE value="added boolean" />
+    <MESSAGE value="gradle updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="gradle updated" />
+  </component>
+</project>
