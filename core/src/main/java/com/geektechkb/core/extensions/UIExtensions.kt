@@ -38,7 +38,7 @@ fun SwitchMaterial.actionOnCheckedChange(action: (Boolean) -> Unit) {
 fun AvatarView.loadImageAndSetInitialsIfFailed(
     url: String?,
     name: String?,
-    progressBar: ProgressBar,
+    progressBar: ProgressBar? = null,
     avatarBackgroundColor: Int = Color.rgb(
         Random.nextInt(255),
         Random.nextInt(255),
@@ -52,8 +52,8 @@ fun AvatarView.loadImageAndSetInitialsIfFailed(
         ).toString()
 
     }, onStart = {
-        progressBar.isVisible = true
+        progressBar?.isVisible = true
     }, onComplete = {
-        progressBar.isVisible = false
+        progressBar?.isVisible = false
     })
 }

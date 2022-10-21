@@ -137,7 +137,7 @@ abstract class BaseRepository {
         }
     }
 
-    suspend fun uploadUncompressedImageToCloudStorage(
+    suspend fun uploadUncompressedMediaToCloudStorage(
         storageRef: StorageReference,
         file: Uri?,
         folderPath: String,
@@ -154,7 +154,7 @@ abstract class BaseRepository {
                 .toString()
         }
 
-    suspend fun uploadCompressedImageToCloudStorage(
+    suspend fun uploadCompressedMediaToCloudStorage(
         storageRef: StorageReference,
         file: ByteArray?,
         folderPath: String,

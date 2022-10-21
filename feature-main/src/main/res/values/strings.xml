@@ -54,6 +54,6 @@
     <string name="clear" translatable="false">TODO</string>
     <string name="im_user" translatable="false">TODO</string>
     <string name="plus" translatable="false">+%1$s</string>
-
+    <string name="media_count">1 из %1$s</string>
+    <string name="time_photo">%1$s в %2$s</string>
 </resources>
-
