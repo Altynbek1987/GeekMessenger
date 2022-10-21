@@ -278,13 +278,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         if (!args.isPhoneNumberHidden) {
                             Toast.makeText(
                                 requireContext(),
-                                args.isPhoneNumberHidden.toString(),
+                                receiverPhoneNumber,
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
                             Toast.makeText(
                                 requireContext(),
-                                args.isPhoneNumberHidden.toString(),
+                                "hidden",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
