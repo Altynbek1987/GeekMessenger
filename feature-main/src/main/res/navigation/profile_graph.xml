@@ -5,21 +5,7 @@
     android:id="@+id/profile_graph"
     app:startDestination="@id/profileFragment">
 
-    <fragment
-        android:id="@+id/editProfileFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile.EditProfileFragment"
-        android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile">
-        <action
-            android:id="@+id/action_editProfileFragment_to_cropPhotoFragment"
-            app:destination="@id/cropPhotoFragment" />
 
-        <argument
-            android:name="croppedProfileAvatar"
-            android:defaultValue="@null"
-            app:argType="string"
-            app:nullable="true" />
-    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.profile.ProfileFragment"
@@ -48,6 +34,9 @@
             app:destination="@id/mainFlowFragment"
             app:popUpTo="@id/profile_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfilFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
 
     <fragment
@@ -70,8 +59,15 @@
         <argument
             android:name="whereToNavigateBack"
             app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest" />
+        <action
+            android:id="@+id/action_cropPhotoFragment_to_editProfilFragment"
+            app:destination="@id/editProfileFragment"
+            app:popUpTo="@id/profileFragment" />
+        />
+
 
     </fragment>
+
     <fragment
         android:id="@+id/languagesFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.language.LanguagesFragment"
@@ -87,4 +83,22 @@
         android:name="com.geektechkb.feature_main.presentation.MainFlowFragment"
         android:label="fragment_main_flow"
         tools:layout="@layout/fragment_main_flow" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile.EditProfileFragment"
+        android:label="fragment_edit_profil"
+        tools:layout="@layout/fragment_edit_profile" >
+
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_cropPhotoFragment"
+            app:destination="@id/cropPhotoFragment" />
+        <argument
+            android:name="croppedProfileAvatar"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>
