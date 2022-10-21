@@ -2,6 +2,7 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
 import android.net.Uri
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -274,6 +275,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         usersPreferencesHelper.currentUserPhoneNumber,
                         receiverPhoneNumber
                     ).collectLatest {
+                        if (!args.isPhoneNumberHidden) {
+                            Toast.makeText(
+                                requireContext(),
+                                args.isPhoneNumberHidden.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                args.isPhoneNumberHidden.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                         messagesAdapter.setPhoneNumber(
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )

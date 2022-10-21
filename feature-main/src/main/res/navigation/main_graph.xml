@@ -66,6 +66,10 @@
         <action
             android:id="@+id/action_chatFragment_to_videoPreviewFragment"
             app:destination="@id/videoPreviewFragment" />
+        <argument
+            android:name="isPhoneNumberHidden"
+            app:argType="boolean"
+            android:defaultValue="false" />
 
     </fragment>
     <dialog
