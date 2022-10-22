@@ -95,7 +95,7 @@ class ProfileFragment :
         binding.menuToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.edit_profile -> {
-                    findNavController().navigateSafely(R.id.action_profileFragment_to_editProfileFragment)
+                    findNavController().navigateSafely(R.id.action_profileFragment_to_editProfilFragment)
                     true
                 }
                 R.id.choose_avatar -> {
@@ -111,9 +111,24 @@ class ProfileFragment :
                     true
                 }
                 R.id.delete_avatar -> {
-                    binding.avProfileImage.setImageDrawable(null)
-                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                        viewModel.updateUserProfileImage("")
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        repeatOnLifecycle(Lifecycle.State.STARTED) {
+                            showProgressDialog(R.layout.dialog_progressbar)
+                            viewModel.updateUserProfileImageInFireStore("")
+                            dialog?.dismiss()
+                            binding.apply {
+                                viewModel.userState.spectateUiState(success = { user ->
+                                    user.apply {
+                                        avProfileImage.loadImageAndSetInitialsIfFailedAfterDeletion(
+                                            name,
+                                            cpiProfileImage,
+                                            Color.rgb(83, 147, 208)
+                                        )
+                                    }
+                                })
+                            }
+
+                        }
                     }
                     true
                 }

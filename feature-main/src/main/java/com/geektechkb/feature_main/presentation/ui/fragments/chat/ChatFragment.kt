@@ -282,7 +282,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
                         messagesAdapter.submitList(it)
-                        binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount - 1)
+                        binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount )
                         when (messagesAdapter.itemCount == 0 || it.isEmpty()) {
                             true -> binding.iThereAreNoMessagesYet.root.isVisible = true
                             false -> binding.iThereAreNoMessagesYet.root.isVisible = false

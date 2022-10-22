@@ -25,6 +25,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/menu_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/toolbar_menu"
+        app:navigationIcon="@drawable/ic_arrow" />
+
     <io.getstream.avatarview.AvatarView
         android:id="@+id/av_profile_image"
         android:layout_width="match_parent"
@@ -38,14 +48,12 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/gojo" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/menu_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/toolbar_menu"
-        app:navigationIcon="@drawable/ic_arrow" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_image_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_tv_start"
@@ -53,6 +61,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_tv_which_user"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 
     <TextView
         android:id="@+id/tv_name"
@@ -79,28 +94,13 @@
         app:layout_constraintTop_toBottomOf="@id/tv_name"
         tools:text="Lox" />
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_tv_which_user"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_image_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/openBottomSheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/blue"
+        android:contentDescription="@string/todo"
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:layout_constraintBottom_toTopOf="@id/gl_image_profile"
@@ -138,22 +138,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="#2C2C2C"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/tv_account"
         tools:text="+996 704190504" />
 
-    <TextView
-        android:id="@+id/tv_change_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/chance_number"
-        android:textAppearance="@style/text_chance"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_number" />
 
     <View
         android:id="@+id/v_settings"
@@ -161,7 +151,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="11dp"
         android:background="#9F9F9F"
-        app:layout_constraintTop_toBottomOf="@id/tv_change_number" />
+        app:layout_constraintTop_toBottomOf="@id/tv_number" />
 
 
     <View
@@ -186,15 +176,6 @@
         app:layout_constraintStart_toStartOf="@id/gl_tv_start"
         app:layout_constraintTop_toBottomOf="@id/v_settings" />
 
-    <ImageView
-        android:id="@+id/im_notifications_and_sounds"
-        android:layout_width="30dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_bell"
-        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_settings" />
-
     <View
         android:id="@+id/v_notifications"
         android:layout_width="match_parent"
@@ -204,24 +185,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_settings" />
 
     <ImageView
-        android:id="@+id/im_hide_phone_number"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="2dp"
+        android:id="@+id/im_notifications_and_sounds"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_crossed_eye"
+        android:contentDescription="@string/todooo"
+        android:src="@drawable/ic_bell"
         app:layout_constraintStart_toStartOf="@id/gl_tv_start"
-        app:layout_constraintTop_toBottomOf="@id/v_notifications" />
-
-    <ImageView
-        android:id="@+id/im_language"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_language"
-        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
-        app:layout_constraintTop_toBottomOf="@id/im_hide_phone_number" />
+        app:layout_constraintTop_toBottomOf="@id/tv_settings" />
 
     <TextView
         android:id="@+id/tv_notifications"
@@ -231,10 +202,44 @@
         android:layout_marginTop="17dp"
         android:text="@string/tv_notifications"
         android:textAppearance="@style/tv_settings"
-        android:textColor="#2C2C2C"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/im_notifications_and_sounds"
         app:layout_constraintTop_toBottomOf="@id/tv_settings" />
+
+
+    <View
+        android:id="@+id/v_hide_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:background="#66D9D9D9"
+        app:layout_constraintTop_toBottomOf="@id/v_notifications" />
+
+    <ImageView
+        android:id="@+id/im_hide_phone_number"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_crossed_eye"
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
+        app:layout_constraintTop_toBottomOf="@id/v_notifications" />
+
+    <TextView
+        android:id="@+id/tv_crossed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/tv_crossed"
+        android:textAppearance="@style/tv_settings"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/im_hide_phone_number"
+        app:layout_constraintTop_toBottomOf="@id/v_notifications" />
+
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switch_hide_phone_number"
@@ -247,26 +252,26 @@
         app:layout_constraintTop_toBottomOf="@id/v_notifications"
         app:track="@drawable/ic_switch_track_unchecked" />
 
+
     <View
-        android:id="@+id/v_hide_phone_number"
+        android:id="@+id/v_language"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
         android:background="#66D9D9D9"
-        app:layout_constraintTop_toBottomOf="@id/v_notifications" />
+        app:layout_constraintTop_toBottomOf="@id/v_hide_phone_number" />
 
-    <TextView
-        android:id="@+id/tv_crossed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/tv_crossed"
-        android:textAppearance="@style/tv_settings"
-        android:textColor="#2C2C2C"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/im_hide_phone_number"
-        app:layout_constraintTop_toBottomOf="@id/v_notifications" />
+
+    <ImageView
+        android:id="@+id/im_language"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_language"
+        app:layout_constraintStart_toStartOf="@id/gl_tv_start"
+        app:layout_constraintTop_toTopOf="@id/v_language" />
 
     <TextView
         android:id="@+id/tv_language"
@@ -276,17 +281,9 @@
         android:layout_marginTop="14dp"
         android:text="@string/tv_language"
         android:textAppearance="@style/tv_settings"
-        android:textColor="#2C2C2C"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/im_language"
-        app:layout_constraintTop_toBottomOf="@id/v_hide_phone_number" />
-
-    <View
-        android:id="@+id/v_language"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="4dp"
-        android:background="#66D9D9D9"
         app:layout_constraintTop_toBottomOf="@id/v_hide_phone_number" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -301,4 +298,3 @@
             layout="@layout/fragment_gallery_bottom_sheet" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
-

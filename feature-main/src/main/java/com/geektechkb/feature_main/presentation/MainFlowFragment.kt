@@ -1,5 +1,7 @@
 package com.geektechkb.feature_main.presentation
 
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import androidx.drawerlayout.widget.DrawerLayout
@@ -16,6 +18,7 @@ import com.geektechkb.core.extensions.formatCurrentUserTime
 import com.geektechkb.core.extensions.loadImageAndSetInitialsIfFailed
 import com.geektechkb.core.extensions.overrideOnBackPressed
 import com.geektechkb.feature_main.R
+import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -33,6 +36,20 @@ class MainFlowFragment : BaseFlowFragment(
     @Inject
     lateinit var preferences: UserPreferencesHelper
 
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+
+    override fun assembleViews() {
+        if (!preferencesHelper.isLightMode) {
+            binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+    }
+
+    @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -57,6 +74,17 @@ class MainFlowFragment : BaseFlowFragment(
     }
 
     override fun setupListeners() {
+        binding.nav.sunBtn.setOnClickListener {
+            if (!preferencesHelper.isLightMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                binding.nav.sunBtn.setImageResource(R.drawable.ic_sun)
+                preferencesHelper.isLightMode = true
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
+                preferencesHelper.isLightMode = false
+            }
+        }
         overrideOnBackPressed {
             requireActivity().finish()
         }
@@ -108,4 +136,5 @@ class MainFlowFragment : BaseFlowFragment(
             }"
         )
     }
+    //puoioufuf
 }

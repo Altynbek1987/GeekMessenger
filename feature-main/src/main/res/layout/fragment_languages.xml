@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
-        android:text="Язык"
+        android:text="@string/language"
         android:textColor="@color/blue"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Русский"
+        android:text="@string/russian"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_languages" />
 
@@ -68,7 +69,8 @@
         android:id="@+id/radio_button_kyrgyz"
         style="@style/LanguagesMaterialRadioButton"
         android:layout_marginTop="6dp"
-        android:text="Кыргызский"
+        android:text="@string/kyrgyz"
+        android:textColor="@color/black"
         app:buttonTint="@color/blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/radio_button_russian" />
