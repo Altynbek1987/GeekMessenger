@@ -103,6 +103,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         val searchEditText: EditText =
             binding.searchViewUsers.findViewById(androidx.appcompat.R.id.search_src_text)
         searchEditText.setTextColor(Color.parseColor("#2C2C2C"))
+//        searchEditText.setTextColor(R.color.black)
         searchEditText.setHintTextColor(Color.parseColor("#A9B5C3"))
     }
 
