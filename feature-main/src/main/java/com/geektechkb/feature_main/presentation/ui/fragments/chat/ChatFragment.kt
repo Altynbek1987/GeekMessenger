@@ -2,6 +2,9 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
 import android.net.Uri
+import android.util.Log
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -100,7 +103,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun setupAdapter() {
         binding.recyclerview.adapter = messagesAdapter
-        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerview.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
 
     private fun hideClipAndRecordViewWhenUserTyping() = with(binding) {
@@ -138,6 +142,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 readExternalStoragePermissionLauncher,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 actionWhenPermissionHasBeenGranted = {
+                    hideSoftKeyboard()
                     initBottomSheetRecycler()
                     openBottomSheet()
                     setupBottomSheet()
@@ -189,7 +194,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
-                "",
+                imageUri.toString(),
                 timeMessageWasSent = formatCurrentUserTime(
                     YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
                 ),
@@ -225,15 +230,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun openEmojiSoftKeyboard() = with(binding) {
-        val emojiPopUp = EmojiPopup(
-            root,
-            etMessage,
-            onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
-            onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
-            popupWindowHeight = 502
-        )
-        imEmoji.setOnSingleClickListener {
-            emojiPopUp.toggle()
+        imEmoji.setOnClickListener {
+            EmojiPopup(
+                root,
+                etMessage,
+                onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
+                onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
+            ).toggle()
         }
     }
 
@@ -274,20 +277,22 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         usersPreferencesHelper.currentUserPhoneNumber,
                         receiverPhoneNumber
                     ).collectLatest {
+
                         messagesAdapter.setPhoneNumber(
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
                         messagesAdapter.submitList(it)
+                        binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount )
                         when (messagesAdapter.itemCount == 0 || it.isEmpty()) {
                             true -> binding.iThereAreNoMessagesYet.root.isVisible = true
                             false -> binding.iThereAreNoMessagesYet.root.isVisible = false
                         }
-                        binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
                     }
                 }
             }
         }
     }
+
 
     private fun onImageSelected(uri: Uri) {
         imageUri = uri
@@ -345,4 +350,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             )
         )
     }
+
+    private fun getSoftInputKeyboardHeight() =
+        ViewCompat.getRootWindowInsets(requireActivity().window.decorView)
+            ?.getInsets(WindowInsetsCompat.Type.ime())?.bottom
 }

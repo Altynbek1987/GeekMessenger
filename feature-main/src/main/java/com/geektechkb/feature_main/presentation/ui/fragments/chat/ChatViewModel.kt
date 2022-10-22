@@ -27,7 +27,7 @@ class ChatViewModel @Inject constructor(
         id: String,
         receiverPhoneNumber: String,
         message: String,
-        image: String?,
+        image: String? = null,
         mediaType: String? = null,
         videoDuration: String? = null,
         timeMessageWasSent: String,
