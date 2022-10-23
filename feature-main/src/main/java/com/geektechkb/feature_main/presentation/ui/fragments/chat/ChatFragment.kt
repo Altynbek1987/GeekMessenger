@@ -2,9 +2,6 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
 import android.net.Uri
-import android.util.Log
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -137,12 +134,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             initBottomSheetRecycler()
             openBottomSheet()
         }
+
         binding.imClip.setOnSingleClickListener {
             checkForPermissionStatusAndRequestIt(
                 readExternalStoragePermissionLauncher,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 actionWhenPermissionHasBeenGranted = {
-                    hideSoftKeyboard()
                     initBottomSheetRecycler()
                     openBottomSheet()
                     setupBottomSheet()
@@ -152,6 +149,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun openBottomSheet() {
         binding.apply {
+            hideSoftKeyboard()
+            etMessage.clearFocus()
             openGalleryBottomSheet(
                 galleryBottomSheet.galleryBottomSheetDialog,
                 bottomSheetBehavior,
@@ -282,22 +281,17 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
                         messagesAdapter.submitList(it)
-                        binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount )
-                        when (messagesAdapter.itemCount == 0 || it.isEmpty()) {
-                            true -> binding.iThereAreNoMessagesYet.root.isVisible = true
-                            false -> binding.iThereAreNoMessagesYet.root.isVisible = false
-                        }
+                        binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount)
+                        binding.iThereAreNoMessagesYet.root.isVisible = it.isEmpty()
                     }
                 }
             }
         }
     }
 
-
     private fun onImageSelected(uri: Uri) {
         imageUri = uri
         stateBottomSheet = true
-        hideSoftKeyboard()
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToPhotoPreviewFragment(
                 args.phoneNumber.toString(),
@@ -310,7 +304,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun onVideoSelected(uri: Uri, videoDuration: String?) {
-        hideSoftKeyboard()
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
                 chatteePhoneNumber = args.phoneNumber,
@@ -337,7 +330,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun openVideoPreview(video: String, time: String, videoCount: Int) {
-        hideSoftKeyboard()
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
                 chatteePhoneNumber = args.phoneNumber,
@@ -350,8 +342,4 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             )
         )
     }
-
-    private fun getSoftInputKeyboardHeight() =
-        ViewCompat.getRootWindowInsets(requireActivity().window.decorView)
-            ?.getInsets(WindowInsetsCompat.Type.ime())?.bottom
 }
