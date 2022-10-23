@@ -32,6 +32,4 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideFirebaseCloudStorage() = FirebaseStorage.getInstance()
-
-
 }
