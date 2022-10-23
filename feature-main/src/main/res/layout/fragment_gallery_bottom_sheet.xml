@@ -45,8 +45,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:text="@string/gallery"
                     android:layout_marginBottom="4dp"
+                    android:text="@string/gallery"
                     android:textColor="@color/white"
                     android:textSize="22sp" />
             </androidx.appcompat.widget.Toolbar>
@@ -65,9 +65,9 @@
             android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/recyclerview_rating"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/recyclerview_rating"
             tools:ignore="RtlCompat" />
 
 
