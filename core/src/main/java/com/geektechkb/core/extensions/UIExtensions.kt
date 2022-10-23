@@ -57,6 +57,7 @@ fun AvatarView.loadImageAndSetInitialsIfFailed(
         progressBar?.isVisible = false
     })
 }
+
 fun AvatarView.loadImageAndSetInitialsIfFailedAfterDeletion(
     name: String?,
     progressBar: ProgressBar? = null,
