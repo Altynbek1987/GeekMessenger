@@ -40,6 +40,10 @@ class MainFlowFragment : BaseFlowFragment(
     lateinit var preferencesHelper: PreferencesHelper
 
     override fun assembleViews() {
+        changeTheme()
+    }
+
+    private fun changeTheme() {
         if (!preferencesHelper.isLightMode) {
             binding.nav.sunBtn.setImageResource(R.drawable.ic_baseline_nights_stay_24)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -51,7 +55,6 @@ class MainFlowFragment : BaseFlowFragment(
 
     @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -136,5 +139,4 @@ class MainFlowFragment : BaseFlowFragment(
             }"
         )
     }
-    //puoioufuf
 }

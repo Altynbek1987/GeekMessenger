@@ -1,6 +1,5 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
-import android.annotation.SuppressLint
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView

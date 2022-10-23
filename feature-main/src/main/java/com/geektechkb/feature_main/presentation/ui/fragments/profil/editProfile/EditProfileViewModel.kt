@@ -1,12 +1,10 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.profil.editProfile
 
-import androidx.lifecycle.viewModelScope
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.domain.useCases.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,7 +25,7 @@ class EditProfileViewModel @Inject constructor(
         updateUserProfileImageUseCase(url)
 
     suspend fun updateUserProfileImageInFireStore(url: String) {
-            updateUserProfileImageInFireStore.invoke(url)
+        updateUserProfileImageInFireStore.invoke(url)
     }
 
     fun updateUserName(name: String) = updateUserNameUseCase(name)

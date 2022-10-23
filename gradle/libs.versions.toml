@@ -71,8 +71,6 @@ firebaseAdMob = "21.0.0"
 glide = "4.13.0"
 #Koin
 koin = "3.2.0-beta-1"
-#Sendbird
-sendbird = "1.8.0"
 [libraries]
 
 #Kotlin
@@ -149,9 +147,6 @@ datastore-proto = { module = "androidx.datastore:datastore", version.ref = "data
 paging-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "paging" }
 paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
 
-#Sendbird
-sendbird-sendbird = { module = "com.sendbird.sdk:sendbird-calls", version.ref = "sendbird" }
-
 #Firebase
 firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebaseFirestore" }
 firebase-cloudStorage = { module = "com.google.firebase:firebase-storage-ktx", version.ref = "firebaseCloudStorage" }
@@ -174,6 +169,9 @@ uiComponents = ["ui-activity", "ui-fragment", "ui-appCompat", "ui-constraint", "
 
 #Room
 room = ["room-runtime", "room-kotlinExtensionsAndCoroutinesSupport"]
+
+#Coroutines
+coroutines = ["coroutines-core", "coroutines-android"]
 
 #Datastore
 datastore = ["datastore-preferences", "datastore-proto"]

@@ -50,15 +50,10 @@ android {
 }
 
 dependencies {
-    api(project(":common"))
     api(project(":core"))
     api(project(":feature-main"))
-
 
     // Hilt
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
-    //Retrofit
-    implementation(libs.retrofit.retrofit)
-
 }

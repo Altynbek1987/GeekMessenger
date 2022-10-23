@@ -55,8 +55,7 @@ dependencies {
     api(libs.android.core)
 
     // Coroutines
-    api(libs.coroutines.android)
-    api(libs.coroutines.core)
+    api(libs.bundles.coroutines)
 
     // Lifecycle
     api(libs.bundles.lifecycle)

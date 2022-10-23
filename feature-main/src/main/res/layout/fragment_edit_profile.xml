@@ -41,8 +41,8 @@
             android:layout_height="60dp"
             android:layout_alignParentStart="true"
             android:layout_marginStart="3dp"
-            android:src="@drawable/ic_back"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,8 +61,8 @@
             android:layout_alignParentStart="true"
             android:layout_gravity="end"
             android:layout_marginEnd="3dp"
-            android:src="@drawable/ic_baseline_check_24"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_baseline_check_24" />
 
     </androidx.appcompat.widget.Toolbar>
 
