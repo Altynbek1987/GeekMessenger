@@ -8,11 +8,7 @@
             android:icon="@drawable/ic_group"
             android:title="@string/menu_group" />
         <item
-            android:id="@+id/nav_calls"
-            android:icon="@drawable/ic_phone"
-            android:title="@string/menu_calls" />
-        <item
-            android:id="@+id/profileFragment"
+            android:id="@+id/profileFlowFragment"
             android:icon="@drawable/ic_settings"
             android:title="@string/menu_settings" />
     </group>

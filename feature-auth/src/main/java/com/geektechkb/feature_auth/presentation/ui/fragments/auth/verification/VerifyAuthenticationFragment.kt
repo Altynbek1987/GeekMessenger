@@ -1,6 +1,5 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
-import android.annotation.SuppressLint
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
@@ -34,7 +33,6 @@ class VerifyAuthenticationFragment :
         setupCountDownTimer()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setPhoneNumberCodeWasSentTo() {
         binding.tvVerificationCodeWasSent.text =
             "${getString(R.string.verification_code_was_sent_to_the_entered_phone)}${

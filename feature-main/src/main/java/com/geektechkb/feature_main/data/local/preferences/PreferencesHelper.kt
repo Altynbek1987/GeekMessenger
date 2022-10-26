@@ -24,4 +24,8 @@ class PreferencesHelper @Inject constructor(
             putString(LANGUAGE_CODE_KEY, localization.languageCode).apply()
         }.apply()
     }
+
+    var isLightMode: Boolean
+        get() = preferences.getBoolean("theme", false)
+        set(value) = preferences.edit().putBoolean("theme", value).apply()
 }

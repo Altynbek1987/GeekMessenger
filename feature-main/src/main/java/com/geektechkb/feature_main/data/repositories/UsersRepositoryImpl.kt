@@ -61,13 +61,16 @@ class UsersRepositoryImpl @Inject constructor(
     override suspend fun updateUserProfileImage(url: String): String {
         val file = Uri.fromFile(File(url))
         return file.let {
+            cloudStorageRef.delete().addOnSuccessListener {
+            }.addOnFailureListener {}
             cloudStorageRef.child("profileImages/${generateRandomId()}")
-            .putFile(file)
-            .await()
-            .storage
-            .downloadUrl
-            .await()
-            .toString() }
+                .putFile(file)
+                .await()
+                .storage
+                .downloadUrl
+                .await()
+                .toString()
+        }
     }
 
     override fun updateUserName(name: String) {
@@ -102,6 +105,7 @@ class UsersRepositoryImpl @Inject constructor(
             )
         }
     }
+
     override fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean) {
         firebaseAuth.currentUser?.let {
             updateASingleFieldInDocument(
@@ -143,4 +147,5 @@ class UsersRepositoryImpl @Inject constructor(
 
 
     override fun getCurrentUserPhoneNumber() = firebaseAuth.currentUser?.phoneNumber
+
 }

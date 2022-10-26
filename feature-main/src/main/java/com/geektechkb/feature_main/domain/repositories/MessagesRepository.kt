@@ -8,6 +8,9 @@ interface MessagesRepository {
         id: String,
         receiverPhoneNumber: String,
         message: String,
+        media: String?,
+        mediaType: String? = null,
+        videoDuration: String? = null,
         timeMessageWasSent: String,
         messageId: String,
     )

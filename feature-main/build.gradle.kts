@@ -41,13 +41,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-        debug {
-            buildConfigField(
-                "String",
-                "SENDBIRD_APP_ID",
-                "\"06A52AC6-2F9A-4D6F-9157-E0D7E1BDEC94\""
-            )
-        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -67,6 +60,9 @@ dependencies {
 
     // Algolia
     implementation(libs.bundles.algolia)
+
+    // Legacy Support
+    implementation(libs.legacySupport.legacySupport)
 
     // Hilt
     implementation(libs.hilt.android)

@@ -41,5 +41,8 @@
     <string name="user_list">Колдонуучулардын тизмеси</string>
     <string name="group_list">Топ тизмеси</string>
     <string name="search">Издөө...</string>
+    <string name="save">Сактоо</string>
+    <string name="change_your_profile_photo">Профиль сүрөтүн өзгөртүү</string>
+    <string name="username">Колдонуучунун аты</string>
 </resources>
 
