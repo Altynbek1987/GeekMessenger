@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -253,9 +252,11 @@ class ProfileFragment :
     private fun onSelect(uri: Uri) {
         findNavController().navigate(
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(
-                uri.toString(),
-                CropPhotoRequest.PROFILE
-            )
+				uri.toString(),
+				CropPhotoRequest.PROFILE,
+				emptyArray(),
+				0
+			)
         )
     }
 

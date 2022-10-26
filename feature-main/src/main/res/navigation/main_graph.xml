@@ -9,7 +9,16 @@
         android:id="@+id/nav_groups"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.group.GroupFragment"
         android:label="@string/menu_group"
-        tools:layout="@layout/fragment_group" />
+        tools:layout="@layout/fragment_group">
+        <action
+            android:id="@+id/action_nav_groups_to_createGroupFragment"
+            app:destination="@id/createGroupFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_nav_groups_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_calls"
@@ -29,6 +38,9 @@
         <action
             android:id="@+id/action_homeFragment_to_connectionCheckFragment"
             app:destination="@id/connectionCheckFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_groupListFragment"
+            app:destination="@id/groupListFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -89,9 +101,22 @@
             app:destination="@id/editProfileFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_cropPhotoFragment_to_createGroupFragment"
+            app:destination="@+id/createGroupFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
         <argument
             android:name="whereToNavigateBack"
             app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest" />
+        <argument
+            android:name="userCount"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="userList"
+            app:argType="com.geektechkb.feature_main.domain.models.User[]" />
+
     </fragment>
 
 
@@ -213,5 +238,86 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGroupFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.group.create.CreateGroupFragment"
+        android:label="fragment_create_group"
+        tools:layout="@layout/fragment_create_group">
+        <action
+            android:id="@+id/action_createGroupFragment_to_cropPhotoFragment"
+            app:destination="@id/cropPhotoFragment" />
+        <argument
+            android:name="userUri"
+            app:argType="string" />
+        <argument
+            android:name="userCount"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="userList"
+            app:argType="com.geektechkb.feature_main.domain.models.User[]" />
+        <action
+            android:id="@+id/action_createGroupFragment_to_groupChatFragment"
+            app:destination="@id/groupChatFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/groupChatFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.chat.group.GroupChatFragment"
+        android:label="fragment_group_chat"
+        tools:layout="@layout/fragment_group_chat">
+        <argument
+            android:name="usersPhoneNumbers"
+            android:defaultValue="@null"
+            app:argType="string[]"
+            app:nullable="true" />
+        <argument
+            android:name="senderUserNamber"
+            android:defaultValue="@null"
+            app:argType="string[]"
+            app:nullable="true" />
+        <argument
+            android:name="userCount"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+        <argument
+            android:name="userNumber"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="groupName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_groupChatFragment_to_groupListFragment"
+            app:destination="@id/groupListFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupListFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.group.list.GroupListFragment"
+        android:label="fragment_group_list"
+        tools:layout="@layout/fragment_group_list">
+        <action
+            android:id="@+id/action_groupListFragment_to_groupChatFragment"
+            app:destination="@id/groupChatFragment" />
+        <argument
+            android:name="groupName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_groupListFragment_to_nav_groups"
+            app:destination="@id/nav_groups" />
+        <action
+            android:id="@+id/action_groupListFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+
     </fragment>
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".presentation.ui.fragments.home.HomeFragment">
+    tools:context=".presentation.ui.fragments.group.list.GroupListFragment">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -112,11 +112,12 @@
         android:id="@+id/tv_groups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center"
-        android:text="@string/user_list"
+        android:textColor="@color/black"
+        android:text="@string/ToCreateGroup"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/v_end_of_toolbar"
         app:layout_constraintStart_toEndOf="@id/im_user"
@@ -132,7 +133,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recyclerview_group_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -140,17 +141,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_end_of_toolbar"
-        tools:listitem="@layout/item_user" />
-
+        tools:listitem="@layout/item_user_list" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_group"
+        android:id="@+id/btn_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:backgroundTint="@color/blue"
-        android:src="@drawable/ic_group"
+        android:src="@drawable/arrow"
         android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

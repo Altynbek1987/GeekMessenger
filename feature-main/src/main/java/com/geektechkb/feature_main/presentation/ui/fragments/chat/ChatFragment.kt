@@ -257,7 +257,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
                 formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
-                generateRandomId()
+                generateRandomId(),
             )
             etMessage.text?.clear()
         }

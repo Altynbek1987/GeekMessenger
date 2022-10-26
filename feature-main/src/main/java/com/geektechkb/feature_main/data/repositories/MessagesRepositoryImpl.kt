@@ -8,7 +8,6 @@ import com.geektechkb.core.base.BaseRepository
 import com.geektechkb.core.extensions.snapshotFlow
 import com.geektechkb.feature_main.domain.models.Message
 import com.geektechkb.feature_main.domain.repositories.MessagesRepository
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.flow.map
@@ -18,7 +17,6 @@ import javax.inject.Inject
 class MessagesRepositoryImpl @Inject constructor(
     firestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
-    private val firebaseAuth: FirebaseAuth,
 ) : BaseRepository(), MessagesRepository {
     private val messagesRef =
         firestore.collection(FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH)
@@ -34,6 +32,7 @@ class MessagesRepositoryImpl @Inject constructor(
         timeMessageWasSent: String,
         messageId: String,
     ) {
+
         messageMap["messageId"] = messageId
         messageMap["messageKey"] = (id + receiverPhoneNumber)
         messageMap["message"] = message
@@ -41,10 +40,10 @@ class MessagesRepositoryImpl @Inject constructor(
         messageMap["receiverPhoneNumber"] = receiverPhoneNumber
         messageMap["timeMessageWasSent"] = timeMessageWasSent
         addDocument(
-            messagesRef,
-            messageMap,
-            messageId
-        )
+			messagesRef,
+			messageMap,
+			messageId,
+		)
     }
 
     override suspend fun sendVoiceMessage(file: String, voiceFileName: String) {

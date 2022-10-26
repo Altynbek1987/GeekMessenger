@@ -11,14 +11,14 @@ class SendMessageUseCase @Inject constructor(
         receiverPhoneNumber: String,
         message: String,
         timeMessageWasSent: String,
-        messageId: String
+        messageId: String,
+
     ) =
         messagesRepository.sendMessage(
             id,
             receiverPhoneNumber,
             message,
             timeMessageWasSent,
-            messageId
-
+            messageId,
         )
 }

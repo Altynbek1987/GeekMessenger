@@ -46,10 +46,11 @@ class MainFlowFragment : BaseFlowFragment(
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                R.id.chatFragment, R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.cropPhotoFragment, R.id.editProfileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
-                    true
-                else -> binding.homeAppBarMain.toolbarButton.isGone = false
-            }
+				R.id.chatFragment, R.id.createGroupFragment, R.id.groupChatFragment,
+				R.id.voiceCallFragment, R.id.incomingCallFragment, R.id.nav_groups, R.id.nav_calls, R.id.profileFragment, R.id.cropPhotoFragment, R.id.editProfileFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+					true
+				else -> binding.homeAppBarMain.toolbarButton.isGone = false
+			}
         }
         binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)

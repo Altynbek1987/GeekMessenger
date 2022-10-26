@@ -20,32 +20,29 @@ class HomeViewModel @Inject constructor(
     private val getCurrentUserPhoneNumberUseCase: GetCurrentUserPhoneNumberUseCase,
 ) : BaseViewModel() {
 
-    fun getCurrentUserPhoneNumber() = getCurrentUserPhoneNumberUseCase()
+	fun getCurrentUserPhoneNumber() = getCurrentUserPhoneNumberUseCase()
 
-    private val searcher = createHitsSearcherUseCase(
-        APPLICATION_ID,
-        API_KEY,
-        ALGOLIA_INDEX_NAME
-    ) as HitsSearcher
-    val paginator =
-        createPaginatorUseCase(searcher) as Paginator<User>
+	private val searcher =
+		createHitsSearcherUseCase(APPLICATION_ID, API_KEY, ALGOLIA_INDEX_NAME) as HitsSearcher
+	val paginator = createPaginatorUseCase(searcher) as Paginator<User>
 
-    val searchBox = SearchBoxConnector(searcher)
-    private val connectionHandler = ConnectionHandler(searchBox)
+	val searchBox = SearchBoxConnector(searcher)
+	private val connectionHandler = ConnectionHandler(searchBox)
 
-    init {
-        connectionHandler += searchBox.connectPaginator(paginator)
-    }
+	init {
+		connectionHandler += searchBox.connectPaginator(paginator)
+	}
 
-    override fun onCleared() {
-        super.onCleared()
-        searcher.cancel()
-        connectionHandler.clear()
-    }
+	override fun onCleared() {
+		super.onCleared()
+		searcher.cancel()
+		connectionHandler.clear()
+	}
 
-    companion object {
-        private const val APPLICATION_ID = "D3DVWWYZ3S"
-        private const val API_KEY = "c7245757ed76948cc6a464e3d669d384"
-        private const val ALGOLIA_INDEX_NAME = "authenticatedUsers"
-    }
+	companion object {
+		const val APPLICATION_ID = "3YM4HY2EQZ"
+		const val API_KEY = "2b198fbbea989902b88cf07a8236202c"
+		const val ALGOLIA_INDEX_NAME = "authenticatedUsers"
+
+	}
 }

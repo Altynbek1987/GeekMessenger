@@ -63,18 +63,24 @@ class CropPhotoFragment :
     private fun navigateBackToAccordingFragment() {
         binding.btnResult.setOnClickListener {
             when (args.whereToNavigateBack) {
-                CropPhotoRequest.PROFILE -> findNavController().directionsSafeNavigation(
-                    CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
-                        bitmapToFile().toString()
-                    )
-
-                )
-                CropPhotoRequest.EDIT_PROFILE -> findNavController().directionsSafeNavigation(
-                    CropPhotoFragmentDirections.actionCropPhotoFragmentToEditProfileFragment(
-                        bitmapToFile().toString()
-                    )
-                )
-            }
+				CropPhotoRequest.PROFILE -> findNavController().directionsSafeNavigation(
+					CropPhotoFragmentDirections.actionCropPhotoFragmentToProfileFragment(
+						bitmapToFile().toString()
+					)
+				)
+				CropPhotoRequest.EDIT_PROFILE -> findNavController().directionsSafeNavigation(
+					CropPhotoFragmentDirections.actionCropPhotoFragmentToEditProfileFragment(
+						bitmapToFile().toString()
+					)
+				)
+				CropPhotoRequest.CREATE_PROFILE -> findNavController().directionsSafeNavigation(
+					CropPhotoFragmentDirections.actionCropPhotoFragmentToCreateGroupFragment(
+						userUri = bitmapToFile().toString(),
+						userList = args.userList,
+						userCount = args.userCount
+					)
+				)
+			}
         }
     }
 
@@ -182,4 +188,10 @@ class CropPhotoFragment :
         return file
     }
 }
+
+
+
+
+
+
 

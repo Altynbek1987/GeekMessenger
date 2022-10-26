@@ -39,6 +39,7 @@
     <string name="private_chats">Жеке чаттар</string>
     <string name="edit_profile">Профильди түзөтүү</string>
     <string name="user_list">Колдонуучулардын тизмеси</string>
+    <string name="group_list">Топ тизмеси</string>
     <string name="search">Издөө...</string>
 </resources>
 
