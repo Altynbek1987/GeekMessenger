@@ -27,7 +27,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
-import io.grpc.InternalChannelz.id
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -101,6 +100,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun setupAdapter() {
         binding.recyclerview.adapter = messagesAdapter
+        binding.recyclerview.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
 
     private fun hideClipAndRecordViewWhenUserTyping() = with(binding) {
@@ -133,6 +134,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             initBottomSheetRecycler()
             openBottomSheet()
         }
+
         binding.imClip.setOnSingleClickListener {
             checkForPermissionStatusAndRequestIt(
                 readExternalStoragePermissionLauncher,
@@ -147,6 +149,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun openBottomSheet() {
         binding.apply {
+            hideSoftKeyboard()
+            etMessage.clearFocus()
             openGalleryBottomSheet(
                 galleryBottomSheet.galleryBottomSheetDialog,
                 bottomSheetBehavior,
@@ -189,7 +193,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 usersPreferencesHelper.currentUserPhoneNumber,
                 args.phoneNumber.toString(),
                 etMessage.text.toString(),
-                "",
+                imageUri.toString(),
                 timeMessageWasSent = formatCurrentUserTime(
                     YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
                 ),
@@ -227,21 +231,18 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
-    private fun openEmojiSoftKeyboard() {
-
-        binding.apply {
-
-            val emojiPopUp = EmojiPopup(
-                root,
-                binding.etMessage,
-
-                onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
-                onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
-            )
-            binding.imEmoji.setOnSingleClickListener {
-                emojiPopUp.toggle()
-            }
+    private fun openEmojiSoftKeyboard() = with(binding) {
+        val emojiPopUp = EmojiPopup(
+            root,
+            etMessage,
+            onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
+            onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
+            popupWindowHeight = 502
+        )
+        imEmoji.setOnSingleClickListener {
+            emojiPopUp.toggle()
         }
+    }
 
     }
 
@@ -286,11 +287,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
                         messagesAdapter.submitList(it)
-                        when (messagesAdapter.itemCount == 0 || it.isEmpty()) {
-                            true -> binding.iThereAreNoMessagesYet.root.isVisible = true
-                            false -> binding.iThereAreNoMessagesYet.root.isVisible = false
-                        }
-                        binding.recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                        binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount)
+                        binding.iThereAreNoMessagesYet.root.isVisible = it.isEmpty()
                     }
                 }
             }
@@ -300,7 +298,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private fun onImageSelected(uri: Uri) {
         imageUri = uri
         stateBottomSheet = true
-        hideSoftKeyboard()
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToPhotoPreviewFragment(
                 args.phoneNumber.toString(),
@@ -313,7 +310,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun onVideoSelected(uri: Uri, videoDuration: String?) {
-        hideSoftKeyboard()
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
                 chatteePhoneNumber = args.phoneNumber,
@@ -340,7 +336,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun openVideoPreview(video: String, time: String, videoCount: Int) {
-        hideSoftKeyboard()
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
                 chatteePhoneNumber = args.phoneNumber,
@@ -352,8 +347,5 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 time = time
             )
         )
-/*
-        binding.cpiChatteProfileImage.bindToUIStateLoading(photoUiState)
-*/
     }
 }

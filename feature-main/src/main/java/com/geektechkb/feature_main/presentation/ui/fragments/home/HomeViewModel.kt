@@ -44,8 +44,8 @@ class HomeViewModel @Inject constructor(
     }
 
     companion object {
-        private const val APPLICATION_ID = "D3DVWWYZ3S"
-        private const val API_KEY = "c7245757ed76948cc6a464e3d669d384"
+        private const val APPLICATION_ID = "3YM4HY2EQZ"
+        private const val API_KEY = "2b198fbbea989902b88cf07a8236202c"
         private const val ALGOLIA_INDEX_NAME = "authenticatedUsers"
     }
 }

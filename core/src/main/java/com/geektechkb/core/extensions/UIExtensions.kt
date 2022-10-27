@@ -57,3 +57,25 @@ fun AvatarView.loadImageAndSetInitialsIfFailed(
         progressBar?.isVisible = false
     })
 }
+
+fun AvatarView.loadImageAndSetInitialsIfFailedAfterDeletion(
+    name: String?,
+    progressBar: ProgressBar? = null,
+    avatarBackgroundColor: Int = Color.rgb(
+        Random.nextInt(255),
+        Random.nextInt(255),
+        Random.nextInt(255)
+    )
+) {
+    loadImage(data = name, onError = { _, _ ->
+        avatarInitialsBackgroundColor = avatarBackgroundColor
+        avatarInitials = SpannableStringBuilder(
+            name.takeFirstCharacterAndCapitalizeIt()
+        ).toString()
+
+    }, onStart = {
+        progressBar?.isVisible = true
+    }, onComplete = {
+        progressBar?.isVisible = false
+    })
+}
