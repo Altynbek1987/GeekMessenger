@@ -38,6 +38,8 @@ class MessagesRepositoryImpl @Inject constructor(
         videoDuration: String?,
         timeMessageWasSent: String,
         messageId: String,
+        onSuccess: (() -> Unit)?
+
     ) {
         try {
             messageMap["messageId"] = messageId
@@ -57,7 +59,8 @@ class MessagesRepositoryImpl @Inject constructor(
             addDocument(
                 messagesRef,
                 messageMap,
-                messageId
+                messageId,
+                onSuccess
             )
         } catch (e: StorageException) {
             messageMap["messageId"] = messageId
@@ -71,7 +74,8 @@ class MessagesRepositoryImpl @Inject constructor(
             addDocument(
                 messagesRef,
                 messageMap,
-                messageId
+                messageId,
+                onSuccess
             )
         } catch (e: FileNotFoundException) {
             messageMap["messageId"] = messageId
@@ -85,7 +89,8 @@ class MessagesRepositoryImpl @Inject constructor(
             addDocument(
                 messagesRef,
                 messageMap,
-                messageId
+                messageId,
+                onSuccess
             )
         }
     }
@@ -107,7 +112,7 @@ class MessagesRepositoryImpl @Inject constructor(
                 )
             )
             .orderBy(FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT)
-            .limitToLast(10)
+            .limitToLast(1000)
             .snapshotFlow()
             .map { list ->
                 list.map { document ->
