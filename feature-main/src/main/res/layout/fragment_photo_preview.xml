@@ -114,4 +114,41 @@
 
     </LinearLayout>
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_image_info"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/transparent_50"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/info_preview_menu">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="@dimen/margin12"
+            android:src="@drawable/ic_arrow" />
+
+        <TextView
+            android:id="@+id/tv_image_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="1 из 1"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/check_group"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

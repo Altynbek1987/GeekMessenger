@@ -198,6 +198,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
                 ),
                 messageId = generateRandomId()
+                formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
+                generateRandomId(),
             )
             etMessage.text?.clear()
         }
@@ -237,6 +239,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
             ).toggle()
         }
+
     }
 
     override fun establishRequest() {

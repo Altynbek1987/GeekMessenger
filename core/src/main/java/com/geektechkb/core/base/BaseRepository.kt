@@ -57,17 +57,28 @@ abstract class BaseRepository {
         collection: CollectionReference,
         hashMap: HashMap<String, Any?>,
         title: String? = null,
+        onSuccess: (() -> Unit)? = null
     ): Boolean {
         return try {
             if (title != null) {
                 collection
                     .document(title)
                     .set(hashMap)
+                    .addOnSuccessListener {
+                        if (onSuccess != null) {
+                            onSuccess()
+                        }
+                    }
                     .await()
             } else {
                 collection
                     .document()
                     .set(hashMap)
+                    .addOnSuccessListener {
+                        if (onSuccess != null) {
+                            onSuccess()
+                        }
+                    }
                     .await()
             }
             true
@@ -85,7 +96,7 @@ abstract class BaseRepository {
     suspend fun addChildDocument(
         mainCollection: CollectionReference,
         childCollection: String,
-        hashMap: HashMap<String, Any>,
+        hashMap: HashMap<String, Any?>,
         id: String? = null,
     ): Boolean {
         return try {

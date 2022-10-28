@@ -206,6 +206,15 @@ class EditProfileFragment :
             }
         })
         loadPictures()
+    private fun onSelect(uri: Uri) {
+        findNavController().directionsSafeNavigation(
+            EditProfileFragmentDirections.actionEditProfileFragmentToCropPhotoFragment(
+				uri.toString(),
+				CropPhotoRequest.EDIT_PROFILE,
+				emptyArray(),
+				0
+			)
+        )
     }
 
     private fun loadPictures() {

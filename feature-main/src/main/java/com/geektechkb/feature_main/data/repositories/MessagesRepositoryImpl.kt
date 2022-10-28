@@ -26,6 +26,7 @@ class MessagesRepositoryImpl @Inject constructor(
         firestore.collection(FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH)
     private val voiceRef = cloudStorage.reference
     private val cloudStorageRef = cloudStorage.reference
+    private val messageMap = hashMapOf<String, Any?>()
 
 
     override suspend fun sendMessage(
@@ -38,6 +39,18 @@ class MessagesRepositoryImpl @Inject constructor(
         timeMessageWasSent: String,
         messageId: String,
     ) {
+
+        messageMap["messageId"] = messageId
+        messageMap["messageKey"] = (id + receiverPhoneNumber)
+        messageMap["message"] = message
+        messageMap["senderPhoneNumber"] = id
+        messageMap["receiverPhoneNumber"] = receiverPhoneNumber
+        messageMap["timeMessageWasSent"] = timeMessageWasSent
+        addDocument(
+			messagesRef,
+			messageMap,
+			messageId,
+		)
         try {
             addDocument(
                 messagesRef,
