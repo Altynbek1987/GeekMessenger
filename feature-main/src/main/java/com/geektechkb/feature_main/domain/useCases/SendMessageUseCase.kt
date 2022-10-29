@@ -14,7 +14,8 @@ class SendMessageUseCase @Inject constructor(
         mediaType: String? = null,
         videoDuration: String? = null,
         timeMessageWasSent: String,
-        messageId: String
+        messageId: String,
+        onSuccess: (() -> Unit)?
     ) =
         messagesRepository.sendMessage(
             id,
@@ -24,6 +25,7 @@ class SendMessageUseCase @Inject constructor(
             mediaType,
             videoDuration,
             timeMessageWasSent,
-            messageId
+            messageId,
+            onSuccess
         )
 }
