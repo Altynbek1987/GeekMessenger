@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="pixel" />
+        <device id="pixel_4_xl" />
+        <option name="nonWearDeviceLastStateName" value="Portrait" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="style">
+      <change afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/domain/useCases/AddUserToGroupUseCase.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/adapters/CreateGroupAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/adapters/UsersGroupAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/chat/group/GroupChatFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/chat/group/GroupChatViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/group/create/CreateGroupFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/group/create/CreateGroupViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/group/list/GroupListFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/ProfileFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable-v24/check.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable-v24/ic_camera_one.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable-v24/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable-v24/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_create_group.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_group_chat.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_group_list.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_create_group.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_user_group.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_user_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/di/RepositoryModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geektechkb/geekmessenger/di/RepositoryModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/geektechkb/common/constants/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/geektechkb/common/constants/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/base/BaseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/base/BaseFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/base/BaseRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/base/BaseRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/base/BaseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/base/BaseViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/data/local/preferences/UserPreferencesHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/geektechkb/core/data/local/preferences/UserPreferencesHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/repositories/MessagesRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/repositories/MessagesRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/repositories/UsersRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/data/repositories/UsersRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/domain/models/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/domain/models/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/domain/repositories/MessagesRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/domain/repositories/MessagesRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/domain/useCases/SendMessageUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/domain/useCases/SendMessageUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/MainFlowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/MainFlowFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/adapters/UsersAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/adapters/UsersAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/chat/ChatFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/chat/ChatFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/chat/ChatViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/chat/ChatViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/crop/CropPhotoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/crop/CropPhotoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/group/GroupFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/group/GroupFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/group/GroupViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/group/GroupViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/home/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/home/HomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/home/HomeViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments/profil/editProfile/EditProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/models/enums/CropPhotoRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/models/enums/CropPhotoRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable-v24/check.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable-v24/check_group.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable/check.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable/check_group.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_group.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_group.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/drawable/ic_user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_chat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_group.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_group.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_photo_preview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/fragment_photo_preview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_received_message.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_received_message.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_sent_messages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_sent_messages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/layout/item_user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/navigation/main_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/navigation/main_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/values-ky/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/values-ky/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature-main/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feature-main/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[adb-R58RC1DS6EE-2wpJhL._adb-tls-connect._tcp.]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GeekMessenger" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Object" />
+        <option value="Kotlin Data Class" />
+        <option value="GraphQL File" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Interface" />
+        <option value="resourceFile" />
+        <option value="Kotlin Enum" />
+        <option value="valueResourceFile" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop-bekjan" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/local.properties" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle.properties" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/style.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle/libs.versions.toml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/res/values/attrs.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-main/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Library/Android/sdk/platforms/android-32/data/res/values/colors.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/feature-main/build.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/styles.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/studio.vmoptions" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature-auth/src/main/res/values/strings.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/core/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/settings.gradle.kts" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29bhqCrmJVfKxUIPoZq7CHqHepm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_a225f-adb-R58RC1DS6EE-2wpJhL._adb-tls-connect._tcp." />
+    <property name="DEBUGGABLE_PROCESS" value="com.geektechkb.geekmessenger" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="PROJECT_COMPLICATED_NOTIFICATION_LAST_HIDDEN_VERSION" value="2021.2" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/ConstraintLayout.java_SELECTED" value="ConstraintLayout" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/Guideline.java_Guideline_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/Guideline.java_SELECTED" value="Guideline" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_RecyclerView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_AppBarLayout_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_SELECTED" value="AppBarLayout" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/customViews/AudioVisualizer.kt_SELECTED" value="AudioWaveView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioRecordView.kt_AudioRecordView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioRecordView.kt_SELECTED" value="AudioRecordView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioScaleView.kt_AudioScaleView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/AudioScaleView.kt_SELECTED" value="AudioScaleView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_WRAP_CONTENT_H" value="true" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_RecordCircleView_WRAP_CONTENT_W" value="true" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/RecordCircleView.kt_SELECTED" value="RecordCircleView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/SlidePanelView.kt_SELECTED" value="SlidePanelView" />
+    <property name="android-custom-view/Users/timplifier/AndroidStudioProjects/GeekMessenger/core/src/main/java/com/geektechkb/core/ui/customViews/SlidePanelView.kt_SlidePanelView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_SELECTED" value="View" />
+    <property name="android-custom-view/Users/timplifier/Library/Android/sdk/sources/android-32/android/view/View.java_View_DIMENSIONS" value="1080&#10;1920" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="com.developerphil.adbidea.selecteddevices" value="R58RC1DS6EE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/feature-main/src/main/res/drawable" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/feature-main/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/core/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/feature-auth/src/main/res/font" />
+      <recent name="$PROJECT_DIR$/feature-main/src/main/java/com/geektechkb/feature_main/presentation/ui/fragments" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.ui.fragments.calls.incoming" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.fragments.calls.voice" />
+      <recent name="com.geektechkb.core.base" />
+      <recent name="com.geektechkb.feature_main.data.remote.pagingsources" />
+      <recent name="com.geektechkb.feature_auth.domain.repositories.authentication" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.ui" />
+      <recent name="com.geektechkb.feature_main.data" />
+      <recent name="com.geektechkb.feature_auth.data" />
+      <recent name="com.geektechkb.feature_auth.presentation.ui.fragments.auth" />
+      <recent name="com.geektechkb.feature_auth.presentation" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.feature_main.presentation.utils" />
+      <recent name="com.geektechkb.core.data.local.preferences" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.dialogs" />
+      <recent name="com.geektechkb.core.ui.fragments" />
+      <recent name="com.geektechkb.feature_main.presentation.ui.adapters" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.geektechkb.core.ui.customViews" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle signingReport" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="GeekMessenger.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+        <option name="PROFILING_MODE" value="NOT_SET" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeekMessenger [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GeekMessenger" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Gradle.GeekMessenger" />
+      <item itemvalue="Gradle.GeekMessenger [signingReport]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.GeekMessenger [signingReport]" />
+        <item itemvalue="Gradle.GeekMessenger" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e10442f8-73ca-4719-93e1-4f1ff65110af" name="Changes" comment="" />
+      <created>1653387880475</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653387880475</updated>
+    </task>
+    <task id="LOCAL-00031" summary="styel for placeholdertext">
+      <created>1659731134646</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731134646</updated>
+    </task>
+    <task id="LOCAL-00032" summary="extended ImageView with an extension to changeIconWhenTheyAreActivated">
+      <created>1659731167659</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731167659</updated>
+    </task>
+    <task id="LOCAL-00033" summary="moved to core">
+      <created>1659731176096</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731176096</updated>
+    </task>
+    <task id="LOCAL-00034" summary="clear verification code when it is wrong">
+      <created>1659731198233</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731198233</updated>
+    </task>
+    <task id="LOCAL-00035" summary="use cases related to the audiocall">
+      <created>1659731224788</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731224788</updated>
+    </task>
+    <task id="LOCAL-00036" summary="moved to core">
+      <created>1659731232702</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731232702</updated>
+    </task>
+    <task id="LOCAL-00037" summary="instantiated fragment and its viewModel">
+      <created>1659731245914</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731245914</updated>
+    </task>
+    <task id="LOCAL-00038" summary="selectors for imageViews">
+      <created>1659731260988</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731260988</updated>
+    </task>
+    <task id="LOCAL-00039" summary="background for focused edittext">
+      <created>1659731287489</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731287489</updated>
+    </task>
+    <task id="LOCAL-00040" summary="selector for edittext">
+      <created>1659731293684</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731293684</updated>
+    </task>
+    <task id="LOCAL-00041" summary="instantiated fragment and viewModel">
+      <created>1659731334076</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1659731334076</updated>
+    </task>
+    <task id="LOCAL-00042" summary="selector for edit texts">
+      <created>1662279918163</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1662279918163</updated>
+    </task>
+    <task id="LOCAL-00043" summary="enum to distinguish between fragments that requested photo crop">
+      <created>1662279932186</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1662279932186</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fragment to edit user's profile">
+      <created>1662279949293</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1662279949293</updated>
+    </task>
+    <task id="LOCAL-00045" summary="refactored gradle">
+      <created>1662280367359</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280367359</updated>
+    </task>
+    <task id="LOCAL-00046" summary="refactored">
+      <created>1662280378732</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280378732</updated>
+    </task>
+    <task id="LOCAL-00047" summary="transparent color">
+      <created>1662280401433</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280401433</updated>
+    </task>
+    <task id="LOCAL-00048" summary="consts for notifications and topics">
+      <created>1662280420099</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280420099</updated>
+    </task>
+    <task id="LOCAL-00049" summary="rotating imag elogic">
+      <created>1662280448584</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280448584</updated>
+    </task>
+    <task id="LOCAL-00050" summary="imageviews for crop photo">
+      <created>1662280463606</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280463606</updated>
+    </task>
+    <task id="LOCAL-00051" summary="xml">
+      <created>1662280471080</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280471080</updated>
+    </task>
+    <task id="LOCAL-00052" summary="higher textsize, change string and height of the recyclerview">
+      <created>1662280489478</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280489478</updated>
+    </task>
+    <task id="LOCAL-00053" summary="changes">
+      <created>1662280510062</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1662280510062</updated>
+    </task>
+    <task id="LOCAL-00054" summary="changed package name">
+      <created>1662834432338</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1662834432338</updated>
+    </task>
+    <task id="LOCAL-00055" summary="delete lambda argument, made it sequential">
+      <created>1662834447579</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1662834447579</updated>
+    </task>
+    <task id="LOCAL-00056" summary="can't navigate back from create profile">
+      <created>1662834467627</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1662834467627</updated>
+    </task>
+    <task id="LOCAL-00057" summary="deleted lambda, added return type">
+      <created>1662834479535</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1662834479535</updated>
+    </task>
+    <task id="LOCAL-00058" summary="upload image if uri is not empty, upload double quotes otherwise">
+      <created>1662834503108</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1662834503108</updated>
+    </task>
+    <task id="LOCAL-00059" summary="changed constraint layout to group, also changed group visibility">
+      <created>1662834518040</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1662834518041</updated>
+    </task>
+    <task id="LOCAL-00060" summary="added a permission to receive">
+      <created>1666542816742</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542816743</updated>
+    </task>
+    <task id="LOCAL-00061" summary="cleaned up the permissions in core manifest">
+      <created>1666542831056</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542831056</updated>
+    </task>
+    <task id="LOCAL-00062" summary="closed the tag">
+      <created>1666542840679</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542840680</updated>
+    </task>
+    <task id="LOCAL-00063" summary="cleared permissions in feature-main manifest">
+      <created>1666542851488</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542851488</updated>
+    </task>
+    <task id="LOCAL-00064" summary="deleted sendBird">
+      <created>1666542860086</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542860086</updated>
+    </task>
+    <task id="LOCAL-00065" summary="cleaned up">
+      <created>1666542878874</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542878874</updated>
+    </task>
+    <task id="LOCAL-00066" summary="replaced it with version catalog's">
+      <created>1666542909932</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542909932</updated>
+    </task>
+    <task id="LOCAL-00067" summary="changed separate implementations with bundle from versions catalogs">
+      <created>1666542925694</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542925694</updated>
+    </task>
+    <task id="LOCAL-00068" summary="deleted common module implementation and retrofit">
+      <created>1666542943696</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542943696</updated>
+    </task>
+    <task id="LOCAL-00069" summary="deleted sendbird and every single firebase implementation 'cause' everything is in core">
+      <created>1666542992865</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1666542992865</updated>
+    </task>
+    <task id="LOCAL-00070" summary="cleaned up">
+      <created>1666543000697</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543000697</updated>
+    </task>
+    <task id="LOCAL-00071" summary="slightly cleaned up the code by deleting hideSoftKeyboard() in some places, also hide there are no messages layout when there are messages; clearFocus from etMessage whem opeing gallery bottom sheet">
+      <created>1666543053505</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543053508</updated>
+    </task>
+    <task id="LOCAL-00072" summary="cleaned up the code">
+      <created>1666543063217</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543063217</updated>
+    </task>
+    <task id="LOCAL-00073" summary="style">
+      <created>1666543074838</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543074838</updated>
+    </task>
+    <task id="LOCAL-00074" summary="deleted sendBird, added coroutines bundle">
+      <created>1666543089972</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543089972</updated>
+    </task>
+    <task id="LOCAL-00075" summary="put the logic to change theme into a method">
+      <created>1666543105173</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543105173</updated>
+    </task>
+    <task id="LOCAL-00076" summary="spaces">
+      <created>1666543113623</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543113623</updated>
+    </task>
+    <task id="LOCAL-00077" summary="deleted sendBird maven">
+      <created>1666543120879</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543120880</updated>
+    </task>
+    <task id="LOCAL-00078" summary="cleaned up">
+      <created>1666543132516</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543132516</updated>
+    </task>
+    <task id="LOCAL-00079" summary="style">
+      <created>1666543146920</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1666543146920</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="higher textsize, change string and height of the recyclerview" />
+    <MESSAGE value="changes" />
+    <MESSAGE value="changed package name" />
+    <MESSAGE value="delete lambda argument, made it sequential" />
+    <MESSAGE value="can't navigate back from create profile" />
+    <MESSAGE value="deleted lambda, added return type" />
+    <MESSAGE value="upload image if uri is not empty, upload double quotes otherwise" />
+    <MESSAGE value="changed constraint layout to group, also changed group visibility" />
+    <MESSAGE value="added a permission to receive" />
+    <MESSAGE value="cleaned up the permissions in core manifest" />
+    <MESSAGE value="closed the tag" />
+    <MESSAGE value="cleared permissions in feature-main manifest" />
+    <MESSAGE value="deleted sendBird" />
+    <MESSAGE value="replaced it with version catalog's" />
+    <MESSAGE value="changed separate implementations with bundle from versions catalogs" />
+    <MESSAGE value="deleted common module implementation and retrofit" />
+    <MESSAGE value="deleted sendbird and every single firebase implementation 'cause' everything is in core" />
+    <MESSAGE value="slightly cleaned up the code by deleting hideSoftKeyboard() in some places, also hide there are no messages layout when there are messages; clearFocus from etMessage whem opeing gallery bottom sheet" />
+    <MESSAGE value="cleaned up the code" />
+    <MESSAGE value="deleted sendBird, added coroutines bundle" />
+    <MESSAGE value="put the logic to change theme into a method" />
+    <MESSAGE value="spaces" />
+    <MESSAGE value="deleted sendBird maven" />
+    <MESSAGE value="cleaned up" />
+    <MESSAGE value="style" />
+    <option name="LAST_COMMIT_MESSAGE" value="style" />
+  </component>
+</project>

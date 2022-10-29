@@ -90,7 +90,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun setLightOrDarkWallpapers() {
-        when(preferencesHelper.isLightMode) {
+        when (preferencesHelper.isLightMode) {
             true -> binding.root.setBackgroundResource(R.drawable.ic_chat_wallpaper_dark)
             false -> binding.root.setBackgroundResource(R.drawable.ic_chat_wallpaper)
         }
@@ -210,9 +210,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 timeMessageWasSent = formatCurrentUserTime(
                     YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
                 ),
-                messageId = generateRandomId()
-                formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
-                generateRandomId(),
+                messageId = generateRandomId(),
             )
             etMessage.text?.clear()
         }
