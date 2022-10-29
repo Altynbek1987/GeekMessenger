@@ -19,6 +19,7 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentProfileBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
+import com.geektechkb.feature_main.presentation.ui.fragments.profil.profile.ProfileViewModel
 import com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
@@ -92,13 +93,13 @@ class ProfileFragment :
                 )
             }
         }
-        binding.toolbarButton.setOnClickListener {
+        binding.menuToolbar.setOnClickListener {
             findNavController().navigateUp()
         }
     }
 
     private fun backToHomeFragment() {
-        binding.toolbarButton.setOnClickListener {
+        binding.menuToolbar.setOnClickListener {
             findNavController().navigateUp()
         }
     }
@@ -153,8 +154,8 @@ class ProfileFragment :
                     true
                 }
                 R.id.delete_avatar -> {
-                    binding.imImageProfile.setImageDrawable(null)
-                    binding.imImageProfile.drawable.toString()
+                    binding.avProfileImage.setImageDrawable(null)
+                    binding.avProfileImage.drawable.toString()
                     viewLifecycleOwner.lifecycleScope.launchWhenStarted {
 //                        viewModel.updateUserProfileImage()
                     }
@@ -180,26 +181,26 @@ class ProfileFragment :
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
-            savedUserStatus = it.lastSeen
-            profileAvatar = it.profileImage
+        viewModel.userState.spectateUiState(success = {users ->
+            savedUserStatus = users.lastSeen
+            profileAvatar = users.profileImage
             if (args.croppedImage == null) {
-                binding.imImageProfile.loadImageWithGlide(it.profileImage)
+                binding.avProfileImage.loadImageWithGlide(users.profileImage)
             }
-            binding.tvName.text = it.name
-            binding.tvLastSeen.text = it.lastSeen
-            it.phoneNumber?.let { phoneNumber ->
+            binding.tvName.text = users.name
+            binding.tvLastSeen.text = users.lastSeen
+            users.phoneNumber?.let { phoneNumber ->
                 binding.tvNumber.text =
                     StringBuilder(phoneNumber.substring(0, 4)).append(" ")
                         .append(phoneNumber.substringAfter("+996"))
             }
-            name = it.name
-            lastName = it.lastName
+            name = users.name
+            lastName = users.lastName
 
         }, error = {
             Log.e("gaypopError", it)
         }, gatherIfSucceed = {
-            it.assembleViewVisibility(binding.gProfile, binding.cpiProfile)
+            it.assembleViewVisibility(binding.gProfile, binding.cpiProfileImage)
         })
     }
 
@@ -208,7 +209,7 @@ class ProfileFragment :
             lifecycleScope.launch {
                 viewModel.updateUserProfileImage(it).let {
                     viewModel.updateUserProfileImageInFireStore(it)
-                    binding.imImageProfile.loadImageWithGlide(it)
+                    binding.avProfileImage.loadImageWithGlide(it)
                     Log.e("TAG", it)
                 }
             }
