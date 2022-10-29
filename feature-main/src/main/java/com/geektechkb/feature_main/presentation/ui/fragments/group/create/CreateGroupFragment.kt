@@ -24,7 +24,7 @@ import com.geektechkb.feature_main.databinding.FragmentCreateGroupBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.CreateGroupAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
-import com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileViewModel
+import com.geektechkb.feature_main.presentation.ui.fragments.profil.profile.ProfileViewModel
 import com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView

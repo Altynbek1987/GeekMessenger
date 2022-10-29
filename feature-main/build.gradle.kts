@@ -76,10 +76,10 @@ dependencies {
     implementation(libs.paging.paging)
 
     // Room with coroutines
-    api(libs.bundles.room)
+    implementation(libs.bundles.room)
     kapt(libs.room.compiler)
 
     // Sendbird
-    api(libs.sendbird.sendbird)
+//    implementation(libs.sendbird.sendbird)
 
 }

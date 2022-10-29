@@ -16,7 +16,7 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentGroupBinding
 import com.geektechkb.feature_main.domain.models.User
 import com.geektechkb.feature_main.presentation.ui.adapters.UsersGroupAdapter
-import com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileViewModel
+import com.geektechkb.feature_main.presentation.ui.fragments.profil.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
