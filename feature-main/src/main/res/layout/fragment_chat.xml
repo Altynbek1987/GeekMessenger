@@ -89,6 +89,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_username"
                 tools:text="Online" />
 
+
             <TextView
                 android:id="@+id/tv_typing"
                 android:layout_width="wrap_content"
@@ -108,7 +109,7 @@
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="7dp"
         android:layout_margin="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/cl_message"
