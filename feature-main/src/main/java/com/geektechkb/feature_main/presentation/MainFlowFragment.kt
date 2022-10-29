@@ -22,7 +22,6 @@ import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 @AndroidEntryPoint
 class MainFlowFragment : BaseFlowFragment(
     R.layout.fragment_main_flow,

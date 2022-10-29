@@ -178,21 +178,21 @@ class ProfileFragment :
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {
-            savedUserStatus = it.lastSeen
-            profileAvatar = it.profileImage
+        viewModel.userState.spectateUiState(success = {users ->
+            savedUserStatus = users.lastSeen
+            profileAvatar = users.profileImage
             if (args.croppedImage == null) {
-                binding.avProfileImage.loadImageWithGlide(it.profileImage)
+                binding.avProfileImage.loadImageAndSetInitialsIfFailed(users.profileImage,users.name)
             }
-            binding.tvName.text = it.name
-            binding.tvLastSeen.text = it.lastSeen
-            it.phoneNumber?.let { phoneNumber ->
+            binding.tvName.text = users.name
+            binding.tvLastSeen.text = users.lastSeen
+            users.phoneNumber?.let { phoneNumber ->
                 binding.tvNumber.text =
                     StringBuilder(phoneNumber.substring(0, 4)).append(" ")
                         .append(phoneNumber.substringAfter("+996"))
             }
-            name = it.name
-            lastName = it.lastName
+            name = users.name
+            lastName = users.lastName
 
         }, error = {
             Log.e("gaypopError", it)
@@ -257,6 +257,4 @@ class ProfileFragment :
             )
         )
     }
-
-
 }

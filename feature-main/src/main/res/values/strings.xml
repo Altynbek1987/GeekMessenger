@@ -62,8 +62,7 @@
     <string name="save" translatable="false">Cохранить</string>
     <string name="change_your_profile_photo" translatable="false">Изменить фото профиля</string>
     <string name="username" translatable="false">Имя пользователя</string>
-    <string name="firstAndLastName" translatable="false" tools:ignore="DuplicateDefinition">%1$s %2$s</string>
-    <string name="todo" translatable="false" tools:ignore="DuplicateDefinition">TODO</string>
+<!--    <string name="todo" translatable="false" tools:ignore="DuplicateDefinition">TODO</string>-->
     <string name="ToCreateGroup" translatable="false">Создать Группу</string>
 </resources>
 

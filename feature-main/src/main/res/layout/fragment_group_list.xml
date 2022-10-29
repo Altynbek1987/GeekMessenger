@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="34dp"
                 android:fontFamily="@font/avenir_next_regular"
-                android:textColor="#2C2C2C"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/toolbar_button"
@@ -92,7 +92,7 @@
         android:id="@+id/v_start_of_toolbar"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#D4D4D4"
+        android:background="@color/black"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <ImageView
@@ -118,7 +118,7 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:text="@string/ToCreateGroup"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/v_end_of_toolbar"
         app:layout_constraintStart_toEndOf="@id/im_user"
         app:layout_constraintTop_toBottomOf="@id/v_start_of_toolbar" />
@@ -128,7 +128,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="30dp"
-        android:background="#D4D4D4"
+        android:background="@color/black"
         app:layout_constraintTop_toBottomOf="@id/v_start_of_toolbar" />
 
 

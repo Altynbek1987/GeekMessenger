@@ -25,7 +25,7 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentGroupListBinding
 import com.geektechkb.feature_main.domain.models.Group
 import com.geektechkb.feature_main.presentation.ui.adapters.GroupListAdapter
-import com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileViewModel
+import com.geektechkb.feature_main.presentation.ui.fragments.profil.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

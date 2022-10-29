@@ -50,8 +50,6 @@ class GroupChatFragment :
 	override val viewModel by viewModels<GroupChatViewModel>()
 	private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
 	private val args: GroupChatFragmentArgs by navArgs()
-	private var username: String? = "gog"
-	private var savedUserStatus: String? = null
 	private var stateBottomSheet: Boolean = false
 	private val appVoiceRecorder = AppVoiceRecorder()
 	private val recordAudioPermissionLauncher =
@@ -227,13 +225,9 @@ class GroupChatFragment :
 
 
 	private fun onBackPressed() {
-		overrideOnBackPressed() {
-			if (checkWhetherSoftKeyboardIsVisibleOrNot()) {
-				hideSoftKeyboard()
-			} else {
-				findNavController().navigateSafely(R.id.action_groupChatFragment_to_groupListFragment)
-				isKeyboardShown = null
-			}
+		overrideOnBackPressed {
+			findNavController().navigateSafely(R.id.action_groupChatFragment_to_groupListFragment)
+			isKeyboardShown = null
 		}
 	}
 
@@ -256,13 +250,6 @@ class GroupChatFragment :
 	private fun interactWithToolbarMenu() {
 		binding.toolbar.setOnMenuItemClickListener {
 			when (it.itemId) {
-
-				R.id.btn_call -> {
-					true
-				}
-				R.id.btn_video_call -> {
-					true
-				}
 				R.id.btn_clear_chat -> {
 					/*findNavController().directionsSafeNavigation(
 						ChatFragmentDirections.actionChatFragmentToClearChatHistoryFragment(
@@ -317,7 +304,7 @@ class GroupChatFragment :
 	@SuppressLint("SetTextI18n")
 	private fun subscribeToGroup() {
 		viewModel.groupInfoState.spectateUiState(error = {
-			toast("kagami got naturi  got Naruto")
+
 		}, success = {
 			binding.tvUserCount.text = it.userCount.toString() + "- Участника"
 			binding.tvGroupName.text = it.groupName.toString()
