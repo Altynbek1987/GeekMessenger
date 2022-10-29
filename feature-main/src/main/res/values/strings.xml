@@ -1,8 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">GeekMessenger</string>
 
     <string name="nav_header_desc">Navigation header</string>
     <string name="menu_group">Создать группу</string>
+    <string name="user_group" translatable="false"> Введите имя группы</string>
     <string name="menu_calls">Звонки</string>
     <string name="menu_settings">Настройки</string>
     <string name="menu_profile">Профиль</string>
@@ -41,6 +42,8 @@
     <string name="edit_profile">Редактировать профиль</string>
     <string name="hyphensIfPhoneNumberIsHidden" translatable="false">--- --- --- ---</string>
     <string name="user_list">Список пользователей</string>
+    <string name="group_list">Список грумм</string>
+    <string name="group_user_list" translatable="false">Кого бы Вы хотели пригласить ?</string>
     <string name="search">Поиск...</string>
     <string name="todo" translatable="false">TODO</string>
     <string name="todoo" translatable="false">TODO</string>
@@ -53,10 +56,14 @@
     <string name="clear" translatable="false">TODO</string>
     <string name="im_user" translatable="false">TODO</string>
     <string name="plus" translatable="false">+%1$s</string>
-    <string name="media_count">1 из %1$s</string>
-    <string name="time_photo">%1$s в %2$s</string>
-    <string name="firstAndLastName">%1$s %2$s</string>
-    <string name="save">Cохранить</string>
-    <string name="change_your_profile_photo">Изменить фото профиля</string>
-    <string name="username">Имя пользователя</string>
+    <string name="media_count" translatable="false">1 из %1$s</string>
+    <string name="time_photo" translatable="false">%1$s в %2$s</string>
+    <string name="firstAndLastName" translatable="false" tools:ignore="DuplicateDefinition">%1$s %2$s</string>
+    <string name="save" translatable="false">Cохранить</string>
+    <string name="change_your_profile_photo" translatable="false">Изменить фото профиля</string>
+    <string name="username" translatable="false">Имя пользователя</string>
+    <string name="firstAndLastName" translatable="false" tools:ignore="DuplicateDefinition">%1$s %2$s</string>
+    <string name="todo" translatable="false" tools:ignore="DuplicateDefinition">TODO</string>
+    <string name="ToCreateGroup" translatable="false">Создать Группу</string>
 </resources>
+

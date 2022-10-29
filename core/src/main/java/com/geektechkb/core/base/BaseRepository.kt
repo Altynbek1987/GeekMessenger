@@ -96,7 +96,7 @@ abstract class BaseRepository {
     suspend fun addChildDocument(
         mainCollection: CollectionReference,
         childCollection: String,
-        hashMap: HashMap<String, Any>,
+        hashMap: HashMap<String, Any?>,
         id: String? = null,
     ): Boolean {
         return try {
