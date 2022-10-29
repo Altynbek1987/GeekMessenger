@@ -116,8 +116,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center"
-        android:textColor="@color/black"
         android:text="@string/ToCreateGroup"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/v_end_of_toolbar"
         app:layout_constraintStart_toEndOf="@id/im_user"
@@ -142,6 +142,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_end_of_toolbar"
         tools:listitem="@layout/item_user_list" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_chat"
         android:layout_width="wrap_content"

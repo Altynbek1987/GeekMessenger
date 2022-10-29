@@ -22,7 +22,7 @@
         android:id="@+id/g_create_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="toolbar,av_profile,tv_photo_selection,til_name,til_surname,tv_text,btn_save,tv_photo_selection" />
+        app:constraint_referenced_ids="toolbar,av_profile,tv_photo_selection,til_name,til_surname,tv_text,tv_photo_selection,btn_sign_in" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

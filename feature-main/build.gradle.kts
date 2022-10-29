@@ -2,25 +2,25 @@ plugins {
     // Application
     id("com.android.library")
 
-	// Kotlin
-	id("kotlin-android")
+    // Kotlin
+    id("kotlin-android")
 
-	// Kapt
-	id("kotlin-kapt")
+    // Kapt
+    id("kotlin-kapt")
 
-	// Navigation SafeArgs
-	id(libs.plugins.navigation.safeArgs.get().pluginId)
+    // Navigation SafeArgs
+    id(libs.plugins.navigation.safeArgs.get().pluginId)
 
-	// Hilt
-	id(libs.plugins.hilt.android.get().pluginId)
+    // Hilt
+    id(libs.plugins.hilt.android.get().pluginId)
 
-	// Google Services
-	id(libs.plugins.google.services.get().pluginId)
+    // Google Services
+    id(libs.plugins.google.services.get().pluginId)
 
-	// Kotlin Serialization
-	id(libs.plugins.kotlin.serialization.get().pluginId)
+    // Kotlin Serialization
+    id(libs.plugins.kotlin.serialization.get().pluginId)
 
-	id("kotlin-parcelize")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -71,7 +71,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:20.1.0")
     kapt(libs.hilt.compiler)
 
-	implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     //Paging 3
     implementation(libs.paging.paging)
 

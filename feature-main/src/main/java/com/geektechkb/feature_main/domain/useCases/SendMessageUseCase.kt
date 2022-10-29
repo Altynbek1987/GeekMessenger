@@ -16,7 +16,7 @@ class SendMessageUseCase @Inject constructor(
         timeMessageWasSent: String,
         messageId: String,
 
-    ) =
+        ) =
         messagesRepository.sendMessage(
             id,
             receiverPhoneNumber,

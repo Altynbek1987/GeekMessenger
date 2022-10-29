@@ -17,6 +17,7 @@ import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
+import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
@@ -63,6 +64,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
 
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+
     override fun initialize() {
         galleryViewModel.shouldVideoBeShown(true)
         args.image?.let {
@@ -81,7 +85,16 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun assembleViews() {
         setupAdapter()
+        setLightOrDarkWallpapers()
         hideClipAndRecordViewWhenUserTyping()
+    }
+
+    private fun setLightOrDarkWallpapers() {
+        when (preferencesHelper.isLightMode) {
+            true -> binding.root.setBackgroundResource(R.drawable.ic_chat_wallpaper_dark)
+            false -> binding.root.setBackgroundResource(R.drawable.ic_chat_wallpaper)
+        }
+
     }
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
@@ -197,8 +210,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 timeMessageWasSent = formatCurrentUserTime(
                     YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
                 ),
-                messageId = generateRandomId()
-
+                messageId = generateRandomId(),
             )
             etMessage.text?.clear()
         }

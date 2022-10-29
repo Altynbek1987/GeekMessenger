@@ -34,12 +34,12 @@
             <TextView
                 android:id="@+id/user_group_name"
                 android:layout_width="150dp"
-                app:layout_constraintEnd_toStartOf="@id/gl_message_card_view_start"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:maxEms="14"
                 android:textColor="@color/black"
                 android:textSize="13sp"
+                app:layout_constraintEnd_toStartOf="@id/gl_message_card_view_start"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="NotSibling" />

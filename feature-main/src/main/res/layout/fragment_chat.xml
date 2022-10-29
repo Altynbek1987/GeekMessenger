@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="0"
-    android:background="@drawable/ic_chat_wallpaper"
     android:fitsSystemWindows="true"
+    tools:background="@drawable/ic_chat_wallpaper"
     tools:context=".presentation.ui.fragments.chat.ChatFragment">
 
     <include

@@ -10,29 +10,29 @@ import com.geektechkb.feature_main.databinding.ItemCreateGroupBinding
 import com.geektechkb.feature_main.domain.models.User
 
 class CreateGroupAdapter :
-	PagingDataAdapter<User, CreateGroupAdapter.CreateGroupViewHolder>(BaseDiffUtil()) {
+    PagingDataAdapter<User, CreateGroupAdapter.CreateGroupViewHolder>(BaseDiffUtil()) {
 
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-		CreateGroupViewHolder(
-			ItemCreateGroupBinding.inflate(
-				LayoutInflater.from(parent.context),
-				parent,
-				false
-			)
-		)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        CreateGroupViewHolder(
+            ItemCreateGroupBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
-	override fun onBindViewHolder(holder: CreateGroupViewHolder, position: Int) {
-		getItem(position)?.let { holder.onBind(it) }
-	}
+    override fun onBindViewHolder(holder: CreateGroupViewHolder, position: Int) {
+        getItem(position)?.let { holder.onBind(it) }
+    }
 
-	inner class CreateGroupViewHolder(private var binding: ItemCreateGroupBinding) :
-		RecyclerView.ViewHolder(binding.root) {
-		fun onBind(user: User) = with(user) {
-			binding.apply {
-				tvUsername.text = name
-				avProfile.loadImageAndSetInitialsIfFailed(profileImage, name, cpiUserAvatar)
-			}
-		}
+    inner class CreateGroupViewHolder(private var binding: ItemCreateGroupBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(user: User) = with(user) {
+            binding.apply {
+                tvUsername.text = name
+                avProfile.loadImageAndSetInitialsIfFailed(profileImage, name, cpiUserAvatar)
+            }
+        }
 
 //        init {
 //            binding.root.setOnClickListener {
@@ -41,7 +41,7 @@ class CreateGroupAdapter :
 //                }
 //            }
 //        }
-	}
+    }
 
 
 }

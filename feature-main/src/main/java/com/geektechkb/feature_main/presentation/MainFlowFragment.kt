@@ -22,6 +22,7 @@ import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentMainFlowBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 @AndroidEntryPoint
 class MainFlowFragment : BaseFlowFragment(
     R.layout.fragment_main_flow,
@@ -65,15 +66,13 @@ class MainFlowFragment : BaseFlowFragment(
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.chatFragment,
-                R.id.nav_groups,
-                R.id.profileFlowFragment,
-                R.id.groupChatFragment,
-                R.id.profileFragment  -> binding.homeAppBarMain.toolbarButton.isGone =
-					true
-				else -> binding.homeAppBarMain.toolbarButton.isGone = false
-			}
+                R.id.chatFragment, R.id.nav_groups, R.id.profileFlowFragment, R.id.profileFragment, R.id.photoPreviewFragment, R.id.videoPreviewFragment -> binding.homeAppBarMain.toolbarButton.isGone
+                R.id.createGroupFragment ->
+                    binding.homeAppBarMain.toolbarButton.isGone = true
+                else -> binding.homeAppBarMain.toolbarButton.isGone = false
+            }
         }
+
         binding.homeAppBarMain.toolbarButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }

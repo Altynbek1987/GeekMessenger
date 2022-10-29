@@ -33,5 +33,5 @@ abstract class RepositoryModule {
 
 
     @Binds
-    abstract fun bindGroupUsersRepository(groupMessagesRepositoryImpl: GroupMessagesRepositoryImpl) : GroupMessagesRepository
+    abstract fun bindGroupUsersRepository(groupMessagesRepositoryImpl: GroupMessagesRepositoryImpl): GroupMessagesRepository
 }

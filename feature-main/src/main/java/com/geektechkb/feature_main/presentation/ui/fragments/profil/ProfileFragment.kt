@@ -93,13 +93,10 @@ class ProfileFragment :
                 )
             }
         }
-        binding.menuToolbar.setOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
     private fun backToHomeFragment() {
-        binding.menuToolbar.setOnClickListener {
+        binding.menuToolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
     }
@@ -181,11 +178,14 @@ class ProfileFragment :
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {users ->
+        viewModel.userState.spectateUiState(success = { users ->
             savedUserStatus = users.lastSeen
             profileAvatar = users.profileImage
             if (args.croppedImage == null) {
-                binding.avProfileImage.loadImageWithGlide(users.profileImage)
+                binding.avProfileImage.loadImageAndSetInitialsIfFailed(
+                    users.profileImage,
+                    users.name
+                )
             }
             binding.tvName.text = users.name
             binding.tvLastSeen.text = users.lastSeen
@@ -253,13 +253,11 @@ class ProfileFragment :
     private fun onSelect(uri: Uri) {
         findNavController().navigate(
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(
-				uri.toString(),
-				CropPhotoRequest.PROFILE,
-				emptyArray(),
-				0
-			)
+                uri.toString(),
+                CropPhotoRequest.PROFILE,
+                emptyArray(),
+                0
+            )
         )
     }
-
-
 }

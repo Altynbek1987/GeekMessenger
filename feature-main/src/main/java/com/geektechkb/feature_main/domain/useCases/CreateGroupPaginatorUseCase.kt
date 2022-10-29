@@ -5,8 +5,8 @@ import com.geektechkb.feature_main.domain.repositories.GroupMessagesRepository
 import javax.inject.Inject
 
 class CreateGroupPaginatorUseCase @Inject constructor(
-	private val usersGroupRepository: GroupMessagesRepository
+    private val usersGroupRepository: GroupMessagesRepository
 ) {
-	operator fun invoke(notAnActualHitsSearcher: NotAnActualHitsSearcher) =
-		usersGroupRepository.createGroupPaginator(notAnActualHitsSearcher)
+    operator fun invoke(notAnActualHitsSearcher: NotAnActualHitsSearcher) =
+        usersGroupRepository.createGroupPaginator(notAnActualHitsSearcher)
 }

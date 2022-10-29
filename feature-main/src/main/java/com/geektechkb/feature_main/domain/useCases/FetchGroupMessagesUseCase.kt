@@ -4,8 +4,8 @@ import com.geektechkb.feature_main.domain.repositories.GroupMessagesRepository
 import javax.inject.Inject
 
 class FetchGroupMessagesUseCase @Inject constructor(
-	private val repository: GroupMessagesRepository
+    private val repository: GroupMessagesRepository
 ) {
 
-	operator fun invoke(groupName: String) = repository.fetchGroupMessages(groupName)
+    operator fun invoke(groupName: String) = repository.fetchGroupMessages(groupName)
 }
