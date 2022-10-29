@@ -38,86 +38,59 @@ class MessagesRepositoryImpl @Inject constructor(
         videoDuration: String?,
         timeMessageWasSent: String,
         messageId: String,
-    ) {
+        onSuccess: (() -> Unit)?
 
-        messageMap["messageId"] = messageId
-        messageMap["messageKey"] = (id + receiverPhoneNumber)
-        messageMap["message"] = message
-        messageMap["senderPhoneNumber"] = id
-        messageMap["receiverPhoneNumber"] = receiverPhoneNumber
-        messageMap["timeMessageWasSent"] = timeMessageWasSent
-        addDocument(
-			messagesRef,
-			messageMap,
-			messageId,
-		)
+    ) {
         try {
+            messageMap["messageId"] = messageId
+            messageMap["messageKey"] = (id + receiverPhoneNumber)
+            messageMap["message"] = message
+            messageMap["mediaResource"] =
+                uploadUncompressedMediaToCloudStorage(
+                    cloudStorageRef,
+                    Uri.parse(media),
+                    FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH, generateRandomId()
+                )
+            messageMap["mediaType"] = mediaType
+            messageMap["videoDuration"] = videoDuration
+            messageMap["senderPhoneNumber"] = id
+            messageMap["receiverPhoneNumber"] = receiverPhoneNumber
+            messageMap["timeMessageWasSent"] = timeMessageWasSent
             addDocument(
                 messagesRef,
-                hashMapOf(
-                    "messageId" to messageId,
-                    "messageKey" to (id + receiverPhoneNumber),
-                    "message" to message,
-                    "mediaResource" to uploadUncompressedMediaToCloudStorage(
-                        cloudStorageRef,
-                        Uri.parse(media),
-                        FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH, generateRandomId()
-                    ),
-                    "mediaType" to mediaType,
-                    "videoDuration" to videoDuration,
-                    "senderPhoneNumber" to id,
-                    "receiverPhoneNumber" to receiverPhoneNumber,
-                    "timeMessageWasSent" to timeMessageWasSent
-                )
+                messageMap,
+                messageId,
+                onSuccess
             )
-//            messageMap["messageId"] = messageId
-//            messageMap["messageKey"] = (id + receiverPhoneNumber)
-//            messageMap["message"] = message
-//            messageMap["mediaResource"] =
-//                uploadUncompressedMediaToCloudStorage(
-//                    cloudStorageRef,
-//                    Uri.parse(media),
-//                    FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH, generateRandomId()
-//                )
-//            messageMap["mediaType"] = mediaType
-//            messageMap["videoDuration"] = videoDuration
-//            messageMap["senderPhoneNumber"] = id
-//            messageMap["receiverPhoneNumber"] = receiverPhoneNumber
-//            messageMap["timeMessageWasSent"] = timeMessageWasSent
-//            addDocument(
-//                messagesRef,
-//                messageMap,
-//                messageId
-//            )
         } catch (e: StorageException) {
+            messageMap["messageId"] = messageId
+            messageMap["messageKey"] = (id + receiverPhoneNumber)
+            messageMap["message"] = message
+            messageMap["mediaResource"] = media
+            messageMap["mediaType"] = mediaType
+            messageMap["senderPhoneNumber"] = id
+            messageMap["receiverPhoneNumber"] = receiverPhoneNumber
+            messageMap["timeMessageWasSent"] = timeMessageWasSent
             addDocument(
                 messagesRef,
-                hashMapOf(
-                    "messageId" to messageId,
-                    "messageKey" to (id + receiverPhoneNumber),
-                    "message" to message,
-                    "mediaResource" to media,
-                    "mediaType" to mediaType,
-                    "videoDuration" to videoDuration,
-                    "senderPhoneNumber" to id,
-                    "receiverPhoneNumber" to receiverPhoneNumber,
-                    "timeMessageWasSent" to timeMessageWasSent
-                )
+                messageMap,
+                messageId,
+                onSuccess
             )
         } catch (e: FileNotFoundException) {
+            messageMap["messageId"] = messageId
+            messageMap["messageKey"] = (id + receiverPhoneNumber)
+            messageMap["message"] = message
+            messageMap["mediaResource"] = media
+            messageMap["mediaType"] = mediaType
+            messageMap["senderPhoneNumber"] = id
+            messageMap["receiverPhoneNumber"] = receiverPhoneNumber
+            messageMap["timeMessageWasSent"] = timeMessageWasSent
             addDocument(
                 messagesRef,
-                hashMapOf(
-                    "messageId" to messageId,
-                    "messageKey" to (id + receiverPhoneNumber),
-                    "message" to message,
-                    "mediaResource" to media,
-                    "mediaType" to mediaType,
-                    "videoDuration" to videoDuration,
-                    "senderPhoneNumber" to id,
-                    "receiverPhoneNumber" to receiverPhoneNumber,
-                    "timeMessageWasSent" to timeMessageWasSent
-                )
+                messageMap,
+                messageId,
+                onSuccess
             )
         }
     }
@@ -139,7 +112,7 @@ class MessagesRepositoryImpl @Inject constructor(
                 )
             )
             .orderBy(FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT)
-            .limitToLast(10000)
+            .limitToLast(1000)
             .snapshotFlow()
             .map { list ->
                 list.map { document ->

@@ -27,7 +27,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -197,9 +196,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 timeMessageWasSent = formatCurrentUserTime(
                     YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
                 ),
-                messageId = generateRandomId()
-                formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
-                generateRandomId(),
+                messageId = generateRandomId(),
+                onSuccess = {
+                    recyclerview.scrollToPosition(messagesAdapter.itemCount - 1)
+                }
             )
             etMessage.text?.clear()
         }
@@ -231,16 +231,18 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun openEmojiSoftKeyboard() = with(binding) {
-        imEmoji.setOnClickListener {
-            EmojiPopup(
-                root,
-                etMessage,
-                onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
-                onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
-            ).toggle()
+        val emojiPopUp = EmojiPopup(
+            root,
+            etMessage,
+            onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
+            onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
+            popupWindowHeight = 502
+        )
+        imEmoji.setOnSingleClickListener {
+            emojiPopUp.toggle()
         }
-
     }
+
 
     override fun establishRequest() {
         fetchUser()
@@ -266,7 +268,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     username = name
                 }
             }, gatherIfSucceed = {
-                cpiChatteeProfileImage.bindToUIStateLoading(it)
+                cpiChatteProfileImage.bindToUIStateLoading(it)
             })
         }
     }
@@ -278,8 +280,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     viewModel.fetchPagedMessages(
                         usersPreferencesHelper.currentUserPhoneNumber,
                         receiverPhoneNumber
-                    ).collectLatest {
-
+                    ).collect {
                         messagesAdapter.setPhoneNumber(
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )

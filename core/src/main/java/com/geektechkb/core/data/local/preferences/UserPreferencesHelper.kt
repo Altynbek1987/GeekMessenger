@@ -17,10 +17,6 @@ class UserPreferencesHelper @Inject constructor(private val preferences: SharedP
         get() = preferences.getString(CURRENT_FIREBASE_USER_PHONE_NUMBER_KEY, "").toString()
         set(value) = preferences.edit().putString(CURRENT_FIREBASE_USER_PHONE_NUMBER_KEY, value)
             .apply()
-    var currentUserName: String
-        get() = preferences.getString("userName", "").toString()
-        set(value) = preferences.edit().putString("userName", value)
-            .apply()
 
     var isPhoneNumberHidden: Boolean
         get() = preferences.getBoolean(IS_PHONE_NUMBER_HIDDEN, false)

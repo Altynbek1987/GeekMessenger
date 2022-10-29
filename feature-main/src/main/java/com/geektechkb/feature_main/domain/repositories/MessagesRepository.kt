@@ -13,6 +13,7 @@ interface MessagesRepository {
         videoDuration: String? = null,
         timeMessageWasSent: String,
         messageId: String,
+        onSuccess: (() -> Unit)? = null
     )
 
     suspend fun sendVoiceMessage(file: String, voiceFileName: String)

@@ -8,8 +8,6 @@ object Constants {
     const val FIREBASE_FIRESTORE_AUTHENTICATED_USERS_COLLECTION_PATH = "authenticatedUsers"
     const val FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH = "personalMessages"
     const val FIREBASE_FIRESTORE_CHATTERS_KEY = "chatters"
-    const val FIREBASE_FIRESTORE_GROUP_COLLECTION = "groups"
-
 
     const val FIREBASE_USER_LAST_SEEN_TIME_KEY = "lastSeen"
     const val FIREBASE_USER_LATEST_MESSAGE_KEY = "latestMessage"

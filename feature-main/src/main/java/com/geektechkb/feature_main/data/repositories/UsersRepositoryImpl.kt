@@ -145,7 +145,6 @@ class UsersRepositoryImpl @Inject constructor(
             jumpThreshold = Int.MIN_VALUE
         ), transformer = { hit -> hit.deserialize(User.serializer()) })
 
-
     override fun getCurrentUserPhoneNumber() = firebaseAuth.currentUser?.phoneNumber
 
 }

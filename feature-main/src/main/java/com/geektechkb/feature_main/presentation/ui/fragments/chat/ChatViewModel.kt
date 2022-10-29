@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
+import android.provider.ContactsContract.Contacts.Photo
 import androidx.lifecycle.viewModelScope
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.domain.models.User
@@ -22,6 +23,8 @@ class ChatViewModel @Inject constructor(
 
     private val _userState = mutableUiStateFlow<User>()
     val userState = _userState.asStateFlow()
+    private val _photoUiState = mutableUiStateFlow<Photo>()
+    val photoState = _photoUiState.asStateFlow()
 
     fun sendMessage(
         id: String,
@@ -32,6 +35,7 @@ class ChatViewModel @Inject constructor(
         videoDuration: String? = null,
         timeMessageWasSent: String,
         messageId: String,
+        onSuccess: (() -> Unit)? = null
     ) {
         viewModelScope.launch {
             sendMessageUseCase(
@@ -42,7 +46,8 @@ class ChatViewModel @Inject constructor(
                 mediaType,
                 videoDuration,
                 timeMessageWasSent,
-                messageId
+                messageId,
+                onSuccess
             )
         }
     }
@@ -58,4 +63,5 @@ class ChatViewModel @Inject constructor(
 
     fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
+
 }

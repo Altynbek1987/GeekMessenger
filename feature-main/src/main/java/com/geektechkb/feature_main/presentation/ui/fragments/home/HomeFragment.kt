@@ -21,7 +21,6 @@ import com.algolia.instantsearch.core.connection.ConnectionHandler
 import com.algolia.instantsearch.searchbox.connectView
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.extensions.directionsSafeNavigation
-import com.geektechkb.core.extensions.navigateSafely
 import com.geektechkb.core.utils.CheckInternet
 import com.geektechkb.core.utils.CustomTypefaceSpan
 import com.geektechkb.feature_main.R
@@ -77,6 +76,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     private fun renderToolbarTitle() {
+        binding.tvToolbarTitle.text =
             transformTextFont()
     }
 
@@ -128,9 +128,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupListeners() {
         clearSearchViewQueryAndFocus()
-        binding.btnGroup.setOnClickListener {
-            findNavController().navigateSafely(R.id.action_homeFragment_to_groupListFragment)
-        }
     }
 
     private fun clearSearchViewQueryAndFocus() {
