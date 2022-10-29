@@ -207,6 +207,7 @@ class EditProfileFragment :
         })
         loadPictures()
     }
+
     private fun loadPictures() {
         galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
             if (it.isNotEmpty()) {

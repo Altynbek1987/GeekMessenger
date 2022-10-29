@@ -178,11 +178,14 @@ class ProfileFragment :
     }
 
     private fun subscribeToUser() {
-        viewModel.userState.spectateUiState(success = {users ->
+        viewModel.userState.spectateUiState(success = { users ->
             savedUserStatus = users.lastSeen
             profileAvatar = users.profileImage
             if (args.croppedImage == null) {
-                binding.avProfileImage.loadImageAndSetInitialsIfFailed(users.profileImage,users.name)
+                binding.avProfileImage.loadImageAndSetInitialsIfFailed(
+                    users.profileImage,
+                    users.name
+                )
             }
             binding.tvName.text = users.name
             binding.tvLastSeen.text = users.lastSeen

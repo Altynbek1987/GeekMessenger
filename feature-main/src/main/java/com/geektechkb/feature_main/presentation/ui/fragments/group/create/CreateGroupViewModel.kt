@@ -10,18 +10,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreateGroupViewModel @Inject constructor(
-	private val addUserToGroupUseCase: AddUserToGroupUseCase
+    private val addUserToGroupUseCase: AddUserToGroupUseCase
 ) : BaseViewModel() {
 
-	fun addUserToGroup(
-		groupName: String,
-		userList: List<User>,
-		groupPhoto: String,
-		userCount: Int,
-		userNumber: String
-	) {
-		viewModelScope.launch {
-			addUserToGroupUseCase(groupName, userList, groupPhoto, userCount, userNumber)
-		}
-	}
+    fun addUserToGroup(
+        groupName: String,
+        userList: List<User>,
+        groupPhoto: String,
+        userCount: Int,
+        userNumber: String
+    ) {
+        viewModelScope.launch {
+            addUserToGroupUseCase(groupName, userList, groupPhoto, userCount, userNumber)
+        }
+    }
 }

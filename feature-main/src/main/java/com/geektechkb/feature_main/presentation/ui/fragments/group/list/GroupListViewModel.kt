@@ -1,10 +1,5 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.group.list
 
-import com.algolia.instantsearch.android.paging3.Paginator
-import com.algolia.instantsearch.android.paging3.searchbox.connectPaginator
-import com.algolia.instantsearch.core.connection.ConnectionHandler
-import com.algolia.instantsearch.searchbox.SearchBoxConnector
-import com.algolia.instantsearch.searcher.hits.HitsSearcher
 import com.geektechkb.core.base.BaseViewModel
 import com.geektechkb.feature_main.domain.models.Group
 import com.geektechkb.feature_main.domain.useCases.CreateGroupPaginatorUseCase
@@ -16,13 +11,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GroupListViewModel @Inject constructor(
-	createHitsSearcherUseCase: CreateHitsSearcherUseCase,
-	createGroupPaginatorUseCase: CreateGroupPaginatorUseCase,
-	private val fetchGroupsUseCase: FetchGroupsUseCase
+    createHitsSearcherUseCase: CreateHitsSearcherUseCase,
+    createGroupPaginatorUseCase: CreateGroupPaginatorUseCase,
+    private val fetchGroupsUseCase: FetchGroupsUseCase
 ) : BaseViewModel() {
 
-	private val _groupsState = mutableUiStateFlow<List<Group>>()
-	val groupsState = _groupsState.asStateFlow()
+    private val _groupsState = mutableUiStateFlow<List<Group>>()
+    val groupsState = _groupsState.asStateFlow()
 
 //	private val searcher = createHitsSearcherUseCase(
 //		APPLICATION_ID,
@@ -34,13 +29,13 @@ class GroupListViewModel @Inject constructor(
 //	val searchBox = SearchBoxConnector(searcher)
 //	private val connectionHandler = ConnectionHandler(searchBox)
 
-	private fun fetchGroups() {
-		fetchGroupsUseCase().gatherRequest(_groupsState)
-	}
+    private fun fetchGroups() {
+        fetchGroupsUseCase().gatherRequest(_groupsState)
+    }
 
-	init {
-		fetchGroups()
-	}
+    init {
+        fetchGroups()
+    }
 
 //	connectionHandler += searchBox.connectPaginator(groupPaginator)
 //	override fun onCleared() {

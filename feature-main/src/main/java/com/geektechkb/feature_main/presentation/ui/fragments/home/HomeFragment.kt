@@ -77,7 +77,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     private fun renderToolbarTitle() {
-            transformTextFont()
+        transformTextFont()
     }
 
     private fun modifySearchView() {

@@ -104,13 +104,13 @@
         android:layout_marginStart="25dp"
         android:scaleType="fitXY"
         app:avatarViewBorderColor="@null"
-        tools:src="@drawable/ic_camera_one"
         app:avatarViewBorderWidth="0dp"
         app:avatarViewInitialsTextStyle="bold"
         app:avatarViewShape="circle"
         app:layout_constraintBottom_toTopOf="@id/v_start_of_toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_btn" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_btn"
+        tools:src="@drawable/ic_camera_one" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/open_users_group_one"

@@ -47,10 +47,10 @@ class MessagesRepositoryImpl @Inject constructor(
         messageMap["receiverPhoneNumber"] = receiverPhoneNumber
         messageMap["timeMessageWasSent"] = timeMessageWasSent
         addDocument(
-			messagesRef,
-			messageMap,
-			messageId,
-		)
+            messagesRef,
+            messageMap,
+            messageId,
+        )
         try {
             addDocument(
                 messagesRef,

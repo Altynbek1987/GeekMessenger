@@ -9,10 +9,10 @@ import kotlinx.serialization.Serializable
 @Parcelize
 @Serializable
 data class User(
-	val name: String? = null,
-	val lastName: String? = null,
-	override val phoneNumber: String? = null,
-	val profileImage: String? = null,
-	val lastSeen: String? = null,
-	val isPhoneNumberHidden: Boolean? = null,
+    val name: String? = null,
+    val lastName: String? = null,
+    override val phoneNumber: String? = null,
+    val profileImage: String? = null,
+    val lastSeen: String? = null,
+    val isPhoneNumberHidden: Boolean? = null,
 ) : BaseDiffModel, Parcelable
