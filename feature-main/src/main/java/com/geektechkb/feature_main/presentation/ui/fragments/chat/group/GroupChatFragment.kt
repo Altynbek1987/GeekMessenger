@@ -25,10 +25,14 @@ import com.geektechkb.core.extensions.*
 import com.geektechkb.core.ui.customViews.AudioRecordView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
+import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentGroupChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.GroupMessagesAdapter
+import com.geektechkb.feature_main.presentation.ui.fragments.chat.ChatFragmentDirections
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
+import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequest
+import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.vanniktech.emoji.EmojiPopup
@@ -45,12 +49,13 @@ class GroupChatFragment :
 
     override val binding by viewBinding(FragmentGroupChatBinding::bind)
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
-    private val adapter = GalleryPicturesAdapter(this::onSelect)
+    private val galleryAdapter = GalleryPicturesAdapter(this::onImageSelected, this::onSelect)
     private val messagesAdapter = GroupMessagesAdapter()
     override val viewModel by viewModels<GroupChatViewModel>()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val args: GroupChatFragmentArgs by navArgs()
     private var stateBottomSheet: Boolean = false
+    private var imageUri: Uri? = null
     private val appVoiceRecorder = AppVoiceRecorder()
     private val recordAudioPermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
@@ -63,18 +68,27 @@ class GroupChatFragment :
     private var isKeyboardShown: Boolean? = false
 
     @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+
+    @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
 
     override fun initialize() {
-
-        binding.recordView.activity = requireActivity()
-        binding.recordView.callback = this
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
     }
 
     override fun assembleViews() {
         setupAdapter()
         hideClipAndRecordViewWhenUserTyping()
+        setLightOrDarkWallpapers()
+    }
+
+    private fun setLightOrDarkWallpapers() {
+        when (preferencesHelper.isLightMode) {
+            true -> binding.root.setBackgroundResource(R.drawable.ic_chat_wallpaper_dark)
+            false -> binding.root.setBackgroundResource(R.drawable.ic_chat_wallpaper)
+        }
+
     }
 
     private fun checkAdapterItemCountAndHideLayout(
@@ -91,19 +105,18 @@ class GroupChatFragment :
 
     private fun setupAdapter() {
         binding.recyclerview.adapter = messagesAdapter
-//		toast(binding.recyclerview.adapter.toString())
     }
 
     private fun hideClipAndRecordViewWhenUserTyping() = with(binding) {
         etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             when (etMessage.text?.length) {
                 0 -> {
-                    recordView.isGone = false
+                    imMic.isGone = false
                     imSendMessage.isGone = true
                     imClip.isVisible = true
                 }
                 else -> {
-                    recordView.isGone = true
+                    imMic.isGone = true
                     imSendMessage.isGone = false
                     imClip.isVisible = false
                 }
@@ -174,7 +187,7 @@ class GroupChatFragment :
     }
 
     private fun initBottomSheetRecycler() {
-        binding.galleryBottomSheet.recyclerviewRating.adapter = adapter
+        binding.galleryBottomSheet.recyclerviewRating.adapter = galleryAdapter
         binding.galleryBottomSheet.recyclerviewRating.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -185,14 +198,14 @@ class GroupChatFragment :
     }
 
     private fun loadPictures() {
-        galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 10) {
+        galleryViewModel.getImagesFromGallery(context = requireContext(), pageSize = 20) {
             if (it.isNotEmpty()) {
-                val mutableAdapterList = adapter.currentList.toMutableList()
+                val mutableAdapterList = galleryAdapter.currentList.toMutableList()
                 mutableAdapterList.addAll(it)
-                adapter.submitList(mutableAdapterList)
-                adapter.notifyItemRangeInserted(adapter.currentList.size, it.size)
+                galleryAdapter.submitList(mutableAdapterList)
+                galleryAdapter.notifyItemRangeInserted(galleryAdapter.currentList.size, it.size)
             }
-            Log.e("GalleryListSize", "${adapter.currentList.size}")
+            Log.e("GalleryListSize", "${galleryAdapter.currentList.size}")
         }
     }
 
@@ -248,7 +261,7 @@ class GroupChatFragment :
     }
 
     private fun interactWithToolbarMenu() {
-        binding.toolbar.setOnMenuItemClickListener {
+        binding.chatToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.btn_clear_chat -> {
                     /*findNavController().directionsSafeNavigation(
@@ -306,9 +319,9 @@ class GroupChatFragment :
         viewModel.groupInfoState.spectateUiState(error = {
 
         }, success = {
-            binding.tvUserCount.text = it.userCount.toString() + "- Участника"
-            binding.tvGroupName.text = it.groupName.toString()
-            binding.imProfile.setImage(it.groupPhoto)
+            binding.tvUserStatus.text = it.userCount.toString() + "- Участника"
+            binding.tvUsername.text = it.groupName.toString()
+            binding.avChatteeProfile.loadImageAndSetInitialsIfFailed(it.groupPhoto, it.groupName)
         })
     }
 
@@ -335,10 +348,21 @@ class GroupChatFragment :
         }
     }
 
-
-    private fun onSelect(uri: Uri) {
+    private fun onImageSelected(uri: Uri) {
+        imageUri = uri
         stateBottomSheet = true
+        findNavController().directionsSafeNavigation(
+            ChatFragmentDirections.actionChatFragmentToPhotoPreviewFragment(
+                args.usersPhoneNumbers.toString(),
+                uri.toString(),
+                PreviewPhotoRequest.SEND_PHOTO,
+                0,
+                ""
+            )
+        )
     }
+
+
 
 
     override fun onRecordStart() {
@@ -362,6 +386,19 @@ class GroupChatFragment :
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
 
+    }
+    private fun onSelect(uri: Uri, videoDuration: String?) {
+        findNavController().directionsSafeNavigation(
+            ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
+                chatteePhoneNumber = args.usersPhoneNumbers.toString(),
+                chatteeUsername = args.groupName,
+                selectedVideo = uri.toString(),
+                selectedVideoDuration = videoDuration,
+                videoPreview = PreviewVideoRequest.SENT_VIDEO,
+                videoCount = 0,
+                time = ""
+            )
+        )
     }
 
 

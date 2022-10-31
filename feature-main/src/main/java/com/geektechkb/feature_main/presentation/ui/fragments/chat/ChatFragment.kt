@@ -40,8 +40,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     override val viewModel by viewModels<ChatViewModel>()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val messagesAdapter = MessagesAdapter(this::openPhotoPreview, this::openVideoPreview)
-    private val galleryAdapter =
-        GalleryPicturesAdapter(this::onImageSelected, this::onVideoSelected)
+    private val galleryAdapter = GalleryPicturesAdapter(this::onImageSelected, this::onVideoSelected)
     private val args: ChatFragmentArgs by navArgs()
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private var username: String? = null
