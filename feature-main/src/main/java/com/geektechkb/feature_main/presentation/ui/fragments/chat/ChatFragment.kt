@@ -241,14 +241,20 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
-    private fun openEmojiSoftKeyboard() = with(binding) {
-        imEmoji.setOnClickListener {
-            EmojiPopup(
+    private fun openEmojiSoftKeyboard() {
+
+        binding.apply {
+
+            val emojiPopUp = EmojiPopup(
                 root,
-                etMessage,
-                onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
-                onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
-            ).toggle()
+                binding.etMessage,
+
+                onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
+                onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
+            )
+            binding.imEmoji.setOnSingleClickListener {
+                emojiPopUp.toggle()
+            }
         }
 
     }
