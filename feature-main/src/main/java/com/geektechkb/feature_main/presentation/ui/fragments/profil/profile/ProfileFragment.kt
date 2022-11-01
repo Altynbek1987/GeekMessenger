@@ -273,7 +273,8 @@ class ProfileFragment :
         findNavController().navigate(
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(
                 uri.toString(),
-                CropPhotoRequest.PROFILE
+                CropPhotoRequest.PROFILE,
+                arrayOf()
             )
         )
     }
