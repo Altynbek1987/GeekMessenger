@@ -129,7 +129,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupListeners() {
         clearSearchViewQueryAndFocus()
-        binding.btnGroup.setOnClickListener {
+        binding.btnGroup?.setOnClickListener {
             findNavController().navigateSafely(R.id.action_homeFragment_to_groupListFragment)
         }
     }

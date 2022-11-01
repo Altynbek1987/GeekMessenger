@@ -16,7 +16,7 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.*
 import com.geektechkb.feature_main.domain.models.Message
 
-class MessagesAdapter(
+class MessagesAdapter   (
     private val onItemPhotoClick: (image: String, timeMessageWasSent: String, photoCount: Int) -> Unit,
     private val onItemVideoClick: (video: String, timeMessageWasSent: String, videoCount: Int) -> Unit
 ) :
