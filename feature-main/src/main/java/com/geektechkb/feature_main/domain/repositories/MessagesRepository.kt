@@ -15,9 +15,6 @@ interface MessagesRepository {
         messageId: String,
     )
 
-    suspend fun sendVoiceMessage(file: String, voiceFileName: String)
-
-
     fun fetchPagedMessages(
         senderPhoneNumber: String,
         receiverPhoneNumber: String
