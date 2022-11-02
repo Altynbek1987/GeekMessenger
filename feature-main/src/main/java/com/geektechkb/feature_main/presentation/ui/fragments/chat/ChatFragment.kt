@@ -3,7 +3,9 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 import android.Manifest
 import android.annotation.SuppressLint
 import android.net.Uri
+import android.util.TypedValue
 import android.view.MotionEvent.ACTION_DOWN
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -57,6 +59,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
                 setupBottomSheet()
+                openBottomSheet()
             },
             actionWhenPermissionHasBeenDenied = {
                 if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
@@ -69,9 +72,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private val recordAudioPermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.RECORD_AUDIO,
-            actionWhenPermissionHasBeenGranted = {
-                showShortDurationSnackbar("Granted dude!")
-            }, actionWhenPermissionHasBeenDenied = {
+            actionWhenPermissionHasBeenDenied = {
                 if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
                     findNavController().directionsSafeNavigation(
                         ChatFragmentDirections.actionChatFragmentToDeniedPermissionsDialogFragment(
@@ -153,14 +154,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             when (etMessage.text?.length) {
                 0 -> {
-                    recordView.invisible()
+                    recordView.visible()
                     imSendMessage.invisible()
                     imClip.visible()
                 }
                 else -> {
-                    recordView.visible()
+                    recordView.gone()
                     imSendMessage.visible()
-                    imClip.invisible()
+                    imClip.gone()
                 }
             }
         })
@@ -180,6 +181,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         binding.recordView.setOnTouchListener { _, event ->
             when (event.action) {
                 ACTION_DOWN -> {
+
                     checkForPermissionStatusAndRequestIt(
                         recordAudioPermissionLauncher,
                         Manifest.permission.RECORD_AUDIO,
@@ -296,13 +298,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun openEmojiSoftKeyboard() = with(binding) {
-        imEmoji.setOnClickListener {
-            EmojiPopup(
-                root,
-                etMessage,
-                onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
-                onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
-            ).toggle()
+        val emojiPopup = EmojiPopup(
+            root,
+            etMessage,
+            onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
+            onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
+        )
+        imEmoji.setOnSingleClickListener {
+            emojiPopup.toggle()
         }
 
     }
@@ -412,30 +415,48 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     override fun onRecordStart() {
-        showShortDurationSnackbar("Record started")
+        val params = binding.recordView.layoutParams as ConstraintLayout.LayoutParams
+        params.apply {
+            params.startToStart = binding.cl.id
+            params.endToEnd = binding.cl.id
+            params.bottomToBottom = binding.cl.id
+            params.width = ConstraintLayout.LayoutParams.MATCH_PARENT
+            params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+        }
         appVoiceRecorder.startRecordingVoiceMessage(requireContext())
     }
 
     override fun onRecordEnd() {
-        showShortDurationSnackbar("Record ended")
+        val params = binding.recordView.layoutParams as ConstraintLayout.LayoutParams
+        params.endToEnd = binding.cl.id
+        params.bottomToBottom = binding.cl.id
+        params.width =
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 26f, resources.displayMetrics)
+                .toInt()
         appVoiceRecorder.stopRecordingVoiceMessage()
-        viewModel.sendMessage(
-            usersPreferencesHelper.currentUserPhoneNumber,
-            args.phoneNumber.toString(),
-            "",
-            appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
-            "voiceMessage",
-            timeMessageWasSent = formatCurrentUserTime(
-                YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
-            ),
-            messageId = generateRandomId(),
-        )
+        if (appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString() != Uri.EMPTY.toString())
+            viewModel.sendMessage(
+                usersPreferencesHelper.currentUserPhoneNumber,
+                args.phoneNumber.toString(),
+                "",
+                appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
+                "voiceMessage",
+                timeMessageWasSent = formatCurrentUserTime(
+                    YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
+                ),
+                messageId = generateRandomId(),
+            )
     }
 
     override fun onRecordCancel() {
-        showShortDurationSnackbar("Record cancelled")
-        appVoiceRecorder.stopRecordingVoiceMessage()
+        val params = binding.recordView.layoutParams as ConstraintLayout.LayoutParams
+        params.endToEnd = binding.cl.id
+        params.bottomToBottom = binding.cl.id
+        params.width =
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 26f, resources.displayMetrics)
+                .toInt()
         appVoiceRecorder.deleteRecordedVoiceMessage()
+        appVoiceRecorder.stopRecordingVoiceMessage()
     }
 
     override fun isReady() = true
