@@ -70,25 +70,6 @@ class MessagesRepositoryImpl @Inject constructor(
                     "timeMessageWasSent" to timeMessageWasSent
                 )
             )
-//            messageMap["messageId"] = messageId
-//            messageMap["messageKey"] = (id + receiverPhoneNumber)
-//            messageMap["message"] = message
-//            messageMap["mediaResource"] =
-//                uploadUncompressedMediaToCloudStorage(
-//                    cloudStorageRef,
-//                    Uri.parse(media),
-//                    FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH, generateRandomId()
-//                )
-//            messageMap["mediaType"] = mediaType
-//            messageMap["videoDuration"] = videoDuration
-//            messageMap["senderPhoneNumber"] = id
-//            messageMap["receiverPhoneNumber"] = receiverPhoneNumber
-//            messageMap["timeMessageWasSent"] = timeMessageWasSent
-//            addDocument(
-//                messagesRef,
-//                messageMap,
-//                messageId
-//            )
         } catch (e: StorageException) {
             addDocument(
                 messagesRef,

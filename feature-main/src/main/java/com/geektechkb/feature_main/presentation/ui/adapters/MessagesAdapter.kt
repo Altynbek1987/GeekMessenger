@@ -1,8 +1,13 @@
 package com.geektechkb.feature_main.presentation.ui.adapters
 
+import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
@@ -15,6 +20,8 @@ import com.geektechkb.core.extensions.setImage
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.*
 import com.geektechkb.feature_main.domain.models.Message
+import java.util.concurrent.TimeUnit
+import kotlin.math.ceil
 
 class MessagesAdapter(
     private val onItemPhotoClick: (image: String, timeMessageWasSent: String, photoCount: Int) -> Unit,
@@ -56,6 +63,13 @@ class MessagesAdapter(
                     false
                 )
             )
+            R.layout.item_sent_voice_message -> VoiceMessageSentViewHolder(
+                ItemSentVoiceMessageBinding.inflate(
+                    inflater,
+                    parent,
+                    false
+                )
+            )
             R.layout.item_received_message ->
                 MessageReceivedViewHolder(
                     ItemReceivedMessageBinding.inflate(
@@ -76,12 +90,18 @@ class MessagesAdapter(
                     false
                 )
             )
+            R.layout.item_received_voice_message -> VoiceMessageReceivedViewHolder(
+                ItemReceivedVoiceMessageBinding.inflate(
+                    inflater,
+                    parent,
+                    false
+                )
+            )
             else -> {
                 throw IllegalArgumentException("Not found ViewHolder!")
             }
         }
     }
-
 
     override fun onBindViewHolder(
         holder: BaseRecyclerViewHolder<ViewBinding, Message>,
@@ -97,6 +117,9 @@ class MessagesAdapter(
             R.layout.item_sent_video -> getItem(position)?.let {
                 (holder as VideoSentViewHolder).onBind(it)
             }
+            R.layout.item_sent_voice_message -> getItem(position)?.let {
+                (holder as VoiceMessageSentViewHolder).onBind(it)
+            }
             R.layout.item_received_message -> getItem(position)?.let {
                 (holder as MessageReceivedViewHolder).onBind(it)
             }
@@ -105,6 +128,9 @@ class MessagesAdapter(
             }
             R.layout.item_received_video -> getItem(position)?.let {
                 (holder as VideoReceivedViewHolder).onBind(it)
+            }
+            R.layout.item_received_voice_message -> getItem(position)?.let {
+                (holder as VoiceMessageReceivedViewHolder).onBind(it)
             }
         }
     }
@@ -126,6 +152,10 @@ class MessagesAdapter(
                 position
             )?.mediaType == "video" && getItem(position)?.mediaResource?.isNotEmpty() == true ->
                 R.layout.item_sent_video
+            getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == true && getItem(
+                position
+            )?.mediaType == "voiceMessage" && getItem(position)?.mediaResource?.isNotEmpty() == true ->
+                R.layout.item_sent_voice_message
 
             getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == false && getItem(
                 position
@@ -145,6 +175,12 @@ class MessagesAdapter(
                 position
             )?.mediaResource?.isNotEmpty() == true ->
                 R.layout.item_received_video
+            getItem(position)?.senderPhoneNumber?.equals(senderPhoneNumber) == false && getItem(
+                position
+            )?.mediaType == "voiceMessage" && getItem(
+                position
+            )?.mediaResource?.isNotEmpty() == true ->
+                R.layout.item_received_voice_message
             else ->
                 R.layout.item_sent_messages
         }
@@ -189,7 +225,6 @@ class MessagesAdapter(
                 keepScreenOn = true
                 requestFocus()
                 start()
-
             }
             binding.tvTimeSent.text = parseToFormat(item.timeMessageWasSent.toString())
             binding.tvVideoDuration.text = item.videoDuration
@@ -202,6 +237,101 @@ class MessagesAdapter(
                 )
                 videoCount = 0
             }
+        }
+    }
+
+    inner class VoiceMessageSentViewHolder(binding: ItemSentVoiceMessageBinding) :
+        BaseRecyclerViewHolder<ItemSentVoiceMessageBinding, Message>(binding) {
+        private lateinit var runnable: Runnable
+        override fun onBind(item: Message) = with(binding) {
+            tvTimeMessageWasSent.text = parseToFormat(item.timeMessageWasSent.toString())
+            val mediaPlayer =
+                MediaPlayer.create(binding.root.context, Uri.parse(item.mediaResource))
+            val duration = mediaPlayer.duration.toLong()
+            val durationInSeconds =
+                TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(
+                    TimeUnit.MILLISECONDS.toMinutes(duration)
+                )
+            val totalDuration = when (durationInSeconds.toString().length < 2) {
+                true ->
+                    String.format(
+                        "%d:0%d ",
+                        TimeUnit.MILLISECONDS.toMinutes(duration),
+                        durationInSeconds
+                    )
+                false ->
+                    String.format(
+                        "%d:%d",
+                        TimeUnit.MILLISECONDS.toMinutes(duration),
+                        durationInSeconds
+                    )
+            }
+            tvCurrentAudioPositionAndTotalDuration.text =
+                tvCurrentAudioPositionAndTotalDuration.context.getString(
+                    R.string.start_voice_message_time,
+                    totalDuration
+                )
+            val handler = Looper.myLooper()?.let { Handler(it) }
+            seekbar.max = mediaPlayer.duration
+            ibPlayer.apply {
+                setOnClickListener {
+                    this.isSelected = !this.isSelected
+                    when (isSelected) {
+                        true -> {
+                            mediaPlayer.start()
+                        }
+                        false -> {
+                            mediaPlayer.pause()
+                        }
+                    }
+                }
+                runnable = Runnable {
+                    seekbar.progress = mediaPlayer.currentPosition
+                    handler?.postDelayed(runnable, 100L)
+                }
+                handler?.postDelayed(runnable, 100L)
+                mediaPlayer.setOnCompletionListener {
+                    mediaPlayer.pause()
+                    mediaPlayer.seekTo(0)
+                    seekbar.progress = mediaPlayer.currentPosition
+                    isSelected = false
+                }
+            }
+            seekbar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    if (fromUser)
+                        mediaPlayer.seekTo(progress)
+                    val currentSeconds = ceil((progress / 1000f).toDouble()).toInt()
+                    when (currentSeconds > 10) {
+                        false -> {
+                            tvCurrentAudioPositionAndTotalDuration.text =
+                                tvCurrentAudioPositionAndTotalDuration.context.getString(
+                                    R.string.current_seconds_if_less_than_ten_plus_total_duration,
+                                    currentSeconds.toString(),
+                                    totalDuration
+                                )
+                        }
+                        true -> {
+                            tvCurrentAudioPositionAndTotalDuration.text =
+                                tvCurrentAudioPositionAndTotalDuration.context.getString(
+                                    R.string.current_seconds_if_more_than_ten_plus_total_duration,
+                                    currentSeconds.toString(),
+                                    totalDuration
+                                )
+                        }
+                    }
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar) {
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar) {
+                }
+            })
         }
     }
 
@@ -226,7 +356,6 @@ class MessagesAdapter(
                     photoCount
                 )
                 photoCount = 0
-
             }
         }
     }
@@ -251,6 +380,101 @@ class MessagesAdapter(
                 )
                 videoCount = 0
             }
+        }
+    }
+
+    inner class VoiceMessageReceivedViewHolder(binding: ItemReceivedVoiceMessageBinding) :
+        BaseRecyclerViewHolder<ItemReceivedVoiceMessageBinding, Message>(binding) {
+        private lateinit var runnable: Runnable
+        override fun onBind(item: Message) = with(binding) {
+            tvTimeMessageWasSent.text = parseToFormat(item.timeMessageWasSent.toString())
+            val mediaPlayer =
+                MediaPlayer.create(binding.root.context, Uri.parse(item.mediaResource))
+            val duration = mediaPlayer.duration.toLong()
+            val durationInSeconds =
+                TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(
+                    TimeUnit.MILLISECONDS.toMinutes(duration)
+                )
+            val totalDuration = when (durationInSeconds.toString().length < 2) {
+                true ->
+                    String.format(
+                        "%d:0%d ",
+                        TimeUnit.MILLISECONDS.toMinutes(duration),
+                        durationInSeconds
+                    )
+                false ->
+                    String.format(
+                        "%d:%d",
+                        TimeUnit.MILLISECONDS.toMinutes(duration),
+                        durationInSeconds
+                    )
+            }
+            tvCurrentAudioPositionAndTotalDuration.text =
+                tvCurrentAudioPositionAndTotalDuration.context.getString(
+                    R.string.start_voice_message_time,
+                    totalDuration
+                )
+            val handler = Looper.myLooper()?.let { Handler(it) }
+            seekbar.max = mediaPlayer.duration
+            ibPlayer.apply {
+                setOnClickListener {
+                    this.isSelected = !this.isSelected
+                    when (isSelected) {
+                        true -> {
+                            mediaPlayer.start()
+                        }
+                        false -> {
+                            mediaPlayer.pause()
+                        }
+                    }
+                }
+                runnable = Runnable {
+                    seekbar.progress = mediaPlayer.currentPosition
+                    handler?.postDelayed(runnable, 100L)
+                }
+                handler?.postDelayed(runnable, 100L)
+                mediaPlayer.setOnCompletionListener {
+                    mediaPlayer.pause()
+                    mediaPlayer.seekTo(0)
+                    seekbar.progress = mediaPlayer.currentPosition
+                    isSelected = false
+                }
+            }
+            seekbar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    if (fromUser)
+                        mediaPlayer.seekTo(progress)
+                    val currentSeconds = ceil((progress / 1000f).toDouble()).toInt()
+                    when (currentSeconds > 10) {
+                        false -> {
+                            tvCurrentAudioPositionAndTotalDuration.text =
+                                tvCurrentAudioPositionAndTotalDuration.context.getString(
+                                    R.string.current_seconds_if_less_than_ten_plus_total_duration,
+                                    currentSeconds.toString(),
+                                    totalDuration
+                                )
+                        }
+                        true -> {
+                            tvCurrentAudioPositionAndTotalDuration.text =
+                                tvCurrentAudioPositionAndTotalDuration.context.getString(
+                                    R.string.current_seconds_if_more_than_ten_plus_total_duration,
+                                    currentSeconds.toString(),
+                                    totalDuration
+                                )
+                        }
+                    }
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar) {
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar) {
+                }
+            })
         }
     }
 
