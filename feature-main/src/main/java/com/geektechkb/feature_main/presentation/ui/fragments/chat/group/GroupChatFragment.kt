@@ -7,7 +7,6 @@ import android.net.Uri
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -354,9 +353,6 @@ class GroupChatFragment :
 
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
-        viewModel.sendVoiceMessage(
-            appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(), generateRandomId()
-        )
     }
 
     override fun onRecordCancel() {
