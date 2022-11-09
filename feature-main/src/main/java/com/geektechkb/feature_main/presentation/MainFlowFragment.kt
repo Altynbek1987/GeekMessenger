@@ -1,6 +1,5 @@
 package com.geektechkb.feature_main.presentation
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
@@ -66,6 +65,8 @@ class MainFlowFragment : BaseFlowFragment(
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
+                R.id.chatFragment, R.id.nav_groups, R.id.profileFlowFragment, R.id.profileFragment, R.id.photoPreviewFragment, R.id.videoPreviewFragment, R.id.createGroupFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                    true
                 R.id.chatFragment,
                     R.id.groupChatFragment,
                 R.id.nav_groups, R.id.profileFlowFragment, R.id.profileFragment, R.id.photoPreviewFragment,

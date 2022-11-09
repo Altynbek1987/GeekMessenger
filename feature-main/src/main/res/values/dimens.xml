@@ -2,4 +2,5 @@
 <resources>
     <dimen name="bottom_left_top_left_corner_radius">15dp</dimen>
     <dimen name="bottom_right_top_right_corner_radius">2dp</dimen>
+    <dimen name="record_view_default_width">26dp</dimen>
 </resources>
