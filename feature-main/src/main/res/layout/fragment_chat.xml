@@ -2,20 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="0"
     android:fitsSystemWindows="true"
     tools:background="@drawable/ic_chat_wallpaper"
     tools:context=".presentation.ui.fragments.chat.ChatFragment">
-
-    <include
+     <include
         android:id="@+id/i_there_are_no_messages_yet"
         layout="@layout/there_are_no_messages_yet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible" />
-
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/chat_toolbar"
@@ -101,7 +99,6 @@
                 app:layout_constraintStart_toEndOf="@id/av_chattee_profile"
                 app:layout_constraintTop_toBottomOf="@id/tv_username" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -145,6 +142,7 @@
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@drawable/chat_box_stroke_color_selector"
             app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
             app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/im_send_message"
@@ -168,24 +166,15 @@
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <ImageView
             android:id="@+id/im_clip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="18dp"
+            android:layout_marginEnd="9dp"
             android:src="@drawable/ic_clip"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/im_mic"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/im_mic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
-            android:src="@drawable/ic_microphone_inactive"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/im_send_message"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -197,8 +186,24 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="invisible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.geektechkb.core.ui.customViews.AudioRecordView
+        android:id="@+id/record_view"
+        android:layout_width="26dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="5dp"
+        app:cancel_icon="@drawable/ic_release_locked_lock"
+        app:circle_color="@color/sentMessagesColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:mic_active_icon="@drawable/ic_microphone_active"
+        app:mic_icon="@drawable/ic_microphone_inactive"
+        app:vibration_enable="true"
+        tools:visibility="visible" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_gallery"
@@ -214,6 +219,5 @@
         <include
             android:id="@+id/gallery_bottom_sheet"
             layout="@layout/fragment_gallery_bottom_sheet" />
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

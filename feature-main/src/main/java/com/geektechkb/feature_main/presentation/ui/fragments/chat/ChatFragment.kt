@@ -1,7 +1,12 @@
 package com.geektechkb.feature_main.presentation.ui.fragments.chat
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.net.Uri
+import android.util.TypedValue
+import android.view.MotionEvent.ACTION_DOWN
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -16,6 +21,8 @@ import com.geektechkb.common.constants.Constants.YEAR_MONTH_DAY_HOURS_MINUTES_SE
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
+import com.geektechkb.core.ui.customViews.AudioRecordView
+import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
@@ -34,14 +41,14 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat) {
+class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fragment_chat),
+    AudioRecordView.Callback {
 
     override val binding by viewBinding(FragmentChatBinding::bind)
     override val viewModel by viewModels<ChatViewModel>()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val messagesAdapter = MessagesAdapter(this::openPhotoPreview, this::openVideoPreview)
-    private val galleryAdapter =
-        GalleryPicturesAdapter(this::onImageSelected, this::onVideoSelected)
+    private val galleryAdapter = GalleryPicturesAdapter(this::onImageSelected, this::onVideoSelected)
     private val args: ChatFragmentArgs by navArgs()
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private var username: String? = null
@@ -51,6 +58,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
                 setupBottomSheet()
+                openBottomSheet()
             },
             actionWhenPermissionHasBeenDenied = {
                 if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
@@ -60,6 +68,18 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         )
                     )
             })
+    private val recordAudioPermissionLauncher =
+        createRequestPermissionLauncherToRequestSinglePermission(
+            Manifest.permission.RECORD_AUDIO,
+            actionWhenPermissionHasBeenDenied = {
+                if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
+                    findNavController().directionsSafeNavigation(
+                        ChatFragmentDirections.actionChatFragmentToDeniedPermissionsDialogFragment(
+                            getString(com.geektechkb.core.R.string.geekMessenger_application_cant_function_without_needed_permissions_russian)
+                        )
+                    )
+            })
+    private val appVoiceRecorder = AppVoiceRecorder()
 
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
@@ -69,6 +89,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     override fun initialize() {
         galleryViewModel.shouldVideoBeShown(true)
+        appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
+        sendMediaIfAvailable()
+        initializeAudioRecordView()
+    }
+
+    private fun initializeAudioRecordView() {
+        binding.recordView.apply {
+            activity = requireActivity()
+            callback = this@ChatFragment
+        }
+    }
+
+    private fun sendMediaIfAvailable() {
         args.image?.let {
             viewModel.sendMessage(
                 usersPreferencesHelper.currentUserPhoneNumber,
@@ -94,7 +127,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             true -> binding.root.setBackgroundResource(R.drawable.ic_chat_wallpaper_dark)
             false -> binding.root.setBackgroundResource(R.drawable.ic_chat_wallpaper)
         }
-
     }
 
     private fun changeUserStatusToTyping(receiverPhoneNumber: String?) {
@@ -121,14 +153,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         etMessage.addTextChangedListenerAnonymously(doSomethingOnTextChanged = {
             when (etMessage.text?.length) {
                 0 -> {
-                    imMic.visible()
+                    recordView.visible()
                     imSendMessage.invisible()
                     imClip.visible()
                 }
                 else -> {
-                    imMic.invisible()
+                    recordView.gone()
                     imSendMessage.visible()
-                    imClip.invisible()
+                    imClip.gone()
                 }
             }
         })
@@ -140,6 +172,29 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         openEmojiSoftKeyboard()
         interactWithToolbarMenu()
         backToHomeFragment()
+        startRecordingAudio()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun startRecordingAudio() {
+        binding.recordView.setOnTouchListener { _, event ->
+            when (event.action) {
+                ACTION_DOWN -> {
+
+                    checkForPermissionStatusAndRequestIt(
+                        recordAudioPermissionLauncher,
+                        Manifest.permission.RECORD_AUDIO,
+                        actionWhenPermissionHasBeenGranted = {
+                        }
+                    )
+
+                    true
+                }
+                else -> {
+                    true
+                }
+            }
+        }
     }
 
     private fun expandGalleryDialog() {
@@ -241,6 +296,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
+
     private fun openEmojiSoftKeyboard() {
 
         binding.apply {
@@ -255,8 +311,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             binding.imEmoji.setOnSingleClickListener {
                 emojiPopUp.toggle()
             }
-        }
-
     }
 
     override fun establishRequest() {
@@ -301,6 +355,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
                         messagesAdapter.submitList(it)
+//                        messagesAdapter.notifyDataSetChanged()
                         binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount)
                         binding.iThereAreNoMessagesYet.root.isVisible = it.isEmpty()
                     }
@@ -362,4 +417,64 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             )
         )
     }
+
+    override fun onRecordStart() = with(binding) {
+        val params = recordView.layoutParams as ConstraintLayout.LayoutParams
+        params.apply {
+            endToEnd = cl.id
+            bottomToBottom = cl.id
+            width = ConstraintLayout.LayoutParams.MATCH_PARENT
+            height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+        }
+        recordView.layoutParams = params
+        appVoiceRecorder.startRecordingVoiceMessage(requireContext())
+    }
+
+    override fun onRecordEnd() = with(binding) {
+        val params = recordView.layoutParams as ConstraintLayout.LayoutParams
+        params.apply {
+            endToEnd = cl.id
+            bottomToBottom = cl.id
+            width = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                26f,
+                resources.displayMetrics
+            )
+                .toInt()
+            height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+        }
+        recordView.layoutParams = params
+        appVoiceRecorder.stopRecordingVoiceMessage()
+        viewModel.sendMessage(
+            usersPreferencesHelper.currentUserPhoneNumber,
+            args.phoneNumber.toString(),
+            "",
+            appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
+            "voiceMessage",
+            timeMessageWasSent = formatCurrentUserTime(
+                YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
+            ),
+            messageId = generateRandomId(),
+        )
+    }
+
+    override fun onRecordCancel() = with(binding) {
+        val params = recordView.layoutParams as ConstraintLayout.LayoutParams
+        params.apply {
+            endToEnd = cl.id
+            bottomToBottom = cl.id
+            width = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                26f,
+                resources.displayMetrics
+            )
+                .toInt()
+            height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+        }
+        recordView.layoutParams = params
+        appVoiceRecorder.deleteRecordedVoiceMessage()
+        appVoiceRecorder.stopRecordingVoiceMessage()
+    }
+
+    override fun isReady() = true
 }

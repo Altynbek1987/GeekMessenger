@@ -45,8 +45,7 @@ class GalleryPicturesAdapter(
                 }
             }
             Glide.with(ivImg).load(galleryPicture.path).into(ivImg)
-            root.setOnClickListener {
-
+            binding.root.setOnClickListener {
                 when (galleryPicture.isVideo) {
                     false ->
                         onImageSelected(
