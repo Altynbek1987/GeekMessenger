@@ -64,7 +64,7 @@ class MainFlowFragment : BaseFlowFragment(
         binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.chatFragment, R.id.nav_groups, R.id.profileFlowFragment, R.id.profileFragment, R.id.photoPreviewFragment, R.id.videoPreviewFragment, R.id.createGroupFragment -> binding.homeAppBarMain.toolbarButton.isGone =
+                R.id.chatFragment, R.id.groupChatFragment, R.id.nav_groups, R.id.profileFlowFragment, R.id.profileFragment, R.id.photoPreviewFragment, R.id.videoPreviewFragment, R.id.createGroupFragment -> binding.homeAppBarMain.toolbarButton.isGone =
                     true
                 else -> binding.homeAppBarMain.toolbarButton.isGone = false
             }
