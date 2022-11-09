@@ -2,7 +2,6 @@ package com.geektechkb.feature_main.data.repositories
 
 import android.net.Uri
 import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH
-import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT
 import com.geektechkb.core.base.BaseRepository
@@ -14,7 +13,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.tasks.await
 import java.io.FileNotFoundException
 import javax.inject.Inject
 
@@ -24,10 +22,7 @@ class MessagesRepositoryImpl @Inject constructor(
 ) : BaseRepository(), MessagesRepository {
     private val messagesRef =
         firestore.collection(FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH)
-    private val voiceRef = cloudStorage.reference
     private val cloudStorageRef = cloudStorage.reference
-    private val messageMap = hashMapOf<String, Any?>()
-
 
     override suspend fun sendMessage(
         id: String,
@@ -39,18 +34,6 @@ class MessagesRepositoryImpl @Inject constructor(
         timeMessageWasSent: String,
         messageId: String,
     ) {
-
-        messageMap["messageId"] = messageId
-        messageMap["messageKey"] = (id + receiverPhoneNumber)
-        messageMap["message"] = message
-        messageMap["senderPhoneNumber"] = id
-        messageMap["receiverPhoneNumber"] = receiverPhoneNumber
-        messageMap["timeMessageWasSent"] = timeMessageWasSent
-        addDocument(
-            messagesRef,
-            messageMap,
-            messageId,
-        )
         try {
             addDocument(
                 messagesRef,
@@ -70,25 +53,6 @@ class MessagesRepositoryImpl @Inject constructor(
                     "timeMessageWasSent" to timeMessageWasSent
                 )
             )
-//            messageMap["messageId"] = messageId
-//            messageMap["messageKey"] = (id + receiverPhoneNumber)
-//            messageMap["message"] = message
-//            messageMap["mediaResource"] =
-//                uploadUncompressedMediaToCloudStorage(
-//                    cloudStorageRef,
-//                    Uri.parse(media),
-//                    FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH, generateRandomId()
-//                )
-//            messageMap["mediaType"] = mediaType
-//            messageMap["videoDuration"] = videoDuration
-//            messageMap["senderPhoneNumber"] = id
-//            messageMap["receiverPhoneNumber"] = receiverPhoneNumber
-//            messageMap["timeMessageWasSent"] = timeMessageWasSent
-//            addDocument(
-//                messagesRef,
-//                messageMap,
-//                messageId
-//            )
         } catch (e: StorageException) {
             addDocument(
                 messagesRef,
@@ -122,13 +86,6 @@ class MessagesRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun sendVoiceMessage(file: String, voiceFileName: String) {
-        uploadVoiceMessageToCloudStorage(
-            cloudStorageRef, Uri.parse(file),
-            FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH, voiceFileName
-        )
-    }
-
     override fun fetchPagedMessages(senderPhoneNumber: String, receiverPhoneNumber: String) =
         messagesRef
             .whereIn(
@@ -146,17 +103,4 @@ class MessagesRepositoryImpl @Inject constructor(
                     document.toObject(Message::class.java)
                 }
             }
-
-    suspend fun sendVoiceMessageToCloudStorage(file: Uri?, voiceFileName: String) =
-        file?.let {
-            voiceRef
-                .child("voiceMessages/")
-                .child(voiceFileName)
-                .putFile(it)
-                .await()
-                .storage
-                .downloadUrl
-                .await()
-                .toString()
-        }
 }

@@ -11,4 +11,5 @@ data class Message(
     val senderPhoneNumber: String? = null,
     val receiverPhoneNumber: String? = null,
     val timeMessageWasSent: String? = null,
+    var isAudioPlaying: Boolean = false
 )

@@ -69,6 +69,6 @@ class AppVoiceRecorder {
     }
 
     fun showVoiceMessageFileName() {
-        Log.e("faksf", voiceMessageFileName)
+        Log.e("gaypop", voiceMessageFileName)
     }
 }
