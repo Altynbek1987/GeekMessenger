@@ -247,6 +247,7 @@ class MessagesAdapter(
             tvTimeMessageWasSent.text = parseToFormat(item.timeMessageWasSent.toString())
             val mediaPlayer =
                 MediaPlayer.create(binding.root.context, Uri.parse(item.mediaResource))
+            mediaPlayer.seekTo(1)
             val duration = mediaPlayer.duration.toLong()
             val durationInSeconds =
                 TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(
@@ -390,6 +391,7 @@ class MessagesAdapter(
             tvTimeMessageWasSent.text = parseToFormat(item.timeMessageWasSent.toString())
             val mediaPlayer =
                 MediaPlayer.create(binding.root.context, Uri.parse(item.mediaResource))
+            mediaPlayer.seekTo(1)
             val duration = mediaPlayer.duration.toLong()
             val durationInSeconds =
                 TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(

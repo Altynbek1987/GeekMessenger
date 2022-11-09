@@ -143,6 +143,7 @@
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@drawable/chat_box_stroke_color_selector"
             app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
             app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/im_send_message"

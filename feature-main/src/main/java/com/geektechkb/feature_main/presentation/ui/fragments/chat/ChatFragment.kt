@@ -352,6 +352,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
                         messagesAdapter.submitList(it)
+//                        messagesAdapter.notifyDataSetChanged()
                         binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount)
                         binding.iThereAreNoMessagesYet.root.isVisible = it.isEmpty()
                     }
@@ -414,47 +415,60 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         )
     }
 
-    override fun onRecordStart() {
-        val params = binding.recordView.layoutParams as ConstraintLayout.LayoutParams
+    override fun onRecordStart() = with(binding) {
+        val params = recordView.layoutParams as ConstraintLayout.LayoutParams
         params.apply {
-            params.startToStart = binding.cl.id
-            params.endToEnd = binding.cl.id
-            params.bottomToBottom = binding.cl.id
-            params.width = ConstraintLayout.LayoutParams.MATCH_PARENT
-            params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+            endToEnd = cl.id
+            bottomToBottom = cl.id
+            width = ConstraintLayout.LayoutParams.MATCH_PARENT
+            height = ConstraintLayout.LayoutParams.WRAP_CONTENT
         }
+        recordView.layoutParams = params
         appVoiceRecorder.startRecordingVoiceMessage(requireContext())
     }
 
-    override fun onRecordEnd() {
-        val params = binding.recordView.layoutParams as ConstraintLayout.LayoutParams
-        params.endToEnd = binding.cl.id
-        params.bottomToBottom = binding.cl.id
-        params.width =
-            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 26f, resources.displayMetrics)
-                .toInt()
-        appVoiceRecorder.stopRecordingVoiceMessage()
-        if (appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString() != Uri.EMPTY.toString())
-            viewModel.sendMessage(
-                usersPreferencesHelper.currentUserPhoneNumber,
-                args.phoneNumber.toString(),
-                "",
-                appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
-                "voiceMessage",
-                timeMessageWasSent = formatCurrentUserTime(
-                    YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
-                ),
-                messageId = generateRandomId(),
+    override fun onRecordEnd() = with(binding) {
+        val params = recordView.layoutParams as ConstraintLayout.LayoutParams
+        params.apply {
+            endToEnd = cl.id
+            bottomToBottom = cl.id
+            width = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                26f,
+                resources.displayMetrics
             )
+                .toInt()
+            height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+        }
+        recordView.layoutParams = params
+        appVoiceRecorder.stopRecordingVoiceMessage()
+        viewModel.sendMessage(
+            usersPreferencesHelper.currentUserPhoneNumber,
+            args.phoneNumber.toString(),
+            "",
+            appVoiceRecorder.retrieveVoiceMessageFile().toUri().toString(),
+            "voiceMessage",
+            timeMessageWasSent = formatCurrentUserTime(
+                YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT
+            ),
+            messageId = generateRandomId(),
+        )
     }
 
-    override fun onRecordCancel() {
-        val params = binding.recordView.layoutParams as ConstraintLayout.LayoutParams
-        params.endToEnd = binding.cl.id
-        params.bottomToBottom = binding.cl.id
-        params.width =
-            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 26f, resources.displayMetrics)
+    override fun onRecordCancel() = with(binding) {
+        val params = recordView.layoutParams as ConstraintLayout.LayoutParams
+        params.apply {
+            endToEnd = cl.id
+            bottomToBottom = cl.id
+            width = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                26f,
+                resources.displayMetrics
+            )
                 .toInt()
+            height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+        }
+        recordView.layoutParams = params
         appVoiceRecorder.deleteRecordedVoiceMessage()
         appVoiceRecorder.stopRecordingVoiceMessage()
     }
