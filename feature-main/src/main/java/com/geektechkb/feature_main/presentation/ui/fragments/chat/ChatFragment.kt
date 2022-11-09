@@ -296,17 +296,21 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
-    private fun openEmojiSoftKeyboard() = with(binding) {
-        val emojiPopup = EmojiPopup(
-            root,
-            etMessage,
-            onEmojiPopupShownListener = { imEmoji.setImageResource(R.drawable.ic_keyboard) },
-            onEmojiPopupDismissListener = { imEmoji.setImageResource(R.drawable.ic_emoji) },
-        )
-        imEmoji.setOnSingleClickListener {
-            emojiPopup.toggle()
-        }
 
+    private fun openEmojiSoftKeyboard() {
+
+        binding.apply {
+
+            val emojiPopUp = EmojiPopup(
+                root,
+                binding.etMessage,
+
+                onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
+                onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
+            )
+            binding.imEmoji.setOnSingleClickListener {
+                emojiPopUp.toggle()
+            }
     }
 
     override fun establishRequest() {
