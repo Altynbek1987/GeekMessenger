@@ -45,7 +45,7 @@
                 android:layout_marginBottom="5dp"
                 android:maxEms="14"
                 android:text="Okay i will tell that in 7 pm"
-                android:textColor="@color/white"
+                android:textColor="#FFFDFD"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_time_message_was_sent"
