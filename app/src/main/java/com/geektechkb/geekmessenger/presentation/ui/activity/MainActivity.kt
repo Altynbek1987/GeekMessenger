@@ -8,9 +8,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.geektechkb.feature_auth.data.local.preferences.AuthorizePreferences
 import com.geektechkb.feature_auth.data.local.preferences.OnBoardPreferencesHelper
+import com.geektechkb.feature_main.data.local.preferences.LocaleHelper
 import com.geektechkb.geekmessenger.R
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 navGraph.setStartDestination(R.id.mainFlowFragment)
             }
             false -> {
-                navGraph.setStartDestination(R.id.mainFlowFragment)
+                navGraph.setStartDestination(R.id.authorizationFlowFragment)
             }
 
         }
@@ -56,15 +56,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(setAppLocale(newBase, Locale.getDefault().language))
-    }
-
-    private fun setAppLocale(context: Context, language: String): Context {
-        val locale = Locale(language)
-        Locale.setDefault(locale)
-        val config = context.resources.configuration
-        config.setLocale(locale)
-        config.setLayoutDirection(locale)
-        return context.createConfigurationContext(config)
+        super.attachBaseContext(LocaleHelper(newBase).loadLocale(newBase))
     }
 }

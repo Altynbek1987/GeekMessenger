@@ -75,7 +75,7 @@ class GroupChatFragment :
     lateinit var usersPreferencesHelper: UserPreferencesHelper
 
     override fun initialize() {
-        appVoiceRecorder = AppVoiceRecorder(requireContext())
+        appVoiceRecorder = AppVoiceRecorder()
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
     }
 
