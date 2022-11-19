@@ -237,8 +237,10 @@ class ProfileFragment :
                 actionOnDialogStateDragging = {
                     openBottomSheet.isVisible = false
                 }, actionOnDialogStateExpanded = {
+                    menuToolbar.isVisible=false
                     openBottomSheet.isVisible = false
                 }, actionOnDialogStateHidden = {
+                    menuToolbar.isVisible=true
                     openBottomSheet.isVisible = true
                 }
             )
