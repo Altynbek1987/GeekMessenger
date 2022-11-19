@@ -44,5 +44,7 @@
     <string name="save">Сактоо</string>
     <string name="change_your_profile_photo">Профиль сүрөтүн өзгөртүү</string>
     <string name="username">Колдонуучунун аты</string>
+    <string name="select_a_photo">Сүрөт тандаңыз</string>
+    <string name="delete">Жок кылуу</string>
 </resources>
 

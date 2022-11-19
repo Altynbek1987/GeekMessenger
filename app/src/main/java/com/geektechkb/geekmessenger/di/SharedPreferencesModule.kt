@@ -40,5 +40,5 @@ object SharedPreferencesModule {
 
     @Singleton
     @Provides
-    fun provideName(preferences: SharedPreferences) = PreferencesHelper(preferences)
+    fun providePreferencesHelper(preferences: SharedPreferences) = PreferencesHelper(preferences)
 }

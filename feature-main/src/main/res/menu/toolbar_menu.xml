@@ -13,14 +13,14 @@
                 android:enabled="true"
                 android:icon="@drawable/ic_edit"
                 android:orderInCategory="1"
-                android:title="Редактировать профиль"
+                android:title="@string/edit_profile"
                 app:showAsAction="collapseActionView" />
             <item
                 android:id="@+id/choose_avatar"
                 android:enabled="true"
                 android:icon="@drawable/ic_camera_edit"
                 android:orderInCategory="2"
-                android:title="Выбрать фото"
+                android:title="@string/select_a_photo"
                 app:showAsAction="never"
 
                 />
@@ -29,7 +29,7 @@
                 android:enabled="true"
                 android:icon="@drawable/ic_clear_chat"
                 android:orderInCategory="3"
-                android:title="Удалить"
+                android:title="@string/delete"
                 app:showAsAction="never" />
         </menu>
     </item>

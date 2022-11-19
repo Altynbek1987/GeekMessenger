@@ -58,6 +58,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
+                initBottomSheetRecycler()
                 setupBottomSheet()
                 openBottomSheet()
             },
@@ -89,6 +90,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     lateinit var preferencesHelper: PreferencesHelper
 
     override fun initialize() {
+        checkForPermissionStatusAndRequestIt(
+            recordAudioPermissionLauncher,
+            Manifest.permission.RECORD_AUDIO,
+            actionWhenPermissionHasBeenGranted = {
+            }
+        )
         galleryViewModel.shouldVideoBeShown(true)
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
         sendMediaIfAvailable()
@@ -181,20 +188,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         binding.recordView.setOnTouchListener { _, event ->
             when (event.action) {
                 ACTION_DOWN -> {
-
-                    checkForPermissionStatusAndRequestIt(
-                        recordAudioPermissionLauncher,
-                        Manifest.permission.RECORD_AUDIO,
-                        actionWhenPermissionHasBeenGranted = {
-                        }
-                    )
-
                     true
                 }
-                else -> {
+                else ->
                     true
-                }
             }
+        }
+        binding.recordView.setOnClickListener {
+            checkForPermissionStatusAndRequestIt(
+                recordAudioPermissionLauncher,
+                Manifest.permission.RECORD_AUDIO,
+                actionWhenPermissionHasBeenGranted = {
+                }
+            )
         }
     }
 
@@ -428,7 +434,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             height = ConstraintLayout.LayoutParams.WRAP_CONTENT
         }
         recordView.layoutParams = params
-        appVoiceRecorder.startRecordingVoiceMessage(requireContext())
+        appVoiceRecorder.startRecordingVoiceMessage()
     }
 
     override fun onRecordEnd() = with(binding) {
@@ -478,5 +484,4 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     override fun isReady() = true
-
 }

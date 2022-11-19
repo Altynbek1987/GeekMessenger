@@ -50,8 +50,6 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="44dp"
-        android:background="@drawable/ic_record_tip"
-        android:text="@string/hold_to_record_audio"
         android:textColor="@android:color/white"
         android:visibility="invisible" />
 </merge>

@@ -4,8 +4,10 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -55,7 +57,7 @@ class GroupChatFragment :
     private val args: GroupChatFragmentArgs by navArgs()
     private var stateBottomSheet: Boolean = false
     private var imageUri: Uri? = null
-    private val appVoiceRecorder = AppVoiceRecorder()
+    private lateinit var appVoiceRecorder: AppVoiceRecorder
     private val recordAudioPermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(Manifest.permission.RECORD_AUDIO)
     private val readExternalStoragePermissionLauncher =
@@ -73,6 +75,7 @@ class GroupChatFragment :
     lateinit var usersPreferencesHelper: UserPreferencesHelper
 
     override fun initialize() {
+        appVoiceRecorder = AppVoiceRecorder(requireContext())
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
     }
 
@@ -362,19 +365,19 @@ class GroupChatFragment :
     }
 
 
-
-
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onRecordStart() {
         if (checkForPermissionStatusAndRequestIt(
                 recordAudioPermissionLauncher, Manifest.permission.RECORD_AUDIO
             )
-        ) appVoiceRecorder.startRecordingVoiceMessage(requireContext())
+        ) appVoiceRecorder.startRecordingVoiceMessage()
     }
 
 
     override fun isReady(): Boolean = true
 
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onRecordEnd() {
         appVoiceRecorder.stopRecordingVoiceMessage()
     }
@@ -383,6 +386,7 @@ class GroupChatFragment :
         appVoiceRecorder.deleteRecordedVoiceMessage()
 
     }
+
     private fun onSelect(uri: Uri, videoDuration: String?) {
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
