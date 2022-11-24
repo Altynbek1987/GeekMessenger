@@ -11,6 +11,7 @@ import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentVideoPreviewBinding
+import com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest
 import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -89,12 +90,28 @@ class VideoPreviewFragment :
 
     private fun sendVideo() {
         binding.btnSend.setOnClickListener {
-            findNavController().directionsSafeNavigation(
-                VideoPreviewFragmentDirections.actionVideoPreviewFragmentToChatFragment(
-                    args.chatteePhoneNumber,
-                    args.selectedVideo, "video", args.selectedVideoDuration
+            when (args.chatMessage) {
+                ChatMessageRequest.CHAT -> findNavController().directionsSafeNavigation(
+                    VideoPreviewFragmentDirections.actionVideoPreviewFragmentToChatFragment(
+                        args.chatteePhoneNumber,
+                        args.selectedVideo,
+                        "video",
+                        args.selectedVideoDuration
+                    )
                 )
-            )
+                ChatMessageRequest.GROUP_CHAT -> findNavController().directionsSafeNavigation(
+                    VideoPreviewFragmentDirections.actionVideoPreviewFragmentToGroupChatFragment(
+                        groupName = "",
+                        usersPhoneNumbers = null,
+                        senderUserNamber = null,
+                        userCount = 0,
+                        args.chatteePhoneNumber,
+                        image = "video",
+                        args.selectedVideo,
+                        args.selectedVideoDuration,
+                    )
+                )
+            }
         }
     }
 

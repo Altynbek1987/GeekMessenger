@@ -9,13 +9,6 @@
     tools:background="@drawable/ic_chat_wallpaper"
     tools:context=".presentation.ui.fragments.chat.group.GroupChatFragment">
 
-    <include
-        android:id="@+id/i_there_are_no_messages_yet"
-        layout="@layout/there_are_no_messages_yet"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible" />
-
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/chat_toolbar"

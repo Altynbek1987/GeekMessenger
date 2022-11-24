@@ -26,6 +26,7 @@ object Constants {
     const val HOURS_MINUTES_DATE_FORMAT = "HH:mm"
     const val FIREBASE_CLOUD_STORAGE_PROFILE_IMAGES_PATH = "profileImages/"
     const val FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH = "messageImages/"
+    const val FIREBASE_CLOUD_STORAGE_GROUP_MESSAGE_IMAGES_PATH = "groupMessagesImages/"
     const val FIREBASE_CLOUD_STORAGE_VOICE_MESSAGES_PATH = "voiceMessages/"
 
     const val LANGUAGE_KEY = "language"

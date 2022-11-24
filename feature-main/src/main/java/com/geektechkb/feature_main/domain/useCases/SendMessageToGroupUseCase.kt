@@ -12,6 +12,8 @@ class SendMessageToGroupUseCase @Inject constructor(
         senderPhoneNumber: String,
         receiversPhoneNumbers: List<String>,
         message: String,
+        media: String?,
+        mediaType: String,
         timeMessageWasSent: String,
         messageId: String,
     ) = repository.sendMessageToGroup(
@@ -19,9 +21,9 @@ class SendMessageToGroupUseCase @Inject constructor(
         senderPhoneNumber,
         receiversPhoneNumbers,
         message,
+        media,
+        mediaType,
         timeMessageWasSent,
         messageId,
-
-
-        )
+    )
 }

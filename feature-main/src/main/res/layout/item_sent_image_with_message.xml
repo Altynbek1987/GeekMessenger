@@ -16,6 +16,7 @@
         app:cardCornerRadius="15dp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="false"
+        app:cardBackgroundColor="@color/blue"
         app:strokeColor="@color/blue"
         app:strokeWidth="1.5dp">
 
@@ -29,7 +30,7 @@
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_message"
                 android:scaleType="centerCrop"
                 tools:src="@tools:sample/avatars" />
 
@@ -47,10 +48,26 @@
                 android:paddingStart="6dp"
                 android:paddingEnd="6dp"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_message"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="14:38" />
 
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:maxEms="14"
+                android:text="Okay i will tell that in 7 pm"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/im_sent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/im_sent"
+                app:layout_constraintTop_toBottomOf="@id/im_sent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

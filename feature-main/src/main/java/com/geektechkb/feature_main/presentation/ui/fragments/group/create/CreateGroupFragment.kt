@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -16,9 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.core.base.BaseFragment
 import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
-import com.geektechkb.core.extensions.openGalleryBottomSheet
-import com.geektechkb.core.extensions.setImage
-import com.geektechkb.core.extensions.setOnSingleClickListener
+import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentCreateGroupBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.CreateGroupAdapter
@@ -44,8 +43,6 @@ class CreateGroupFragment :
     private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
     private val adapter = GalleryPicturesAdapter(this::onSelect)
     private val usersPhoneNumbers = mutableListOf<String>()
-    private var userNumber: String? = null
-
     @Inject
     lateinit var preferences: UserPreferencesHelper
 
@@ -100,9 +97,16 @@ class CreateGroupFragment :
             binding.coordinatorGallery.isVisible = true
 
         }
+        binding.toolbarBtnGroup.setOnClickListener {
+            findNavController().navigate(CreateGroupFragmentDirections.actionCreateGroupFragmentToNavGroups2())
+        }
+        overrideOnBackPressed {
+            findNavController().navigateSafely(R.id.action_createGroupFragment_to_nav_groups2)
+        }
         binding.imProfile.setOnClickListener {
             binding.apply {
-                openGalleryBottomSheet(galleryBottomSheet.galleryBottomSheetDialog,
+                openGalleryBottomSheet(
+                    galleryBottomSheet.galleryBottomSheetDialog,
                     bottomSheetBehavior,
                     galleryBottomSheet.appbarLayout,
                     coordinatorGallery,
@@ -115,6 +119,7 @@ class CreateGroupFragment :
 //                        mcvProfileImage.isVisible = false
                         openUsersGroupOne.isVisible = false
                         imProfile.isVisible = false
+
                     },
                     actionOnDialogStateHidden = {
                         imProfile.isVisible = true
@@ -123,25 +128,28 @@ class CreateGroupFragment :
                     })
             }
         }
-        binding.toolbarBtn.setOnClickListener {
-            findNavController().navigateUp()
-        }
+
         binding.openUsersGroupOne.setOnClickListener {
-            viewModel.addUserToGroup(
-                binding.etText.text.toString(),
-                args.userList.toList(),
-                args.userUri,
-                args.userCount,
-                userNumber = preferences.currentUserPhoneNumber
-            )
-            findNavController().navigate(
-                CreateGroupFragmentDirections.actionCreateGroupFragmentToGroupChatFragment(
-                    userCount = args.userCount,
-                    usersPhoneNumbers = usersPhoneNumbers.toTypedArray(),
-                    groupName = binding.etText.text.toString(),
-                    userNumber = preferences.currentUserPhoneNumber,
+            if (binding.etText.text.isNotEmpty()) {
+                viewModel.addUserToGroup(
+                    binding.etText.text.toString(),
+                    args.userList.toList(),
+                    args.userUri,
+                    args.userCount,
+                    userNumber = preferences.currentUserPhoneNumber
                 )
-            )
+                findNavController().navigate(
+                    CreateGroupFragmentDirections.actionCreateGroupFragmentToGroupChatFragment(
+                        userCount = args.userCount,
+                        usersPhoneNumbers = usersPhoneNumbers.toTypedArray(),
+                        groupName = binding.etText.text.toString(),
+                        userNumber = preferences.currentUserPhoneNumber,
+                    )
+                )
+            } else {
+                Toast.makeText(requireContext(), "заполни название группы", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
@@ -181,14 +189,7 @@ class CreateGroupFragment :
                 CropPhotoRequest.CREATE_PROFILE,
                 userCount = args.userCount,
                 userList = args.userList,
-
                 )
         )
-//        findNavController().navigate(
-//            ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(
-//                uri.toString(),
-//                CropPhotoRequest.PROFILE
-//            )
-//        )
     }
 }

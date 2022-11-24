@@ -157,17 +157,17 @@ class EditProfileFragment :
         subscribeToUser()
     }
 
-    private fun subscribeToUser() = with(binding) {
-        binding.apply {
-            viewModel.userState.spectateUiState(success = { user ->
-                user.apply {
-                    args.croppedProfileAvatar?.let {
-                        avProfile.loadImage(it)
-                    } ?: avProfile.loadImageAndSetInitialsIfFailed(
-                        profileImage, name, cpiCreateProfile, Color.rgb(83, 147, 208)
-                    )
-                    etName.setText(name)
-                    etSurname.setText(lastName)
+    private fun subscribeToUser() {
+		binding.apply {
+			viewModel.userState.spectateUiState(success = { user ->
+				user.apply {
+					args.croppedProfileAvatar?.let {
+						avProfile.loadImage(it)
+					} ?: avProfile.loadImageAndSetInitialsIfFailed(
+						profileImage, name, cpiCreateProfile, Color.rgb(83, 147, 208)
+					)
+					etName.setText(name)
+					etSurname.setText(lastName)
                 }
             }, error = {
                 Log.e("gaypopError", it)
@@ -222,8 +222,8 @@ class EditProfileFragment :
     private fun onSelect(uri: Uri) {
         findNavController().directionsSafeNavigation(
             EditProfileFragmentDirections.actionEditProfileFragmentToCropPhotoFragment(
-                uri.toString(), CropPhotoRequest.EDIT_PROFILE
-            )
+				uri.toString(), CropPhotoRequest.EDIT_PROFILE, arrayOf()
+			)
         )
     }
 

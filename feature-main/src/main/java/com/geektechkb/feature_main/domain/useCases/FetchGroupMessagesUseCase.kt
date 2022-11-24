@@ -7,5 +7,6 @@ class FetchGroupMessagesUseCase @Inject constructor(
     private val repository: GroupMessagesRepository
 ) {
 
-    operator fun invoke(groupName: String) = repository.fetchGroupMessages(groupName)
+    operator fun invoke(groupName: String) =
+        repository.fetchGroupMessages(groupName = groupName)
 }

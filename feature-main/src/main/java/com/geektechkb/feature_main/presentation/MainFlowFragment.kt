@@ -52,7 +52,7 @@ class MainFlowFragment : BaseFlowFragment(
         }
     }
 
-    @SuppressLint("ResourceType")
+//    @SuppressLint("ResourceType")
     override fun setupNavigation(navController: NavController) {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         appBarConfiguration = AppBarConfiguration(

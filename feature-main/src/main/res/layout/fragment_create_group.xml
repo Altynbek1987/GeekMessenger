@@ -20,7 +20,7 @@
         app:titleTextColor="@color/white" />
 
     <ImageButton
-        android:id="@+id/toolbar_btn"
+        android:id="@+id/toolbar_btn_group"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="40dp"
         android:layout_height="60dp"
@@ -57,7 +57,7 @@
         app:layout_constraintBottom_toTopOf="@id/v_start_of_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/im_profile"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_btn" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_btn_group" />
 
     <View
         android:id="@+id/v_start_of_toolbar"
@@ -97,20 +97,25 @@
         app:layout_constraintTop_toBottomOf="@id/v_start_of_toolbar" />
 
 
-    <io.getstream.avatarview.AvatarView
-        android:id="@+id/im_profile"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="25dp"
-        android:scaleType="fitXY"
-        app:avatarViewBorderColor="@null"
-        app:avatarViewBorderWidth="0dp"
-        app:avatarViewInitialsTextStyle="bold"
-        app:avatarViewShape="circle"
+        <View
+        android:id="@+id/camera_view"
+        android:layout_width="35dp"
+        android:layout_marginStart="28dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ic_camera"
         app:layout_constraintBottom_toTopOf="@id/v_start_of_toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_btn"
-        tools:src="@drawable/ic_camera_one" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_btn_group" />
+
+    <ImageView
+        android:id="@+id/im_profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/v_start_of_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_btn_group" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/open_users_group_one"
