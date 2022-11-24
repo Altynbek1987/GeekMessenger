@@ -124,5 +124,8 @@ class PhotoPreviewFragment :
                 )
             )
         }
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }

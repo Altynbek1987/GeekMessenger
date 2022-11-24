@@ -1,8 +1,6 @@
 package com.geektechkb.core.utils
 
-import android.content.Context
 import android.media.MediaRecorder
-import android.os.Build
 import android.util.Log
 import com.geektechkb.core.extensions.generateRandomId
 import java.io.File
@@ -10,9 +8,9 @@ import java.io.IOException
 
 class AppVoiceRecorder {
 
-    private lateinit var mediaRecorder: MediaRecorder
     private lateinit var voiceMessageFile: File
     private var voiceMessageFileName: String = ""
+    private val mediaRecorder = MediaRecorder()
 
     fun retrieveVoiceMessageFile() = voiceMessageFile
     fun createFileForRecordedVoiceMessage(externalFilesDir: File?) {
@@ -21,10 +19,7 @@ class AppVoiceRecorder {
         voiceMessageFile = File(externalFilesDir, voiceMessageFileName)
     }
 
-    fun startRecordingVoiceMessage(context: Context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            mediaRecorder = MediaRecorder(context)
-        }
+    fun startRecordingVoiceMessage() {
         mediaRecorder.apply {
             actionWhenManipulatingWithVoiceMessage(actionWhenRecording = {
                 setAudioSource(MediaRecorder.AudioSource.MIC)
@@ -66,9 +61,5 @@ class AppVoiceRecorder {
 
     fun deleteRecordedVoiceMessage() {
         voiceMessageFile.delete()
-    }
-
-    fun showVoiceMessageFileName() {
-        Log.e("gaypop", voiceMessageFileName)
     }
 }

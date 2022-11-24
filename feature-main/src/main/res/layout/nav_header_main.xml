@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="14dp"
-        android:textColor="@color/white"
+        android:textColor="#FFFDFD"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

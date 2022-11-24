@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/black"
     app:cardCornerRadius="7dp"
     tools:context=".presentation.ui.dialogs.ClearChatHistoryFragment">
 

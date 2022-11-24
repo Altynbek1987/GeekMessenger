@@ -80,6 +80,9 @@ class CropPhotoFragment :
                         userCount = args.userCount
                     )
                 )
+                else -> {
+
+                }
             }
         }
     }

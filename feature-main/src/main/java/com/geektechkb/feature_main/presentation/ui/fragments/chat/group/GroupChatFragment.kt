@@ -424,6 +424,7 @@ class GroupChatFragment :
 
     override fun onRecordCancel() {
         appVoiceRecorder.deleteRecordedVoiceMessage()
+
     }
 
     private fun openPhotoPreview(image: String, time: String, photoCount: Int) {
@@ -454,6 +455,4 @@ class GroupChatFragment :
             )
         )
     }
-
-
 }

@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFragment"
+        android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
 

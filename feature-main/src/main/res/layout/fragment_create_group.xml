@@ -17,7 +17,7 @@
         app:popupTheme="@style/Theme.NavDraw.PopupOverlay"
         app:title="@string/menu_group"
         app:titleMarginStart="50dp"
-        app:titleTextColor="@color/white" />
+        app:titleTextColor="#FFFDFD" />
 
     <ImageButton
         android:id="@+id/toolbar_btn_group"
@@ -26,7 +26,7 @@
         android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="3dp"
-        android:src="@drawable/ic_back"
+        android:src="@drawable/arrow"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

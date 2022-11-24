@@ -222,8 +222,8 @@ class EditProfileFragment :
     private fun onSelect(uri: Uri) {
         findNavController().directionsSafeNavigation(
             EditProfileFragmentDirections.actionEditProfileFragmentToCropPhotoFragment(
-				uri.toString(), CropPhotoRequest.EDIT_PROFILE, arrayOf()
-			)
+                uri.toString(), CropPhotoRequest.EDIT_PROFILE,
+            )
         )
     }
 

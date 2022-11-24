@@ -47,7 +47,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="4dp"
                     android:text="@string/gallery"
-                    android:textColor="@color/white"
+                    android:textColor="#FFFDFD"
                     android:textSize="22sp" />
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>

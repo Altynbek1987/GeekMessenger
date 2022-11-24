@@ -26,7 +26,7 @@
                 android:id="@+id/im_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_black_arrow_back"
+                android:src="@drawable/ic_baseline_arrow_back_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#2C2C2C"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@id/av_chattee_profile"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Gojo Satoru" />
@@ -103,9 +103,9 @@
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:stackFromEnd="true"
         app:layout_constraintBottom_toTopOf="@id/cl_message"
         app:layout_constraintTop_toBottomOf="@id/chat_toolbar"
+        app:stackFromEnd="true"
         tools:listitem="@layout/item_sent_messages" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

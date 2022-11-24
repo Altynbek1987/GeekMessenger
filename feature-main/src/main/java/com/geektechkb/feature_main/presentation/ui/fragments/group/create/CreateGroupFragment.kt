@@ -58,7 +58,7 @@ class CreateGroupFragment :
         args.userList.toList().forEach { user ->
             user.phoneNumber?.let { phoneNumber -> usersPhoneNumbers.add(phoneNumber) }
         }
-        binding.tvParticipant.text = "${args.userCount}Участник"
+        binding.tvParticipant.text = "${args.userCount}Участников"
         binding.imProfile.setImage(args.userUri)
         lifecycleScope.launch {
             usersGroupAdapter.submitData(PagingData.from(args.userList.toList()))
@@ -111,12 +111,10 @@ class CreateGroupFragment :
                     galleryBottomSheet.appbarLayout,
                     coordinatorGallery,
                     actionOnDialogStateDragging = {
-//                        mcvProfileImage.isVisible = false
                         openUsersGroupOne.isVisible = false
                         imProfile.isVisible = false
                     },
                     actionOnDialogStateExpanded = {
-//                        mcvProfileImage.isVisible = false
                         openUsersGroupOne.isVisible = false
                         imProfile.isVisible = false
 

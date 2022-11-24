@@ -7,7 +7,6 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.Localization
-import com.geektechkb.feature_main.data.local.preferences.LocaleHelper
 import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
 import com.geektechkb.feature_main.databinding.FragmentLanguagesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,9 +19,6 @@ class LanguagesFragment : Fragment(R.layout.fragment_languages) {
 
     @Inject
     lateinit var preferences: PreferencesHelper
-
-    @Inject
-    lateinit var localeHelper: LocaleHelper
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,7 +68,7 @@ class LanguagesFragment : Fragment(R.layout.fragment_languages) {
     private fun setLocale(locale: Localization) {
         if (preferences.languageCode != locale.languageCode) {
             preferences.setLocale(locale)
-            localeHelper.loadLocale(requireContext())
+            preferences.loadLocale(requireContext())
             requireActivity().recreate()
         }
     }

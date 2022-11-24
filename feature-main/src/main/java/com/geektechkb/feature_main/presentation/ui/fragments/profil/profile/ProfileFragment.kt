@@ -237,8 +237,10 @@ class ProfileFragment :
                 actionOnDialogStateDragging = {
                     openBottomSheet.isVisible = false
                 }, actionOnDialogStateExpanded = {
+                    menuToolbar.isVisible = false
                     openBottomSheet.isVisible = false
                 }, actionOnDialogStateHidden = {
+                    menuToolbar.isVisible = true
                     openBottomSheet.isVisible = true
                 }
             )
@@ -273,7 +275,8 @@ class ProfileFragment :
         findNavController().navigate(
             ProfileFragmentDirections.actionProfileFragmentToCropPhotoFragment(
                 uri.toString(),
-                CropPhotoRequest.PROFILE
+                CropPhotoRequest.PROFILE,
+                arrayOf()
             )
         )
     }
