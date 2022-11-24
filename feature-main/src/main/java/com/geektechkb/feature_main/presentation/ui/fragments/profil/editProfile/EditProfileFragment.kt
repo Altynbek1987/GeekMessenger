@@ -223,13 +223,12 @@ class EditProfileFragment :
         findNavController().directionsSafeNavigation(
             EditProfileFragmentDirections.actionEditProfileFragmentToCropPhotoFragment(
                 uri.toString(), CropPhotoRequest.EDIT_PROFILE,
+                arrayOf()
             )
         )
     }
 
-    private fun showProgressDialog(
-        layout: Int
-    ) {
+    private fun showProgressDialog(layout: Int) {
         dialog = Dialog(requireContext())
         with(dialog) {
             this?.setContentView(layout)

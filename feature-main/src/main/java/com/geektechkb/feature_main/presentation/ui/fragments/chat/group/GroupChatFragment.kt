@@ -411,7 +411,7 @@ class GroupChatFragment :
         if (checkForPermissionStatusAndRequestIt(
                 recordAudioPermissionLauncher, Manifest.permission.RECORD_AUDIO
             )
-        ) appVoiceRecorder.startRecordingVoiceMessage(requireContext())
+        ) appVoiceRecorder.startRecordingVoiceMessage()
     }
 
 
