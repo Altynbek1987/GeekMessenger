@@ -46,6 +46,7 @@ class OnBoardFragment :
 
     }
 
+    //anderndruckertextkeineAnungOnPagerSchneidenItem
     private fun changeButtonTextDependingOnPagerCurrentItem() {
         binding.pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

@@ -65,8 +65,6 @@ class CodeVerificationRepositoryImpl @Inject constructor(
                 when (task.exception) {
                     is FirebaseAuthInvalidCredentialsException -> {
                         ifUserHasEnteredInvalidCredentials?.invoke()
-
-
                     }
                 }
             }

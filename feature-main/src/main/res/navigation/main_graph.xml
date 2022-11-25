@@ -16,6 +16,8 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_nav_groups_to_homeFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/homeFragment" />
     </fragment>
 
@@ -27,12 +29,18 @@
         <action
             android:id="@+id/action_homeFragment_to_chatFragment"
             app:destination="@id/chatFragment"
-            app:popUpTo="@id/homeFragment" />
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
+            />
         <action
             android:id="@+id/action_homeFragment_to_connectionCheckFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/connectionCheckFragment" />
         <action
             android:id="@+id/action_homeFragment_to_groupListFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/groupListFragment" />
     </fragment>
     <fragment
@@ -43,9 +51,13 @@
 
         <action
             android:id="@+id/action_profileFragment_to_cropPhotoFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/cropPhotoFragment" />
         <action
             android:id="@+id/action_profileFragment_to_chatFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/chatFragment" />
 
         <action
@@ -59,6 +71,8 @@
             app:destination="@id/editProfileFragment" />
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/homeFragment" />
         <argument
             android:name="croppedImage"
@@ -74,6 +88,8 @@
         tools:layout="@layout/fragment_gallery_bottom_sheet">
         <action
             android:id="@+id/action_galleryBottomSheetFragment_to_cropPhotoFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/cropPhotoFragment" />
     </dialog>
     <fragment
@@ -96,9 +112,7 @@
             app:popUpToInclusive="true">
             <argument
                 android:name="croppedImage"
-                android:defaultValue="@null"
-                app:argType="string"
-                app:nullable="true" />
+                app:argType="string" />
         </action>
         <action
             android:id="@+id/action_cropPhotoFragment_to_createGroupFragment"
@@ -194,6 +208,8 @@
 
         <action
             android:id="@+id/action_connectionCheckFragment_to_homeFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/homeFragment" />
     </fragment>
 
@@ -203,8 +219,15 @@
         android:label="fragment_photo_preview"
         tools:layout="@layout/fragment_photo_preview">
         <argument
+            android:name="groupName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
             android:name="phoneNumber"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
         <argument
             android:name="photo"
             app:argType="string" />
@@ -217,11 +240,24 @@
         <argument
             android:name="time"
             app:argType="string" />
+        <argument
+            android:name="chatMessage"
+            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest" />
         <action
             android:id="@+id/action_photoReviewFragment_to_chatFragment"
             app:destination="@id/chatFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_photoPreviewFragment_to_groupChatFragment"
+            app:destination="@id/groupChatFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="usersPhoneNumber"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
 
@@ -230,11 +266,16 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.ProfileFlowFragment"
         android:label="ProfileFlowFragment"
         tools:layout="@layout/fragment_profile_flow" />
+
+
     <fragment
         android:id="@+id/videoPreviewFragment"
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.mediaPreview.video.VideoPreviewFragment"
         android:label="fragment_video_preview"
         tools:layout="@layout/fragment_video_preview">
+        <argument
+            android:name="chatMessage"
+            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest" />
         <argument
             android:name="chatteePhoneNumber"
             app:argType="string"
@@ -267,6 +308,12 @@
             app:destination="@id/chatFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_videoPreviewFragment_to_groupChatFragment"
+            app:destination="@id/groupChatFragment" />
+        <action
+            android:id="@+id/action_videoPreviewFragment_to_groupChatFragment2"
+            app:destination="@id/groupChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/createGroupFragment"
@@ -289,6 +336,11 @@
         <action
             android:id="@+id/action_createGroupFragment_to_groupChatFragment"
             app:destination="@id/groupChatFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_createGroupFragment_to_nav_groups2"
+            app:destination="@id/nav_groups"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
 
@@ -322,11 +374,41 @@
         <argument
             android:name="groupName"
             app:argType="string" />
+        <argument
+            android:name="image"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="mediaType"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="videoDuration"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_groupChatFragment_to_groupListFragment"
             app:destination="@id/groupListFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_groupChatFragment_to_photoPreviewFragment"
+            app:destination="@id/photoPreviewFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_groupChatFragment_to_videoPreviewFragment"
+            app:destination="@id/videoPreviewFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="message"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/groupListFragment"
@@ -358,4 +440,6 @@
             android:id="@+id/action_editProfileFragment_to_cropPhotoFragment"
             app:destination="@id/cropPhotoFragment" />
     </fragment>
+
+
 </navigation>
