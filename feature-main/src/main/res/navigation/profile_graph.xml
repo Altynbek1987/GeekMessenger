@@ -11,9 +11,6 @@
         android:name="com.geektechkb.feature_main.presentation.ui.fragments.profil.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile">
 
-        <action
-            android:id="@+id/action_profileFragment_to_cropPhotoFragment"
-            app:destination="@id/cropPhotoFragment" />
 
         <action
             android:id="@+id/action_profileFragment_to_languagesFragment"
@@ -37,6 +34,10 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfilFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_cropPhotoFragment"
+            app:destination="@id/cropPhotoFragment" />
+
     </fragment>
 
     <fragment

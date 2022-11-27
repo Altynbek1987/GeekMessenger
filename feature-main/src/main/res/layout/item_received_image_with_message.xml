@@ -2,21 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/photo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
     android:layout_marginTop="6dp"
-    android:layout_marginEnd="8dp"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcv_sent"
+        android:id="@+id/mcv_received"
         android:layout_width="155dp"
         android:layout_height="326dp"
-        android:layout_gravity="end"
+        android:layout_gravity="start"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="15dp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="false"
-        app:strokeColor="@color/blue"
+        app:strokeColor="@color/white"
         app:strokeWidth="1.5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,13 +28,15 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/im_sent"
+                android:id="@+id/im_received"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@id/tv_message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
@@ -47,9 +53,24 @@
                 android:paddingStart="6dp"
                 android:paddingEnd="6dp"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_message"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="14:38" />
+
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="5dp"
+                android:maxEms="14"
+                android:text="Okay i will tell that in 7 pm"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/im_received"
+                app:layout_constraintStart_toStartOf="@id/im_received"
+                app:layout_constraintTop_toBottomOf="@id/im_received" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

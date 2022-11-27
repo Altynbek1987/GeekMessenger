@@ -157,17 +157,17 @@ class EditProfileFragment :
         subscribeToUser()
     }
 
-    private fun subscribeToUser() = with(binding) {
-        binding.apply {
-            viewModel.userState.spectateUiState(success = { user ->
-                user.apply {
-                    args.croppedProfileAvatar?.let {
-                        avProfile.loadImage(it)
-                    } ?: avProfile.loadImageAndSetInitialsIfFailed(
-                        profileImage, name, cpiCreateProfile, Color.rgb(83, 147, 208)
-                    )
-                    etName.setText(name)
-                    etSurname.setText(lastName)
+    private fun subscribeToUser() {
+		binding.apply {
+			viewModel.userState.spectateUiState(success = { user ->
+				user.apply {
+					args.croppedProfileAvatar?.let {
+						avProfile.loadImage(it)
+					} ?: avProfile.loadImageAndSetInitialsIfFailed(
+						profileImage, name, cpiCreateProfile, Color.rgb(83, 147, 208)
+					)
+					etName.setText(name)
+					etSurname.setText(lastName)
                 }
             }, error = {
                 Log.e("gaypopError", it)
@@ -228,9 +228,7 @@ class EditProfileFragment :
         )
     }
 
-    private fun showProgressDialog(
-        layout: Int
-    ) {
+    private fun showProgressDialog(layout: Int) {
         dialog = Dialog(requireContext())
         with(dialog) {
             this?.setContentView(layout)

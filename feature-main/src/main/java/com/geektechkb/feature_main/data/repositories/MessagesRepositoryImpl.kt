@@ -21,8 +21,7 @@ class MessagesRepositoryImpl @Inject constructor(
     private val firestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
 ) : BaseRepository(), MessagesRepository {
-    private val messagesRef =
-        firestore.collection(FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH)
+    private val messagesRef = firestore.collection(FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH)
     private val cloudStorageRef = cloudStorage.reference
 
     override suspend fun sendMessage(
@@ -89,13 +88,7 @@ class MessagesRepositoryImpl @Inject constructor(
 
     override fun fetchPagedMessages(senderPhoneNumber: String, receiverPhoneNumber: String) =
         messagesRef
-            .whereIn(
-                "messageKey",
-                listOf(
-                    senderPhoneNumber + receiverPhoneNumber,
-                    receiverPhoneNumber + senderPhoneNumber
-                )
-            )
+            .whereIn("messageKey", listOf(senderPhoneNumber + receiverPhoneNumber, receiverPhoneNumber + senderPhoneNumber))
             .orderBy(FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT)
             .limitToLast(10000)
             .snapshotFlow()

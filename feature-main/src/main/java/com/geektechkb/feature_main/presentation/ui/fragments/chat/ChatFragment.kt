@@ -31,6 +31,7 @@ import com.geektechkb.feature_main.databinding.FragmentChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
+import com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest
 import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequest
 import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -53,10 +54,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     private val galleryAdapter =
         GalleryPicturesAdapter(this::onImageSelected, this::onVideoSelected)
     private val args: ChatFragmentArgs by navArgs()
-    private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
-    private var username: String? = null
+	private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
+	private var stateBottomSheet: Boolean = false
+	private var username: String? = null
     private var imageUri: Uri? = null
-    private var stateBottomSheet: Boolean = false
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
             Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
@@ -365,7 +366,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
                         messagesAdapter.submitList(it)
-//                        messagesAdapter.notifyDataSetChanged()
                         binding.recyclerview.smoothScrollToPosition(messagesAdapter.itemCount)
                         binding.iThereAreNoMessagesYet.root.isVisible = it.isEmpty()
                     }
@@ -379,52 +379,56 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         stateBottomSheet = true
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToPhotoPreviewFragment(
-                args.phoneNumber.toString(),
-                uri.toString(),
-                PreviewPhotoRequest.SEND_PHOTO,
-                0,
-                ""
-            )
+                groupName = null,
+                usersPhoneNumber = null,
+				phoneNumber = args.phoneNumber.toString(),
+				photo = uri.toString(),
+				photoPreview = PreviewPhotoRequest.SEND_PHOTO,
+				photoCount = 0,
+				time = "",
+				chatMessage = ChatMessageRequest.CHAT
+			)
         )
     }
 
     private fun onVideoSelected(uri: Uri, videoDuration: String?) {
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
-                chatteePhoneNumber = args.phoneNumber,
-                chatteeUsername = username,
-                selectedVideo = uri.toString(),
-                selectedVideoDuration = videoDuration,
-                videoPreview = PreviewVideoRequest.SENT_VIDEO,
-                videoCount = 0,
-                time = ""
-            )
+				chatteePhoneNumber = args.phoneNumber,
+				chatteeUsername = username,
+				selectedVideo = uri.toString(),
+				selectedVideoDuration = videoDuration,
+				videoPreview = PreviewVideoRequest.SENT_VIDEO,
+				videoCount = 0,
+				time = "", chatMessage = ChatMessageRequest.CHAT
+			)
         )
     }
 
     private fun openPhotoPreview(image: String, time: String, photoCount: Int) {
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToPhotoPreviewFragment(
-                username.toString(),
-                image,
-                PreviewPhotoRequest.PHOTO,
-                photoCount,
-                time
-            )
+				 phoneNumber = username.toString(),
+				photo = image,
+				photoPreview = PreviewPhotoRequest.PHOTO,
+				photoCount = photoCount,
+				time = time,
+				chatMessage = ChatMessageRequest.CHAT
+			)
         )
     }
 
     private fun openVideoPreview(video: String, time: String, videoCount: Int) {
         findNavController().directionsSafeNavigation(
             ChatFragmentDirections.actionChatFragmentToVideoPreviewFragment(
-                chatteePhoneNumber = args.phoneNumber,
-                chatteeUsername = username.toString(),
-                selectedVideo = video,
-                selectedVideoDuration = "",
-                videoPreview = PreviewVideoRequest.VIDEO,
-                videoCount = videoCount,
-                time = time
-            )
+				chatteePhoneNumber = args.phoneNumber,
+				chatteeUsername = username.toString(),
+				selectedVideo = video,
+				selectedVideoDuration = "",
+				videoPreview = PreviewVideoRequest.VIDEO,
+				videoCount = videoCount,
+				time = time, chatMessage = ChatMessageRequest.CHAT
+			)
         )
     }
 

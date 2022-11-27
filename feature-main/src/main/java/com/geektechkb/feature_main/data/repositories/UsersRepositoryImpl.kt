@@ -45,7 +45,6 @@ class UsersRepositoryImpl @Inject constructor(
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_PROFILE_IMAGE_KEY) as String?,
             getDocument(usersRef, phoneNumber).get(FIREBASE_USER_LAST_SEEN_TIME_KEY) as String?
         )
-
     }
 
     override fun updateUserStatus(status: String) {
@@ -144,7 +143,6 @@ class UsersRepositoryImpl @Inject constructor(
             maxSize = Int.MAX_VALUE,
             jumpThreshold = Int.MIN_VALUE
         ), transformer = { hit -> hit.deserialize(User.serializer()) })
-
 
     override fun getCurrentUserPhoneNumber() = firebaseAuth.currentUser?.phoneNumber
 }

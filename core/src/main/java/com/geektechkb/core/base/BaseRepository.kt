@@ -48,7 +48,9 @@ abstract class BaseRepository {
         ).flow
 
 
-    suspend inline fun <reified T> fetchList(collection: CollectionReference) =
+    suspend inline fun <reified T> fetchList(
+        collection: CollectionReference,
+    ) =
         collection.get().await().documents.mapNotNull { doc ->
             doc.toObject(T::class.java)
         }
@@ -87,6 +89,11 @@ abstract class BaseRepository {
         }
     }
 
+    suspend fun getDocumentGroup(collection: CollectionReference, id: String): DocumentSnapshot =
+        collection
+            .document(id)
+            .get()
+            .await()
     suspend fun getDocument(collection: CollectionReference, id: String): DocumentSnapshot =
         collection
             .document(id)
