@@ -30,7 +30,7 @@ import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-    firestore: FirebaseFirestore,
+    private val firestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
 ) : BaseRepository(), UsersRepository {
     private val usersRef =
@@ -147,5 +147,4 @@ class UsersRepositoryImpl @Inject constructor(
 
 
     override fun getCurrentUserPhoneNumber() = firebaseAuth.currentUser?.phoneNumber
-
 }

@@ -1,6 +1,5 @@
 package com.geektechkb.feature_main.domain.models
 
-
 data class Message(
     val messageId: String? = null,
     val messageKey: String? = null,
@@ -12,4 +11,4 @@ data class Message(
     val receiverPhoneNumber: String? = null,
     val timeMessageWasSent: String? = null,
     var isAudioPlaying: Boolean = false
-)
+) : java.io.Serializable

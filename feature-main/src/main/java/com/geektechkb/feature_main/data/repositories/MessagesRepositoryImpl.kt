@@ -1,6 +1,7 @@
 package com.geektechkb.feature_main.data.repositories
 
 import android.net.Uri
+import android.util.Log
 import com.geektechkb.common.constants.Constants.FIREBASE_CLOUD_STORAGE_MESSAGE_IMAGES_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_MESSAGES_COLLECTION_PATH
 import com.geektechkb.common.constants.Constants.FIREBASE_FIRESTORE_TIME_MESSAGE_WAS_SENT
@@ -17,7 +18,7 @@ import java.io.FileNotFoundException
 import javax.inject.Inject
 
 class MessagesRepositoryImpl @Inject constructor(
-    firestore: FirebaseFirestore,
+    private val firestore: FirebaseFirestore,
     cloudStorage: FirebaseStorage,
 ) : BaseRepository(), MessagesRepository {
     private val messagesRef =
@@ -51,7 +52,7 @@ class MessagesRepositoryImpl @Inject constructor(
                     "senderPhoneNumber" to id,
                     "receiverPhoneNumber" to receiverPhoneNumber,
                     "timeMessageWasSent" to timeMessageWasSent
-                )
+                ), messageId
             )
         } catch (e: StorageException) {
             addDocument(
@@ -66,7 +67,7 @@ class MessagesRepositoryImpl @Inject constructor(
                     "senderPhoneNumber" to id,
                     "receiverPhoneNumber" to receiverPhoneNumber,
                     "timeMessageWasSent" to timeMessageWasSent
-                )
+                ), messageId
             )
         } catch (e: FileNotFoundException) {
             addDocument(
@@ -81,7 +82,7 @@ class MessagesRepositoryImpl @Inject constructor(
                     "senderPhoneNumber" to id,
                     "receiverPhoneNumber" to receiverPhoneNumber,
                     "timeMessageWasSent" to timeMessageWasSent
-                )
+                ), messageId
             )
         }
     }
@@ -103,4 +104,14 @@ class MessagesRepositoryImpl @Inject constructor(
                     document.toObject(Message::class.java)
                 }
             }
+
+    override fun deleteMessage(messageId: String) {
+        messagesRef.document(messageId).delete().addOnSuccessListener {
+            Log.e("gaypop", "success")
+        }
+            .addOnFailureListener {
+
+                Log.e("gaypop", it.message.toString())
+            }
+    }
 }

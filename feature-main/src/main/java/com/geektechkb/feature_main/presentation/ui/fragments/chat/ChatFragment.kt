@@ -3,11 +3,13 @@ package com.geektechkb.feature_main.presentation.ui.fragments.chat
 import android.Manifest
 import android.annotation.SuppressLint
 import android.net.Uri
+import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent.ACTION_DOWN
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -45,7 +47,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     AudioRecordView.Callback {
 
     override val binding by viewBinding(FragmentChatBinding::bind)
-    override val viewModel by viewModels<ChatViewModel>()
+    override val viewModel by activityViewModels<ChatViewModel>()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val messagesAdapter = MessagesAdapter(this::openPhotoPreview, this::openVideoPreview)
     private val galleryAdapter =
@@ -284,7 +286,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 R.id.btn_clear_chat -> {
                     findNavController().directionsSafeNavigation(
                         ChatFragmentDirections.actionChatFragmentToClearChatHistoryFragment(
-                            username.toString()
+                            username.toString(),
                         )
                     )
                     true
@@ -357,7 +359,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                         usersPreferencesHelper.currentUserPhoneNumber,
                         receiverPhoneNumber
                     ).collectLatest {
-
+                        Log.e("gaypop", it.count().toString())
+                        viewModel.addMessagesToDeletion(it)
                         messagesAdapter.setPhoneNumber(
                             usersPreferencesHelper.currentUserPhoneNumber, receiverPhoneNumber
                         )
