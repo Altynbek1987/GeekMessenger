@@ -46,5 +46,7 @@
     <string name="username">Колдонуучунун аты</string>
     <string name="select_a_photo">Сүрөт тандаңыз</string>
     <string name="delete">Жок кылуу</string>
+    <string name="select_photo_or_video">Сүрөт же видео тандаңыз</string>
+    <string name="user_group">Топтун атын киргизиңиз</string>
 </resources>
 
