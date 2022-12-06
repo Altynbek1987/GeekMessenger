@@ -62,4 +62,6 @@ class ChatViewModel @Inject constructor(
     fun addMessagesToDeletion(list: List<Message?>) {
         _messagesState.value = list
     }
+
+
 }

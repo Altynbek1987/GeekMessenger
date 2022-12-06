@@ -74,12 +74,12 @@ class CropPhotoFragment :
                     )
                 )
                 CropPhotoRequest.CREATE_PROFILE -> findNavController().directionsSafeNavigation(
-                    CropPhotoFragmentDirections.actionCropPhotoFragmentToCreateGroupFragment(
-                        userUri = bitmapToFile().toString(),
-                        userList = args.userList,
-                        userCount = args.userCount
-                    )
-                )
+					CropPhotoFragmentDirections.actionCropPhotoFragmentToCreateGroupFragment2(
+						userUri = bitmapToFile().toString(),
+						userList = args.userList,
+						userCount = args.userCount
+					)
+				)
                 else -> {
 
                 }

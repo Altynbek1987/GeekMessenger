@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.data.remote.services
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_HIGH
@@ -9,12 +10,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.geektechkb.feature_main.R
-import com.geektechkb.feature_main.presentation.ui.fragments.home.HomeFragment
+import com.geektechkb.feature_main.presentation.ui.fragments.chat.ChatFragment
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -24,43 +26,52 @@ import kotlin.random.Random
 
 class MessengerNotificationsService : FirebaseMessagingService() {
 
-    val CHANNWL_ID = "my_notification_channel"
+	val CHANNWL_ID = "my_notification_channel"
 
-    override fun onNewToken(tokenUser: String) {
-        super.onNewToken(tokenUser)
-        token = tokenUser
-    }
+	override fun onMessageReceived(message: RemoteMessage) {
+		super.onMessageReceived(message)
+		showPushNotifation(message)
+	}
 
-//        sendBroadcast(intent)
 
-    //    }
-    override fun onMessageReceived(message: RemoteMessage) {
-        super.onMessageReceived(message)
-        val intent = Intent(this, HomeFragment::class.java)
-        val notificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notificationId = Random.nextInt()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            createNotificationChannel(notificationManager)
-        }
+	override fun onNewToken(tokenUser: String) {
+		super.onNewToken(tokenUser)
+		token = tokenUser
+	}
 
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, FLAG_ONE_SHOT)
-        val notification = NotificationCompat.Builder(this, CHANNWL_ID)
-            .setContentTitle(message.data["title"])
-            .setContentText(message.data["message"])
-            .setSmallIcon(R.drawable.arrow)
-            .setAutoCancel(true)
-            .setContentIntent(pendingIntent)
-            .build()
-        notificationManager.notify(notificationId, notification)
+	@SuppressLint("UnspecifiedImmutableFlag")
+	private fun showPushNotifation(message: RemoteMessage) {
+		val intent = Intent(this, ChatFragment::class.java)
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+		val pendingIntent = PendingIntent.getActivity(
+			this, 0, intent, FLAG_ONE_SHOT
+		)
 
-//        val intentww = Intent(INTENT_FILTER)
-//        message.data.forEach { (key, value) ->
-//            intent.putExtra(key, value)
-//
-//
-    }
+
+		val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
+		val notificationBuilder = NotificationCompat.Builder(this, CHANNWL_ID)
+			.setContentTitle(message.data["title"])
+			.setContentText(message.data["body"])
+			.setSmallIcon(R.drawable.arrow)
+			.setAutoCancel(true)
+			.setSound(defaultSoundUri)
+			.setContentIntent(pendingIntent)
+
+		val notificationManager =
+			getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+		val notificationId = Random.nextInt()
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			val channel = NotificationChannel(
+				CHANNWL_ID,
+				getString(R.string.chat_notifications),
+				NotificationManager.IMPORTANCE_DEFAULT
+			)
+
+			notificationManager.createNotificationChannel(channel)
+		}
+		notificationManager.notify(notificationId, notificationBuilder.build())
+	}
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(notificationManager: NotificationManager) {
@@ -83,25 +94,25 @@ class MessengerNotificationsService : FirebaseMessagingService() {
                 sharePref?.edit()?.putString("token", value)?.apply()
             }
 
-        fun subscribeToTopic(vararg topics: String) {
-            for (topic in topics)
-                Firebase.messaging.subscribeToTopic(topic).addOnCompleteListener(
-                    OnCompleteListener { task ->
-                        if (!task.isSuccessful)
-                            return@OnCompleteListener
-                        Log.d("Push", task.isSuccessful.toString())
-                    })
+		fun subscribeToTopic(topics: String) {
+			for (topic in topics)
+				Firebase.messaging.subscribeToTopic(topic.toString()).addOnCompleteListener(
+					OnCompleteListener { task ->
+						if (!task.isSuccessful)
+							return@OnCompleteListener
+						Log.d("Push", task.isSuccessful.toString())
+					})
 
-        }
+		}
 
-        fun unsubscribeFromTopic(vararg topics: String) {
-            for (topic in topics)
-                Firebase.messaging.unsubscribeFromTopic(topic)
-                    .addOnCompleteListener(OnCompleteListener { task ->
-                        if (!task.isSuccessful)
-                            return@OnCompleteListener
-                        Log.d("Push", task.isSuccessful.toString())
-                    })
-        }
+		fun unsubscribeFromTopic(topics: String) {
+			for (topic in topics)
+				Firebase.messaging.unsubscribeFromTopic(topic.toString())
+					.addOnCompleteListener(OnCompleteListener { task ->
+						if (!task.isSuccessful)
+							return@OnCompleteListener
+						Log.d("Push", task.isSuccessful.toString())
+					})
+		}
     }
 }

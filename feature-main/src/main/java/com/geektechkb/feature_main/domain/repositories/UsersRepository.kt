@@ -22,9 +22,9 @@ interface UsersRepository {
 
     fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean)
 
-    fun subscribeToNotificationTopic(vararg topics: String)
+    fun subscribeToNotificationTopic(topics: String)
 
-    fun unsubscribeFromNotificationTopic(vararg topics: String)
+	fun unsubscribeFromNotificationTopic(topics: String)
 
     fun createHitsSearcher(
         applicationId: String,

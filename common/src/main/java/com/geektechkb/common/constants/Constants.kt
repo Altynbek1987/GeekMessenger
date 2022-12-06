@@ -35,21 +35,23 @@ object Constants {
     const val INTENT_FILTER = "MESSENGER_EVENT"
 
 
-    const val UNIQUE_HANDLER_ID = "uniqueHandlerId"
-    const val CHANGE_LANGUAGE = "language"
+	const val UNIQUE_HANDLER_ID = "uniqueHandlerId"
+	const val CHANGE_LANGUAGE = "language"
 
-    const val IS_PHONE_NUMBER_HIDDEN = "isPhoneNumberHidden"
+	const val IS_PHONE_NUMBER_HIDDEN = "isPhoneNumberHidden"
 
-    const val ARE_PRIVATE_CHATS_NOTIFICATIONS_TURNED_ON = "arePrivateChatsNotificationsTurnedOn"
-    const val ARE_GROUP_CHATS_NOTIFICATIONS_TURNED_ON = "areGroupChatsNotificationsTurnedOn"
-    const val ARE_CALLS_NOTIFICATIONS_TURNED_ON = "areCallsNotificationsTurnedOn"
+	const val ARE_PRIVATE_CHATS_NOTIFICATIONS_TURNED_ON = "arePrivateChatsNotificationsTurnedOn"
+	const val ARE_GROUP_CHATS_NOTIFICATIONS_TURNED_ON = "areGroupChatsNotificationsTurnedOn"
+	const val ARE_CALLS_NOTIFICATIONS_TURNED_ON = "areCallsNotificationsTurnedOn"
 
-    const val PRIVATE_CHATS_MESSAGE_TOPIC = "PrivateChats"
-    const val GROUP_CHATS_MESSAGE_TOPIC = "GroupChats"
-    const val CALLS_MESSAGE_TOPIC = "Calls"
+	const val PRIVATE_CHATS_MESSAGE_TOPIC = "PrivateChats"
+	const val GROUP_CHATS_MESSAGE_TOPIC = "GroupChats"
+	const val CALLS_MESSAGE_TOPIC = "Calls"
 
-    const val BASE_URL = "https://fcm.googleapis.com"
-    const val SERVER_KEY =
-        "AAAA4tl5Ows:APA91bE6G6MElF0snum44KolLtwwmnCecHS5gRCFNi5P7z4PpiL1SFEqBhjJoCqQ9UE9pz7hLAMH6UGSUQe-GdFcNy2lolWDOaLxO4LuVo9nTTCmGhu_FiXtuMBrdm1eW2D3giz-zrUs" // get firebase server key from firebase project setting
-    const val CONTENT_TYPE = "application/json"
+	const val BASE_URL = "https://fcm.googleapis.com"
+	const val SERVER_KEY =
+		"AAAA4tl5Ows:APA91bE6G6MElF0snum44KolLtwwmnCecHS5gRCFNi5P7z4PpiL1SFEqBhjJoCqQ9UE9pz7hLAMH6UGSUQe-GdFcNy2lolWDOaLxO4LuVo9nTTCmGhu_FiXtuMBrdm1eW2D3giz-zrUs" // get firebase server key from firebase project setting
+	const val CONTENT_TYPE = "application/json"
+
+	const val TOPIC = "/topics/myTopic"
 }

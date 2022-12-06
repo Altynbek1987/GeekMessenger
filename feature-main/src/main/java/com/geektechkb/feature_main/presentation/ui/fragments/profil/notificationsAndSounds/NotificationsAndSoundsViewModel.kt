@@ -11,8 +11,9 @@ class NotificationsAndSoundsViewModel @Inject constructor(
     private val subscribeToNotificationTopicUseCase: SubscribeToNotificationTopicUseCase,
     private val unsubscribeFromNotificationTopicUseCase: UnsubscribeFromNotificationTopicUseCase
 ) : BaseViewModel() {
-    fun subscribeToNotificationTopic(topic: String) = subscribeToNotificationTopicUseCase(topic)
+	fun subscribeToNotificationTopic(topic: String) =
+		subscribeToNotificationTopicUseCase(topic)
 
-    fun unsubscribeFromNotificationTopic(topic: String) =
-        unsubscribeFromNotificationTopicUseCase(topic)
+	fun unsubscribeFromNotificationTopic(topic: String) =
+		unsubscribeFromNotificationTopicUseCase(topic)
 }

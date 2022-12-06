@@ -50,6 +50,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         layoutManager = LinearLayoutManager(context)
         autoScrollToStart(usersAdapter)
         itemAnimator = null
+
     }
 
     private fun checkInternet() {
