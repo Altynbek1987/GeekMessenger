@@ -20,9 +20,7 @@
         tools:layout="@layout/fragment_phone_verification_dialog">
         <action
             android:id="@+id/action_phoneVerificationDialogFragment_to_verifyAuthenticationFragment"
-            app:destination="@id/verifyAuthenticationFragment"
-            app:popUpTo="@id/signUpFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/verifyAuthenticationFragment" />
         <argument
             android:name="inputPhoneNumber"
             app:argType="string" />

@@ -115,7 +115,7 @@
                 app:argType="string" />
         </action>
         <action
-            android:id="@+id/action_cropPhotoFragment_to_createGroupFragment"
+            android:id="@+id/action_cropPhotoFragment_to_createGroupFragment2"
             app:destination="@+id/createGroupFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true">
