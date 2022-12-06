@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.net.Uri
 import android.util.TypedValue
 import android.view.MotionEvent.ACTION_DOWN
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
@@ -25,7 +26,10 @@ import com.geektechkb.core.ui.customViews.AudioRecordView
 import com.geektechkb.core.utils.AppVoiceRecorder
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.data.local.preferences.PreferencesHelper
+import com.geektechkb.feature_main.data.remote.services.instence.RetrofitInstance
 import com.geektechkb.feature_main.databinding.FragmentChatBinding
+import com.geektechkb.feature_main.domain.models.NotificationData
+import com.geektechkb.feature_main.domain.models.PushNotification
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
@@ -34,10 +38,14 @@ import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequ
 import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
+import com.google.gson.Gson
 import com.vanniktech.emoji.EmojiPopup
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
@@ -56,18 +64,24 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 	private var stateBottomSheet: Boolean = false
 	private var username: String? = null
     private var imageUri: Uri? = null
+    var topic = ""
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
-            Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            actionWhenPermissionHasBeenGranted = {
                 initBottomSheetRecycler()
                 setupBottomSheet()
                 openBottomSheet()
             },
             actionWhenPermissionHasBeenDenied = {
-                if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
+                if (findNavController().currentDestination?.id
+                    != R.id.deniedPermissionsDialogFragment
+                )
                     findNavController().directionsSafeNavigation(
                         ChatFragmentDirections.actionChatFragmentToDeniedPermissionsDialogFragment(
-                            getString(com.geektechkb.core.R.string.geekMessenger_application_cant_function_without_needed_permissions_russian)
+                            getString(
+                                com.geektechkb.core.R.string.geekMessenger_application_cant_function_without_needed_permissions_russian
+                            )
                         )
                     )
             })
@@ -83,7 +97,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                     )
             })
     private val appVoiceRecorder = AppVoiceRecorder()
-
     @Inject
     lateinit var usersPreferencesHelper: UserPreferencesHelper
 
@@ -94,20 +107,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         checkForPermissionStatusAndRequestIt(
             recordAudioPermissionLauncher,
             Manifest.permission.RECORD_AUDIO,
-            actionWhenPermissionHasBeenGranted = {
-            }
         )
         galleryViewModel.shouldVideoBeShown(true)
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
         sendMediaIfAvailable()
         initializeAudioRecordView()
-    }
-
-    private fun initializeAudioRecordView() {
-        binding.recordView.apply {
-            activity = requireActivity()
-            callback = this@ChatFragment
-        }
     }
 
     private fun sendMediaIfAvailable() {
@@ -122,6 +126,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
                 generateRandomId()
             )
+        }
+    }
+
+    private fun initializeAudioRecordView() {
+        binding.recordView.apply {
+            activity = requireActivity()
+            callback = this@ChatFragment
         }
     }
 
@@ -199,8 +210,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             checkForPermissionStatusAndRequestIt(
                 recordAudioPermissionLauncher,
                 Manifest.permission.RECORD_AUDIO,
-                actionWhenPermissionHasBeenGranted = {
-                }
             )
         }
     }
@@ -264,6 +273,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun sendMessage() = with(binding) {
+        val message = etMessage.text.toString()
         imSendMessage.setOnSingleClickListener {
             viewModel.sendMessage(
                 usersPreferencesHelper.currentUserPhoneNumber,
@@ -275,7 +285,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 ),
                 messageId = generateRandomId(),
             )
-            etMessage.text?.clear()
         }
     }
 
@@ -371,6 +380,38 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         }
     }
 
+//    private fun sendNotification(pushNotification: PushNotification) = CoroutineScope(
+//        Dispatchers.IO
+//    ).launch {
+//        withContext(Dispatchers.Main) {
+//            Toast.makeText(requireContext(), "anime", Toast.LENGTH_SHORT).show()
+//        }
+//        try {
+//            val response = RetrofitInstance.notificationApi.postNotifications(pushNotification)
+//            if (response.isSuccessful) {
+//                withContext(Dispatchers.Main) {
+//                    Toast.makeText(
+//                        requireContext(),
+//                        "Response${Gson().toJson(response)}",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            } else {
+//                withContext(Dispatchers.Main) {
+//                    Toast.makeText(
+//                        requireContext(),
+//                        response.errorBody().toString(),
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//        } catch (e: Exception) {
+//            withContext(Dispatchers.Main) {
+//                Toast.makeText(requireContext(), "anime", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
+
     private fun onImageSelected(uri: Uri) {
         imageUri = uri
         stateBottomSheet = true
@@ -378,13 +419,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             ChatFragmentDirections.actionChatFragmentToPhotoPreviewFragment(
                 groupName = null,
                 usersPhoneNumber = null,
-				phoneNumber = args.phoneNumber.toString(),
-				photo = uri.toString(),
-				photoPreview = PreviewPhotoRequest.SEND_PHOTO,
-				photoCount = 0,
-				time = "",
-				chatMessage = ChatMessageRequest.CHAT
-			)
+                phoneNumber = args.phoneNumber.toString(),
+                photo = uri.toString(),
+                photoPreview = PreviewPhotoRequest.SEND_PHOTO,
+                photoCount = 0,
+                time = "",
+                chatMessage = ChatMessageRequest.CHAT
+            )
         )
     }
 
@@ -488,4 +529,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     override fun isReady() = true
+
+
 }
