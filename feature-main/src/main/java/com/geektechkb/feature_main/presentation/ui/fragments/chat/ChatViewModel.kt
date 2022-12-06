@@ -50,4 +50,6 @@ class ChatViewModel @Inject constructor(
 
     fun fetchUser(phoneNumber: String) =
         fetchUserUseCase(phoneNumber).gatherRequest(_userState)
+
+
 }
