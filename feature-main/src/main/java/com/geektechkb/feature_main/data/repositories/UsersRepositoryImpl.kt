@@ -95,52 +95,52 @@ class UsersRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateUserProfileImageInFireStore(url: String) {
-        firebaseAuth.currentUser?.let {
-            updateASingleFieldInDocument(
-                usersRef,
-                it.phoneNumber.toString(),
-                FIREBASE_USER_PROFILE_IMAGE_KEY,
-                url
-            )
-        }
-    }
+		firebaseAuth.currentUser?.let {
+			updateASingleFieldInDocument(
+				usersRef,
+				it.phoneNumber.toString(),
+				FIREBASE_USER_PROFILE_IMAGE_KEY,
+				url
+			)
+		}
+	}
 
-    override fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean) {
-        firebaseAuth.currentUser?.let {
-            updateASingleFieldInDocument(
-                usersRef, it.phoneNumber.toString(),
-                FIREBASE_USER_PHONE_NUMBER_HIDDENNESS, isUserPhoneNumberHidden
-            )
-        }
-    }
+	override fun updateUserNumberHiddenness(isUserPhoneNumberHidden: Boolean) {
+		firebaseAuth.currentUser?.let {
+			updateASingleFieldInDocument(
+				usersRef, it.phoneNumber.toString(),
+				FIREBASE_USER_PHONE_NUMBER_HIDDENNESS, isUserPhoneNumberHidden
+			)
+		}
+	}
 
-    override fun subscribeToNotificationTopic(vararg topics: String) {
-        MessengerNotificationsService.subscribeToTopic(*topics)
+	override fun subscribeToNotificationTopic(topics: String) {
+		MessengerNotificationsService.subscribeToTopic(topics)
 
-    }
+	}
 
-    override fun unsubscribeFromNotificationTopic(vararg topics: String) {
-        MessengerNotificationsService.unsubscribeFromTopic(*topics)
-    }
+	override fun unsubscribeFromNotificationTopic(topics: String) {
+		MessengerNotificationsService.unsubscribeFromTopic(topics)
+	}
 
-    override fun createHitsSearcher(
-        applicationId: String,
-        apiKey: String,
-        indexName: String
-    ) = HitsSearcher(
-        ApplicationID(applicationId),
-        APIKey(apiKey),
-        IndexName(indexName),
-    )
+	override fun createHitsSearcher(
+		applicationId: String,
+		apiKey: String,
+		indexName: String
+	) = HitsSearcher(
+		ApplicationID(applicationId),
+		APIKey(apiKey),
+		IndexName(indexName),
+	)
 
-    override fun createPaginator(notAnActualHitsSearcher: NotAnActualHitsSearcher) = Paginator(
-        notAnActualHitsSearcher as HitsSearcher,
-        PagingConfig(
-            pageSize = 2,
-            prefetchDistance = 1,
-            enablePlaceholders = false,
-            initialLoadSize = 2,
-            maxSize = Int.MAX_VALUE,
+	override fun createPaginator(notAnActualHitsSearcher: NotAnActualHitsSearcher) = Paginator(
+		notAnActualHitsSearcher as HitsSearcher,
+		PagingConfig(
+			pageSize = 2,
+			prefetchDistance = 1,
+			enablePlaceholders = false,
+			initialLoadSize = 2,
+			maxSize = Int.MAX_VALUE,
             jumpThreshold = Int.MIN_VALUE
         ), transformer = { hit -> hit.deserialize(User.serializer()) })
 

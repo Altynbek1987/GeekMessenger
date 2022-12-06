@@ -6,6 +6,6 @@ import javax.inject.Inject
 class UnsubscribeFromNotificationTopicUseCase @Inject constructor(
     private val usersRepository: UsersRepository
 ) {
-    operator fun invoke(vararg topics: String) =
-        usersRepository.unsubscribeFromNotificationTopic(*topics)
+	operator fun invoke(topics: String) =
+		usersRepository.unsubscribeFromNotificationTopic(topics)
 }

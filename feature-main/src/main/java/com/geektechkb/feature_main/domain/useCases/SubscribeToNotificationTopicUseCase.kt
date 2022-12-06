@@ -6,6 +6,6 @@ import javax.inject.Inject
 class SubscribeToNotificationTopicUseCase @Inject constructor(
     private val usersRepository: UsersRepository
 ) {
-    operator fun invoke(vararg topics: String) =
-        usersRepository.subscribeToNotificationTopic(*topics)
+	operator fun invoke(topics: String) =
+		usersRepository.subscribeToNotificationTopic(topics)
 }
