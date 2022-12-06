@@ -56,30 +56,33 @@ android {
 
 dependencies {
     api(project(":common"))
-    api(project(":core"))
+	api(project(":core"))
 
-    // Algolia
-    implementation(libs.bundles.algolia)
+	// Algolia
+	implementation(libs.bundles.algolia)
 
-    // Legacy Support
-    implementation(libs.legacySupport.legacySupport)
+	// Legacy Support
+	implementation(libs.legacySupport.legacySupport)
+	//Retrofit 2
+	implementation(libs.retrofit.retrofit)
+	implementation(libs.retrofit.gsonConverter)
 
-    // Hilt
-    implementation(libs.hilt.android)
-    implementation("com.google.firebase:firebase-messaging-ktx:23.1.0")
-    implementation("com.google.firebase:firebase-auth-ktx:21.1.0")
-    implementation("com.google.firebase:firebase-storage:20.1.0")
-    kapt(libs.hilt.compiler)
+	// Hilt
+	implementation(libs.hilt.android)
+	implementation("com.google.firebase:firebase-messaging-ktx:23.1.0")
+	implementation("com.google.firebase:firebase-auth-ktx:21.1.0")
+	implementation("com.google.firebase:firebase-storage:20.1.0")
+	kapt(libs.hilt.compiler)
 
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    //Paging 3
-    implementation(libs.paging.paging)
+	implementation("androidx.legacy:legacy-support-v4:1.0.0")
+	//Paging 3
+	implementation(libs.paging.paging)
 
-    // Room with coroutines
-    implementation(libs.bundles.room)
-    kapt(libs.room.compiler)
+	// Room with coroutines
+	implementation(libs.bundles.room)
+	kapt(libs.room.compiler)
 
-    // Sendbird
+	// Sendbird
 //    implementation(libs.sendbird.sendbird)
 
 }
