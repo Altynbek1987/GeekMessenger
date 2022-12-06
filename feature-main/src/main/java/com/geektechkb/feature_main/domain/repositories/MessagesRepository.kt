@@ -1,5 +1,6 @@
 package com.geektechkb.feature_main.domain.repositories
 
+import com.geektechkb.common.either.Either
 import com.geektechkb.feature_main.domain.models.Message
 import kotlinx.coroutines.flow.Flow
 
@@ -19,4 +20,6 @@ interface MessagesRepository {
         senderPhoneNumber: String,
         receiverPhoneNumber: String
     ): Flow<List<Message?>>
+
+    fun deleteMessage(messageId: String)
 }

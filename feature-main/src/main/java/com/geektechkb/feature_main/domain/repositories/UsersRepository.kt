@@ -35,6 +35,4 @@ interface UsersRepository {
     fun createPaginator(notAnActualHitsSearcher: NotAnActualHitsSearcher): NotAnActualPaginator
 
     fun getCurrentUserPhoneNumber(): String?
-
-
 }
