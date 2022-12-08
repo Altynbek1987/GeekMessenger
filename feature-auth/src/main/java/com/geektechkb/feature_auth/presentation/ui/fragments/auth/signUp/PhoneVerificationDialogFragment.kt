@@ -37,9 +37,6 @@ class PhoneVerificationDialogFragment :
         binding.tvEditPhoneNumber.setOnClickListener {
             findNavController().navigateUp()
         }
-        binding.imEditPhoneNumber.setOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
     private fun proceedToPhoneVerification() {

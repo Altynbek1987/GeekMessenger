@@ -7,27 +7,6 @@
     android:background="@color/white"
     tools:context=".presentation.ui.fragments.auth.onboard.OnBoardFragment">
 
-    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-        android:id="@+id/dots_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:dotsColor="#004EA3"
-        app:dotsSize="12dp"
-        app:dotsSpacing="8dp"
-        app:dotsStrokeColor="#DA101A"
-        app:dotsWidthFactor="1"
-        app:layout_constraintBottom_toBottomOf="@+id/gl_dots_indicator_top"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gl_dots_indicator_top"
-        app:selectedDotColor="#FF0000" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_dots_indicator_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.60" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"
@@ -38,18 +17,41 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_button_bottom"
+        android:id="@+id/gl_view_pager_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7879617" />
+        app:layout_constraintGuide_percent="0.72640216" />
+
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:dotsColor="#004EA3"
+        app:dotsSize="12dp"
+        app:dotsSpacing="8dp"
+        app:dotsStrokeColor="#DA101A"
+        app:dotsWidthFactor="1"
+        app:layout_constraintBottom_toTopOf="@id/gl_dots_indicator_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:selectedDotColor="#FF0000" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_dots_indicator_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.77" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/start_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
         android:backgroundTint="#4A7CE0"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -57,6 +59,13 @@
         app:layout_constraintBottom_toBottomOf="@id/gl_button_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/dots_indicator" />
+        app:layout_constraintTop_toTopOf="@id/gl_dots_indicator_bottom" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_button_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
