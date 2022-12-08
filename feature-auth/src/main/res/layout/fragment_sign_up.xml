@@ -35,24 +35,40 @@
         android:includeFontPadding="false"
         android:text="@string/input_your_phone_number_russian"
         android:textColor="#5393D0"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/gl_tv_top"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_tv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.23" />
 
 
     <TextView
         android:id="@+id/tv_sms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="6dp"
         android:gravity="center"
         android:includeFontPadding="false"
         android:text="@string/the_activation_code_will_be_sent_via_SMS_ake_sure_your_device_can_receive_them."
         android:textColor="#9F9F9F"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tv_enter_phone_number"
+        app:layout_constraintBottom_toTopOf="@id/gl_tv_bottom"
+        app:layout_constraintTop_toBottomOf="@id/gl_tv_top"
         tools:layout_editor_absoluteX="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_tv_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.32" />
 
 
     <TextView
@@ -93,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37" />
+        app:layout_constraintGuide_percent="0.4" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -115,6 +131,7 @@
         android:id="@+id/tl_phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"

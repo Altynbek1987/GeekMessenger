@@ -24,13 +24,12 @@
                 android:id="@+id/tv_is_number_correct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Номер указан верно?"
-                android:textAlignment="center"
                 android:textColor="@color/blue"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,12 +38,12 @@
                 android:id="@+id/tv_entered_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="38dp"
                 android:layout_marginTop="20dp"
                 android:textColor="#9F9F9F"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_is_number_correct"
                 tools:text="+996552109876" />
 
@@ -56,15 +55,6 @@
                 app:layout_constraintStart_toStartOf="@id/tv_entered_number"
                 app:layout_constraintTop_toBottomOf="@id/tv_entered_number" />
 
-            <ImageView
-                android:id="@+id/im_edit_phone_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:layout_marginTop="25dp"
-                android:src="@drawable/ic_edit_blue"
-                app:layout_constraintStart_toEndOf="@id/tv_entered_number"
-                app:layout_constraintTop_toBottomOf="@id/tv_is_number_correct" />
 
 
             <TextView
