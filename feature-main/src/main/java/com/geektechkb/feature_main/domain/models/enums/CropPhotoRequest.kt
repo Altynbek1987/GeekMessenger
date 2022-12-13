@@ -1,4 +1,4 @@
-package com.geektechkb.feature_main.presentation.ui.models.enums
+package com.geektechkb.feature_main.domain.models.enums
 
 enum class CropPhotoRequest {
     PROFILE,

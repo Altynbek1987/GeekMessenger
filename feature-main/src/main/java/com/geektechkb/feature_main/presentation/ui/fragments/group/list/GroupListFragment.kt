@@ -93,6 +93,7 @@ class GroupListFragment : BaseFragment<FragmentGroupListBinding, GroupListViewMo
         binding.searchViewUsers.queryHint = transformTextFont(
             getString(R.string.search), R.font.avenir_next_regular, 0, 8
         )
+        binding.tvToolbar.text = getString(R.string.app_name)
     }
 
     private fun changeSearchEditTextTextColorAndHintTextColor() {
@@ -106,13 +107,13 @@ class GroupListFragment : BaseFragment<FragmentGroupListBinding, GroupListViewMo
         searchViewUsers.setOnQueryTextFocusChangeListener { _, hasFocus ->
             when (hasFocus) {
                 true -> {
-                    tvToolbarTitle.isGone = true
+                    tvToolbar.isGone = true
                     toolbarButton.isGone = true
                     imClear.isGone = false
                     imSearchIcon.isGone = false
                 }
                 else -> {
-                    tvToolbarTitle.isGone = false
+                    tvToolbar.isGone = false
                     toolbarButton.isGone = false
                     imClear.isGone = true
                     imSearchIcon.isGone = true

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.geektechkb.feature_main.databinding.ItemGalleryBinding
-import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
+import com.geektechkb.feature_main.domain.models.GalleryPicture
 
 
 class GalleryPicturesAdapter(

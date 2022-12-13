@@ -9,8 +9,8 @@ import com.geektechkb.core.data.local.preferences.UserPreferencesHelper
 import com.geektechkb.core.extensions.*
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentPhotoPreviewBinding
-import com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest
-import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequest
+import com.geektechkb.feature_main.domain.models.enums.ChatMessageRequest
+import com.geektechkb.feature_main.domain.models.enums.PreviewPhotoRequest
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

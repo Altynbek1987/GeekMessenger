@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     @Inject
     lateinit var userPreferences: AuthorizePreferences
 
-    @Inject
-    lateinit var onBoardPreferencesHelper: OnBoardPreferencesHelper
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_GeekMessenger)

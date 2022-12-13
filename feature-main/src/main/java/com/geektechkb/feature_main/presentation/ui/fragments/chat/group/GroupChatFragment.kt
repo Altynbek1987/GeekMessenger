@@ -30,9 +30,9 @@ import com.geektechkb.feature_main.databinding.FragmentGroupChatBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.GroupMessagesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
-import com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest
-import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequest
-import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest
+import com.geektechkb.feature_main.domain.models.enums.ChatMessageRequest
+import com.geektechkb.feature_main.domain.models.enums.PreviewPhotoRequest
+import com.geektechkb.feature_main.domain.models.enums.PreviewVideoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.vanniktech.emoji.EmojiPopup
