@@ -59,7 +59,7 @@
             app:popUpTo="@id/profileFragment" />
         <argument
             android:name="whereToNavigateBack"
-            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest" />
+            app:argType="com.geektechkb.feature_main.domain.models.enums.CropPhotoRequest" />
         <action
             android:id="@+id/action_cropPhotoFragment_to_editProfilFragment"
             app:destination="@id/editProfileFragment"

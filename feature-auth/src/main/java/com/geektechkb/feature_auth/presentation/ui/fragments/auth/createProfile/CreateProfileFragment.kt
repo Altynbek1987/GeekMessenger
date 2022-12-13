@@ -3,7 +3,6 @@ package com.geektechkb.feature_auth.presentation.ui.fragments.auth.createProfile
 import android.Manifest
 import android.net.Uri
 import android.util.Log
-import android.view.WindowManager
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -48,15 +47,6 @@ class CreateProfileFragment :
 
     @Inject
     lateinit var authorizePreferences: AuthorizePreferences
-
-    override fun initialize() {
-        setWindowSoftInputModeToAdjustPan()
-    }
-
-    private fun setWindowSoftInputModeToAdjustPan() {
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
-    }
-
 
     override fun setupListeners() {
         setProfileAvatar()

@@ -20,6 +20,7 @@
         tools:layout="@layout/fragment_phone_verification_dialog">
         <action
             android:id="@+id/action_phoneVerificationDialogFragment_to_verifyAuthenticationFragment"
+
             app:destination="@id/verifyAuthenticationFragment" />
         <argument
             android:name="inputPhoneNumber"
@@ -37,11 +38,9 @@
         <action
             android:id="@+id/action_verifyAuthenticationFragment_to_createProfileFragment"
             app:destination="@id/createProfileFragment"
-            app:popUpTo="@id/authorization_graph"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_verifyAuthenticationFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+
+           />
+
 
 
     </fragment>

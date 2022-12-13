@@ -35,9 +35,9 @@ import com.geektechkb.feature_main.domain.models.PushNotification
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.adapters.MessagesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
-import com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest
-import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequest
-import com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest
+import com.geektechkb.feature_main.domain.models.enums.ChatMessageRequest
+import com.geektechkb.feature_main.domain.models.enums.PreviewPhotoRequest
+import com.geektechkb.feature_main.domain.models.enums.PreviewVideoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.google.gson.Gson
@@ -56,34 +56,27 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     AudioRecordView.Callback {
 
     override val binding by viewBinding(FragmentChatBinding::bind)
-    override val viewModel by activityViewModels<ChatViewModel>()
+    override val viewModel by viewModels<ChatViewModel>()
     private val galleryViewModel: GalleryBottomSheetViewModel by viewModels()
     private val messagesAdapter = MessagesAdapter(this::openPhotoPreview, this::openVideoPreview)
-    private val galleryAdapter =
-        GalleryPicturesAdapter(this::onImageSelected, this::onVideoSelected)
+    private val galleryAdapter = GalleryPicturesAdapter(this::onImageSelected, this::onVideoSelected)
     private val args: ChatFragmentArgs by navArgs()
 	private var bottomSheetBehavior: BottomSheetBehavior<MaterialCardView>? = null
 	private var stateBottomSheet: Boolean = false
 	private var username: String? = null
     private var imageUri: Uri? = null
-    var topic = ""
     private val readExternalStoragePermissionLauncher =
         createRequestPermissionLauncherToRequestSinglePermission(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            actionWhenPermissionHasBeenGranted = {
+            Manifest.permission.READ_EXTERNAL_STORAGE, actionWhenPermissionHasBeenGranted = {
                 initBottomSheetRecycler()
                 setupBottomSheet()
                 openBottomSheet()
             },
             actionWhenPermissionHasBeenDenied = {
-                if (findNavController().currentDestination?.id
-                    != R.id.deniedPermissionsDialogFragment
-                )
+                if (findNavController().currentDestination?.id != R.id.deniedPermissionsDialogFragment)
                     findNavController().directionsSafeNavigation(
                         ChatFragmentDirections.actionChatFragmentToDeniedPermissionsDialogFragment(
-                            getString(
-                                com.geektechkb.core.R.string.geekMessenger_application_cant_function_without_needed_permissions_russian
-                            )
+                            getString(com.geektechkb.core.R.string.geekMessenger_application_cant_function_without_needed_permissions_russian)
                         )
                     )
             })
@@ -109,11 +102,20 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
         checkForPermissionStatusAndRequestIt(
             recordAudioPermissionLauncher,
             Manifest.permission.RECORD_AUDIO,
+            actionWhenPermissionHasBeenGranted = {
+            }
         )
         galleryViewModel.shouldVideoBeShown(true)
         appVoiceRecorder.createFileForRecordedVoiceMessage(requireContext().getExternalFilesDir(null))
         sendMediaIfAvailable()
         initializeAudioRecordView()
+    }
+
+    private fun initializeAudioRecordView() {
+        binding.recordView.apply {
+            activity = requireActivity()
+            callback = this@ChatFragment
+        }
     }
 
     private fun sendMediaIfAvailable() {
@@ -128,13 +130,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 formatCurrentUserTime(YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS_DATE_FORMAT),
                 generateRandomId()
             )
-        }
-    }
-
-    private fun initializeAudioRecordView() {
-        binding.recordView.apply {
-            activity = requireActivity()
-            callback = this@ChatFragment
         }
     }
 
@@ -167,8 +162,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
 
     private fun setupAdapter() {
         binding.recyclerview.adapter = messagesAdapter
-        binding.recyclerview.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
 
     private fun hideClipAndRecordViewWhenUserTyping() = with(binding) {
@@ -212,6 +205,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
             checkForPermissionStatusAndRequestIt(
                 recordAudioPermissionLauncher,
                 Manifest.permission.RECORD_AUDIO,
+                actionWhenPermissionHasBeenGranted = {
+                }
             )
         }
     }
@@ -275,7 +270,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun sendMessage() = with(binding) {
-        val message = etMessage.text.toString()
         imSendMessage.setOnSingleClickListener {
             viewModel.sendMessage(
                 usersPreferencesHelper.currentUserPhoneNumber,
@@ -287,6 +281,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 ),
                 messageId = generateRandomId(),
             )
+            etMessage.text?.clear()
         }
     }
 
@@ -296,7 +291,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
                 R.id.btn_clear_chat -> {
                     findNavController().directionsSafeNavigation(
                         ChatFragmentDirections.actionChatFragmentToClearChatHistoryFragment(
-                            username.toString(),
+                            username.toString()
                         )
                     )
                     true
@@ -316,13 +311,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.f
     }
 
     private fun openEmojiSoftKeyboard() {
-
         binding.apply {
 
             val emojiPopUp = EmojiPopup(
                 root,
                 binding.etMessage,
-
                 onEmojiPopupShownListener = { binding.imEmoji.setImageResource(R.drawable.ic_keyboard) },
                 onEmojiPopupDismissListener = { binding.imEmoji.setImageResource(R.drawable.ic_emoji) },
             )

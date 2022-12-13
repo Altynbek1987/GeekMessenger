@@ -24,7 +24,7 @@
     <string name="button_to_send_message">билдирүү жөнөтүү үчүн баскычты басыңыз</string>
     <string name="typing">терүү...</string>
     <string name="Gallery">Галерея</string>
-    <string name="account">Аккаунт</string>
+    <string name="account">Каттоо эсеби</string>
     <string name="number">0702345805</string>
     <string name="chance_number">Телефон номерин өзгөртүү үчүн басыңыз</string>
     <string name="settings">Орнотуулар</string>
@@ -48,5 +48,7 @@
     <string name="delete">Жок кылуу</string>
     <string name="select_photo_or_video">Сүрөт же видео тандаңыз</string>
     <string name="user_group">Топтун атын киргизиңиз</string>
+    <string name="ToCreateGroup">Топ түзүү үчүн</string>
+
 </resources>
 

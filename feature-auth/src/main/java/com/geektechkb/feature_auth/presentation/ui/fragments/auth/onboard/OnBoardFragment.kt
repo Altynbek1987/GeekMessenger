@@ -43,7 +43,6 @@ class OnBoardFragment :
         }
         setupAdapter()
         changeButtonTextDependingOnPagerCurrentItem()
-
     }
 
     private fun changeButtonTextDependingOnPagerCurrentItem() {

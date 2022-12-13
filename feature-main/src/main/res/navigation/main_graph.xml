@@ -115,15 +115,14 @@
                 app:argType="string" />
         </action>
         <action
-            android:id="@+id/action_cropPhotoFragment_to_createGroupFragment2"
+            android:id="@+id/action_cropPhotoFragment_to_createGroupFragment"
             app:destination="@+id/createGroupFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true">
-
         </action>
         <argument
             android:name="whereToNavigateBack"
-            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest" />
+            app:argType="com.geektechkb.feature_main.domain.models.enums.CropPhotoRequest" />
         <argument
             android:name="userCount"
             android:defaultValue="0"
@@ -233,7 +232,7 @@
             app:argType="string" />
         <argument
             android:name="photoPreview"
-            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.PreviewPhotoRequest" />
+            app:argType="com.geektechkb.feature_main.domain.models.enums.PreviewPhotoRequest" />
         <argument
             android:name="photoCount"
             app:argType="integer" />
@@ -242,7 +241,7 @@
             app:argType="string" />
         <argument
             android:name="chatMessage"
-            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest" />
+            app:argType="com.geektechkb.feature_main.domain.models.enums.ChatMessageRequest" />
         <action
             android:id="@+id/action_photoReviewFragment_to_chatFragment"
             app:destination="@id/chatFragment"
@@ -275,7 +274,7 @@
         tools:layout="@layout/fragment_video_preview">
         <argument
             android:name="chatMessage"
-            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.ChatMessageRequest" />
+            app:argType="com.geektechkb.feature_main.domain.models.enums.ChatMessageRequest" />
         <argument
             android:name="chatteePhoneNumber"
             app:argType="string"
@@ -296,7 +295,7 @@
             app:nullable="true" />
         <argument
             android:name="videoPreview"
-            app:argType="com.geektechkb.feature_main.presentation.ui.models.enums.PreviewVideoRequest" />
+            app:argType="com.geektechkb.feature_main.domain.models.enums.PreviewVideoRequest" />
         <argument
             android:name="videoCount"
             app:argType="integer" />

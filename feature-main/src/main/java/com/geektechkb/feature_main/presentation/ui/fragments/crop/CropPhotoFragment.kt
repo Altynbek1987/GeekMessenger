@@ -16,7 +16,7 @@ import com.geektechkb.core.extensions.directionsSafeNavigation
 import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentCropPhotoBinding
 import com.geektechkb.feature_main.presentation.ui.fragments.crop.transformations.MirrorTransformation
-import com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest
+import com.geektechkb.feature_main.domain.models.enums.CropPhotoRequest
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -74,7 +74,7 @@ class CropPhotoFragment :
                     )
                 )
                 CropPhotoRequest.CREATE_PROFILE -> findNavController().directionsSafeNavigation(
-					CropPhotoFragmentDirections.actionCropPhotoFragmentToCreateGroupFragment2(
+					CropPhotoFragmentDirections.actionCropPhotoFragmentToCreateGroupFragment(
 						userUri = bitmapToFile().toString(),
 						userList = args.userList,
 						userCount = args.userCount

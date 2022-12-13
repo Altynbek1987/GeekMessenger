@@ -22,7 +22,7 @@ import com.geektechkb.feature_main.R
 import com.geektechkb.feature_main.databinding.FragmentProfileBinding
 import com.geektechkb.feature_main.presentation.ui.adapters.GalleryPicturesAdapter
 import com.geektechkb.feature_main.presentation.ui.fragments.gallerydialogbotomsheet.GalleryBottomSheetViewModel
-import com.geektechkb.feature_main.presentation.ui.models.enums.CropPhotoRequest
+import com.geektechkb.feature_main.domain.models.enums.CropPhotoRequest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint

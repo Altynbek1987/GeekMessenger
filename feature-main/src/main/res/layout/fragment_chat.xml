@@ -106,7 +106,9 @@
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginBottom="4dp"
+        app:stackFromEnd="true"
         app:layout_constraintBottom_toTopOf="@id/cl_message"
         app:layout_constraintTop_toBottomOf="@id/chat_toolbar"
         tools:listitem="@layout/item_sent_messages" />
@@ -143,12 +145,10 @@
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@drawable/chat_box_stroke_color_selector"
             app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
             app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/im_send_message"
             app:layout_constraintStart_toEndOf="@id/im_emoji">
-
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_message"
@@ -188,13 +188,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="invisible" />
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.geektechkb.core.ui.customViews.AudioRecordView
         android:id="@+id/record_view"
         android:layout_width="26dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
         android:layout_marginBottom="5dp"
         app:cancel_icon="@drawable/ic_release_locked_lock"

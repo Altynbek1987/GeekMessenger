@@ -116,6 +116,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center"
+        android:textColor="@color/black"
         android:text="@string/user_list"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/v_end_of_toolbar"

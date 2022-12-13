@@ -1,5 +1,6 @@
 package com.geektechkb.feature_auth.presentation.ui.fragments.auth.verification
 
+import android.annotation.SuppressLint
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
@@ -27,12 +28,15 @@ class VerifyAuthenticationFragment :
     private var retrievedVerificationCode = ""
     private lateinit var countDownTimer: CountDownTimer
 
+
     override fun assembleViews() {
         setPhoneNumberCodeWasSentTo()
         updateCountDownTimer()
         setupCountDownTimer()
+
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setPhoneNumberCodeWasSentTo() {
         binding.tvVerificationCodeWasSent.text =
             "${getString(R.string.verification_code_was_sent_to_the_entered_phone)}${
@@ -78,7 +82,6 @@ class VerifyAuthenticationFragment :
     }
 
     override fun setupListeners() {
-        returnBackToTheNumberInput()
         addBackspaceListener()
         moveToTheNextDigit()
         enableNumericKeyboardListeners()
@@ -86,15 +89,14 @@ class VerifyAuthenticationFragment :
         disableEditTextsKeyListener()
         verifyPhoneNumberUsingCode()
         resendVerificationCode()
-    }
+        overrideOnBackPressed {
 
-    private fun returnBackToTheNumberInput() {
-        binding.ibBack.setOnClickListener {
-            findNavController().navigateSafely(R.id.action_verifyAuthenticationFragment_to_signUpFragment)
         }
     }
 
+
     private fun addBackspaceListener() {
+
         binding.apply {
             ibBackspace.setOnClickListener {
                 etFirstDigit.deleteACharacterThenFocusOnThePreviousDigit(
@@ -484,5 +486,8 @@ class VerifyAuthenticationFragment :
         digits[2].keyListener = null
         digits[3].keyListener = null
         digits[4].keyListener = null
+
+
     }
+
 }

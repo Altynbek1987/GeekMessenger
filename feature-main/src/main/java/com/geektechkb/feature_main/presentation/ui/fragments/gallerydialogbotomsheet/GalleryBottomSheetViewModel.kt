@@ -7,7 +7,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.provider.MediaStore
 import com.geektechkb.core.base.BaseViewModel
-import com.geektechkb.feature_main.presentation.ui.models.GalleryPicture
+import com.geektechkb.feature_main.domain.models.GalleryPicture
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
